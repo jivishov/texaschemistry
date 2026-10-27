@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unit 5 Blueprint</title>
+<meta name="description" content="Teacher blueprint for Unit 5 The Mole: exact TEKS, objectives, lesson map, misconceptions, missions, the case file and data sources.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500..800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fb;--paper:#fff;--ink:#14162b;--muted:#5b6078;--line:#dfe2ee;--sunk:#eef0f7;--accent:#3a3fc9;--accent-soft:#e6e7fb;--warm:#b0430f;--ok:#17734a;--ok-soft:#e3f4ea;--bad:#b4232a;
+  --body:"Atkinson Hyperlegible",system-ui,sans-serif;--display:"Bricolage Grotesque",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1120;--paper:#171a2e;--ink:#eceefb;--muted:#a3a8c6;--line:#2c3150;--sunk:#1f2340;--accent:#9ea3ff;--accent-soft:#272b55;--warm:#ff9a62;--ok:#5fd39b;--ok-soft:#173528;--bad:#ff7b7b}}
+:root[data-theme="dark"]{--bg:#0f1120;--paper:#171a2e;--ink:#eceefb;--muted:#a3a8c6;--line:#2c3150;--sunk:#1f2340;--accent:#9ea3ff;--accent-soft:#272b55;--warm:#ff9a62;--ok:#5fd39b;--ok-soft:#173528;--bad:#ff7b7b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 20px 80px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px}
+nav.toc{position:sticky;top:20px;align-self:start;font-size:14px}
+nav.toc p{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:4px 0 4px 10px;border-left:2px solid var(--line)}
+nav.toc a:hover{color:var(--ink);border-color:var(--accent)}
+main{min-width:0}
+header.top{margin-bottom:28px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm);margin:0}.eyebrow a{color:inherit;text-decoration:none}.eyebrow a:hover{text-decoration:underline}
+h1{font-family:var(--display);font-size:44px;line-height:1.02;margin:.15em 0 .3em;font-weight:800}
+h2{font-family:var(--display);font-size:28px;line-height:1.1;margin:56px 0 10px;font-weight:700;scroll-margin-top:16px}
+h3{font-family:var(--display);font-size:20px;margin:28px 0 8px;font-weight:700}
+h4{font-size:16px;margin:18px 0 6px}
+p{margin:0 0 12px}
+a{color:var(--accent)}
+.lede{font-size:19px;color:var(--muted)}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pill{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-radius:99px;padding:3px 10px;background:var(--paper);color:var(--muted)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid2 .card,.grid3 .card{margin:0}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--warm);margin:0 0 6px;font-weight:600}
+table{border-collapse:collapse;width:100%;font-size:15px;background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:12px 0}
+th,td{text-align:left;vertical-align:top;padding:9px 12px;border-bottom:1px solid var(--line)}
+th{font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);background:var(--sunk);font-weight:600}
+tr:last-child td{border-bottom:0}
+td code,p code,li code{font-family:var(--mono);font-size:.88em;background:var(--sunk);padding:.05em .35em;border-radius:5px}
+ul,ol{margin:0 0 12px;padding-left:1.3em}
+li{margin:3px 0}
+.teks{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:10px 0}
+.teks b{font-family:var(--mono);font-size:13px;color:var(--accent)}
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}
+.flow div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px;position:relative}
+.flow div:not(:last-child)::after{content:"→";position:absolute;right:-10px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:700}
+.flow b{display:block;font-family:var(--display);font-size:17px}
+.flow span{font-size:13.5px;color:var(--muted)}
+.tag{display:inline-block;font-family:var(--mono);font-size:11.5px;border-radius:6px;padding:1px 6px;background:var(--accent-soft);color:var(--ink);white-space:nowrap}
+.tag.w{background:color-mix(in srgb,var(--warm) 16%,var(--paper))}
+.tag.g{background:var(--ok-soft)}
+.note{background:var(--accent-soft);border-radius:12px;padding:12px 16px;margin:14px 0;font-size:15.5px}
+.mis td:first-child{width:38%}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.evid{counter-reset:ev}
+.evid .card{position:relative;padding-left:62px}
+.evid .card::before{counter-increment:ev;content:counter(ev);position:absolute;left:18px;top:18px;width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--paper);display:grid;place-items:center;font-family:var(--display);font-weight:800}
+footer{margin-top:60px;font-size:14px;color:var(--muted)}
+.tt{position:fixed;right:16px;top:14px;font:600 13px var(--body);background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:6px 12px;cursor:pointer}
+@media (max-width:900px){.wrap{grid-template-columns:minmax(0,1fr)}nav.toc{position:static}.grid3,.grid2,.flow{grid-template-columns:minmax(0,1fr)}.flow div::after{display:none}h1{font-size:34px}table{display:block;overflow-x:auto}}
+@media print{nav.toc,.tt{display:none}.wrap{display:block;padding:0}body{background:#fff;font-size:12pt}.card,table{break-inside:avoid}h2{break-after:avoid}}
+sub,sup{font-size:.72em;line-height:0}
+</style>
+</head>
+<body>
+<button class="tt" id="tt" type="button">Theme</button>
+<div class="wrap">
+<nav class="toc" aria-label="Contents">
+  <p>Blueprint</p>
+  <a href="#package">1. The package</a>
+  <a href="#teks">2. Standards</a>
+  <a href="#map">3. Lesson map and pacing</a>
+  <a href="#l51">4. Lesson 5.1</a>
+  <a href="#l52">5. Lesson 5.2</a>
+  <a href="#l53">6. Lesson 5.3</a>
+  <a href="#l54">7. Lesson 5.4</a>
+  <a href="#l55">8. Lesson 5.5</a>
+  <a href="#case">9. Case file: fertilizer</a>
+  <a href="#matrix">10. Alignment matrix</a>
+  <a href="#assess">11. Using the results</a>
+  <a href="#access">12. Access and Honors</a>
+  <a href="#data">13. Data and accuracy</a>
+  <a href="#src">Sources</a>
+</nav>
+<main>
+<header class="top">
+  <p class="eyebrow"><a href="index.html">Chemistry Case Files · Unit 5</a> · Teacher blueprint</p>
+  <h1>The Mole: unit blueprint</h1>
+  <p class="lede">One set of objectives drives four surfaces: a student reading, a teacher slide deck, missions and a case file. Every check item carries an objective ID, so alignment to TEKS C.8(A), C.8(B), C.8(C) and C.8(D) can be traced item by item.</p>
+  <div class="meta"><span class="pill">Grade 10 on-level, Honors optional</span><span class="pill">19 TAC §112.43(c), adopted 2020</span><span class="pill">About 12 class periods</span><span class="pill">Exact TEKS wording</span></div>
+</header>
+
+<section id="package">
+<h2>1. The package</h2>
+<p>Eighteen pages: five readings, five slide decks, five mission sets, one case file, this blueprint and the unit index. Each surface has one job, and none of them tests content that the reading does not teach.</p>
+<div class="flow">
+  <div><b>Read</b><span>Student reading in book or continuous mode, with a simpler-language toggle, worked examples, stop-and-check items and interactives.</span></div>
+  <div><b>Teach</b><span>Teacher deck. Each slide shows its reading section, and the notes give timings and the wrong answers to expect.</span></div>
+  <div><b>Practice</b><span>Missions. Everyday samples and real data for each idea, with feedback on every wrong answer.</span></div>
+  <div><b>Apply</b><span>Case file. One Texas decision that needs the whole unit.</span></div>
+</div>
+<div class="grid2">
+  <div class="card"><p class="label">Teacher flow, one lesson</p><ol class="small"><li>Open the deck. The driving question and three predictions come first.</li><li>Teach through the deck. Students follow the matching reading section or read it as homework.</li><li>Students work the worked examples and stop-and-check items, then the missions.</li><li>The CER exit ticket and the self-rating close the lesson. Students write in their notebooks.</li></ol></div>
+  <div class="card"><p class="label">Design rules</p><ul class="small"><li>Every number is computed from the formula by one shared calculator, so the same value appears on every surface.</li><li>One objective ID per item. Every wrong choice and every common wrong number gets feedback that names the faulty step.</li><li>Writing happens in notebooks. Pages offer choices, numbers, sliders and reveals, never text boxes.</li><li>Always name the particle: atoms, molecules, formula units or ions.</li><li>Models are labeled: ball-and-stick molecules use measured shapes, and drawings are marked as illustrations.</li></ul></div>
+</div>
+</section>
+
+<section id="teks">
+<h2>2. Standards</h2>
+<p>Exact wording of 19 TAC §112.43(c)(8), "The student understands how matter is accounted for in chemical substances." The right column states what a student must produce to show mastery.</p>
+<table>
+<thead><tr><th style="width:52%">Student expectation</th><th>Mastery evidence</th></tr></thead>
+<tbody>
+<tr><td><div class="teks"><b>C.8(A)</b> define mole and apply the concept of molar mass to convert between moles and grams;</div></td><td>States the 2019 definition of the mole (exactly 6.02214076 × 10<sup>23</sup> specified particles) and names the particle counted. Calculates the molar mass of elements, diatomic elements, molecular and ionic compounds, including parentheses, and explains why the number in g/mol matches the mass of one particle in u. Converts grams to moles and moles to grams. Lessons 5.1, 5.2 and 5.3; case file File 2.</td></tr>
+<tr><td><div class="teks"><b>C.8(B)</b> calculate the number of atoms or molecules in a sample of material using Avogadro's number;</div></td><td>Converts between moles and atoms, molecules, formula units or ions; converts grams to particles and back through moles with units that cancel; counts the atoms of each element in a compound sample; enters scientific notation correctly and checks that the answer is reasonable. Lessons 5.1 and 5.3; case file File 2.</td></tr>
+<tr><td><div class="teks"><b>C.8(C)</b> calculate percent composition of compounds; and</div></td><td>Calculates the percent by mass of each element from a formula, uses it to find the mass of an element in a sample, tells percent by mass from percent of atoms, and calculates percent composition from laboratory masses, judging whether an error makes the result too high or too low. Lesson 5.4; case file Files 1, 3, 5 and 6.</td></tr>
+<tr><td><div class="teks"><b>C.8(D)</b> differentiate between empirical and molecular formulas.</div></td><td>Defines both formulas, reduces a molecular formula to its empirical formula, explains why different substances can share one, and finds a molecular formula from an empirical formula and a molar mass. Finding an empirical formula from percent composition is taught as a labeled extension. Lesson 5.5; case file File 4.</td></tr>
+</tbody></table>
+<div class="note"><b>Science and engineering practices</b> used most in this unit:
+<ul class="small">
+<li>1(G) develop and use models: the size of a mole, the silicon sphere, the one-mole bench and the molecule models.</li>
+<li>2(B) analyze data for patterns and limitations: the crucible experiment and its errors, and the measured results with their uncertainty in case file File 6.</li>
+<li>2(C) use mathematical calculations to assess quantitative relationships: counting by weighing, conversion factors and percent composition.</li>
+<li>3(A) explanations supported by data and models; 3(C) scientific argumentation: the exit tickets and the case file recommendation.</li>
+</ul>
+<b>Boundaries.</b> Mole ratios from balanced equations and stoichiometry are Unit 6. Gas volumes at STP are Unit 7. (A) asks for a definition as well as a skill, so the definition of the mole is assessed, not only the conversions. (B) names atoms and molecules; the unit also counts formula units and ions, because ionic compounds have no molecules.</div>
+</section>
+
+<section id="map">
+<h2>3. Lesson map and pacing</h2>
+<table>
+<thead><tr><th>Lesson</th><th>TEKS</th><th>Periods</th><th>Core interactives</th><th>Mission ID</th></tr></thead>
+<tbody>
+<tr><td><b>5.1</b> Counting particles with the mole</td><td><span class="tag">C.8(A)</span> <span class="tag">C.8(B)</span></td><td>2</td><td>Nickel counter, mixed-cent jar, one particle each second, silicon sphere counter, particle and atom counter</td><td><code>zoom</code></td></tr>
+<tr><td><b>5.2</b> Molar mass</td><td><span class="tag">C.8(A)</span></td><td>2</td><td>Molar mass builder, parenthesis groups, formula unit in a crystal, one atom to one mole, the one-mole bench, molecule viewer</td><td><code>molg</code></td></tr>
+<tr><td><b>5.3</b> Converting mass, moles and particles</td><td><span class="tag">C.8(A)</span> <span class="tag">C.8(B)</span></td><td>2</td><td>Conversion map builder, the diamond and its crystal, calculator trainer</td><td><code>particles</code></td></tr>
+<tr><td><b>5.4</b> Percent composition</td><td><span class="tag">C.8(C)</span></td><td>2 (3 with a lab)</td><td>Mass and atom bars, iron in three oxides, the crucible experiment</td><td><code>percent</code></td></tr>
+<tr><td><b>5.5</b> Empirical and molecular formulas</td><td><span class="tag">C.8(D)</span></td><td>2</td><td>Formula families, the empirical-formula finder, combustion analysis (Honors)</td><td><code>formula</code></td></tr>
+<tr><td><b>Case file</b> Checking a fertilizer label</td><td>All</td><td>1</td><td>Six evidence files and a recommendation</td><td>case file</td></tr>
+<tr><td><b>Review and assessment</b></td><td>All</td><td>1</td><td>Teacher's own review and unit test</td><td>n/a</td></tr>
+</tbody></table>
+<p class="small muted">Each deck's cover notes split it into two 45 to 50 minute periods. Lesson 5.4 needs a third period if students burn magnesium themselves. The lessons build on each other (5.3 joins the conversions of 5.1 and 5.2, and 5.5 uses the percent composition of 5.4), so teach them in order.</p>
+</section>
+
+<section id="l51">
+<h2>4. Lesson 5.1 · Counting particles with the mole</h2>
+<p><b>Driving question.</b> A bag of nickels: a bank counts coins by weighing, and because every nickel has a mass of 5.000 g, a bag whose coins have a mass of 1,250.0 g holds exactly 250 nickels. How can chemists count particles that are far too small and too many to count one by one?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>5.1.1</td><td>Explain how a large number of identical objects can be counted by weighing, using one object's mass or the average mass of a mixture.</td><td><span class="tag">C.8(A)</span></td><td>5, 6</td></tr>
+<tr><td>5.1.2</td><td>Define the mole as the amount of substance that contains exactly 6.02214076 × 10<sup>23</sup> specified particles, and use Avogadro's number and the Avogadro constant correctly.</td><td><span class="tag">C.8(A)</span></td><td>7 to 11, 15</td></tr>
+<tr><td>5.1.3</td><td>Convert between moles and numbers of atoms, molecules, formula units or ions, always naming the particle.</td><td><span class="tag">C.8(B)</span></td><td>12, 13</td></tr>
+<tr><td>5.1.4</td><td>Use a chemical formula to find the moles and numbers of atoms of each element in a sample of a compound.</td><td><span class="tag">C.8(B)</span></td><td>14</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">Counting by weighing works when every piece has the same mass (the nickel, 5.000 g) or when the average mass of a mix is known. A jar of cents is the second case: most cents made before 1982 are 95% copper and weigh 3.11 g, later ones are copper-plated zinc and weigh 2.500 g, and 1982 has both. That is the same idea as the average atomic mass of Lesson 2.3. The mole is the chemist's counting unit. Since May 20, 2019 one mole holds exactly 6.02214076 × 10<sup>23</sup> specified particles; calculations use 6.022 × 10<sup>23</sup>, and the pages say it is rounded. The older definition (as many particles as there are atoms in exactly 12 g of carbon-12) appears once, as history, because older books still print it. The size of the number: counting one particle each second, 6.022 × 10<sup>23</sup> s is about 1.9 × 10<sup>16</sup> years, about 1.4 million times the age of the universe (13.8 billion years). The number was last measured by counting the atoms in spheres of silicon enriched in silicon-28, from the sphere's volume and the spacing of its atoms. History runs from Avogadro's hypothesis (1811) and Loschmidt's estimate (1865) to Ostwald's word "Mol" (the 1890s), Perrin's measurements (1909; Nobel Prize in Physics, 1926), the mole as an SI base unit (1971) and the redefinition (voted November 16, 2018; in force May 20, 2019). The lesson closes the loop on the kJ/mol of Unit 3.</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>A mole is a mass or a volume.</td><td>A mole is a count, like a dozen or a ream. One mole of copper (63.546 g) and one mole of aluminum (26.982 g) hold the same number of atoms.</td></tr>
+<tr><td>A jar of mixed cents can be counted with the average of the two coin masses.</td><td>Halving 2.500 g plus 3.11 g works only if the jar holds equal numbers of each kind. The jar needs the average mass of its own mix.</td></tr>
+<tr><td>To get particles, divide by Avogadro's number.</td><td>More moles means more particles: 2.00 mol of copper × 6.022 × 10<sup>23</sup> = 1.20 × 10<sup>24</sup> atoms. Dividing goes from particles to moles.</td></tr>
+<tr><td>A count smaller than 6.022 × 10<sup>23</sup> cannot be written in moles.</td><td>Moles can be fractions: 3.011 × 10<sup>23</sup> molecules is 0.5000 mol.</td></tr>
+<tr><td>Ionic compounds are made of molecules, or the particle does not matter.</td><td>Sodium chloride is counted in formula units. "2.50 mol of sodium chloride contains 1.51 × 10<sup>24</sup> molecules" has the right number and the wrong particle.</td></tr>
+<tr><td>One mole of water contains one mole of hydrogen atoms.</td><td>The subscript multiplies: 1 mol of H<sub>2</sub>O holds 2 mol of H atoms and 1 mol of O atoms; 0.50 mol of methane holds 2.0 mol of H atoms.</td></tr>
+<tr><td>The silicon spheres were weighed to find the mass of one atom directly.</td><td>The project counted atoms: the sphere's volume divided by the volume each atom occupies, from the spacing measured by X-rays.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §5.1 · 24 paragraphs, each with a simpler version</p><ol class="small"><li>Counting by weighing</li><li>Counting with an average mass</li><li>The mole</li><li>The size of a mole</li><li>How the number was found</li><li>Moles to particles</li><li>Particles to moles</li><li>Atoms in a molecule</li><li>The mole in earlier lessons</li><li>Review: counting particles</li></ol><p class="small">Nine worked examples. Honors box: Why the spheres were enriched in silicon-28.</p></div>
+  <div class="card"><p class="label">Slides and missions (<code>zoom</code>)</p><ul class="small"><li>Deck: 22 slides. Checkpoints 16 to 19, predictions revisited 20, CER exit ticket 21, self-rating 22.</li><li>Count by weighing: 4 cases (A bag of quarters at the bank; A bag of dimes; A jar of pennies at home; The chlorine in table salt)</li><li>Moles and particles: 5 cases (A copper wire; Dry ice in a cooler; A salt shaker; A glass of water; Glucose in a sports drink)</li><li>Jar puzzles: counting jars of mixed objects by weighing</li><li>Item bank: 22 items (14 reading, 8 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="l52">
+<h2>5. Lesson 5.2 · Molar mass</h2>
+<p><b>Driving question.</b> One mole of copper and sugar: a lab procedure calls for one mole of each, but no balance reads in moles, and no one can count 6.022 × 10<sup>23</sup> atoms. How can a chemist weigh out one mole of any substance?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>5.2.1</td><td>Calculate the molar mass of an element, a diatomic element, a molecular compound and an ionic compound, including formulas with parentheses.</td><td><span class="tag">C.8(A)</span></td><td>5 to 10, 15</td></tr>
+<tr><td>5.2.2</td><td>Explain why the molar mass of a substance in grams per mole has the same number as the average mass of one particle in atomic mass units.</td><td><span class="tag">C.8(A)</span></td><td>11, 12</td></tr>
+<tr><td>5.2.3</td><td>Use molar mass to convert between the mass of a sample in grams and the amount in moles.</td><td><span class="tag">C.8(A)</span></td><td>13, 14</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">The molar mass of an element is its average atomic mass from the periodic table in g/mol (Lesson 2.3 explained why it is an average). A diatomic element counts both atoms: O<sub>2</sub> is 32.00 g/mol, not 16.00. A compound adds every atom in its formula, and a subscript outside parentheses multiplies everything inside: (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub> is 132.13 g/mol. An ionic compound's molar mass is per formula unit; the electron sodium loses goes to chlorine, so the total mass does not change. The number matches the mass in u because the mole was chosen that way: 6.022 × 10<sup>23</sup> u is 1 g. Grams to moles divides by the molar mass, and moles to grams multiplies, written as n = m/M and as a conversion factor whose units cancel. The one-mole bench shows each sample at true relative size.</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>The molar mass of carbon is its mass number (12) or its atomic number (6).</td><td>The periodic table gives 12.011, the average over carbon's isotopes, so one mole of carbon is 12.011 g.</td></tr>
+<tr><td>The molar mass of oxygen gas is 16.00 g/mol.</td><td>Oxygen gas is O<sub>2</sub>, two atoms per molecule: 32.00 g/mol.</td></tr>
+<tr><td>A subscript outside parentheses multiplies only the atom beside it.</td><td>(NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub> has two N and eight H: 132.13 g/mol. One ammonium group gives 114.10 and doubling only N gives 128.10.</td></tr>
+<tr><td>An ionic compound has a different molar mass from its atoms because ions gain or lose electrons.</td><td>The electron that Na loses goes to Cl, so NaCl has the mass of one Na atom and one Cl atom, 58.44 g/mol.</td></tr>
+<tr><td>The match between u and g/mol is a coincidence.</td><td>The mole was defined so that 6.022 × 10<sup>23</sup> u is 1 g. The Honors box shows how close the match is today.</td></tr>
+<tr><td>To find moles, multiply the mass by the molar mass.</td><td>10.0 g of sucrose ÷ 342.30 g/mol = 0.0292 mol. Multiplying gives 3,423 and dividing the wrong way gives 34.2: both are far more than a 10 g spoonful could be.</td></tr>
+<tr><td>One mole of every substance has the same mass or takes the same space.</td><td>The bench: same number of particles, very different masses and volumes.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §5.2 · 18 paragraphs, each with a simpler version</p><ol class="small"><li>The molar mass of an element</li><li>The molar mass of a compound</li><li>Parentheses and ionic compounds</li><li>Formula units in a crystal</li><li>From one atom to one mole</li><li>Grams to moles</li><li>Moles to grams</li><li>The one-mole bench</li><li>Review: molar mass</li></ol><p class="small">Eight worked examples. Honors box: Is it exactly the same number?</p></div>
+  <div class="card"><p class="label">Slides and missions (<code>molg</code>)</p><ul class="small"><li>Deck: 22 slides. Checkpoints 16 to 19, predictions revisited 20, CER exit ticket 21, self-rating 22.</li><li>Molar mass: 4 cases (The air you breathe; Household cleaner; An antacid; Rust on a gate)</li><li>Grams and moles: 5 cases (Baking soda in a cake; A bottle of water; An aspirin tablet; Chalk for the sidewalk; A tank of nitrogen)</li><li>The one-mole bench: 3 cases (An aluminum block; A copper cube; Two metal samples)</li><li>Item bank: 21 items (13 reading, 8 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="l53">
+<h2>6. Lesson 5.3 · Converting mass, moles and particles</h2>
+<p><b>Driving question.</b> A one-carat diamond: one metric carat is exactly 0.200 g, and a diamond is almost pure carbon. How can weighing a sample tell you how many atoms are in it?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>5.3.1</td><td>Convert between the mass of a sample and the number of particles in it, going through moles and setting up each conversion factor so that units cancel.</td><td><span class="tag">C.8(A)</span> <span class="tag">C.8(B)</span></td><td>5 to 8</td></tr>
+<tr><td>5.3.2</td><td>Enter numbers in scientific notation on a calculator correctly, and recognize the two common errors: dividing where you should multiply, and mistyping the power of ten.</td><td><span class="tag">C.8(B)</span></td><td>9 to 11</td></tr>
+<tr><td>5.3.3</td><td>Find the number of atoms of each element in a sample of a compound, and check that an answer is reasonable before reporting it.</td><td><span class="tag">C.8(B)</span></td><td>12 to 14</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">Grams to particles always goes through moles: divide by the molar mass, then multiply by 6.022 × 10<sup>23</sup>, each factor written so the unit before it cancels. Treated as pure carbon (12.011 g/mol), the 0.200 g diamond is 0.01665 mol and 1.00 × 10<sup>22</sup> carbon atoms, rounded to three significant figures like the data. The stone, a nickel and a ruler are drawn to the same scale, with a zoom into the diamond crystal. On a calculator, EE (or EXP) already means "× 10", so typing 6.022 × 10 EE 23 gives a value ten times too large; and a calculator works × and ÷ from left to right, so dividing by 6.022 × 10 ^ 23 without parentheses multiplies by 10<sup>23</sup> instead of dividing. In a compound, moles of molecules times the subscript gives moles of each kind of atom. The reasonableness checks: a visible sample always holds a huge number of particles and a modest number of moles, and a sample smaller than one molar mass holds fewer than 6.022 × 10<sup>23</sup> particles.</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>Avogadro's number alone goes straight from grams to atoms.</td><td>Avogadro's number counts particles in a mole, not in a gram. The map has moles in the middle, and the units show which way each factor goes. The two factors may be combined into one, Avogadro's number ÷ molar mass in atoms per gram, which still passes through the mole.</td></tr>
+<tr><td>Grams to particles multiplies by the molar mass.</td><td>Multiplying the diamond's mass by 12.011 g/mol gives 1.45 × 10<sup>24</sup> atoms, about 144 times the right 1.00 × 10<sup>22</sup>; the grams do not cancel.</td></tr>
+<tr><td>The calculator is wrong when it gives a strange answer.</td><td>It does exactly what was typed. 1.505 EE 24 ÷ 6.022 × 10 ^ 23 gives 2.499 × 10<sup>46</sup>; 1.505 EE 24 ÷ 6.022 EE 23 gives 2.499 mol.</td></tr>
+<tr><td>The number of molecules is the number of atoms.</td><td>11.0 g of CO<sub>2</sub> is 0.250 mol and 1.51 × 10<sup>23</sup> molecules, but 3.01 × 10<sup>23</sup> oxygen atoms, because each molecule has two.</td></tr>
+<tr><td>A very small or very large answer is fine if the steps look right.</td><td>A visible sample cannot hold 10<sup>−25</sup> atoms or 10<sup>46</sup> moles. The size check catches the error before it is reported.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §5.3 · 17 paragraphs, each with a simpler version</p><ol class="small"><li>From grams to particles</li><li>The conversion map</li><li>From particles to grams</li><li>The one-carat diamond</li><li>Scientific notation on a calculator</li><li>Practice on the calculator</li><li>Atoms in a sample of a compound</li><li>Reasonableness checks</li><li>Review: mass, moles and particles</li></ol><p class="small">Six worked examples. Honors box: Count the atoms a second way (from the diamond's crystal).</p></div>
+  <div class="card"><p class="label">Slides and missions (<code>particles</code>)</p><ul class="small"><li>Deck: 21 slides. Checkpoints 15 to 18, predictions revisited 19, CER exit ticket 20, self-rating 21.</li><li>Grams to particles: 4 cases (An iron nail; A drop of water; Dry ice in a cooler; A party balloon)</li><li>Particles to grams: 4 cases (Iron filings; A pinch of sugar; A breath of air; A water bottle)</li><li>Atoms in compounds: 4 cases (Glucose in a sports drink; Glass cleaner; De-icing salt; A paper clip)</li><li>Calculator trainer: key sequences to enter and to correct</li><li>Item bank: 21 items (13 reading, 8 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="l54">
+<h2>7. Lesson 5.4 · Percent composition</h2>
+<p><b>Driving question.</b> Two iron minerals: hematite, Fe<sub>2</sub>O<sub>3</sub>, and magnetite, Fe<sub>3</sub>O<sub>4</sub>, supply most of the iron ore mined in the United States and contain only iron and oxygen. Which pure mineral holds more iron in each kilogram? How can you find what share of a compound's mass comes from each element?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>5.4.1</td><td>Calculate the percent composition of a compound by mass from its chemical formula.</td><td><span class="tag">C.8(C)</span></td><td>5 to 7</td></tr>
+<tr><td>5.4.2</td><td>Use percent composition to find the mass of an element in a sample, and tell a percent by mass from a percent of atoms.</td><td><span class="tag">C.8(C)</span></td><td>8 to 10</td></tr>
+<tr><td>5.4.3</td><td>Calculate percent composition from laboratory masses, and decide whether a stated error would make the result too high or too low.</td><td><span class="tag">C.8(C)</span></td><td>11 to 14</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">Percent by mass of an element = (atoms of it in the formula × its molar mass) ÷ the compound's molar mass × 100, built on the law of definite proportions from Lesson 2.1. Water is 11.19% hydrogen and 88.81% oxygen, although two of its three atoms are hydrogen. Rounded percentages can add to 99.99% or 100.01%, and the reading says why. Table salt is 39.34% sodium; the Dietary Guidelines for Americans keep people 14 and older under 2,300 mg of sodium a day, which the FDA calls about one teaspoon of salt, and the reading checks it (5.85 g × 0.3934 = 2.30 g, while a level teaspoon holds about 6 g). The mass of an element in a sample is the percent times the sample mass; hematite (Fe<sub>2</sub>O<sub>3</sub>, 69.94% Fe) and magnetite (Fe<sub>3</sub>O<sub>4</sub>, 72.36% Fe) compare the iron in each kilogram of pure mineral, and the pages say a real ore is rock that holds these minerals, so it holds less iron. In the simulated crucible experiment pure MgO is 60.30% magnesium. Each error moves only the product mass: smoke escaping, heating too briefly and magnesium nitride forming make the product too light and the percent too high; water absorbed makes it too heavy and the percent too low. Honors: the water in copper(II) sulfate pentahydrate (249.68 g/mol, 36.08% water) and heating a hydrate to constant mass.</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>Percent by mass is the percent of atoms.</td><td>Two of water's three atoms are hydrogen (67%), yet hydrogen is 11.19% of its mass.</td></tr>
+<tr><td>Count each element once, whatever its subscript.</td><td>Urea, CO(NH<sub>2</sub>)<sub>2</sub>, has two nitrogen atoms: 46.65% N. Counting one gives 23.32%.</td></tr>
+<tr><td>Divide by the sum of every atomic mass, or by the number of atoms.</td><td>Divide by the molar mass of the compound, the mass of one mole of its formula.</td></tr>
+<tr><td>Percentages that do not add to exactly 100 show a mistake.</td><td>Rounding each percent can make the total 99.99% or 100.01%.</td></tr>
+<tr><td>The mineral with the larger molar mass holds more iron.</td><td>Magnetite (231.53 g/mol) is 72.36% iron and hematite (159.69 g/mol) 69.94%: the share decides, not the size of the formula.</td></tr>
+<tr><td>Any laboratory error makes the result too low.</td><td>The magnesium mass stays correct; only the product mass moves. A product that is too light gives a percent of magnesium that is too high.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §5.4 · 14 paragraphs, each with a simpler version</p><ol class="small"><li>Percent by mass from a formula</li><li>Adding up to 100 percent</li><li>Percent by mass and percent of atoms</li><li>The mass of an element in a sample</li><li>Comparing iron ores</li><li>Burning magnesium</li><li>Errors that change the result</li><li>Review: percent composition</li></ol><p class="small">Six worked examples. Honors boxes: Water inside a crystal; Heating a hydrate to constant mass.</p></div>
+  <div class="card"><p class="label">Slides and missions (<code>percent</code>)</p><ul class="small"><li>Deck: 21 slides, with the Honors hydrate at 14. Checkpoints 15 to 18, predictions revisited 19, CER exit ticket 20, self-rating 21.</li><li>Percent from a formula: 4 cases (Table salt; A lawn fertilizer; Rust on a bridge; Sugar in blood)</li><li>Mass of an element: 4 cases (Aluminum from ore; A teaspoon of salt; An iron tablet; Planning a smelter run)</li><li>Atoms or mass: 4 cases (Natural gas; Welding gas and a solvent; Two fuels; A bottle of peroxide)</li><li>The crucible experiment: 4 runs (A careful run; A lid lifted too far; Left on the bench; Heating copper in air)</li><li>Item bank: 21 items (13 reading, 8 slides)</li></ul></div>
+</div>
+<div class="note small"><b>Safety.</b> The slides and pages need no laboratory work. If students burn magnesium, follow the district procedure: eye protection, tongs, a ventilated room, a lid to hold in the product, and no looking straight at the burning metal. Hot crucibles look like cold ones.</div>
+</section>
+
+<section id="l55">
+<h2>8. Lesson 5.5 · Empirical and molecular formulas</h2>
+<p><b>Driving question.</b> Formaldehyde, acetic acid and glucose: a sharp-smelling gas, the acid in vinegar and the sugar in blood are all 40.00% carbon, 6.71% hydrogen and 53.28% oxygen by mass. How can different substances have the same percent composition?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>5.5.1</td><td>Tell an empirical formula from a molecular formula, and reduce a molecular formula to its empirical formula.</td><td><span class="tag">C.8(D)</span></td><td>5 to 8</td></tr>
+<tr><td>5.5.2</td><td>Find a molecular formula from an empirical formula and a molar mass.</td><td><span class="tag">C.8(D)</span></td><td>9 to 11</td></tr>
+<tr><td>5.5.3</td><td>Extension: find an empirical formula from percent composition or from masses, including ratios that must be multiplied to whole numbers.</td><td><span class="tag">C.8(D)</span> <span class="tag w">Extension</span></td><td>12 to 15</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">The empirical formula is the simplest whole-number ratio of atoms; the molecular formula gives the actual number of each atom in one molecule. Reducing divides by the greatest common factor. Some formulas are already simplest (H<sub>2</sub>O, CO<sub>2</sub>, CH<sub>4</sub>). The families are CH<sub>2</sub>O (formaldehyde, acetic acid C<sub>2</sub>H<sub>4</sub>O<sub>2</sub>, glucose C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>), CH (acetylene C<sub>2</sub>H<sub>2</sub>, benzene C<sub>6</sub>H<sub>6</sub>), HO (hydrogen peroxide H<sub>2</sub>O<sub>2</sub>) and NO<sub>2</sub> (dinitrogen tetraoxide N<sub>2</sub>O<sub>4</sub>). NO<sub>2</sub> is also a real molecule, nitrogen dioxide, so an empirical formula can name a substance of its own. The multiple k is the molar mass ÷ the empirical formula mass: acetic acid 60.05 ÷ 30.03 = 2, glucose 180.16 ÷ 30.03 = 6. An ionic formula is the ratio of ions in a formula unit and is never called a molecular formula; the ionic formulas in this unit are simplest ratios, but the teacher notes warn that a few are not (Hg<sub>2</sub>Cl<sub>2</sub>, Na<sub>2</sub>O<sub>2</sub>). The labeled extension goes from percent to grams in a 100 g sample, to moles, to division by the smallest, and multiplies a ratio such as 1.5 or 1.33 to whole numbers instead of rounding it. Honors: combustion analysis, and a hydrate's formula from heating data.</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>Substances with the same percent composition are the same substance.</td><td>Formaldehyde, acetic acid and glucose share 40.00% C, 6.71% H and 53.28% O but are a gas, a liquid and a solid.</td></tr>
+<tr><td>The empirical formula is the formula of the molecule.</td><td>Benzene is C<sub>6</sub>H<sub>6</sub>; its empirical formula CH gives only the ratio. The molar mass is needed for the molecule.</td></tr>
+<tr><td>Any common factor gives the empirical formula.</td><td>Divide every subscript by the greatest common factor: C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> ÷ 6 gives CH<sub>2</sub>O. Dividing by 2 gives C<sub>3</sub>H<sub>6</sub>O<sub>3</sub>, a smaller ratio but not the simplest.</td></tr>
+<tr><td>The multiple is the empirical formula mass ÷ the molar mass.</td><td>The division upside down gives 0.200 for a k of 5; k is always a whole number of 1 or more.</td></tr>
+<tr><td>A ratio of 1.5 can be rounded to 2.</td><td>Rounding changes the formula. Multiply every ratio by 2 so that 1.5 becomes 3.</td></tr>
+<tr><td>NO<sub>2</sub> can only be an empirical formula.</td><td>Nitrogen dioxide, NO<sub>2</sub>, is a real molecule. N<sub>2</sub>O<sub>4</sub> shares its empirical formula.</td></tr>
+<tr><td>NaCl is the molecular formula of salt.</td><td>Salt has no molecules. NaCl gives the ratio of ions in a formula unit.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §5.5 · 12 paragraphs, each with a simpler version</p><ol class="small"><li>Two kinds of formula</li><li>Formula families</li><li>Formulas already in simplest form</li><li>Finding the multiple</li><li>Extension: from percent to formula</li><li>Extension: ratios that are not whole</li><li>Honors: formulas from experiments</li><li>Review: empirical and molecular formulas</li></ol><p class="small">Five worked examples. Honors boxes: Combustion analysis; The formula of a hydrate.</p></div>
+  <div class="card"><p class="label">Slides and missions (<code>formula</code>)</p><ul class="small"><li>Deck: 22 slides, extension 12 to 14, Honors combustion analysis 15. Checkpoints 16 to 19, predictions revisited 20, CER exit ticket 21, self-rating 22.</li><li>Empirical formulas: 4 cases (A rocket fuel; A sugar in RNA; Spinach and rhubarb leaves; A morning cup of coffee)</li><li>Finding the multiple: 4 cases (A plastic starting material; A drying agent; Sour milk; Vitamin C tablets)</li><li>From percent to formula: 4 cases (A rocket fuel, analyzed; Acid rain; A magnetic iron ore; A lighter fuel)</li><li>From lab masses: 4 cases (Burning magnesium again; A tin oxide; Honors: Epsom salt; Honors: combustion analysis)</li><li>Item bank: 21 items (13 reading, 8 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="case">
+<h2>9. Case file: Checking a fertilizer label</h2>
+<p class="lede">Students act as analysts at a fictional Texas testing laboratory. A fictional farm supply cooperative on the Texas High Plains, which sells fertilizer to cotton growers and to lawn and garden customers, asks one question: does each product match its label?</p>
+<div class="card"><p class="label">Briefing</p><p class="small">The memo explains the task and lists the six files with their TEKS, beside a 3D bench with a 46-0-0 bag and a laboratory balance drawn to scale. A fact box gives the real context: Texas law defines a grade as the whole-number percentages of total nitrogen, available phosphoric acid (P<sub>2</sub>O<sub>5</sub>) and soluble potash (K<sub>2</sub>O) guaranteed (Agriculture Code, Sections 63.001 and 63.021); the label lists minimum percentages (Section 63.051); the Texas Feed and Fertilizer Control Service, run by the Office of the Texas State Chemist, may sample fertilizer (Section 63.091) and attach a stop-sale order that lapses after 30 days unless it goes to court (Section 63.121); and Texas grew 4.03 million bales of upland cotton in 2024, of 13.94 million in the United States (USDA NASS, December 9, 2025). The cooperative, the laboratory, the supplier, the bags and every measured result are fictional, and the page says so. Prices and brands are not part of the case.</p></div>
+<p>Each file has three steps: a calculation, the Unit 5 idea it uses, then a decision about a claim. Every molar mass and percent is computed from the formula by the shared calculator.</p>
+<div class="evid">
+  <div class="card"><p class="label">File 1 · What 46-0-0 means · <span class="tag">C.8(C)</span></p><p class="small">Urea, CO(NH<sub>2</sub>)<sub>2</sub>, 60.056 g/mol. Task: 28.014 g ÷ 60.056 g × 100 = 46.65% nitrogen; decide what the 46 means (a guaranteed minimum written as a whole number, which nearly pure urea meets with a small margin), not 46% urea and not a rounding rule for N<sub>2</sub> gas.</p></div>
+  <div class="card"><p class="label">File 2 · Counting what is in the sample · <span class="tag">C.8(A)</span> <span class="tag">C.8(B)</span></p><p class="small">A 5.000 g sample, treated as pure urea, beside a 3D model of the molecule. Task: 0.083256 mol, 5.014 × 10<sup>22</sup> molecules and 1.003 × 10<sup>23</sup> nitrogen atoms; choose the reasoning that goes grams to moles to molecules to atoms.</p></div>
+  <div class="card"><p class="label">File 3 · Two nitrogen sources · <span class="tag">C.8(C)</span></p><p class="small">Urea (46-0-0) against ammonium sulfate (21-0-0, 132.13 g/mol). Task: ammonium sulfate is 21.20% nitrogen; 10.0 kg of nitrogen needs 21.44 kg of urea or 47.17 kg of ammonium sulfate; explain why the same two nitrogen atoms in a heavier formula give less nitrogen per kilogram (the rest is mostly sulfate, 24.26% S).</p></div>
+  <div class="card"><p class="label">File 4 · An unknown slow-release product · <span class="tag">C.8(D)</span></p><p class="small">A product offered for lawn and garden customers: 41.37% C, 8.10% H, 32.16% N and 18.37% O, with a measured molar mass near 174 g/mol. Task: moles in 100 g and ratios give the empirical formula C<sub>3</sub>H<sub>7</sub>N<sub>2</sub>O (87.10 g/mol); 174 ÷ 87.10 gives k = 2, so the molecular formula is C<sub>6</sub>H<sub>14</sub>N<sub>4</sub>O<sub>2</sub>, which fits isobutylidene diurea (IBDU), 174.20 g/mol, among the choices offered (a formula alone cannot rule out an isomer). A 3D model from the database lets students check the formula.</p></div>
+  <div class="card"><p class="label">File 5 · Reading P and K · <span class="tag">C.8(C)</span></p><p class="small">Why a grade reports phosphorus as P<sub>2</sub>O<sub>5</sub> and potassium as K<sub>2</sub>O (a convention; the bag contains neither oxide), with the shares 0.4364 and 0.8302. Task: pure KCl would report 63.18% K<sub>2</sub>O (0-0-63), so a 0-0-60 bag that meets its guarantee must be at least 94.97% KCl; answer a customer who reads 0-0-60 as 60% potassium (the guarantee means at least 49.8%).</p></div>
+  <div class="card"><p class="label">File 6 · Does the bag match the label? · <span class="tag">C.8(C)</span> <span class="tag">SEP 2(B)</span></p><p class="small">Two bags labeled 21-0-0, measured with the laboratory's uncertainty of ±0.3 percentage points: Bag A 20.8% (20.5% to 21.1%), Bag B 20.4% (20.1% to 20.7%). The laboratory's own rule, labeled as part of its fictional report: a shortfall is reported only when the whole range lies below the guarantee. Task: Bag B's highest value is 20.7%, so only Bag B shows a shortfall; Bag B is about 96.23% ammonium sulfate; Bag A's range includes 21%, so more samples are needed.</p></div>
+</div>
+<div class="card"><p class="label">Recommendation · claim, evidence, reasoning · SEP 3(A), 3(C)</p><p class="small">Students choose a claim (hold the shipment and ask the state to test an official sample because Bag B falls short; hold the ammonium sulfate until more bags are tested; or reject the whole shipment because both bags measured below 21%), select at least three files, and mark what the tests cannot show. They then write the reasoning in their notebooks using sentence starters and a word bank. The check requires File 6 and at least one formula file (File 1 or File 3), and the four limits: whether the other bags match the two tested, whether the urea bag itself is pure enough to meet its guarantee (at least about 98.6% urea), whether Bag A falls short by less than the uncertainty, and how fast IBDU releases its nitrogen in soil. The third claim gets feedback that Bag A's range includes 21%. After a successful check, a sample report for the chosen claim appears for comparison.</p>
+<p class="small"><b>Grading the notebook.</b> A strong report compares each measured result with a value computed from the formula, uses the uncertainty to decide what the test can and cannot show, and names what more sampling would settle. A report that calls Bag A short because 20.8 is less than 21 ignores the uncertainty and misses the point of File 6.</p></div>
+<div class="note small"><b>Case-file boundary.</b> The decision rule in File 6 is the fictional laboratory's own. No allowance for a shortfall was found in Agriculture Code Chapter 63, so the case does not apply a state rule, and only the state service can take an official sample or issue a stop-sale order. Crop agronomy, prices and how fast nitrogen is released in soil are context only and are not assessed. Ammonium nitrate is not part of the case.</div>
+</section>
+
+<section id="matrix">
+<h2>10. Alignment matrix</h2>
+<table>
+<thead><tr><th>TEKS</th><th>Reading</th><th>Slides</th><th>Missions</th><th>Case file</th></tr></thead>
+<tbody>
+<tr><td><span class="tag">C.8(A)</span> the mole</td><td>§5.1.1, §5.1.2</td><td>Deck 5.1, slides 5 to 11, 15</td><td><code>zoom</code>: Count by weighing, Jar puzzles</td><td>File 2</td></tr>
+<tr><td><span class="tag">C.8(A)</span> molar mass and grams</td><td>§5.2.1 to §5.2.3, §5.3.1</td><td>Deck 5.2, slides 5 to 15; Deck 5.3, slides 5 to 8</td><td><code>molg</code>: all three tabs; <code>particles</code>: Grams to particles, Particles to grams</td><td>Files 1 to 3</td></tr>
+<tr><td><span class="tag">C.8(B)</span></td><td>§5.1.3, §5.1.4, §5.3.1 to §5.3.3</td><td>Deck 5.1, slides 12 to 14; Deck 5.3, slides 5 to 14</td><td><code>zoom</code>: Moles and particles; <code>particles</code>: all four tabs</td><td>File 2</td></tr>
+<tr><td><span class="tag">C.8(C)</span></td><td>§5.4.1 to §5.4.3</td><td>Deck 5.4, slides 5 to 14</td><td><code>percent</code>: all four tabs</td><td>Files 1, 3, 5, 6</td></tr>
+<tr><td><span class="tag">C.8(D)</span></td><td>§5.5.1, §5.5.2; extension §5.5.3</td><td>Deck 5.5, slides 5 to 11; extension 12 to 15</td><td><code>formula</code>: all four tabs</td><td>File 4</td></tr>
+<tr><td>All four</td><td>Chapter reviews</td><td>Checkpoints and exit tickets</td><td></td><td>Recommendation</td></tr>
+</tbody></table>
+</section>
+
+<section id="assess">
+<h2>11. Using the results</h2>
+<div class="grid2">
+  <div class="card"><p class="label">What the pages record</p><ul class="small"><li>Each mission set shows the cases solved and the first-try accuracy, so a first answer can be told apart from eventual completion.</li><li>Numeric answers accept stated rounding; the reference values stay fixed. Each common wrong number (multiplying where one should divide, a factor upside down, one atom counted instead of two) gets its own feedback.</li><li>Progress is saved in the student's own browser only. Nothing is sent to a server, so the pages are not a gradebook.</li></ul></div>
+  <div class="card"><p class="label">What they do not show</p><ul class="small"><li>A correct number does not prove a correct setup. Ask for the units written and cancelled in the notebook.</li><li>Judge explanations from notebooks and discussion: the exit tickets, the checkpoints and the case file report.</li><li>A completed self-rating is a reflection, not proof of mastery.</li></ul></div>
+</div>
+<p class="small">Each deck runs checkpoints as Think, Talk, Write, Self-check and Compare, with 30 second thinking and 60 second partner timers. The three predictions from slide 3 are revisited near the end, and the CER exit ticket returns to the driving question.</p>
+</section>
+
+<section id="access">
+<h2>12. Access, simpler language and Honors</h2>
+<div class="grid3">
+  <div class="card"><p class="label">Reading supports</p><ul class="small"><li>A simpler-language version of every core paragraph (84 in all), one toggle per page</li><li>Worked examples with a hint and a check at each step (34 in all)</li><li>Read-aloud of any section</li><li>Tap-to-define vocabulary with Spanish terms</li><li>Sentence starters and word banks for notebook writing</li></ul></div>
+  <div class="card"><p class="label">Projector and devices</p><ul class="small"><li>Slides sized for the back row, with zoom on any card</li><li>Light and dark themes</li><li>3D models that can be turned and zoomed, with a still description for screen readers</li><li>Readings, missions and the case file work at phone width</li></ul></div>
+  <div class="card"><p class="label">Extension and Honors</p><ul class="small"><li>Lesson 5.5 marks percent-to-formula work as Extension: taught and practiced, beyond the exact wording of C.8(D)</li><li>Honors boxes are collapsible, never on the core path and never assessed</li><li>5.1 silicon-28 enrichment; 5.2 how exact the u and g/mol match is; 5.3 counting atoms from the crystal; 5.4 hydrates; 5.5 combustion analysis and hydrate formulas</li></ul></div>
+</div>
+</section>
+
+<section id="data">
+<h2>13. Data and accuracy notes</h2>
+<ul class="small">
+<li><b>One shared calculator.</b> Molar masses and percentages are computed from each formula with the course's average atomic masses (CIAAW abridged standard atomic weights), so the same value appears on every surface. Molar masses are shown to two decimals in most places and to three where a division is printed, so the division shown gives the value shown.</li>
+<li><b>The Avogadro constant.</b> Exact since May 20, 2019 at 6.02214076 × 10<sup>23</sup> mol<sup>−1</sup>; calculations use 6.022 × 10<sup>23</sup>, and the pages say it is rounded. Answers are given to the significant figures of the data (the diamond: 1.00 × 10<sup>22</sup> atoms from 0.200 g).</li>
+<li><b>Coins.</b> The nickel (5.000 g) and the post-1982 cent (2.500 g) are from the U.S. Mint's specifications; the 3.11 g of the older cent was found only in secondary sources. The Mint struck its last circulating cent on November 12, 2025, so no page describes the cent as made today.</li>
+<li><b>Models and scale.</b> Molecule shapes use measured bond lengths and angles from NIST CCCBDB, and computed shapes from PubChem for acetic acid, glucose and IBDU. Crystal views use measured lattice constants: diamond 356.7 pm, silicon 543.102 pm, copper 361.5 pm and sodium chloride 564 pm (the value Unit 4 used). The one-mole bench, the diamond and the fertilizer bench are drawn to scale; diagrams that are not are labeled illustrations.</li>
+<li><b>Laboratory data.</b> The crucible runs, the IBDU analysis and the fertilizer bag results are simulated and say so. Pure MgO is 60.30% magnesium; real runs scatter around it for the reasons the lesson names.</li>
+<li><b>Mission rounding.</b> The 5.4 element-mass missions compute their answers from the two-decimal molar masses printed on the page, and their tolerances also accept the full-precision values.</li>
+<li><b>Fertilizer facts.</b> Grade and label rules are quoted from the current text of Agriculture Code Chapter 63. The oxide shares (0.4364, 0.8302) are computed from the course masses; the extension sheet prints 0.4365 and 0.8301. The cotton figures are from the December 9, 2025 Crop Production report and should be updated when a newer report appears.</li>
+</ul>
+</section>
+
+<section id="src">
+<h2>Sources</h2>
+<ul class="small">
+<li>19 Tex. Admin. Code §112.43, Chemistry (adopted 2020, effective April 28, 2021).</li>
+<li>Lesson 5.1: BIPM, the mole (SI base unit), and Resolution 3 of the 14th CGPM (1971); the 2019 revision of the SI; OpenStax Chemistry 2e, 3.1; U.S. Mint, coin specifications; NIST, silicon spheres and the International Avogadro Project, and the CODATA lattice parameter of silicon; NobelPrize.org, Jean Baptiste Perrin (1926); NASA JPL, Planck mission (13.8 billion years); USGS, age of the Earth.</li>
+<li>Lesson 5.2: OpenStax Chemistry 2e, 3.1; IUPAC CIAAW, standard atomic weights; NIST CODATA, the atomic mass constant and the molar mass constant (2022); BIPM, the mole; densities of copper, aluminum, sodium chloride, sucrose and water near room temperature; NIST CCCBDB, geometries of water, carbon dioxide and oxygen.</li>
+<li>Lesson 5.3: OpenStax Chemistry 2e, 3.1; BIPM, SI Brochure, 9th edition; IUPAC CIAAW; GIA, carat weight (one metric carat is 200 mg) and Gems &amp; Gemology (2004) on round brilliant proportions; Ioffe Institute, diamond basic parameters (lattice constant 356.7 pm, density 3.515 g/cm<sup>3</sup>); U.S. Mint, coin specifications.</li>
+<li>Lesson 5.4: OpenStax Chemistry 2e, 3.2; IUPAC CIAAW; Royal Society of Chemistry, the change in mass when magnesium burns, and finding the formula of hydrated copper(II) sulfate; USGS, iron ore statistics and information; the Dietary Guidelines for Americans, 2025–2030, and the FDA, Sodium in Your Diet.</li>
+<li>Lesson 5.5: OpenStax Chemistry 2e, 3.2; IUPAC CIAAW; NIST CCCBDB; PubChem (formulas, molar masses and computed shapes); IUPAC, Nomenclature of Inorganic Chemistry (dinitrogen tetraoxide).</li>
+<li>Case file: Texas Agriculture Code, Chapter 63, Commercial Fertilizer (Sections 63.001, 63.021, 63.051, 63.091, 63.095 and 63.121); Office of the Texas State Chemist; CIAAW; NIST CODATA, the Avogadro constant; PubChem CID 1176 (urea) and CID 22478 (IBDU); Virginia Cooperative Extension, SPES-201, conversion factors for fertilizer calculations; USDA National Agricultural Statistics Service, Crop Production, December 9, 2025.</li>
+</ul>
+</section>
+<footer>Chemistry Case Files · Unit 5 · Teacher blueprint</footer>
+</main>
+</div>
+<script>
+(function(){const r=document.documentElement,b=document.getElementById('tt');let t=null;try{t=localStorage.getItem('u2:theme')}catch(e){}
+function ap(){if(t)r.setAttribute('data-theme',t);else r.removeAttribute('data-theme');b.textContent=t==='dark'?'Dark':t==='light'?'Light':'Theme'}
+ap();b.onclick=function(){t=t==='dark'?'light':t==='light'?null:'dark';try{t?localStorage.setItem('u2:theme',t):localStorage.removeItem('u2:theme')}catch(e){}ap()}})();
+</script>
+</body>
+</html>

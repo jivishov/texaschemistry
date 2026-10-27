@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unit 1 Blueprint</title>
+<meta name="description" content="Teacher blueprint for Unit 1 Practices, Measurement and Matter: exact TEKS, objectives, lesson map, misconceptions, missions, the case file and data sources.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500..800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fb;--paper:#fff;--ink:#14162b;--muted:#5b6078;--line:#dfe2ee;--sunk:#eef0f7;--accent:#3a3fc9;--accent-soft:#e6e7fb;--warm:#b0430f;--ok:#17734a;--ok-soft:#e3f4ea;--bad:#b4232a;
+  --body:"Atkinson Hyperlegible",system-ui,sans-serif;--display:"Bricolage Grotesque",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1120;--paper:#171a2e;--ink:#eceefb;--muted:#a3a8c6;--line:#2c3150;--sunk:#1f2340;--accent:#9ea3ff;--accent-soft:#272b55;--warm:#ff9a62;--ok:#5fd39b;--ok-soft:#173528;--bad:#ff7b7b}}
+:root[data-theme="dark"]{--bg:#0f1120;--paper:#171a2e;--ink:#eceefb;--muted:#a3a8c6;--line:#2c3150;--sunk:#1f2340;--accent:#9ea3ff;--accent-soft:#272b55;--warm:#ff9a62;--ok:#5fd39b;--ok-soft:#173528;--bad:#ff7b7b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 20px 80px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px}
+nav.toc{position:sticky;top:20px;align-self:start;font-size:14px}
+nav.toc p{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:4px 0 4px 10px;border-left:2px solid var(--line)}
+nav.toc a:hover{color:var(--ink);border-color:var(--accent)}
+main{min-width:0}
+header.top{margin-bottom:28px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm);margin:0}.eyebrow a{color:inherit;text-decoration:none}.eyebrow a:hover{text-decoration:underline}
+h1{font-family:var(--display);font-size:44px;line-height:1.02;margin:.15em 0 .3em;font-weight:800}
+h2{font-family:var(--display);font-size:28px;line-height:1.1;margin:56px 0 10px;font-weight:700;scroll-margin-top:16px}
+h3{font-family:var(--display);font-size:20px;margin:28px 0 8px;font-weight:700}
+h4{font-size:16px;margin:18px 0 6px}
+p{margin:0 0 12px}
+a{color:var(--accent)}
+.lede{font-size:19px;color:var(--muted)}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pill{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-radius:99px;padding:3px 10px;background:var(--paper);color:var(--muted)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid2 .card,.grid3 .card{margin:0}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--warm);margin:0 0 6px;font-weight:600}
+table{border-collapse:collapse;width:100%;font-size:15px;background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:12px 0}
+th,td{text-align:left;vertical-align:top;padding:9px 12px;border-bottom:1px solid var(--line)}
+th{font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);background:var(--sunk);font-weight:600}
+tr:last-child td{border-bottom:0}
+td code,p code,li code{font-family:var(--mono);font-size:.88em;background:var(--sunk);padding:.05em .35em;border-radius:5px}
+ul,ol{margin:0 0 12px;padding-left:1.3em}
+li{margin:3px 0}
+.teks{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:10px 0}
+.teks b{font-family:var(--mono);font-size:13px;color:var(--accent)}
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}
+.flow div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px;position:relative}
+.flow div:not(:last-child)::after{content:"→";position:absolute;right:-10px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:700}
+.flow b{display:block;font-family:var(--display);font-size:17px}
+.flow span{font-size:13.5px;color:var(--muted)}
+.tag{display:inline-block;font-family:var(--mono);font-size:11.5px;border-radius:6px;padding:1px 6px;background:var(--accent-soft);color:var(--ink);white-space:nowrap}
+.tag.w{background:color-mix(in srgb,var(--warm) 16%,var(--paper))}
+.tag.g{background:var(--ok-soft)}
+.note{background:var(--accent-soft);border-radius:12px;padding:12px 16px;margin:14px 0;font-size:15.5px}
+.mis td:first-child{width:38%}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.evid{counter-reset:ev}
+.evid .card{position:relative;padding-left:62px}
+.evid .card::before{counter-increment:ev;content:counter(ev);position:absolute;left:18px;top:18px;width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--paper);display:grid;place-items:center;font-family:var(--display);font-weight:800}
+footer{margin-top:60px;font-size:14px;color:var(--muted)}
+.tt{position:fixed;right:16px;top:14px;font:600 13px var(--body);background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:6px 12px;cursor:pointer}
+@media (max-width:900px){.wrap{grid-template-columns:minmax(0,1fr)}nav.toc{position:static}.grid3,.grid2,.flow{grid-template-columns:minmax(0,1fr)}.flow div::after{display:none}h1{font-size:34px}table{display:block;overflow-x:auto}}
+@media print{nav.toc,.tt{display:none}.wrap{display:block;padding:0}body{background:#fff;font-size:12pt}.card,table{break-inside:avoid}h2{break-after:avoid}}
+sub,sup{font-size:.72em;line-height:0}
+</style>
+</head>
+<body>
+<button class="tt" id="tt" type="button">Theme</button>
+<div class="wrap">
+<nav class="toc" aria-label="Contents">
+  <p>Blueprint</p>
+  <a href="#package">1. The package</a>
+  <a href="#teks">2. Standards</a>
+  <a href="#map">3. Lesson map and pacing</a>
+  <a href="#l11">4. Lesson 1.1</a>
+  <a href="#l12">5. Lesson 1.2</a>
+  <a href="#l13">6. Lesson 1.3</a>
+  <a href="#l14">7. Lesson 1.4</a>
+  <a href="#l15">8. Lesson 1.5</a>
+  <a href="#l16">9. Lesson 1.6</a>
+  <a href="#case">10. Case file: checking a gold bar</a>
+  <a href="#matrix">11. Alignment matrix</a>
+  <a href="#assess">12. Using the results</a>
+  <a href="#access">13. Access and Honors</a>
+  <a href="#data">14. Data and accuracy</a>
+  <a href="#src">Sources</a>
+</nav>
+<main>
+<header class="top">
+  <p class="eyebrow"><a href="index.html">Chemistry Case Files · Unit 1</a> · Teacher blueprint</p>
+  <h1>Practices, Measurement and Matter: unit blueprint</h1>
+  <p class="lede">One set of objectives drives four surfaces: a student reading, a teacher slide deck, missions and a case file. Every check item carries an objective ID, so alignment to the practice standards C.1, C.2, C.3 and C.4 can be traced item by item.</p>
+  <div class="meta"><span class="pill">Grade 10 on-level, Honors optional</span><span class="pill">19 TAC §112.43(c), adopted 2020</span><span class="pill">About 14 class periods</span><span class="pill">Exact TEKS wording</span></div>
+</header>
+
+<section id="package">
+<h2>1. The package</h2>
+<p>Twenty-one pages: six readings, six slide decks, six mission sets, one case file, this blueprint and the unit index. Each surface has one job, and none of them tests content that the reading does not teach.</p>
+<div class="flow">
+  <div><b>Read</b><span>Student reading in book or continuous mode, with a simpler-language toggle, worked examples, stop-and-check items and interactives.</span></div>
+  <div><b>Teach</b><span>Teacher deck of 19 to 21 slides. Each slide shows its reading section, and the notes give timings, safety and the wrong answers to expect.</span></div>
+  <div><b>Practice</b><span>Missions. Classroom data and real measurements for each idea, with feedback on every wrong answer.</span></div>
+  <div><b>Apply</b><span>Case file. One decision about a fictional gold bar that needs the whole unit.</span></div>
+</div>
+<div class="grid2">
+  <div class="card"><p class="label">Teacher flow, one lesson</p><ol class="small"><li>Open the deck. The driving question and three predictions come first.</li><li>Teach through the deck. Students follow the matching reading section or read it as homework.</li><li>Students work the worked examples and stop-and-check items, then the missions.</li><li>The CER exit ticket and the self-rating close the lesson. Students write in their notebooks.</li></ol></div>
+  <div class="card"><p class="label">Design rules</p><ul class="small"><li>Every calculated number comes from one shared measurement calculator, which carries significant figures, exact factors and rounding, so the same value appears on every surface.</li><li>Rounding is half away from zero, stated once in Lesson 1.4 and used everywhere.</li><li>One objective ID per item. Every wrong choice and every common wrong number gets feedback that names the faulty step.</li><li>Writing happens in notebooks. Pages offer choices, numbers and reveals, never text boxes.</li><li>Every rule is shown on a reading from a drawn instrument, never as a bare list.</li></ul></div>
+</div>
+</section>
+
+<section id="teks">
+<h2>2. Standards</h2>
+<p>Unit 1 is the one unit whose core is the scientific and engineering practices, 19 TAC §112.43(c)(1) to (4). Every later unit weaves them in; here they are taught directly. The table quotes the student expectations exactly and states what a student must produce to show mastery. Expectations marked "light" are taught and practiced but carry few items.</p>
+<table>
+<thead><tr><th style="width:52%">Student expectation</th><th>Mastery evidence</th></tr></thead>
+<tbody>
+<tr><td><div class="teks"><b>C.1(A)</b> ask questions and define problems based on observations or information from text, phenomena, models, or investigations;</div></td><td>Separates observations from inferences and turns an observation into a testable question. Lesson 1.1; case file File 1.</td></tr>
+<tr><td><div class="teks"><b>C.1(B)</b> apply scientific practices to plan and conduct descriptive, comparative, and experimental investigations and use engineering practices to design solutions to problems;</div></td><td>Names the kind of investigation, the independent, dependent and controlled variables and the control group of a planned test. Lesson 1.1.</td></tr>
+<tr><td><div class="teks"><b>C.1(C)</b> use appropriate safety equipment and practices during laboratory, classroom, and field investigations as outlined in Texas Education Agency-approved safety standards;</div></td><td>Chooses the equipment a task needs and finds hazards on a Safety Data Sheet and its GHS pictograms. Lesson 1.1; every activity carries a one-line safety note; case file File 1.</td></tr>
+<tr><td><div class="teks"><b>C.1(D)</b> use appropriate tools such as Safety Data Sheets (SDS), scientific or graphing calculators, computers and probes, electronic balances, an adequate supply of consumable chemicals, and sufficient scientific glassware such as beakers, Erlenmeyer flasks, pipettes, graduated cylinders, volumetric flasks, and burettes;</div></td><td>Reads an analog scale to one estimated digit, reads a meniscus at eye level, records a digital display as shown and tares a balance. Lesson 1.4; case file File 3.</td></tr>
+<tr><td><div class="teks"><b>C.1(E)</b> collect quantitative data using the International System of Units (SI) and qualitative data as evidence;</div></td><td>Records numbers with SI units and the right number of significant figures. Lessons 1.3 and 1.4; case file File 2.</td></tr>
+<tr><td><div class="teks"><b>C.1(F)</b> organize quantitative and qualitative data using oral or written lab reports, labeled drawings, particle diagrams, charts, tables, graphs, journals, summaries, or technology-based reports;</div></td><td>Classifies matter from particle diagrams and graphs mass against volume. Lessons 1.2 and 1.5.</td></tr>
+<tr><td><div class="teks"><b>C.1(G)</b> develop and use models to represent phenomena, systems, processes, or solutions to engineering problems; and</div></td><td>Light. Uses a particle model to explain physical and chemical change. Lesson 1.2.</td></tr>
+<tr><td><div class="teks"><b>C.1(H)</b> distinguish between scientific hypotheses, theories, and laws.</div></td><td>Tells the three apart and explains why a theory never becomes a law. Lesson 1.1.</td></tr>
+<tr><td><div class="teks"><b>C.2(A)</b> identify advantages and limitations of models such as their size, scale, properties, and materials;</div></td><td>Light. Names what a particle model shows and what it leaves out (size, number, color). Lesson 1.2.</td></tr>
+<tr><td><div class="teks"><b>C.2(B)</b> analyze data by identifying significant statistical features, patterns, sources of error, and limitations;</div></td><td>Explains uncertainty from resolution, describes repeated readings by mean and range, and calculates a percent error with its direction. Lessons 1.4 and 1.6; case file Files 3 and 5.</td></tr>
+<tr><td><div class="teks"><b>C.2(C)</b> use mathematical calculations to assess quantitative relationships in data; and</div></td><td>Converts with conversion factors, rounds a calculated result by its operation's rule, and calculates density. Lessons 1.3, 1.4 and 1.5; case file Files 2 and 4.</td></tr>
+<tr><td><div class="teks"><b>C.2(D)</b> evaluate experimental and engineering designs.</div></td><td>Tells random from systematic error, names the remedy for each, and judges whether a design can answer its question. Lesson 1.6; case file File 5.</td></tr>
+<tr><td><div class="teks"><b>C.3(A)</b> develop explanations and propose solutions supported by data and models and consistent with scientific ideas, principles, and theories;</div></td><td>Identifies a substance by density, judging whether the measurement is precise enough, and explains floating and sinking. Lesson 1.5; case file Files 4 and 6.</td></tr>
+<tr><td><div class="teks"><b>C.3(B)</b> communicate explanations and solutions individually and collaboratively in a variety of settings and formats; and</div></td><td>Light. The case file recommendation, written in the notebook.</td></tr>
+<tr><td><div class="teks"><b>C.3(C)</b> engage respectfully in scientific argumentation using applied scientific explanations and empirical evidence.</div></td><td>Argues from data which instrument or result can be trusted, with respectful sentence starters. Lesson 1.6; case file recommendation.</td></tr>
+<tr><td><div class="teks"><b>C.4(A)</b> analyze, evaluate, and critique scientific explanations and solutions by using empirical evidence, logical reasoning, and experimental and observational testing, so as to encourage critical thinking by the student;</div></td><td>Uses an investigation board's evidence to explain the Mars Climate Orbiter loss, critiques a claim from data, and says what a density cannot show. Lessons 1.3 and 1.6; case file File 6.</td></tr>
+<tr><td><div class="teks"><b>C.4(B)</b> relate the impact of past and current research on scientific thought and society, including research methodology, cost-benefit analysis, and contributions of diverse scientists as related to the content; and</div></td><td>Light. The Archimedes story and how little of it is recorded (Lesson 1.5); the cost of a wrong decision in the case file recommendation.</td></tr>
+<tr><td><div class="teks"><b>C.4(C)</b> research and explore resources such as museums, libraries, professional organizations, private companies, online platforms, and mentors employed in a science, technology, engineering, and mathematics (STEM) field in order to investigate STEM careers.</div></td><td>Light. The careers box in Lesson 1.1, from the Bureau of Labor Statistics Occupational Outlook Handbook.</td></tr>
+</tbody></table>
+<div class="note"><b>Where the measurement content comes from.</b> "Significant figures", "density", "accuracy", "precision" and "dimensional analysis" are not words in the TEKS. They are how this course meets C.1(E) ("collect quantitative data using the International System of Units (SI)"), C.1(D) (balances, graduated cylinders, burettes), C.2(B) ("sources of error, and limitations") and C.2(C) ("mathematical calculations to assess quantitative relationships in data"). Each objective below is tagged with the practice it serves.
+<p class="small" style="margin-top:8px"><b>Matter goes a little beyond the TEKS.</b> The 2021 Chemistry TEKS have no content standard for classifying matter or for physical and chemical change. The 2010 standards had one, §112.35(c)(4): "The student knows the characteristics of matter and can analyze the relationships between chemical and physical changes and properties", with (A) "differentiate between physical and chemical changes and properties" and (D) "classify matter as pure substances or mixtures through investigation of their properties". TEA's 2017-2021 Chemistry TEKS side-by-side compares the two versions. Unit 2 uses "element" and "compound" from its first lesson and Unit 3 uses "physical property" and "density", so Lesson 1.2 teaches this vocabulary briefly, in one lesson, through C.1(F), C.1(G) and C.2(A).</p>
+<p class="small"><b>Boundaries.</b> Atoms appear only as building blocks; what is inside them is C.6, Unit 2. Elements are named with their symbols, but the periodic table and its trends are C.5, Unit 3. Formulas are only ones a student can read as a count of atoms (H<sub>2</sub>O, CO<sub>2</sub>, NaCl); the rules are C.7, Unit 4. The mole is listed as an SI base unit, with "Unit 5" beside it. Chemical change is described in words and particle pictures, never as an equation (C.9, Unit 6). The kelvin appears once, as K = °C + 273.15; gas behavior is C.10, Unit 7. There is no molarity (C.11, Unit 8).</p></div>
+</section>
+
+<section id="map">
+<h2>3. Lesson map and pacing</h2>
+<table>
+<thead><tr><th>Lesson</th><th>TEKS</th><th>Periods</th><th>Core interactives</th><th>Mission tabs</th></tr></thead>
+<tbody>
+<tr><td><b>1.1</b> Scientific investigations</td><td><span class="tag">C.1(A)</span> <span class="tag">C.1(B)</span> <span class="tag">C.1(C)</span> <span class="tag">C.1(H)</span></td><td>2</td><td>3D aquarium bench and light probe, the safety scene, GHS pictograms drawn in code, a sample Safety Data Sheet reader, the card sorter</td><td>Observe and question, Plan the test, Safety Data Sheet hunt</td></tr>
+<tr><td><b>1.2</b> Matter and its properties</td><td><span class="tag">C.1(F)</span> <span class="tag">C.1(G)</span> <span class="tag">C.2(A)</span></td><td>2</td><td>3D particle boxes, the two seawater dishes, the separation bench, the card sorter</td><td>Classify matter, Physical or chemical, Separation lab</td></tr>
+<tr><td><b>1.3</b> SI units and dimensional analysis</td><td><span class="tag">C.1(E)</span> <span class="tag">C.2(C)</span> <span class="tag">C.4(A)</span></td><td>2</td><td>The prefix ladder, the factor chain, centimeter cubes in a cubic decimeter, the orbiter's two paths, the card sorter</td><td>Prefixes and powers, Build the conversion, Orbiter file check</td></tr>
+<tr><td><b>1.4</b> Measurement and significant figures</td><td><span class="tag">C.1(D)</span> <span class="tag">C.1(E)</span> <span class="tag">C.2(B)</span> <span class="tag">C.2(C)</span></td><td>2</td><td>3D burette, cylinder and beaker, rulers, the meniscus and parallax, the taring balance, the digit counter, the card sorter</td><td>Read the instruments, Count and round, Bench notebook</td></tr>
+<tr><td><b>1.5</b> Density</td><td><span class="tag">C.1(E)</span> <span class="tag">C.1(F)</span> <span class="tag">C.2(C)</span> <span class="tag">C.3(A)</span></td><td>2</td><td>3D two cans in a tank, displacement in a cylinder, the mass-volume plot, the density bands</td><td>Find the density, Name the metal, Graph lab</td></tr>
+<tr><td><b>1.6</b> Accuracy, precision and error</td><td><span class="tag">C.2(B)</span> <span class="tag">C.2(D)</span> <span class="tag">C.3(C)</span> <span class="tag">C.4(A)</span></td><td>2</td><td>The four-group target and readings, the 3D calibration balance</td><td>Judge the data, Find the error, Evaluate the design</td></tr>
+<tr><td><b>Case file</b> Checking a gold bar</td><td>All four practices</td><td>1</td><td>Six evidence files, a 3D balance and cylinder, the density chart and a recommendation</td><td>case file</td></tr>
+<tr><td><b>Review and assessment</b></td><td>All</td><td>1</td><td>Teacher's own review and unit test</td><td>n/a</td></tr>
+</tbody></table>
+<p class="small muted">Each deck's cover notes split it into two 45 to 50 minute periods. Teach the lessons in order: 1.2 uses the observations of 1.1, 1.4 rounds the conversions of 1.3, 1.5 needs both, and 1.6 judges measurements made the 1.4 way. Lesson 1.2 can be taught in one period if the class has met the vocabulary in earlier grades. Worksheets are not part of this release; no student page mentions one.</p>
+</section>
+
+<section id="l11">
+<h2>4. Lesson 1.1 · Scientific investigations</h2>
+<p><b>Driving question.</b> On Monday the class aquarium was clear; by Friday the water was pale gray. How can a class find out why the aquarium water turned cloudy?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>1.1.1</td><td>Separate observations from inferences, record qualitative and quantitative data, and turn an observation into a testable question.</td><td><span class="tag">C.1(A)</span></td><td>5, 6</td></tr>
+<tr><td>1.1.2</td><td>Tell descriptive, comparative and experimental investigations apart, and name the independent, dependent and controlled variables and the control group of a planned test.</td><td><span class="tag">C.1(B)</span></td><td>7, 8</td></tr>
+<tr><td>1.1.3</td><td>Tell a hypothesis, a scientific theory and a scientific law apart, and explain why a theory does not turn into a law.</td><td><span class="tag">C.1(H)</span></td><td>9, 10</td></tr>
+<tr><td>1.1.4</td><td>Choose the safety equipment and practices a lab task needs, and find hazard information on a Safety Data Sheet and its GHS pictograms.</td><td><span class="tag">C.1(C)</span></td><td>11 to 13</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">The aquarium is a classroom scenario, not advice on animal care. The class log and the jar test (four jars of tank water with different amounts of food, light measured through each) are fictional data and say so. The method follows OpenStax Chemistry 2e, 1.1, and laws and theories use Unit 2's definitions. The safety section quotes the Texas Safety Standards, and the Safety Data Sheet is a sample sheet for ethanol, a hand-sanitizer ingredient, with its GHS classification from PubChem (CID 702) and the sixteen sections from OSHA's 29 CFR 1910.1200 Appendix D. The pictograms are drawn in code. A careers box (C.4(C)) gives Bureau of Labor Statistics data for chemists and chemical technicians.</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>"The water is cloudy because bacteria are growing" is an observation.</td><td>Nobody has seen the bacteria. The cloudiness is the observation; the bacteria are an inference that needs a test.</td></tr>
+<tr><td>A scientific theory becomes a law once it has enough evidence.</td><td>A law describes a pattern and a theory explains it. More evidence never turns one into the other.</td></tr>
+<tr><td>A test can prove a hypothesis is true.</td><td>The jar test supports the hypothesis. A later test could always find a case it does not explain.</td></tr>
+<tr><td>A familiar chemical needs no safety equipment.</td><td>Ethanol is highly flammable and causes serious eye irritation, and its Safety Data Sheet calls for eye protection.</td></tr>
+<tr><td>Changing two things at once saves time in an experiment.</td><td>The mission case "Two changes at once" shows the result cannot tell which change caused it.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §1.1 · 23 paragraphs, each with a simpler version</p><ol class="small"><li>Observations and inferences</li><li>From observation to question</li><li>Three kinds of investigation</li><li>Variables in an experiment</li><li>Hypotheses and evidence</li><li>Laws and theories</li><li>Safety in the lab</li><li>Reading a Safety Data Sheet</li><li>Review: investigations and safety</li></ol><p class="small">Boxes: How the method works; Rules from the Texas Safety Standards; Careers. No Honors box.</p></div>
+  <div class="card"><p class="label">Slides and missions</p><ul class="small"><li>Deck: 20 slides. Checkpoint 14 to 17, predictions revisited 18, CER exit ticket 19, self-rating 20.</li><li>Observe and question: 4 cases (Cloudy water; Light through the water; A warmer tank; Yellow leaves)</li><li>Plan the test: 5 cases (Three places, one day; Changing the food; Two changes at once; What the results show; A pattern and its explanation)</li><li>Safety Data Sheet hunt: questions answered from the sample sheet</li><li>Item bank: 21 items (13 reading, 8 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="l12">
+<h2>5. Lesson 1.2 · Matter and its properties</h2>
+<p><b>Driving question.</b> Seawater left in a dish gives back its salt, and a nail left in it rusts. How are these two changes different?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>1.2.1</td><td>Classify a sample as an element, a compound, a homogeneous mixture or a heterogeneous mixture from a particle diagram or from observations.</td><td><span class="tag">C.1(F)</span></td><td>5, 6</td></tr>
+<tr><td>1.2.2</td><td>Tell physical properties and changes from chemical ones, using a particle model and the evidence each kind of change leaves.</td><td><span class="tag">C.1(G)</span></td><td>7 to 9</td></tr>
+<tr><td>1.2.3</td><td>Choose filtration, evaporation or distillation to separate a mixture, from the physical property its parts differ in.</td><td><span class="tag">C.1(G)</span></td><td>10, 11</td></tr>
+<tr><td>1.2.4</td><td>Identify the advantages and limitations of a particle model, such as its size, scale, colors and number of particles.</td><td><span class="tag">C.2(A)</span></td><td>12</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">Two dishes of seawater, one with an iron nail, are the evidence: after eight days the first is dry with a salt crust, and the nail in the second is rusted. Seawater is about 3.5% dissolved salts by weight (NOAA). The model is a set of 3D particle boxes for elements, compounds and mixtures, with atoms as building blocks only; what is inside them is Unit 2's. Chemical change is told in words and particle pictures, never as an equation, and no single clue (bubbles, a color) proves one, since boiling also makes bubbles. Distillation is a diagram, not a class activity.</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>Seawater is a pure substance because it looks the same all the way through.</td><td>It holds water and several salts in amounts that vary. It is a homogeneous mixture.</td></tr>
+<tr><td>The salt left when seawater dries is a new substance.</td><td>The salt was dissolved all along. Evaporation is a physical change.</td></tr>
+<tr><td>Bubbles always mean a chemical change.</td><td>Boiling water makes bubbles of water vapor, which is still water.</td></tr>
+<tr><td>A particle model shows atoms at their real size and color.</td><td>Atoms are far too small to see, a sample holds vastly more of them, and the colors are a code.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §1.2 · 16 paragraphs, each with a simpler version</p><ol class="small"><li>Pure substances</li><li>Mixtures</li><li>Physical and chemical properties</li><li>Physical and chemical changes</li><li>Separating mixtures</li><li>Models and their limits</li><li>Review: matter and its changes</li></ol><p class="small">Box: How to classify a sample. No Honors box.</p></div>
+  <div class="card"><p class="label">Slides and missions</p><ul class="small"><li>Deck: 19 slides. Checkpoint 13 to 16, predictions revisited 17, CER exit ticket 18, self-rating 19.</li><li>Classify matter: 5 cases (Pairs of oxygen atoms; Salt water; A grid of two atoms; Metal in water; A clear liquid)</li><li>Physical or chemical: 5 cases (Dish A dries; The nail in dish B; Bubbles in a beaker; Baking soda in vinegar; Melting ice)</li><li>Separation lab: choose and order the methods for a mixture</li><li>Item bank: 20 items (12 reading, 8 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="l13">
+<h2>6. Lesson 1.3 · SI units and dimensional analysis</h2>
+<p><b>Driving question.</b> On September 23, 1999, Mars Climate Orbiter reached Mars and was never heard from again. How could numbers given in the wrong unit send a spacecraft too close to Mars?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>1.3.1</td><td>Name the SI base units for length, mass, time and temperature, build derived units for volume and density, and use the prefixes from nano- to kilo-.</td><td><span class="tag">C.1(E)</span></td><td>5 to 7</td></tr>
+<tr><td>1.3.2</td><td>Write very large and very small measurements in scientific notation, and read the coefficient and exponent.</td><td><span class="tag">C.2(C)</span></td><td>8</td></tr>
+<tr><td>1.3.3</td><td>Convert a measurement with conversion factors written as fractions, in one step or several, including squared and cubed units and a rate with two units.</td><td><span class="tag">C.2(C)</span></td><td>9 to 11</td></tr>
+<tr><td>1.3.4</td><td>Use the investigation board's evidence to explain how a mix-up of units led to the loss of Mars Climate Orbiter, and what check would have caught it.</td><td><span class="tag">C.4(A)</span></td><td>12, 13</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">NASA's Mishap Investigation Board Phase I report (November 10, 1999) is the evidence. A ground software file gave thruster impulse in pound-force seconds where the interface specification required newton-seconds, so the velocity changes used by navigation were low by a factor of 4.45. The first pass was planned at 226&nbsp;km; estimates made afterwards put it at about 57&nbsp;km, below the 80&nbsp;km the board gives as the lowest survivable altitude. The pages say the spacecraft was destroyed in the atmosphere or left Mars on a solar orbit, as the report does, and name no company or person. Units follow the BIPM SI Brochure (9th edition), including the 2019 redefinition in one sentence, and exact factors follow NIST SP 811. Worked examples move from watched to partly done to independent.</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>The gram is the SI base unit of mass.</td><td>The base unit is the kilogram, the only base unit with a prefix in its name.</td></tr>
+<tr><td>Multiplying by a conversion factor changes the amount.</td><td>A conversion factor equals 1, so it changes the unit but not the amount.</td></tr>
+<tr><td>1&nbsp;m³ is 100&nbsp;cm³.</td><td>The centimeter cubes fill a cubic decimeter: a cubed unit needs the factor cubed, so 1&nbsp;m³ = 10⁶ cm³.</td></tr>
+<tr><td>A negative exponent means a negative number.</td><td>It means a number smaller than 1, such as 4.5 × 10⁻⁵ m.</td></tr>
+<tr><td>A unit is only a label.</td><td>25&nbsp;lbf·s and 25&nbsp;N·s are different amounts, as the orbiter showed.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §1.3 · 18 paragraphs, each with a simpler version</p><ol class="small"><li>SI base units</li><li>Prefixes</li><li>Derived units</li><li>Scientific notation</li><li>Conversion factors</li><li>More than one step</li><li>What the board found</li><li>The check that was missed</li><li>Review: units and conversions</li></ol><p class="small">Nine worked examples. No Honors box.</p></div>
+  <div class="card"><p class="label">Slides and missions</p><ul class="small"><li>Deck: 20 slides. Checkpoint 14 to 17, predictions revisited 18, CER exit ticket 19, self-rating 20.</li><li>Prefixes and powers: 5 cases (A soda can; A dust grain; The planned pass; Yellow light; A nickel)</li><li>Build the conversion: 5 cases (A ruler in inches; A beaker of water; A speed limit; A lab bench top; A fish tank)</li><li>Orbiter file check: convert the file's values and find the factor</li><li>Item bank: 19 items (11 reading, 8 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="l14">
+<h2>7. Lesson 1.4 · Measurement and significant figures</h2>
+<p><b>Driving question.</b> Water drained from a burette reads 24.62&nbsp;mL; in a graduated cylinder it reads 24.6&nbsp;mL and in a beaker 25&nbsp;mL. Why does the same water get three readings with different numbers of digits?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>1.4.1</td><td>Read an analog scale to one estimated digit past its finest mark, read a meniscus at eye level, and record a digital display as shown, using a balance, a graduated cylinder and a burette.</td><td><span class="tag">C.1(D)</span></td><td>5 to 8</td></tr>
+<tr><td>1.4.2</td><td>Count the significant figures in a measurement, including zeros, scientific notation and exact numbers.</td><td><span class="tag">C.1(E)</span></td><td>9, 10</td></tr>
+<tr><td>1.4.3</td><td>Round a calculated result by the rule for its operation: decimal places for adding and subtracting, significant figures for multiplying and dividing, and only at the last step.</td><td><span class="tag">C.2(C)</span></td><td>11 to 14</td></tr>
+<tr><td>1.4.4</td><td>Explain a measurement's uncertainty from the resolution of the instrument that made it, and choose the instrument a task needs.</td><td><span class="tag">C.2(B)</span></td><td>5, 6</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">The three instruments are drawn in 3D with their real graduations, and every rule is shown on a reading taken from them. Significant figures are the record of a reading's resolution: every marked digit plus one estimated digit. Rounding is half away from zero, stated once here and used in every later unit's calculator. The burette's scatter follows the class A tolerance of ±0.05&nbsp;mL (ASTM E287); the cylinder's and beaker's are illustrative, and the reading says so. A digital display is recorded as shown, and the balance scene shows taring.</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>More digits on a calculator mean a more precise result.</td><td>A result is no more precise than the measurements it came from.</td></tr>
+<tr><td>Zeros are never significant.</td><td>Zeros between digits and at the end of a decimal were measured. Only leading zeros never count.</td></tr>
+<tr><td>A count, such as 3 washers, limits the significant figures of a result.</td><td>A count is an exact number with unlimited significant figures.</td></tr>
+<tr><td>A beaker and a burette give readings with the same uncertainty.</td><td>The burette's finer marks give a reading with much less uncertainty.</td></tr>
+<tr><td>Round each step as you go.</td><td>Rounding at every step drifts; the worked examples carry every digit and round once at the end.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §1.4 · 15 paragraphs, each with a simpler version</p><ol class="small"><li>Reading an analog scale</li><li>The meniscus and parallax</li><li>Digital displays and taring</li><li>Counting significant figures</li><li>Trailing zeros and exact numbers</li><li>Rounding sums and differences</li><li>Rounding products and quotients</li><li>Choosing an instrument</li><li>Review: measurement and significant figures</li></ol><p class="small">Ten worked examples. No Honors box.</p></div>
+  <div class="card"><p class="label">Slides and missions</p><ul class="small"><li>Deck: 21 slides. Checkpoint 15 to 18, predictions revisited 19, CER exit ticket 20, self-rating 21.</li><li>Read the instruments: 4 cases (A millimeter ruler; A burette; Weighing without taring; A thermometer)</li><li>Count and round: 4 cases (A small volume; Three masses added; A card's area; Five identical coins)</li><li>Bench notebook: record readings from the bench and carry them through a calculation</li><li>Item bank: 20 items (12 reading, 8 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="l15">
+<h2>8. Lesson 1.5 · Density</h2>
+<p><b>Driving question.</b> Two unopened cans of the same size go into a tank of water: regular soda and sugar-free soda. Why does one can of soda sink while the other floats?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>1.5.1</td><td>Calculate a density from a mass and a volume, with the volume found from measured dimensions or by water displacement.</td><td><span class="tag">C.2(C)</span></td><td>5 to 7</td></tr>
+<tr><td>1.5.2</td><td>Graph mass against volume for several samples of one substance and read the density as the slope of the line.</td><td><span class="tag">C.1(F)</span></td><td>8, 9</td></tr>
+<tr><td>1.5.3</td><td>Identify a substance by comparing its measured density with reference values, and judge whether the measurement is precise enough to tell two close values apart.</td><td><span class="tag">C.3(A)</span></td><td>10</td></tr>
+<tr><td>1.5.4</td><td>Explain floating and sinking by comparing densities, and explain why a reference density always states its temperature.</td><td><span class="tag">C.3(A)</span></td><td>11 to 14</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">The two cans are described from Purdue and University of Pennsylvania demonstration sheets, without brand names, and the scene shows the typical outcome: a can's overall density includes the aluminum and the gas above the drink, so the result is close to the line. The reason is shown on the liquids: USDA FoodData Central gives the sugar per can, and a 10% sucrose solution is 1.0381&nbsp;g/cm³ at 20&nbsp;°C, so the sugar adds mass with little added volume. Every reference density comes from one table (CRC Handbook, near 20&nbsp;°C), and water's 0.9982&nbsp;g/mL at 20&nbsp;°C shows why tables state a temperature. Gold and tungsten share 19.3&nbsp;g/cm³ in that table, so the density bands show a density alone cannot tell them apart, the bridge to the case file. The history box tells the Archimedes crown story as a story: it survives only in Vitruvius's <i>De architectura</i>, Book 9, written about two centuries later.</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>A bigger piece of aluminum has a greater density than a small piece.</td><td>Mass and volume grow in the same ratio, so the density stays 2.70&nbsp;g/cm³.</td></tr>
+<tr><td>Heavy objects always sink.</td><td>A large ship has a great mass but floats, because its overall density, air inside included, is less than water's.</td></tr>
+<tr><td>The volume of an object in a cylinder is the final water level.</td><td>It is the rise: final reading minus starting reading.</td></tr>
+<tr><td>A density close to a reference value identifies the substance.</td><td>Only if the measurement's uncertainty band excludes every other candidate; gold and tungsten share a value.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §1.5 · 15 paragraphs, each with a simpler version</p><ol class="small"><li>Mass per volume</li><li>Volume by water displacement</li><li>A story about a crown</li><li>Graphing mass against volume</li><li>Comparing two lines</li><li>Identifying a substance</li><li>Precise enough to decide</li><li>Floating and sinking</li><li>Density and temperature</li><li>Review: density</li></ol><p class="small">Eleven worked examples. History box: A story, not a record (C.4(B)). No Honors box.</p></div>
+  <div class="card"><p class="label">Slides and missions</p><ul class="small"><li>Deck: 21 slides. Checkpoint 15 to 18, predictions revisited 19, CER exit ticket 20, self-rating 21.</li><li>Find the density: 4 cases (A rectangular block; Mass from a density; Water by mass; The density of a liquid)</li><li>Name the metal: 4 cases (A gray bolt; A reddish cylinder; A heavy fishing weight; A small yellow bar)</li><li>Graph lab: plot samples and read the slope</li><li>Item bank: 19 items (11 reading, 8 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="l16">
+<h2>9. Lesson 1.6 · Accuracy, precision and error</h2>
+<p><b>Driving question.</b> Four lab groups weigh the same 100.00&nbsp;g brass standard five times each, on four balances. Which balance can the class trust?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>1.6.1</td><td>Tell accuracy from precision, and describe a set of repeated readings by its mean and its range.</td><td><span class="tag">C.2(B)</span></td><td>5 to 7</td></tr>
+<tr><td>1.6.2</td><td>Calculate a percent error against an accepted value and say whether the result is high or low.</td><td><span class="tag">C.2(B)</span></td><td>8, 9</td></tr>
+<tr><td>1.6.3</td><td>Tell random error from systematic error, name the remedy for each, and decide when a reading may be set aside as an outlier.</td><td><span class="tag">C.2(D)</span></td><td>10 to 12</td></tr>
+<tr><td>1.6.4</td><td>Evaluate an investigation's design and argue from data which instrument or result can be trusted.</td><td><span class="tag">C.3(C)</span></td><td>13, 14</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">The four groups' readings are fictional and form the four patterns of the accuracy and precision target; Group B's readings agree within 0.04&nbsp;g and all miss the stamp by about 1.5&nbsp;g. Percent error is |measured − accepted| ÷ accepted × 100%, with the direction said in words. The calibration scene shows a balance corrected against a standard (NIST Office of Weights and Measures procedures), and an outlier may be set aside only with a recorded reason, crossed out with one line. The C.4(A) box critiques a claim from the data. The Honors box introduces the sample standard deviation (NIST/SEMATECH e-Handbook) and shows that a small one does not prove accuracy.</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>Readings that agree closely with each other must be accurate.</td><td>Group B's readings agree within 0.04&nbsp;g, and every one is about 1.5&nbsp;g too high.</td></tr>
+<tr><td>Percent error shows how precise a set of readings is.</td><td>Percent error shows accuracy. The range shows precision.</td></tr>
+<tr><td>Taking more readings removes systematic error.</td><td>A systematic error is in every reading. Calibration removes it.</td></tr>
+<tr><td>A reading can be thrown out because it looks wrong.</td><td>A reading may be set aside only with a recorded reason, and it stays in the notebook.</td></tr>
+<tr><td>Percent error is divided by the measured value.</td><td>The worked examples divide by the accepted value, and the missions name the slip.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §1.6 · 15 paragraphs, each with a simpler version</p><ol class="small"><li>Accuracy and precision</li><li>Mean and range</li><li>Percent error</li><li>What percent error leaves out</li><li>Two kinds of error</li><li>Calibrating a balance</li><li>Outliers</li><li>Judging a design</li><li>Arguing from data</li><li>Review: accuracy, precision and error</li></ol><p class="small">Seven worked examples. Boxes: Why only two figures?; Critiquing a claim (C.4(A)); respectful sentence starters. Honors box: Standard deviation.</p></div>
+  <div class="card"><p class="label">Slides and missions</p><ul class="small"><li>Deck: 21 slides. Checkpoint 15 to 18, predictions revisited 19, CER exit ticket 20, self-rating 21.</li><li>Judge the data: 4 cases (Checking a pipet; A 50&nbsp;g standard; Five readers, one cylinder; A 20&nbsp;g standard)</li><li>Find the error: 4 cases (A worn ruler; Bubbles on a copper slug; A draft over the pan; One far reading)</li><li>Evaluate the design: 4 cases (One reading each; Different masses; A report with one number; A disagreement)</li><li>Item bank: 21 items (11 reading, 10 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="case">
+<h2>10. Case file: Checking a gold bar</h2>
+<p class="lede">Students act as analysts on a fictional assay team in Texas that checks metal bars before a vault accepts them for storage. A bar arrives with a certificate saying it is gold. Every test must leave the bar unharmed. The report answers one question: can the bar be accepted as gold, or does it need a further test?</p>
+<div class="card"><p class="label">Briefing</p><p class="small">The memo explains the task and lists the six files with their TEKS, beside a 3D scene of the bar on a balance. A fact box gives the real context: Texas has its own depository for precious metals, the Texas Bullion Depository, run by the Texas Comptroller of Public Accounts; it opened in 2018 and is now in Leander. The Comptroller's 2018 release says, "Metals admitted to the depository will undergo three types of non-destructive testing, including a density scan to ensure purity." Nothing else of the depository's procedure is described, and the case never suggests it received a false bar. One troy ounce is exactly 31.1034768&nbsp;g (NIST), and the CRC Handbook gives gold and tungsten the same density to three figures, 19.3&nbsp;g/cm³. The team, the bar, its certificate and every reading are fictional, and the page says so.</p></div>
+<p>Each file has three steps: a calculation or observation, the Unit 1 idea it uses, then a decision about a claim. Every number is computed by the shared measurement calculator, and every answer window leaves out each named slip.</p>
+<div class="evid">
+  <div class="card"><p class="label">File 1 · The question and the plan · <span class="tag">C.1(A)</span> <span class="tag">C.1(C)</span></p><p class="small">Students sort statements about the bar into observations and inferences, and choose tests that leave it unharmed (weighing, measuring, water displacement) over cutting or scratching it. A safety note covers handling a heavy bar.</p></div>
+  <div class="card"><p class="label">File 2 · The certificate in SI units · <span class="tag">C.1(E)</span> <span class="tag">C.2(C)</span></p><p class="small">The certificate gives 32.150 troy ounces and 4.60 × 1.95 × 0.352 inches. Task: 999.98&nbsp;g with the exact troy ounce, and 51.7&nbsp;cm³ from the dimensions in centimeters. Decide why the exact factors do not limit the significant figures.</p></div>
+  <div class="card"><p class="label">File 3 · Two ways to find the volume · <span class="tag">C.1(D)</span> <span class="tag">C.2(B)</span></p><p class="small">A millimeter ruler gives 11.68&nbsp;cm × 4.95&nbsp;cm × 0.89&nbsp;cm, so 51&nbsp;cm³ (the thickness has two significant figures), with a percent uncertainty of 1.4%. A 1000&nbsp;mL cylinder goes from 500&nbsp;mL to 552&nbsp;mL, so 52&nbsp;mL, with 3.8% from two readings each off by 1&nbsp;mL. Decide which volume to trust more: the ruler's, for a box-shaped bar.</p></div>
+  <div class="card"><p class="label">File 4 · The density · <span class="tag">C.2(C)</span> <span class="tag">C.3(A)</span></p><p class="small">Balance P reads 999.9&nbsp;g. Task: 19&nbsp;g/cm³ from each volume. A chart draws each result as a band as wide as its uncertainty against brass (8.53), silver (10.5), lead (11.3), gold and tungsten (19.3&nbsp;g/cm³). Decide: the bar is not brass, silver or lead; it could be gold, or gold with tungsten inside.</p></div>
+  <div class="card"><p class="label">File 5 · Which balance to trust · <span class="tag">C.2(B)</span> <span class="tag">C.2(D)</span></p><p class="small">Two balances weigh a certified 1000.0&nbsp;g standard five times each. Balance P's mean is 1000.0&nbsp;g (0.0% error); balance Q's readings agree just as closely, with a mean of 1001.5&nbsp;g, 0.15% high. Decide: Q is precise but not accurate, a systematic error that calibration removes, so the bar's mass is read on P.</p></div>
+  <div class="card"><p class="label">File 6 · What density cannot show · <span class="tag">C.3(A)</span> <span class="tag">C.4(A)</span></p><p class="small">A bar with a core filling 20% of its volume, the rest gold. Task: a lead core gives 17.7&nbsp;g/cm³, outside both bands; a tungsten core gives 19.3&nbsp;g/cm³, the same as pure gold. Decide what the density measurement can rule out and what it cannot.</p></div>
+</div>
+<div class="card"><p class="label">Recommendation · claim, evidence, reasoning · C.3(A), C.3(C), C.4(B)</p><p class="small">Students choose a claim (hold the bar for a further test that can tell its inside from its surface; accept it because its density matches gold's; accept it because its mass matches the certificate; or reject it because the two volumes disagree), select the evidence files, and mark what the files cannot show. The vault manager asks what a wrong decision costs either way: accepting a false bar stores far less gold than the certificate claims, and holding a real bar only delays it. Students then write the reasoning in their notebooks using sentence starters and a word bank. The check expects Files 4 and 6 among the evidence, and two limits: whether tungsten is hidden inside, and whether a small lead core (under about 2% of the volume) is inside. It rejects the bar's mass and "mostly lead" as limits, with feedback naming the file that settles each. After a successful check, a sample report appears for comparison.</p>
+<p class="small"><b>Grading the notebook.</b> A strong report converts the certificate, compares the two volumes with their uncertainties, rules out the lighter metals with the density bands, trusts balance P because it matches the standard, and names the limit of density: it cannot tell gold from gold around a tungsten core. A report that accepts the bar because 19&nbsp;g/cm³ "matches gold" has not used File 6. The further test is left unnamed on purpose; no standards or primary technical source was found that describes one for this use.</p></div>
+<div class="note small"><b>Case-file boundary.</b> The assay team, the bar, its certificate and all readings are fictional; the depository, its 2018 testing sentence, the troy ounce and the reference densities are real and cited. The displacement starts at 500&nbsp;mL so the 11.7&nbsp;cm bar is fully under water in a 1000&nbsp;mL cylinder. Nothing in the case is done in class with a real gold bar; the safety notes cover lowering a heavy object into glassware on a string, in a tray.</div>
+</section>
+
+<section id="matrix">
+<h2>11. Alignment matrix</h2>
+<table>
+<thead><tr><th>TEKS</th><th>Reading</th><th>Slides</th><th>Missions</th><th>Case file</th></tr></thead>
+<tbody>
+<tr><td><span class="tag">C.1(A)</span></td><td>§1.1.1</td><td>Deck 1.1, slides 5, 6</td><td>1.1: Observe and question</td><td>File 1</td></tr>
+<tr><td><span class="tag">C.1(B)</span></td><td>§1.1.2</td><td>Deck 1.1, slides 7, 8</td><td>1.1: Plan the test</td><td></td></tr>
+<tr><td><span class="tag">C.1(C)</span></td><td>§1.1.4, safety notes in every lesson</td><td>Deck 1.1, slides 11 to 13</td><td>1.1: Safety Data Sheet hunt</td><td>File 1</td></tr>
+<tr><td><span class="tag">C.1(D)</span></td><td>§1.4.1, §1.5.1</td><td>Deck 1.4, slides 5 to 8</td><td>1.4: Read the instruments, Bench notebook</td><td>File 3</td></tr>
+<tr><td><span class="tag">C.1(E)</span></td><td>§1.3.1, §1.4.2</td><td>Deck 1.3, slides 5 to 7; Deck 1.4, slides 9, 10</td><td>1.3: Prefixes and powers; 1.4: Count and round</td><td>File 2</td></tr>
+<tr><td><span class="tag">C.1(F)</span></td><td>§1.2.1, §1.5.2</td><td>Deck 1.2, slides 5, 6; Deck 1.5, slides 8, 9</td><td>1.2: Classify matter; 1.5: Graph lab</td><td></td></tr>
+<tr><td><span class="tag">C.1(G)</span> light</td><td>§1.2.2, §1.2.3</td><td>Deck 1.2, slides 7 to 11</td><td>1.2: Physical or chemical, Separation lab</td><td></td></tr>
+<tr><td><span class="tag">C.1(H)</span></td><td>§1.1.3</td><td>Deck 1.1, slides 9, 10</td><td>1.1: Plan the test (cases 4, 5)</td><td></td></tr>
+<tr><td><span class="tag">C.2(A)</span> light</td><td>§1.2.4</td><td>Deck 1.2, slide 12</td><td></td><td></td></tr>
+<tr><td><span class="tag">C.2(B)</span></td><td>§1.4.4, §1.6.1, §1.6.2</td><td>Deck 1.4, slides 5, 6; Deck 1.6, slides 5 to 9</td><td>1.4: Read the instruments; 1.6: Judge the data, Find the error</td><td>Files 3, 5</td></tr>
+<tr><td><span class="tag">C.2(C)</span></td><td>§1.3.2, §1.3.3, §1.4.3, §1.5.1</td><td>Deck 1.3, slides 8 to 11; Deck 1.4, slides 11 to 14; Deck 1.5, slides 5 to 7</td><td>1.3: Build the conversion; 1.4: Count and round; 1.5: Find the density</td><td>Files 2, 4</td></tr>
+<tr><td><span class="tag">C.2(D)</span></td><td>§1.6.3</td><td>Deck 1.6, slides 10 to 12</td><td>1.6: Find the error</td><td>File 5</td></tr>
+<tr><td><span class="tag">C.3(A)</span></td><td>§1.5.3, §1.5.4</td><td>Deck 1.5, slides 10 to 14</td><td>1.5: Name the metal</td><td>Files 4, 6</td></tr>
+<tr><td><span class="tag">C.3(B)</span> light</td><td>Notebook summaries</td><td>Exit tickets</td><td></td><td>Recommendation</td></tr>
+<tr><td><span class="tag">C.3(C)</span></td><td>§1.6.4</td><td>Deck 1.6, slides 13, 14</td><td>1.6: Evaluate the design</td><td>Recommendation</td></tr>
+<tr><td><span class="tag">C.4(A)</span></td><td>§1.3.4, §1.6 critique box</td><td>Deck 1.3, slides 12, 13</td><td>1.3: Orbiter file check</td><td>File 6</td></tr>
+<tr><td><span class="tag">C.4(B)</span> light</td><td>§1.5.1 history box</td><td>Deck 1.5, slide 14</td><td></td><td>Recommendation (cost of a wrong decision)</td></tr>
+<tr><td><span class="tag">C.4(C)</span> light</td><td>§1.1 careers box</td><td>Deck 1.1 notes</td><td></td><td></td></tr>
+<tr><td>All</td><td>Chapter reviews</td><td>Checkpoints and exit tickets</td><td></td><td>Recommendation</td></tr>
+</tbody></table>
+</section>
+
+<section id="assess">
+<h2>12. Using the results</h2>
+<div class="grid2">
+  <div class="card"><p class="label">What the pages record</p><ul class="small"><li>Each mission set shows the cases solved and the first-try accuracy, so a first answer can be told apart from eventual completion.</li><li>Numeric answers are accepted within about ±0.5%, never less than half a unit in the last place; the reference values stay fixed. Each common wrong number (a factor upside down, a squared unit converted once, rounding too early, the final level used as a volume, percent error divided by the measured value) gets its own feedback, and a test checks that none of them falls inside the tolerance.</li><li>Progress is saved in the student's own browser only. Nothing is sent to a server, so the pages are not a gradebook.</li></ul></div>
+  <div class="card"><p class="label">What they do not show</p><ul class="small"><li>A correct number does not prove a correct setup. Ask for the factor chain written in the notebook, with units that cancel.</li><li>A correct significant-figure count does not prove a correct reading. Check readings taken on real glassware.</li><li>Judge explanations from notebooks and discussion: the exit tickets, the checkpoints and the case file report.</li><li>A completed self-rating is a reflection, not proof of mastery.</li></ul></div>
+</div>
+<p class="small">Each deck runs checkpoints as Think, Talk, Write, Self-check and Compare, with 30 second thinking and 60 second partner timers. The three predictions from slide 3 are revisited near the end of each deck, and the CER exit ticket returns to the driving question.</p>
+</section>
+
+<section id="access">
+<h2>13. Access, simpler language and Honors</h2>
+<div class="grid3">
+  <div class="card"><p class="label">Reading supports</p><ul class="small"><li>A simpler-language version of every core paragraph (102 in all), one toggle per page</li><li>Worked examples with a hint and a check at each step (37 in all, in Lessons 1.3 to 1.6)</li><li>An anticipation guide before each reading, revisited at the end</li><li>Read-aloud of any section</li><li>Tap-to-define vocabulary with Spanish terms</li><li>Sentence starters and word banks for notebook writing</li></ul></div>
+  <div class="card"><p class="label">Projector and devices</p><ul class="small"><li>Slides sized for the back row, with zoom on any card</li><li>Light and dark themes</li><li>3D instruments and particle models that can be turned and zoomed from the keyboard; with reduced motion they show the end state</li><li>A still description of every model for screen readers</li><li>Readings, missions and the case file work at phone width</li></ul></div>
+  <div class="card"><p class="label">Extension and Honors</p><ul class="small"><li>Honors boxes are collapsible, never on the core path and never assessed</li><li>1.6 the sample standard deviation, and why a small one does not prove accuracy</li><li>Lessons 1.1 to 1.5 have no Honors box</li></ul></div>
+</div>
+</section>
+
+<section id="data">
+<h2>14. Data and accuracy notes</h2>
+<ul class="small">
+<li><b>One shared calculator.</b> A new kit file, the measurement calculator, carries significant figures through sums, differences, products and quotients, treats defined factors and counts as exact, converts units, and computes means, ranges, standard deviations and percent errors. It rounds half away from zero. Every number on every Unit 1 surface comes from it, and a test checks each lesson's values and each mission's answer window.</li>
+<li><b>Exact factors.</b> 1&nbsp;in = 2.54&nbsp;cm, 1 troy ounce = 31.1034768&nbsp;g, 1&nbsp;mL = 1&nbsp;cm³ and the SI prefixes are exact (NIST SP 811; NIST Office of Weights and Measures; BIPM SI Brochure). The orbiter's 4.45 is the report's rounded 1&nbsp;lbf = 4.448 221 615 260 5&nbsp;N.</li>
+<li><b>Reference densities.</b> All from one table, CRC Handbook of Chemistry and Physics, near 20&nbsp;°C: gold and tungsten 19.3, lead 11.3, silver 10.5, brass (alloy C26000) 8.53, aluminum 2.70&nbsp;g/cm³. Water is 0.9982&nbsp;g/mL at 20&nbsp;°C.</li>
+<li><b>Instrument tolerances.</b> The class A burette's ±0.05&nbsp;mL follows ASTM E287. The cylinder's and beaker's scatter in Lesson 1.4 is illustrative and labeled so.</li>
+<li><b>Models and scale.</b> Particle boxes show atoms as colored spheres; the caption says real particles are far smaller and far more numerous and the colors are a code. The glassware, balances, rulers and cans are drawn to scale with calculated readings and labeled as simulations.</li>
+<li><b>Laboratory data.</b> The aquarium log and jar test, the four balance groups and every case-file reading are fictional and say so.</li>
+<li><b>History.</b> Mars Climate Orbiter launched December 11, 1998 and was lost September 23, 1999; the board's Phase I report is dated November 10, 1999. The kilogram has been defined by the Planck constant since 2019. The Archimedes crown story is known only from Vitruvius, about two centuries after Archimedes. The Texas Bullion Depository's first release is dated June 6, 2018; its Leander building was completed in 2019.</li>
+</ul>
+</section>
+
+<section id="src">
+<h2>Sources</h2>
+<ul class="small">
+<li>19 Tex. Admin. Code §112.43, Chemistry (adopted 2020, effective April 28, 2021). Former §112.35(c)(4), Chemistry (adopted to be effective August 4, 2009). Texas Education Agency, 2017-2021 Chemistry Science TEKS Side-by-Side.</li>
+<li>Lesson 1.1: OpenStax Chemistry 2e, 1.1, Chemistry in Context; Texas Education Agency, Science: Texas Safety Standards, second edition (2000); OSHA, 29 CFR 1910.1200 Appendices C and D; PubChem, Ethanol (CID 702); NIOSH Pocket Guide to Chemical Hazards, Ethyl alcohol; US Bureau of Labor Statistics, Occupational Outlook Handbook: Chemists and Materials Scientists, and Chemical Technicians.</li>
+<li>Lesson 1.2: OpenStax Chemistry 2e, 1.2, Phases and Classification of Matter, and 1.3, Physical and Chemical Properties; NOAA National Ocean Service, Why is the ocean salty?; PubChem, Iron.</li>
+<li>Lesson 1.3: NASA, Mars Climate Orbiter Mishap Investigation Board, Phase I Report (November 10, 1999); BIPM, The International System of Units (SI Brochure), 9th edition (2019); NIST Special Publication 811; NASA, Mars Fact Sheet.</li>
+<li>Lesson 1.4: OpenStax Chemistry 2e, 1.4, Measurements, and 1.5, Measurement Uncertainty, Accuracy, and Precision; NIST Special Publication 811; ASTM E287 (class A burette tolerance), from a maker's listing.</li>
+<li>Lesson 1.5: Purdue University, General Chemistry demonstration sheet 1.4; University of Pennsylvania, Physics demonstration lab; USDA FoodData Central 174852 and 175099; Anton Paar, density of sucrose solutions; The Engineering ToolBox, water density; LibreTexts, Introductory Chemistry (CK-12), 3.11 Density; Vitruvius, The Ten Books on Architecture, Book 9; Chris Rorres, New York University, The Golden Crown; CRC Handbook of Chemistry and Physics.</li>
+<li>Lesson 1.6: LibreTexts, Introductory Chemistry (CK-12), 3.12 Accuracy and Precision and 3.13 Percent Error; NIST Office of Weights and Measures, calibration procedures, including NISTIR 6969; NIST/SEMATECH e-Handbook of Statistical Methods, measures of scale; Texas Education Agency, Texas Safety Standards.</li>
+<li>Case file: Texas Comptroller of Public Accounts, news release of June 6, 2018 (the depository's testing sentence) and of July 28, 2025 (the Leander facility); NIST Office of Weights and Measures, Conversion Factors for Precious Metal Sales; NIST Special Publication 811; CRC Handbook of Chemistry and Physics; NIST/SEMATECH e-Handbook of Statistical Methods; LibreTexts, Introductory Chemistry (CK-12), 3.13 Percent Error.</li>
+</ul>
+</section>
+<footer>Chemistry Case Files · Unit 1 · Teacher blueprint</footer>
+</main>
+</div>
+<script>
+(function(){const r=document.documentElement,b=document.getElementById('tt');let t=null;try{t=localStorage.getItem('u2:theme')}catch(e){}
+function ap(){if(t)r.setAttribute('data-theme',t);else r.removeAttribute('data-theme');b.textContent=t==='dark'?'Dark':t==='light'?'Light':'Theme'}
+ap();b.onclick=function(){t=t==='dark'?'light':t==='light'?null:'dark';try{t?localStorage.setItem('u2:theme',t):localStorage.removeItem('u2:theme')}catch(e){}ap()}})();
+</script>
+</body>
+</html>

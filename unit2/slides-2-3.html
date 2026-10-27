@@ -1,0 +1,1896 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Atomic Mass Slides</title>
+<meta name="description" content="Unit 2, Lesson 2.3 teacher slide deck: Average atomic mass (TEKS C.6(D)).">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,600;9..40,700&family=Charis+SIL:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: a fixed 1600x900 slide canvas scaled to fit the screen (projector-safe); below 760px wide it reflows into a scrolling page.
+   Each slide is taught in numbered steps: a step rail in the slide header, matching number badges on the content, Next reveals the next step. */
+:root{
+  --bg:#eef2ef; --paper:#fcfdfc; --surface:#ffffff; --sunk:#edf3e4; --ink:#1b302e; --muted:#4f605b; --line:#dbe3de;
+  --accent:#0b5951; --accent-ink:#ffffff; --accent-soft:#e6f1ea; --warm:#835811; --warm-soft:#f8eed9; --label:#0b5951;
+  --ok:#1f6e4f; --ok-bg:#e1f0e6; --bad:#a8402f; --bad-bg:#f9e6e1;
+  --b-radio:#B5523B; --b-micro:#CF7E2E; --b-ir:#B38F1E; --b-uv:#7451D6; --b-xray:#3F63CF; --b-gamma:#1F8279;
+  --spec:linear-gradient(90deg,#B5523B,#CF7E2E,#B38F1E,#e23b2e,#f2c230,#3fb34f,#2f6fe0,#7a3fd0,#7451D6,#3F63CF,#1F8279);
+  --display:'DM Sans',system-ui,sans-serif;
+  --body:'Charis SIL',Charter,Georgia,serif;
+  --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+  --shadow:0 1px 2px rgba(18,61,45,.05),0 12px 40px rgba(18,61,45,.08);--pick:#dbecc3;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1715; --paper:#152120; --surface:#1c2a27; --sunk:#22301f; --ink:#e3ece8; --muted:#a6b6b0; --line:#283632;
+  --accent:#73c7b4; --accent-ink:#06231f; --accent-soft:#163029; --warm:#e6bd6c; --warm-soft:#33290f; --label:#9fd7a8;
+  --ok:#7fd1a6; --ok-bg:#163026; --bad:#f39886; --bad-bg:#3a1e19; --shadow:0 12px 40px rgba(0,0,0,.45); color-scheme:dark;--pick:#2b4a20;}}
+:root[data-theme="dark"]{
+  --bg:#0f1715; --paper:#152120; --surface:#1c2a27; --sunk:#22301f; --ink:#e3ece8; --muted:#a6b6b0; --line:#283632;
+  --accent:#73c7b4; --accent-ink:#06231f; --accent-soft:#163029; --warm:#e6bd6c; --warm-soft:#33290f; --label:#9fd7a8;
+  --ok:#7fd1a6; --ok-bg:#163026; --bad:#f39886; --bad-bg:#3a1e19; --shadow:0 12px 40px rgba(0,0,0,.45); color-scheme:dark;--pick:#2b4a20;}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{height:100%}
+body{height:100%;margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.4;
+  display:flex;flex-direction:column;overflow:hidden;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+button,select,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--warm);outline-offset:2px;border-radius:6px}
+sup{font-size:.62em;line-height:0}
+
+/* ---------- chrome ---------- */
+.top{display:flex;align-items:center;gap:14px;padding-block:10px 6px}
+.brand{display:flex;align-items:center;gap:9px;font-family:var(--display);font-weight:700;font-size:15px;white-space:nowrap}
+.brand i{display:block;width:30px;height:9px;border-radius:3px;background:var(--spec)}
+.secs{display:flex;gap:2px;overflow-x:auto;flex:1;min-width:0;scrollbar-width:none}
+.secs button{border:0;background:none;padding:6px 10px;border-radius:8px;font-family:var(--display);font-size:11.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);cursor:pointer;white-space:nowrap;font-weight:700}
+.secs button:hover{color:var(--ink)}
+.secs button[aria-current="true"]{background:var(--pick);color:var(--ink);border-color:var(--accent);font-weight:600}
+.count{font-family:var(--mono);font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.ticks{display:flex;gap:3px;height:6px;margin-bottom:8px}
+.ticks span{flex:1;border-radius:2px;background-image:var(--spec);opacity:.22;transition:opacity .3s}
+.ticks span.done{opacity:.85}
+.ticks span.now{opacity:1;transform:scaleY(1.6)}
+
+#viewport{flex:1;min-height:0;position:relative;overflow:hidden}
+#deck{position:absolute;left:0;top:0;width:1600px;height:900px;transform-origin:0 0;font-size:29px}
+.slide{position:absolute;inset:0;background:var(--paper);border-radius:18px;box-shadow:var(--shadow);
+  padding:34px 64px 34px;display:flex;flex-direction:column;gap:.6em;overflow:hidden}
+.slide.enter{animation:in .35s ease}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+.nav{display:flex;align-items:center;gap:8px;padding-block:8px max(10px,env(safe-area-inset-bottom,0px))}
+.nav .ttl{flex:1;min-width:0;text-align:center;font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav .ttl b{color:var(--ink)}
+.nav .btn{font-size:14px;min-height:40px}
+.kbd{font-family:var(--mono);font-size:.8em;border:1px solid var(--line);border-radius:4px;padding:0 .3em}
+
+/* ---------- slide header + step rail ---------- */
+.sh{display:flex;flex-direction:column;gap:.15em}
+.sh-top{display:flex;justify-content:space-between;align-items:center;gap:1em;min-height:30px}
+.eyebrow{font-family:var(--mono);font-size:.55em;letter-spacing:.08em;text-transform:uppercase;color:var(--label);margin:0;white-space:nowrap;font-weight:500}
+.rail{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:5px;list-style:none;margin:0;padding:0;font-size:15px}
+.rail button{display:flex;align-items:center;gap:6px;border:1.5px solid var(--line);background:var(--surface);border-radius:99px;padding:2px 11px 2px 3px;
+  font-family:var(--display);font-size:13px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);cursor:pointer;white-space:nowrap;font-weight:700}
+.rail b{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--sunk);color:var(--muted);font-size:12.5px}
+.rail li.done button{color:var(--ink)}
+.rail li.done b{background:var(--ok);color:var(--paper)}
+.rail li.now button{border-color:var(--accent);background:var(--pick);color:var(--ink);font-weight:600}
+.rail li.now b{background:var(--accent);color:var(--accent-ink)}
+
+/* step badges and builds */
+.slide [data-step]{position:relative;transition:opacity .35s ease}
+.slide [data-step]:not([data-nobadge])::before{content:attr(data-step);position:absolute;left:-12px;top:-12px;width:26px;height:26px;border-radius:50%;
+  background:var(--accent);color:var(--accent-ink);font:700 14px/26px var(--mono);text-align:center;z-index:3;box-shadow:0 0 0 3px var(--paper)}
+.slide .fut{visibility:hidden;opacity:0}
+.slide .now-step{animation:pulse 1s ease}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--accent)}60%{box-shadow:0 0 0 10px transparent}100%{box-shadow:none}}
+.do{font-size:.72em;color:var(--warm);font-weight:700;display:block;line-height:1.3}
+.do:not([data-step])::before{content:"→";margin-right:.45em}
+.slide .do[data-step]:not([data-nobadge])::before{position:static;box-shadow:none;display:inline-block;margin-right:.45em;vertical-align:1px}
+
+/* ---------- type ---------- */
+h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.012em}
+p,li,label,summary,.do,.lead{text-wrap:wrap}
+.nw{white-space:nowrap}
+h1{font-size:3.6em;line-height:.98;font-weight:600;letter-spacing:-.03em}
+h2{font-size:1.7em;line-height:1.08;font-weight:700}
+h3{font-size:.95em;line-height:1.2;font-weight:700}
+p{margin:0}
+.lead{font-size:.95em;color:var(--muted)}
+.muted{color:var(--muted)}
+.sm{font-size:.8em}
+.xs{font-size:.66em}
+.mono{font-family:var(--mono)}
+b.hl{color:var(--accent)}
+ul.clean{margin:0;padding-left:1.05em;display:flex;flex-direction:column;gap:.3em}
+.row{display:flex;gap:.5em;flex-wrap:wrap;align-items:center}
+.between{justify-content:space-between}
+.stack{display:flex;flex-direction:column;gap:.6em;min-width:0}
+.grow{flex:1;min-height:0}
+.cols{display:grid;gap:.75em;align-items:start}
+.cols.grow{align-items:stretch}
+.c2{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}
+.c2e{grid-template-columns:repeat(2,minmax(0,1fr))}
+.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.65em .85em;min-width:0;display:flex;flex-direction:column;gap:.45em}
+.card.flat{background:var(--sunk);border-color:transparent}
+.def{background:var(--sunk);border-radius:12px;padding:.5em .8em;display:flex;flex-direction:column;gap:.12em}
+.label,.def>b{font-family:var(--mono);font-size:.56em;letter-spacing:.08em;text-transform:uppercase;color:var(--label);font-weight:500}
+.tag{display:inline-block;font-family:var(--display);font-size:.56em;letter-spacing:.03em;text-transform:uppercase;padding:.25em .7em;border-radius:99px;background:var(--accent-soft);color:var(--ink);font-weight:700}
+.eq{font-family:var(--mono);font-weight:600;font-size:1.4em;letter-spacing:.02em}
+.ic{width:1.25em;height:1.25em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.dense{font-size:.88em;gap:.45em}
+.dense>.sh{font-size:1.136em}
+
+/* ---------- controls ---------- */
+.btn{white-space:nowrap;font-weight:700;font-size:.82em;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:.34em .8em;cursor:pointer;min-height:1.95em;transition:background .15s,border-color .15s;display:inline-flex;align-items:center;gap:.4em}
+.btn:hover{border-color:var(--accent)}
+.btn.wrap{white-space:normal;text-align:left}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.ghost{background:transparent}
+.btn[aria-pressed="true"]{background:var(--pick);color:var(--ink);border-color:var(--accent)}
+.btn.correct{border-color:var(--ok);background:var(--ok-bg)}
+.btn.correct::after{content:"✓";font-weight:700;color:var(--ok)}
+.btn.wrong{border-color:var(--bad);background:var(--bad-bg)}
+.btn.wrong::after{content:"✗";font-weight:700;color:var(--bad)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.choices{display:flex;flex-wrap:wrap;gap:.35em}
+.choices .btn:has(.nw,sup,sub){display:block} /* no-break isotope names (span.nw) would split a flex button into columns */
+.fb{border-radius:10px;padding:.4em .7em;border:1.5px solid transparent;font-size:.78em}
+.fb:empty{display:none}
+.fb.ok{background:var(--ok-bg);border-color:var(--ok)}
+.fb.no{background:var(--bad-bg);border-color:var(--bad)}
+.fb.info{background:var(--pick);border-color:var(--accent)}
+input[type=range]{width:100%;accent-color:var(--accent);height:1.3em;margin:0}
+/* slider labels on plain slides; sims build their own .ctl rows (simkit), so these stay out of .sim */
+.ctl:not(.sim .ctl){display:flex;flex-direction:column;gap:.1em;font-weight:700;font-size:.8em}
+.ctl:not(.sim .ctl) span{display:flex;justify-content:space-between;gap:1em}
+.ctl output{font-family:var(--mono);font-weight:600;color:var(--accent)}
+.ros{display:grid;grid-template-columns:repeat(auto-fit,minmax(5.2em,1fr));gap:.35em}
+.ro{background:var(--sunk);border-radius:10px;padding:.3em .55em}
+.ro.ping{animation:ping .5s ease-out}
+@keyframes ping{from{background:color-mix(in srgb,var(--warm) 32%,var(--sunk))}to{background:var(--sunk)}}
+.ro small{display:block;white-space:nowrap;font-family:var(--display);font-size:.54em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.ro>span{font-family:var(--mono);font-weight:600;font-size:.84em;font-variant-numeric:tabular-nums}
+.meter{height:.45em;border-radius:6px;background:var(--sunk);overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--b-micro),var(--bad));transition:width .2s}
+canvas{display:block;width:100%}
+svg.dia{display:block;width:100%;height:auto}
+svg.dia .wave{fill:none;stroke:var(--accent);stroke-width:4;stroke-linecap:round}
+svg.dia .axis{stroke:var(--muted);stroke-opacity:.5;stroke-width:2;stroke-dasharray:6 6}
+svg.dia .brk{stroke:var(--warm);stroke-width:3;fill:none}
+svg.dia .arr{fill:var(--warm)}
+svg.dia text{fill:var(--ink);font-family:var(--body);font-size:18px;font-weight:700}
+svg.dia text.lbl{fill:var(--warm)}
+svg.dia text.mu{fill:var(--muted);font-weight:400;font-size:15px}
+svg.dia .dot{fill:var(--warm)}
+#sv-ruler text{font-size:17px}
+textarea{width:100%;min-height:3.6em;resize:vertical;background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:.4em .6em;line-height:1.35;font-size:.8em}
+textarea:focus,input.num:focus,select:focus{border-color:var(--accent);outline:none}
+select{background:var(--surface);border:1.5px solid var(--line);border-radius:8px;padding:.2em .4em;min-height:1.85em;max-width:100%;font-size:.8em}
+input.num{width:4.6em;background:var(--surface);border:1.5px solid var(--line);border-radius:8px;padding:.2em .4em;font-family:var(--mono);font-size:.85em;text-align:right}
+input.num.e{width:3.2em;text-align:left}
+details>summary{cursor:pointer;font-weight:700;font-size:.8em;color:var(--accent)}
+details[open]>summary{margin-bottom:.3em}
+table.t{border-collapse:collapse;font-size:.74em;width:100%}
+table.t th,table.t td{padding:.2em .5em;border-bottom:1px solid var(--line);text-align:left}
+table.t th{font-family:var(--display);font-size:.78em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+table.t td.n{font-family:var(--mono)}
+
+
+/* answer layouts */
+.cols.eqh{align-items:stretch}
+.choices.list{flex-direction:column;align-items:stretch}
+.choices.list .btn{justify-content:flex-start}
+.choices.even{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr)}
+.choices.even .btn,.choices.g4 .btn{justify-content:center}
+.choices.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+/* step blocks nested inside a card: the number sits in a left gutter instead of on the text */
+.slide .card [data-step]:not(.card):not(.do):not([data-nobadge]){padding-left:38px}
+.slide .card [data-step]:not(.card):not(.do):not([data-nobadge])::before{left:0;top:2px}
+/* matching grid (slide 16) */
+.mgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.7em;align-items:stretch}
+.mt{position:relative;overflow:hidden;padding-top:.9em}
+.mt::after{content:"";position:absolute;left:0;right:0;top:0;height:7px;background:var(--mc,var(--sunk))}
+.mt .st{font-weight:700;font-size:.92em;line-height:1.25;min-height:2.5em}
+.mt select{width:100%;font-size:.8em}
+.mt .res{font-size:.68em;line-height:1.3}
+.mt .res:empty{display:none}
+.mt.ok{border-color:var(--ok)}
+.mt.no{border-color:var(--bad)}
+.ordscale{display:flex;justify-content:space-between;font-family:var(--display);font-size:.56em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.pool{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:.35em;border:2px dashed var(--line);border-radius:12px;padding:.4em;min-height:3.1em;transition:background .15s,border-color .15s}
+.pool .empty{grid-column:1/-1;align-self:center;text-align:center;font-size:.72em;color:var(--muted)}
+.pool .tile{justify-content:center}
+[data-drag]{cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
+.slot .sc{display:flex;align-items:center;gap:.35em;white-space:nowrap}
+.slot .sc i{width:.7em;height:.7em;border-radius:3px;flex:none}
+.slot.over,.pool.over{border-color:var(--accent);border-style:solid;background:var(--accent-soft)}
+.dragging{opacity:.3}
+.dragghost{position:fixed;z-index:60;pointer-events:none;margin:0;box-shadow:0 14px 30px rgba(10,12,30,.32);transform:rotate(-2deg);cursor:grabbing;justify-content:center}
+/* ---------- specific ---------- */
+.cover{justify-content:flex-start;gap:.7em;padding-inline:96px}
+.cover .sub{font-size:1.15em;color:var(--muted)}
+.bandlabels{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;font-family:var(--display);font-size:.54em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);text-align:center;font-weight:700}
+.howto{display:flex;gap:1.2em;flex-wrap:wrap;font-size:.6em;color:var(--muted)}
+.howto span{display:flex;gap:.4em;align-items:center}
+.dq{font-family:var(--display);font-weight:700;font-size:1.35em;line-height:1.12}
+.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:1em;align-items:stretch}
+.vs .mid{align-self:center;width:2.1em;height:2.1em;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--line);background:var(--surface);font-family:var(--display);font-weight:700;font-size:1em;color:var(--muted)}
+.cmpc{align-items:center;text-align:center;position:relative;overflow:hidden;padding:1.05em 1em .9em;gap:.3em}
+.cmpc::after{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:var(--bc)}
+.cmpc h3{font-size:1.15em}
+.cmpi{width:2.3em;height:2.3em;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--bc) 16%,var(--surface));color:var(--bc);margin-bottom:.15em}
+.cmpi .ic{width:1.3em;height:1.3em}
+.cmpt{font-family:var(--display);font-size:.54em;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:.3em .8em;border-radius:99px;background:color-mix(in srgb,var(--bc) 14%,var(--surface));color:var(--ink)}
+.cmpn{font-family:var(--mono);font-weight:600;font-size:1.3em;margin-top:.25em;font-variant-numeric:tabular-nums}
+
+.big-ic{width:2.4em;height:2.4em;color:var(--accent)}
+.target{flex-direction:row;align-items:flex-start;gap:.6em}
+.target .n{font-family:var(--display);font-weight:700;font-size:1.8em;line-height:.9;color:var(--accent);min-width:.9em}
+.chips{display:flex;flex-wrap:wrap;gap:.3em}
+.chips>span{background:var(--sunk);border-radius:99px;padding:.15em .65em;font-size:.78em}
+.ws{display:flex;gap:.6em;align-items:baseline;font-size:.88em}
+.ws .k{font-family:var(--mono);font-size:.66em;color:var(--label);font-weight:500;min-width:6.4em;text-transform:uppercase;letter-spacing:.08em;flex:none}
+.prob{gap:.55em}
+.prob .pq{min-height:2.7em}
+.given{display:grid;grid-template-columns:auto 1fr;gap:.15em .9em;margin:0;background:var(--sunk);border-radius:10px;padding:.45em .75em;font-size:.76em;align-items:baseline}
+.given dt{font-family:var(--display);font-size:.78em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.given dd{margin:0;font-family:var(--mono);font-weight:600}
+.sn{display:flex;align-items:center;gap:.3em;width:fit-content;max-width:100%;border:1.5px solid var(--line);border-radius:12px;padding:.3em .7em .3em .5em;background:var(--surface);font-family:var(--mono);font-size:.95em}
+.sn:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.sn input{border:0;background:transparent;font:inherit;color:var(--ink);outline:none;padding:.05em .15em;border-bottom:2px dashed var(--line);border-radius:0}
+.sn input:focus{border-bottom-color:var(--accent)}
+.sn input::placeholder{color:var(--muted);opacity:.55}
+.sn .m{width:3.6em;text-align:right;font-weight:600}
+.sn .x{color:var(--muted)}
+.sn .e{width:1.9em;font-size:.68em;align-self:flex-start;margin:-.15em 0 0 -.2em;font-weight:600}
+.sn .u{color:var(--muted);margin-left:.15em}
+.reg{display:flex;align-items:center;gap:.6em;font-size:.82em;font-weight:700}
+.reg select{flex:1}
+.sol{line-height:1.5}
+.prob .out{display:flex;flex-direction:column;gap:.45em}
+/* align every row (question, given/find, answer, region, buttons) across the three cards */
+@supports (grid-template-rows:subgrid){
+  #probs .prob{display:grid;grid-row:span 7;grid-template-rows:subgrid;row-gap:.55em;align-content:start}
+  #probs .prob .pq{min-height:0}
+  #probs .sn{justify-self:start}
+  #probs .acts{align-self:end}
+}
+.prob .acts .btn{font-size:.76em}
+.sol{background:var(--sunk);border-radius:10px;padding:.45em .7em;font-size:.76em}
+.strip{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.strip button{border:2px solid var(--line);border-radius:12px;padding:.25em .2em .2em;cursor:pointer;background:var(--surface);display:flex;flex-direction:column;align-items:center;gap:.1em;min-width:0;position:relative;overflow:hidden}
+.strip button::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:var(--bc)}
+.strip button .ic{width:1.05em;height:1.05em;margin-top:.2em;color:var(--ink)}
+.strip button span{font-weight:700;font-size:.7em;line-height:1.1}
+.strip button[aria-selected="true"]{background:var(--pick);color:var(--ink);border-color:var(--accent)}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:.1em .8em;font-size:.8em;align-items:baseline;margin:0}
+.facts dt{font-family:var(--display);font-size:.72em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.facts dd{margin:0;font-weight:700}
+.pill{background:var(--accent-soft);border-radius:99px;padding:.25em .9em;font-size:.72em;font-weight:700}
+.swatch{height:3.2em;border-radius:12px;border:1px solid var(--line)}
+.rainbow{height:.75em;border-radius:6px;background:linear-gradient(90deg,#7a3fd0 0%,#4b3fd8 10%,#2f6fe0 22%,#21a7c4 31%,#3fb34f 40%,#9cc93a 50%,#f2c230 57%,#f39a2b 64%,#e23b2e 75%,#b5262a 100%);position:relative}
+.rainbow b{position:absolute;top:-.3em;width:4px;height:1.35em;background:var(--ink);border-radius:2px;transform:translateX(-50%)}
+.roy{display:flex;justify-content:space-between;font-family:var(--display);font-weight:700;font-size:.85em}
+.srcs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.3em}
+.srcs .btn{justify-content:flex-start;font-size:.68em;padding:.28em .5em}
+.srcs .btn i{width:.8em;height:.8em;border-radius:3px;flex:none}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(6.2em,1fr));gap:.45em}
+.tile{justify-content:flex-start;text-align:left}
+.tile i{width:.7em;height:.7em;border-radius:3px;flex:none}
+.slots{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:.35em}
+.slot{min-height:3em;border:2px dashed var(--line);border-radius:10px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:.2em;font-weight:700;font-size:.78em;text-align:center;cursor:pointer;background:var(--surface);color:var(--ink);overflow-wrap:anywhere}
+.slot small{font-family:var(--mono);color:var(--muted);font-size:.7em;font-weight:400}
+.slot.filled{border-style:solid}
+.slot.correct{border-color:var(--ok);background:var(--ok-bg)}
+.slot.wrong{border-color:var(--bad);background:var(--bad-bg)}
+.match{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.3fr);gap:.35em .9em;align-items:center;font-size:.88em}
+.match .res{font-size:.78em}
+.myth{align-items:center;text-align:center}
+.myth p.st{font-weight:700;min-height:2.5em;font-size:.92em}
+.myth .choices{justify-content:center}
+.timer{display:flex;gap:.5em;align-items:center;flex-wrap:wrap}
+.timer output{font-family:var(--mono);font-weight:600;font-size:1.05em;min-width:3em;font-variant-numeric:tabular-nums}
+.big-q{font-family:var(--display);font-weight:700;font-size:1.4em;line-height:1.14}
+.tile{white-space:nowrap}
+.criteria label{display:flex;gap:.5em;align-items:flex-start;cursor:pointer;font-size:.8em}
+.criteria input{width:1em;height:1em;margin-top:.18em;accent-color:var(--ok);flex:none}
+.flow3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75em}
+.flow3 h3{font-size:1.15em}
+.rate{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.5em 1em;align-items:center}
+.rate .rev{grid-column:1/-1;font-size:.78em}
+.rate .rev:empty{display:none}
+
+/* ---------- overlays ---------- */
+#notes{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(64px + env(safe-area-inset-bottom,0px));width:min(500px,calc(100vw - 32px));max-height:62vh;overflow:auto;
+  background:var(--surface);border:1.5px solid var(--ink);border-radius:14px;padding:14px 18px;box-shadow:0 18px 40px rgba(10,12,30,.3);z-index:20;display:flex;flex-direction:column;gap:8px;font-size:14.5px}
+#notes .nh{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--label);font-weight:500}
+#notes ol,#notes ul{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:.4em}
+#notes li{padding:4px 6px;border-radius:8px}
+#notes li.cur{background:var(--pick);color:var(--ink);outline:1.5px solid var(--accent)}
+#notes .x{font-size:13.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:8px}
+aside.notes{display:none}
+#ov{position:fixed;inset:0;background:rgba(6,8,26,.55);z-index:30;display:flex;align-items:center;justify-content:center;
+  padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+#ov .p{background:var(--paper);border-radius:16px;max-width:980px;width:100%;max-height:100%;overflow:auto;padding:18px 20px;display:flex;flex-direction:column;gap:12px;font-size:15px}
+#ov .g{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:6px}
+#ov .g button{text-align:left;border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 10px;cursor:pointer;display:flex;gap:8px;align-items:baseline}
+#ov .g button[aria-current="true"]{background:var(--pick);color:var(--ink);border-color:var(--accent)}
+#ov .g small{font-family:var(--mono);color:var(--muted);min-width:1.8em}
+#ov h4{margin:4px 0 0;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--label);grid-column:1/-1;font-weight:500}
+
+
+/* ===== v4 projector layout: larger type, slides fill the full height ===== */
+#deck{font-size:32px}
+.slide{padding:26px 46px;gap:.4em}
+.sh{gap:.05em}
+h2{font-size:1.55em}
+.big-q{font-size:1.3em}
+h3{font-size:1em}
+.lead{font-size:.96em;max-width:none}
+.sm{font-size:.86em}
+.xs{font-size:.7em}
+.do{font-size:.8em}
+.label,.def>b{font-size:.56em}
+.btn{font-size:.84em;min-height:2em}
+.fb{font-size:.8em}
+.ctl{font-size:.82em}
+.ro small{font-size:.52em}
+.ro>span{font-size:.95em}
+.chips>span{font-size:.84em}
+table.t{font-size:.92em}
+table.t th,table.t td{padding:.32em .6em}
+.card{padding:.6em .8em;gap:.45em}
+.dense{font-size:.94em}
+.dense>.sh{font-size:1.064em}
+.body{flex:1;min-height:0;display:flex;flex-direction:column;gap:.5em}
+.fill{flex:1 1 0;min-height:0}
+.cols.fill,.cols.grow{align-items:stretch}
+.col{display:flex;flex-direction:column;gap:.5em;min-height:0;min-width:0}
+.cols.rows-eq{grid-auto-rows:1fr}
+.evenly{justify-content:space-evenly}
+.vc{justify-content:center}
+.cv{position:relative;flex:1 1 0;min-height:3em}
+.cv>canvas,.cv>svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.spread-list{flex:1;justify-content:space-evenly;font-size:.92em}
+.choices.tall{flex:1;justify-content:space-evenly}
+.choices.tall .btn{min-height:2.3em;font-size:.92em}
+.vs{align-items:stretch}
+.cmpc{justify-content:center;gap:.4em}
+.cmpc h3{font-size:1.25em}
+.cmpi{width:2.6em;height:2.6em}
+.cmpi .ic{width:1.45em;height:1.45em}
+.cmpt{font-size:.58em}
+.cmpn{font-size:1.5em}
+.cmpx{font-size:.9em;color:var(--muted)}
+.vs .mid{width:2.3em;height:2.3em}
+.dq{font-size:1.22em}
+.card.target{align-items:center}
+.card.target .n{font-size:2.3em}
+.card.target>p{flex:1 1 0;min-width:0;margin:0}
+.we .ws{font-size:1em}
+.we .ws .k{font-size:.58em;min-width:7.4em}
+.we h3{font-size:1.06em}
+.eq.big{font-size:2.3em}
+.flow3 h3{font-size:1.45em}
+.flow3 .card p.timeline{font-family:var(--mono);font-weight:600;color:var(--accent);font-size:.9em}
+.criteria label{font-size:.9em}
+.samp{font-size:.86em}
+.timer output{font-size:1.25em}
+textarea{font-size:.86em}
+textarea.fill{min-height:3em}
+.swatch.fill{min-height:2.2em}
+#probs{grid-template-rows:repeat(6,auto) minmax(0,1fr)}
+#probs .pq{font-size:.95em}
+.given{font-size:.84em}
+.sn{font-size:1.05em}
+.reg{font-size:.88em}
+.prob .acts .btn{font-size:.84em}
+.sol{font-size:.82em}
+.tiles.big{grid-template-columns:repeat(7,minmax(0,1fr));grid-auto-rows:1fr;gap:.5em}
+.tile.big{flex-direction:column;justify-content:center;gap:.35em;position:relative;overflow:hidden;font-size:.95em;white-space:nowrap;padding-top:.8em}
+.tile.big::before{content:"";position:absolute;left:0;right:0;top:0;height:7px;background:var(--bc)}
+.tile.big .ic{width:1.9em;height:1.9em}
+.slots.fill{grid-auto-rows:1fr}
+.slot{font-size:.95em;gap:.2em}
+.slot small{font-size:.62em}
+.slot .sc i{width:.8em;height:.8em}
+.pool .tile{font-size:.9em;min-height:2.3em}
+.mgrid.fill{grid-auto-rows:1fr}
+.mt .st{font-size:1em;min-height:0}
+.mt select{font-size:.82em}
+.mt .res{font-size:.72em}
+.myth{justify-content:center;gap:.6em}
+.myth p.st{font-size:1.02em;min-height:0}
+.myth .btn{font-size:.92em;min-width:4.6em;justify-content:center}
+.myth .fb{font-size:.78em;text-align:left}
+#band-detail .card{justify-content:center}
+#band-detail .facts{font-size:.84em}
+#band-detail ul.clean{font-size:.86em}
+.rate.fill{align-content:space-evenly}
+.zoomed{position:relative;z-index:41;transition:transform .3s ease;background:var(--surface);border-radius:14px;box-shadow:0 24px 70px rgba(10,12,30,.28)}
+.zshade{position:absolute;inset:0;background:var(--paper);opacity:.96;z-index:40;cursor:zoom-out}
+
+
+.label,.def>b{font-size:.64em}
+.ro small{font-size:.6em}
+.strip button span{font-size:.8em}
+.choices.tall .btn{white-space:normal;text-align:left;line-height:1.2}
+.choices.even .btn.wrap{text-align:center;justify-content:center}
+#probs{row-gap:.7em}
+#probs .pq{font-size:1.02em}
+.given{font-size:.92em;padding:.55em .8em}
+.sn{font-size:1.2em}
+.reg{font-size:.95em}
+.prob .acts .btn{font-size:.92em}
+.mt{justify-content:space-between}
+.mt .st{flex-shrink:0}
+.mgrid.fill{grid-auto-rows:minmax(0,1fr)}
+#match-x .mx{font-size:.84em}
+.mt .st{font-size:1.1em}
+.mt select{font-size:.9em;min-height:2.1em}
+.flow3 h3{font-size:1.9em}
+.flow3 .card p{font-size:1.1em}
+.flow3 .card p.timeline{font-size:1.1em}
+.timer{flex-wrap:nowrap}
+#revisit h3{font-size:1.12em}
+#revisit p.sm{font-size:1em}
+#revisit .fb{font-size:.9em}
+.rate p{font-size:1.2em}
+.rate .btn{font-size:1.05em;min-width:4.6em;justify-content:center}
+.col>.card.fill.vc h3,.cols>.col>.card.vc h3{font-size:1.08em}
+
+/* never hide content: equal rows stay inside the slide, autofit shrinks text if needed */
+.cols.rows-eq{grid-auto-rows:minmax(0,1fr)}
+/* correct / wrong marks as corner badges so labels keep their width */
+.btn{position:relative}
+.btn.correct::after,.btn.wrong::after{position:absolute;top:-.55em;right:-.5em;width:1.35em;height:1.35em;border-radius:50%;display:grid;place-items:center;font-size:.72em;line-height:1;font-weight:700;color:var(--paper);box-shadow:0 0 0 2px var(--paper);z-index:2}
+.btn.correct::after{content:"✓";background:var(--ok)}
+.btn.wrong::after{content:"✗";background:var(--bad)}
+.tile.big.correct::after,.tile.big.wrong::after{top:.55em;right:.55em}
+/* sentence starters (students write in notebooks) */
+.crit3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.3em 1.6em}
+.crit3 label{font-size:.82em}
+.cer-head{display:flex;align-items:center;justify-content:space-between;gap:1em}
+.cer-s{display:none;background:var(--accent-soft);border-radius:10px;padding:.55em .75em;font-size:.9em;line-height:1.35}
+.cer-s p{margin:0}.cer-s .label{margin-bottom:.25em}
+.show-sample .cer-s{display:block}
+.show-sample .cols .card{justify-content:flex-start;gap:.7em}
+.show-sample .cols .card>.starters,.show-sample .cols .card>.do{display:none}
+#cer-sample .b,.show-sample #cer-sample .a{display:none}
+.show-sample #cer-sample .b{display:inline}
+.starters{margin:0;padding-left:1.35em;display:flex;flex-direction:column;gap:.35em;font-size:.95em}
+.card.fill>.starters,.card.evenly>.starters{flex:1;justify-content:space-evenly}
+.starters li::marker{color:var(--accent);font-weight:700}
+.starters li{padding-left:.15em}
+.starters.row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.4em 1.6em;padding-left:1.35em;flex:none;font-size:.9em}
+.wb{display:flex;align-items:center;gap:.5em .7em;flex-wrap:wrap}
+.wb .label{flex:none}
+.wb .chips>span{font-size:.8em;background:var(--accent-soft)}
+#band-detail .card{justify-content:space-evenly}
+
+/* card contents never squash into each other; only pictures and simulations may shrink */
+.card>*{flex-shrink:0}
+.card>.cv,.card>.fill,.card>.swatch{flex-shrink:1}
+.card.fill>.starters,.card.evenly>.starters{flex:1 0 auto}
+.choices.tall{flex:1 0 auto}
+.spread-list{flex:1 0 auto}
+.myth p.st{min-height:auto}
+/* ---------- phone / small screens: reflow ---------- */
+@media (max-width:760px) and (pointer:coarse),(max-width:480px),(max-height:440px) and (pointer:coarse){
+  .fill,.cv{flex:none}
+  .cv{height:12em}
+  .tiles.big{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #probs{grid-template-rows:none}
+  .mgrid.fill,.slots.fill,.cols.rows-eq{grid-auto-rows:auto}
+  body{overflow:auto;height:auto;min-height:100%}
+  #viewport{overflow:visible}
+  #deck{position:static;width:auto;height:auto;transform:none!important;font-size:16px}
+  .slide{position:static;border-radius:14px;padding:22px 16px;margin-bottom:12px;overflow:visible}
+  .slide .fut{display:none}
+  .cols.c2,.cols.c2e,.cols.c3,.flow3,.vs{grid-template-columns:minmax(0,1fr)}
+  .vs .mid{justify-self:center}
+  .sh-top{flex-direction:column;align-items:flex-start}
+  .rail{justify-content:flex-start}
+  h1{font-size:2.6em}
+  .dense,.dense>.sh{font-size:1em}
+  .slots,.pool{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .strip{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .srcs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .mgrid{grid-template-columns:minmax(0,1fr)}
+  .starters.row3{grid-template-columns:minmax(0,1fr)}.crit3{grid-template-columns:minmax(0,1fr)}.cer-head{flex-wrap:wrap}
+  #band-detail{grid-template-columns:minmax(0,1fr)!important}
+  .choices.g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hide-sm{display:none}
+  .top{flex-wrap:wrap}
+  .nav{position:sticky;bottom:0;background:var(--bg)}
+}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+/* page controls take the heading face; answer and sim buttons keep the reading face */
+.nav .btn,.nav .ttl{font-family:var(--display)}
+
+/* ===== Unit 2 component kit: sims, checks, glossary (shared by every surface) ===== */
+.seg{display:inline-flex;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper)}
+.seg button{border:0;background:transparent;padding:.35em .8em;font-weight:700;cursor:pointer;min-height:2.2em;white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--pick);color:var(--ink);border-color:var(--accent)}
+/* glossary terms */
+.term{border:0;background:none;padding:0;color:inherit;font:inherit;font-weight:700;cursor:help;border-bottom:2px dotted color-mix(in srgb,var(--accent) 70%,transparent);line-height:1.2}
+.gpop{position:fixed;z-index:60;max-width:min(340px,calc(100vw - 24px));background:var(--paper);border:1.5px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:.7em .9em;font-size:15px;line-height:1.4}
+.gpop b{font-family:var(--display);font-size:1.08em}
+.gpop .es{display:block;margin-top:.35em;font-size:.88em;color:var(--muted)}
+.gpop .es i{color:var(--ink);font-style:normal;font-weight:700}
+
+/* checks */
+.check{border:1.5px solid var(--line);border-radius:14px;background:var(--paper);padding:.8em 1em;display:flex;flex-direction:column;gap:.55em}
+.check .q{font-weight:700;margin:0}
+.check .opts{display:flex;flex-direction:column;gap:.4em}
+.check .opts .btn{display:block;justify-content:flex-start;text-align:left;white-space:normal;line-height:1.3;padding:.45em .8em;font-weight:600}
+.check .fb{margin:0;font-size:.94em;border-radius:10px;padding:.5em .7em;display:none}
+.check .fb.ok{display:block;background:var(--ok-soft);border-left:4px solid var(--ok)}
+.check .fb.no{display:block;background:var(--bad-soft);border-left:4px solid var(--bad)}
+.check .meta{display:flex;justify-content:space-between;gap:.5em;font-family:var(--display);font-size:.68em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+
+/* sim shells */
+.sim{display:flex;flex-direction:column;gap:.55em}
+.sim .cv{position:relative;width:100%;border-radius:12px;overflow:hidden;background:var(--paper2);border:1.5px solid var(--line)}
+.sim canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}
+.sim .ctl{display:flex;flex-wrap:wrap;gap:.45em;align-items:center}
+.sim .ctl .grp{display:flex;align-items:center;gap:.4em;flex-wrap:wrap}
+.sim .ctl .lab{font-family:var(--display);font-size:.68em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.ros{display:flex;flex-wrap:wrap;gap:.45em}
+.ro{background:var(--sunk);border-radius:10px;padding:.3em .6em;min-width:5.5em}
+.ro small{display:block;font-family:var(--display);font-size:.62em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);white-space:nowrap;font-weight:700}
+.ro span{font-family:var(--mono);font-weight:600;font-variant-numeric:tabular-nums}
+.simnote{font-size:.82em;color:var(--muted);margin:0}
+.say{font-size:.95em;margin:0;border-radius:10px;padding:.5em .7em;background:var(--accent-soft)}
+.say.ok{background:var(--ok-soft)}.say.no{background:var(--bad-soft)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* mass table */
+.tscroll{overflow-x:auto}
+table.masst{width:100%;border-collapse:collapse;font-size:.86em}
+table.masst th{font-family:var(--display);font-size:.72em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);text-align:left;padding:.4em .45em;border-bottom:2px solid var(--line);vertical-align:bottom;font-weight:700}
+table.masst td{padding:.45em .45em;border-bottom:1px solid var(--line);vertical-align:middle}
+table.masst td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+table.masst tr.pe td{background:color-mix(in srgb,var(--warm-soft) 70%,transparent)}
+table.masst .calc{display:block;font-family:var(--mono);font-size:.78em;color:var(--muted)}
+/* model builder */
+.mbhead{margin:0;font-size:1em}
+.mbgrid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:.8em;align-items:center}
+.mbopts{display:flex;flex-direction:column;gap:.55em}
+.mbrow{display:flex;flex-direction:column;gap:.25em}
+.mbrow .lab{font-family:var(--display);font-size:.68em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.mbchoices{display:flex;flex-wrap:wrap;gap:.35em}
+.mbchoices .btn{font-size:.82em;min-height:2.1em;padding:.25em .65em;white-space:normal;text-align:left;font-weight:600}
+.mbprev svg{width:100%;max-width:220px;display:block;margin:0 auto}
+.mbuild>.btn.primary{align-self:flex-start}
+@media (max-width:600px){.mbgrid{grid-template-columns:minmax(0,1fr)}}
+/* timeline */
+ol.tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.45em;counter-reset:tl}
+.tlc{display:grid;grid-template-columns:auto 52px minmax(0,1fr) minmax(0,1.6fr) auto;gap:.5em;align-items:center;background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:.35em .5em;counter-increment:tl}
+.tlc .grip{cursor:grab;color:var(--muted);font-weight:800;letter-spacing:-.15em;padding:0 .2em;touch-action:none;user-select:none}
+.tlc .thumb svg{width:52px;height:52px;display:block}
+.tlc .tn{font-size:.92em;line-height:1.2}
+.tlc .tn::before{content:counter(tl)". ";font-family:var(--mono);color:var(--muted);font-size:.85em}
+.tlc select{font-size:.82em;width:100%}
+.tlc .ud{display:flex;flex-direction:column;gap:2px}
+.tlc .ud .btn{min-height:1.5em;padding:0 .45em;font-size:.7em}
+.tlc.dragging{box-shadow:var(--shadow);border-color:var(--accent);opacity:.92}
+.tlc{position:relative}
+.tlc.ok{border-color:var(--ok);background:var(--ok-soft)}
+.tlc.ok::after,.tlc.no::after{position:absolute;top:-7px;right:-7px;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--paper);box-shadow:0 0 0 2px var(--paper)}
+.tlc.ok::after{content:"✓";background:var(--ok)}
+.tlc.no::after{content:"✗";background:var(--bad)}
+.tlc.no{border-color:var(--bad);background:var(--bad-soft)}
+@media (max-width:600px){.tlc{grid-template-columns:auto 40px minmax(0,1fr) auto}.tlc .thumb svg{width:40px;height:40px}.tlc select{grid-column:2/4}}
+
+.sim .seg button{font-size:.82em;padding:.25em .65em;min-height:2.1em}
+.sim .ctl .btn{font-size:.85em;min-height:2.1em;padding:.25em .7em}
+.checkset{display:flex;flex-direction:column;gap:.5em;margin:0 0 1em}
+.checkset .tabs{display:flex;gap:.35em;flex-wrap:wrap}
+.checkset .tabs .btn{font-size:.78em;min-height:1.9em;padding:.15em .7em}
+.checkset .tabs .btn.done::before{content:"✓ ";color:var(--ok)}
+.checkset>.check{margin:0!important}
+table.masst .btn.sm{font-size:.85em}
+/* an element symbol or formula inside a capitalised label keeps its own case: "Na", not "NA" */
+.chem{text-transform:none!important}
+
+/* ===== Slide styles shared by every lesson deck: simulations on the projector, common layouts ===== */
+:root{--paper2:#f4f7f5;--pos:#c0391b;--neg:#2b55b8;--neu:#6b7176;--gold:#9c7400;--ok-soft:var(--ok-bg);--bad-soft:var(--bad-bg)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper2:#182523;--pos:#ff9a6c;--neg:#8eb1ff;--gold:#e6c65c;--neu:#9ba49f}}
+:root[data-theme="dark"]{--paper2:#182523;--pos:#ff9a6c;--neg:#8eb1ff;--gold:#e6c65c;--neu:#9ba49f}
+.slide .sim{flex:1 1 auto;min-height:0;gap:.35em;display:flex;flex-direction:column}
+.slide .sim .cv{aspect-ratio:auto!important;flex:1 1 auto;min-height:6em}
+.slide .sim .ctl{gap:.3em .5em}
+.slide .sim .ctl .lab{font-size:.48em}
+.slide .seg button{font-size:.72em;padding:.2em .6em;min-height:1.9em}
+.slide .sim .ctl{justify-content:center}
+.slide .sim .ctl .btn,.slide .sim>.btn{font-size:.72em;min-height:1.9em;padding:.2em .7em}
+.slide .sim .ctl select{font-size:.62em}
+/* Readouts sit in equal, fixed columns, so a longer value never re-wraps the row and moves the controls on a projector.
+   A sim with many readouts can switch to rows in its lesson CSS: grid-auto-flow:row plus grid-template-columns. */
+.slide .sim .ros{gap:.3em;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr)}
+.slide .sim .ro{padding:.15em .5em;min-width:0}
+.slide .sim .ros .ro small{white-space:normal}
+.slide .sim .ro small{font-size:.42em}
+.slide .sim .ro>span{font-size:.78em} /* the value only; nested markup (isotope symbols) keeps its own sizes */
+.slide .simnote{font-size:.48em;color:var(--muted);margin:0}
+.slide .say{font-size:.66em;margin:0;border-radius:10px;padding:.35em .6em;background:var(--accent-soft)}
+/* A sim's message box keeps one height, so a longer message never squeezes the canvas or pushes the controls. Each lesson
+   sets --say-lines on the sim to its longest message, measured with tools/qa/simshift.js; a hidden message keeps its space. */
+.slide .sim .say{line-height:1.4;min-height:calc(var(--say-lines,1)*1.4em + .7em)}
+.slide .sim .say[hidden]{display:block!important;visibility:hidden}
+.slide .say.ok{background:var(--ok-bg)}.slide .say.no{background:var(--bad-bg)}
+.slide .sim>.btn.primary{align-self:flex-start}
+.post{margin:0;padding-left:1.25em;display:flex;flex-direction:column;gap:.35em}
+.post li::marker{color:var(--accent);font-weight:700}
+.wsteps{display:flex;flex-direction:column;gap:.3em}
+.wsteps p{margin:0;display:flex;gap:.6em;align-items:baseline}
+.wsteps .k{font-family:var(--mono);font-size:.56em;letter-spacing:.08em;text-transform:uppercase;color:var(--label);min-width:6em;flex:none;font-weight:500}
+table.oc{width:100%;border-collapse:collapse;font-size:.74em}
+table.oc th{font-family:var(--display);font-size:.7em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);text-align:left;padding:.3em .45em;border-bottom:2px solid var(--line);font-weight:700}
+table.oc td{padding:.4em .45em;border-bottom:1px solid var(--line);vertical-align:top}
+.stm{margin:0;flex:1;min-height:0;display:flex;flex-direction:column}
+.stm svg{width:100%;flex:1;min-height:2.5em;height:auto;display:block;border-radius:12px}
+.stm figcaption{font-size:.55em;color:var(--muted);margin-top:.25em}
+svg.dia text{font-size:15px}
+.slide .check{font-size:.8em}
+
+.cols.c2w{grid-template-columns:minmax(0,1fr) minmax(0,1.5fr)}
+.cols.c2wl{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}
+.choices.list .btn{white-space:normal;text-align:left;justify-content:flex-start;line-height:1.25}
+.choices.even .btn{white-space:normal;line-height:1.2}
+.criteria label{display:block;padding-left:1.5em;text-indent:-1.5em}
+.criteria input{margin:0 .5em 0 0;vertical-align:-.1em}
+@media (max-width:760px) and (pointer:coarse),(max-width:480px),(max-height:440px) and (pointer:coarse){.cols.c2w,.cols.c2wl{grid-template-columns:minmax(0,1fr)}}
+
+/* ===== Projector floor: no slide text below 18 px on the 1600 px canvas, even after autofit shrinks a card ===== */
+.eyebrow{font-size:max(.6em,19px)}
+.rail button{font-size:18px;padding:2px 12px 2px 3px}
+.rail b{width:28px;height:28px;font-size:18px}
+.slide [data-step]:not([data-nobadge])::before{width:30px;height:30px;font-size:18px;left:-14px;top:-14px}
+.kbd{font-size:max(.8em,18px)}
+.slide figcaption,.stm figcaption{font-size:max(.55em,18px)}
+.slide th,.slide table.oc th{font-size:max(.7em,18px)}
+.slide td{font-size:max(1em,18px)}
+.slide .sim .ctl .lab,.slide .sim .grp .lab,.slide .simnote,.slide .sim .ro small,.slide .mbrow .lab{font-size:max(.5em,18px)}
+.slide .sim .ctl select,.slide .sim select{font-size:max(.62em,19px)}
+.slide .seg button,.slide .sim .ctl .btn,.slide .sim .grp .btn,.slide .sim>.btn,.slide .sim .btn{font-size:max(.72em,19px)}
+.slide .wsteps .k,.slide .label,.slide .def>b,.slide .tag,.slide .ro small,.slide .cmpt,.slide .ordscale,.slide .bandlabels{font-size:max(.56em,18px)}
+.slide .xs{font-size:max(.66em,18px)}
+.slide sup,.slide sub{font-size:.7em}
+
+/* ===== Lesson 2.3 deck additions ===== */
+.cover h1{font-size:2.1em;line-height:1.05}
+.cover23{display:flex;align-items:center;gap:1.2em;flex:1 1 auto;min-height:0}
+.cover23 figure{margin:0}
+.ctile svg{height:8.4em;width:auto;display:block}
+.cmix{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:.3em}
+.cmix .cq{font-family:var(--display);font-weight:700;font-size:1.3em;margin:0}
+.cmix .cq b{color:var(--warm)}
+.cline svg{width:100%;height:auto;max-height:8.6em;display:block}
+.dtile{margin:0;display:flex;justify-content:center}
+.dtile svg{height:6.4em;width:auto;display:block}
+.big23{font-family:var(--mono);font-size:1.15em;margin:0}
+.fig23{margin:0;display:flex;justify-content:center;align-items:center;flex:1 1 auto;min-height:0}
+.fig23 svg{width:100%;height:auto;max-height:100%;display:block}
+.eq23{font-size:1.05em}
+.eqs{font-size:.9em}
+.slide table.mn23 td:not(:first-child){font-family:var(--mono)}
+.slide .jn{font-family:var(--mono);font-weight:600;min-width:1.6em;text-align:center;font-variant-numeric:tabular-nums;font-size:max(.72em,19px)}
+.slide [data-sim=isotopeJar] .cv,.slide [data-sim=massSpec] .cv{min-height:7em}
+.slide table.oc.mn23{font-size:.92em}
+.slide table.oc th{font-size:max(.7em,18px)}
+.post .ex{display:inline-block;font-family:var(--mono);font-size:.62em;background:var(--ok-bg);border-radius:6px;padding:.05em .5em;margin-left:.3em;white-space:nowrap;vertical-align:middle}
+.syn23 .post{font-size:1.04em;gap:.5em;flex:1 1 auto;justify-content:space-evenly}
+.garow{flex-direction:row;align-items:center;gap:1em}
+.garow .label{flex:none}
+.garow .fig23 svg{max-height:4.8em;width:auto;max-width:100%}
+/* Message reserves: the longest message each sim gives on these slides, in lines (measured with tools/qa/simshift.js),
+   so feedback never squeezes the canvas or moves a control */
+.slide [data-sim=massSpec],.slide [data-sim=isotopeJar]{--say-lines:2}
+/* mass spectrum controls on fixed tracks: elements on one row; the peak buttons fill a fixed slot (2 or 3 isotopes)
+   beside Show the average, so changing element never moves a control */
+.slide [data-sim=massSpec] .ctl{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.3em .6em}
+.slide [data-sim=massSpec] .ctl>.grp{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center}
+.slide [data-sim=massSpec] .ctl>.grp:first-child:nth-last-child(3){grid-column:1/-1}
+.slide [data-sim=massSpec] .ctl .grp .grp{display:block}
+.slide [data-sim=massSpec] .ctl .seg{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr)}
+/* isotope jar controls on fixed tracks: elements on one row; the isotope counters share a fixed slot beside the two buttons */
+.slide [data-sim=isotopeJar] .ctl{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:.3em .6em}
+.slide [data-sim=isotopeJar] .ctl>.grp:first-child:nth-last-child(4){grid-column:1/-1;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center}
+.slide [data-sim=isotopeJar] .ctl .seg{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr)}
+.slide [data-sim=isotopeJar] .ctl>span.grp{justify-content:space-evenly}
+.slide [data-sim=isotopeJar] .ctl .grp .grp .lab{min-width:3.4em;text-align:right}
+.slide [data-sim=isotopeJar] .ros{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.3fr)}
+
+a.brand{color:inherit;text-decoration:none}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="index.html" title="Unit 2 home"><i aria-hidden="true"></i>Atomic Mass · 2.3</a>
+  <nav class="secs" id="secs" aria-label="Lesson sections"></nav>
+  <div class="count" id="count">1 / 21</div>
+</header>
+<div class="ticks" id="ticks" aria-hidden="true"></div>
+
+<div id="viewport"><div id="deck">
+
+<!-- 1 COVER -->
+<section class="slide cover" data-sec="Start" data-title="Average atomic mass">
+  <p class="eyebrow">Chemistry · Unit 2 · Lesson 2.3 · TEKS C.6(D)</p>
+  <h1>Average atomic mass</h1>
+  <p class="sub">Atoms contain whole particles, yet chlorine's atomic mass is 35.45. A mass spectrometer and a weighted average explain why.</p>
+  <div class="cover23">
+    <figure class="ctile" data-tile="17|Cl|chlorine|35.45"></figure>
+    <div class="cmix">
+      <p class="cq">17 protons. 18 or 20 neutrons. Why <b>35.45</b>?</p>
+      <figure class="cline" data-fig="line" data-el="Cl"></figure>
+    </div>
+  </div>
+  <div class="row" style="margin-top:.3em"><button class="btn primary" data-go="next">Start the lesson →</button></div>
+  <div class="howto"><span><span class="kbd">→</span> next step</span><span><span class="kbd">←</span> back a step</span><span><span class="kbd">Shift</span>+<span class="kbd">→</span> skip to next slide</span><span><span class="kbd">N</span> teacher notes</span><span><span class="kbd">O</span> all slides</span><span><span class="kbd">Z</span> or double-click a card: zoom</span></div>
+  <aside class="notes"><ul>
+    <li><b>Pacing.</b> One 45 to 50 minute period. Slides 1 to 4: 7 min. Slides 5 to 8 (measuring and the jar): 14 min. Slides 9 to 11 (calculating and meaning): 11 min. Slides 12 and 14: 5 min. Checkpoint slides 15 to 18: 8 min. Wrap-up slides 19 to 21: 5 min.</li>
+    <li><b>If time runs short.</b> Slide 13 (Honors) and checkpoint question 3 can move to homework; the reading covers both in §2.3.3.</li>
+    <li><b>Textbook link.</b> Each slide's label shows the matching reading section, for example §2.3.2. Assign the reading before or after class.</li>
+    <li><b>Practice.</b> Missions for 2.3 (Spectrum lab, Isotopes at work, Mix lab) follow this lesson.</li>
+  </ul></aside>
+</section>
+
+<!-- 2 DRIVING QUESTION -->
+<section class="slide" data-sec="Start" data-title="Driving question" data-rail="Observe|Ask|Write" hidden>
+  <header class="sh"><div class="sh-top"><p class="eyebrow">Driving question · Textbook 2.3 opener</p><ol class="rail"></ol></div><h2>Chlorine's atomic mass</h2></header>
+  <div class="body">
+    <div class="cols c2e fill" data-step="1">
+      <div class="card vc"><p class="label">Chlorine-35</p><p class="big23">17 p + 18 n = <b>35</b> particles</p><p class="label">Chlorine-37</p><p class="big23">17 p + 20 n = <b>37</b> particles</p></div>
+      <div class="card vc"><p class="label">The periodic table says</p><figure class="dtile" data-tile="17|Cl|chlorine|35.45"></figure></div>
+    </div>
+    <div class="card flat" data-step="2" style="padding:.6em 1em">
+      <p class="label">Our question for this lesson</p>
+      <p class="dq">If every atom is built from whole particles, why is the atomic mass on the periodic table a decimal?</p>
+    </div>
+    <div class="card" data-step="3">
+      <div class="row between" style="flex-wrap:nowrap"><p class="do">Write your first idea in your notebook. Start with: <i>I think chlorine's mass is 35.45 because…</i></p>
+        <div class="timer" data-timer="60"><button class="btn ghost">Restart 60 s</button><output>1:00</output></div></div>
+    </div>
+  </div>
+  <aside class="notes"><ol>
+    <li data-n="1"><b>Observe · 1 min.</b> One-line recap from Lesson 2.2: isotopes of an element have the same number of protons but different numbers of neutrons. Ask: neither isotope has 35.45 particles, so where does 35.45 come from?</li>
+    <li data-n="2"><b>Ask · 30 s.</b> Read the driving question aloud.</li>
+    <li data-n="3"><b>Write · 1 min.</b> Collect ideas such as "an average" or "rounding." Return to them on slide 20.</li>
+  </ol></aside>
+</section>
+
+<!-- 3 PREDICTIONS -->
+<section class="slide" data-sec="Start" data-title="Predictions" data-rail="Closer to 35|One atom|Method|Confidence" hidden>
+  <header class="sh"><div class="sh-top"><p class="eyebrow">Commit to a prediction</p><ol class="rail"></ol></div><h2>Predict now, then check at the end</h2></header>
+  <div class="body">
+    <p class="do">Answer each question on your own. There are no wrong predictions.</p>
+    <div class="cols c3 fill">
+      <div class="card" data-step="1"><h3>1. Chlorine's 35.45 is closer to 35 than to 37 because…</h3>
+        <div class="choices list tall" data-pred="p1"><button class="btn" data-v="more">most chlorine atoms are chlorine-35</button><button class="btn" data-v="light">lighter atoms count for more</button><button class="btn" data-v="round">scientists round the value down</button></div></div>
+      <div class="card" data-step="2"><h3>2. Some chlorine atoms have a mass of 35.45 u.</h3>
+        <div class="choices list tall" data-pred="p2"><button class="btn" data-v="true">True</button><button class="btn" data-v="false">False</button></div></div>
+      <div class="card" data-step="3"><h3>3. To find an average atomic mass, you…</h3>
+        <div class="choices list tall" data-pred="p3"><button class="btn" data-v="plain">add the isotopic masses and divide by the number of isotopes</button><button class="btn" data-v="weighted">weight each isotope's mass by how common it is</button><button class="btn" data-v="common">use the mass of the most common isotope</button></div></div>
+    </div>
+    <div class="card" data-step="4">
+      <div class="row between" style="flex-wrap:nowrap"><h3>How confident are you overall?</h3>
+        <div class="choices" data-pred="conf"><button class="btn" data-v="Guessing">Guessing</button><button class="btn" data-v="Fairly sure">Fairly sure</button><button class="btn" data-v="Certain">Certain</button></div></div>
+      <p class="fb info" id="pred-fb" role="status"></p>
+    </div>
+  </div>
+  <aside class="notes"><ol>
+    <li data-n="1"><b>Closer to 35 · 30 s.</b> Some students think lighter atoms count more. The isotope jar resolves it (slide 8).</li>
+    <li data-n="2"><b>One atom · 30 s.</b> Targets the misconception that a typical atom has the average mass. Revisited on slide 11.</li>
+    <li data-n="3"><b>Method · 30 s.</b> Many choose the plain mean. The jar shows both numbers side by side.</li>
+    <li data-n="4"><b>Confidence · 15 s.</b> Answers stay hidden until slide 19.</li>
+  </ol></aside>
+</section>
+
+<!-- 4 TARGETS -->
+<section class="slide" data-sec="Start" data-title="Learning targets" data-rail="Read|Record" hidden>
+  <header class="sh"><div class="sh-top"><p class="eyebrow">Learning targets · TEKS C.6(D)</p><ol class="rail"></ol></div><h2>By the end of this lesson, I can…</h2></header>
+  <div class="body">
+    <div class="cols fill rows-eq" data-step="1" data-nobadge>
+      <div class="card target"><span class="n">1</span><p><b>Read isotopic masses and percent abundances</b> from mass-spectrometer data, and tell isotopic mass apart from mass number.</p></div>
+      <div class="card target"><span class="n">2</span><p><b>Calculate average atomic mass</b> as a weighted average, using fractions that add up to 1.</p></div>
+      <div class="card target"><span class="n">3</span><p><b>Explain why average atomic mass is a decimal</b> pulled toward the most abundant isotope, and why, in a mix of isotopes, no single atom has that mass.</p></div>
+    </div>
+    <div class="card" data-step="2">
+      <p class="do">Copy these terms into your notebook. Fill in each definition when it appears.</p>
+      <div class="chips"><span>atomic mass unit (u)</span><span>isotopic mass</span><span>mass number</span><span>mass spectrometer</span><span>mass spectrum</span><span>percent abundance</span><span>weighted average</span><span>average atomic mass</span><span>isotope ratio</span></div>
+    </div>
+  </div>
+  <aside class="notes"><ol>
+    <li data-n="1"><b>Read · 1 min.</b> Three students read one target each. Slide 21 asks students to rate themselves on these.</li>
+    <li data-n="2"><b>Record · 1 min.</b> The reading's glossary gives each definition with its Spanish term.</li>
+  </ol></aside>
+</section>
+
+<!-- 5 WEIGHING ATOMS -->
+<section class="slide" data-sec="Measure" data-title="Measuring atomic mass" data-rail="Unit|Machine|Check" hidden>
+  <header class="sh"><div class="sh-top"><p class="eyebrow">Weighing atoms · Textbook §2.3.1</p><ol class="rail"></ol></div><h2>Measuring atomic mass</h2></header>
+  <div class="cols c2wl grow">
+    <div class="card fill" data-step="2"><p class="do">A mass spectrometer turns atoms into ions, speeds them up, and bends them with a magnet. Lighter ions bend more.</p>
+      <figure class="fig23" data-fig="ms"></figure>
+      <p class="sm">Each isotope lands in its own place, and the detector counts how many ions arrive there.</p></div>
+    <div class="col">
+      <div class="card" data-step="1"><p class="label">The atomic mass unit (u)</p><p><b>1 u</b> is one twelfth of the mass of a carbon-12 atom, so carbon-12 is exactly <b>12 u</b>.</p><p class="sm">1 u ≈ 1.66 × 10<sup>−24</sup> g. Proton 1.007 u, neutron 1.009 u, electron 0.0005 u.</p></div>
+      <div class="card fill" data-step="3"><h3 data-qtext="m-s-amu"></h3><div class="choices list" data-q="m-s-amu" data-item="m-s-amu"></div><p class="fb" role="status"></p></div>
+    </div>
+  </div>
+  <aside class="notes"><ol>
+    <li data-n="1"><b>Unit · 2 min.</b> Grams are far too large: one chlorine atom is about 6 × 10<sup>−23</sup> g. Chemists compare every atom with carbon-12 instead, the way a balance compares a sample with a standard mass.</li>
+    <li data-n="2"><b>Machine · 2 min.</b> Walk through the four stages. F. W. Aston built an early mass spectrometer in 1919 and found isotopes in many elements (Nobel Prize, 1922). Today the same principle is used in forensic and medical labs.</li>
+    <li data-n="3"><b>Check · 1 min.</b> Carbon-12 is exact by definition, not by measurement.</li>
+  </ol></aside>
+</section>
+
+<!-- 6 READING A SPECTRUM -->
+<section class="slide" data-sec="Measure" data-title="Reading a mass spectrum" data-rail="Read|Average|Check" hidden>
+  <header class="sh"><div class="sh-top"><p class="eyebrow">Mass spectra · Textbook §2.3.1</p><ol class="rail"></ol></div><h2>Reading a mass spectrum</h2></header>
+  <div class="cols c2wl grow">
+    <div class="card fill" data-step="1"><div data-sim="massSpec" data-els="Cl,Mg,B,Cu"></div></div>
+    <div class="col">
+      <div class="card" data-step="1" data-nobadge><div class="def"><b>Position on the axis</b><p>the isotopic mass, in u</p></div><div class="def"><b>Height of the bar</b><p>its abundance, in % of atoms</p></div><p class="do" data-step="2">Press Show the average. Which bar is it nearest?</p></div>
+      <div class="card fill" data-step="3"><h3 data-qtext="m-s-read"></h3><div class="choices list" data-q="m-s-read" data-item="m-s-read"></div><p class="fb" role="status"></p></div>
+    </div>
+  </div>
+  <aside class="notes"><ol>
+    <li data-n="1"><b>Read · 3 min.</b> Start with chlorine. Tap each bar and have students record mass and abundance: 34.968853 u at 75.76%, 36.965903 u at 24.24%. Then magnesium: three bars that add to 100%.</li>
+    <li data-n="2"><b>Average · 1 min.</b> The dashed line sits near the tallest bar every time. Ask why; the jar answers it on slide 8.</li>
+    <li data-n="3"><b>Check · 1 min.</b> Misconception: bar height is not mass. Height shows the share of atoms.</li>
+  </ol></aside>
+</section>
+
+<!-- 7 MASS NUMBER VS ISOTOPIC MASS -->
+<section class="slide" data-sec="Measure" data-title="Mass number and isotopic mass" data-rail="Compare|Why|Check" hidden>
+  <header class="sh"><div class="sh-top"><p class="eyebrow">Mass number vs mass · Textbook §2.3.1</p><ol class="rail"></ol></div><h2>Mass number and isotopic mass</h2></header>
+  <div class="cols c2e grow">
+    <div class="col">
+      <div class="card fill" data-step="1">
+        <table class="oc mn23"><thead><tr><th>Isotope</th><th>Mass number (a count)</th><th>Isotopic mass (measured)</th></tr></thead><tbody>
+          <tr><td>carbon-12</td><td>12</td><td>12 u exactly</td></tr>
+          <tr><td>boron-11</td><td>11</td><td>11.009305 u</td></tr>
+          <tr><td>magnesium-24</td><td>24</td><td>23.985042 u</td></tr>
+          <tr><td>chlorine-35</td><td>35</td><td>34.968853 u</td></tr>
+          <tr><td>chlorine-37</td><td>37</td><td>36.965903 u</td></tr>
+          <tr><td>copper-63</td><td>63</td><td>62.929598 u</td></tr>
+        </tbody></table></div>
+      <div class="card flat" data-step="2"><p class="label">Key idea</p><p>Close, but not equal. Use <b>isotopic masses</b> in calculations, not mass numbers.</p></div>
+    </div>
+    <div class="col">
+      <div class="card fill evenly" data-step="2"><p class="label">Why the mass is not a whole number</p><p class="sm">A proton is 1.007 u and a neutron is 1.009 u, not exactly 1 u.</p><p class="sm">When protons and neutrons bind into a nucleus, a little mass is released as energy, so a nucleus has less mass than its separate parts.</p></div>
+      <div class="card fill" data-step="3"><h3 data-qtext="m-s-mn"></h3><div class="choices list" data-q="m-s-mn" data-item="m-s-mn"></div><p class="fb" role="status"></p></div>
+    </div>
+  </div>
+  <aside class="notes"><ol>
+    <li data-n="1"><b>Compare · 1 min.</b> Ask: which column could have a decimal? Only the measured one. Mass numbers count whole particles.</li>
+    <li data-n="2"><b>Why · 2 min.</b> Keep the binding-energy idea brief; it returns in nuclear chemistry. The point for today: mass number ≈ isotopic mass, but they are different quantities.</li>
+    <li data-n="3"><b>Check · 1 min.</b> Then move to the average.</li>
+  </ol></aside>
+</section>
+
+<!-- 8 ISOTOPE JAR -->
+<section class="slide" data-sec="Average" data-title="Modeling chlorine's isotopes" data-rail="Predict|Fill|Pick one|Key idea" hidden>
+  <header class="sh"><div class="sh-top"><p class="eyebrow">The weighted average · Textbook §2.3.2</p><ol class="rail"></ol></div><h2>Modeling chlorine's isotopes</h2></header>
+  <div class="cols c2w grow">
+    <div class="col">
+      <div class="card" data-step="1"><h3 data-qtext="m-s-mean"></h3><div class="choices list" data-q="m-s-mean" data-item="m-s-mean" data-at="2"></div><p class="fb" role="status"></p></div>
+      <div class="card" data-step="2"><p class="do">Read the jar. Then swap atoms with + and −. Which number moves?</p></div>
+      <div class="card" data-step="3"><p class="do">Press Pick one atom. What is its mass?</p></div>
+      <div class="card flat fill evenly" data-step="4"><p class="label">Key idea</p><p class="sm">Each isotope's mass is weighted by its <b>fraction</b> of the atoms. The fractions always add up to 1.</p></div>
+    </div>
+    <div class="card fill" data-step="2"><div data-sim="isotopeJar" data-els="Cl,B,Cu"></div></div>
+  </div>
+  <aside class="notes"><ol>
+    <li data-n="1"><b>Predict · 1 min.</b> Students commit before the jar appears. The answer is graded at step 2.</li>
+    <li data-n="2"><b>Fill · 3 min.</b> 76 chlorine-35 and 24 chlorine-37 give 35.45 u, while the plain mean stays at 35.97 u. Make the jar 50 : 50: now the two numbers agree. Ask when a plain mean would be right (only if isotopes were equally common).</li>
+    <li data-n="3"><b>Pick one · 1 min.</b> Every atom you pick is 34.968853 u or 36.965903 u. None is 35.45 u. Return to prediction 2.</li>
+    <li data-n="4"><b>Key idea · 1 min.</b> A jar holds whole atoms, so 75.76% becomes 76 atoms. A real sample holds billions of billions of atoms, so its percents are smooth, not whole-atom steps. The table's four significant figures come from precise measurement.</li>
+  </ol></aside>
+</section>
+
+<!-- 9 WORKED EXAMPLE: CHLORINE -->
+<section class="slide" data-sec="Average" data-title="Worked example: chlorine's atomic mass" data-rail="Recipe|Convert|Multiply|Add|Analogy" hidden>
+  <header class="sh"><div class="sh-top"><p class="eyebrow">Worked example 1 · Watch · Textbook §2.3.2</p><ol class="rail"></ol></div><h2>Worked example: chlorine's atomic mass</h2></header>
+  <div class="body">
+    <div class="card flat" data-step="1"><p class="eq eq23">average = (mass<sub>1</sub> × fraction<sub>1</sub>) + (mass<sub>2</sub> × fraction<sub>2</sub>) + …</p><p class="sm">fraction = percent ÷ 100, and the fractions add up to 1</p></div>
+    <div class="cols c2wl fill">
+      <div class="card fill evenly">
+        <p>Chlorine-35: <b>34.968853 u</b> at <b>75.76%</b>.</p><p>Chlorine-37: <b>36.965903 u</b> at <b>24.24%</b>.</p>
+        <div class="wsteps">
+          <p data-step="2"><span class="k">Convert</span><span>75.76% → <b>0.7576</b> and 24.24% → <b>0.2424</b>. Check: 0.7576 + 0.2424 = 1.</span></p>
+          <p data-step="3"><span class="k">Multiply</span><span>34.968853 × 0.7576 = <b>26.4924</b> and 36.965903 × 0.2424 = <b>8.9605</b></span></p>
+          <p data-step="4"><span class="k">Add</span><span>26.4924 + 8.9605 = 35.4529, so the average is <b>35.45 u</b>, near chlorine-35.</span></p>
+        </div>
+      </div>
+      <div class="card flat fill evenly" data-step="5"><p class="label">Think of it this way</p><p class="sm">A course grade where tests count 70% and homework 30%. A 90 on tests and a 60 on homework give 0.70 × 90 + 0.30 × 60 = <b>81</b>, not the plain mean of 75.</p><p class="sm"><b>The limit:</b> a teacher picks grade weights. For isotopes, nature sets the weights: the share of atoms.</p></div>
+    </div>
+  </div>
+  <aside class="notes"><ol>
+    <li data-n="1"><b>Recipe · 1 min.</b> Students copy the recipe. Each fraction is the share of atoms with that mass.</li>
+    <li data-n="2"><b>Convert · 30 s.</b> The most common error is multiplying by 75.76 instead of 0.7576, which gives about 3,545.</li>
+    <li data-n="3"><b>Multiply · 1 min.</b> Keep four decimal places until the end.</li>
+    <li data-n="4"><b>Add · 30 s.</b> Matches the periodic table. Sense check: the answer lies between the two masses and near the more common one.</li>
+    <li data-n="5"><b>Analogy · 1 min.</b> Ask students where else they meet weighted averages (GPA, sports ratings). Stress the limit: nobody chooses isotope weights.</li>
+  </ol></aside>
+</section>
+
+<!-- 10 FADED EXAMPLES -->
+<section class="slide" data-sec="Average" data-title="Practice: magnesium and boron" data-rail="Finish it|Check|On your own|Check" hidden>
+  <header class="sh"><div class="sh-top"><p class="eyebrow">Worked examples 2 and 3 · Textbook §2.3.2</p><ol class="rail"></ol></div><h2>Practice: magnesium and boron</h2></header>
+  <div class="cols c2e grow">
+    <div class="col">
+      <div class="card fill evenly" data-step="1"><p class="label">2 · Finish it · magnesium</p>
+        <p>Mg-24: <b>23.985042 u</b> at 78.99%. Mg-25: <b>24.985837 u</b> at 10.00%. Mg-26: <b>25.982593 u</b> at 11.01%.</p>
+        <div class="wsteps"><p><span class="k">Convert</span><span>0.7899 + 0.1000 + 0.1101 = 1</span></p><p><span class="k">Multiply</span><span>18.9458 and 2.4986 and <b>?</b></span></p><p><span class="k">You</span><span>Find 25.982593 × 0.1101, then add all three.</span></p></div></div>
+      <div class="card" data-step="2"><p class="label">Check</p><p>25.982593 × 0.1101 = <b>2.8607</b>. Total 24.3051, so <b>24.31 u</b>.</p></div>
+    </div>
+    <div class="col">
+      <div class="card fill evenly" data-step="3"><p class="label">3 · On your own · boron</p>
+        <p>B-10: <b>10.012937 u</b> at 19.9%. B-11: <b>11.009305 u</b> at 80.1%.</p><p>Find the average atomic mass. Which isotope is it closer to, and why?</p><p class="sm muted">No steps this time. Use the recipe from slide 9.</p></div>
+      <div class="card" data-step="4"><p class="label">Check</p><p>1.9926 + 8.8185 = 10.8111, so <b>10.81 u</b>, close to boron-11, the more common isotope.</p></div>
+    </div>
+  </div>
+  <aside class="notes"><ol>
+    <li data-n="1"><b>Finish it · 2 min.</b> Students work in notebooks. Three isotopes, same recipe: three products.</li>
+    <li data-n="2"><b>Check · 30 s.</b> A result of 24.98 means the plain mean was used. Ask what the 10.00% and 11.01% did.</li>
+    <li data-n="3"><b>On your own · 2 min.</b> No steps given. Circulate and check the fraction conversion: 19.9% is 0.199.</li>
+    <li data-n="4"><b>Check · 30 s.</b> The three checks: between the masses, pulled toward the most common one, fractions add to 1.</li>
+  </ol></aside>
+</section>
+
+<!-- 11 NEAR THE MOST ABUNDANT -->
+<section class="slide" data-sec="Meaning" data-title="What the average means" data-rail="Chlorine|Bromine|Key idea" hidden>
+  <header class="sh"><div class="sh-top"><p class="eyebrow">Why a decimal · Textbook §2.3.3</p><ol class="rail"></ol></div><h2>What the average means</h2></header>
+  <div class="cols c2wl grow">
+    <div class="col">
+      <div class="card fill evenly" data-step="1"><p class="label">Chlorine: three times more chlorine-35</p><figure class="fig23 wide" data-fig="line" data-el="Cl"></figure></div>
+      <div class="card fill evenly" data-step="2"><p class="label">Bromine: nearly equal shares</p><figure class="fig23 wide" data-fig="line" data-el="Br"></figure></div>
+    </div>
+    <div class="col">
+      <div class="card" data-step="2" data-nobadge><h3 data-qtext="m-s-near"></h3><div class="choices list" data-q="m-s-near" data-item="m-s-near"></div><p class="fb" role="status"></p></div>
+      <div class="card flat fill evenly" data-step="3"><p class="label">No chlorine atom has the average</p><p class="sm">Every chlorine atom is 34.97 u or 36.97 u. 35.45 u describes the mixture, like a class average of 83.5 that no student scored.</p><p class="sm">Helium is 99.9999% helium-4 (4.002603 u), so its average, 4.0026 u, almost equals that mass.</p></div>
+    </div>
+  </div>
+  <aside class="notes"><ol>
+    <li data-n="1"><b>Chlorine · 1 min.</b> Dot size shows abundance. The weighted average sits near the large dot; the plain mean sits halfway.</li>
+    <li data-n="2"><b>Bromine · 2 min.</b> Bromine is 50.69% bromine-79, so the average, 79.90 u, sits almost halfway. The rule holds: nearly equal shares give a nearly central average.</li>
+    <li data-n="3"><b>Key idea · 1 min.</b> Analogy limit: test scores vary freely, but each atom's mass is one of a few fixed values. Helium is the extreme case: 99.9999% helium-4 at 4.002603 u, so its average, 4.0026 u, almost equals helium-4.</li>
+  </ol></aside>
+</section>
+
+<!-- 12 ISOTOPE RATIOS -->
+<section class="slide" data-sec="Meaning" data-title="Uses of isotope ratios" data-rail="Fingerprint|Doping|Food|Check" hidden>
+  <header class="sh"><div class="sh-top"><p class="eyebrow">Isotope ratios · Textbook §2.3.3</p><ol class="rail"></ol></div><h2>Uses of isotope ratios</h2></header>
+  <div class="body">
+    <div class="card flat" data-step="1"><p>Natural carbon is about <b>98.9%</b> carbon-12 and <b>1.1%</b> carbon-13. Plants and processes shift that share very slightly, and a mass spectrometer can measure the shift.</p></div>
+    <div class="cols c2e fill">
+      <div class="col">
+        <div class="card fill evenly" data-step="2"><p class="label">Sports doping tests</p><p class="sm">Synthetic testosterone is made from plant sterols, which have less carbon-13 than the steroids the body makes. A low carbon-13 share in urine points to testosterone from outside the body.</p></div>
+        <div class="card fill evenly" data-step="3"><p class="label">Honey and food origin</p><p class="sm">Corn and cane syrup have more carbon-13 than flower nectar, so diluted honey can be detected. Other isotope ratios trace where foods such as wine were produced.</p></div>
+      </div>
+      <div class="card fill" data-step="4"><h3 data-qtext="m-s-ratio"></h3><div class="choices list" data-q="m-s-ratio" data-item="m-s-ratio"></div><p class="fb" role="status"></p></div>
+    </div>
+  </div>
+  <aside class="notes"><ol>
+    <li data-n="1"><b>Fingerprint · 30 s.</b> These shifts are tiny, which is why the periodic table gives some elements a range (bromine 79.901 to 79.907).</li>
+    <li data-n="2"><b>Doping · 1 min.</b> Anti-doping labs use carbon isotope ratio mass spectrometry (Cawley and Flenker, 2008).</li>
+    <li data-n="3"><b>Food · 1 min.</b> Related: most airport trace detectors use ion mobility spectrometry, a relative of mass spectrometry that sorts ions by how fast they drift.</li>
+    <li data-n="4"><b>Check · 30 s.</b> Carbon-13 has 6 protons like every carbon atom; only the neutron count differs.</li>
+  </ol></aside>
+</section>
+
+<!-- 13 HONORS -->
+<section class="slide" data-sec="Meaning" data-title="Honors: abundance from the average" data-rail="Set up|Solve|Check|Gallium" hidden>
+  <header class="sh"><div class="sh-top"><p class="eyebrow">Honors · Textbook §2.3.3</p><ol class="rail"></ol></div><h2>Honors: abundance from the average</h2></header>
+  <div class="body">
+  <div class="cols c2wl fill">
+    <div class="card fill evenly" data-step="1"><p class="label">Copper · 63.546 u</p>
+      <p class="sm">Let x be the fraction of copper-63. Then copper-65 is 1 − x.</p>
+      <p class="eq eqs">62.929598x + 64.927790(1 − x) = 63.546</p>
+      <div class="wsteps" data-step="2" data-nobadge><p><span class="k">Expand</span><span>64.927790 − 1.998192x = 63.546</span></p><p><span class="k">Solve</span><span>x = 1.381790 ÷ 1.998192 = <b>0.6915</b></span></p><p><span class="k">Answer</span><span>69.15% copper-63, matching the spectrum.</span></p></div></div>
+    <div class="card fill" data-step="3"><h3 data-qtext="m-s-rev"></h3><div class="choices list" data-q="m-s-rev" data-item="m-s-rev"></div><p class="fb" role="status"></p></div>
+  </div>
+  <div class="card flat garow" data-step="4"><p class="label">Gallium on the mass line</p><figure class="fig23" data-fig="line" data-el="Ga"></figure></div>
+  </div>
+  <aside class="notes"><ol>
+    <li data-n="1"><b>Set up · 1 min.</b> The key move: two unknowns become one, because the fractions add to 1.</li>
+    <li data-n="2"><b>Solve · 1 min.</b> Use the precise average 63.546 u. The rounded 63.55 u gives 68.95%, a reminder that rounding early costs accuracy.</li>
+    <li data-n="3"><b>Check · 1 min.</b> Estimate first: where does the average sit between the masses? About 40% of the way from gallium-69 toward gallium-71, so gallium-69 is about 60%.</li>
+    <li data-n="4"><b>Gallium · 30 s.</b> The measured value is 60.108% gallium-69. Solving exactly with 69.723 u gives 60.11%.</li>
+  </ol></aside>
+</section>
+
+<!-- 14 SYNTHESIS -->
+<section class="slide" data-sec="Meaning" data-title="Summary: average atomic mass" data-rail="Recipe|Three checks|Answer" hidden>
+  <header class="sh"><div class="sh-top"><p class="eyebrow">Synthesis · Textbook §2.3.2 and §2.3.3</p><ol class="rail"></ol></div><h2>Summary: average atomic mass</h2></header>
+  <div class="cols c2e grow">
+    <div class="card fill syn23" data-step="1"><p class="label">The recipe, with chlorine</p>
+      <ol class="post"><li>Read each isotope's <b>mass</b> and <b>percent</b> from the spectrum. <span class="ex">34.968853 u, 75.76%</span></li><li>Change each percent to a <b>fraction</b>: divide by 100. <span class="ex">0.7576</span></li><li><b>Multiply</b> each mass by its fraction. <span class="ex">26.4924 and 8.9605</span></li><li><b>Add</b> the products. <span class="ex">35.45 u</span></li></ol></div>
+    <div class="col">
+      <div class="card fill syn23" data-step="2"><p class="label">Three checks on any answer</p>
+        <ol class="post"><li>It lies <b>between</b> the lightest and heaviest isotopic masses. <span class="ex">34.97 &lt; 35.45 &lt; 36.97</span></li><li>It is pulled <b>toward the most abundant</b> isotope. <span class="ex">near chlorine-35</span></li><li>The fractions <b>add up to 1</b>. <span class="ex">0.7576 + 0.2424 = 1</span></li></ol></div>
+      <div class="card flat" data-step="3"><p class="sm"><b>So:</b> 35.45 is a decimal because it averages a mixture of 34.97 u and 36.97 u atoms, weighted 3 to 1.</p></div>
+    </div>
+  </div>
+  <aside class="notes"><ol>
+    <li data-n="1"><b>Recipe · 1 min.</b> Students check the recipe in their notebook against slide 9.</li>
+    <li data-n="2"><b>Three checks · 1 min.</b> Ask which check catches the plain mean (check 2) and which catches using percents as fractions (check 1).</li>
+    <li data-n="3"><b>Answer · 30 s.</b> This is the core of the exit ticket. Do not dwell; the CER comes on slide 20.</li>
+  </ol></aside>
+</section>
+
+<!-- 15 CHECKPOINT INTRO -->
+<section class="slide" data-sec="Checkpoint" data-title="Checkpoint" data-rail="Routine|Self-check" hidden>
+  <header class="sh"><div class="sh-top"><p class="eyebrow">Checkpoint</p><ol class="rail"></ol></div><h2>Three checkpoint questions</h2></header>
+  <div class="body">
+    <div class="flow3 fill" data-step="1" data-nobadge>
+      <div class="card vc"><h3>1 · Think</h3><p>Read the question and plan your answer on your own.</p><p class="timeline">30 seconds</p></div>
+      <div class="card vc"><h3>2 · Talk</h3><p>Discuss the question with a partner. Take turns.</p><p class="timeline">60 seconds</p></div>
+      <div class="card vc"><h3>3 · Write</h3><p>Write a complete answer in your notebook, using this lesson's vocabulary.</p><p class="timeline">2 minutes</p></div>
+    </div>
+    <div class="card" data-step="2"><h3>4 · Self-check, then 5 · Compare</h3><p>Mark the success criteria your answer meets <b>before</b> you see the sample answer. Then improve your answer in a different color.</p></div>
+  </div>
+  <aside class="notes"><ol><li data-n="1"><b>Routine · 30 s.</b> Same routine for each question; timers start automatically.</li><li data-n="2"><b>Self-check · 30 s.</b> Students self-assess before seeing the sample. Revisions in a second color show learning.</li></ol></aside>
+</section>
+
+<!-- 16 Q1 -->
+<section class="slide qslide" data-sec="Checkpoint" data-title="Question 1" data-rail="Think|Talk|Write|Self-check|Compare" hidden>
+  <header class="sh"><div class="sh-top"><p class="eyebrow">Checkpoint · Question 1 · Objective 2.3.1</p><ol class="rail"></ol></div><p class="big-q">What does chlorine's mass spectrum tell you about its atoms?</p></header>
+  <div class="cols c2e grow">
+    <div class="col">
+      <div class="card" data-step="1"><div class="row between" style="flex-wrap:nowrap"><p class="do">Think silently. Plan what you will say.</p><div class="timer" data-timer="30"><button class="btn ghost">Restart</button><output>0:30</output></div></div></div>
+      <div class="card" data-step="2"><div class="row between" style="flex-wrap:nowrap"><p class="do">Explain your idea to your partner, then switch.</p><div class="timer" data-timer="60"><button class="btn ghost">Restart</button><output>1:00</output></div></div></div>
+      <div class="card fill" data-step="3"><p class="do">Write your answer in your notebook. Use these sentence starters:</p><ol class="starters"><li>The spectrum has two bars, so…</li><li>Each bar's position shows…</li><li>Each bar's height shows…</li><li>Chlorine-35's mass number is…, but its isotopic mass is…</li></ol><div class="wb"><span class="label">Word bank</span><div class="chips"><span>isotope</span><span>isotopic mass</span><span>percent abundance</span><span>mass number</span><span>u</span><span>bar height</span></div></div></div>
+    </div>
+    <div class="col">
+      <div class="card criteria fill evenly" data-step="4"><h3>Success criteria</h3>
+        <label><input type="checkbox">Says chlorine is a mixture of two isotopes.</label><label><input type="checkbox">Reads each mass from the position and each percent from the height.</label><label><input type="checkbox">Tells mass number (35) apart from isotopic mass (34.968853 u).</label></div>
+      <div class="card" data-step="5"><p class="label">Sample answer</p><p class="samp">The spectrum has two bars, so chlorine is a mixture of two isotopes. The positions show their masses, 34.968853 u and 36.965903 u. The heights show that 75.76% of atoms are chlorine-35 and 24.24% are chlorine-37. Chlorine-35's mass number is 35, a count of particles, but its isotopic mass is 34.968853 u.</p></div>
+    </div>
+  </div>
+  <aside class="notes"><ol>
+    <li data-n="1"><b>Think · 30 s.</b></li><li data-n="2"><b>Talk · 1 min.</b> Listen for "height" linked to "how many," not "how heavy."</li>
+    <li data-n="3"><b>Write · 2 min.</b> Sentence starters support emerging bilingual students; strong writers may skip them.</li>
+    <li data-n="4"><b>Self-check · 30 s.</b></li><li data-n="5"><b>Compare · 1 min.</b> Students revise in a second color.</li>
+  </ol></aside>
+</section>
+
+<!-- 17 Q2 -->
+<section class="slide qslide" data-sec="Checkpoint" data-title="Question 2" data-rail="Think|Talk|Write|Self-check|Compare" hidden>
+  <header class="sh"><div class="sh-top"><p class="eyebrow">Checkpoint · Question 2 · Objective 2.3.2</p><ol class="rail"></ol></div><p class="big-q">What is copper's average atomic mass? Show each step.</p></header>
+  <div class="cols c2e grow">
+    <div class="col">
+      <div class="card" data-step="1"><div class="row between" style="flex-wrap:nowrap"><p class="do">Copper-63: 62.929598 u at 69.15%. Copper-65: 64.927790 u at 30.85%. Plan your steps.</p><div class="timer" data-timer="30"><button class="btn ghost">Restart</button><output>0:30</output></div></div></div>
+      <div class="card" data-step="2"><div class="row between" style="flex-wrap:nowrap"><p class="do">Compare your plan with your partner, then switch.</p><div class="timer" data-timer="60"><button class="btn ghost">Restart</button><output>1:00</output></div></div></div>
+      <div class="card fill" data-step="3"><p class="do">Write your work in your notebook. Use these sentence starters:</p><ol class="starters"><li>As fractions, the abundances are… and…</li><li>The two products are… and…</li><li>Adding them gives…</li><li>This makes sense because…</li></ol><div class="wb"><span class="label">Word bank</span><div class="chips"><span>fraction</span><span>weighted average</span><span>product</span><span>most abundant</span><span>add up to 1</span></div></div></div>
+    </div>
+    <div class="col">
+      <div class="card criteria fill evenly" data-step="4"><h3>Success criteria</h3>
+        <label><input type="checkbox">Changes both percents to fractions that add to 1.</label><label><input type="checkbox">Multiplies each isotopic mass by its fraction, then adds.</label><label><input type="checkbox">Finds 63.55 u and checks it is nearest copper-63.</label></div>
+      <div class="card" data-step="5"><p class="label">Sample answer</p><p class="samp">As fractions, the abundances are 0.6915 and 0.3085, which add to 1. The products are 62.929598 × 0.6915 = 43.5158 and 64.927790 × 0.3085 = 20.0302. Adding them gives 63.5460, so the average is 63.55 u. This makes sense because it lies between the two masses and nearest copper-63, the more common isotope.</p></div>
+    </div>
+  </div>
+  <aside class="notes"><ol><li data-n="1"><b>Think · 30 s.</b></li><li data-n="2"><b>Talk · 1 min.</b></li><li data-n="3"><b>Write · 2 min.</b> Watch for 63.93 u, the plain mean; ask which check it fails.</li><li data-n="4"><b>Self-check · 30 s.</b></li><li data-n="5"><b>Compare · 1 min.</b></li></ol></aside>
+</section>
+
+<!-- 18 Q3 -->
+<section class="slide qslide" data-sec="Checkpoint" data-title="Question 3" data-rail="Think|Talk|Write|Self-check|Compare" hidden>
+  <header class="sh"><div class="sh-top"><p class="eyebrow">Checkpoint · Question 3 · Objective 2.3.3</p><ol class="rail"></ol></div><p class="big-q">Why is chlorine's atomic mass 35.45 u when no chlorine atom has that mass?</p></header>
+  <div class="cols c2e grow">
+    <div class="col">
+      <div class="card" data-step="1"><div class="row between" style="flex-wrap:nowrap"><p class="do">Think silently. Plan what you will say.</p><div class="timer" data-timer="30"><button class="btn ghost">Restart</button><output>0:30</output></div></div></div>
+      <div class="card" data-step="2"><div class="row between" style="flex-wrap:nowrap"><p class="do">Explain your idea to your partner, then switch.</p><div class="timer" data-timer="60"><button class="btn ghost">Restart</button><output>1:00</output></div></div></div>
+      <div class="card fill" data-step="3"><p class="do">Write your answer in your notebook. Use these sentence starters:</p><ol class="starters"><li>Every chlorine atom has a mass of either… or…</li><li>35.45 u is a weighted average of…</li><li>It is closer to 35 because…</li><li>No atom has 35.45 u because…</li></ol><div class="wb"><span class="label">Word bank</span><div class="chips"><span>mixture</span><span>isotope</span><span>weighted average</span><span>percent abundance</span><span>most abundant</span><span>sample</span></div></div></div>
+    </div>
+    <div class="col">
+      <div class="card criteria fill evenly" data-step="4"><h3>Success criteria</h3>
+        <label><input type="checkbox">Names the two isotopic masses an atom can have.</label><label><input type="checkbox">Calls 35.45 u a weighted average of the mixture.</label><label><input type="checkbox">Explains the pull toward chlorine-35 by its 75.76% abundance.</label></div>
+      <div class="card" data-step="5"><p class="label">Sample answer</p><p class="samp">Every chlorine atom has a mass of either 34.968853 u or 36.965903 u. 35.45 u is the weighted average of a sample, where 75.76% of the atoms are chlorine-35. It is closer to 35 because chlorine-35 atoms are about three times as common. No atom has 35.45 u because the number describes the mixture, not any one atom.</p></div>
+    </div>
+  </div>
+  <aside class="notes"><ol><li data-n="1"><b>Think · 30 s.</b></li><li data-n="2"><b>Talk · 1 min.</b></li><li data-n="3"><b>Write · 2 min.</b> Watch for "a chlorine atom has 18.45 neutrons": neutrons are whole particles.</li><li data-n="4"><b>Self-check · 30 s.</b></li><li data-n="5"><b>Compare · 1 min.</b></li></ol></aside>
+</section>
+
+<!-- 19 REVISIT -->
+<section class="slide" data-sec="Wrap-up" data-title="Check your predictions" data-rail="Closer to 35|One atom|Method|Reflect" hidden>
+  <header class="sh"><div class="sh-top"><p class="eyebrow">Wrap-up · Predictions</p><ol class="rail"></ol></div><h2>Look back at your predictions</h2></header>
+  <div class="body">
+    <div class="cols c3 eqh fill" id="revisit"></div>
+    <div class="card" data-step="4"><p class="do">Did your thinking change? Write in your notebook. Use these sentence starters:</p><ol class="starters row3"><li>At first I thought… because…</li><li>Now I think… because…</li><li>The evidence that changed my mind was…</li></ol></div>
+  </div>
+  <aside class="notes"><ol>
+    <li data-n="1"><b>Closer to 35 · 30 s.</b> Evidence: the jar and the spectrum (slides 6 and 8). Abundance, not lightness, pulls the average.</li>
+    <li data-n="2"><b>One atom · 30 s.</b> Evidence: Pick one atom (slide 8) and the bromine and helium examples (slide 11).</li>
+    <li data-n="3"><b>Method · 30 s.</b> Evidence: the plain mean, 35.97 u, does not match the table (slides 8 and 9).</li>
+    <li data-n="4"><b>Reflect · 1 min.</b> Ask one or two students to share what changed their mind.</li>
+  </ol></aside>
+</section>
+
+<!-- 20 CER -->
+<section class="slide" data-sec="Wrap-up" data-title="Exit ticket: CER" data-rail="Claim|Evidence|Reasoning|Self-check" hidden>
+  <header class="sh"><div class="sh-top"><p class="eyebrow">Wrap-up · Exit ticket</p><ol class="rail"></ol></div><h2>Answer the driving question</h2></header>
+  <div class="body">
+    <p class="lead"><b>If every atom is built from whole particles, why is chlorine's atomic mass 35.45?</b> Write your answer in your notebook.</p>
+    <div class="wb"><span class="label">Word bank</span><div class="chips"><span>isotope</span><span>isotopic mass</span><span>percent abundance</span><span>weighted average</span><span>mass spectrometer</span><span>mixture</span></div></div>
+    <div class="cols c3 fill">
+      <div class="card evenly" data-step="1"><p class="label">Claim</p><p class="do">One sentence that answers the question.</p><ol class="starters"><li>The atomic mass is a decimal because…</li></ol><div class="cer-s"><p class="label">Sample claim</p><p>Chlorine's atomic mass is a decimal because it is a weighted average of a mixture of isotopes, not the mass of one atom.</p></div></div>
+      <div class="card evenly" data-step="2"><p class="label">Evidence</p><p class="do">Data from the mass spectrum.</p><ol class="starters"><li>A mass spectrometer shows…</li><li>About…% of the atoms are…</li></ol><div class="cer-s"><p class="label">Sample evidence</p><p>A mass spectrometer shows two isotopes: 75.76% chlorine-35 at 34.968853 u and 24.24% chlorine-37 at 36.965903 u.</p></div></div>
+      <div class="card evenly" data-step="3"><p class="label">Reasoning</p><p class="do">Why those data give 35.45.</p><ol class="starters"><li>Weighting each mass by its fraction gives…</li><li>The value is near 35 because…</li></ol><div class="cer-s"><p class="label">Sample reasoning</p><p>Weighting each mass by its fraction gives 26.4924 + 8.9605 = 35.45 u. It is near 35 because chlorine-35 atoms are three times as common.</p></div></div>
+    </div>
+    <div class="card" data-step="4">
+      <div class="cer-head"><p class="do">Self-check: mark each part your answer meets, then compare with the sample.</p><button class="btn" id="cer-sample" type="button" aria-pressed="false"><span class="a">Show the sample answer</span><span class="b">Back to the sentence starters</span></button></div>
+      <div class="criteria crit3"><label><input type="checkbox">The claim says weighted average of isotopes.</label><label><input type="checkbox">The evidence gives masses and percents.</label><label><input type="checkbox">The reasoning shows the calculation or the pull.</label></div>
+    </div>
+  </div>
+  <aside class="notes"><ol>
+    <li data-n="1"><b>Claim · 1 min.</b> One sentence. Push for "weighted average" and "mixture."</li>
+    <li data-n="2"><b>Evidence · 1 min.</b> Must use data: masses and percents.</li>
+    <li data-n="3"><b>Reasoning · 1 min.</b> Either the calculation or the "pulled toward the common isotope" argument earns credit.</li>
+    <li data-n="4"><b>Self-check · 1 min.</b> Students self-check, then you show the sample. Score 0 to 2 per part.</li>
+  </ol></aside>
+</section>
+
+<!-- 21 SELF-RATE -->
+<section class="slide" data-sec="Wrap-up" data-title="Rate your learning" hidden>
+  <header class="sh"><div class="sh-top"><p class="eyebrow">Wrap-up · Self-assessment</p></div><h2>Where are you on today's targets?</h2></header>
+  <div class="body">
+    <p class="do">Rate yourself on each target. Not yet or Almost? Use the review buttons to jump to the slides that teach it.</p>
+    <div class="card fill"><div class="rate fill" id="rate"></div></div>
+  </div>
+  <aside class="notes"><ul><li><b>Rate · 1 min.</b> Ask for a show of fingers per target (1 not yet, 2 almost, 3 got it). Assign the matching missions: Spectrum lab for all three targets, Mix lab for target 2, Isotopes at work for target 3.</li></ul></aside>
+</section>
+
+</div></div>
+
+<footer class="nav">
+  <button class="btn" id="prev" aria-label="Back">←<span class="hide-sm">Back</span></button>
+  <button class="btn ghost" id="ov-tg" aria-controls="ov">Slides</button>
+  <button class="btn ghost" id="notes-tg" aria-pressed="false" aria-controls="notes">Notes</button>
+  <div class="ttl" id="ttl"></div>
+  <button class="btn ghost hide-sm" id="build-tg" aria-pressed="true" title="When on, each slide reveals its content one step at a time">Step-by-step</button>
+  <button class="btn ghost hide-sm" id="zoom-tg" aria-pressed="false" title="Enlarge the current step to fill the slide (Z). You can also double-click any card.">Zoom</button>
+  <button class="btn ghost" id="theme-tg" title="Switch light or dark theme for the projector">Theme</button>
+  <button class="btn ghost hide-sm" id="fs">Full screen</button>
+  <button class="btn primary" id="next"><span id="next-l">Next</span>→</button>
+</footer>
+<div id="notes" hidden role="region" aria-label="Teacher notes"></div>
+<div id="ov" hidden role="dialog" aria-modal="true" aria-label="All slides"><div class="p"><div class="row between"><b style="font-family:var(--display);font-size:20px">All slides</b><button class="btn" id="ov-x">Close</button></div><div class="g" id="ov-g"></div></div></div>
+
+<script>
+window.U2LESSON="23";
+/* Lesson 2.1 glossary (merged with every other lesson's at build time): term -> definition, Spanish term. One source for reading, slides and worksheets. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "model":{d:"A simplified picture, object or set of rules that explains observations and predicts new ones.",es:"modelo"},
+ "evidence":{d:"Observations or data that support or contradict an idea.",es:"evidencia"},
+ "scientific law":{d:"A statement that describes a pattern in nature, often as an equation. It states what happens, not why.",es:"ley científica"},
+ "scientific theory":{d:"A well-tested explanation of why patterns in nature happen, supported by many lines of evidence.",es:"teoría científica"},
+ "law of conservation of mass":{d:"In a chemical reaction, the total mass of the products equals the total mass of the reactants.",es:"ley de conservación de la masa"},
+ "law of definite proportions":{d:"A compound always contains the same elements in the same proportions by mass, whatever its source.",es:"ley de las proporciones definidas"},
+ "law of multiple proportions":{d:"When two elements form more than one compound, the masses of one element that combine with a fixed mass of the other are in a small whole-number ratio.",es:"ley de las proporciones múltiples"},
+ "postulate":{d:"A basic statement accepted as the starting point of a theory.",es:"postulado"},
+ "atom":{d:"The smallest particle of an element that keeps the element's identity in chemical reactions.",es:"átomo"},
+ "compound":{d:"A substance made of two or more elements chemically combined in a fixed ratio.",es:"compuesto"},
+ "cathode ray":{d:"A beam of electrons that travels from the negative electrode (the cathode) in a tube with almost no air.",es:"rayo catódico"},
+ "cathode":{d:"In a cathode-ray (discharge) tube, the negative electrode. In a battery or other cell, the cathode is named by the reaction there, not by its sign, and it can be positive.",es:"cátodo"},
+ "electron":{d:"A negatively charged particle with very little mass, found in all atoms outside the nucleus.",es:"electrón"},
+ "charge-to-mass ratio":{d:"A particle's electric charge divided by its mass. A large value means a large charge for a small mass.",es:"relación carga-masa"},
+ "alpha particle":{d:"A fast, positively charged particle made of 2 protons and 2 neutrons: a helium nucleus. Some radioactive substances emit it.",es:"partícula alfa"},
+ "nucleus":{d:"The tiny, dense, positively charged center of an atom. It holds almost all of the atom's mass.",es:"núcleo"},
+ "proton":{d:"A positively charged particle in the nucleus.",es:"protón"},
+ "energy level":{d:"One of the fixed energies an electron in an atom can have.",es:"nivel de energía"},
+ "line spectrum":{d:"The set of separate colored lines produced when light from a glowing element is spread out by a prism or grating. Each element has its own.",es:"espectro de líneas"},
+ "photon":{d:"A single packet of light energy.",es:"fotón"},
+ "quantized":{d:"Limited to certain fixed amounts, with no values in between.",es:"cuantizado"},
+ "momentum":{d:"Mass times velocity: a measure of an object's motion.",es:"cantidad de movimiento"},
+ "uncertainty principle":{d:"Heisenberg's principle: the exact position and the exact momentum of a particle cannot both be known at the same time.",es:"principio de incertidumbre"},
+ "orbital":{d:"A region around the nucleus where an electron is likely to be found.",es:"orbital"},
+ "electron cloud":{d:"The fuzzy region around the nucleus where electrons are likely to be. It is dense where an electron is likely and thin where it is unlikely.",es:"nube electrónica"},
+ "probability":{d:"How likely something is to happen, from 0 (never) to 1 (always).",es:"probabilidad"},
+ "vacuum":{d:"A space that contains almost no matter, including air.",es:"vacío"},
+ "deflect":{d:"To turn something away from its straight path.",es:"desviar"}
+});
+
+/* Lesson 2.2 glossary (merged with every other lesson's at build time). 2.1 already defines atom, electron, proton, nucleus, electron cloud. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "subatomic particle":{d:"A particle smaller than an atom. Atoms are built from three kinds: protons, neutrons and electrons.",es:"partícula subatómica"},
+ "neutron":{d:"A particle in the nucleus with no electric charge and a mass about equal to a proton's.",es:"neutrón"},
+ "element":{d:"A substance made of atoms that all have the same number of protons.",es:"elemento"},
+ "atomic number":{d:"The number of protons in an atom's nucleus (Z). It identifies the element.",es:"número atómico"},
+ "mass number":{d:"The number of protons plus neutrons in an atom's nucleus (A).",es:"número másico"},
+ "isotope":{d:"Atoms of the same element (same number of protons) with different numbers of neutrons, and so different mass numbers.",es:"isótopo"},
+ "isotope notation":{d:"A symbol that shows an atom's mass number at the upper left and atomic number at the lower left of the element symbol, such as carbon-14 written as ¹⁴₆C.",es:"notación isotópica"},
+ "ion":{d:"An atom or group of atoms with a net electric charge because it has gained or lost electrons.",es:"ion"},
+ "cation":{d:"A positive ion. It has fewer electrons than protons.",es:"catión"},
+ "anion":{d:"A negative ion. It has more electrons than protons.",es:"anión"},
+ "relative mass":{d:"A mass compared with a standard instead of given in kilograms. On this scale a proton and a neutron are each about 1 and an electron is about 1/1836.",es:"masa relativa"},
+ "neutral atom":{d:"An atom with equal numbers of protons and electrons, so its charges cancel and its net charge is zero.",es:"átomo neutro"},
+ "radioactive":{d:"Describes an unstable nucleus that emits radiation on its own. Some isotopes are radioactive; others are stable.",es:"radiactivo"},
+ "electrolyte":{d:"A substance that forms ions in water. In medicine, the word also means the dissolved ions themselves, such as Na⁺, K⁺, Ca²⁺ and Cl⁻ in body fluids.",es:"electrolito"}
+});
+
+/* Lesson 2.3 glossary (merged with every other lesson's at build time). 2.2 defines isotope, mass number, atomic number. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "atomic mass unit":{d:"A unit for the mass of atoms (u, also written amu): one twelfth of the mass of a carbon-12 atom.",es:"unidad de masa atómica"},
+ "isotopic mass":{d:"The mass of one atom of a particular isotope, in atomic mass units.",es:"masa isotópica"},
+ "percent abundance":{d:"The percentage of an element's atoms, in a natural sample, that are a particular isotope.",es:"abundancia porcentual"},
+ "weighted average":{d:"An average in which each value counts in proportion to how often it occurs.",es:"promedio ponderado"},
+ "average atomic mass":{d:"The weighted average mass of an element's naturally occurring isotopes, in atomic mass units. It is the value on the periodic table.",es:"masa atómica promedio"},
+ "mass spectrometer":{d:"An instrument that separates ions by their mass-to-charge ratio and measures how many of each there are. When every ion has the same charge, as in this lesson, that means sorting by mass.",es:"espectrómetro de masas"},
+ "mass spectrum":{d:"A graph from a mass spectrometer: mass on one axis, relative abundance on the other.",es:"espectro de masas"},
+ "isotope ratio":{d:"The amount of one isotope in a sample compared with the amount of another, such as carbon-13 compared with carbon-12. Small differences can reveal where a sample came from.",es:"relación isotópica"}
+});
+
+/* Lesson 2.4 glossary (merged with every other lesson's at build time). 2.1 already defines photon, energy level, line spectrum, quantized. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "electromagnetic radiation":{d:"Energy that travels through space as waves of electric and magnetic fields, such as visible light, radio waves and X-rays.",es:"radiación electromagnética"},
+ "electromagnetic spectrum":{d:"The whole range of electromagnetic radiation, ordered by wavelength or frequency, from radio waves to gamma rays.",es:"espectro electromagnético"},
+ "wavelength":{d:"The distance from one wave crest to the next (λ), measured in meters or nanometers.",es:"longitud de onda"},
+ "frequency":{d:"The number of wave crests that pass a point each second (f), measured in hertz (Hz).",es:"frecuencia"},
+ "hertz":{d:"The unit of frequency: one wave per second (1 Hz = 1 s⁻¹).",es:"hercio"},
+ "Planck's constant":{d:"The constant h = 6.626 × 10⁻³⁴ J·s that links a photon's energy to its frequency in E = hf.",es:"constante de Planck"},
+ "ground state":{d:"The lowest energy state of an atom, with every electron in the lowest levels available.",es:"estado fundamental"},
+ "excited state":{d:"A state of an atom in which an electron is in a higher energy level than in the ground state.",es:"estado excitado"},
+ "emission spectrum":{d:"The pattern of bright lines emitted by an excited gas. Each element's pattern is unique.",es:"espectro de emisión"},
+ "absorption spectrum":{d:"Dark lines in a continuous spectrum where a cooler gas has absorbed particular wavelengths.",es:"espectro de absorción"},
+ "continuous spectrum":{d:"An unbroken band containing every wavelength, like the rainbow from a glowing solid or dense gas.",es:"espectro continuo"},
+ "flame test":{d:"A test that identifies a metal ion by the color it gives a flame.",es:"prueba de llama"},
+ "spectroscope":{d:"An instrument that spreads light into its separate wavelengths so its lines can be seen and measured.",es:"espectroscopio"},
+ "speed of light":{d:"The speed of all electromagnetic radiation in a vacuum: c = 2.998 × 10⁸ m/s.",es:"velocidad de la luz"},
+ "nanometer":{d:"One billionth of a meter: 1 nm = 10⁻⁹ m. Visible light has wavelengths of about 380 to 700 nm.",es:"nanómetro"},
+ "visible light":{d:"The small part of the electromagnetic spectrum that human eyes can see, about 380 nm (violet) to 700 nm (red).",es:"luz visible"},
+ "infrared":{d:"Electromagnetic radiation with wavelengths longer than red light but shorter than microwaves. It is felt as heat.",es:"infrarrojo"},
+ "ultraviolet":{d:"Electromagnetic radiation with wavelengths shorter than violet light but longer than X-rays. It can cause sunburn.",es:"ultravioleta"},
+ "inverse relationship":{d:"When one quantity is multiplied by a factor, the other is divided by the same factor. Wavelength and frequency are inversely related.",es:"relación inversa"},
+ "direct relationship":{d:"When one quantity is multiplied by a factor, the other is multiplied by the same factor. Photon energy and frequency are directly related.",es:"relación directa"}
+});
+
+/* Lesson 2.5 glossary (merged with every other lesson's at build time). 2.1 already defines orbital, energy level, electron cloud. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "electron configuration":{d:"A list of the sublevels an atom's electrons occupy, with the number in each, such as 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>1</sup> for sodium.",es:"configuración electrónica"},
+ "sublevel":{d:"A set of orbitals of the same type (s, p, d or f) within one energy level.",es:"subnivel"},
+ "noble-gas configuration":{d:"A shortened electron configuration that starts from the previous noble gas in brackets, such as [Ne] 3s<sup>1</sup> for sodium.",es:"configuración de gas noble"},
+ "valence electron":{d:"An electron in the highest occupied energy level of an atom. Valence electrons take part in bonding.",es:"electrón de valencia"},
+ "Lewis dot structure":{d:"An element symbol surrounded by one dot for each valence electron.",es:"estructura de puntos de Lewis"},
+ "octet":{d:"A set of eight valence electrons, as in every noble gas except helium. It is a very stable arrangement.",es:"octeto"},
+ "group":{d:"A vertical column of the periodic table. Representative elements in the same group have the same number of valence electrons and similar properties.",es:"grupo"},
+ "period":{d:"A horizontal row of the periodic table. Its number matches the highest energy level occupied in the ground state.",es:"periodo"},
+ "representative element":{d:"An element in groups 1, 2 or 13 to 18, where the s or p sublevel is being filled.",es:"elemento representativo"},
+ "alkali metal":{d:"A group 1 element other than hydrogen (lithium to francium): one valence electron, very reactive, forms 1+ ions.",es:"metal alcalino"},
+ "alkaline earth metal":{d:"A group 2 element (beryllium to radium): two valence electrons, reactive, forms 2+ ions.",es:"metal alcalinotérreo"},
+ "halogen":{d:"A group 17 element (fluorine to astatine): seven valence electrons, a very reactive nonmetal, forms 1− ions.",es:"halógeno"},
+ "noble gas":{d:"A group 18 element (helium to radon): a filled outer level, so almost unreactive.",es:"gas noble"},
+ "transition metal":{d:"An element in groups 3 to 12, where a d sublevel is being filled.",es:"metal de transición"},
+ "core electron":{d:"An electron in the filled inner levels of an atom, below the valence electrons. The noble-gas symbol in brackets stands for the core.",es:"electrón interno"},
+ "block":{d:"A region of the periodic table named for the sublevel being filled: the s block (groups 1 and 2, plus helium), the p block (groups 13 to 18), the d block (groups 3 to 12) and the f block.",es:"bloque"},
+ "orbital diagram":{d:"A drawing of an atom's electrons as arrows in boxes, one box per orbital. The arrow direction shows the electron's spin.",es:"diagrama de orbitales"},
+ "diatomic molecule":{d:"A molecule made of two atoms joined together, such as Cl<sub>2</sub> or O<sub>2</sub>.",es:"molécula diatómica"},
+ "Aufbau principle":{d:"Electrons fill the lowest-energy orbitals available first.",es:"principio de Aufbau"},
+ "Pauli exclusion principle":{d:"An orbital holds at most two electrons, and they must have opposite spins.",es:"principio de exclusión de Pauli"},
+ "Hund's rule":{d:"Electrons occupy orbitals of equal energy one at a time, with the same spin, before any pair up.",es:"regla de Hund"}
+});
+
+/* Lesson 2.3 item bank. Every item: id, objective, reading section, surface, DOK.
+   opts: [text, correct?, feedback]. Feedback for wrong options names and corrects the misconception.
+   Isotope data (NIST, IUPAC): Cl-35 34.968853 u 75.76%, Cl-37 36.965903 u 24.24%; Mg-24 23.985042 u 78.99%,
+   Mg-25 24.985837 u 10.00%, Mg-26 25.982593 u 11.01%; B-10 10.012937 u 19.9%, B-11 11.009305 u 80.1%;
+   Cu-63 62.929598 u 69.15%, Cu-65 64.927790 u 30.85%; Br-79 78.9183376 u 50.69%, Br-81 80.9162897 u 49.31%;
+   Ga-69 68.9255735 u 60.108%, Ga-71 70.92470258 u 39.892%. */
+window.OBJ=Object.assign(window.OBJ||{},{
+ "2.3.1":{teks:"C.6(D)",t:"Read isotopic masses and percent abundances from mass-spectrometer data, and tell isotopic mass apart from mass number."},
+ "2.3.2":{teks:"C.6(D)",t:"Calculate average atomic mass as a weighted average, using fractions that add up to 1."},
+ "2.3.3":{teks:"C.6(D)",t:"Explain why average atomic mass is a decimal pulled toward the most abundant isotope, and why, in a mix of isotopes, no single atom has that mass."}
+});
+window.ITEMS=(window.ITEMS||[]).concat([
+ /* ---------- reading ---------- */
+ {id:"m-r1",obj:"2.3.1",sec:"2.3.1",surf:"reading",dok:1,q:"How is the atomic mass unit (u) defined?",
+  opts:[["As one twelfth of the mass of a carbon-12 atom.",1,"Correct. Carbon-12 is the standard: it is exactly 12 u, and every other mass is measured against it."],
+        ["As the mass of one proton.",0,"Close, but not the definition. A proton is 1.007276 u, slightly more than 1 u. The unit is set by carbon-12."],
+        ["As the mass of one hydrogen atom.",0,"Early chemists compared atomic masses with hydrogen, but today's unit is defined from carbon-12. A hydrogen-1 atom is 1.007825 u."],
+        ["As one gram.",0,"A gram is far too large for one atom. 1 u is about 1.66 × 10<sup>−24</sup> g."]]},
+ {id:"m-r2",obj:"2.3.1",sec:"2.3.1",surf:"reading",dok:2,q:"In chlorine's mass spectrum, the bar at 34.97 u reaches 75.76%. What does the height of that bar tell you?",
+  opts:[["75.76% of chlorine atoms are chlorine-35.",1,"Correct. The height is the percent abundance; the position on the axis gives the isotopic mass."],
+        ["A chlorine-35 atom has a mass of 75.76 u.",0,"The isotopic mass is read from the horizontal axis (34.97 u). The height shows how common the isotope is."],
+        ["75.76% of each chlorine atom is chlorine-35.",0,"Each atom is entirely one isotope. The percent describes how many atoms in the sample are chlorine-35."],
+        ["Chlorine-35 atoms are 75.76% heavier than chlorine-37 atoms.",0,"The bar height is not a mass comparison. Chlorine-35 is actually the lighter isotope."]]},
+ {id:"m-r3",obj:"2.3.1",sec:"2.3.1",surf:"reading",dok:2,q:"Chlorine-37 has a mass number of 37, but its isotopic mass is 36.965903 u. Why are they different?",
+  opts:[["The mass number counts particles; the isotopic mass is a measured mass, and protons and neutrons are not exactly 1 u each.",1,"Correct. 37 is a count of protons plus neutrons. The measured mass is close to 37 u but not equal to it, because the particles are not exactly 1 u each and a small amount of mass is released as energy when the nucleus forms."],
+        ["The mass spectrometer is not accurate enough to read 37.",0,"Mass spectrometers measure to six or more decimal places. The difference is real, not an error."],
+        ["Some chlorine-37 atoms are missing part of a neutron.",0,"Atoms always have whole numbers of protons and neutrons. The mass number is 37; the isotopic mass is not exactly 37 u."],
+        ["They are the same quantity; 36.965903 rounds to 37.",0,"They are close, but they are different quantities: one is a count, the other is a mass in u."]]},
+ {id:"m-r4",obj:"2.3.1",sec:"2.3.1",surf:"reading",dok:2,q:"Magnesium's spectrum shows bars at 23.99 u (78.99%), 24.99 u (10.00%) and 25.98 u (11.01%). Out of 1,000 magnesium atoms, about how many are magnesium-26?",
+  opts:[["About 110",1,"Correct. 11.01% of 1,000 is about 110 atoms."],
+        ["About 11",0,"11 would be the number out of 100. Out of 1,000, there are ten times as many: about 110."],
+        ["About 26",0,"26 is the mass number of the isotope, not a number of atoms. Read the abundance: 11.01%."],
+        ["About 790",0,"That is the number of magnesium-24 atoms, the tallest bar. Magnesium-26 is the 11.01% bar."]]},
+ {id:"m-r5",obj:"2.3.2",sec:"2.3.2",surf:"reading",dok:1,q:"Chlorine-37 is 24.24% of chlorine atoms. Which number goes into the weighted-average calculation?",
+  opts:[["0.2424",1,"Correct. Divide the percent by 100. The fractions for all isotopes then add up to 1."],
+        ["24.24",0,"Using the percent itself makes the answer 100 times too large. Divide by 100 first: 0.2424."],
+        ["2.424",0,"That divides by 10, not 100. Percent means per hundred: 24.24 ÷ 100 = 0.2424."],
+        ["37",0,"37 is the mass number. The weighting factor is the fraction of atoms, 0.2424."]]},
+ {id:"m-r6",obj:"2.3.2",sec:"2.3.2",surf:"reading",dok:2,q:"A student finds chlorine's atomic mass as (34.968853 + 36.965903) ÷ 2 = 35.97 u. The periodic table says 35.45 u. What went wrong?",
+  opts:[["The plain mean treats both isotopes as equally common, but chlorine-35 is about three times as common.",1,"Correct. A weighted average counts each mass by its abundance, which pulls the result toward chlorine-35."],
+        ["The student should have used the mass numbers 35 and 37.",0,"(35 + 37) ÷ 2 = 36 is still a plain mean, and still ignores abundance. Use isotopic masses and weight them."],
+        ["The student should have added the masses instead: 71.93 u.",0,"An average of two masses must lie between them. 71.93 u is the combined mass of two atoms, not an average."],
+        ["Nothing. The periodic table rounds 35.97 down to 35.45.",0,"Rounding cannot turn 35.97 into 35.45. The difference comes from the weighting."]]},
+ {id:"m-r7",obj:"2.3.2",sec:"2.3.2",surf:"reading",dok:2,q:"Boron is 19.9% boron-10 and 80.1% boron-11. Which set of numbers is ready to multiply by the isotopic masses?",
+  opts:[["0.199 and 0.801",1,"Correct. Both percents are divided by 100, and 0.199 + 0.801 = 1."],
+        ["19.9 and 80.1",0,"These are percents. Multiplying by them gives an answer 100 times too large (1,081 u). Divide by 100 first."],
+        ["0.5 and 0.5",0,"Equal weights are a plain mean. Boron-11 is four times as common as boron-10, so it must count more."],
+        ["10 and 11",0,"These are the mass numbers. The weights are the fractions of atoms."]]},
+ {id:"m-r8",obj:"2.3.3",sec:"2.3.3",surf:"reading",dok:2,q:"Boron's average atomic mass is 10.81 u, much closer to boron-11 (11.009305 u) than to boron-10 (10.012937 u). Why?",
+  opts:[["About 80% of boron atoms are boron-11.",1,"Correct. The average is pulled toward the isotope with the most atoms."],
+        ["Heavier isotopes always count more in an average.",0,"The weighting comes from abundance, not from mass. Chlorine's average sits near its lighter isotope, because the lighter one is more common."],
+        ["Boron-11 has more protons than boron-10.",0,"Both are boron, so both have 5 protons. Boron-11 has one more neutron."],
+        ["The periodic table rounds every mass up.",0,"No rounding rule is involved. 10.81 u is the weighted average of the two isotopes."]]},
+ {id:"m-r9",obj:"2.3.3",sec:"2.3.3",surf:"reading",dok:3,q:"Suppose you measured chlorine atoms one at a time. Would you ever find an atom with a mass of 35.45 u?",
+  opts:[["No. Each atom is about 34.97 u or about 36.97 u. 35.45 u describes the mixture.",1,"Correct. The average belongs to the sample, like a class test average of 83.5 when every score is a whole number: no student scored 83.5."],
+        ["Yes. Most chlorine atoms have that mass.",0,"No chlorine atom has the average mass. Most chlorine atoms (75.76%) are chlorine-35, at 34.968853 u."],
+        ["Yes. Some atoms have 18.45 neutrons.",0,"Neutrons are whole particles. An atom has 18 or 20 neutrons, never a fraction."],
+        ["Only in chlorine from a lab, not from nature.",0,"Lab or nature, every atom is one isotope. Only a mixture can average 35.45 u."]]},
+ {id:"m-r10",obj:"2.3.3",sec:"2.3.3",surf:"reading",dok:3,q:"Copper is 69.15% copper-63 (62.929598 u) and 30.85% copper-65 (64.927790 u). Without calculating, which average is reasonable?",
+  opts:[["63.55 u",1,"Correct. It lies between the two masses and closer to copper-63, the more common isotope."],
+        ["63.93 u",0,"That is the plain mean of the two masses, halfway between them. Copper-63 is more common, so the average must sit closer to it."],
+        ["64.93 u",0,"That is the mass of copper-65 alone. The less common isotope cannot set the average."],
+        ["64.00 u",0,"That is the midpoint of the mass numbers, a plain mean again. Weight by abundance."]]},
+ /* ---------- slides ---------- */
+ {id:"m-s-amu",obj:"2.3.1",sec:"2.3.1",surf:"slides",dok:1,q:"Why is a carbon-12 atom exactly 12 u, when chlorine-35 is 34.968853 u?",
+  opts:[["The unit is defined from carbon-12. Every other mass is measured against it.",1,"Correct. 1 u is one twelfth of a carbon-12 atom, so carbon-12 is exactly 12 u by definition."],
+        ["Carbon atoms are made of perfectly round particles.",0,"Shape is not the reason. Carbon-12 is exact only because the unit is defined from it."],
+        ["Carbon-12 was measured more carefully than chlorine.",0,"Both are measured very precisely. Carbon-12 is exact because it is the standard, not a measurement."]]},
+ {id:"m-s-read",obj:"2.3.1",sec:"2.3.1",surf:"slides",dok:2,q:"Copper: 62.93 u (69.15%) and 64.93 u (30.85%). Which is correct?",
+  opts:[["About 69 of every 100 copper atoms have a mass of 62.93 u.",1,"Correct. Position gives the mass; height gives the share of atoms."],
+        ["Copper-63 atoms are 69.15% heavier than copper-65.",0,"Height is not a mass. Copper-63 is the lighter isotope; it is simply more common."],
+        ["Each copper atom is 69.15% copper-63.",0,"Each atom is entirely one isotope. The 69.15% describes how many atoms in the sample are copper-63."]]},
+ {id:"m-s-mn",obj:"2.3.1",sec:"2.3.1",surf:"slides",dok:2,q:"Copper-65: mass number 65, isotopic mass 64.927790 u. Which statement is correct?",
+  opts:[["65 is a count of protons plus neutrons; 64.927790 u is a measured mass.",1,"Correct. They are close, but one is a count and the other is a mass."],
+        ["They are the same quantity; 64.927790 rounds to 65.",0,"Close is not equal. Use isotopic masses in calculations; mass numbers give a slightly wrong answer."],
+        ["The atom has 64.927790 protons and neutrons.",0,"Particles come in whole numbers. The decimal is the mass in u, not a count."]]},
+ {id:"m-s-mean",obj:"2.3.2",sec:"2.3.2",surf:"slides",dok:2,q:"Predict: a jar of chlorine holds 76 chlorine-35 atoms and 24 chlorine-37 atoms. Its average mass is…",
+  opts:[["below 35.97 u, closer to chlorine-35",1,"Correct. The jar gives 35.45 u: with three times as many chlorine-35 atoms, the average is pulled toward 34.97 u."],
+        ["35.97 u, halfway between the isotopes",0,"Halfway is the plain mean. It would be right only if the two isotopes were equally common. The jar shows 35.45 u."],
+        ["above 35.97 u, closer to chlorine-37",0,"A heavier isotope does not count for more. Chlorine-37 is the minority, so the jar's average is 35.45 u, near chlorine-35."]]},
+ {id:"m-s-near",obj:"2.3.3",sec:"2.3.3",surf:"slides",dok:3,q:"Bromine is 50.69% bromine-79 (78.92 u) and 49.31% bromine-81 (80.92 u). Where does its average sit?",
+  opts:[["Almost exactly halfway, at 79.90 u",1,"Correct. The abundances are nearly equal, so the weighted average is close to the plain mean. It is slightly nearer bromine-79."],
+        ["Near 79 u, because the lighter isotope always counts more",0,"The more abundant isotope pulls the average, not the lighter one. Here the abundances are nearly equal."],
+        ["At exactly 80.00 u",0,"80 is halfway between the mass numbers, but bromine-79 is slightly more common and the masses are not whole numbers. The average is 79.90 u."]]},
+ {id:"m-s-ratio",obj:"2.3.3",sec:"2.3.3",surf:"slides",dok:2,q:"An anti-doping lab finds testosterone in an athlete's urine with less carbon-13 than the athlete's own natural steroids. What does that suggest?",
+  opts:[["The testosterone came from outside the body, made from plant starting materials.",1,"Correct. Synthetic testosterone is made from plant sterols with a lower carbon-13 share. The isotope ratio reveals the source."],
+        ["The athlete's carbon atoms have fewer protons.",0,"Every carbon atom has 6 protons. Carbon-13 differs from carbon-12 only in neutrons."],
+        ["The periodic-table mass of carbon has changed.",0,"The tiny shift tells the lab about one sample's source. The standard value used in class, 12.011 u, does not change."]]},
+ {id:"m-s-rev",obj:"2.3.3",sec:"2.3.3",surf:"slides",dok:3,q:"Honors: gallium's average is 69.723 u. Its isotopes are 68.926 u and 70.925 u. About what fraction of gallium atoms is gallium-69?",
+  opts:[["About 0.60",1,"Correct. The average sits about 40% of the way from 68.926 to 70.925, so gallium-69 is about 60% of atoms (60.108%)."],
+        ["About 0.40",0,"That swaps the isotopes. The average is closer to gallium-69, so gallium-69 must be the majority."],
+        ["About 0.50",0,"A 50 : 50 mix would give the plain mean, about 69.93 u. The real average is lower, so gallium-69 is more common."]]}
+]);
+
+/* ===== Unit 2 simulation kit: helpers shared by every lesson's simulations ===== */
+(function(){
+const U2=window.U2=window.U2||{};
+const TAU=Math.PI*2;
+const REDUCED=(()=>{try{return matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){return false}})();
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const FK=()=>window.U2FONTK||1;
+const F=(px,wt=600,fam='--body')=>`${wt} ${(px*FK()).toFixed(1)}px ${css(fam)}`;
+const el=(tag,cls,html)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e};
+const btn=(label,cls='btn')=>{const b=el('button',cls,label);b.type='button';return b};
+U2.el=el;U2.btn=btn;U2.css=css;
+function shell(root,aspect,label){root.classList.add('sim');const cv=el('div','cv');cv.style.aspectRatio=String(1/aspect);const c=el('canvas');c.setAttribute('role','img');if(label)c.setAttribute('aria-label',label);cv.append(c);root.append(cv);return{cv,c}}
+function fit(c){const w=c.clientWidth||300,h=c.clientHeight||180,r=(window.devicePixelRatio||1)*(window.U2SCALE||1)*(c._zoom||1);
+  if(c._w!==w||c._h!==h||c._r!==r){c.width=Math.max(1,Math.round(w*r));c.height=Math.max(1,Math.round(h*r));c._w=w;c._h=h;c._r=r}
+  const x=c.getContext('2d');x.setTransform(r,0,0,r,0,0);x.clearRect(0,0,w,h);return{x,w,h}}
+U2.fit=fit;
+/* draw loop: redraw on resize; animate while visible and busy */
+U2._loops=[];U2.kickAll=()=>U2._loops.forEach(f=>f());
+function loop(c,draw){let raf=null,vis=true,run=false,last=0;
+  function frame(t){raf=null;const dt=last?Math.min(.05,(t-last)/1000):0;last=t;const more=draw(dt);if(vis&&(run||more))raf=requestAnimationFrame(frame);else last=0}
+  const kick=()=>{if(!raf&&vis)raf=requestAnimationFrame(frame)};
+  try{new IntersectionObserver(es=>{vis=es[es.length-1].isIntersecting;if(vis)kick()}).observe(c)}catch(e){}
+  try{new ResizeObserver(()=>kick()).observe(c)}catch(e){addEventListener('resize',kick)}
+  U2._loops.push(kick);return{kick,set run(v){run=v;if(v)kick()}}}
+U2.loop=loop;
+function seg(labels,onPick,init=0){const s=el('div','seg');const bs=labels.map((l,i)=>{const b=btn(l,'');b.setAttribute('aria-pressed',String(i===init));b.onclick=()=>{bs.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));onPick(i)};s.append(b);return b});s.set=i=>{bs.forEach((x,k)=>x.setAttribute('aria-pressed',String(k===i)))};return s}
+U2.seg=seg;
+/* a readout: a small label over a value (r.v). r.hold(texts) keeps it as tall as the tallest of texts would make it, so a
+   value that wraps onto a second line does not push the rest of the simulation around. It re-measures when the row it sits in
+   changes width, not when it does itself: in a wrapping row its own width follows its text, and re-measuring then ratchets.
+   That check runs late, after layout, so the reading and the deck call U2.fitHolds() before they measure a page or slide. */
+const holds=[];U2.fitHolds=()=>holds.forEach(f=>f());
+function ro(label,val=''){const r=el('div','ro');r.innerHTML=`<small>${label}</small><span>${val}</span>`;r.v=r.querySelector('span');
+  r.hold=texts=>{let w=0;const box=r.parentElement||r;const fit=force=>{const cw=box.clientWidth;if(!cw||(cw===w&&!force))return;w=cw;const keep=r.v.textContent;r.style.minHeight='';let mh=0;
+      for(const t of texts){r.v.textContent=t;const b=r.getBoundingClientRect();mh=Math.max(mh,b.height*r.offsetWidth/(b.width||1))}r.v.textContent=keep;r.style.minHeight=mh+'px'};holds.push(fit);
+    try{new ResizeObserver(()=>fit()).observe(box)}catch(e){}if(document.fonts)document.fonts.ready.then(()=>fit(true));fit();return r};
+  return r}
+function grp(label,...kids){const g=el('div','grp');if(label)g.append(el('span','lab',label));kids.forEach(k=>g.append(k));return g}
+function sayBox(){const p=el('p','say');p.setAttribute('role','status');p.hidden=true;p.show=(t,k)=>{p.hidden=false;p.className='say'+(k?' '+k:'');p.innerHTML=t};return p}
+function wl2rgb(nm){let r=0,g=0,b=0;
+  if(nm<380)return'#8a7fd6';
+  if(nm<440){r=-(nm-440)/60;b=1}else if(nm<490){g=(nm-440)/50;b=1}else if(nm<510){g=1;b=-(nm-510)/20}else if(nm<580){r=(nm-510)/70;g=1}else if(nm<645){r=1;g=-(nm-645)/65}else if(nm<=780){r=1}
+  let f=nm<420?.3+.7*(nm-380)/40:nm>700?.3+.7*(780-nm)/80:1;const c=v=>Math.round(255*Math.pow(Math.max(0,v*f),.8));return`rgb(${c(r)},${c(g)},${c(b)})`}
+U2.wl2rgb=wl2rgb;
+function arrow(x,x0,y0,x1,y1,hd=8){const a=Math.atan2(y1-y0,x1-x0);x.beginPath();x.moveTo(x0,y0);x.lineTo(x1,y1);x.stroke();x.beginPath();x.moveTo(x1,y1);x.lineTo(x1-hd*Math.cos(a-.45),y1-hd*Math.sin(a-.45));x.lineTo(x1-hd*Math.cos(a+.45),y1-hd*Math.sin(a+.45));x.closePath();x.fill()}
+/* labels along one axis (items {at, sz}: the wanted centre and the label's size along the axis): sorted by position,
+   pushed apart just enough to leave `gap` between neighbours, and kept inside [a,b]. Each label's centre lands in .c,
+   so the caller can draw a leader from .c back to .at. If the labels cannot all fit, the ones nearest a overlap. */
+function spread(items,a,b,gap=0){items.sort((p,q)=>p.at-q.at);items.forEach(it=>it.c=Math.max(it.at,a+it.sz/2));
+  for(let i=1;i<items.length;i++){const p=items[i-1],q=items[i],d=(p.sz+q.sz)/2+gap;if(q.c-p.c<d)q.c=p.c+d}
+  const z=items[items.length-1];if(z&&z.c+z.sz/2>b){z.c=b-z.sz/2;for(let i=items.length-2;i>=0;i--){const q=items[i+1];items[i].c=Math.min(items[i].c,q.c-(items[i].sz+q.sz)/2-gap)}}
+  items.forEach(it=>{it.c=Math.max(it.c,a+it.sz/2)});return items}
+/* a pointer event's position in the canvas's own CSS pixels, the units its drawing uses. The deck scales every slide
+   and the zoom scales a card with a CSS transform, so the on-screen box differs from that size; reading clientX
+   against getBoundingClientRect() alone lands on the wrong point whenever the slide is not at 100%. */
+function ptr(c,e){const r=c.getBoundingClientRect(),k=c.clientWidth/(r.width||1);return{x:(e.clientX-r.left)*k,y:(e.clientY-r.top)*k}}
+
+Object.assign(U2,{TAU,REDUCED,FK,F,shell,ro,grp,sayBox,arrow,spread,ptr});
+})();
+
+/* ===== Keep symbols in their case inside uppercase labels =====
+   Labels styled text-transform:uppercase would turn λ into Λ, f into F, h into H and nm into NM:
+   different quantities and units. Any standalone symbol or lowercase unit inside such a label is
+   wrapped in span.kc (text-transform:none). Runs on load and on every later DOM change, so
+   readouts that sims rebuild stay correct. The English word "a" is left alone. */
+(function(){
+const TOK=/(^|[\s(=÷×·/,:;+−-])([b-zλνμΔδρ]|nm|pm|km|mm|cm|µm|μm|kg|mol)(?=$|[\s)=÷×·/,.:;+−-])/g;
+const UP=new WeakMap();
+function upper(e){if(UP.has(e))return UP.get(e);const v=getComputedStyle(e).textTransform==='uppercase';UP.set(e,v);return v}
+function fix(root){
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:t=>{
+    const p=t.parentElement;if(!p||p.closest('.kc,script,style,svg,textarea,input'))return NodeFilter.FILTER_REJECT;
+    TOK.lastIndex=0;return TOK.test(t.data)&&upper(p)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT}});
+  const hits=[];while(w.nextNode())hits.push(w.currentNode);
+  hits.forEach(t=>{const f=document.createDocumentFragment();let last=0;TOK.lastIndex=0;
+    t.data.replace(TOK,(m,pre,sym,i)=>{const s=i+pre.length;f.append(t.data.slice(last,s));const k=document.createElement('span');k.className='kc';k.textContent=sym;f.append(k);last=s+sym.length;return m});
+    f.append(t.data.slice(last));t.replaceWith(f)});
+}
+let q=new Set(),raf=0;
+function run(){raf=0;const r=[...q];q.clear();r.forEach(n=>{if(n.isConnected)fix(n)})}
+function start(){
+  const st=document.createElement('style');st.textContent='.kc{text-transform:none}';document.head.append(st);
+  fix(document.body);
+  new MutationObserver(ms=>{ms.forEach(m=>{const n=m.type==='characterData'?m.target.parentElement:m.target;if(n)q.add(n)});if(!raf)raf=requestAnimationFrame(run)})
+    .observe(document.body,{childList:true,subtree:true,characterData:true});
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
+})();
+
+/* Renders an item from ITEMS into a .check element. Shared by reading, slides and missions. */
+(function(){
+const U2=window.U2=window.U2||{};
+/* progress is kept per lesson; the theme choice is shared by the whole unit */
+const SKEY=(pre,k)=>k==='theme'?pre+k:pre+(window.U2LESSON?window.U2LESSON+':':'')+k;
+const store={get(k,d){try{const v=localStorage.getItem(SKEY('u2:',k));return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(SKEY('u2:',k),JSON.stringify(v))}catch(e){}}};
+U2.store=store;
+U2.item=id=>(window.ITEMS||[]).find(i=>i.id===id);
+U2.renderCheck=function(box,item,{onAnswer,remember=true,shuffle=true,label='Stop and check'}={}){
+  if(!item){box.textContent='Missing item';return}
+  box.classList.add('check');box.innerHTML='';
+  const meta=document.createElement('div');meta.className='meta';meta.innerHTML=`<span>${label}</span><span>Objective ${item.obj}${window.OBJ&&OBJ[item.obj]?' · '+OBJ[item.obj].teks:''}</span>`;
+  const q=document.createElement('p');q.className='q';q.innerHTML=item.q;
+  const opts=document.createElement('div');opts.className='opts';const fb=document.createElement('p');fb.className='fb';fb.setAttribute('role','status');
+  let order=item.opts.map((o,i)=>i);if(shuffle){const seed=[...item.id].reduce((a,c)=>a+c.charCodeAt(0),0);order.sort((a,b)=>((a*7+seed)%5)-((b*7+seed)%5))}
+  order.forEach(i=>{const[t,ok,f]=item.opts[i];const b=document.createElement('button');b.type='button';b.className='btn';b.innerHTML=t;b.dataset.i=i;
+    b.onclick=()=>{opts.querySelectorAll('.btn').forEach(x=>x.classList.remove('correct','wrong'));b.classList.add(ok?'correct':'wrong');fb.className='fb '+(ok?'ok':'no');fb.innerHTML=f;
+      if(remember){const s=store.get('chk',{});s[item.id]=ok?1:(s[item.id]===1?1:0);store.set('chk',s)}onAnswer&&onAnswer(ok,item)};opts.append(b)});
+  box.append(meta,q,opts,fb);
+  const prev=remember&&store.get('chk',{})[item.id];if(prev===1){const ci=item.opts.findIndex(o=>o[1]);const b=opts.querySelector(`[data-i="${ci}"]`);if(b){b.classList.add('correct');fb.className='fb ok';fb.innerHTML=item.opts[ci][2]}}
+};
+U2.glossaryPop=function(){let pop=null;
+  function close(){if(pop){pop.remove();pop=null}}
+  document.addEventListener('click',e=>{const t=e.target.closest('.term');if(!t){if(!e.target.closest('.gpop'))close();return}
+    const key=t.dataset.t,g=(window.GLOSS||{})[key];if(!g)return;close();pop=document.createElement('div');pop.className='gpop';pop.setAttribute('role','dialog');
+    pop.innerHTML=`<b>${key}</b><br>${g.d}<span class="es">Español: <i>${g.es}</i></span>`;document.body.append(pop);
+    const r=t.getBoundingClientRect(),pw=pop.offsetWidth,ph=pop.offsetHeight;let x=Math.min(innerWidth-pw-12,Math.max(12,r.left+r.width/2-pw/2)),y=r.bottom+8;if(y+ph>innerHeight-8)y=r.top-ph-8;pop.style.left=x+'px';pop.style.top=y+'px'});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});addEventListener('scroll',close,true)};
+})();
+
+/* ===== Lesson 2.3 simulations: mass-spectrum reader and isotope jar (mount with U2.<name>(el, opts)) =====
+   Isotope data: NIST Atomic Weights and Isotopic Compositions (relative atomic masses and representative
+   isotopic compositions, IUPAC). Every surface of Lesson 2.3 uses these exact values. */
+(function(){
+const U2=window.U2;const {TAU,css,F,FK,el,btn,shell,fit,loop,seg,ro,grp,sayBox}=U2;
+const ISO=U2.ISO23={
+ Cl:{name:'Chlorine',avg:'35.45',iso:[{a:35,m:34.968853,p:75.76},{a:37,m:36.965903,p:24.24}]},
+ Mg:{name:'Magnesium',avg:'24.31',iso:[{a:24,m:23.985042,p:78.99},{a:25,m:24.985837,p:10.00,ps:'10.00'},{a:26,m:25.982593,p:11.01}]},
+ B:{name:'Boron',avg:'10.81',iso:[{a:10,m:10.012937,p:19.9},{a:11,m:11.009305,p:80.1}]},
+ Cu:{name:'Copper',avg:'63.55',iso:[{a:63,m:62.929598,p:69.15},{a:65,m:64.927790,p:30.85}]},
+ Ga:{name:'Gallium',avg:'69.72',iso:[{a:69,m:68.9255735,p:60.108},{a:71,m:70.92470258,p:39.892}]},
+ Br:{name:'Bromine',avg:'79.90',iso:[{a:79,m:78.9183376,p:50.69},{a:81,m:80.9162897,p:49.31}]},
+ Ne:{name:'Neon',avg:'20.18',iso:[{a:20,m:19.9924401762,p:90.48},{a:21,m:20.993846685,p:0.27},{a:22,m:21.991385114,p:9.25}]}
+};
+/* whole-atom mixes for a jar of 100 (abundances rounded to whole atoms) */
+const JAR={Cl:[76,24],B:[20,80],Cu:[69,31],Ga:[60,40],Br:[51,49]};
+const COL=()=>[css('--accent'),css('--warm'),css('--ok')];
+const fx=(v,d)=>v.toFixed(d);
+const lab=(s,i)=>`${s}-${ISO[s].iso[i].a}`;
+const wavg=(s,cnt)=>{const t=cnt.reduce((a,b)=>a+b,0);return ISO[s].iso.reduce((a,x,i)=>a+x.m*cnt[i]/t,0)};
+const plain=s=>ISO[s].iso.reduce((a,x)=>a+x.m,0)/ISO[s].iso.length;
+const list=(root,def)=>(root.dataset.els||def).split(',').filter(k=>ISO[k]);
+/* clamp a centred label inside [lo,hi] */
+function tx(x,t,cx,y,lo,hi){const w=x.measureText(t).width;x.textAlign='left';x.fillText(t,Math.max(lo,Math.min(hi-w,cx-w/2)),y)}
+
+/* ---------- 1. Mass-spectrum reader ---------- */
+U2.massSpec=function(root,opts={}){
+  const els=list(root,'Cl,Mg,B,Cu');let s=root.dataset.el&&ISO[root.dataset.el]?root.dataset.el:els[0],sel=0,showAvg=false;
+  const{c}=shell(root,.5,'Mass spectrum: one bar per isotope, placed at its mass in atomic mass units, with height equal to its percent abundance.');
+  const ctl=el('div','ctl');const msg=sayBox();
+  const sEl=els.length>1?seg(els.map(k=>ISO[k].name),i=>{s=els[i];sel=0;isoSeg();upd()},els.indexOf(s)):null;
+  const isoBox=el('span','grp');const bAvg=btn('Show the average','btn');bAvg.setAttribute('aria-pressed','false');
+  bAvg.onclick=()=>{showAvg=!showAvg;bAvg.setAttribute('aria-pressed',String(showAvg));upd()};
+  const rI=ro('Isotope'),rM=ro('Isotopic mass'),rP=ro('Abundance');
+  if(sEl)ctl.append(grp('Element',sEl));ctl.append(grp('Read a peak',isoBox),bAvg);
+  const rs=el('div','ros');rs.append(rI,rM,rP);root.append(ctl,rs,msg);
+  if(!opts.nonote)root.append(el('p','simnote','Tap or hover over a bar, or use the isotope buttons. Bar height is the percent abundance; the position on the axis is the isotopic mass.'));
+  function isoSeg(){isoBox.innerHTML='';isoBox.append(seg(ISO[s].iso.map((_,i)=>lab(s,i)),i=>{sel=i;upd()},sel))}
+  function upd(){const E=ISO[s],x=E.iso[sel];rI.v.textContent=lab(s,sel);rM.v.textContent=x.m+' u';rP.v.textContent=(x.ps||x.p)+'%';
+    if(showAvg)msg.show(`<b>Average atomic mass of ${E.name.toLowerCase()}: ${E.avg} u.</b> It is pulled toward ${lab(s,E.iso.reduce((b,y,i)=>y.p>E.iso[b].p?i:b,0))}, the most abundant isotope. No single atom has this mass.`,'ok');
+    else msg.show(`<b>${lab(s,sel)}</b> has an isotopic mass of <b>${x.m} u</b> and makes up <b>${x.ps||x.p}%</b> of ${E.name.toLowerCase()} atoms. Its mass number is ${x.a}, but its isotopic mass is not exactly ${x.a} u.`);
+    const sg=isoBox.querySelector('.seg');if(sg)sg.set(sel);L.kick()}
+  let geo=null;
+  function draw(){const{x,w,h}=fit(c);const E=ISO[s],I=E.iso,k=FK();
+    /* the left margin fits the rotated axis title and the widest tick label side by side */
+    x.font=F(14,600);const fs=14*k,pl=fs*1.3+x.measureText('100%').width+10,pr=14,pt=30*k,pb=40*k,W=w-pl-pr,H=h-pt-pb;const lo=Math.min(...I.map(i=>i.a))-1.5,hi=Math.max(...I.map(i=>i.a))+1.5;const X=m=>pl+W*(m-lo)/(hi-lo),Y=p=>pt+H*(1-p/100);
+    x.strokeStyle=css('--line');x.lineWidth=1;x.fillStyle=css('--muted');x.font=F(14,600);
+    [0,25,50,75,100].forEach(p=>{x.beginPath();x.moveTo(pl,Y(p));x.lineTo(pl+W,Y(p));x.stroke();x.textAlign='right';x.fillText(p+'%',pl-6,Y(p)+4)});
+    x.strokeStyle=css('--ink');x.lineWidth=1.5;x.beginPath();x.moveTo(pl,pt);x.lineTo(pl,pt+H);x.lineTo(pl+W,pt+H);x.stroke();
+    x.fillStyle=css('--muted');x.font=F(14,600);for(let m=Math.ceil(lo);m<=hi;m++){x.beginPath();x.moveTo(X(m),pt+H);x.lineTo(X(m),pt+H+5);x.stroke();x.textAlign='center';x.fillText(String(m),X(m),pt+H+17*k)}
+    x.font=F(14,700);tx(x,'mass (u)',pl+W/2,h-6,pl,w-4);
+    x.save();x.translate(fs*.95,pt+H/2);x.rotate(-Math.PI/2);x.textAlign='center';x.fillText('abundance',0,0);x.restore();
+    const bw=Math.max(10,Math.min(W*.06,34*k)),col=COL();geo=I.map((it,i)=>({x:X(it.m),i}));
+    I.forEach((it,i)=>{const bx=X(it.m),by=Y(Math.max(it.p,.6));x.fillStyle=col[i%3];x.globalAlpha=i===sel?1:.55;x.fillRect(bx-bw/2,by,bw,pt+H-by);x.globalAlpha=1;
+      if(i===sel){x.strokeStyle=css('--ink');x.lineWidth=2.5;x.strokeRect(bx-bw/2,by,bw,pt+H-by)}
+      x.fillStyle=css('--ink');x.font=F(14,700);tx(x,lab(s,i),bx,by-(18*k),2,w-2);x.font=F(14,600);x.fillStyle=css('--muted');tx(x,(it.ps||it.p)+'%',bx,by-5,2,w-2)});
+    if(showAvg){const ax=X(I.reduce((a,it)=>a+it.m*it.p/100,0));x.strokeStyle=css('--bad');x.lineWidth=2;x.setLineDash([6,5]);x.beginPath();x.moveTo(ax,pt+6);x.lineTo(ax,pt+H);x.stroke();x.setLineDash([]);
+      x.fillStyle=css('--bad');x.font=F(14,700);const t='average '+E.avg+' u';const tw=x.measureText(t).width;const right=ax+8+tw<w-4;x.textAlign='left';x.fillText(t,right?ax+8:ax-8-tw,pt+12*k)}}
+  const L=loop(c,draw);
+  const pick=e=>{if(!geo)return;const mx=U2.ptr(c,e).x;let b=null,d=1e9;geo.forEach(g=>{const dd=Math.abs(g.x-mx);if(dd<d){d=dd;b=g}});if(b&&d<40&&b.i!==sel){sel=b.i;upd()}};
+  c.addEventListener('pointermove',e=>{if(e.pointerType==='mouse')pick(e)});c.addEventListener('pointerdown',pick);
+  isoSeg();upd();return{redraw:()=>L.kick()}};
+
+/* ---------- 2. Isotope jar: a weighted average of 100 atoms ---------- */
+U2.isotopeJar=function(root,opts={}){
+  const els=(opts.els||list(root,'Cl,B,Cu')).filter(k=>JAR[k]);let s=(opts.target&&opts.target.el)||(root.dataset.el&&JAR[root.dataset.el]?root.dataset.el:els[0]);
+  let cnt=opts.target?(opts.target.start||[50,50]).slice():JAR[s].slice(),picked=-1,done=false;
+  /* fixed shuffled seat order, so changing a count swaps only a few atoms */
+  const seats=[...Array(100).keys()];let sd=7;for(let i=99;i>0;i--){sd=(sd*9301+49297)%233280;const j=Math.floor(sd/233280*(i+1));[seats[i],seats[j]]=[seats[j],seats[i]]}
+  const{c,cv}=shell(root,.5,'A jar of 100 atoms of one element, colored by isotope, beside a mass line that marks each isotope mass, the weighted average and the plain mean.');
+  cv.style.minHeight='240px';/* the mass line needs about 240 px of height on a phone */
+  const ctl=el('div','ctl'),msg=sayBox();const box=el('span','grp');
+  const sEl=!opts.target&&els.length>1?seg(els.map(k=>ISO[k].name),i=>{s=els[i];cnt=JAR[s].slice();picked=-1;build();upd()},els.indexOf(s)):null;
+  const bNat=btn('Natural mix','btn'),bPick=btn('Pick one atom','btn');
+  bNat.onclick=()=>{cnt=JAR[s].slice();picked=-1;upd()};
+  bPick.onclick=()=>{picked=seats[Math.floor(Math.random()*100)];upd(true)};
+  const rW=ro('Weighted average'),rP=ro('Plain mean'),rS=ro('Fractions add to');
+  if(sEl)ctl.append(grp('Element',sEl));ctl.append(box);if(!opts.target)ctl.append(bNat);ctl.append(bPick);
+  const rs=el('div','ros');rs.append(rW,rP,rS);root.append(ctl,rs,msg);
+  if(!opts.nonote)root.append(el('p','simnote',opts.target?'Each + or − swaps one atom, so the jar always holds 100.':'Simplification: a jar holds whole atoms, so 75.76% becomes 76 atoms. A real sample holds billions of billions of atoms and gives the periodic-table value.'));
+  function build(){box.innerHTML='';ISO[s].iso.forEach((_,i)=>{const m=btn('−','btn'),p=btn('+','btn'),r=el('span','jn');m.setAttribute('aria-label','One fewer '+lab(s,i));p.setAttribute('aria-label','One more '+lab(s,i));
+    m.onclick=()=>move(i,-1);p.onclick=()=>move(i,1);const g=grp(lab(s,i),m,r,p);g.firstChild.classList.add('chem');g.dataset.i=i;box.append(g)})}
+  function move(i,d){const n=cnt.length;if(d>0){let j=-1;for(let k=0;k<n;k++)if(k!==i&&cnt[k]>0&&(j<0||cnt[k]>cnt[j]))j=k;if(j<0)return;cnt[i]++;cnt[j]--}
+    else{if(cnt[i]<=0)return;const j=i===0?1:0;cnt[i]--;cnt[j]++}picked=-1;upd()}
+  function calc(){const I=ISO[s].iso;return I.map((x,i)=>`${fx(cnt[i]/100,2)} × ${fx(x.m,3)}`).join(' + ')+` = <b>${fx(wavg(s,cnt),2)} u</b>`}
+  function upd(pk){const a=wavg(s,cnt),I=ISO[s].iso;rW.v.textContent=fx(a,2)+' u';rP.v.textContent=fx(plain(s),2)+' u';rS.v.textContent=cnt.map(n=>fx(n/100,2)).join(' + ')+' = 1.00';
+    $$box();
+    if(pk&&picked>=0){const iso=isoOf(picked);msg.show(`You picked one <b>${lab(s,iso)}</b> atom. Its mass is <b>${I[iso].m} u</b>. No ${ISO[s].name.toLowerCase()} atom has a mass of ${fx(a,2)} u: that number describes the whole jar, not any one atom.`,'')}
+    else if(opts.target){const ok=fx(a,2)===opts.target.avg;msg.show(ok?`<b>Match.</b> ${calc()}. ${opts.target.why||''}`:`Your jar: ${calc()}. Target: <b>${opts.target.avg} u</b>. ${a<+opts.target.avg?'Too light: swap in more of the heavier isotope.':'Too heavy: swap in more of the lighter isotope.'}`,ok?'ok':'');
+      if(ok&&!done){done=true;opts.target.onDone&&opts.target.onDone()}}
+    else{const nat=cnt.every((n,i)=>n===JAR[s][i]);msg.show(`${calc()}${nat?`. The full data give ${ISO[s].avg} u, the periodic-table value.`:'.'} The plain mean, ${fx(plain(s),2)} u, ignores the abundance of each isotope.`,nat?'ok':'')}
+    L.kick()}
+  function $$box(){[...box.querySelectorAll('.grp')].forEach(g=>{const i=+g.dataset.i;g.querySelector('.jn').textContent=cnt[i];const b=g.querySelectorAll('.btn');b[0].disabled=cnt[i]<=0;b[1].disabled=cnt[i]>=100})}
+  const isoOf=seat=>{const r=seats.indexOf(seat);let acc=0;for(let i=0;i<cnt.length;i++){acc+=cnt[i];if(r<acc)return i}return cnt.length-1};
+  function draw(){const{x,w,h}=fit(c);const I=ISO[s].iso,col=COL(),k=FK();
+    /* jar */
+    const jh=h-16,jw=Math.min(jh*.92,w*.42),jx=10,jy=8,r=Math.min(18,jw*.08);
+    x.fillStyle=css('--paper');x.strokeStyle=css('--muted');x.lineWidth=2;x.beginPath();x.moveTo(jx+jw*.2,jy);x.lineTo(jx+jw*.8,jy);x.lineTo(jx+jw*.8,jy+jh*.07);
+    x.arcTo(jx+jw,jy+jh*.1,jx+jw,jy+jh,r);x.arcTo(jx+jw,jy+jh,jx,jy+jh,r);x.arcTo(jx,jy+jh,jx,jy+jh*.1,r);x.arcTo(jx,jy+jh*.1,jx+jw*.2,jy+jh*.07,r);x.lineTo(jx+jw*.2,jy+jh*.07);x.closePath();x.fill();x.stroke();
+    const gx=jx+jw*.08,gy=jy+jh*.16,gw=jw*.84,gh=jh*.8,cw=gw/10,ch=gh/10,rad=Math.min(cw,ch)*.38;
+    for(let q=0;q<100;q++){const seat=seats[q];const iso=isoOf(seat);const cx=gx+cw*(seat%10+.5)+(Math.floor(seat/10)%2?cw*.18:-cw*.18),cy=gy+ch*(Math.floor(seat/10)+.5);
+      x.fillStyle=col[iso%3];x.globalAlpha=picked>=0&&seat!==picked?.35:1;x.beginPath();x.arc(cx,cy,rad*(1+iso*.12),0,TAU);x.fill();x.globalAlpha=1;
+      if(seat===picked){x.strokeStyle=css('--ink');x.lineWidth=3;x.beginPath();x.arc(cx,cy,rad*1.9,0,TAU);x.stroke()}}
+    /* mass line */
+    const L0=jx+jw+24*k,L1=w-12,ly=h*.42;const lo=I[0].m-.25,hi=I[I.length-1].m+.25,X=m=>L0+(L1-L0)*(m-lo)/(hi-lo);
+    x.fillStyle=css('--muted');x.font=F(14,700);x.textAlign='left';x.fillText('MASS LINE (u)',L0,16*k);
+    x.strokeStyle=css('--ink');x.lineWidth=2;x.beginPath();x.moveTo(L0,ly);x.lineTo(L1,ly);x.stroke();
+    I.forEach((it,i)=>{const px=X(it.m);x.fillStyle=col[i%3];x.beginPath();x.arc(px,ly,6,0,TAU);x.fill();x.fillStyle=css('--ink');x.font=F(16,700);tx(x,lab(s,i),px,ly-30*k,L0,L1);x.font=F(14,600);x.fillStyle=css('--muted');tx(x,fx(it.m,3),px,ly-13*k,L0,L1)});
+    const a=wavg(s,cnt),pm=plain(s);
+    x.fillStyle=css('--ok');const ax=X(a);x.beginPath();x.moveTo(ax,ly+4);x.lineTo(ax-8,ly+18);x.lineTo(ax+8,ly+18);x.closePath();x.fill();x.font=F(16,700);tx(x,'weighted '+fx(a,2),ax,ly+34*k,L0,L1);
+    x.strokeStyle=css('--muted');x.setLineDash([4,4]);x.lineWidth=2;const px=X(pm);x.beginPath();x.moveTo(px,ly);x.lineTo(px,ly+50*k);x.stroke();x.setLineDash([]);x.fillStyle=css('--muted');x.font=F(14,600);tx(x,'plain mean '+fx(pm,2),px,ly+64*k,L0,L1);
+    /* share bar */
+    const by=Math.min(h-30*k,ly+82*k),bh=Math.max(14,20*k);let bx=L0;x.font=F(14,700);
+    I.forEach((it,i)=>{const bw=(L1-L0)*cnt[i]/100;x.fillStyle=col[i%3];x.fillRect(bx,by,bw,bh);if(bw>34*k){x.fillStyle='#fff';x.textAlign='center';x.fillText(String(cnt[i]),bx+bw/2,by+bh*.72)}bx+=bw});
+    x.fillStyle=css('--muted');x.font=F(14,600);x.textAlign='left';if(by+bh+14*k<h)x.fillText('atoms of each isotope (out of 100)',L0,by+bh+14*k)}
+  const L=loop(c,draw);build();upd();return{redraw:()=>L.kick()}};
+
+/* ---------- static figures (SVG strings, shared by the reading and the deck) ---------- */
+/* a mass spectrometer, simplified: ionize, accelerate, bend in a magnet, detect */
+U2.msSVG=function(){return`<svg class="msfig" viewBox="0 0 520 168" role="img" aria-label="Simplified mass spectrometer: atoms are ionized, accelerated, bent by a magnet and counted at a detector. Lighter chlorine-35 ions bend more than chlorine-37 ions."><g font-family="var(--body)" font-size="13" fill="var(--ink)">
+ <rect x="8" y="58" width="78" height="44" rx="8" fill="var(--sunk)" stroke="var(--muted)"/><text x="47" y="85" text-anchor="middle" font-weight="700">sample</text>
+ <line x1="104" y1="56" x2="104" y2="104" stroke="var(--pos)" stroke-width="4"/><line x1="122" y1="56" x2="122" y2="104" stroke="var(--neg)" stroke-width="4"/>
+ <rect x="168" y="14" width="200" height="140" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-dasharray="5 4"/><text x="268" y="146" text-anchor="middle" font-weight="700" fill="var(--accent)">magnet</text>
+ <path d="M86 80 H168 Q300 80 446 38" fill="none" stroke="var(--accent)" stroke-width="3"/><path d="M168 80 Q314 80 446 70" fill="none" stroke="var(--warm)" stroke-width="3"/>
+ <rect x="446" y="20" width="12" height="110" rx="3" fill="var(--ink)"/>
+ <text x="440" y="32" text-anchor="end" font-size="12.5" font-weight="700" fill="var(--accent)">Cl-35 bends more</text><text x="440" y="90" text-anchor="end" font-size="12.5" font-weight="700" fill="var(--warm)">Cl-37 bends less</text>
+ <g font-family="var(--mono)" font-size="11.5" fill="var(--muted)" text-anchor="middle"><text x="47" y="122">1 ionize</text><text x="113" y="46">2 accelerate</text><text x="268" y="34">3 bend</text><text x="452" y="148">4 detect</text></g></g></svg>`};
+/* a mass line: isotope masses, the weighted average and the plain mean */
+U2.lineSVG=function(sym){const E=ISO[sym],I=E.iso,lo=I[0].m-.35,hi=I[I.length-1].m+.35,X=m=>(30+400*(m-lo)/(hi-lo)).toFixed(1);
+  const a=I.reduce((s,x)=>s+x.m*x.p/100,0),pm=plain(sym),close=I.length===2&&Math.abs(X(pm)-X(a))<110;
+  return`<svg class="linefig" viewBox="0 0 460 112" role="img" aria-label="${E.name} on a mass line: ${I.map((x,i)=>lab(sym,i)+' at '+x.m+' u, '+(x.ps||x.p)+'%').join('; ')}. The weighted average, ${E.avg} u, is pulled toward the most abundant isotope; the plain mean, ${pm.toFixed(2)} u, sits halfway."><g font-family="var(--body)" font-size="13" text-anchor="middle">
+   <line x1="20" y1="48" x2="440" y2="48" stroke="var(--ink)" stroke-width="2"/>
+   ${I.map((x,i)=>`<circle cx="${X(x.m)}" cy="48" r="${5+Math.sqrt(x.p)*0.9}" fill="${['var(--accent)','var(--warm)','var(--ok)'][i%3]}" opacity=".85"/><text x="${X(x.m)}" y="16" font-weight="700" fill="var(--ink)">${lab(sym,i)}</text><text x="${X(x.m)}" y="30" font-size="11.5" fill="var(--muted)">${(x.ps||x.p)}%</text>`).join('')}
+   <path d="M${X(a)} 62 l-8 14 h16 z" fill="var(--ok)"/><text x="${X(a)}" y="92" font-weight="700" fill="var(--ok)">weighted ${E.avg} u</text>
+   ${close?`<line x1="${X(pm)}" y1="31" x2="${X(pm)}" y2="56" stroke="var(--muted)" stroke-width="2" stroke-dasharray="4 4"/><text x="${X(pm)}" y="24" font-size="11.5" fill="var(--muted)">plain mean ${pm.toFixed(2)}</text>`
+    :`<line x1="${X(pm)}" y1="40" x2="${X(pm)}" y2="${I.length>2?100:62}" stroke="var(--muted)" stroke-width="2" stroke-dasharray="4 4"/><text x="${X(pm)}" y="${I.length>2?110:76}" font-size="11.5" fill="var(--muted)" text-anchor="${pm>a?'start':'end'}" dx="${pm>a?6:-6}">plain mean ${pm.toFixed(2)}</text>`}</g></svg>`};
+/* a periodic-table tile */
+U2.tileSVG=function(z,sym,name,mass,cls=''){return`<svg class="tile23 ${cls}" viewBox="0 0 120 140" role="img" aria-label="Periodic table tile: ${name}, atomic number ${z}, average atomic mass ${mass}"><rect x="2" y="2" width="116" height="136" rx="10" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.5"/><g font-family="var(--body)" text-anchor="middle" fill="var(--ink)"><text x="16" y="26" text-anchor="start" font-size="17" font-weight="700">${z}</text><text x="60" y="78" font-size="46" font-weight="700" font-family="var(--display)">${sym}</text><text x="60" y="102" font-size="14">${name}</text><text x="60" y="126" font-size="19" font-weight="700" fill="var(--warm)">${mass}</text></g></svg>`};
+})();
+
+(()=>{
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+/* progress is kept per lesson; the theme choice is shared by the whole unit */
+const SKEY=(pre,k)=>k==='theme'?pre+k:pre+(window.U2LESSON?window.U2LESSON+':':'')+k;
+const store={get(k,d){try{const v=localStorage.getItem(SKEY('u2d:',k));return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(SKEY('u2d:',k),JSON.stringify(v))}catch(e){}}};
+const cssv=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const REDUCE=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const TAU=Math.PI*2, HEV=4.1357e-15;
+const SPEC=['#B5523B','#CF7E2E','#B38F1E','#e23b2e','#f2c230','#3fb34f','#2f6fe0','#7a3fd0','#7451D6','#3F63CF','#1F8279'];
+const VIS='linear-gradient(90deg,#c9302c,#f39a2b,#f2c230,#3fb34f,#2f6fe0,#7a3fd0)';
+const SUP=n=>`10<sup>${String(n).replace('-','−')}</sup>`;
+function sci(v,sig=3){if(v===0)return'0';const e=Math.floor(Math.log10(Math.abs(v)));const m=v/Math.pow(10,e);if(e>=-2&&e<=3)return Number(v.toPrecision(sig)).toLocaleString('en-US',{maximumFractionDigits:6});return`${m.toFixed(sig-1)} × ${SUP(e)}`}
+
+
+
+/* ---------- scaling ---------- */
+const vp=$('#viewport'),deck=$('#deck');
+const flowMQ=matchMedia('(max-width:760px) and (pointer:coarse),(max-width:480px),(max-height:440px) and (pointer:coarse)');
+let SCALE=1;
+function layout(){if(flowMQ.matches){deck.style.transform='';deck.style.left='';deck.style.top='';SCALE=1;window.U2SCALE=1;return}
+  const W=vp.clientWidth,H=vp.clientHeight;const s=Math.min(W/1600,H/900);SCALE=s;
+  deck.style.transform=`scale(${s})`;window.U2SCALE=Math.max(s,.5);deck.style.left=Math.max(0,(W-1600*s)/2)+'px';deck.style.top=Math.max(0,(H-900*s)/2)+'px'}
+let ZOOMK=1,zoomEl=null;
+function fit(c){const w=c.clientWidth||300,h=c.clientHeight||150;const r=(window.devicePixelRatio||1)*Math.max(SCALE,.5)*(zoomEl&&zoomEl.contains(c)?ZOOMK:1);
+  if(c._w!==w||c._h!==h||c._r!==r){c.width=Math.round(w*r);c.height=Math.round(h*r);c._w=w;c._h=h;c._r=r}
+  const x=c.getContext('2d');x.setTransform(r,0,0,r,0,0);x.clearRect(0,0,w,h);return{x,w,h}}
+const font=(px,wt=700)=>`${wt} ${px}px ${cssv('--body')}`;
+
+/* ---------- typography: keep hyphenated terms, numbers with units and short equations on one line ---------- */
+const NB_SKIP='script,style,textarea,svg,canvas,output,select,option,.nw,.ro span,aside,.rail';
+const HY=/[A-Za-zµ0-9]+(?:-[A-Za-z0-9]+)+/g;
+const UNITS='(?:[kMGTPE]?Hz|W|eV|keV|MeV|m\\/s|nm|µm|mm|cm|km|m|s|J)\\b';
+const UNIT=new RegExp('(\\d)\\s(?='+UNITS+')','g'),LEAD=new RegExp('^\\s(?='+UNITS+')');
+/* keep an operator with its left operand; × and ÷ also hold their right one (4.09 × 10), but a line may break after = */
+const EQ=/\s([=×÷])\s/g;
+function nb(root){if(!root)return;const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);const list=[];let n;
+  while(n=w.nextNode()){const p=n.parentElement;if(!p||p.closest(NB_SKIP))continue;list.push(n)}
+  list.forEach(n=>{let t=n.data.replace(UNIT,'$1 ').replace(EQ,(m,o)=>o==='='?' = ':' '+o+' ');
+    if(n.previousSibling&&n.previousSibling.nodeName==='SUP')t=t.replace(LEAD,' ');
+    HY.lastIndex=0;if(!HY.test(t)){if(t!==n.data)n.data=t;return}
+    HY.lastIndex=0;const f=document.createDocumentFragment();let i=0,m;
+    while(m=HY.exec(t)){if(m.index>i)f.appendChild(document.createTextNode(t.slice(i,m.index)));const sp=document.createElement('span');sp.className='nw';sp.textContent=m[0];f.appendChild(sp);i=m.index+m[0].length}
+    if(i<t.length)f.appendChild(document.createTextNode(t.slice(i)));n.replaceWith(f)})}
+/* ---------- slides, rails, steps ---------- */
+const slides=$$('.slide'),N=slides.length;
+const sIdx=el=>slides.indexOf(el.closest('.slide'));
+const idx=id=>sIdx(document.getElementById(id));
+const RAIL={};
+slides.forEach((s,i)=>{const r=s.dataset.rail;if(!r)return;const labels=r.split('|');RAIL[i]=labels;const ol=$('.rail',s);if(!ol)return;
+  ol.setAttribute('aria-label','Steps on this slide');
+  ol.innerHTML=labels.map((l,k)=>`<li><button type="button" data-n="${k+1}" aria-label="Step ${k+1}: ${l}"><b>${k+1}</b>${l}</button></li>`).join('');
+  ol.addEventListener('click',e=>{const b=e.target.closest('button');if(b&&i===cur)setStep(+b.dataset.n)})});
+const K=i=>RAIL[i]?RAIL[i].length:0;
+let builds=store.get('builds',true),step=0,cur=0;
+const hooks={},stepHooks={};
+function applySteps(i,n,anim){const s=slides[i];if(n<K(i)){s.classList.remove('show-sample');const sb=$('#cer-sample',s);if(sb)sb.setAttribute('aria-pressed','false')}
+  $$('[data-step]',s).forEach(el=>{const k=+el.dataset.step;el.classList.toggle('fut',builds&&k>n);el.classList.remove('now-step');if(anim&&k===n){void el.offsetWidth;el.classList.add('now-step')}});
+  const ol=$('.rail',s);if(ol)$$('li',ol).forEach((li,k)=>{li.className=k+1<n?'done':k+1===n?'now':''})}
+function setStep(n,anim=true){const k=K(cur);if(!k)return;zoomOff(false);n=Math.max(1,Math.min(k,n));const prev=step;step=n;applySteps(cur,n,anim&&n!==prev);gradeDeferred(cur,n);stepHooks[cur]?.(n,prev);chrome()}
+function chrome(){const s=slides[cur],k=K(cur);
+  $('#ttl').innerHTML='';const t=document.createElement('span');t.textContent=s.dataset.title;$('#ttl').appendChild(t);
+  if(k){const b=document.createElement('b');b.textContent=`  ·  Step ${step} of ${k}: ${RAIL[cur][step-1]}`;$('#ttl').appendChild(b)}
+  const more=builds&&k&&step<k;$('#next-l').textContent=more?'Next step':'Next slide';$('#next').disabled=!more&&cur===N-1;
+  $('#prev').disabled=cur===0&&(!k||step<=1||!builds);
+  const nt=$('aside.notes',s);const box=$('#notes');
+  box.innerHTML=`<p class="nh">Teacher notes · Slide ${cur+1}: ${s.dataset.title.replace(/</g,'&lt;')}</p>`+(nt?nt.innerHTML:'<p>No notes for this slide.</p>');
+  const li=box.querySelector(`li[data-n="${step}"]`);if(li){li.classList.add('cur');if(!box.hidden)li.scrollIntoView({block:'nearest'})}}
+function next(){const k=K(cur);if(builds&&k&&step<k)setStep(step+1);else go(cur+1,'start')}
+function prev(){const k=K(cur);if(builds&&k&&step>1)setStep(step-1);else go(cur-1,'end')}
+
+/* ---------- engine ---------- */
+const secNames=[...new Set(slides.map(s=>s.dataset.sec))];
+secNames.forEach(n=>{const b=document.createElement('button');b.textContent=n;b.onclick=()=>go(slides.findIndex(s=>s.dataset.sec===n),'start');$('#secs').appendChild(b)});
+const ticks=$('#ticks');slides.forEach((_,i)=>{const t=document.createElement('span');t.style.backgroundSize=`${N*100}% 100%`;t.style.backgroundPosition=`${N>1?i/(N-1)*100:0}% 0`;ticks.appendChild(t)});
+const ovg=$('#ov-g');let lastSec='';
+slides.forEach((s,i)=>{if(s.dataset.sec!==lastSec){lastSec=s.dataset.sec;const h=document.createElement('h4');h.textContent=lastSec;ovg.appendChild(h)}
+  const b=document.createElement('button');b.innerHTML=`<small>${i+1}</small><span></span>`;b.lastChild.textContent=s.dataset.title+(K(i)?` (${K(i)} steps)`:'');b.onclick=()=>{closeOv();go(i,'start')};ovg.appendChild(b)});
+function go(i,mode='start',first=false){
+  if(i<0||i>=N)return;
+  zoomOff(false);
+  if(!first){if(i===cur){if(mode==='all'&&K(i))setStep(K(i));return}hooks[cur]?.leave?.();slides[cur].hidden=true;slides[cur].classList.remove('enter')}
+  cur=i;const s=slides[i];s.hidden=false;if(!first)s.classList.add('enter');
+  if(flowMQ.matches)window.scrollTo(0,0);
+  $('#count').textContent=`${i+1} / ${N}`;
+  $$('span',ticks).forEach((t,k)=>{t.className=k<i?'done':k===i?'now':''});
+  $$('#secs button').forEach(b=>b.setAttribute('aria-current',String(b.textContent===s.dataset.sec)));
+  $$('button',ovg).forEach((b,k)=>b.setAttribute('aria-current',String(k===i)));
+  const k=K(i);step=0;
+  if(k){setStep(!builds||mode==='end'||mode==='all'?k:1,false)}else chrome();
+  try{history.replaceState(null,'','#s'+(i+1))}catch(e){}
+  requestAnimationFrame(()=>{hooks[i]?.enter?.();refit()});
+}
+$('#prev').onclick=prev;$('#next').onclick=next;
+$$('[data-go="next"]').forEach(b=>b.onclick=next);
+const notesEl=$('#notes'),notesTg=$('#notes-tg');
+function toggleNotes(){notesEl.hidden=!notesEl.hidden;notesTg.setAttribute('aria-pressed',String(!notesEl.hidden));if(!notesEl.hidden)chrome()}
+notesTg.onclick=toggleNotes;
+const ov=$('#ov');function openOv(){ov.hidden=false;$('#ov-x').focus()}function closeOv(){ov.hidden=true}
+$('#ov-tg').onclick=openOv;$('#ov-x').onclick=closeOv;ov.addEventListener('click',e=>{if(e.target===ov)closeOv()});
+$('#fs').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen()}catch(e){$('#fs').disabled=true;$('#fs').textContent='Full screen unavailable'}};
+const bt=$('#build-tg');bt.setAttribute('aria-pressed',String(builds));
+bt.onclick=()=>{builds=!builds;store.set('builds',builds);bt.setAttribute('aria-pressed',String(builds));const k=K(cur);if(k){applySteps(cur,step,false);if(!builds)stepHooks[cur]?.(k,0)}chrome()};
+function applyTheme(t){if(t)document.documentElement.setAttribute('data-theme',t);else document.documentElement.removeAttribute('data-theme');$('#theme-tg').textContent=t==='dark'?'Dark':t==='light'?'Light':'Theme'}
+let theme=store.get('theme',null);applyTheme(theme);
+$('#theme-tg').onclick=()=>{const isDark=theme?theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;theme=isDark?'light':'dark';store.set('theme',theme);applyTheme(theme);hooks[cur]?.enter?.()};
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){if(zoomEl)zoomOff();else if(!ov.hidden)closeOv();else if(!notesEl.hidden)toggleNotes();return}
+  if(e.target.closest('input,textarea,select'))return;
+  if((e.key==='ArrowRight')&&e.shiftKey){e.preventDefault();go(cur+1,'start')}
+  else if((e.key==='ArrowLeft')&&e.shiftKey){e.preventDefault();go(cur-1,'start')}
+  else if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();next()}
+  else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();prev()}
+  else if(e.key==='n'||e.key==='N')toggleNotes();
+  else if(e.key==='o'||e.key==='O')ov.hidden?openOv():closeOv();
+  else if(e.key==='z'||e.key==='Z')zoomCurrent();
+  else if(e.key==='Home')go(0,'start');else if(e.key==='End')go(N-1,'start');
+});
+
+/* ---------- zoom: enlarge one card or block to fill the slide (Z key, Zoom button, double-click) ---------- */
+function zoomOff(redraw=true){if(!zoomEl)return;const el=zoomEl;zoomEl=null;ZOOMK=1;el.classList.remove('zoomed');el.style.transform='';el.style.transformOrigin='';
+  $$('.zshade').forEach(x=>x.remove());$('#zoom-tg').setAttribute('aria-pressed','false');el.querySelectorAll('canvas').forEach(c=>c._zoom=1);U2.kickAll();if(redraw)hooks[cur]?.enter?.()}
+function zoomOn(el){if(flowMQ.matches||!el)return;zoomOff(false);const s=slides[cur];if(!s.contains(el))return;
+  const sr=s.getBoundingClientRect(),er=el.getBoundingClientRect(),k0=SCALE||1;
+  const sw=sr.width/k0,sh=sr.height/k0,ew=er.width/k0,eh=er.height/k0,ex=(er.left-sr.left)/k0,ey=(er.top-sr.top)/k0,pad=34;
+  const k=Math.min((sw-2*pad)/ew,(sh-2*pad)/eh,3);if(k<1.08)return;
+  const shade=document.createElement('div');shade.className='zshade';shade.title='Click to zoom out';shade.onclick=()=>zoomOff();s.appendChild(shade);
+  el.classList.add('zoomed');el.style.transformOrigin='0 0';el.style.transform=`translate(${(sw-ew*k)/2-ex}px,${(sh-eh*k)/2-ey}px) scale(${k})`;
+  zoomEl=el;ZOOMK=k;el.querySelectorAll('canvas').forEach(c=>c._zoom=k);setTimeout(()=>U2.kickAll(),340);$('#zoom-tg').setAttribute('aria-pressed','true');setTimeout(()=>{if(zoomEl===el)hooks[cur]?.enter?.()},330)}
+const zoomTarget=el=>el.closest('.cv')||el.closest('.card,.def,.mt')||el.closest('[data-step]')||el;
+function zoomCurrent(){if(zoomEl){zoomOff();return}const s=slides[cur];
+  let el=K(cur)?[...s.querySelectorAll(`[data-step="${step}"]`)].find(x=>!x.closest('aside')):null;
+  if(!el)el=s.querySelector('.body .card')||s.querySelector('.card');if(el)zoomOn(zoomTarget(el))}
+$('#deck').addEventListener('dblclick',e=>{if(e.target.closest('button,input,select,textarea,summary,a,label,.zshade'))return;
+  if(zoomEl){zoomOff();return}const el=e.target.closest('.card,.def,.mt,[data-step],.cv,svg.dia');
+  if(el){e.preventDefault();try{window.getSelection().removeAllRanges()}catch(_){}zoomOn(zoomTarget(el))}});
+$('#zoom-tg').onclick=zoomCurrent;
+
+/* ---------- autofit: content is never hidden; text shrinks slightly when a card or slide would overflow ---------- */
+/* overflowOf(el,k,wide): how far content passes the box's bottom, in slide px; with wide, a line wider than a card counts too.
+   sub/sup are skipped: their glyph box hangs below the line (Charis SIL by ~4px) though the line itself fits */
+function overflowOf(el,k,wide){const r=el.getBoundingClientRect();const lim=r.bottom-parseFloat(getComputedStyle(el).paddingBottom)*k+1;let mx=-1e9;
+  el.querySelectorAll('*').forEach(d=>{if(d.closest('aside')||d.closest('details:not([open])>:not(summary)')||(d.ownerSVGElement)||d.matches('sub,sup'))return;const q=d.getBoundingClientRect();if(q.height)mx=Math.max(mx,q.bottom)});
+  const v=(mx-lim)/k;return wide?Math.max(v,el.scrollWidth-el.clientWidth):v}
+/* a title that will not fit on one line shrinks by up to 16%, then wraps at full size (the display font has no width axis to condense) */
+function fitTitle(s){const t=s.querySelector('.sh h2,.sh .big-q,.cover h1');if(!t)return false;const b0=t.style.fontSize;t.style.fontSize='';
+  const over=()=>{t.style.whiteSpace='nowrap';const o=t.scrollWidth>t.clientWidth+1;t.style.whiteSpace='';return o};
+  if(over()){let ok=false;const px=parseFloat(getComputedStyle(t).fontSize);for(let f=.96;f>=.84;f-=.04){t.style.fontSize=(px*f)+'px';if(!over()){ok=true;break}}
+    if(!ok)t.style.fontSize=''}
+  return t.style.fontSize!==b0}
+/* the boxes autofit keeps content inside: the slide and its column rows (bottom edge), and every card (bottom and side) */
+const fitParts=s=>({boxes:[s,...[...s.querySelectorAll('.cols')].filter(c=>!c.closest('aside'))],cards:[...s.querySelectorAll('.card')].filter(c=>!c.closest('aside'))});
+const slideK=s=>(s.getBoundingClientRect().width/s.offsetWidth)||1;
+function overflows(s,k){const{boxes,cards}=fitParts(s);return Math.max(...boxes.map(b=>overflowOf(b,k)))>1||cards.some(c=>overflowOf(c,k,1)>1)}
+function fitSlide(){if(flowMQ.matches)return false;U2.fitHolds();const s=slides[cur];if(!s)return false;const tch=fitTitle(s);const k=slideK(s);
+  const tgt=s.querySelector('.body')||s.querySelector('.cols.grow');const{boxes,cards}=fitParts(s);
+  const before=[tgt,...cards].map(e=>e?e.style.fontSize:'');
+  if(tgt)tgt.style.fontSize='';cards.forEach(c=>c.style.fontSize='');
+  const over=()=>Math.max(...boxes.map(b=>overflowOf(b,k)));
+  if(tgt){let f=1,g=0;while(over()>1&&f>.76&&g++<12){f-=.025;tgt.style.fontSize=f+'em'}}
+  cards.forEach(c=>{let f=1,g=0;while(overflowOf(c,k,1)>1&&f>.66&&g++<14){f-=.04;c.style.fontSize=f+'em'}});
+  /* grow: when a slide has spare height, enlarge its text (up to 1.2x) so content fills the slide instead of leaving an empty band */
+  const shrunk=(tgt&&tgt.style.fontSize)||cards.some(c=>c.style.fontSize);
+  if(tgt&&!shrunk&&!s.hasAttribute('data-nogrow')&&!s.querySelector('canvas')){let f=1;
+    while(f<1.2){const nf=Math.min(1.2,f+.03);tgt.style.fontSize=nf+'em';if(overflows(s,k)){tgt.style.fontSize=f===1?'':f+'em';break}f=nf}}
+  return tch||[tgt,...cards].some((e,i)=>e&&e.style.fontSize!==before[i])}
+/* A click inside a simulation keeps the current text size unless something now overflows. A full refit there would
+   re-grow the text whenever a message got shorter, so every control on the slide would jump at each click.
+   A pending full refit (slide entry, a click elsewhere) is never downgraded to a keep. */
+let fitT=0,fitKeep=false;function refit(e){const keep=!!e?.target?.closest?.('.sim');fitKeep=fitT?fitKeep&&keep:keep;clearTimeout(fitT);
+  fitT=setTimeout(()=>{fitT=0;const s=slides[cur];if(fitKeep&&s&&!flowMQ.matches&&!overflows(s,slideK(s)))return;if(fitSlide())hooks[cur]?.enter?.()},45)}
+$('#deck').addEventListener('click',refit);
+$('#deck').addEventListener('toggle',refit,true);
+try{document.fonts.ready.then(()=>refit())}catch(e){}
+document.addEventListener('click',e=>{const b=e.target.closest('#cer-sample');if(!b)return;const s=b.closest('.slide');const on=s.classList.toggle('show-sample');b.setAttribute('aria-pressed',on);refit()});
+
+
+/* ---------- questions (immediate or graded at a later step) ---------- */
+const EX={};
+$$('[data-qtext]').forEach(e=>{const it=U2.item(e.dataset.qtext);if(it)e.innerHTML=it.q});
+$$('[data-q][data-item]').forEach(box=>{const it=U2.item(box.dataset.item);if(!it)return;const q=box.dataset.q;EX[q]={};
+  const order=it.opts.map((o,i)=>i);const seed=[...it.id].reduce((a,c)=>a+c.charCodeAt(0),0);order.sort((a,b)=>((a*7+seed)%5)-((b*7+seed)%5));
+  order.forEach(i=>{const[t,ok,f]=it.opts[i];const x=document.createElement('button');x.className='btn';x.dataset.v=String(i);x.innerHTML=t;box.appendChild(x);EX[q][String(i)]=f;if(ok)box.dataset.a=String(i)})});
+function grade(box,v){const q=box.dataset.q,a=box.dataset.a,fb=box.parentElement.querySelector('.fb');
+  $$('button',box).forEach(x=>{x.classList.remove('correct','wrong');x.setAttribute('aria-pressed',String(x.dataset.v===v))});
+  const b=$$('button',box).find(x=>x.dataset.v===v);const ok=v===a;b.classList.add(ok?'correct':'wrong');const ex=EX[q]||{};
+  fb.className='fb '+(ok?'ok':'no');fb.innerHTML=ex[v]||ex._||(ok?'Correct.':'Not quite. Try again.')}
+$$('[data-q]').forEach(box=>{box.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  const at=+box.dataset.at||0,si=sIdx(box);
+  if(at&&builds&&(si!==cur||step<at)){box.dataset.pending=b.dataset.v;$$('button',box).forEach(x=>{x.classList.remove('correct','wrong');x.setAttribute('aria-pressed',String(x===b))});
+    const fb=box.parentElement.querySelector('.fb');fb.className='fb info';fb.textContent=`Prediction recorded. You will test it in step ${at}.`;return}
+  grade(box,b.dataset.v)})});
+function gradeDeferred(i,n){$$('[data-q][data-at]',slides[i]).forEach(box=>{if(box.dataset.pending&&n>=+box.dataset.at){grade(box,box.dataset.pending);delete box.dataset.pending}})}
+
+/* ---------- predictions ---------- */
+$$('[data-pred]').forEach(box=>{const k=box.dataset.pred;
+  const mark=v=>$$('button',box).forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.v===v)));
+  const sv=store.get(k,null);if(sv)mark(sv);
+  box.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;mark(b.dataset.v);store.set(k,b.dataset.v);predMsg()})});
+function predMsg(){const n=['p1','p2','p3','conf'].filter(k=>store.get(k,null)).length;$('#pred-fb').textContent=n===4?'Saved. You will see how you did at the end of the lesson.':`${n} of 4 answered. Answers stay hidden until the end.`}
+predMsg();
+
+/* ---------- textareas & timers ---------- */
+$$('textarea[data-save]').forEach(t=>{t.value=store.get('t:'+t.id,'');t.addEventListener('input',()=>store.set('t:'+t.id,t.value))});
+function timerStart(tm){clearInterval(tm._id);let left=+tm.dataset.timer;const out=$('output',tm);const show=()=>out.textContent=Math.floor(left/60)+':'+String(left%60).padStart(2,'0');show();out.style.color='';
+  tm._id=setInterval(()=>{left--;show();if(left<=0){clearInterval(tm._id);out.textContent='Time';out.style.color='var(--warm)'}},1000)}
+$$('[data-timer]').forEach(tm=>{$('button',tm).onclick=()=>timerStart(tm)});
+const startTimerAt=(slideEl,sec)=>{const tm=$(`[data-timer="${sec}"]`,slideEl);if(tm&&builds)timerStart(tm)};
+{const s2=slides[1];stepHooks[1]=(n,p)=>{if(n===3&&p<3)startTimerAt(s2,60)}}
+slides.forEach((s,i)=>{if(s.classList.contains('qslide'))stepHooks[i]=(n,p)=>{if(n===1&&p<1)startTimerAt(s,30);if(n===2&&p<2)startTimerAt(s,60)}});
+
+/* ---------- wrap-up slides shared by every lesson ----------
+   revisitPredictions(Q): Q = [[storeKey, question, {value:label}, answerValue, why], ...] fills #revisit
+   rateTargets(T): T = [[target text, [review slide numbers]], ...] fills #rate with Not yet / Almost / Got it */
+function revisitPredictions(Q){const el=$('#revisit');if(!el)return;
+  function render(){const conf=store.get('conf',null);
+    el.innerHTML=Q.map(([k,q,lab,ans,why],i)=>{const v=store.get(k,null);const ok=v===ans;
+      return`<div class="card evenly" data-step="${i+1}"><h3>${q}</h3><p class="sm">You predicted: <b>${v?lab[v]:'no prediction'}</b>${conf&&v?` <span class="muted">(${conf.toLowerCase()})</span>`:''}</p><p class="fb ${v?(ok?'ok':'no'):'info'}">${v?(ok?'✓ ':'✗ '):''}Answer: <b>${lab[ans]}</b>. ${why}</p></div>`}).join('');nb(el)}
+  render();const si=idx('revisit');
+  hooks[si]={enter(){render();applySteps(si,step,false)}}}
+function rateTargets(T){const el=$('#rate');if(!el)return;
+  T.forEach(([t,rev],i)=>{const k='rate'+i,v=store.get(k,'');const p=document.createElement('p');p.innerHTML=`<b>${i+1}.</b> ${t}`;
+    const ch=document.createElement('div');ch.className='choices';const rv=document.createElement('div');rv.className='rev row';
+    const showRev=o=>{rv.innerHTML='';if(o&&o!=='Got it'){const s=document.createElement('span');s.className='muted';s.textContent='Review:';rv.appendChild(s);rev.forEach(n=>{const b=document.createElement('button');b.className='btn ghost';b.textContent=`Slide ${n}: ${slides[n-1].dataset.title}`;b.onclick=()=>go(n-1,'all');rv.appendChild(b)})}};
+    ['Not yet','Almost','Got it'].forEach(o=>{const b=document.createElement('button');b.className='btn';b.textContent=o;b.setAttribute('aria-pressed',String(v===o));
+      b.onclick=()=>{store.set(k,o);$$('button',ch).forEach(x=>x.setAttribute('aria-pressed',String(x===b)));showRev(o)};ch.appendChild(b)});
+    showRev(v);el.append(p,ch,rv)})}
+
+/* ===== Lesson 2.3 deck: slide-specific wiring (runs inside the engine closure) ===== */
+window.U2FONTK=1.35;
+/* static figures first, so autofit measures them */
+$$('[data-fig="ms"]').forEach(f=>f.insertAdjacentHTML('afterbegin',U2.msSVG()));
+$$('[data-fig="line"]').forEach(f=>f.insertAdjacentHTML('afterbegin',U2.lineSVG(f.dataset.el)));
+$$('[data-tile]').forEach(f=>{const[z,s,n,m]=f.dataset.tile.split('|');f.insertAdjacentHTML('afterbegin',U2.tileSVG(z,s,n,m))});
+/* simulations; the deck's step text replaces each sim's own note */
+$$('[data-sim]').forEach(b=>{const f=U2[b.dataset.sim];if(f)f(b,{nonote:true})});
+slides.forEach((s,i)=>{if($('[data-sim]',s)&&!hooks[i])hooks[i]={enter(){U2.kickAll()}}});
+
+/* revisit predictions */
+revisitPredictions([
+  ['p1','Chlorine\'s 35.45 is closer to 35 than to 37 because…',{more:'most chlorine atoms are chlorine-35',light:'lighter atoms count for more',round:'scientists round the value down'},'more','75.76% of chlorine atoms are chlorine-35, so it pulls the weighted average toward itself (slides 6 and 8).'],
+  ['p2','Some chlorine atoms have a mass of 35.45 u.',{true:'True',false:'False'},'false','Every chlorine atom is 34.968853 u or 36.965903 u. 35.45 u describes the mixture (slides 8 and 11).'],
+  ['p3','To find an average atomic mass, you…',{plain:'add the isotopic masses and divide by the number of isotopes',weighted:'weight each isotope\'s mass by how common it is',common:'use the mass of the most common isotope'},'weighted','The plain mean gives 35.97 u, which does not match the table. The weighted average gives 35.45 u (slides 8 and 9).']]);
+
+/* self-rating */
+rateTargets([['Read isotopic masses and percent abundances from a mass spectrum, and tell isotopic mass apart from mass number',[5,6,7]],
+  ['Calculate average atomic mass as a weighted average, using fractions that add up to 1',[8,9,10]],
+  ['Explain why average atomic mass is a decimal pulled toward the most abundant isotope, and why, in a mix of isotopes, no atom has that mass',[11,12,14]]]);
+
+/* ---------- start ---------- */
+nb($('#deck'));
+new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(x=>{if(x.nodeType===3&&x.parentElement&&x.parentElement.matches('.fb,.res,[data-sol]'))nb(x.parentElement)}))).observe($('#deck'),{childList:true,subtree:true});
+layout();
+let start=0;const m=/^#s(\d+)$/.exec(location.hash||'');if(m)start=Math.min(N-1,Math.max(0,+m[1]-1));
+slides.forEach((s,i)=>s.hidden=i!==start);go(start,'start',true);
+let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{zoomOff(false);layout();hooks[cur]?.enter?.();refit()},120)});
+flowMQ.addEventListener('change',()=>{layout();hooks[cur]?.enter?.()});
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>hooks[cur]?.enter?.());
+addEventListener('hashchange',()=>{const mm=/^#s(\d+)$/.exec(location.hash||'');if(mm&&+mm[1]-1!==cur)go(+mm[1]-1,'start')});
+})();
+</script>
+</body>
+</html>

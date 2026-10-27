@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unit 3 Blueprint</title>
+<meta name="description" content="Teacher blueprint for Unit 3 Periodic Table and Trends: exact TEKS, objectives, lesson map, misconceptions, missions, the case file and data sources.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500..800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fb;--paper:#fff;--ink:#14162b;--muted:#5b6078;--line:#dfe2ee;--sunk:#eef0f7;--accent:#3a3fc9;--accent-soft:#e6e7fb;--warm:#b0430f;--ok:#17734a;--ok-soft:#e3f4ea;--bad:#b4232a;
+  --body:"Atkinson Hyperlegible",system-ui,sans-serif;--display:"Bricolage Grotesque",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1120;--paper:#171a2e;--ink:#eceefb;--muted:#a3a8c6;--line:#2c3150;--sunk:#1f2340;--accent:#9ea3ff;--accent-soft:#272b55;--warm:#ff9a62;--ok:#5fd39b;--ok-soft:#173528;--bad:#ff7b7b}}
+:root[data-theme="dark"]{--bg:#0f1120;--paper:#171a2e;--ink:#eceefb;--muted:#a3a8c6;--line:#2c3150;--sunk:#1f2340;--accent:#9ea3ff;--accent-soft:#272b55;--warm:#ff9a62;--ok:#5fd39b;--ok-soft:#173528;--bad:#ff7b7b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 20px 80px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px}
+nav.toc{position:sticky;top:20px;align-self:start;font-size:14px}
+nav.toc p{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:4px 0 4px 10px;border-left:2px solid var(--line)}
+nav.toc a:hover{color:var(--ink);border-color:var(--accent)}
+main{min-width:0}
+header.top{margin-bottom:28px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm);margin:0}.eyebrow a{color:inherit;text-decoration:none}.eyebrow a:hover{text-decoration:underline}
+h1{font-family:var(--display);font-size:44px;line-height:1.02;margin:.15em 0 .3em;font-weight:800}
+h2{font-family:var(--display);font-size:28px;line-height:1.1;margin:56px 0 10px;font-weight:700;scroll-margin-top:16px}
+h3{font-family:var(--display);font-size:20px;margin:28px 0 8px;font-weight:700}
+h4{font-size:16px;margin:18px 0 6px}
+p{margin:0 0 12px}
+a{color:var(--accent)}
+.lede{font-size:19px;color:var(--muted)}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pill{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-radius:99px;padding:3px 10px;background:var(--paper);color:var(--muted)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid2 .card,.grid3 .card{margin:0}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--warm);margin:0 0 6px;font-weight:600}
+table{border-collapse:collapse;width:100%;font-size:15px;background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:12px 0}
+th,td{text-align:left;vertical-align:top;padding:9px 12px;border-bottom:1px solid var(--line)}
+th{font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);background:var(--sunk);font-weight:600}
+tr:last-child td{border-bottom:0}
+td code,p code,li code{font-family:var(--mono);font-size:.88em;background:var(--sunk);padding:.05em .35em;border-radius:5px}
+ul,ol{margin:0 0 12px;padding-left:1.3em}
+li{margin:3px 0}
+.teks{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:10px 0}
+.teks b{font-family:var(--mono);font-size:13px;color:var(--accent)}
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}
+.flow div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px;position:relative}
+.flow div:not(:last-child)::after{content:"→";position:absolute;right:-10px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:700}
+.flow b{display:block;font-family:var(--display);font-size:17px}
+.flow span{font-size:13.5px;color:var(--muted)}
+.tag{display:inline-block;font-family:var(--mono);font-size:11.5px;border-radius:6px;padding:1px 6px;background:var(--accent-soft);color:var(--ink);white-space:nowrap}
+.tag.w{background:color-mix(in srgb,var(--warm) 16%,var(--paper))}
+.tag.g{background:var(--ok-soft)}
+.note{background:var(--accent-soft);border-radius:12px;padding:12px 16px;margin:14px 0;font-size:15.5px}
+.mis td:first-child{width:38%}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.evid{counter-reset:ev}
+.evid .card{position:relative;padding-left:62px}
+.evid .card::before{counter-increment:ev;content:counter(ev);position:absolute;left:18px;top:18px;width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--paper);display:grid;place-items:center;font-family:var(--display);font-weight:800}
+footer{margin-top:60px;font-size:14px;color:var(--muted)}
+.tt{position:fixed;right:16px;top:14px;font:600 13px var(--body);background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:6px 12px;cursor:pointer}
+@media (max-width:900px){.wrap{grid-template-columns:minmax(0,1fr)}nav.toc{position:static}.grid3,.grid2,.flow{grid-template-columns:minmax(0,1fr)}.flow div::after{display:none}h1{font-size:34px}table{display:block;overflow-x:auto}}
+@media print{nav.toc,.tt{display:none}.wrap{display:block;padding:0}body{background:#fff;font-size:12pt}.card,table{break-inside:avoid}h2{break-after:avoid}}
+</style>
+</head>
+<body>
+<button class="tt" id="tt" type="button">Theme</button>
+<div class="wrap">
+<nav class="toc" aria-label="Contents">
+  <p>Blueprint</p>
+  <a href="#package">1. The package</a>
+  <a href="#teks">2. Standards</a>
+  <a href="#map">3. Lesson map and pacing</a>
+  <a href="#l31">4. Lesson 3.1</a>
+  <a href="#l32">5. Lesson 3.2</a>
+  <a href="#l33">6. Lesson 3.3</a>
+  <a href="#l34">7. Lesson 3.4</a>
+  <a href="#case">8. Case file: sodium</a>
+  <a href="#matrix">9. Alignment matrix</a>
+  <a href="#assess">10. Using the results</a>
+  <a href="#access">11. Access and Honors</a>
+  <a href="#data">12. Data and accuracy</a>
+  <a href="#src">Sources</a>
+</nav>
+<main>
+<header class="top">
+  <p class="eyebrow"><a href="index.html">Chemistry Case Files · Unit 3</a> · Teacher blueprint</p>
+  <h1>Periodic Table &amp; Trends: unit blueprint</h1>
+  <p class="lede">One set of objectives drives four surfaces: a student reading, a teacher slide deck, missions and a case file. Every check item carries an objective ID, so alignment to TEKS C.5(A), C.5(B) and C.5(C) can be traced item by item.</p>
+  <div class="meta"><span class="pill">Grade 10 on-level, Honors optional</span><span class="pill">19 TAC §112.43(c), adopted 2020</span><span class="pill">About 10 class periods</span><span class="pill">Exact TEKS wording</span></div>
+</header>
+
+<section id="package">
+<h2>1. The package</h2>
+<p>Fifteen pages: four readings, four slide decks, four mission sets, one case file, this blueprint and the unit index. Each surface has one job, and none of them tests content that the reading does not teach.</p>
+<div class="flow">
+  <div><b>Read</b><span>Student reading in book or continuous mode, with a simpler-language toggle, stop-and-check items and interactives.</span></div>
+  <div><b>Teach</b><span>Teacher deck. Each slide shows its reading section, and the notes give timings.</span></div>
+  <div><b>Practice</b><span>Missions. Real data and everyday uses of each idea, with feedback on every wrong choice.</span></div>
+  <div><b>Apply</b><span>Case file. One Texas decision that needs the whole unit.</span></div>
+</div>
+<div class="grid2">
+  <div class="card"><p class="label">Teacher flow, one lesson</p><ol class="small"><li>Open the deck. The driving question and three predictions come first.</li><li>Teach through the deck. Students follow the matching reading section or read it as homework.</li><li>Students answer the stop-and-check items and complete the missions.</li><li>The CER exit ticket and the self-rating close the lesson. Students write in their notebooks.</li></ol></div>
+  <div class="card"><p class="label">Design rules</p><ul class="small"><li>Evidence first, then the model. Students see data before the explanation.</li><li>One objective ID per item. Every wrong choice gets feedback that names the faulty idea.</li><li>Writing happens in notebooks. Pages offer choices, numbers, sliders and reveals, never text boxes.</li><li>Reactive metals and halogens are shown by video only. Drawings are labeled as illustrations.</li><li>"Including" items in a TEKS statement are taught and assessed. "Such as" items are examples.</li></ul></div>
+</div>
+</section>
+
+<section id="teks">
+<h2>2. Standards</h2>
+<p>Exact wording of 19 TAC §112.43(c)(5). The right column states what a student must produce to show mastery.</p>
+<table>
+<thead><tr><th style="width:52%">Student expectation</th><th>Mastery evidence</th></tr></thead>
+<tbody>
+<tr><td><div class="teks"><b>C.5(A)</b> explain the development of the Periodic Table over time using evidence such as chemical and physical properties;</div></td><td>Explains how triads and octaves, Mendeleev's gaps and predictions, the noble gases and Moseley's X-ray data each changed the table, and names the evidence behind each change. Lesson 3.1 and case file File 1.</td></tr>
+<tr><td><div class="teks"><b>C.5(B)</b> predict the properties of elements in chemical families, including alkali metals, alkaline earth metals, halogens, noble gases, and transition metals, based on valence electrons patterns using the Periodic Table; and</div></td><td>For each of the five named families: states the valence electrons and typical ion charge, predicts reactivity and the trend in melting and boiling points, and estimates a missing member's properties from its neighbors. Explains why transition metals behave differently. Lesson 3.4, with the families introduced in Unit 2 Lesson 2.5.</td></tr>
+<tr><td><div class="teks"><b>C.5(C)</b> analyze and interpret elemental data, including atomic radius, atomic mass, electronegativity, ionization energy, and reactivity to identify periodic trends.</div></td><td>Reads tables and graphs of all five named properties, describes each trend across a period and down a group, ranks elements and estimates missing values. Explains the radius, ionization energy and electronegativity trends with nuclear charge, energy levels and shielding. Lessons 3.1 (mass), 3.2 (radius, ionization energy) and 3.3 (electronegativity, reactivity).</td></tr>
+</tbody></table>
+<div class="note"><b>Science and engineering practices</b> used most in this unit:
+<ul class="small">
+<li>1(G) develop and use models: the nuclear charge, energy level and shielding model in Lessons 3.2 and 3.3.</li>
+<li>2(B) analyze data for patterns and limitations: every trend graph, the mass-order inversions and the gaps in the data.</li>
+<li>3(A) explanations supported by data and models; 3(C) scientific argumentation: the exit tickets and the case file recommendation.</li>
+<li>4(B) the impact of past research on scientific thought: Lesson 3.1.</li>
+</ul>
+<b>Unit 4 boundary.</b> Lesson 3.3 teaches what electronegativity is and its trends. Using electronegativity to predict ionic, covalent or metallic bonding is C.7(A), taught in Unit 4.</div>
+</section>
+
+<section id="map">
+<h2>3. Lesson map and pacing</h2>
+<table>
+<thead><tr><th>Lesson</th><th>TEKS</th><th>Periods</th><th>Core interactives</th><th>Mission ID</th></tr></thead>
+<tbody>
+<tr><td><b>3.1</b> Building the table from evidence</td><td><span class="tag">C.5(A)</span> <span class="tag">C.5(C)</span></td><td>2</td><td>Period builder, Mendeleev's gap filler, Moseley's X-ray plot, periodic table explorer, table hunt, atomic mass graph</td><td><code>table</code></td></tr>
+<tr><td><b>3.2</b> Atomic radius and ionization energy</td><td><span class="tag">C.5(C)</span></td><td>2</td><td>Atom model with three factors, group and period plots, periodic table explorer, trend graph</td><td><code>trends</code></td></tr>
+<tr><td><b>3.3</b> Electronegativity and reactivity</td><td><span class="tag">C.5(C)</span></td><td>2</td><td>Electronegativity map and graph, metals in water (observations), ion cost comparison, halogen displacement grid</td><td><code>reactivity</code></td></tr>
+<tr><td><b>3.4</b> Predicting family properties</td><td><span class="tag">C.5(B)</span></td><td>2</td><td>Prediction cards for five unknown elements, group plots, state finder, periodic table explorer</td><td><code>families</code></td></tr>
+<tr><td><b>Case file</b> Can sodium stand in for lithium?</td><td>All</td><td>1</td><td>Six evidence files and a recommendation</td><td>case file</td></tr>
+<tr><td><b>Review and assessment</b></td><td>All</td><td>1</td><td>Teacher's own review and unit test</td><td>n/a</td></tr>
+</tbody></table>
+<p class="small muted">Each deck's notes split it into two 45 to 50 minute periods. The handoff planned 1.5 periods each for Lessons 3.3 and 3.4; a class that assigns the missions as homework can finish either in 1.5. Lesson 3.4 relies on the families from Unit 2 Lesson 2.5 and on the trends from Lessons 3.2 and 3.3, so teach the lessons in order.</p>
+</section>
+
+<section id="l31">
+<h2>4. Lesson 3.1 · Building the table from evidence</h2>
+<p><b>Driving question.</b> A metal described before anyone found it: in 1871 Mendeleev predicted eka-aluminum, and gallium, found in 1875, matched it (predicted density about 5.9 g/cm³, measured 5.9 g/cm³). How did evidence turn a list of elements into a table that predicts?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>3.1.1</td><td>Describe early attempts to group elements by their properties (Döbereiner's triads and Newlands' octaves) and explain their limits.</td><td><span class="tag">C.5(A)</span></td><td>5, 6</td></tr>
+<tr><td>3.1.2</td><td>Explain how Mendeleev ordered the elements by atomic mass and chemical properties, left gaps, and predicted elements that were later discovered.</td><td><span class="tag">C.5(A)</span></td><td>7 to 9</td></tr>
+<tr><td>3.1.3</td><td>Use the pairs that break mass order, the discovery of the noble gases and Moseley's X-ray data to explain why the modern table is ordered by atomic number.</td><td><span class="tag">C.5(A)</span></td><td>10 to 12</td></tr>
+<tr><td>3.1.4</td><td>Describe the modern periodic table: periods, groups, the s, p, d and f blocks, and the regions of metals, nonmetals and metalloids.</td><td><span class="tag">C.5(A)</span></td><td>13 to 15</td></tr>
+<tr><td>3.1.5</td><td>Analyze atomic mass data to show that atomic mass generally increases with atomic number, with a few inversions.</td><td><span class="tag">C.5(C)</span></td><td>16</td></tr>
+</tbody></table>
+<h3>Evidence chain</h3>
+<table>
+<thead><tr><th>Step</th><th>Evidence students examine</th><th>What it explained</th><th>Its limit</th></tr></thead>
+<tbody>
+<tr><td><b>Döbereiner</b>, 1829</td><td>Triads such as lithium, sodium and potassium: the middle mass is close to the average of the other two.</td><td>Elements with similar reactions form natural groups.</td><td>Most elements fit no triad.</td></tr>
+<tr><td><b>Newlands</b>, 1865 and 1866</td><td>Listed by mass, each element resembles the one seven places later.</td><td>Properties repeat.</td><td>The rigid grid with no gaps failed after calcium.</td></tr>
+<tr><td><b>Mendeleev</b>, 1869 and 1871</td><td>A table by mass and properties, with gaps and predictions for eka-aluminum, eka-boron and eka-silicon.</td><td>Gallium (1875), scandium (1879) and germanium (1886) matched the predictions.</td><td>He placed a few elements out of mass order, such as tellurium before iodine, but could not explain why.</td></tr>
+<tr><td><b>Rayleigh and Ramsay</b>, 1894 onward</td><td>Argon and the other noble gases formed no compounds and fit no existing group.</td><td>A new column, group 18.</td><td>Argon is heavier than potassium, yet comes first.</td></tr>
+<tr><td><b>Moseley</b>, 1914</td><td>The square root of X-ray frequency rises by the same step from one element to the next.</td><td>Atomic number, not mass, sets each element's place. The four inversions (argon and potassium, cobalt and nickel, tellurium and iodine, thorium and protactinium) are explained.</td><td>The current basis of the table.</td></tr>
+</tbody></table>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>Mendeleev's gaps meant his table was unfinished.</td><td>The gaps were deliberate. He predicted the properties of the missing elements, and gallium matched them.</td></tr>
+<tr><td>Mendeleev was the first to list elements by mass.</td><td>Newlands and others did so before 1869. Mendeleev's table stood out because its predictions came true.</td></tr>
+<tr><td>Atomic mass increases every time atomic number does.</td><td>The mass graph steps down in four places, such as argon (39.95 u) before potassium (39.098 u).</td></tr>
+<tr><td>The noble gases filled Mendeleev's gaps.</td><td>Those gaps were filled by metals such as gallium and germanium. The noble gases needed a new column.</td></tr>
+<tr><td>A triad's elements have the same mass.</td><td>Lithium is 6.94 u and potassium 39.098 u. The pattern is the average, not equal masses.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §3.1 · 36 paragraphs, each with a simpler version</p><ol class="small"><li>Triads: families of three</li><li>Octaves: properties repeat</li><li>Mendeleev's periodic table</li><li>Predictions put to the test</li><li>A new group: the noble gases</li><li>Mass order breaks down</li><li>Atomic number sets the order</li><li>Reading the modern table</li><li>Metals, nonmetals and metalloids</li><li>Atomic mass against atomic number</li><li>Why the inversions happen</li><li>Review: the table, step by step</li></ol><p class="small">Honors box: Moseley's law.</p></div>
+  <div class="card"><p class="label">Slides and missions (<code>table</code>)</p><ul class="small"><li>Deck: 23 slides. Checkpoints 17 to 20, predictions revisited 21, CER exit ticket 22, self-rating 23.</li><li>History detective: 5 cases (Three yellow, gray and silver solids; The law of octaves; The spoon that melts in tea; The scandium baseball bat; Germanium in fiber-optic glass)</li><li>Mass or number?: 6 cases (The welder's shielding gas; Potassium in a banana; Cobalt and nickel; Tellurium and iodine; Does mass have a trend?; Element 43)</li><li>Table navigator: 10 clues found on an interactive table</li><li>Item bank: 21 items (14 reading, 7 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="l32">
+<h2>5. Lesson 3.2 · Atomic radius and ionization energy</h2>
+<p><b>Driving question.</b> More protons, but a smaller atom? Fluorine has three times the protons of lithium but less than half its radius (57 pm against 128 pm), while potassium is larger still (203 pm). Why do size and the energy to remove an electron change in a regular pattern?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>3.2.1</td><td>Read and graph atomic radius and first ionization energy data against atomic number to identify their repeating patterns.</td><td><span class="tag">C.5(C)</span></td><td>5 to 7</td></tr>
+<tr><td>3.2.2</td><td>Describe the trend in atomic radius across a period and down a group, and explain it using energy levels, nuclear charge and shielding by inner electrons.</td><td><span class="tag">C.5(C)</span></td><td>8 to 11</td></tr>
+<tr><td>3.2.3</td><td>Describe the trend in first ionization energy across a period and down a group, and explain it with the same model.</td><td><span class="tag">C.5(C)</span></td><td>12 to 16</td></tr>
+<tr><td>3.2.4</td><td>Use the trends to rank elements by atomic radius and first ionization energy and to predict missing values from their neighbors.</td><td><span class="tag">C.5(C)</span></td><td>17, 18</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">Covalent radii (Cordero 2008) shrink across period 3 from sodium, 166 pm, to chlorine, 102 pm, and grow down group 1 from lithium, 128 pm, to potassium, 203 pm. First ionization energies (NIST) peak at the noble gases, with helium highest at 2372 kJ/mol, and fall down each group. One model explains both trends: across a period, more protons pull on the same energy level with about the same shielding; down a group, each new energy level is farther out and shielded by more inner electrons. The noble gases have no covalent radius in this data set, and the graphs show that as a gap, not a zero.</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>More protons and electrons make a bigger atom.</td><td>Across period 3 the radius falls from 166 pm to 102 pm as protons are added to the same level.</td></tr>
+<tr><td>An atom has a hard surface that can be measured.</td><td>The covalent radius is half the distance between two bonded nuclei.</td></tr>
+<tr><td>Outer electrons or neutrons do the shielding.</td><td>Inner electrons lie between the nucleus and the outer electrons and cancel part of the pull. Neutrons have no charge.</td></tr>
+<tr><td>Down a group, extra protons push electrons outward.</td><td>Protons attract electrons. The atom grows because its outer electrons are in a higher energy level.</td></tr>
+<tr><td>A heavy metal such as iron is hardest to ionize.</td><td>Helium needs the most energy. Ionization energy is highest at the upper right of the table.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §3.2 · 29 paragraphs, each with a simpler version</p><ol class="small"><li>How big is an atom?</li><li>Atomic radius against atomic number</li><li>Radius on the periodic table</li><li>A model with three factors</li><li>Across a period, atoms shrink</li><li>Down a group, atoms grow</li><li>Ionization energy</li><li>Ionization energy against atomic number</li><li>Explaining the ionization energy trends</li><li>Rank and predict</li><li>Review: two trends, one model</li></ol><p class="small">Honors boxes: A rough number for the pull (an effective nuclear charge estimate); Two dips in period 2 (boron and oxygen).</p></div>
+  <div class="card"><p class="label">Slides and missions (<code>trends</code>)</p><ul class="small"><li>Deck: 25 slides. Checkpoints 19 to 22, predictions revisited 23, CER exit ticket 24, self-rating 25.</li><li>Data detective: 5 cases (The atoms around silicon; Red and green stars; Pulling electrons off neon; From argon to potassium; Xenon headlights)</li><li>Explain the model: 5 cases (Sodium and chlorine; Lithium and potassium; Magnesium and calcium; Nitrogen and fluorine; Neon and sodium)</li><li>Rank it: 8 sets ordered on a small table</li><li>Item bank: 22 items (14 reading, 8 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="l33">
+<h2>6. Lesson 3.3 · Electronegativity and reactivity</h2>
+<p><b>Driving question.</b> Same group, very different reactions: lithium fizzes gently in water and cesium explodes, while fluorine is the most reactive halogen. Why does reactivity increase down the metal groups but up the halogen group?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>3.3.1</td><td>Describe electronegativity on the Pauling scale and its trends across a period and down a group.</td><td><span class="tag">C.5(C)</span></td><td>5 to 8</td></tr>
+<tr><td>3.3.2</td><td>Use observations and ionization energy to explain why the reactivity of metals increases down groups 1 and 2.</td><td><span class="tag">C.5(C)</span></td><td>9 to 11</td></tr>
+<tr><td>3.3.3</td><td>Use first and second ionization energies to explain why a group 2 metal is less reactive than the group 1 metal beside it.</td><td><span class="tag">C.5(C)</span></td><td>12, 13</td></tr>
+<tr><td>3.3.4</td><td>Use displacement reactions and atomic size to explain why the reactivity of halogens increases up group 17.</td><td><span class="tag">C.5(C)</span></td><td>14 to 17</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">Pauling electronegativities have no unit and rise to fluorine, 3.98; cesium is lowest at 0.79, and the noble gases have no values. Reactions with water are reported observations (Chemguide), shown by video only: lithium fizzes gently, sodium melts into a ball and darts, potassium burns with a lilac flame, cesium explodes. These are observations, not measured rates, and the lesson never turns them into a score. Metals react by losing electrons, which gets easier down a group. Magnesium must lose two electrons (738 + 1451 = 2189 kJ/mol) while sodium loses one (496 kJ/mol), so magnesium reacts more slowly. Halogens react by gaining an electron; smaller atoms attract it more strongly, so a halogen displaces any halogen below it from its halide (chlorine displaces bromide and iodide).</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>Electronegativity and ionization energy are the same thing.</td><td>Ionization energy is measured on separate gaseous atoms in kJ/mol. Electronegativity describes an atom in a bond and has no unit.</td></tr>
+<tr><td>The noble gases have the highest electronegativity.</td><td>This unit's data leave out all the noble gases: helium, neon and argon form no compounds under ordinary conditions, and krypton and xenon form only a few. Fluorine is highest.</td></tr>
+<tr><td>More protons always pull harder on bonding electrons.</td><td>Iodine (2.66) is lower than chlorine (3.16). Extra protons are shielded by extra inner electrons.</td></tr>
+<tr><td>Heavier metals react faster because they are heavy.</td><td>Mass does not set the rate. The outer electron is easier to remove down the group.</td></tr>
+<tr><td>Magnesium reacts faster than sodium because it has more protons.</td><td>Losing two electrons costs about 4.4 times as much energy as losing one, so magnesium reacts more slowly.</td></tr>
+<tr><td>Halogens grow more reactive down the group, like the metals.</td><td>The trend reverses: displacement shows fluorine and chlorine are the most reactive.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §3.3 · 27 paragraphs, each with a simpler version</p><ol class="small"><li>Electronegativity</li><li>Electronegativity trends</li><li>Explaining the electronegativity trends</li><li>Metals in water</li><li>Why reactivity rises down a metal group</li><li>Sodium and magnesium</li><li>Two electrons cost more</li><li>Halogen displacement</li><li>Why reactivity rises up group 17</li><li>Review: losing and gaining electrons</li></ol><p class="small">Honors box: Where the simple model falls short.</p></div>
+  <div class="card"><p class="label">Slides and missions (<code>reactivity</code>)</p><ul class="small"><li>Deck: 24 slides. Checkpoints 18 to 21, predictions revisited 22, CER exit ticket 23, self-rating 24.</li><li>Pull on electrons: 5 cases (Down the halogens; Across period 2; Hydrogen and chlorine; Down the alkali metals; Why neon has no value)</li><li>Metals in water: 5 cases (Lithium, sodium and potassium; Predict rubidium; Down group 2; Sodium and magnesium; Potassium and calcium)</li><li>Mystery halogen: 6 displacement puzzles, with tubes labeled as illustrations</li><li>Item bank: 23 items (15 reading, 8 slides)</li></ul></div>
+</div>
+<div class="note small"><b>Safety.</b> Do not perform the alkali metal or halogen reactions in class. Show a short video from a trusted source at slide 2 and in §3.3.2.</div>
+</section>
+
+<section id="l34">
+<h2>7. Lesson 3.4 · Predicting family properties</h2>
+<p><b>Driving question.</b> An element no one has ever seen: every isotope of astatine is radioactive, the most stable lasts about 8.1 hours, and no one has collected a piece large enough to see. How can the periodic table predict the properties of an element you have never seen?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>3.4.1</td><td>Predict properties of alkali metals and alkaline earth metals, such as rubidium and strontium, from their valence electrons and the trends in their groups.</td><td><span class="tag">C.5(B)</span></td><td>5 to 9</td></tr>
+<tr><td>3.4.2</td><td>Predict properties of halogens from their valence electrons and group trends, including the change from gas to liquid to solid.</td><td><span class="tag">C.5(B)</span></td><td>10, 11</td></tr>
+<tr><td>3.4.3</td><td>Predict properties of noble gases, such as xenon, from their full outer level and group trends.</td><td><span class="tag">C.5(B)</span></td><td>12, 13</td></tr>
+<tr><td>3.4.4</td><td>Predict and explain properties of transition metals, such as nickel, and how they differ from the representative families.</td><td><span class="tag">C.5(B)</span></td><td>14, 15</td></tr>
+</tbody></table>
+<h3>Five predictions, one per family</h3>
+<table>
+<thead><tr><th>Element</th><th>Family</th><th>What students predict, then check</th></tr></thead>
+<tbody>
+<tr><td><b>Rubidium</b></td><td>Alkali metal</td><td>1 valence electron, Rb⁺, soft, reacts violently with water, melts between cesium (28.4 °C) and potassium (63.4 °C). Reference value 39.3 °C.</td></tr>
+<tr><td><b>Strontium</b></td><td>Alkaline earth metal</td><td>2 valence electrons, Sr²⁺, less reactive than rubidium beside it.</td></tr>
+<tr><td><b>Astatine</b></td><td>Halogen</td><td>7 valence electrons, At⁻, a solid, less reactive than iodine. Its melting point, boiling point, color and density have never been measured. Its ionization energy was measured in 2013 on single atoms (Rothe and others).</td></tr>
+<tr><td><b>Xenon</b></td><td>Noble gas</td><td>A full outer level and a low reactivity, but with the lowest ionization energy of the stable noble gases it forms compounds with fluorine and oxygen (Bartlett, 1962).</td></tr>
+<tr><td><b>Nickel</b></td><td>Transition metal</td><td>Hard, dense, high melting point, far less reactive than sodium, usually Ni²⁺, and like its row neighbors iron and cobalt (all three are magnetic).</td></tr>
+</tbody></table>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>Members of a family share a mass or a number of energy levels.</td><td>Lithium is 6.94 u and cesium 132.91 u. What they share is the number of valence electrons.</td></tr>
+<tr><td>Every metal forms a 1+ ion.</td><td>Group 1 metals form 1+ ions and group 2 metals 2+ ions. Metals never form negative ions.</td></tr>
+<tr><td>A heavier family member always melts at a higher temperature.</td><td>Alkali metal melting points fall down the group: rubidium melts below potassium.</td></tr>
+<tr><td>A trend gives an exact value.</td><td>Neighbors give a likely range. The average of potassium and cesium is 45.9 °C; rubidium's value is 39.3 °C.</td></tr>
+<tr><td>All halogens are gases.</td><td>Bromine is a liquid and iodine a solid at room temperature. Melting and boiling points rise down the group.</td></tr>
+<tr><td>Noble gases never react.</td><td>Xenon forms compounds with fluorine and oxygen.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §3.4 · 28 paragraphs, each with a simpler version</p><ol class="small"><li>Families share valence electrons</li><li>The alkali metals</li><li>Predicting from neighbors</li><li>The alkaline earth metals</li><li>Halogens: from gas to solid</li><li>Predicting astatine</li><li>The noble gases</li><li>Xenon breaks the rule</li><li>Transition metals</li><li>Alike across a row</li><li>Review: five families, five predictions</li></ol><p class="small">Honors box: Francium, the other unseen element.</p></div>
+  <div class="card"><p class="label">Slides and missions (<code>families</code>)</p><ul class="small"><li>Deck: 22 slides. Checkpoints 16 to 19, predictions revisited 20, CER exit ticket 21, self-rating 22.</li><li>Predict the unknown: 6 cases (Predict rubidium; Predict strontium; Predict bromine; Predict astatine; Predict xenon; Predict nickel)</li><li>Gas, liquid or solid: 5 cases (Bromine at 0 °C; Cesium on a hot day; Chlorine on dry ice; Noble gases at room temperature; Iodine and astatine)</li><li>Name the family: 6 property profiles</li><li>Item bank: 20 items (12 reading, 8 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="case">
+<h2>8. Case file: Can sodium stand in for lithium?</h2>
+<p class="lede">Students act as science advisers to a fictional Texas electric cooperative that is planning a battery storage site. The board asks whether its pilot test should include sodium-ion batteries next to the lithium-ion ones its engineers know.</p>
+<div class="card"><p class="label">Briefing</p><p class="small">The memo explains the task in plain words and lists the six files with their TEKS. A dated fact box gives the real context: on May 8, 2023 the Texas Governor's office celebrated a $375 million lithium refinery in Robstown; on November 6, 2024 Pacific Northwest National Laboratory described sodium as abundant and sodium-ion batteries as storing less energy for their weight, with shorter lifespans and high thermal stability; on January 28, 2026 Tesla reported pilot production at that refinery; on February 20, 2026 the EIA reported that 12.9 GW of the 24 GW of utility-scale battery storage planned for 2026 (53%) is in Texas. The client, its board, its supplier and its site are fictional, and the page says so. How a battery works is not assessed.</p></div>
+<p>Each file has three steps: a calculation or count, the Unit 3 idea it uses, then a decision about a claim.</p>
+<div class="evid">
+  <div class="card"><p class="label">File 1 · Three metals that act alike · Jena, 1829 · <span class="tag">C.5(A)</span></p><p class="small">Döbereiner's triad of lithium, sodium and potassium. Task: average the masses of lithium and potassium ((6.94 + 39.098) ÷ 2 = 23.019 u) and compare with sodium's 22.990 u; decide what made the three a triad (similar reactions, then the mass pattern).</p></div>
+  <div class="card"><p class="label">File 2 · One outer electron · <span class="tag">C.5(B)</span></p><p class="small">Configurations of lithium and sodium. Task: count sodium's valence electrons (1) and answer a board member who asks whether the shared group makes the two metals the same (alike chemistry, not identical properties).</p></div>
+  <div class="card"><p class="label">File 3 · Weighing the atoms · <span class="tag">C.5(C)</span></p><p class="small">Reference atomic masses. Task: 22.990 ÷ 6.94 = 3.31; name where the extra mass comes from (the nucleus); decide what the comparison can and cannot show about a battery.</p></div>
+  <div class="card"><p class="label">File 4 · Measuring atom size · <span class="tag">C.5(C)</span></p><p class="small">Covalent radii: lithium 128 pm, sodium 166 pm, potassium 203 pm, with 2, 3 and 4 occupied energy levels. Task: 166 − 128 = 38 pm; choose the explanation based on energy levels.</p></div>
+  <div class="card"><p class="label">File 5 · Holding on to electrons · <span class="tag">C.5(C)</span></p><p class="small">First ionization energies 520, 496, 419 kJ/mol and electronegativities 0.98, 0.93, 0.82. Task: 520 − 496 = 24 kJ/mol; tell ionization energy apart from electronegativity; reject a salesperson's claim that these data set a battery's voltage.</p></div>
+  <div class="card"><p class="label">File 6 · Into the water · <span class="tag">C.5(B)</span> <span class="tag">C.5(C)</span></p><p class="small">Observations from video demonstrations, as in Lesson 3.3. Task: link sodium's faster reaction to its lower ionization energy; answer a board member who says faster reaction with water proves sodium-ion batteries are more dangerous (a pure metal in water is not a battery safety test).</p></div>
+</div>
+<div class="card"><p class="label">Recommendation · claim, evidence, reasoning · SEP 3(A), 3(C)</p><p class="small">Students choose a claim (include sodium-ion batteries in the pilot, keep the pilot to lithium-ion for now, or replace everything with sodium now), select at least three files, and mark what only a test of real batteries can show. They then write the reasoning in their notebooks using sentence starters and a word bank. The check accepts the first two claims when the reasoning uses File 2, at least one of Files 3 to 6, and the three battery measurements (energy stored for its weight, number of charge cycles, behavior when overheated). The third claim gets feedback explaining why a full switch skips the test. After a successful check, a sample recommendation for the chosen claim appears for comparison.</p>
+<p class="small"><b>Grading the notebook.</b> A strong recommendation names the shared group and its single valence electron as the reason the chemistry is alike, uses at least one difference with a number (mass ratio, radius or ionization energy), and states what the periodic table cannot show. A claim that sodium is a drop-in replacement because it sits in the same group misses the point of the case.</p></div>
+<div class="note small"><b>Case-file boundary.</b> Battery chemistry, voltage and cost are context only and are not assessed. The ionization energy file does not claim to predict voltage, and the water file does not claim to measure battery safety.</div>
+</section>
+
+<section id="matrix">
+<h2>9. Alignment matrix</h2>
+<table>
+<thead><tr><th>TEKS</th><th>Reading</th><th>Slides</th><th>Missions</th><th>Case file</th></tr></thead>
+<tbody>
+<tr><td><span class="tag">C.5(A)</span></td><td>§3.1.1 to §3.1.4</td><td>Deck 3.1, slides 5 to 15</td><td><code>table</code>: History detective, Mass or number?, Table navigator</td><td>File 1</td></tr>
+<tr><td><span class="tag">C.5(B)</span></td><td>§3.4.1 to §3.4.4</td><td>Deck 3.4, slides 5 to 15</td><td><code>families</code>: all three tabs</td><td>Files 2, 6</td></tr>
+<tr><td><span class="tag">C.5(C)</span> atomic mass</td><td>§3.1.5</td><td>Deck 3.1, slide 16</td><td><code>table</code>: Mass or number?</td><td>File 3</td></tr>
+<tr><td><span class="tag">C.5(C)</span> atomic radius</td><td>§3.2.1, §3.2.2, §3.2.4</td><td>Deck 3.2, slides 5 to 11, 17, 18</td><td><code>trends</code>: all three tabs</td><td>File 4</td></tr>
+<tr><td><span class="tag">C.5(C)</span> ionization energy</td><td>§3.2.3, §3.2.4, §3.3.2, §3.3.3</td><td>Deck 3.2, slides 12 to 18; Deck 3.3, slides 9 to 13</td><td><code>trends</code>: Data detective, Rank it; <code>reactivity</code>: Metals in water</td><td>File 5</td></tr>
+<tr><td><span class="tag">C.5(C)</span> electronegativity</td><td>§3.3.1</td><td>Deck 3.3, slides 5 to 8</td><td><code>reactivity</code>: Pull on electrons</td><td>File 5</td></tr>
+<tr><td><span class="tag">C.5(C)</span> reactivity</td><td>§3.3.2 to §3.3.4</td><td>Deck 3.3, slides 9 to 17</td><td><code>reactivity</code>: Metals in water, Mystery halogen</td><td>File 6</td></tr>
+<tr><td>All three</td><td>Chapter reviews</td><td>Checkpoints and exit tickets</td><td></td><td>Recommendation</td></tr>
+</tbody></table>
+</section>
+
+<section id="assess">
+<h2>10. Using the results</h2>
+<div class="grid2">
+  <div class="card"><p class="label">What the pages record</p><ul class="small"><li>Each mission set shows the cases solved and the first-try accuracy, so a first answer can be told apart from eventual completion.</li><li>Numeric answers accept stated rounding; the reference values stay fixed.</li><li>Progress is saved in the student's own browser only. Nothing is sent to a server, so the pages are not a gradebook.</li></ul></div>
+  <div class="card"><p class="label">What they do not show</p><ul class="small"><li>Choice items check recall and short application. They are not, by themselves, evidence of extended reasoning.</li><li>Judge explanations from notebooks and discussion: the exit tickets, the checkpoints and the case file recommendation.</li><li>A completed self-rating is a reflection, not proof of mastery.</li></ul></div>
+</div>
+<p class="small">Each deck runs checkpoints as Think, Talk, Write, Self-check and Compare, with 30 second thinking and 60 second partner timers. The three predictions from slide 3 are revisited near the end, and the CER exit ticket returns to the driving question.</p>
+</section>
+
+<section id="access">
+<h2>11. Access, simpler language and Honors</h2>
+<div class="grid3">
+  <div class="card"><p class="label">Reading supports</p><ul class="small"><li>A simpler-language version of every core paragraph (120 in all), one toggle per page</li><li>Read-aloud of any section</li><li>Tap-to-define vocabulary with Spanish terms</li><li>Sentence starters and word banks for notebook writing</li></ul></div>
+  <div class="card"><p class="label">Projector and devices</p><ul class="small"><li>Slides sized for the back row, with zoom on any card</li><li>Light and dark themes</li><li>Readings, missions and the case file work at phone width</li></ul></div>
+  <div class="card"><p class="label">Honors layer</p><ul class="small"><li>Collapsible boxes, never on the core path and never assessed</li><li>3.1 Moseley's law; 3.2 an effective nuclear charge estimate and the boron and oxygen dips; 3.3 where the simple model falls short; 3.4 francium</li></ul></div>
+</div>
+</section>
+
+<section id="data">
+<h2>12. Data and accuracy notes</h2>
+<ul class="small">
+<li><b>One shared data set.</b> Average atomic masses from CIAAW (abridged); first ionization energies from the NIST Atomic Spectra Database, converted from eV with 96.485 and rounded to whole kJ/mol; covalent radii from Cordero and others (2008); electronegativities on the Pauling scale as revised by Allred (1961). Melting points, boiling points and densities come from PubChem. Missing values stay missing and are shown as gaps, never as zeros.</li>
+<li><b>Classification.</b> Six metalloids are used: boron, silicon, germanium, arsenic, antimony and tellurium. Astatine and the elements from 104 on are marked "too little data".</li>
+<li><b>Astatine.</b> Its melting point, boiling point, color and density have never been measured, and the pages say so. Values sometimes listed for them are estimates and are not shown.</li>
+<li><b>Observations and measurements.</b> Reactions with water and halogen displacement are described as reported observations and shown by video. No page gives a reactivity score.</li>
+<li><b>Illustrations.</b> The atom diagram enlarges the nucleus and draws energy levels as rings; radius disks compare sizes and do not show atoms with hard edges. Graph lines guide the eye between real data points.</li>
+<li><b>History.</b> Triad arithmetic uses modern masses. Mendeleev's first table is from 1869 and his detailed predictions from 1871. The Moseley plot is drawn from modern values, not his raw 1914 measurements.</li>
+</ul>
+</section>
+
+<section id="src">
+<h2>Sources</h2>
+<ul class="small">
+<li>19 Tex. Admin. Code §112.43, Chemistry (adopted 2020).</li>
+<li>Lesson 3.1: OpenStax Chemistry 2e, 2.5; Royal Society of Chemistry, history of the periodic table; Newlands 1865 and 1866 and Mendeleev 1871 (Le Moyne College translations); Moseley 1914, The high-frequency spectra of the elements, Part II; Nobel Prize in Chemistry 1904, William Ramsay; CIAAW abridged standard atomic weights.</li>
+<li>Lesson 3.2: OpenStax Chemistry 2e, 6.5; Cordero and others, 2008, Covalent radii revisited, Dalton Transactions, doi 10.1039/B801115J; NIST Atomic Spectra Database, ionization energies; Royal Society of Chemistry periodic table.</li>
+<li>Lesson 3.3: OpenStax Chemistry 2e, 6.5 and 18.11; Chemguide, reactions of the group 1 and group 2 elements with water; RSC Education, halogen displacement reactions; NIST ionization energies; Pauling 1932, Journal of the American Chemical Society; Allred 1961, Journal of Inorganic and Nuclear Chemistry, doi 10.1016/0022-1902(61)80142-5.</li>
+<li>Lesson 3.4: PubChem periodic table data; NIST ionization energies; OpenStax Chemistry 2e, 18.12 and 19.1; American Chemical Society, Neil Bartlett and reactive noble gases; Rothe and others, 2013, Nature Communications, doi 10.1038/ncomms2819; Royal Society of Chemistry, astatine and francium; United States Mint, circulating coins.</li>
+<li>Case file: Döbereiner 1829, Annalen der Physik und Chemie; Office of the Texas Governor, May 8, 2023; Pacific Northwest National Laboratory, November 6, 2024; Tesla Q4 and FY 2025 update, January 28, 2026 (SEC exhibit 99.1); U.S. Energy Information Administration, Today in Energy, February 20, 2026.</li>
+</ul>
+</section>
+<footer>Chemistry Case Files · Unit 3 · Teacher blueprint</footer>
+</main>
+</div>
+<script>
+(function(){const r=document.documentElement,b=document.getElementById('tt');let t=null;try{t=localStorage.getItem('u2:theme')}catch(e){}
+function ap(){if(t)r.setAttribute('data-theme',t);else r.removeAttribute('data-theme');b.textContent=t==='dark'?'Dark':t==='light'?'Light':'Theme'}
+ap();b.onclick=function(){t=t==='dark'?'light':t==='light'?null:'dark';try{t?localStorage.setItem('u2:theme',t):localStorage.removeItem('u2:theme')}catch(e){}ap()}})();
+</script>
+</body>
+</html>

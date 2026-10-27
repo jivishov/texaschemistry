@@ -1,0 +1,1362 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Inside the Atom Reading</title>
+<meta name="description" content="Unit 2, Lesson 2.2 reading chapter: Inside the atom (TEKS C.6(B)).">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,600;9..40,700&family=Charis+SIL:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== shared tokens and components (look: design-drafts/labbench-style-draft.html, 2026-10-26) ===== */
+:root{--bg:#eef2ef;--paper:#fcfdfc;--paper2:#f4f7f5;--ink:#1b302e;--muted:#4f605b;--line:#dbe3de;--sunk:#edf3e4;
+  --accent:#0b5951;--accent-ink:#ffffff;--accent-soft:#e6f1ea;--warm:#835811;--warm-soft:#f8eed9;--label:#0b5951;--ok:#1f6e4f;--ok-soft:#e1f0e6;--bad:#a8402f;--bad-soft:#f9e6e1;
+  --pos:#c0391b;--neg:#2b55b8;--neu:#6b7176;--gold:#9c7400;
+  --body:'Charis SIL',Charter,Georgia,serif;--display:'DM Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+  --shadow:0 1px 2px rgba(18,61,45,.05),0 8px 26px rgba(18,61,45,.07);color-scheme:light;--surface:#ffffff;--pick:#dbecc3}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1715;--paper:#152120;--paper2:#182523;--ink:#e3ece8;--muted:#a6b6b0;--line:#283632;--sunk:#22301f;
+  --accent:#73c7b4;--accent-ink:#06231f;--accent-soft:#163029;--warm:#e6bd6c;--warm-soft:#33290f;--label:#9fd7a8;--ok:#7fd1a6;--ok-soft:#163026;--bad:#f39886;--bad-soft:#3a1e19;
+  --pos:#ff9a6c;--neg:#8eb1ff;--neu:#9ba49f;--gold:#e6c65c;--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 26px rgba(0,0,0,.4);color-scheme:dark;--surface:#1c2a27;--pick:#2b4a20}}
+:root[data-theme="dark"]{--bg:#0f1715;--paper:#152120;--paper2:#182523;--ink:#e3ece8;--muted:#a6b6b0;--line:#283632;--sunk:#22301f;
+  --accent:#73c7b4;--accent-ink:#06231f;--accent-soft:#163029;--warm:#e6bd6c;--warm-soft:#33290f;--label:#9fd7a8;--ok:#7fd1a6;--ok-soft:#163026;--bad:#f39886;--bad-soft:#3a1e19;
+  --pos:#ff9a6c;--neg:#8eb1ff;--neu:#9ba49f;--gold:#e6c65c;--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 26px rgba(0,0,0,.4);color-scheme:dark;--surface:#1c2a27;--pick:#2b4a20}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55}
+sup,sub{font-size:.68em;line-height:0}
+button{font:inherit;color:inherit}
+.nw{white-space:nowrap}
+.mono{font-family:var(--mono)}
+.muted{color:var(--muted)}
+.label{font-family:var(--mono);font-size:.7em;letter-spacing:.08em;text-transform:uppercase;color:var(--label);font-weight:500;margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4em;min-height:2.3em;padding:.3em .85em;border-radius:10px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);font-weight:700;cursor:pointer;white-space:nowrap;position:relative;transition:background .15s,border-color .15s}
+.btn:hover{border-color:var(--accent)}
+.btn:focus-visible,.term:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 55%,transparent);outline-offset:2px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent}
+.btn[aria-pressed="true"]{background:var(--pick);color:var(--ink);border-color:var(--accent)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.correct{background:var(--ok-soft);border-color:var(--ok)}
+.btn.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.btn.correct::after,.btn.wrong::after{position:absolute;top:-.5em;right:-.45em;width:1.3em;height:1.3em;border-radius:50%;display:grid;place-items:center;font-size:.72em;line-height:1;color:var(--paper);box-shadow:0 0 0 2px var(--paper)}
+.btn.correct::after{content:"✓";background:var(--ok)}
+.btn.wrong::after{content:"✗";background:var(--bad)}
+.chips{display:flex;flex-wrap:wrap;gap:.4em}
+.chips span{background:var(--sunk);border-radius:99px;padding:.15em .65em;font-size:.88em}
+select{font:inherit;background:var(--paper);color:var(--ink);border:1.5px solid var(--line);border-radius:8px;padding:.25em .5em;min-height:2.1em;max-width:100%}
+input[type=number],input[type=text]{font:inherit;background:var(--paper);color:var(--ink);border:1.5px solid var(--line);border-radius:8px;padding:.25em .5em;min-height:2.1em}
+input[type=range]{accent-color:var(--accent);width:100%}
+.bar .tools .btn,.bar .seg button,.btn.primary{font-family:var(--display)}
+
+/* ===== Unit 2 component kit: sims, checks, glossary (shared by every surface) ===== */
+.seg{display:inline-flex;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper)}
+.seg button{border:0;background:transparent;padding:.35em .8em;font-weight:700;cursor:pointer;min-height:2.2em;white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--pick);color:var(--ink);border-color:var(--accent)}
+/* glossary terms */
+.term{border:0;background:none;padding:0;color:inherit;font:inherit;font-weight:700;cursor:help;border-bottom:2px dotted color-mix(in srgb,var(--accent) 70%,transparent);line-height:1.2}
+.gpop{position:fixed;z-index:60;max-width:min(340px,calc(100vw - 24px));background:var(--paper);border:1.5px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:.7em .9em;font-size:15px;line-height:1.4}
+.gpop b{font-family:var(--display);font-size:1.08em}
+.gpop .es{display:block;margin-top:.35em;font-size:.88em;color:var(--muted)}
+.gpop .es i{color:var(--ink);font-style:normal;font-weight:700}
+
+/* checks */
+.check{border:1.5px solid var(--line);border-radius:14px;background:var(--paper);padding:.8em 1em;display:flex;flex-direction:column;gap:.55em}
+.check .q{font-weight:700;margin:0}
+.check .opts{display:flex;flex-direction:column;gap:.4em}
+.check .opts .btn{display:block;justify-content:flex-start;text-align:left;white-space:normal;line-height:1.3;padding:.45em .8em;font-weight:600}
+.check .fb{margin:0;font-size:.94em;border-radius:10px;padding:.5em .7em;display:none}
+.check .fb.ok{display:block;background:var(--ok-soft);border-left:4px solid var(--ok)}
+.check .fb.no{display:block;background:var(--bad-soft);border-left:4px solid var(--bad)}
+.check .meta{display:flex;justify-content:space-between;gap:.5em;font-family:var(--display);font-size:.68em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+
+/* sim shells */
+.sim{display:flex;flex-direction:column;gap:.55em}
+.sim .cv{position:relative;width:100%;border-radius:12px;overflow:hidden;background:var(--paper2);border:1.5px solid var(--line)}
+.sim canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}
+.sim .ctl{display:flex;flex-wrap:wrap;gap:.45em;align-items:center}
+.sim .ctl .grp{display:flex;align-items:center;gap:.4em;flex-wrap:wrap}
+.sim .ctl .lab{font-family:var(--display);font-size:.68em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.ros{display:flex;flex-wrap:wrap;gap:.45em}
+.ro{background:var(--sunk);border-radius:10px;padding:.3em .6em;min-width:5.5em}
+.ro small{display:block;font-family:var(--display);font-size:.62em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);white-space:nowrap;font-weight:700}
+.ro span{font-family:var(--mono);font-weight:600;font-variant-numeric:tabular-nums}
+.simnote{font-size:.82em;color:var(--muted);margin:0}
+.say{font-size:.95em;margin:0;border-radius:10px;padding:.5em .7em;background:var(--accent-soft)}
+.say.ok{background:var(--ok-soft)}.say.no{background:var(--bad-soft)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* mass table */
+.tscroll{overflow-x:auto}
+table.masst{width:100%;border-collapse:collapse;font-size:.86em}
+table.masst th{font-family:var(--display);font-size:.72em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);text-align:left;padding:.4em .45em;border-bottom:2px solid var(--line);vertical-align:bottom;font-weight:700}
+table.masst td{padding:.45em .45em;border-bottom:1px solid var(--line);vertical-align:middle}
+table.masst td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+table.masst tr.pe td{background:color-mix(in srgb,var(--warm-soft) 70%,transparent)}
+table.masst .calc{display:block;font-family:var(--mono);font-size:.78em;color:var(--muted)}
+/* model builder */
+.mbhead{margin:0;font-size:1em}
+.mbgrid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:.8em;align-items:center}
+.mbopts{display:flex;flex-direction:column;gap:.55em}
+.mbrow{display:flex;flex-direction:column;gap:.25em}
+.mbrow .lab{font-family:var(--display);font-size:.68em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.mbchoices{display:flex;flex-wrap:wrap;gap:.35em}
+.mbchoices .btn{font-size:.82em;min-height:2.1em;padding:.25em .65em;white-space:normal;text-align:left;font-weight:600}
+.mbprev svg{width:100%;max-width:220px;display:block;margin:0 auto}
+.mbuild>.btn.primary{align-self:flex-start}
+@media (max-width:600px){.mbgrid{grid-template-columns:minmax(0,1fr)}}
+/* timeline */
+ol.tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.45em;counter-reset:tl}
+.tlc{display:grid;grid-template-columns:auto 52px minmax(0,1fr) minmax(0,1.6fr) auto;gap:.5em;align-items:center;background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:.35em .5em;counter-increment:tl}
+.tlc .grip{cursor:grab;color:var(--muted);font-weight:800;letter-spacing:-.15em;padding:0 .2em;touch-action:none;user-select:none}
+.tlc .thumb svg{width:52px;height:52px;display:block}
+.tlc .tn{font-size:.92em;line-height:1.2}
+.tlc .tn::before{content:counter(tl)". ";font-family:var(--mono);color:var(--muted);font-size:.85em}
+.tlc select{font-size:.82em;width:100%}
+.tlc .ud{display:flex;flex-direction:column;gap:2px}
+.tlc .ud .btn{min-height:1.5em;padding:0 .45em;font-size:.7em}
+.tlc.dragging{box-shadow:var(--shadow);border-color:var(--accent);opacity:.92}
+.tlc{position:relative}
+.tlc.ok{border-color:var(--ok);background:var(--ok-soft)}
+.tlc.ok::after,.tlc.no::after{position:absolute;top:-7px;right:-7px;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--paper);box-shadow:0 0 0 2px var(--paper)}
+.tlc.ok::after{content:"✓";background:var(--ok)}
+.tlc.no::after{content:"✗";background:var(--bad)}
+.tlc.no{border-color:var(--bad);background:var(--bad-soft)}
+@media (max-width:600px){.tlc{grid-template-columns:auto 40px minmax(0,1fr) auto}.tlc .thumb svg{width:40px;height:40px}.tlc select{grid-column:2/4}}
+
+.sim .seg button{font-size:.82em;padding:.25em .65em;min-height:2.1em}
+.sim .ctl .btn{font-size:.85em;min-height:2.1em;padding:.25em .7em}
+.checkset{display:flex;flex-direction:column;gap:.5em;margin:0 0 1em}
+.checkset .tabs{display:flex;gap:.35em;flex-wrap:wrap}
+.checkset .tabs .btn{font-size:.78em;min-height:1.9em;padding:.15em .7em}
+.checkset .tabs .btn.done::before{content:"✓ ";color:var(--ok)}
+.checkset>.check{margin:0!important}
+table.masst .btn.sm{font-size:.85em}
+/* an element symbol or formula inside a capitalised label keeps its own case: "Na", not "NA" */
+.chem{text-transform:none!important}
+
+/* ===== Reading chapter: compact book. Pages never scroll; content flows onto more pages. ===== */
+:root{--hdr:48px;--pgr:46px}
+body{font-size:16.5px;line-height:1.47}
+.skip{position:absolute;left:-999px;top:8px;background:var(--paper);padding:.4em .8em;border-radius:8px;z-index:99}
+.skip:focus{left:12px}
+.bar{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;min-height:var(--hdr);padding:6px 14px;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);font-size:14px}
+.brand{display:flex;align-items:center;gap:9px;min-width:0}
+.brand .logo{width:26px;height:26px;border-radius:8px;background:conic-gradient(from 200deg,#e85d3a,#f5b13d,#5cb85c,#3a7bd5,#7b4fd6,#e85d3a);flex:none}
+.brand b{display:block;font-family:var(--display);font-size:15px;line-height:1.1}
+.brand small{display:block;color:var(--muted);font-size:12px;white-space:nowrap}
+.tools{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.tools .btn,.tools .seg button{font-size:13.5px;min-height:32px;padding:.15em .7em}
+.prog{position:absolute;left:0;right:0;bottom:-1px;height:3px}
+.prog i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.dd{position:relative}
+.toc{position:absolute;right:0;top:calc(100% + 6px);width:min(360px,90vw);max-height:70vh;overflow:auto;background:var(--paper);border:1.5px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:6px}
+.toc button{display:flex;justify-content:space-between;gap:10px;width:100%;text-align:left;border:0;background:none;padding:7px 9px;border-radius:8px;cursor:pointer;font-size:14.5px}
+.toc button:hover{background:var(--accent-soft)}.toc button.cur{background:var(--pick);color:var(--ink);border-color:var(--accent)}
+.toc .n{font-family:var(--mono);font-size:12px;color:var(--muted);min-width:4.5em}
+.toc .p{font-family:var(--mono);font-size:12px;color:var(--ok);white-space:nowrap}
+
+/* ---------- pages ---------- */
+.page{background:var(--paper);position:relative;min-width:0;display:flex;flex-direction:column}
+.pbody{padding:14px 26px 8px;min-width:0;flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+.pbody>*{flex:none}
+.pfoot{flex:none;display:flex;justify-content:space-between;align-items:center;gap:12px;height:26px;padding:0 26px;font-family:var(--display);font-size:10.5px;letter-spacing:.03em;color:var(--muted);text-transform:uppercase;border-top:1px solid color-mix(in srgb,var(--line) 70%,transparent);font-weight:700}
+.pfoot .rh{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.page.pr .pfoot{flex-direction:row-reverse}
+.pfoot .lw{flex:none}
+.listen{font-size:11.5px!important;min-height:21px!important;padding:0 .55em!important;border-radius:6px!important;text-transform:none;letter-spacing:0;font-family:var(--body)}
+
+/* ---------- book mode ---------- */
+main.book{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr);width:min(1440px,100%);margin:0 auto;padding:8px 16px;height:calc(100vh - var(--hdr) - var(--pgr));perspective:2200px}
+main.book .spread{display:contents}
+main.book .page{display:none;grid-row:1;overflow:hidden;box-shadow:0 8px 24px rgba(40,30,10,.12)}
+main.book .page.on{display:flex}
+main.book .pbody{overflow:auto;scrollbar-width:thin}
+main.book .pbody>:last-child{margin-bottom:0} /* a trailing margin would push the last block past the page */
+main.book .pbody>[data-sim]:has(>.cv){flex:1 1 auto}
+main.book .page.merged{display:none!important}
+main.book .pbody>[data-sim] .cv{aspect-ratio:auto!important;flex:1 1 auto;min-height:150px}
+main.book .page.pl{grid-column:1;border-radius:12px 0 0 12px;background:linear-gradient(to left,color-mix(in srgb,var(--ink) 7%,var(--paper)) 0,var(--paper) 28px)}
+main.book .page.pr{grid-column:2;border-radius:0 12px 12px 0;background:linear-gradient(to right,color-mix(in srgb,var(--ink) 9%,var(--paper)) 0,var(--paper) 26px);box-shadow:inset 1px 0 0 var(--line),0 8px 24px rgba(40,30,10,.12)}
+/* the spine line is an inset shadow, not a border, so the right page is as wide as the measuring page */
+main.book.single{grid-template-columns:minmax(0,1fr);width:min(860px,100%)}
+main.book.single .page.on{grid-column:1;border-radius:12px;background:var(--paper);border-left:0;box-shadow:0 8px 24px rgba(40,30,10,.12)}
+main.book .page.measure{display:flex!important;position:fixed;left:-20000px;top:0;visibility:hidden;width:var(--pw);height:var(--ph);grid-row:auto}
+main.book .page.on.fwd.pr,main.book.single .page.on.fwd{animation:turnF .45s cubic-bezier(.2,.7,.2,1)}
+main.book .page.on.bwd.pl,main.book.single .page.on.bwd{animation:turnB .45s cubic-bezier(.2,.7,.2,1)}
+main.book .page.on.fwd.pl,main.book .page.on.bwd.pr{animation:fadeIn .45s ease}
+@keyframes turnF{from{transform:rotateY(-22deg);transform-origin:left center;opacity:.2}to{transform:none;opacity:1}}
+@keyframes turnB{from{transform:rotateY(22deg);transform-origin:right center;opacity:.2}to{transform:none;opacity:1}}
+@keyframes fadeIn{from{opacity:.35}to{opacity:1}}
+.pager{position:fixed;left:0;right:0;bottom:0;height:var(--pgr);display:flex;align-items:center;justify-content:center;gap:14px;background:color-mix(in srgb,var(--bg) 94%,transparent);border-top:1px solid var(--line);z-index:20}
+.pager .btn{min-height:34px;font-size:14.5px}
+.pager #pinfo{font-family:var(--mono);font-size:12.5px;color:var(--muted);min-width:12em;text-align:center}
+
+/* ---------- scroll mode ---------- */
+main.scroll{max-width:1280px;margin:0 auto;padding:18px 16px 60px}
+main.scroll .spread{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);margin:0 0 22px;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);scroll-margin-top:64px}
+main.scroll .page.right{background:var(--paper2);border-left:1px solid var(--line)}
+main.scroll .pbody{padding:18px 26px 12px}
+main.scroll .pbody>[data-sim]{margin-bottom:.6em}
+main.scroll ~ .pager,main.scroll .pfoot{display:none}
+
+/* ---------- typography (no balance, no max-width: lines run to the container edge) ---------- */
+.page p{margin:0 0 .6em}
+.page h1{font-family:var(--display);font-weight:600;letter-spacing:-.03em;font-size:34px;line-height:1.04;margin:.05em 0 .3em}
+.page h2{font-family:var(--display);font-weight:700;font-size:25px;line-height:1.1;margin:0}
+.page h3{font-family:var(--display);font-weight:700;font-size:19px;line-height:1.2;margin:.15em 0 .3em}
+.sech{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 .45em}
+.secno{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;color:var(--label);font-weight:500}
+.chapno{font-family:var(--mono);font-weight:500;font-size:52px;line-height:.9;margin:.05em 0 0;color:var(--accent)}
+.dual .sim{display:none}
+body.simple .dual .std{display:none}
+body.simple .dual .sim{display:inline}
+body.simple .dual{background:color-mix(in srgb,var(--accent-soft) 45%,transparent);border-radius:5px;box-decoration-break:clone}
+.page .do{font-weight:700;color:var(--warm);margin:.05em 0 .45em;font-size:.94em}
+.page .do::before{content:"→ "}
+.page .label{margin-bottom:.3em}
+.key{border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 10px 10px 0;padding:.4em .75em;margin:.3em 0 .6em}
+.key p{margin:0}
+.key .label{margin-bottom:.15em}
+.dq{border:2px solid var(--warm);border-radius:10px;padding:.4em .75em;margin:.2em 0 .5em}
+.dq p{margin:0}
+.dq p:last-child{font-family:var(--display);font-weight:700;font-size:19px;line-height:1.2}
+.objs{padding-left:1.3em;margin:.1em 0 .6em}
+.objs li{margin:.18em 0}
+.oid{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-left:.3em}
+.teksline{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:.45em}
+.laws,.post,.obs{padding-left:1.3em;margin:.1em 0 .6em}
+.laws li,.post li,.obs li{margin:.25em 0}
+.laws .who{display:inline-block;font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-left:.4em}
+.laws .dual{display:block}
+.post .ex{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.03em;background:var(--ok-soft);border-radius:5px;padding:0 .4em;margin-left:.3em;white-space:nowrap}
+blockquote{margin:.3em 0 .6em;padding:.35em .75em;border-left:4px solid var(--warm);background:var(--warm-soft);border-radius:0 10px 10px 0;font-style:italic}
+.aside-note{font-size:.86em;color:var(--muted)}
+table.oc,table.sum{width:100%;border-collapse:collapse;font-size:.86em;margin:.1em 0 .6em}
+table.oc th,table.sum th{font-family:var(--display);font-size:10.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);text-align:left;padding:.25em .45em;border-bottom:2px solid var(--line);font-weight:700}
+table.oc td,table.sum td{padding:.3em .45em;border-bottom:1px solid var(--line);vertical-align:top}
+.fig{margin:.2em 0 .6em;text-align:center}
+.fig svg{width:100%;height:auto;max-height:150px}
+.fig svg.msvg{width:auto;height:140px}
+.fig figcaption,.stm figcaption{font-size:.8em;color:var(--muted);margin-top:.2em;text-align:left;line-height:1.35}
+.stm{margin:.2em 0 .6em}
+.stm svg{width:100%;height:92px;border-radius:10px;display:block}
+.honors{border:1.5px dashed var(--accent);border-radius:10px;padding:.3em .75em;margin:.2em 0 .6em;font-size:.9em}
+.honors summary{cursor:pointer;font-weight:700;color:var(--accent)}
+.honors[open] summary{margin-bottom:.3em}
+.honors p{margin:0 0 .4em}
+.eqn{font-family:var(--mono);font-size:.9em;background:var(--sunk);border-radius:6px;padding:.25em .5em}
+.ag .row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.5em;align-items:center;padding:.28em 0;border-bottom:1px solid var(--line)}
+.ag .row p{margin:0;font-size:.94em}
+.ag .row .seg button{font-size:12.5px;padding:.1em .55em;min-height:28px}
+.ag .verdict{grid-column:1/-1;font-size:.85em;border-radius:6px;padding:.25em .5em;margin:0}
+.ag .verdict.ok{background:var(--ok-soft)}.ag .verdict.no{background:var(--bad-soft)}
+.ag .before{display:block;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.review{padding-left:1.1em;margin:.1em 0 .6em}
+.review li{margin:.28em 0}
+.review b{font-family:var(--mono);font-size:12px;color:var(--accent);margin-right:.3em}
+.vocab{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.1em 1.1em;font-size:.86em;margin-bottom:.6em}
+.vocab div{display:flex;justify-content:space-between;gap:.6em;border-bottom:1px dotted var(--line);padding:.12em 0}
+.vocab i{color:var(--muted);font-style:normal;text-align:right}
+.starters{margin:.1em 0 .6em;padding-left:1.4em}
+.starters li{margin:.2em 0}
+.starters li::marker{color:var(--accent);font-weight:700}
+.next{background:var(--ok-soft);border-radius:10px;padding:.4em .75em;margin:.2em 0 .6em}
+.next p{margin:0}
+.src{font-size:.86em;padding-left:1.1em;margin:0 0 .4em}
+.src a{color:var(--accent)}
+/* worked examples */
+.we{border:1.5px solid var(--line);border-radius:10px;padding:.4em .7em;margin:0 0 .5em;background:var(--paper)}
+.weh{margin:0 0 .3em!important}
+.lvl{display:inline-block;font-family:var(--display);font-size:11px;letter-spacing:.03em;text-transform:uppercase;background:var(--accent);color:var(--accent-ink);border-radius:5px;padding:0 .45em;margin-right:.35em;font-weight:700}
+#we2 .lvl{background:color-mix(in srgb,var(--accent) 60%,var(--paper));color:var(--ink)}
+#we3 .lvl{background:var(--accent-soft);color:var(--ink)}
+.steps{margin:0;padding-left:0;list-style:none;font-size:.93em}
+.steps li{display:grid;grid-template-columns:5.3em minmax(0,1fr);gap:.5em;align-items:baseline;margin:.18em 0}
+.steps .k{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--label);font-weight:500}
+.we .row{display:flex;gap:.45em;flex-wrap:wrap;align-items:center;margin:.2em 0}
+.wein{width:6em}
+.wex{background:var(--ok-soft);border-radius:6px;padding:.25em .5em;margin:.25em 0 0!important;font-size:.92em}
+.wehint{color:var(--muted);font-size:.9em}
+.wein.bad{border-color:var(--bad)}
+.wein.good{border-color:var(--ok);background:var(--ok-soft)}
+.reading{background:color-mix(in srgb,var(--warm) 18%,transparent);border-radius:5px;transition:background .2s}
+
+/* ---------- compact interactive kit inside pages ---------- */
+.page .sim{gap:.4em;margin:0 0 .6em}
+.page .sim .cv{border-radius:10px}
+.page .sim .ctl{gap:.35em .45em}
+.page .sim .ctl .btn,.page .sim>.btn,.page .sim .seg button{font-size:13px;min-height:30px;padding:.12em .6em}
+.page .sim .ctl .lab{font-size:10.5px}
+.page .sim .ctl select{font-size:13px;min-height:30px;padding:.1em .4em}
+.page .ros{gap:.35em}
+.page .ro{padding:.12em .5em;min-width:0;border-radius:8px}
+.page .ro small{font-size:9.5px}
+.page .ro span{font-size:13.5px}
+.page .say{font-size:.88em;padding:.3em .55em;border-radius:8px}
+.page .simnote{font-size:11.5px;line-height:1.3}
+.page .check{padding:.45em .7em;gap:.35em;font-size:.92em;border-radius:10px;margin:0 0 .6em}
+.page .check .opts{gap:.28em}
+.page .check .opts .btn{padding:.25em .6em;min-height:2em;border-radius:8px}
+.page .check .fb{padding:.3em .55em;border-radius:6px}
+.page .check .meta{font-size:10px}
+.page table.masst{font-size:.8em}
+.page table.masst th{padding:.25em .35em}
+.page table.masst td{padding:.25em .35em;height:2.7em}
+.page table.masst .btn{min-height:26px;font-size:12px!important;padding:.05em .5em}
+.page .mbgrid{gap:.5em}
+.page .mbopts{gap:.35em}
+.page .mbchoices{gap:.25em}
+.page .mbchoices .btn{font-size:12.5px;min-height:28px;padding:.1em .5em}
+.page .mbgrid{grid-template-columns:minmax(0,3fr) minmax(0,1fr)}
+.page .mbprev svg{max-width:120px}
+.page .mbuild>.btn.primary{font-size:13px;min-height:30px}
+.page ol.tl{gap:.28em}
+.page .tlc{padding:.18em .4em;gap:.4em;grid-template-columns:auto 38px minmax(0,1fr) minmax(0,1.6fr) auto}
+.page .tlc .thumb svg{width:38px;height:38px}
+.page .tlc select{font-size:12.5px;min-height:28px}
+.checkset{display:flex;flex-direction:column;gap:.3em;margin:0 0 .6em}
+.checkset .tabs{display:flex;gap:.3em;flex-wrap:wrap}
+.checkset .tabs .btn{font-size:12px;min-height:26px;padding:.05em .6em}
+.checkset .tabs .btn.done::before{content:"✓ ";color:var(--ok)}
+.checkset>.check{margin:0!important}
+
+/* ---------- measuring: reveal every hidden answer so space is reserved ---------- */
+body.measuring .wex[hidden],body.measuring .ag .verdict[hidden],body.measuring .page .sim .say[hidden]{display:block!important}
+body.measuring .wehint{display:none!important}
+
+/* ---------- small screens ---------- */
+@media (max-width:1000px){.brand small{display:none}.page h1{font-size:30px}.chapno{font-size:46px}}
+@media (max-width:700px){
+  main.book{height:auto!important;display:block;padding:8px 8px 70px}
+  main.book .page.on{display:flex;border-radius:12px}
+  main.book .pbody{overflow:visible}
+  main.book .pbody>[data-sim] .cv{aspect-ratio:1.6!important;min-height:0}
+  main.scroll .spread{grid-template-columns:minmax(0,1fr)}
+  main.scroll .page.right{border-left:0;border-top:1px solid var(--line)}
+  .pbody{padding:16px 16px 10px}.pfoot{padding:0 16px}
+  .vocab{grid-template-columns:minmax(0,1fr)}
+  .bar{position:static}
+}
+@media (max-width:560px){.tools .btn,.tools .seg button{font-size:12.5px;padding:.1em .5em}#print{display:none}}
+@media print{
+  .bar,.pager,.listen,.skip{display:none!important}
+  body{background:#fff;font-size:11pt}
+  main.book,main.scroll{height:auto!important;display:block;padding:0;max-width:none;width:auto}
+  main .spread{display:block!important;box-shadow:none!important;margin:0}
+  main .page{display:block!important;overflow:visible!important;height:auto!important;break-after:page;background:#fff!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+  .pbody{overflow:visible!important;padding:0 0 16px!important}
+  .pfoot{border:0}.sim .ctl,.sim .say{display:none}
+  .checkset .tabs{display:none}.checkset>.check{display:flex!important}
+}
+body.measuring .page .sim:not(:has(>.cv)) .say{min-height:6.4em}
+/* page controls take the heading face */
+.pager .btn,.listen,.toc button{font-family:var(--display)!important}
+
+/* ===== Lesson 2.2 reading additions ===== */
+#we5 .lvl{background:color-mix(in srgb,var(--accent) 60%,var(--paper));color:var(--ink)}
+#we6 .lvl{background:var(--accent-soft);color:var(--ink)}
+.fig.hook svg{width:100%;height:auto;display:block}
+.page .fig svg{max-height:190px}
+table.oc.iso td{vertical-align:middle}
+table.oc .isn{font-size:1.25em}
+.obs .isn{font-size:1.15em;margin:0 .15em}
+.honors .isn{font-size:1.1em}
+.eqn{white-space:pre-wrap}
+.page [data-sim=atomBuilder] .cv{max-height:240px}
+.page [data-sim=ionMeter] .cv{max-height:190px}
+.page .sim .pm{min-width:1.9em}
+.page .sim .ro .isn{font-size:1.3em}
+
+a.brand{color:inherit;text-decoration:none}
+</style>
+</head>
+<body>
+<a class="skip" href="#book">Skip to the reading</a>
+<header class="bar">
+  <a class="brand" href="index.html" title="Unit 2 home"><span class="logo" aria-hidden="true"></span><span><b>Chemistry Case Files</b><small>Unit 2 · Atomic Structure &amp; Theory</small></span></a>
+  <div class="tools">
+    <div class="seg" id="mode" role="group" aria-label="Reading mode"><button type="button" data-m="book" aria-pressed="true">Book</button><button type="button" data-m="scroll" aria-pressed="false">Scroll</button></div>
+    <button class="btn" id="simple" type="button" aria-pressed="false" title="Show every paragraph in simpler language">Simpler language</button>
+    <div class="dd"><button class="btn" id="toc-b" type="button" aria-expanded="false" aria-controls="toc">Contents</button><div class="toc" id="toc" hidden></div></div>
+    <button class="btn ghost" id="theme" type="button">Theme</button>
+    <button class="btn ghost" id="print" type="button">Print</button>
+  </div>
+  <div class="prog" aria-hidden="true"><i id="progbar"></i></div>
+</header>
+
+<main id="book" class="book">
+
+<!-- ===== Opener ===== -->
+<article class="spread" data-title="Chapter opener" data-short="Opener">
+ <div class="page left">
+   <p class="label">Unit 2 · Atomic Structure &amp; Theory</p>
+   <p class="chapno">2.2</p>
+   <h1>Inside the atom</h1>
+   <figure class="fig hook"><svg viewBox="0 0 520 150" role="img" aria-label="Two kinds of iodine atom. Iodine-127, in iodized table salt: 53 protons and 74 neutrons, stable. Iodine-131, in a treatment capsule: 53 protons and 78 neutrons, radioactive.">
+    <g font-family="var(--body)" text-anchor="middle">
+     <rect x="8" y="8" width="240" height="134" rx="12" fill="var(--paper2)" stroke="var(--line)" stroke-width="1.5"/>
+     <rect x="272" y="8" width="240" height="134" rx="12" fill="var(--warm-soft)" stroke="var(--warm)" stroke-width="1.5"/>
+     <text x="128" y="34" font-size="15" font-weight="700" fill="var(--ink)">In iodized table salt</text>
+     <text x="392" y="34" font-size="15" font-weight="700" fill="var(--ink)">In a treatment capsule</text>
+     <text x="128" y="80" font-size="30" font-weight="700" fill="var(--ink)">iodine-127</text>
+     <text x="392" y="80" font-size="30" font-weight="700" fill="var(--ink)">iodine-131</text>
+     <text x="128" y="106" font-size="14" fill="var(--ink)">53 protons · 74 neutrons</text>
+     <text x="392" y="106" font-size="14" fill="var(--ink)">53 protons · 78 neutrons</text>
+     <text x="128" y="128" font-size="13" fill="var(--muted)">stable</text>
+     <text x="392" y="128" font-size="13" fill="var(--muted)">radioactive: destroys thyroid cells</text></g></svg>
+    <figcaption>Both are iodine. The thyroid gland takes up both kinds. Only one of them is a medicine.</figcaption></figure>
+   <p class="dual"><span class="std">Doctors treat an overactive thyroid gland by giving the patient a capsule of iodine to swallow. The same element is added to table salt, which is harmless to eat. Both are iodine atoms with exactly the same number of protons. The difference lies deep inside each atom, in a particle that was not discovered until 1932.</span><span class="sim">Doctors can treat an overactive thyroid with a capsule of iodine. Table salt has iodine too, and salt is harmless. Both are iodine atoms with the same number of protons. The difference is in a particle deep inside the atom, found in 1932.</span></p>
+   <div class="dq"><p class="label">Driving question</p><p>What makes an atom the element it is, and how can atoms of one element differ?</p></div>
+ </div>
+ <div class="page right">
+  <p class="label">In this chapter you will</p>
+  <ol class="objs">
+   <li><b>Compare the mass and charge</b> of protons, neutrons and electrons, using the evidence for the neutron. <span class="oid">2.2.1</span></li>
+   <li><b>Locate each particle</b> in the atom and describe how small the nucleus is. <span class="oid">2.2.2</span></li>
+   <li><b>Use the atomic number</b> to identify an element and the mass number to count neutrons. <span class="oid">2.2.3</span></li>
+   <li><b>Explain isotopes</b> and read and write isotope notation. <span class="oid">2.2.4</span></li>
+   <li><b>Explain how ions form</b> and find an ion's charge from its protons and electrons. <span class="oid">2.2.5</span></li>
+  </ol>
+  <p class="teksline">TEKS C.6(B): describe the structure of atoms and ions, including the masses, electrical charges, and locations of protons and neutrons in the nucleus and electrons in the electron cloud.</p>
+  <div class="ag" id="ag-before"><p class="label">Before you read · Agree or disagree?</p><p class="do">Decide for each statement. You will check your answers at the end of the chapter.</p></div>
+ </div>
+</article>
+
+<!-- ===== 2.2.1 ===== -->
+<article class="spread" data-sec="2.2.1" data-title="Finding the neutron">
+ <div class="page left">
+  <header class="sech"><span class="secno">§2.2.1</span><h2>Finding the neutron</h2></header>
+  <p class="dual"><span class="std">By 1920 two <button class="term" type="button" data-t="subatomic particle">subatomic particles</button> were known. Thomson had found the light, negative <button class="term" type="button" data-t="electron">electron</button> in 1897, and Rutherford had found the tiny positive <button class="term" type="button" data-t="nucleus">nucleus</button> in 1911 (Lesson 2.1). Rutherford named the nucleus's positive particle the <button class="term" type="button" data-t="proton">proton</button>.</span><span class="sim">By 1920 scientists knew two particles inside atoms. The electron was found in 1897. The nucleus was found in 1911, and its positive particles were named protons.</span></p>
+  <p class="dual"><span class="std">One puzzle remained. A helium nucleus has a charge of +2, so it holds 2 protons, yet its mass is about 4 times a proton's. Something in the nucleus had mass but no charge. A neutral particle is difficult to detect, because electric and magnetic fields do not deflect it.</span><span class="sim">There was a puzzle. Helium has 2 protons but about 4 times a proton's mass. Something else in the nucleus had mass but no charge. Neutral particles are hard to find because fields do not bend them.</span></p>
+  <p class="dual"><span class="std">In 1932 James Chadwick, working in Cambridge, England, fired alpha particles at the metal beryllium. An unknown radiation came out that fields could not bend. When it struck paraffin wax, it knocked protons out at high speed. Only a neutral particle with about the same mass as a proton could do that, much as one billiard ball sends another rolling. Chadwick identified it as the <button class="term" type="button" data-t="neutron">neutron</button>.</span><span class="sim">In 1932, James Chadwick shot alpha particles at beryllium. A radiation came out that fields did not bend, so it had no charge. It knocked protons out of wax, so its mass was about a proton's. He identified it as the neutron.</span></p>
+  <aside class="key"><p class="label">Key idea</p><p>A neutron has no charge and about the same mass as a proton. Neutrons and protons together make up the nucleus.</p></aside>
+ </div>
+ <div class="page right">
+  <figure class="fig"><svg viewBox="0 0 520 150" role="img" aria-label="Chadwick's experiment: alpha particles from a source hit beryllium. Invisible neutral radiation passes to paraffin wax and knocks out protons, which reach a detector.">
+   <g font-family="var(--body)" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">
+    <rect x="8" y="50" width="70" height="50" rx="8" fill="var(--paper2)" stroke="var(--muted)"/><text x="43" y="80">alpha</text><text x="43" y="118" font-weight="400" fill="var(--muted)">source</text>
+    <line x1="80" y1="75" x2="128" y2="75" stroke="var(--pos)" stroke-width="3"/><polygon points="128,69 140,75 128,81" fill="var(--pos)"/>
+    <rect x="142" y="40" width="22" height="70" rx="3" fill="var(--muted)"/><text x="153" y="130">beryllium</text>
+    <line x1="168" y1="75" x2="292" y2="75" stroke="var(--ink)" stroke-width="2.5" stroke-dasharray="7 6"/><polygon points="292,69 304,75 292,81" fill="var(--ink)"/><text x="232" y="62">neutral radiation</text><text x="232" y="100" font-weight="400" fill="var(--muted)">not bent by fields</text>
+    <rect x="306" y="40" width="26" height="70" rx="3" fill="var(--gold)"/><text x="319" y="130">paraffin wax</text>
+    <line x1="336" y1="75" x2="420" y2="75" stroke="var(--pos)" stroke-width="3"/><polygon points="420,69 432,75 420,81" fill="var(--pos)"/><text x="384" y="62">protons</text><text x="384" y="100" font-weight="400" fill="var(--muted)">knocked out fast</text>
+    <rect x="436" y="50" width="76" height="50" rx="8" fill="var(--paper2)" stroke="var(--muted)"/><text x="474" y="80">detector</text></g></svg>
+   <figcaption>Chadwick's 1932 experiment, simplified. The neutral radiation could be detected only through the protons it knocked loose.</figcaption></figure>
+  <table class="oc"><thead><tr><th>Particle</th><th><button class="term" type="button" data-t="relative mass">Relative mass</button></th><th>Charge</th><th>Location</th></tr></thead><tbody>
+   <tr><td><b>Proton</b> p⁺</td><td>1</td><td>+1</td><td>nucleus</td></tr>
+   <tr><td><b>Neutron</b> n⁰</td><td>1</td><td>0</td><td>nucleus</td></tr>
+   <tr><td><b>Electron</b> e⁻</td><td>about 1/1836</td><td>−1</td><td>electron cloud</td></tr>
+  </tbody></table>
+  <p class="aside-note">Simplified: both relative masses of 1 are rounded. A neutron has slightly more mass than a proton. Charges are given in units of the elementary charge, 1.602 × 10<sup>−19</sup> C.</p>
+  <div data-item="b-r1"></div>
+  <details class="honors"><summary>Honors · The actual masses</summary>
+   <table class="oc"><thead><tr><th>Particle</th><th>Mass (kg)</th><th>Mass (u)</th></tr></thead><tbody>
+    <tr><td>Proton</td><td>1.673 × 10<sup>−27</sup></td><td>1.00728</td></tr>
+    <tr><td>Neutron</td><td>1.675 × 10<sup>−27</sup></td><td>1.00866</td></tr>
+    <tr><td>Electron</td><td>9.109 × 10<sup>−31</sup></td><td>0.000549</td></tr></tbody></table>
+   <p>1 u (one <button class="term" type="button" data-t="atomic mass unit">atomic mass unit</button>) is 1.6605 × 10<sup>−27</sup> kg. Divide: 1.673 × 10<sup>−27</sup> ÷ 9.109 × 10<sup>−31</sup> ≈ 1837 (the precise value is 1836.15), so a proton is about 1836 times the electron's mass. The charge on a proton is +1.602 × 10<sup>−19</sup> C, and on an electron it is −1.602 × 10<sup>−19</sup> C.</p></details>
+  <div data-item="b-r2"></div>
+  <p class="aside-note">Chadwick won the 1935 Nobel Prize in Physics for the discovery of the neutron.</p>
+ </div>
+</article>
+
+<!-- ===== 2.2.2 ===== -->
+<article class="spread" data-sec="2.2.2" data-title="Where the particles are">
+ <div class="page left">
+  <header class="sech"><span class="secno">§2.2.2</span><h2>Where the particles are</h2></header>
+  <p class="dual"><span class="std">Protons and neutrons are packed together in the nucleus at the center of the atom. Electrons occupy the <button class="term" type="button" data-t="electron cloud">electron cloud</button> around it. As Lesson 2.1 showed, electrons do not follow fixed paths like planets. The cloud shows the region where an electron is likely to be found.</span><span class="sim">Protons and neutrons are in the nucleus, at the center. Electrons are in the electron cloud around the nucleus. Electrons do not move in fixed paths. The cloud shows where they are likely to be.</span></p>
+  <figure class="fig" data-atom="6,6,6"><figcaption>A carbon-12 atom with its nucleus magnified. Electrons are shown as dots where they are likely to be found, not as points on a path.</figcaption></figure>
+  <div data-item="b-r3"></div>
+  <p class="dual"><span class="std">The nucleus is tiny. Its diameter is only about 1/10,000 to 1/100,000 of the atom's diameter, depending on the atom. Yet protons and neutrons each have about 1,836 times the mass of an electron, so the nucleus holds more than 99.9% of the atom's mass. The electron cloud fills almost all of the atom's volume but contributes almost none of its mass.</span><span class="sim">The nucleus is very small: about 1/10,000 to 1/100,000 as wide as the atom. But it holds more than 99.9% of the mass, because protons and neutrons are so much heavier than electrons. The cloud is large but has very little mass.</span></p>
+  <p class="aside-note"><b>Think of it this way:</b> if an atom were a football stadium, its nucleus would be a marble at the center, holding more than 99.9% of the atom's mass. The limit: a stadium has walls, but an atom's edge is a fuzzy cloud with no sharp boundary.</p>
+  <aside class="key"><p class="label">Key idea</p><p>Nearly all of an atom's mass is in its tiny nucleus. Nearly all of its volume is the electron cloud.</p></aside>
+ </div>
+ <div class="page right">
+  <p class="label">Try it · Build an atom</p>
+  <p class="do">Add and remove particles. Then switch to True scale. Where did the nucleus go?</p>
+  <div data-sim="atomBuilder" data-start="2,2,2"></div>
+  <div data-item="b-r4"></div>
+ </div>
+</article>
+
+<!-- ===== 2.2.3 ===== -->
+<article class="spread" data-sec="2.2.3" data-title="Atomic number and mass number">
+ <div class="page left">
+  <header class="sech"><span class="secno">§2.2.3</span><h2>Atomic number and mass number</h2></header>
+  <p class="dual"><span class="std">The number of protons in an atom's nucleus is its <button class="term" type="button" data-t="atomic number">atomic number</button>, written Z. The atomic number determines the <button class="term" type="button" data-t="element">element</button>. Every atom with 6 protons is carbon, and every atom with 7 protons is nitrogen. The periodic table lists the elements in order of atomic number.</span><span class="sim">The atomic number, Z, is the number of protons. It tells you the element. Six protons always means carbon. Seven protons always means nitrogen. The periodic table is in order of atomic number.</span></p>
+  <p class="dual"><span class="std">The <button class="term" type="button" data-t="mass number">mass number</button>, written A, counts the particles in the nucleus: protons plus neutrons. Electrons are not counted, because they add almost no mass. If you know A and Z, you can find the number of neutrons.</span><span class="sim">The mass number, A, is protons plus neutrons. Electrons are not counted because they are so light. If you know A and Z, you can find the neutrons.</span></p>
+  <p class="eqn">mass number A = protons + neutrons  ·  neutrons = A − Z</p>
+  <p class="dual"><span class="std">A <button class="term" type="button" data-t="neutral atom">neutral atom</button> has no overall charge, so it has as many electrons as protons. A neutral carbon atom has 6 electrons. Adding or removing a neutron changes the mass number but never the element.</span><span class="sim">A neutral atom has the same number of electrons as protons. Neutral carbon has 6 electrons. Adding or removing a neutron changes the mass number, not the element.</span></p>
+  <aside class="key"><p class="label">Key idea</p><p>Protons determine the element. Protons plus neutrons give the mass number.</p></aside>
+  <p class="aside-note">The mass number is a whole-number count of particles. It is not the average atomic mass printed on the periodic table, which you will study in Lesson 2.3.</p>
+ </div>
+ <div class="page right">
+  <p class="label">Worked examples · Counting particles</p>
+  <div class="we" id="we1">
+   <p class="weh"><span class="lvl">1 · Watch</span> A fluorine atom has atomic number <b>9</b> and mass number <b>19</b>. How many protons, neutrons and electrons does it have?</p>
+   <ol class="steps"><li><span class="k">Protons</span><span>Protons = Z = <b>9</b></span></li><li><span class="k">Neutrons</span><span>A − Z = 19 − 9 = <b>10</b></span></li><li><span class="k">Electrons</span><span>Neutral atom, so electrons = protons = <b>9</b></span></li></ol>
+  </div>
+  <div data-item="b-r5"></div>
+  <div class="we" id="we2">
+   <p class="weh"><span class="lvl">2 · Finish it</span> An aluminum atom has atomic number <b>13</b> and mass number <b>27</b>.</p>
+   <ol class="steps"><li><span class="k">Protons</span><span>Protons = Z = <b>13</b></span></li><li><span class="k">Neutrons</span><span>27 − 13 = <input type="number" step="1" class="wein" data-ans="14" data-tol="0" aria-label="Number of neutrons"> <button class="btn wechk" type="button">Check</button></span></li><li><span class="k">Electrons</span><span><span class="wex" hidden>14 neutrons. A neutral aluminum atom has 13 electrons, one for each proton.</span><span class="wehint">Find the neutrons first.</span></span></li></ol>
+  </div>
+  <div class="we" id="we3">
+   <p class="weh"><span class="lvl">3 · On your own</span> An atom has <b>26</b> protons and mass number <b>56</b>. How many neutrons does it have, and what element is it?</p>
+   <div class="row"><input type="number" step="1" class="wein" data-ans="30" data-tol="0" aria-label="Number of neutrons"><select class="wesel" aria-label="Element"><option value="">element…</option><option>manganese (Z = 25)</option><option value="ok">iron (Z = 26)</option><option>cobalt (Z = 27)</option><option>zinc (Z = 30)</option></select><button class="btn wechk" type="button">Check</button></div>
+   <p class="wex" hidden>56 − 26 = <b>30</b> neutrons. An atom with 26 protons is <b>iron</b>, whatever its number of neutrons. This is iron-56.</p>
+  </div>
+  <div data-item="b-r6"></div>
+ </div>
+</article>
+
+<!-- ===== 2.2.4 (a) ===== -->
+<article class="spread" data-sec="2.2.4" data-title="Isotopes and isotope notation">
+ <div class="page left">
+  <header class="sech"><span class="secno">§2.2.4</span><h2>Isotopes and isotope notation</h2></header>
+  <p class="dual"><span class="std">Dalton thought every atom of an element had the same mass. In 1913 J. J. Thomson found that neon is a mixture of atoms with two different masses, now called neon-20 and neon-22. The same year Frederick Soddy named such atoms <button class="term" type="button" data-t="isotope">isotopes</button>. Today we know that isotopes are atoms of the same element, with the same number of protons but different numbers of neutrons.</span><span class="sim">Dalton thought all atoms of one element had the same mass. In 1913, Thomson found two kinds of neon atoms with different masses. These are isotopes: same element, same protons, different numbers of neutrons.</span></p>
+  <p class="dual"><span class="std"><button class="term" type="button" data-t="isotope notation">Isotope notation</button> shows the mass number at the upper left of the element symbol and the atomic number at the lower left. Isotopes are also named with a hyphen and the mass number, as in carbon-14 or C-14.</span><span class="sim">Isotope notation puts the mass number at the top left of the symbol and the atomic number at the bottom left. You can also write the name and the mass number: carbon-14.</span></p>
+  <table class="oc iso"><thead><tr><th>Isotope</th><th>Symbol</th><th>Protons</th><th>Neutrons</th></tr></thead><tbody>
+   <tr><td>carbon-12</td><td><span data-iso="12,6,C"></span></td><td>6</td><td>6</td></tr>
+   <tr><td>carbon-13</td><td><span data-iso="13,6,C"></span></td><td>6</td><td>7</td></tr>
+   <tr><td>carbon-14</td><td><span data-iso="14,6,C"></span></td><td>6</td><td>8</td></tr>
+  </tbody></table>
+  <div data-item="b-r7"></div>
+  <p class="dual"><span class="std">Isotopes of an element have the same number of protons and, as neutral atoms, the same number of electrons. Chemical behavior depends on the electrons, so isotopes of one element react in nearly the same way. Some isotopes are stable. Others, such as carbon-14, are <button class="term" type="button" data-t="radioactive">radioactive</button>: their nuclei are unstable and emit radiation.</span><span class="sim">Isotopes have the same protons and electrons, so they react almost the same way in chemistry. Some isotopes are stable. Some, like carbon-14, are radioactive: their nucleus is unstable and gives off radiation.</span></p>
+  <aside class="key"><p class="label">Key idea</p><p>Isotopes are the same element with different numbers of neutrons, so they have different mass numbers.</p></aside>
+ </div>
+ <div class="page right">
+  <p class="label">Try it · Decode the symbol</p>
+  <p class="do">Pick an isotope. Count its protons, neutrons and electrons, then check.</p>
+  <div data-sim="isoDecoder"></div>
+  <div data-item="b-r8"></div>
+ </div>
+</article>
+
+<!-- ===== 2.2.4 (b) ===== -->
+<article class="spread" data-sec="2.2.4" data-title="Isotopes at work">
+ <div class="page left">
+  <h3>Isotopes at work</h3>
+  <ul class="obs">
+   <li><b>Iodine-131</b> <span data-iso="131,53,I"></span> <span class="dual"><span class="std">The thyroid gland collects iodine from the blood to make its hormones, and it cannot tell isotopes apart. When a patient swallows radioactive iodine-131, the thyroid concentrates it, and its radiation destroys overactive or cancerous thyroid cells. Ordinary iodine-127 has 74 neutrons; iodine-131 has 78.</span><span class="sim">The thyroid collects iodine and cannot tell isotopes apart. Swallowed iodine-131 gathers there, and its radiation destroys overactive or cancer cells. Iodine-127 has 74 neutrons; iodine-131 has 78.</span></span></li>
+   <li><b>Technetium-99m</b> <span data-iso="99m,43,Tc"></span> <span class="dual"><span class="std">It is the most widely used medical isotope: about 80% of nuclear-medicine scans use it. Its nucleus emits gamma rays that a camera outside the body detects, so doctors can image bones, the heart and other organs. The m stands for metastable: the nucleus holds extra energy. It has 43 protons and 56 neutrons.</span><span class="sim">It is the most used medical isotope. About 80% of nuclear-medicine scans use it. A camera detects the gamma rays it gives off, so doctors can see bones and organs. The m means the nucleus has extra energy. It has 43 protons and 56 neutrons.</span></span></li>
+   <li><b>Carbon-14</b> <span data-iso="14,6,C"></span> <span class="dual"><span class="std">A small fraction of the carbon in every living thing is carbon-14. Because it behaves chemically like carbon-12, it enters plants and animals along with ordinary carbon. Scientists use it to date old wood and bone, a method you will study in a later unit.</span><span class="sim">All living things contain a little carbon-14. It acts like carbon-12, so living things take it in. Scientists use it to find the age of old wood and bone. You will learn how in a later unit.</span></span></li>
+  </ul>
+ </div>
+ <div class="page right">
+  <div data-item="b-r9"></div>
+  <details class="honors"><summary>Honors · Hydrogen's three isotopes</summary>
+   <p>Hydrogen is the only element whose isotopes have their own names. Hydrogen-1 (<span data-iso="1,1,H"></span>) has no neutrons at all. Deuterium, hydrogen-2 (<span data-iso="2,1,H"></span>), has 1 neutron and is stable. Tritium, hydrogen-3 (<span data-iso="3,1,H"></span>), has 2 neutrons and is radioactive. All three have 1 proton, so all three are hydrogen.</p></details>
+  <p class="aside-note">The nuclear chemistry unit explains why some isotopes are radioactive and what radiation they emit. Here you need only determine their particle counts.</p>
+ </div>
+</article>
+
+<!-- ===== 2.2.5 (a) ===== -->
+<article class="spread" data-sec="2.2.5" data-title="Ions: gaining and losing electrons">
+ <div class="page left">
+  <header class="sech"><span class="secno">§2.2.5</span><h2>Ions: gaining and losing electrons</h2></header>
+  <p class="dual"><span class="std">A neutral atom has equal numbers of protons and electrons, so the charges cancel. In chemical changes, atoms can lose or gain electrons. Then the charges no longer cancel, and the particle is an <button class="term" type="button" data-t="ion">ion</button>: an atom or group of atoms with a net charge.</span><span class="sim">In a neutral atom, the numbers of protons and electrons are equal, so the charges cancel. Atoms can lose or gain electrons. Then the atom has a charge and is called an ion.</span></p>
+  <p class="eqn">charge = protons − electrons</p>
+  <p class="dual"><span class="std">An atom that loses electrons has more protons than electrons, so it becomes a positive ion, a <button class="term" type="button" data-t="cation">cation</button>. A sodium atom (11 protons, 11 electrons) that loses one electron becomes Na⁺: 11 − 10 = +1. An atom that gains electrons becomes a negative ion, an <button class="term" type="button" data-t="anion">anion</button>. A chlorine atom (17 protons) that gains one electron becomes Cl⁻: 17 − 18 = −1.</span><span class="sim">An atom that loses electrons becomes positive: a cation. Sodium loses 1 electron and becomes Na⁺ (11 − 10 = +1). An atom that gains electrons becomes negative: an anion. Chlorine gains 1 and becomes Cl⁻ (17 − 18 = −1).</span></p>
+  <p class="dual"><span class="std">Ions never form by gaining or losing protons. Protons are held in the nucleus, which chemical changes do not affect. If a proton were added, the atom would become a different element, not a sodium ion: an atom with 12 protons is magnesium.</span><span class="sim">Ions never form by changing protons. Protons stay in the nucleus during chemical changes. Changing the protons would make a different element.</span></p>
+  <aside class="key"><p class="label">Key idea</p><p>Ions form when atoms lose or gain electrons. The protons, and so the element, stay the same.</p></aside>
+ </div>
+ <div class="page right">
+  <p class="label">Try it · Ion charge meter</p>
+  <p class="do">Remove or add electrons and watch the charge. Then try adding a proton.</p>
+  <div data-sim="ionMeter"></div>
+  <div data-item="b-r10"></div>
+ </div>
+</article>
+
+<!-- ===== 2.2.5 (b) ===== -->
+<article class="spread" data-sec="2.2.5" data-title="Ions in your body">
+ <div class="page left">
+  <h3>Ions in your body</h3>
+  <p class="dual"><span class="std">Your body fluids contain many dissolved ions, called <button class="term" type="button" data-t="electrolyte">electrolytes</button>. Sodium ions (Na⁺) and potassium ions (K⁺) carry the electrical signals in your nerves. Calcium ions (Ca²⁺) trigger the contraction of muscles, including the heart. Chloride ions (Cl⁻) help balance the water in and around your cells. Sweat carries some of these ions away, which is why sports drinks contain sodium and potassium.</span><span class="sim">Your body fluids contain ions called electrolytes. Na⁺ and K⁺ carry signals in your nerves. Ca²⁺ makes muscles contract. Cl⁻ helps balance water in your body. Sweat removes some of these ions, so sports drinks add sodium and potassium back.</span></p>
+  <table class="oc"><thead><tr><th>Ion</th><th>Protons</th><th>Electrons</th><th>Change</th></tr></thead><tbody>
+   <tr><td><b>Na⁺</b> sodium ion</td><td>11</td><td>10</td><td>lost 1 electron</td></tr>
+   <tr><td><b>K⁺</b> potassium ion</td><td>19</td><td>18</td><td>lost 1 electron</td></tr>
+   <tr><td><b>Ca²⁺</b> calcium ion</td><td>20</td><td>18</td><td>lost 2 electrons</td></tr>
+   <tr><td><b>Cl⁻</b> chloride ion</td><td>17</td><td>18</td><td>gained 1 electron</td></tr>
+  </tbody></table>
+  <div data-item="b-r11"></div>
+  <p class="dual"><span class="std">An ion's full symbol combines isotope notation with the charge at the upper right. A sodium-23 ion is written <span data-iso="23,11,Na,1"></span>: 11 protons, 12 neutrons and 10 electrons. In most cases the symbol with its charge, Na⁺, is enough.</span><span class="sim">The full symbol of an ion adds the charge at the top right, like <span data-iso="23,11,Na,1"></span>. That ion has 11 protons, 12 neutrons and 10 electrons. Usually we write only Na⁺.</span></p>
+  <p class="aside-note">Simplified: why sodium loses exactly one electron and chlorine gains exactly one is explained in Lesson 2.5, where you arrange the electrons in an atom.</p>
+ </div>
+ <div class="page right">
+  <p class="label">Worked examples · Ions</p>
+  <div class="we" id="we4">
+   <p class="weh"><span class="lvl">1 · Watch</span> A magnesium atom (<b>12</b> protons) loses <b>2</b> electrons. What ion forms?</p>
+   <ol class="steps"><li><span class="k">Electrons</span><span>12 − 2 = <b>10</b> electrons</span></li><li><span class="k">Charge</span><span>protons − electrons = 12 − 10 = <b>+2</b></span></li><li><span class="k">Name</span><span>A positive ion: the cation <b>Mg²⁺</b>. It is still magnesium, with 12 protons.</span></li></ol>
+  </div>
+  <div class="we" id="we5">
+   <p class="weh"><span class="lvl">2 · Finish it</span> An oxygen atom (<b>8</b> protons) gains <b>2</b> electrons.</p>
+   <ol class="steps"><li><span class="k">Electrons</span><span>8 + 2 = <b>10</b> electrons</span></li><li><span class="k">Charge</span><span>8 − 10 = <input type="number" step="1" class="wein" data-ans="-2" data-tol="0" aria-label="Charge"> <button class="btn wechk" type="button">Check</button></span></li><li><span class="k">Name</span><span><span class="wex" hidden>The charge is −2: the anion O²⁻, called the oxide ion. It is still oxygen, with 8 protons.</span><span class="wehint">Find the charge first.</span></span></li></ol>
+  </div>
+  <div class="we" id="we6">
+   <p class="weh"><span class="lvl">3 · On your own</span> An aluminum ion has <b>13</b> protons and <b>10</b> electrons. What is its charge, and what kind of ion is it?</p>
+   <div class="row"><input type="number" step="1" class="wein" data-ans="3" data-tol="0" aria-label="Charge"><select class="wesel" aria-label="Kind of ion"><option value="">kind…</option><option value="ok">cation, Al³⁺</option><option>anion, Al³⁻</option><option>neutral atom</option></select><button class="btn wechk" type="button">Check</button></div>
+   <p class="wex" hidden>13 − 10 = <b>+3</b>. It lost 3 electrons, so it is the <b>cation Al³⁺</b>.</p>
+  </div>
+  <div data-item="b-r12"></div>
+ </div>
+</article>
+
+<!-- ===== Review ===== -->
+<article class="spread" data-sec="review" data-title="Chapter review" data-short="Review">
+ <div class="page left">
+  <header class="sech"><span class="secno">Review</span><h2>Chapter review</h2></header>
+  <table class="sum"><thead><tr><th>Particle</th><th>Relative mass</th><th>Charge</th><th>Location</th><th>What it determines</th></tr></thead><tbody>
+   <tr><td><b>Proton</b></td><td>1</td><td>+1</td><td>nucleus</td><td>the element (Z)</td></tr>
+   <tr><td><b>Neutron</b></td><td>1</td><td>0</td><td>nucleus</td><td>the isotope (with Z, gives A)</td></tr>
+   <tr><td><b>Electron</b></td><td>about 1/1836</td><td>−1</td><td>electron cloud</td><td>the charge (ion or neutral)</td></tr>
+  </tbody></table>
+  <ul class="review">
+   <li><b>2.2.1</b> Protons (+1) and neutrons (0) each have a relative mass of about 1. Electrons (−1) have a relative mass of about 1/1836. Chadwick discovered the neutron in 1932.</li>
+   <li><b>2.2.2</b> Protons and neutrons form the tiny nucleus, which holds more than 99.9% of the mass. Electrons occupy the cloud, which is nearly all of the volume.</li>
+   <li><b>2.2.3</b> The atomic number Z (protons) determines the element. Mass number A = protons + neutrons, so neutrons = A − Z.</li>
+   <li><b>2.2.4</b> Isotopes have the same number of protons but different numbers of neutrons. Isotope notation puts A at the upper left and Z at the lower left.</li>
+   <li><b>2.2.5</b> Ions form by losing or gaining electrons, never protons. Charge = protons − electrons. Cations are positive; anions are negative.</li>
+  </ul>
+  <p class="label">Vocabulary · Vocabulario</p>
+  <div class="vocab" id="vocab"></div>
+ </div>
+ <div class="page right">
+  <div class="ag" id="ag-after"><p class="label">Revisit your predictions</p><p class="do">Answer again, then reveal. Did the evidence change your mind?</p></div>
+  <div class="sumup"><p class="label">Summarize in your notebook</p><p class="do">Answer the driving question in 3 to 4 sentences. Use these sentence starters.</p>
+   <ol class="starters"><li>An atom's element is determined by…</li><li>Two atoms of the same element can differ in…, which makes them…</li><li>An atom becomes an ion when it…, but never when…</li><li>For example, iodine-131 and iodine-127…</li></ol></div>
+  <div class="next"><p class="label">Next</p><p><b><a href="missions-2-2.html">Missions for Lesson 2.2</a>:</b> Evidence file, Atom builder and Atoms at work.</p></div>
+  <p class="label" style="margin-top:1em">Sources and further reading</p>
+  <ul class="src"><li><a href="https://openstax.org/books/chemistry-2e/pages/2-3-atomic-structure-and-symbolism" target="_blank" rel="noopener">OpenStax Chemistry 2e, 2.3 Atomic Structure and Symbolism</a></li><li><a href="https://physics.nist.gov/cuu/Constants/" target="_blank" rel="noopener">NIST: CODATA values of the fundamental constants</a></li><li><a href="https://www.nobelprize.org/prizes/physics/1935/chadwick/facts/" target="_blank" rel="noopener">NobelPrize.org: James Chadwick, Physics 1935</a></li><li>Chadwick, J. “Possible Existence of a Neutron.” <i>Nature</i> 129, 312 (1932)</li><li><a href="https://world-nuclear.org/information-library/non-power-nuclear-applications/radioisotopes-research/radioisotopes-in-medicine" target="_blank" rel="noopener">World Nuclear Association: Radioisotopes in Medicine</a></li><li><a href="https://www.radiologyinfo.org/en/info/radioiodine" target="_blank" rel="noopener">RadiologyInfo: Radioactive iodine (I-131) therapy</a></li><li><a href="https://medlineplus.gov/fluidandelectrolytebalance.html" target="_blank" rel="noopener">MedlinePlus: Fluid and electrolyte balance</a></li></ul>
+ </div>
+</article>
+</main>
+
+<nav class="pager" aria-label="Page navigation">
+  <button class="btn" id="prev" type="button">← Previous</button>
+  <span id="pinfo" aria-live="polite"></span>
+  <button class="btn primary" id="next" type="button">Next →</button>
+</nav>
+
+<script>
+window.U2LESSON="22";
+/* Lesson 2.1 glossary (merged with every other lesson's at build time): term -> definition, Spanish term. One source for reading, slides and worksheets. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "model":{d:"A simplified picture, object or set of rules that explains observations and predicts new ones.",es:"modelo"},
+ "evidence":{d:"Observations or data that support or contradict an idea.",es:"evidencia"},
+ "scientific law":{d:"A statement that describes a pattern in nature, often as an equation. It states what happens, not why.",es:"ley científica"},
+ "scientific theory":{d:"A well-tested explanation of why patterns in nature happen, supported by many lines of evidence.",es:"teoría científica"},
+ "law of conservation of mass":{d:"In a chemical reaction, the total mass of the products equals the total mass of the reactants.",es:"ley de conservación de la masa"},
+ "law of definite proportions":{d:"A compound always contains the same elements in the same proportions by mass, whatever its source.",es:"ley de las proporciones definidas"},
+ "law of multiple proportions":{d:"When two elements form more than one compound, the masses of one element that combine with a fixed mass of the other are in a small whole-number ratio.",es:"ley de las proporciones múltiples"},
+ "postulate":{d:"A basic statement accepted as the starting point of a theory.",es:"postulado"},
+ "atom":{d:"The smallest particle of an element that keeps the element's identity in chemical reactions.",es:"átomo"},
+ "compound":{d:"A substance made of two or more elements chemically combined in a fixed ratio.",es:"compuesto"},
+ "cathode ray":{d:"A beam of electrons that travels from the negative electrode (the cathode) in a tube with almost no air.",es:"rayo catódico"},
+ "cathode":{d:"In a cathode-ray (discharge) tube, the negative electrode. In a battery or other cell, the cathode is named by the reaction there, not by its sign, and it can be positive.",es:"cátodo"},
+ "electron":{d:"A negatively charged particle with very little mass, found in all atoms outside the nucleus.",es:"electrón"},
+ "charge-to-mass ratio":{d:"A particle's electric charge divided by its mass. A large value means a large charge for a small mass.",es:"relación carga-masa"},
+ "alpha particle":{d:"A fast, positively charged particle made of 2 protons and 2 neutrons: a helium nucleus. Some radioactive substances emit it.",es:"partícula alfa"},
+ "nucleus":{d:"The tiny, dense, positively charged center of an atom. It holds almost all of the atom's mass.",es:"núcleo"},
+ "proton":{d:"A positively charged particle in the nucleus.",es:"protón"},
+ "energy level":{d:"One of the fixed energies an electron in an atom can have.",es:"nivel de energía"},
+ "line spectrum":{d:"The set of separate colored lines produced when light from a glowing element is spread out by a prism or grating. Each element has its own.",es:"espectro de líneas"},
+ "photon":{d:"A single packet of light energy.",es:"fotón"},
+ "quantized":{d:"Limited to certain fixed amounts, with no values in between.",es:"cuantizado"},
+ "momentum":{d:"Mass times velocity: a measure of an object's motion.",es:"cantidad de movimiento"},
+ "uncertainty principle":{d:"Heisenberg's principle: the exact position and the exact momentum of a particle cannot both be known at the same time.",es:"principio de incertidumbre"},
+ "orbital":{d:"A region around the nucleus where an electron is likely to be found.",es:"orbital"},
+ "electron cloud":{d:"The fuzzy region around the nucleus where electrons are likely to be. It is dense where an electron is likely and thin where it is unlikely.",es:"nube electrónica"},
+ "probability":{d:"How likely something is to happen, from 0 (never) to 1 (always).",es:"probabilidad"},
+ "vacuum":{d:"A space that contains almost no matter, including air.",es:"vacío"},
+ "deflect":{d:"To turn something away from its straight path.",es:"desviar"}
+});
+
+/* Lesson 2.2 glossary (merged with every other lesson's at build time). 2.1 already defines atom, electron, proton, nucleus, electron cloud. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "subatomic particle":{d:"A particle smaller than an atom. Atoms are built from three kinds: protons, neutrons and electrons.",es:"partícula subatómica"},
+ "neutron":{d:"A particle in the nucleus with no electric charge and a mass about equal to a proton's.",es:"neutrón"},
+ "element":{d:"A substance made of atoms that all have the same number of protons.",es:"elemento"},
+ "atomic number":{d:"The number of protons in an atom's nucleus (Z). It identifies the element.",es:"número atómico"},
+ "mass number":{d:"The number of protons plus neutrons in an atom's nucleus (A).",es:"número másico"},
+ "isotope":{d:"Atoms of the same element (same number of protons) with different numbers of neutrons, and so different mass numbers.",es:"isótopo"},
+ "isotope notation":{d:"A symbol that shows an atom's mass number at the upper left and atomic number at the lower left of the element symbol, such as carbon-14 written as ¹⁴₆C.",es:"notación isotópica"},
+ "ion":{d:"An atom or group of atoms with a net electric charge because it has gained or lost electrons.",es:"ion"},
+ "cation":{d:"A positive ion. It has fewer electrons than protons.",es:"catión"},
+ "anion":{d:"A negative ion. It has more electrons than protons.",es:"anión"},
+ "relative mass":{d:"A mass compared with a standard instead of given in kilograms. On this scale a proton and a neutron are each about 1 and an electron is about 1/1836.",es:"masa relativa"},
+ "neutral atom":{d:"An atom with equal numbers of protons and electrons, so its charges cancel and its net charge is zero.",es:"átomo neutro"},
+ "radioactive":{d:"Describes an unstable nucleus that emits radiation on its own. Some isotopes are radioactive; others are stable.",es:"radiactivo"},
+ "electrolyte":{d:"A substance that forms ions in water. In medicine, the word also means the dissolved ions themselves, such as Na⁺, K⁺, Ca²⁺ and Cl⁻ in body fluids.",es:"electrolito"}
+});
+
+/* Lesson 2.3 glossary (merged with every other lesson's at build time). 2.2 defines isotope, mass number, atomic number. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "atomic mass unit":{d:"A unit for the mass of atoms (u, also written amu): one twelfth of the mass of a carbon-12 atom.",es:"unidad de masa atómica"},
+ "isotopic mass":{d:"The mass of one atom of a particular isotope, in atomic mass units.",es:"masa isotópica"},
+ "percent abundance":{d:"The percentage of an element's atoms, in a natural sample, that are a particular isotope.",es:"abundancia porcentual"},
+ "weighted average":{d:"An average in which each value counts in proportion to how often it occurs.",es:"promedio ponderado"},
+ "average atomic mass":{d:"The weighted average mass of an element's naturally occurring isotopes, in atomic mass units. It is the value on the periodic table.",es:"masa atómica promedio"},
+ "mass spectrometer":{d:"An instrument that separates ions by their mass-to-charge ratio and measures how many of each there are. When every ion has the same charge, as in this lesson, that means sorting by mass.",es:"espectrómetro de masas"},
+ "mass spectrum":{d:"A graph from a mass spectrometer: mass on one axis, relative abundance on the other.",es:"espectro de masas"},
+ "isotope ratio":{d:"The amount of one isotope in a sample compared with the amount of another, such as carbon-13 compared with carbon-12. Small differences can reveal where a sample came from.",es:"relación isotópica"}
+});
+
+/* Lesson 2.4 glossary (merged with every other lesson's at build time). 2.1 already defines photon, energy level, line spectrum, quantized. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "electromagnetic radiation":{d:"Energy that travels through space as waves of electric and magnetic fields, such as visible light, radio waves and X-rays.",es:"radiación electromagnética"},
+ "electromagnetic spectrum":{d:"The whole range of electromagnetic radiation, ordered by wavelength or frequency, from radio waves to gamma rays.",es:"espectro electromagnético"},
+ "wavelength":{d:"The distance from one wave crest to the next (λ), measured in meters or nanometers.",es:"longitud de onda"},
+ "frequency":{d:"The number of wave crests that pass a point each second (f), measured in hertz (Hz).",es:"frecuencia"},
+ "hertz":{d:"The unit of frequency: one wave per second (1 Hz = 1 s⁻¹).",es:"hercio"},
+ "Planck's constant":{d:"The constant h = 6.626 × 10⁻³⁴ J·s that links a photon's energy to its frequency in E = hf.",es:"constante de Planck"},
+ "ground state":{d:"The lowest energy state of an atom, with every electron in the lowest levels available.",es:"estado fundamental"},
+ "excited state":{d:"A state of an atom in which an electron is in a higher energy level than in the ground state.",es:"estado excitado"},
+ "emission spectrum":{d:"The pattern of bright lines emitted by an excited gas. Each element's pattern is unique.",es:"espectro de emisión"},
+ "absorption spectrum":{d:"Dark lines in a continuous spectrum where a cooler gas has absorbed particular wavelengths.",es:"espectro de absorción"},
+ "continuous spectrum":{d:"An unbroken band containing every wavelength, like the rainbow from a glowing solid or dense gas.",es:"espectro continuo"},
+ "flame test":{d:"A test that identifies a metal ion by the color it gives a flame.",es:"prueba de llama"},
+ "spectroscope":{d:"An instrument that spreads light into its separate wavelengths so its lines can be seen and measured.",es:"espectroscopio"},
+ "speed of light":{d:"The speed of all electromagnetic radiation in a vacuum: c = 2.998 × 10⁸ m/s.",es:"velocidad de la luz"},
+ "nanometer":{d:"One billionth of a meter: 1 nm = 10⁻⁹ m. Visible light has wavelengths of about 380 to 700 nm.",es:"nanómetro"},
+ "visible light":{d:"The small part of the electromagnetic spectrum that human eyes can see, about 380 nm (violet) to 700 nm (red).",es:"luz visible"},
+ "infrared":{d:"Electromagnetic radiation with wavelengths longer than red light but shorter than microwaves. It is felt as heat.",es:"infrarrojo"},
+ "ultraviolet":{d:"Electromagnetic radiation with wavelengths shorter than violet light but longer than X-rays. It can cause sunburn.",es:"ultravioleta"},
+ "inverse relationship":{d:"When one quantity is multiplied by a factor, the other is divided by the same factor. Wavelength and frequency are inversely related.",es:"relación inversa"},
+ "direct relationship":{d:"When one quantity is multiplied by a factor, the other is multiplied by the same factor. Photon energy and frequency are directly related.",es:"relación directa"}
+});
+
+/* Lesson 2.5 glossary (merged with every other lesson's at build time). 2.1 already defines orbital, energy level, electron cloud. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "electron configuration":{d:"A list of the sublevels an atom's electrons occupy, with the number in each, such as 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>1</sup> for sodium.",es:"configuración electrónica"},
+ "sublevel":{d:"A set of orbitals of the same type (s, p, d or f) within one energy level.",es:"subnivel"},
+ "noble-gas configuration":{d:"A shortened electron configuration that starts from the previous noble gas in brackets, such as [Ne] 3s<sup>1</sup> for sodium.",es:"configuración de gas noble"},
+ "valence electron":{d:"An electron in the highest occupied energy level of an atom. Valence electrons take part in bonding.",es:"electrón de valencia"},
+ "Lewis dot structure":{d:"An element symbol surrounded by one dot for each valence electron.",es:"estructura de puntos de Lewis"},
+ "octet":{d:"A set of eight valence electrons, as in every noble gas except helium. It is a very stable arrangement.",es:"octeto"},
+ "group":{d:"A vertical column of the periodic table. Representative elements in the same group have the same number of valence electrons and similar properties.",es:"grupo"},
+ "period":{d:"A horizontal row of the periodic table. Its number matches the highest energy level occupied in the ground state.",es:"periodo"},
+ "representative element":{d:"An element in groups 1, 2 or 13 to 18, where the s or p sublevel is being filled.",es:"elemento representativo"},
+ "alkali metal":{d:"A group 1 element other than hydrogen (lithium to francium): one valence electron, very reactive, forms 1+ ions.",es:"metal alcalino"},
+ "alkaline earth metal":{d:"A group 2 element (beryllium to radium): two valence electrons, reactive, forms 2+ ions.",es:"metal alcalinotérreo"},
+ "halogen":{d:"A group 17 element (fluorine to astatine): seven valence electrons, a very reactive nonmetal, forms 1− ions.",es:"halógeno"},
+ "noble gas":{d:"A group 18 element (helium to radon): a filled outer level, so almost unreactive.",es:"gas noble"},
+ "transition metal":{d:"An element in groups 3 to 12, where a d sublevel is being filled.",es:"metal de transición"},
+ "core electron":{d:"An electron in the filled inner levels of an atom, below the valence electrons. The noble-gas symbol in brackets stands for the core.",es:"electrón interno"},
+ "block":{d:"A region of the periodic table named for the sublevel being filled: the s block (groups 1 and 2, plus helium), the p block (groups 13 to 18), the d block (groups 3 to 12) and the f block.",es:"bloque"},
+ "orbital diagram":{d:"A drawing of an atom's electrons as arrows in boxes, one box per orbital. The arrow direction shows the electron's spin.",es:"diagrama de orbitales"},
+ "diatomic molecule":{d:"A molecule made of two atoms joined together, such as Cl<sub>2</sub> or O<sub>2</sub>.",es:"molécula diatómica"},
+ "Aufbau principle":{d:"Electrons fill the lowest-energy orbitals available first.",es:"principio de Aufbau"},
+ "Pauli exclusion principle":{d:"An orbital holds at most two electrons, and they must have opposite spins.",es:"principio de exclusión de Pauli"},
+ "Hund's rule":{d:"Electrons occupy orbitals of equal energy one at a time, with the same spin, before any pair up.",es:"regla de Hund"}
+});
+
+/* Lesson 2.2 item bank. Every item: id, objective, reading section, surface, DOK.
+   opts: [text, correct?, feedback]. Feedback for wrong options names the misconception. */
+window.OBJ=Object.assign(window.OBJ||{},{
+ "2.2.1":{teks:"C.6(B)",t:"Compare the relative mass and charge of protons, neutrons and electrons, using the evidence for the neutron."},
+ "2.2.2":{teks:"C.6(B)",t:"Locate each subatomic particle in the atom and describe how small the nucleus is."},
+ "2.2.3":{teks:"C.6(B)",t:"Use the atomic number to identify an element and the mass number to count its neutrons."},
+ "2.2.4":{teks:"C.6(B)",t:"Explain what isotopes are, and read and write isotope notation."},
+ "2.2.5":{teks:"C.6(B)",t:"Explain how ions form and find an ion's charge from its protons and electrons."}
+});
+window.ITEMS=(window.ITEMS||[]).concat([
+ /* ---- reading ---- */
+ {id:"b-r1",obj:"2.2.1",sec:"2.2.1",surf:"reading",dok:1,q:"Which particle has about 1/1836 of the mass of a proton?",
+  opts:[["The electron",1,"Correct. It takes about 1,836 electrons to equal the mass of one proton."],
+        ["The neutron",0,"A neutron's mass is about the same as a proton's: both are about 1 on the relative scale. Only the electron has a very small mass."],
+        ["The nucleus",0,"The nucleus is not a single particle. It holds the protons and neutrons, and nearly all of the atom's mass."]]},
+ {id:"b-r2",obj:"2.2.1",sec:"2.2.1",surf:"reading",dok:2,q:"Chadwick's unknown radiation was not bent by electric or magnetic fields, yet it knocked protons out of wax. What did that tell him?",
+  opts:[["It was a particle with no charge and a mass close to a proton's.",1,"Correct. No bending means no charge. Knocking protons out at high speed requires a mass about equal to a proton's, as when one billiard ball strikes another."],
+        ["It was a stream of electrons.",0,"Electrons are negative, so fields bend them. They are also far too light to knock a proton loose at such high speed."],
+        ["It was made of protons.",0,"Protons are positive, so fields would bend them. This radiation was neutral."]]},
+ {id:"b-r3",obj:"2.2.2",sec:"2.2.2",surf:"reading",dok:1,q:"Where are an atom's protons and neutrons?",
+  opts:[["Packed together in the nucleus",1,"Correct. Protons and neutrons make up the nucleus; electrons occupy the cloud around it."],
+        ["Moving in fixed orbits around the nucleus",0,"Protons and neutrons are not around the nucleus; they are the nucleus. No particle in an atom follows a fixed orbit, either: electrons form a cloud (Lesson 2.1)."],
+        ["Spread evenly through the whole atom",0,"That was Thomson's model of spread-out charge. The gold foil experiment showed the positive charge and mass are packed into a tiny center."]]},
+ {id:"b-r4",obj:"2.2.2",sec:"2.2.2",surf:"reading",dok:2,q:"Electrons take up nearly all of an atom's volume. Why do they add almost nothing to its mass?",
+  opts:[["Each electron has only about 1/1836 of a proton's mass.",1,"Correct. Volume and mass are different properties. The cloud is very large but nearly massless; the nucleus is tiny but holds more than 99.9% of the mass."],
+        ["Electrons have no mass at all.",0,"Electrons do have mass, 9.109 × 10⁻³¹ kg each, but it is very small."],
+        ["Electrons are outside the atom, so they are not counted.",0,"Electrons are part of the atom. The electron cloud gives an atom its size."]]},
+ {id:"b-r5",obj:"2.2.3",sec:"2.2.3",surf:"reading",dok:1,q:"An atom has 8 protons, 9 neutrons and 8 electrons. What element is it?",
+  opts:[["Oxygen, because the atomic number is 8",1,"Correct. The number of protons determines the element, and 8 protons always means oxygen."],
+        ["Fluorine, because 9 is its atomic number",0,"9 is the number of neutrons here. Neutrons never determine the element; only protons do."],
+        ["Phosphorus, because 8 + 9 = 17",0,"8 + 9 = 17 is the mass number. The element is set by the protons alone."]]},
+ {id:"b-r6",obj:"2.2.3",sec:"2.2.3",surf:"reading",dok:2,q:"A sodium atom has a mass number of 23. How many neutrons does it have? (Sodium's atomic number is 11.)",
+  opts:[["12",1,"Correct. Neutrons = mass number − atomic number = 23 − 11 = 12."],
+        ["23",0,"23 is the mass number: protons and neutrons together. Subtract the 11 protons."],
+        ["34",0,"34 is 23 + 11, but the mass number already includes the protons. Subtract: 23 − 11 = 12."]]},
+ {id:"b-r7",obj:"2.2.4",sec:"2.2.4",surf:"reading",dok:2,q:"Carbon-12 and carbon-14 are isotopes. What is different about them?",
+  opts:[["The number of neutrons, so their mass numbers differ",1,"Correct. Both have 6 protons (both are carbon). Carbon-14 has 8 neutrons and carbon-12 has 6."],
+        ["The number of protons",0,"A different number of protons would make a different element. Every carbon atom has 6 protons."],
+        ["The number of electrons, so one is an ion",0,"Isotopes differ in neutrons, inside the nucleus. Gaining or losing electrons makes an ion, which is a separate idea."]]},
+ {id:"b-r8",obj:"2.2.4",sec:"2.2.4",surf:"reading",dok:2,q:"Which symbol shows chlorine-37? (Chlorine's atomic number is 17.)",
+  opts:[["A = 37 on top, Z = 17 on the bottom, then Cl",1,"Correct. The mass number goes on top and the atomic number on the bottom, both to the left of the symbol."],
+        ["A = 17 on top, Z = 37 on the bottom, then Cl",0,"The numbers are swapped. The larger number, the mass number, goes on top."],
+        ["A = 37 on top, Z = 20 on the bottom, then Cl",0,"20 is the number of neutrons. The bottom number is the atomic number, the protons: 17."]]},
+ {id:"b-r9",obj:"2.2.4",sec:"2.2.4",surf:"reading",dok:3,q:"A patient swallows iodine-131 to treat an overactive thyroid. Why does the thyroid take it up in the same way as ordinary iodine-127?",
+  opts:[["Both are iodine: same 53 protons and same electrons, so they behave the same chemically.",1,"Correct. Isotopes of one element behave the same way in chemical reactions. Only the nucleus differs: 78 neutrons instead of 74."],
+        ["Iodine-131 has more protons, so the thyroid attracts it more.",0,"Every iodine atom has 53 protons. The 131 counts protons plus neutrons."],
+        ["Iodine-131 is a different element that looks like iodine.",0,"Changing neutrons does not change the element. It is still iodine, which is exactly why the thyroid absorbs it."]]},
+ {id:"b-r10",obj:"2.2.5",sec:"2.2.5",surf:"reading",dok:1,q:"A sodium atom becomes Na⁺. What happened?",
+  opts:[["It lost one electron.",1,"Correct. 11 protons and 10 electrons: charge = 11 − 10 = +1."],
+        ["It gained one proton.",0,"Gaining a proton would change sodium into magnesium. Ions form when electrons are lost or gained; the protons in the nucleus do not change."],
+        ["It gained one electron.",0,"Gaining a negative electron would make the charge negative. A positive charge means an electron was lost."]]},
+ {id:"b-r11",obj:"2.2.5",sec:"2.2.5",surf:"reading",dok:2,q:"A particle has 17 protons and 18 electrons. What is it?",
+  opts:[["A chloride anion, Cl⁻",1,"Correct. Charge = 17 − 18 = −1. With 17 protons it is chlorine, and a negative ion is an anion."],
+        ["An argon atom, because it has 18 electrons",0,"Electrons do not determine the element; protons do. 17 protons always means chlorine."],
+        ["A chlorine cation, Cl⁺",0,"More electrons than protons gives a negative charge. Cations are positive and have fewer electrons than protons."]]},
+ {id:"b-r12",obj:"2.2.5",sec:"2.2.5",surf:"reading",dok:3,q:"Calcium (20 protons) forms Ca²⁺. A student says, “Ca²⁺ has 22 protons.” What is the best correction?",
+  opts:[["Ca²⁺ still has 20 protons; it lost 2 electrons, so it has 18.",1,"Correct. Charge = 20 − 18 = +2. With 22 protons it would be titanium, not calcium."],
+        ["Ca²⁺ has 20 protons and 22 electrons.",0,"Extra electrons make a negative charge. A 2+ charge means 2 fewer electrons than protons: 18."],
+        ["The student is right: a 2+ ion has 2 extra protons.",0,"This is the common mix-up. Chemical changes involve electrons, not protons. Adding protons would change calcium into another element."]]},
+ /* ---- slides ---- */
+ {id:"b-s-chad",obj:"2.2.1",sec:"2.2.1",surf:"slides",dok:2,q:"The radiation passed straight through electric and magnetic fields, so its particles…",
+  opts:[["have no charge.",1,"Correct. Neither field deflects a neutral particle. Chadwick had found the neutron."],
+        ["are very fast electrons.",0,"Fields bend electrons at any speed, which is how Thomson measured them. This radiation did not bend at all."],
+        ["are positive, like protons.",0,"A positive particle bends toward the negative plate. Not bending means no charge."]]},
+ {id:"b-s-mass",obj:"2.2.2",sec:"2.2.2",surf:"slides",dok:2,q:"Where is more than 99.9% of an atom's mass?",
+  opts:[["In the nucleus",1,"Correct. Protons and neutrons each have about 1,836 times the mass of an electron, and all are in the nucleus."],
+        ["In the electron cloud, because it is so much larger",0,"Volume is not mass. The cloud is nearly all of the space but almost none of the mass."],
+        ["Spread evenly through the atom",0,"That was Thomson's model. Rutherford showed the mass is in a tiny nucleus."]]},
+ {id:"b-s-z",obj:"2.2.3",sec:"2.2.3",surf:"slides",dok:2,q:"You add one neutron to a carbon-12 atom. What do you have now?",
+  opts:[["Carbon-13: still carbon, mass number 13",1,"Correct. 6 protons means carbon. The extra neutron only raises the mass number."],
+        ["Nitrogen, because it is one particle heavier",0,"Mass does not determine the element; protons do. Nitrogen has 7 protons."],
+        ["A carbon ion",0,"Neutrons have no charge, so adding one cannot make an ion. Ions form by gaining or losing electrons."]]},
+ {id:"b-s-iso",obj:"2.2.4",sec:"2.2.4",surf:"slides",dok:2,q:"Technetium-99m has atomic number 43. How many neutrons does it have?",
+  opts:[["56",1,"Correct. 99 − 43 = 56. The m only means the nucleus holds extra energy; it changes no particle counts."],
+        ["99",0,"99 is the mass number, protons plus neutrons. Subtract the 43 protons."],
+        ["43",0,"43 is the number of protons, the atomic number. Neutrons = 99 − 43."]]},
+ {id:"b-s-ion",obj:"2.2.5",sec:"2.2.5",surf:"slides",dok:2,q:"A potassium atom (19 protons) becomes K⁺. How many electrons does K⁺ have?",
+  opts:[["18",1,"Correct. Charge = protons − electrons: 19 − 18 = +1. It lost one electron."],
+        ["20",0,"20 electrons gives 19 − 20 = −1. K⁺ has fewer electrons than protons."],
+        ["19, with one extra proton",0,"Protons do not change when an ion forms; 20 protons would be calcium. K⁺ has 19 protons and 18 electrons."]]},
+ {id:"b-s-am",obj:"2.2.3",sec:"2.2.3",surf:"slides",dok:3,q:"Every chlorine atom has 17 protons. Chlorine-35 and chlorine-37 both exist. Is “the mass number of chlorine” a single number?",
+  opts:[["No. Each isotope has its own mass number; the periodic table's 35.45 is an average (Lesson 2.3).",1,"Correct. Each isotope has a whole-number mass number. Average atomic mass is a weighted average of isotopes."],
+        ["Yes. It is 35.45, from the periodic table.",0,"35.45 is the average atomic mass, not a mass number. A mass number counts particles, so it is always a whole number."],
+        ["Yes. It is 17, the number of protons.",0,"17 is the atomic number. The mass number adds the neutrons, which differ between isotopes."]]}
+]);
+
+/* ===== Unit 2 simulation kit: helpers shared by every lesson's simulations ===== */
+(function(){
+const U2=window.U2=window.U2||{};
+const TAU=Math.PI*2;
+const REDUCED=(()=>{try{return matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){return false}})();
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const FK=()=>window.U2FONTK||1;
+const F=(px,wt=600,fam='--body')=>`${wt} ${(px*FK()).toFixed(1)}px ${css(fam)}`;
+const el=(tag,cls,html)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e};
+const btn=(label,cls='btn')=>{const b=el('button',cls,label);b.type='button';return b};
+U2.el=el;U2.btn=btn;U2.css=css;
+function shell(root,aspect,label){root.classList.add('sim');const cv=el('div','cv');cv.style.aspectRatio=String(1/aspect);const c=el('canvas');c.setAttribute('role','img');if(label)c.setAttribute('aria-label',label);cv.append(c);root.append(cv);return{cv,c}}
+function fit(c){const w=c.clientWidth||300,h=c.clientHeight||180,r=(window.devicePixelRatio||1)*(window.U2SCALE||1)*(c._zoom||1);
+  if(c._w!==w||c._h!==h||c._r!==r){c.width=Math.max(1,Math.round(w*r));c.height=Math.max(1,Math.round(h*r));c._w=w;c._h=h;c._r=r}
+  const x=c.getContext('2d');x.setTransform(r,0,0,r,0,0);x.clearRect(0,0,w,h);return{x,w,h}}
+U2.fit=fit;
+/* draw loop: redraw on resize; animate while visible and busy */
+U2._loops=[];U2.kickAll=()=>U2._loops.forEach(f=>f());
+function loop(c,draw){let raf=null,vis=true,run=false,last=0;
+  function frame(t){raf=null;const dt=last?Math.min(.05,(t-last)/1000):0;last=t;const more=draw(dt);if(vis&&(run||more))raf=requestAnimationFrame(frame);else last=0}
+  const kick=()=>{if(!raf&&vis)raf=requestAnimationFrame(frame)};
+  try{new IntersectionObserver(es=>{vis=es[es.length-1].isIntersecting;if(vis)kick()}).observe(c)}catch(e){}
+  try{new ResizeObserver(()=>kick()).observe(c)}catch(e){addEventListener('resize',kick)}
+  U2._loops.push(kick);return{kick,set run(v){run=v;if(v)kick()}}}
+U2.loop=loop;
+function seg(labels,onPick,init=0){const s=el('div','seg');const bs=labels.map((l,i)=>{const b=btn(l,'');b.setAttribute('aria-pressed',String(i===init));b.onclick=()=>{bs.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));onPick(i)};s.append(b);return b});s.set=i=>{bs.forEach((x,k)=>x.setAttribute('aria-pressed',String(k===i)))};return s}
+U2.seg=seg;
+/* a readout: a small label over a value (r.v). r.hold(texts) keeps it as tall as the tallest of texts would make it, so a
+   value that wraps onto a second line does not push the rest of the simulation around. It re-measures when the row it sits in
+   changes width, not when it does itself: in a wrapping row its own width follows its text, and re-measuring then ratchets.
+   That check runs late, after layout, so the reading and the deck call U2.fitHolds() before they measure a page or slide. */
+const holds=[];U2.fitHolds=()=>holds.forEach(f=>f());
+function ro(label,val=''){const r=el('div','ro');r.innerHTML=`<small>${label}</small><span>${val}</span>`;r.v=r.querySelector('span');
+  r.hold=texts=>{let w=0;const box=r.parentElement||r;const fit=force=>{const cw=box.clientWidth;if(!cw||(cw===w&&!force))return;w=cw;const keep=r.v.textContent;r.style.minHeight='';let mh=0;
+      for(const t of texts){r.v.textContent=t;const b=r.getBoundingClientRect();mh=Math.max(mh,b.height*r.offsetWidth/(b.width||1))}r.v.textContent=keep;r.style.minHeight=mh+'px'};holds.push(fit);
+    try{new ResizeObserver(()=>fit()).observe(box)}catch(e){}if(document.fonts)document.fonts.ready.then(()=>fit(true));fit();return r};
+  return r}
+function grp(label,...kids){const g=el('div','grp');if(label)g.append(el('span','lab',label));kids.forEach(k=>g.append(k));return g}
+function sayBox(){const p=el('p','say');p.setAttribute('role','status');p.hidden=true;p.show=(t,k)=>{p.hidden=false;p.className='say'+(k?' '+k:'');p.innerHTML=t};return p}
+function wl2rgb(nm){let r=0,g=0,b=0;
+  if(nm<380)return'#8a7fd6';
+  if(nm<440){r=-(nm-440)/60;b=1}else if(nm<490){g=(nm-440)/50;b=1}else if(nm<510){g=1;b=-(nm-510)/20}else if(nm<580){r=(nm-510)/70;g=1}else if(nm<645){r=1;g=-(nm-645)/65}else if(nm<=780){r=1}
+  let f=nm<420?.3+.7*(nm-380)/40:nm>700?.3+.7*(780-nm)/80:1;const c=v=>Math.round(255*Math.pow(Math.max(0,v*f),.8));return`rgb(${c(r)},${c(g)},${c(b)})`}
+U2.wl2rgb=wl2rgb;
+function arrow(x,x0,y0,x1,y1,hd=8){const a=Math.atan2(y1-y0,x1-x0);x.beginPath();x.moveTo(x0,y0);x.lineTo(x1,y1);x.stroke();x.beginPath();x.moveTo(x1,y1);x.lineTo(x1-hd*Math.cos(a-.45),y1-hd*Math.sin(a-.45));x.lineTo(x1-hd*Math.cos(a+.45),y1-hd*Math.sin(a+.45));x.closePath();x.fill()}
+/* labels along one axis (items {at, sz}: the wanted centre and the label's size along the axis): sorted by position,
+   pushed apart just enough to leave `gap` between neighbours, and kept inside [a,b]. Each label's centre lands in .c,
+   so the caller can draw a leader from .c back to .at. If the labels cannot all fit, the ones nearest a overlap. */
+function spread(items,a,b,gap=0){items.sort((p,q)=>p.at-q.at);items.forEach(it=>it.c=Math.max(it.at,a+it.sz/2));
+  for(let i=1;i<items.length;i++){const p=items[i-1],q=items[i],d=(p.sz+q.sz)/2+gap;if(q.c-p.c<d)q.c=p.c+d}
+  const z=items[items.length-1];if(z&&z.c+z.sz/2>b){z.c=b-z.sz/2;for(let i=items.length-2;i>=0;i--){const q=items[i+1];items[i].c=Math.min(items[i].c,q.c-(items[i].sz+q.sz)/2-gap)}}
+  items.forEach(it=>{it.c=Math.max(it.c,a+it.sz/2)});return items}
+/* a pointer event's position in the canvas's own CSS pixels, the units its drawing uses. The deck scales every slide
+   and the zoom scales a card with a CSS transform, so the on-screen box differs from that size; reading clientX
+   against getBoundingClientRect() alone lands on the wrong point whenever the slide is not at 100%. */
+function ptr(c,e){const r=c.getBoundingClientRect(),k=c.clientWidth/(r.width||1);return{x:(e.clientX-r.left)*k,y:(e.clientY-r.top)*k}}
+
+Object.assign(U2,{TAU,REDUCED,FK,F,shell,ro,grp,sayBox,arrow,spread,ptr});
+})();
+
+/* ===== Keep symbols in their case inside uppercase labels =====
+   Labels styled text-transform:uppercase would turn λ into Λ, f into F, h into H and nm into NM:
+   different quantities and units. Any standalone symbol or lowercase unit inside such a label is
+   wrapped in span.kc (text-transform:none). Runs on load and on every later DOM change, so
+   readouts that sims rebuild stay correct. The English word "a" is left alone. */
+(function(){
+const TOK=/(^|[\s(=÷×·/,:;+−-])([b-zλνμΔδρ]|nm|pm|km|mm|cm|µm|μm|kg|mol)(?=$|[\s)=÷×·/,.:;+−-])/g;
+const UP=new WeakMap();
+function upper(e){if(UP.has(e))return UP.get(e);const v=getComputedStyle(e).textTransform==='uppercase';UP.set(e,v);return v}
+function fix(root){
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:t=>{
+    const p=t.parentElement;if(!p||p.closest('.kc,script,style,svg,textarea,input'))return NodeFilter.FILTER_REJECT;
+    TOK.lastIndex=0;return TOK.test(t.data)&&upper(p)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT}});
+  const hits=[];while(w.nextNode())hits.push(w.currentNode);
+  hits.forEach(t=>{const f=document.createDocumentFragment();let last=0;TOK.lastIndex=0;
+    t.data.replace(TOK,(m,pre,sym,i)=>{const s=i+pre.length;f.append(t.data.slice(last,s));const k=document.createElement('span');k.className='kc';k.textContent=sym;f.append(k);last=s+sym.length;return m});
+    f.append(t.data.slice(last));t.replaceWith(f)});
+}
+let q=new Set(),raf=0;
+function run(){raf=0;const r=[...q];q.clear();r.forEach(n=>{if(n.isConnected)fix(n)})}
+function start(){
+  const st=document.createElement('style');st.textContent='.kc{text-transform:none}';document.head.append(st);
+  fix(document.body);
+  new MutationObserver(ms=>{ms.forEach(m=>{const n=m.type==='characterData'?m.target.parentElement:m.target;if(n)q.add(n)});if(!raf)raf=requestAnimationFrame(run)})
+    .observe(document.body,{childList:true,subtree:true,characterData:true});
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
+})();
+
+/* Renders an item from ITEMS into a .check element. Shared by reading, slides and missions. */
+(function(){
+const U2=window.U2=window.U2||{};
+/* progress is kept per lesson; the theme choice is shared by the whole unit */
+const SKEY=(pre,k)=>k==='theme'?pre+k:pre+(window.U2LESSON?window.U2LESSON+':':'')+k;
+const store={get(k,d){try{const v=localStorage.getItem(SKEY('u2:',k));return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(SKEY('u2:',k),JSON.stringify(v))}catch(e){}}};
+U2.store=store;
+U2.item=id=>(window.ITEMS||[]).find(i=>i.id===id);
+U2.renderCheck=function(box,item,{onAnswer,remember=true,shuffle=true,label='Stop and check'}={}){
+  if(!item){box.textContent='Missing item';return}
+  box.classList.add('check');box.innerHTML='';
+  const meta=document.createElement('div');meta.className='meta';meta.innerHTML=`<span>${label}</span><span>Objective ${item.obj}${window.OBJ&&OBJ[item.obj]?' · '+OBJ[item.obj].teks:''}</span>`;
+  const q=document.createElement('p');q.className='q';q.innerHTML=item.q;
+  const opts=document.createElement('div');opts.className='opts';const fb=document.createElement('p');fb.className='fb';fb.setAttribute('role','status');
+  let order=item.opts.map((o,i)=>i);if(shuffle){const seed=[...item.id].reduce((a,c)=>a+c.charCodeAt(0),0);order.sort((a,b)=>((a*7+seed)%5)-((b*7+seed)%5))}
+  order.forEach(i=>{const[t,ok,f]=item.opts[i];const b=document.createElement('button');b.type='button';b.className='btn';b.innerHTML=t;b.dataset.i=i;
+    b.onclick=()=>{opts.querySelectorAll('.btn').forEach(x=>x.classList.remove('correct','wrong'));b.classList.add(ok?'correct':'wrong');fb.className='fb '+(ok?'ok':'no');fb.innerHTML=f;
+      if(remember){const s=store.get('chk',{});s[item.id]=ok?1:(s[item.id]===1?1:0);store.set('chk',s)}onAnswer&&onAnswer(ok,item)};opts.append(b)});
+  box.append(meta,q,opts,fb);
+  const prev=remember&&store.get('chk',{})[item.id];if(prev===1){const ci=item.opts.findIndex(o=>o[1]);const b=opts.querySelector(`[data-i="${ci}"]`);if(b){b.classList.add('correct');fb.className='fb ok';fb.innerHTML=item.opts[ci][2]}}
+};
+U2.glossaryPop=function(){let pop=null;
+  function close(){if(pop){pop.remove();pop=null}}
+  document.addEventListener('click',e=>{const t=e.target.closest('.term');if(!t){if(!e.target.closest('.gpop'))close();return}
+    const key=t.dataset.t,g=(window.GLOSS||{})[key];if(!g)return;close();pop=document.createElement('div');pop.className='gpop';pop.setAttribute('role','dialog');
+    pop.innerHTML=`<b>${key}</b><br>${g.d}<span class="es">Español: <i>${g.es}</i></span>`;document.body.append(pop);
+    const r=t.getBoundingClientRect(),pw=pop.offsetWidth,ph=pop.offsetHeight;let x=Math.min(innerWidth-pw-12,Math.max(12,r.left+r.width/2-pw/2)),y=r.bottom+8;if(y+ph>innerHeight-8)y=r.top-ph-8;pop.style.left=x+'px';pop.style.top=y+'px'});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});addEventListener('scroll',close,true)};
+})();
+
+/* ===== Lesson 2.2 simulations (mount with U2.<name>(el, opts)) =====
+   atomBuilder: build-an-atom with a scale view · isoDecoder: isotope notation decoder · ionMeter: ion charge meter
+   Shared helpers: U2.EL (element data), U2.isoHTML (stacked isotope symbol), U2.atomSVG (static figure) */
+(function(){
+const U2=window.U2;const {TAU,REDUCED,css,FK,F,el,btn,shell,fit,loop,seg,ro,grp,sayBox}=U2;
+
+/* component styles used on every surface (reading, slides, missions) */
+(()=>{if(document.getElementById('u2-22-css'))return;const s=document.createElement('style');s.id='u2-22-css';s.textContent=`
+.isn{display:inline-flex;align-items:center;line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums;vertical-align:middle}
+.isn-az{display:inline-flex;flex-direction:column;align-items:flex-end;font-size:.56em;line-height:1.08;margin-right:.07em;font-weight:600}
+.isn-s{font-weight:700}
+.isn-q{font-size:.56em;align-self:flex-start;margin-left:.04em;font-weight:700;margin-top:-.1em}
+.sim .pm{min-width:2.1em;justify-content:center;font-size:1.05em!important;padding-inline:.4em!important}
+.sim .grp .cnt{font-family:var(--mono);font-weight:600;min-width:1.4em;text-align:center}
+.isod .isopick{display:flex;flex-wrap:wrap;gap:.35em}
+.isod .isopick .btn{font-size:1em;min-height:2.1em;padding:.15em .55em}
+.isod .isomain{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.4em 1em;align-items:center;background:var(--paper2);border:1.5px solid var(--line);border-radius:12px;padding:.45em .8em}
+.isod .isobig{font-size:2.6em;text-align:center;color:var(--ink)}
+.isod .isoname{font-family:var(--mono);font-size:.82em;color:var(--muted);text-align:center;margin-top:.1em}
+.isod .isoin{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.35em .6em;align-items:end}
+.isod .isoin label{display:flex;flex-direction:column;gap:.15em;font-family:var(--body);font-size:.68em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);min-width:0;font-weight:700}
+.isod .isoin input{width:100%;font-family:var(--mono);font-size:1.35em;text-transform:none;letter-spacing:0;color:var(--ink)}
+.isod .isoin input.good{border-color:var(--ok);background:var(--ok-soft)}
+.isod .isoin input.bad{border-color:var(--bad);background:var(--bad-soft)}
+.isod .isoact{grid-column:1/-1;display:flex;gap:.4em;flex-wrap:wrap}
+@media (max-width:520px){.isod .isomain{grid-template-columns:minmax(0,1fr)}}
+.page .isod .isopick .btn{font-size:14px;min-height:30px}
+.page .isod .isobig{font-size:40px}
+.page .isod .isoin input{font-size:16px;min-height:30px;padding:.1em .4em}
+.page .isod .isoin label{font-size:10.5px}
+.page .isod .isoact .btn{font-size:13px;min-height:30px;padding:.12em .6em}
+.slide .isod .isopick .btn{font-size:max(.8em,19px)}
+.slide .isod .isobig{font-size:2.4em}
+.slide .isod .isoname{font-size:max(.62em,18px)}
+.slide .isod .isoin label{font-size:max(.5em,18px)}
+.slide .isod .isoin input{font-size:1.6em;min-height:1.9em;height:auto;padding:.1em .4em}
+.slide .isod .isoact .btn{font-size:max(.72em,19px)}
+`;document.head.append(s)})();
+
+/* ---------- element data (only what this lesson uses) ---------- */
+const EL={1:['H','hydrogen'],2:['He','helium'],3:['Li','lithium'],4:['Be','beryllium'],5:['B','boron'],6:['C','carbon'],7:['N','nitrogen'],8:['O','oxygen'],
+  9:['F','fluorine'],10:['Ne','neon'],11:['Na','sodium'],12:['Mg','magnesium'],13:['Al','aluminum'],14:['Si','silicon'],15:['P','phosphorus'],16:['S','sulfur'],
+  17:['Cl','chlorine'],18:['Ar','argon'],19:['K','potassium'],20:['Ca','calcium'],26:['Fe','iron'],43:['Tc','technetium'],53:['I','iodine'],92:['U','uranium'],95:['Am','americium']};
+U2.EL=EL;
+const ZOF=sym=>+Object.keys(EL).find(z=>EL[z][0]===sym);
+const chg=q=>q===0?'':(Math.abs(q)>1?Math.abs(q):'')+(q>0?'+':'−');
+const sgn=q=>q>0?'+'+q:q<0?'−'+(-q):'0';
+U2.chargeText=chg;
+/* stacked isotope symbol: mass number over atomic number, element symbol, then charge */
+U2.isoHTML=(A,Z,sym,q=0)=>`<span class="isn"><span class="isn-az"><span>${A}</span><span>${Z}</span></span><span class="isn-s">${sym}</span>${q?`<span class="isn-q">${chg(q)}</span>`:''}</span>`;
+const pl=U2.pl=(k,w)=>k+' '+w+(+k===1?'':'s');
+const kindOf=q=>q>0?'cation':q<0?'anion':'neutral atom';
+const MP=1.007276,MN=1.008665,ME=0.000549;/* particle masses in u (CODATA 2018, rounded) */
+const nucShare=(p,n,e)=>{const a=p*MP+n*MN;return 100*a/(a+e*ME)};
+function hexA(c,a){c=(c||'#888').trim();if(c[0]==='#'){let h=c.slice(1);if(h.length===3)h=h.split('').map(x=>x+x).join('');const v=parseInt(h,16);return`rgba(${v>>16&255},${v>>8&255},${v&255},${a})`}
+  const m=c.match(/[\d.]+/g);return m?`rgba(${m[0]},${m[1]},${m[2]},${a})`:c}
+/* nucleon layout: sunflower packing, protons and neutrons interleaved evenly */
+function nucleons(p,n,rb){const N=p+n,out=[],c=2*rb*.56;for(let i=0;i<N;i++){const r=c*Math.sqrt(i+.5),a=i*2.39996;out.push({x:r*Math.cos(a),y:r*Math.sin(a),pr:Math.floor((i+1)*p/N)>Math.floor(i*p/N)})}
+  return{list:out,R:N?c*Math.sqrt(N)+rb:rb}}
+
+/* ---------- static figure: an atom with a magnified view of its nucleus (not to scale) ---------- */
+U2.atomSVG=function(id,{p=6,n=6,e=6,big=false}={}){const W=520,H=210,cx=110,cy=105,R=92,ix=392,iy=105,iR=78;
+  const g=`ag${id}`;let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="An atom: a fuzzy electron cloud with ${e} electrons around a tiny nucleus. A magnified view shows the nucleus packed with ${p} protons and ${n} neutrons. Not to scale."><defs><radialGradient id="${g}"><stop offset="0" stop-color="var(--neg)" stop-opacity=".34"/><stop offset=".6" stop-color="var(--neg)" stop-opacity=".14"/><stop offset="1" stop-color="var(--neg)" stop-opacity="0"/></radialGradient></defs>`;
+  s+=`<circle cx="${cx}" cy="${cy}" r="${R}" fill="url(#${g})"/>`;
+  for(let k=0;k<e;k++){const a=k*2.39996+.7,r=R*(.32+.5*((k*.618034)%1));s+=`<circle cx="${(cx+r*Math.cos(a)).toFixed(1)}" cy="${(cy+r*Math.sin(a)).toFixed(1)}" r="5" fill="var(--neg)"/>`}
+  s+=`<rect x="${cx-7}" y="${cy-7}" width="14" height="14" fill="none" stroke="var(--muted)" stroke-width="1.5"/><circle cx="${cx}" cy="${cy}" r="2" fill="var(--pos)"/>`;
+  s+=`<line x1="${cx+7}" y1="${cy-7}" x2="${ix-iR*.71}" y2="${iy-iR*.71}" stroke="var(--muted)" stroke-dasharray="4 4"/><line x1="${cx+7}" y1="${cy+7}" x2="${ix-iR*.71}" y2="${iy+iR*.71}" stroke="var(--muted)" stroke-dasharray="4 4"/>`;
+  s+=`<circle cx="${ix}" cy="${iy}" r="${iR}" fill="var(--paper)" stroke="var(--muted)" stroke-width="1.5"/>`;
+  const rb=p+n>20?9:12,L=nucleons(p,n,rb);L.list.slice().reverse().forEach(q=>{s+=`<circle cx="${(ix+q.x).toFixed(1)}" cy="${(iy+q.y).toFixed(1)}" r="${rb}" fill="var(${q.pr?'--pos':'--neu'})" stroke="var(--paper)" stroke-width="1.5"/>`;if(q.pr)s+=`<text x="${(ix+q.x).toFixed(1)}" y="${(iy+q.y+4.5).toFixed(1)}" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">+</text>`});
+  const fs=big?17:13;s+=`<g font-family="var(--body)" font-size="${fs}" font-weight="700" fill="var(--ink)" text-anchor="middle"><text x="2" y="${H-4}" text-anchor="start">electron cloud (electrons −)</text><text x="${W-2}" y="${H-4}" text-anchor="end">nucleus: protons + and neutrons</text>`+
+    `<text x="${(cx+ix)/2+6}" y="${cy-iR*.85}" font-weight="400" fill="var(--muted)" font-size="${fs-1}">magnified, not to scale</text></g>`;
+  return s+'</svg>'};
+
+/* ---------- 1. Build an atom, with a scale view ---------- */
+U2.atomBuilder=function(root,o={}){o=Object.assign({},root.dataset,o);
+  const st=String(o.start||'6,6,6').split(',').map(Number);let p=st[0],n=st[1],e=st[2],view=0;const MAXP=20,MAXN=24;
+  const{c}=shell(root,o.aspect||.56,'Build an atom: protons and neutrons in the nucleus at the center, electrons as dots in the electron cloud around it. A view switch shows the true scale, where the nucleus is far too small to see.');
+  const ctl=el('div','ctl');const msg=sayBox();
+  const counter=(lab,name,k)=>{const m=btn('−','btn pm'),pl=btn('+','btn pm');m.setAttribute('aria-label','Remove a '+name);pl.setAttribute('aria-label','Add a '+name);m.onclick=()=>change(k,-1);pl.onclick=()=>change(k,1);return grp(lab,m,pl)};
+  ctl.append(counter('Protons','proton','p'),counter('Neutrons','neutron','n'),counter('Electrons','electron','e'));
+  let sV=null;if(o.scale!==false&&o.scale!=='off'){sV=seg(['Nucleus enlarged','True scale'],i=>{view=i;if(i)msg.show('<b>True scale.</b> The nucleus is only 1/10,000 to 1/100,000 of the atom\'s diameter, far too small to draw here, yet it holds more than 99.9% of the mass. The atom is mostly empty space.','ok');else say0();L.kick()});ctl.append(grp('View',sV))}
+  const rs=btn('Reset','btn ghost');ctl.append(rs);
+  const rEl=ro('Element'),rZ=ro('Atomic number Z'),rA=ro('Mass number A'),rQ=ro('Charge'),rS=ro('Symbol'),rM=ro('Mass in nucleus');
+  const ros=el('div','ros');ros.append(rEl,rZ,rA,rQ,rS,rM);
+  root.append(ctl,ros,msg,el('p','simnote',o.note||'In the enlarged view the nucleus is drawn thousands of times too large. Electrons are shown as dots where they are likely to be found; they do not follow paths. Not every combination you can build exists in nature.'));
+  const Z=()=>p,A=()=>p+n,Q=()=>p-e;
+  function upd(){const[s,nm]=EL[p];rEl.v.textContent=nm;rZ.v.textContent=p;rA.v.textContent=A();rQ.v.textContent=sgn(Q());rS.v.innerHTML=U2.isoHTML(A(),p,s,Q());rM.v.textContent=nucShare(p,n,e).toFixed(2)+'%';o.onChange&&o.onChange({p,n,e})}
+  function say0(){const[s,nm]=EL[p];msg.show(`This is <b>${nm}-${A()}</b>: ${pl(p,'proton')}, ${pl(n,'neutron')}, ${pl(e,'electron')}. Add or remove one particle at a time and watch what changes.`)}
+  function change(k,d){const[s0,old]=EL[p];
+    if(k==='p'){const v=p+d;if(v<1){msg.show('An atom must have at least 1 proton. With 0 protons, it is not any element.','no');return}if(v>MAXP){msg.show('This builder stops at 20 protons (calcium).','no');return}p=v;
+      const[s,nm]=EL[p],q=Q();msg.show(`<b>Protons: ${p}.</b> Changing the number of protons changed the <b>element</b>: ${old} became <b>${nm}</b>. The atomic number determines the element.${q?` Electrons no longer match protons, so the charge is ${p} − ${e} = <b>${sgn(q)}</b>.`:''}`,'no')}
+    else if(k==='n'){const v=n+d;if(v<0||v>MAXN){msg.show(v<0?'There are no neutrons left to remove.':'This builder stops at 24 neutrons.','no');return}n=v;
+      msg.show(`<b>Neutrons: ${n}.</b> Still <b>${old}</b>: neutrons change only the mass number, now ${A()}. ${old}-${A()} is an <b>isotope</b> of ${old}.`,'ok')}
+    else{const v=e+d;if(v<0){msg.show('There are no electrons left to remove.','no');return}if(Math.abs(p-v)>3&&Math.abs(p-v)>Math.abs(p-e)){msg.show('Simple ions rarely have a charge beyond 3+ or 3−. This builder stops there.','no');return}e=v;const q=Q();
+      msg.show(q===0?`<b>Electrons: ${e}.</b> Protons and electrons match again: a <b>neutral atom</b> of ${old}.`:`<b>Electrons: ${e}.</b> Still <b>${old}</b>, now an <b>ion</b>. Charge = ${p} − ${e} = <b>${sgn(q)}</b>, so it is ${q>0?'a <b>cation</b> (it lost electrons)':'an <b>anion</b> (it gained electrons)'}.`,'ok')}
+    upd();L.kick()}
+  rs.onclick=()=>{p=st[0];n=st[1];e=st[2];if(sV){sV.set(0);view=0}upd();say0();L.kick()};
+  function draw(){const{x,w,h}=fit(c);const mu=css('--muted'),ink=css('--ink'),neg=css('--neg'),pos=css('--pos'),neu=css('--neu'),pap=css('--paper2');
+    const fk=FK(),legH=22*fk,cx=w*.5,cy=(h-legH)*.5+4,Rc=Math.min(w*.44,(h-legH)*.47);
+    const g=x.createRadialGradient(cx,cy,0,cx,cy,Rc);g.addColorStop(0,hexA(neg,.30));g.addColorStop(.62,hexA(neg,.12));g.addColorStop(1,hexA(neg,0));x.fillStyle=g;x.beginPath();x.arc(cx,cy,Rc,0,TAU);x.fill();
+    const N=p+n,m0=Math.min(w,h-legH),rb=Math.max(3.5,m0*.034*(N>16?Math.pow(16/N,.45):1)),L0=nucleons(p,n,rb);
+    const nucR=view?0:L0.R;
+    for(let k=0;k<e;k++){const a=k*2.39996+.7,f=(k*.618034+.15)%1,r=Math.max(nucR+10,Rc*.18)+(Rc*.86-Math.max(nucR+10,Rc*.18))*f;
+      x.fillStyle=neg;x.globalAlpha=view?.55:1;x.beginPath();x.arc(cx+r*Math.cos(a),cy+r*Math.sin(a),Math.max(3,rb*.42),0,TAU);x.fill();x.globalAlpha=1}
+    x.lineJoin='round';const halo=(t,a,b,al)=>{x.textAlign=al||'center';x.save();x.lineWidth=4;x.strokeStyle=pap;x.strokeText(t,a,b);x.restore();x.fillText(t,a,b)};
+    if(!view){L0.list.slice().reverse().forEach(q=>{x.fillStyle=q.pr?pos:neu;x.strokeStyle=pap;x.lineWidth=1.2;x.beginPath();x.arc(cx+q.x,cy+q.y,rb,0,TAU);x.fill();x.stroke();
+        if(q.pr&&rb>=6){x.fillStyle='#fff';x.font=F(rb*1.05/fk,700);x.textAlign='center';x.textBaseline='middle';x.fillText('+',cx+q.x,cy+q.y+.5);x.textBaseline='alphabetic'}});
+      x.font=F(15,700);x.fillStyle=ink;const lab='nucleus (drawn far too large)',tw=x.measureText(lab).width,ly=Math.max(14*fk,cy-nucR-12);
+      const lx=Math.min(w-6-tw/2,cx+nucR+tw/2+6);x.strokeStyle=mu;x.lineWidth=1;x.beginPath();x.moveTo(cx+nucR*.7,cy-nucR*.7);x.lineTo(lx-tw/2,ly+3);x.stroke();halo(lab,lx,ly)}
+    else{x.strokeStyle=css('--warm');x.lineWidth=2;x.setLineDash([4,4]);x.beginPath();x.arc(cx,cy,9,0,TAU);x.stroke();x.setLineDash([]);x.fillStyle=pos;x.beginPath();x.arc(cx,cy,.6,0,TAU);x.fill();
+      x.font=F(15,700);x.fillStyle=css('--warm');halo('the nucleus is in here, under '+(2*Rc/1e4).toFixed(2)+' px wide at this scale',cx,cy+26*fk)}
+    x.font=F(15,700);x.fillStyle=mu;halo(view?'electron cloud (true scale; electron dots enlarged)':'electron cloud',cx,Math.max(14*fk,cy-Rc+16*fk));
+    /* legend with counts */
+    const items=[[pos,`${p} proton${p===1?'':'s'} (+)`],[neu,`${n} neutron${n===1?'':'s'} (0)`],[neg,`${e} electron${e===1?'':'s'} (−)`]];x.font=F(15,700);
+    const ws=items.map(([,t])=>x.measureText(t).width+20*fk),tot=ws.reduce((a,b)=>a+b,0)+12*fk*2;let lx=Math.max(4,(w-tot)/2);const ly=h-7*fk;
+    items.forEach(([col,t],i)=>{x.fillStyle=col;x.beginPath();x.arc(lx+6*fk,ly-4.5*fk,5.5*fk,0,TAU);x.fill();x.fillStyle=ink;x.textAlign='left';x.fillText(t,lx+15*fk,ly);lx+=ws[i]+12*fk});
+    return false}
+  const L=loop(c,draw);upd();say0();
+  return{get:()=>({p,n,e}),set(a,b,d){p=a;n=b;e=d;upd();say0();L.kick()},say:(t,k)=>msg.show(t,k)}};
+
+/* ---------- 2. Isotope notation decoder ---------- */
+const ISO=[['C',12],['C',14],['H',2],['Na',23],['Cl',37],['I',131],['Tc',99,'m']];
+const ISO_ION=[['Na',23,0,1],['Cl',35,0,-1],['Ca',40,0,2],['O',16,0,-2],['C',14],['I',131]];
+U2.isoDecoder=function(root,o={}){o=Object.assign({},root.dataset,o);root.classList.add('sim','isod');
+  const SET=(o.ions?ISO_ION:ISO).map(([s,A,m,q])=>({s,A,Z:ZOF(s),m:m==='m',q:q||0}));let cur=SET[0];
+  const name=t=>`${EL[t.Z][1]}-${t.A}${t.m?'m':''}`;const sym=t=>U2.isoHTML(t.A+(t.m?'m':''),t.Z,t.s,t.q);
+  const pick=el('div','isopick');const pb=SET.map((t,i)=>{const b=btn(sym(t));b.setAttribute('aria-label',name(t)+(t.q?' ion, charge '+sgn(t.q):''));b.setAttribute('aria-pressed',String(i===0));b.onclick=()=>choose(i);pick.append(b);return b});
+  const main=el('div','isomain');const big=el('div','isobig'),nm=el('div','isoname');const left=el('div');left.append(big,nm);
+  const inp=el('div','isoin');const fld=lab=>{const l=el('label');l.append(document.createTextNode(lab));const i=el('input');i.type='number';i.min=0;i.step=1;i.inputMode='numeric';l.append(i);inp.append(l);return i};
+  const iP=fld('Protons'),iN=fld('Neutrons'),iE=fld('Electrons');const act=el('div','isoact');const ck=btn('Check','btn primary'),sh=btn('Show how','btn ghost');act.append(ck,sh);inp.append(act);
+  main.append(left,inp);const msg=sayBox();
+  root.append(pick,main,msg);
+  const ans=t=>({p:t.Z,n:t.A-t.Z,e:t.Z-t.q});
+  function choose(i){cur=SET[i];pb.forEach((b,k)=>b.setAttribute('aria-pressed',String(k===i)));big.innerHTML=sym(cur);nm.textContent=name(cur)+(cur.q?` ion · charge ${sgn(cur.q)}`:'');
+    [iP,iN,iE].forEach(x=>{x.value='';x.classList.remove('good','bad')});
+    msg.show(`Decode <b>${name(cur)}</b>${cur.q?' (an ion)':''}: how many protons, neutrons and electrons?${cur.m?' The m means <i>metastable</i>: the nucleus holds extra energy. It has the same particles as technetium-99.':''}`);o.onChange&&o.onChange(cur)}
+  function explain(t){const a=ans(t);return`Bottom number Z = <b>${t.Z}</b> = protons. Top number A = <b>${t.A}</b> = protons + neutrons, so neutrons = ${t.A} − ${t.Z} = <b>${a.n}</b>. `+
+    (t.q?`Charge ${sgn(t.q)} = protons − electrons, so electrons = ${t.Z} − (${t.q>0?t.q:'−'+(-t.q)}) = <b>${a.e}</b>: it ${t.q>0?'lost':'gained'} ${Math.abs(t.q)} electron${Math.abs(t.q)>1?'s':''}.`:`No charge, so electrons = protons = <b>${a.e}</b>.`)}
+  ck.onclick=()=>{const t=cur,a=ans(t),v=[iP,iN,iE].map(x=>x.value===''?NaN:+x.value);
+    if(v.some(isNaN)){msg.show('Fill in all three numbers first.','no');return}
+    [iP,iN,iE].forEach((x,k)=>{const g=v[k]===[a.p,a.n,a.e][k];x.classList.toggle('good',g);x.classList.toggle('bad',!g)});
+    let f='';
+    if(v[0]!==a.p)f=v[0]===t.A?`${t.A} is the <b>mass number</b> (protons + neutrons). Protons are the <b>bottom</b> number, the atomic number: <b>${t.Z}</b>.`:`Protons = atomic number Z, the bottom-left number. Every ${EL[t.Z][1]} atom has <b>${t.Z}</b> protons${t.q?', ion or not':''}.`;
+    else if(v[1]!==a.n)f=v[1]===t.A?`${t.A} is the mass number, which counts protons <b>and</b> neutrons. Subtract the protons: ${t.A} − ${t.Z} = <b>${a.n}</b> neutrons.`:`Neutrons = mass number − atomic number = ${t.A} − ${t.Z}.`;
+    else if(v[2]!==a.e)f=t.q===0?'A neutral atom has as many electrons as protons.':(v[2]===a.p?`The charge ${sgn(t.q)} means electrons and protons do <b>not</b> match. Charge = protons − electrons.`:`Charge = protons − electrons. A ${t.q>0?'positive charge means electrons were <b>lost</b>':'negative charge means electrons were <b>gained</b>'}, never protons.`);
+    if(f)msg.show('<b>Not yet.</b> '+f,'no');else msg.show(`<b>✓ ${name(t)}${t.q?' ion':''}:</b> ${pl(a.p,'proton')}, ${pl(a.n,'neutron')}, ${pl(a.e,'electron')}. `+(t.q?'The protons still identify the element; only the electrons changed.':'Changing the neutrons gives another isotope of '+EL[t.Z][1]+'.'),'ok');
+    o.onCheck&&o.onCheck(!f,t)};
+  sh.onclick=()=>{const a=ans(cur);iP.value=a.p;iN.value=a.n;iE.value=a.e;[iP,iN,iE].forEach(x=>x.classList.remove('good','bad'));msg.show(explain(cur),'ok')};
+  choose(0);return{choose}};
+
+/* ---------- 3. Ion charge meter ---------- */
+U2.ionMeter=function(root,o={}){o=Object.assign({},root.dataset,o);
+  const LIST=(o.els||'Na,K,Mg,Ca,Al,O,F,S,Cl').split(',');let Z0=ZOF(o.el||LIST[0]),p=Z0,e=Z0;
+  const{c}=shell(root,o.aspect||.46,'Ion charge meter: a dial shows the net charge, protons minus electrons, from 3− to 3+. Rows of dots compare the number of protons and electrons.');
+  const ctl=el('div','ctl');const msg=sayBox();
+  const sel=el('select');sel.setAttribute('aria-label','Element');LIST.forEach(s=>sel.append(new Option(`${EL[ZOF(s)][1]} (${s})`,s)));sel.value=EL[Z0][0];
+  sel.onchange=()=>{Z0=ZOF(sel.value);p=Z0;e=Z0;upd();msg.show(`A neutral <b>${EL[p][1]}</b> atom: ${pl(p,"proton")} and ${pl(e,"electron")}, charge 0. Now remove or add electrons.`);L.kick()};
+  const pm=(name,k,d,lab)=>{const b=btn(lab,'btn pm');b.setAttribute('aria-label',(d>0?'Add':'Remove')+' a '+name);b.onclick=()=>change(k,d);return b};
+  const rs=btn('Reset','btn ghost');rs.onclick=()=>sel.onchange();
+  ctl.append(grp('Element',sel),grp('Electrons',pm('electron','e',-1,'−'),pm('electron','e',1,'+')),grp('Protons',pm('proton','p',-1,'−'),pm('proton','p',1,'+')),rs);
+  const rP=ro('Protons'),rE=ro('Electrons'),rQ=ro('Charge = p − e'),rS=ro('Symbol'),rK=ro('Type');const ros=el('div','ros');ros.append(rP,rE,rQ,rS,rK);
+  root.append(ctl,ros,msg,el('p','simnote','The dial runs from 3− to 3+, the range of most simple ions. In real atoms the protons are held in the nucleus and cannot be added or removed by chemical change.'));
+  function upd(){const q=p-e;rP.v.textContent=p;rE.v.textContent=e;rQ.v.textContent=`${p} − ${e} = ${sgn(q)}`;rS.v.innerHTML=`<span class="isn"><span class="isn-s">${EL[p][0]}</span>${q?`<span class="isn-q">${chg(q)}</span>`:''}</span>`;rK.v.textContent=kindOf(q);o.onChange&&o.onChange({p,e})}
+  function change(k,d){const nm0=EL[p][1];
+    if(k==='e'){const v=e+d;if(v<0||(Math.abs(p-v)>3&&Math.abs(p-v)>Math.abs(p-e))){msg.show('The dial stops at 3+ and 3−. Simple ions rarely go further.','no');return}e=v;const q=p-e;
+      msg.show(q===0?`Back to a <b>neutral</b> ${nm0} atom: ${pl(p,'proton')}, ${pl(e,'electron')}.`:`${nm0[0].toUpperCase()+nm0.slice(1)} ${d<0?'lost':'gained'} an electron. Charge = ${p} − ${e} = <b>${sgn(q)}</b>: ${q>0?'a <b>cation</b>':'an <b>anion</b>'}, <b>${EL[p][0]}${chg(q)}</b>. It is still ${nm0} because the protons did not change.`,'ok')}
+    else{const v=p+d;if(v<1||v>20||Math.abs(v-e)>3){msg.show('Stop there. Ions do not form by changing protons.','no');return}p=v;const q=p-e;
+      msg.show(`<b>Careful:</b> changing the protons does not make an ion of ${nm0}. With ${pl(p,"proton")} this is now <b>${EL[p][1]}</b>, a different element${q?`, with charge ${sgn(q)}`:''}. Ions form when atoms gain or lose <b>electrons</b>.`,'no')}
+    upd();L.kick()}
+  function draw(){const{x,w,h}=fit(c);const mu=css('--muted'),ink=css('--ink'),neg=css('--neg'),pos=css('--pos'),pap=css('--paper2'),q=p-e,fk=FK();
+    /* dial */
+    const R=Math.max(30,Math.min(w*.18,h-66*fk)),cx=Math.max(R+46*fk,w*.24),cy=R+30*fk+2;
+    const ang=v=>Math.PI-(v+3)/6*Math.PI;
+    [[-3,-.5,neg],[-.5,.5,mu],[.5,3,pos]].forEach(([a,b,col])=>{x.strokeStyle=hexA(col,.28);x.lineWidth=R*.2;x.beginPath();x.arc(cx,cy,R*.86,-ang(a),-ang(b));x.stroke()});
+    x.font=F(15,700);x.textAlign='center';x.textBaseline='middle';
+    for(let v=-3;v<=3;v++){const a=ang(v);x.strokeStyle=mu;x.lineWidth=2;x.beginPath();x.moveTo(cx+R*.98*Math.cos(a),cy-R*.98*Math.sin(a));x.lineTo(cx+R*1.06*Math.cos(a),cy-R*1.06*Math.sin(a));x.stroke();
+      x.fillStyle=v===q?ink:mu;x.fillText(v===0?'0':(Math.abs(v))+(v>0?'+':'−'),cx+(R+22*fk)*Math.cos(a),cy-(R+16*fk)*Math.sin(a))}
+    x.textBaseline='alphabetic';x.fillStyle=neg;x.textAlign='center';x.fillText('anion',cx-R,cy+30*fk);x.fillStyle=pos;x.fillText('cation',cx+R,cy+30*fk);
+    const qa=ang(Math.max(-3,Math.min(3,q)));x.strokeStyle=ink;x.fillStyle=ink;x.lineWidth=4;x.beginPath();x.moveTo(cx,cy);x.lineTo(cx+R*.78*Math.cos(qa),cy-R*.78*Math.sin(qa));x.stroke();x.beginPath();x.arc(cx,cy,7,0,TAU);x.fill();
+    x.font=F(17,700);x.textAlign='center';x.fillText('charge '+sgn(q),cx,cy+30*fk);
+    /* tally: protons above, electrons below; unmatched dots are ringed */
+    const tx0=Math.min(cx+R+62*fk,w*.6),tx1=w-10,mx=Math.max(p,e),dw=Math.min((tx1-tx0)/Math.max(mx,8),26*fk),r=dw*.36;
+    x.font=F(15,700);x.textAlign='left';x.fillStyle=mu;
+    const row=(y,k,col,lab)=>{x.fillStyle=mu;x.fillText(lab,tx0,y-r-8*fk);for(let i=0;i<k;i++){const px=tx0+r+i*dw;x.fillStyle=col;x.beginPath();x.arc(px,y,r,0,TAU);x.fill();
+        if(i>=Math.min(p,e)){x.strokeStyle=css('--warm');x.lineWidth=2.5;x.beginPath();x.arc(px,y,r+4,0,TAU);x.stroke()}}};
+    const y1=h*.36,y2=h*.74;row(y1,p,pos,`${pl(p,"proton")} (+) in the nucleus`);row(y2,e,neg,`${pl(e,"electron")} (−) in the cloud`);
+    x.fillStyle=ink;x.font=F(16,700);x.textAlign='left';const t=q===0?'every proton is matched: no charge':`${Math.abs(q)} unmatched ${q>0?'proton':'electron'}${Math.abs(q)>1?'s':''}: charge ${sgn(q)}`;x.fillText(t,tx0,Math.min(h-6,y2+r+22*fk));
+    return false}
+  const L=loop(c,draw);upd();msg.show(`A neutral <b>${EL[p][1]}</b> atom: ${pl(p,"proton")} and ${pl(e,"electron")}. Remove an electron and watch the dial.`);return{}};
+})();
+
+/* Lesson 2.2 reading setup: running head, anticipation guide, figures */
+window.LESSON={
+ ch:'2.2 Inside the atom',
+ weMsg:'Not yet. Protons = the atomic number (bottom number). Neutrons = mass number − atomic number. Electrons = protons − charge.',
+ ag:[["Adding a neutron to an atom changes it into a different element.",0,"Disagree. Only the number of protons determines the element. An extra neutron makes another isotope of the same element (§2.2.3, §2.2.4)."],
+  ["An atom becomes a positive ion by gaining a proton.",0,"Disagree. Ions form when atoms lose or gain electrons. A positive ion has lost electrons; its protons never change (§2.2.5)."],
+  ["Most of an atom's mass is in its tiny nucleus.",1,"Agree. Protons and neutrons each have about 1,836 times the mass of an electron, so more than 99.9% of the mass is in the nucleus (§2.2.2)."],
+  ["Every atom of an element has the same mass number.",0,"Disagree. Isotopes of one element have different numbers of neutrons, so different mass numbers, such as carbon-12 and carbon-14 (§2.2.4)."],
+  ["Electrons travel around the nucleus in fixed paths, like planets.",0,"Disagree. Electrons form a cloud: regions where they are likely to be found, with no fixed path (§2.2.2, Lesson 2.1)."]],
+ init(){
+  document.querySelectorAll('[data-atom]').forEach(f=>{const[p,n,e]=f.dataset.atom.split(',').map(Number);f.insertAdjacentHTML('afterbegin',U2.atomSVG('r'+p+'-'+n,{p,n,e}))});
+  document.querySelectorAll('[data-iso]').forEach(s=>{const[A,Z,sym,q]=s.dataset.iso.split(',');s.innerHTML=U2.isoHTML(A,Z,sym,+(q||0))});
+ }
+};
+
+/* ===== Reading chapter controller: automatic pagination, book and scroll modes ===== */
+(function(){
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const store=U2.store,book=$('#book'),spreads=$$('.spread',book),origPages=$$('.page',book);
+const LS=window.LESSON||{};const CH=LS.ch||document.title;
+origPages.forEach(p=>{const b=document.createElement('div');b.className='pbody';while(p.firstChild)b.append(p.firstChild);p.append(b);p._spread=p.closest('.spread')});
+let pages=origPages.slice(),mode=store.get('mode','book'),cur=0;
+const narrow=matchMedia('(max-width:1000px)'),phone=matchMedia('(max-width:700px)');
+
+/* theme */
+const root=document.documentElement;let theme=store.get('theme',null);
+function applyTheme(){if(theme)root.setAttribute('data-theme',theme);else root.removeAttribute('data-theme');$('#theme').textContent=theme==='dark'?'Dark':theme==='light'?'Light':'Theme';U2.kickAll&&U2.kickAll()}
+$('#theme').onclick=()=>{theme=theme==='dark'?'light':theme==='light'?null:'dark';store.set('theme',theme);applyTheme()};applyTheme();
+
+/* simpler language */
+let simple=store.get('simple',false);const sb=$('#simple');
+function applySimple(){document.body.classList.toggle('simple',simple);sb.setAttribute('aria-pressed',String(simple))}
+sb.onclick=()=>{simple=!simple;store.set('simple',simple);applySimple();stopSpeech();repaginate()};applySimple();
+
+/* lesson-specific setup (opener art, model figures) */
+if(LS.init)LS.init();
+
+/* checks and check tabs */
+$$('[data-item]').forEach(b=>U2.renderCheck(b,U2.item(b.dataset.item),{onAnswer:()=>{progress();tabs()}}));
+const sets=[];origPages.forEach(p=>{const its=$$('[data-item]',p);if(its.length<2)return;const set=document.createElement('div');set.className='checkset';const tb=document.createElement('div');tb.className='tabs';set.append(tb);its[0].before(set);
+  its.forEach((it,i)=>{const b=U2.btn('Check '+(i+1),'btn');b.onclick=()=>{its.forEach((x,k)=>x.hidden=k!==i);[...tb.children].forEach(x=>x.setAttribute('aria-pressed',String(x===b)))};tb.append(b);set.append(it)});tb.children[0].click();sets.push({its,tb,set})});
+function tabs(){const s=store.get('chk',{});sets.forEach(({its,tb})=>its.forEach((it,i)=>tb.children[i].classList.toggle('done',s[it.dataset.item]===1)))}tabs();
+function progress(){const ids=$$('[data-item]').map(b=>b.dataset.item);const s=store.get('chk',{});const done=ids.filter(i=>s[i]===1).length;$('#progbar').style.width=(100*done/ids.length)+'%';buildToc()}
+
+/* sims */
+$$('[data-sim]').forEach(b=>{const f=U2[b.dataset.sim];if(f)f(b,{target:b.dataset.target})});
+
+/* worked examples */
+$$('.we').forEach(w=>{const ch=$('.wechk',w);if(!ch)return;ch.onclick=()=>{let ok=true;
+  $$('.wein',w).forEach(i=>{const v=parseFloat(i.value),a=+i.dataset.ans,t=+i.dataset.tol;const g=Math.abs(v-a)<=t;i.classList.toggle('good',g);i.classList.toggle('bad',!g);ok=ok&&g});
+  const sel=$('.wesel',w);if(sel){const g=sel.value==='ok';sel.classList.toggle('bad',!g);ok=ok&&g}
+  $$('.wex',w).forEach(x=>x.hidden=!ok);const h=$('.wehint',w);if(h)h.hidden=ok;
+  const m=$('.wemsg',w);m.hidden=ok;guard()}});
+$$('.we').forEach(w=>{if(!$('.wechk',w))return;const m=document.createElement('p');m.className='wemsg wex';m.style.background='var(--bad-soft)';m.hidden=true;m.textContent=w.dataset.msg||LS.weMsg||'Not yet. Check each step against the worked example, then try again.';w.append(m)});
+
+/* anticipation guide */
+const AG=LS.ag||[];
+function agRender(box,phase){const prev=store.get('ag',{});AG.forEach(([t,a,why],i)=>{const row=document.createElement('div');row.className='row';const p=document.createElement('p');p.textContent=t;row.append(p);
+    const v=document.createElement('p');v.className='verdict';v.hidden=true;v.innerHTML='✓ '+why;
+    const seg=U2.seg(['Agree','Disagree'],k=>{const s=store.get('ag',{});s[phase+i]=k===0?1:0;store.set('ag',s);if(phase==='a'){v.hidden=false;const ok=(k===0?1:0)===a;v.className='verdict '+(ok?'ok':'no');v.innerHTML=(ok?'✓ ':'✗ ')+why}},-1);
+    const cur0=prev[phase+i];if(cur0!=null)seg.set(cur0===1?0:1);row.append(seg);
+    if(phase==='a'){const b=prev['b'+i];const bf=document.createElement('span');bf.className='before';bf.textContent=b==null?'Before: no answer':'Before: '+(b===1?'Agree':'Disagree');p.append(bf);row.append(v);if(cur0!=null){const ok=cur0===a;v.hidden=false;v.className='verdict '+(ok?'ok':'no');v.innerHTML=(ok?'✓ ':'✗ ')+why}}
+    box.append(row)})}
+agRender($('#ag-before'),'b');agRender($('#ag-after'),'a');
+
+/* vocabulary */
+(()=>{const used=[...new Set($$('.term').map(t=>t.dataset.t))].sort();$('#vocab').innerHTML=used.map(k=>`<div><button class="term" type="button" data-t="${k}">${k}</button><i>${(GLOSS[k]||{}).es||''}</i></div>`).join('')})();
+U2.glossaryPop();
+
+/* page chrome: footer and listen button */
+let speaking=null;
+function stopSpeech(){try{speechSynthesis.cancel()}catch(e){}$$('.reading').forEach(x=>x.classList.remove('reading'));$$('.listen').forEach(b=>{b.textContent='Listen';b.setAttribute('aria-pressed','false')});speaking=null}
+function chrome(p){const f=document.createElement('div');f.className='pfoot';f.innerHTML='<span class="pn"></span><span class="lw"></span><span class="rh"></span>';p.append(f);
+  if(!('speechSynthesis' in window))return;const b=U2.btn('Listen','btn ghost listen');b.setAttribute('aria-pressed','false');b.title='Read this page aloud';$('.lw',f).append(b);
+  b.onclick=()=>{if(speaking===p){stopSpeech();return}stopSpeech();speaking=p;b.textContent='Stop';b.setAttribute('aria-pressed','true');
+    const parts=$$('h1,h2,h3,.dual,.laws li,.post li,.obs li,blockquote,.key p:not(.label),.objs li,.oc tr,.do,.weh,.review li,.starters li,figcaption,.aside-note',p).filter(e=>e.offsetParent!==null&&!e.closest('.check')&&!(e.classList.contains('dual')&&e.closest('li')&&e.closest('li')!==e));
+    let i=0;const next=()=>{$$('.reading',p).forEach(x=>x.classList.remove('reading'));if(speaking!==p||i>=parts.length){if(speaking===p)stopSpeech();return}
+      const e=parts[i++];const t=(e.classList.contains('dual')?($(simple?'.sim':'.std',e)||e):e).innerText.replace(/\s+/g,' ').trim();if(!t){next();return}
+      e.classList.add('reading');const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=simple?.88:.95;u.onend=next;u.onerror=next;speechSynthesis.speak(u)};next()}}
+origPages.forEach(chrome);
+
+/* ---------- automatic pagination ----------
+   Each authored page keeps its block list. In book mode, blocks that do not fit flow onto continuation pages,
+   measured with every hidden answer revealed so later reveals never overflow. Lists split item by item. */
+origPages.forEach(p=>{p._blocks=[...$('.pbody',p).children];p._blocks.forEach(b=>b._sp=p._spread)});
+spreads.forEach(sp=>{const fp=origPages.find(p=>p._spread===sp);sp._first=fp&&fp._blocks[0]});
+$$('[data-item]').forEach(e=>e._sp=e.closest('.spread'));
+const LISTS=$$('ol.laws,ol.post,ul.obs,ul.review,ol.objs,ol.starters,.ag,.vocab',book);LISTS.forEach(l=>l._lis=[...l.children]);
+function unpaginate(){origPages.forEach(p=>{const bd=$('.pbody',p);p._blocks.forEach(b=>bd.append(b))});LISTS.forEach(l=>l._lis.forEach(li=>l.append(li)));
+  $$('.page.cont',book).forEach(c=>c.remove());$$('.contp',book).forEach(c=>c.remove());SPLITS.forEach(t=>{t.innerHTML=t._orig;t._orig=null});SPLITS=[];SQZ.forEach(unsqueeze);SQZ=[];$$('.check').forEach(c=>c.style.minHeight='');origPages.forEach(p=>p.classList.remove('merged'));pages=origPages.slice()}
+function newCont(src){const c=document.createElement('div');c.className='page cont '+(src.classList.contains('left')?'left':'right');c._spread=src._spread;const bd=document.createElement('div');bd.className='pbody';c.append(bd);chrome(c);return c}
+function longestFb(ck){const it=U2.item(ck.dataset.item);return it?it.opts.map(o=>o[2]).sort((a,b)=>b.length-a.length)[0]:''}
+function reserveChecks(bd){$$('.check',bd).forEach(ck=>{const set=ck.closest('.checkset');const group=set?$$('.check',set):[ck];if(ck._done)return;
+  let mx=0;const vis=group.map(g=>g.hidden);group.forEach(g=>{group.forEach(x=>x.hidden=x!==g);const fb=$('.fb',g);const keep=[fb.className,fb.innerHTML];fb.className='fb no';fb.innerHTML=longestFb(g);g.style.minHeight='';mx=Math.max(mx,g.offsetHeight);fb.className=keep[0];fb.innerHTML=keep[1]});
+  group.forEach((g,k)=>{g.hidden=vis[k];g.style.minHeight=(mx+3)+'px';g._done=1})})}
+const rootOf=x=>x._root||x;
+/* a text paragraph may break across pages between words, like a printed book; the tail continues as the same paragraph */
+const TEXT='p.dual,p:not([class])';let SPLITS=[];
+function splitBlock(T,fits){const dual=T.matches('.dual'),span=dual?$(simple?'.sim':'.std',T):T;if(!span)return null;
+  if(T._orig==null){T._orig=T.innerHTML;SPLITS.push(T)}
+  const units=[];[...span.childNodes].forEach(n=>{if(n.nodeType===3)n.textContent.split(/(?<=\s)/).forEach(w=>w&&units.push(document.createTextNode(w)));else units.push(n)});
+  if(units.length<12)return null;
+  const put=k=>span.replaceChildren(...units.slice(0,k));let lo=5,hi=units.length-5,best=0;
+  while(lo<=hi){const m=(lo+hi)>>1;put(m);if(fits()){best=m;lo=m+1}else hi=m-1}
+  if(!best){span.replaceChildren(...units);return null}
+  put(best);const C=T.cloneNode(false);C.removeAttribute('id');C.classList.add('contp');C._sp=T._sp;
+  if(dual){const a=span.cloneNode(false),o=$(simple?'.std':'.sim',T).cloneNode(false);a.append(...units.slice(best));C.append(...(simple?[o,a]:[a,o]))}else C.append(...units.slice(best));
+  return C}
+/* a "Try it" label and instruction start a page, but the block they introduce does not fit after them: rather than leave
+   them stranded, shrink that block until the group fits, first a simulation's drawing area (not below the 150 px floor),
+   then the whole block (not below 85%). If it still does not fit, it moves on alone as before.
+   Zoom alone does not shrink a periodic table, whose cells follow the width it is given, so the width is narrowed by the
+   same factor: together they scale the block evenly, centred on the page */
+const INTRO='p.label,p.do,h2,h3,.sech,header';let SQZ=[];
+function unsqueeze([X,keep]){[X.style.zoom,X.style.width,X.style.marginInline]=keep;$$('.cv',X).forEach((c,k)=>c.style.minHeight=keep[k+3])}
+function squeeze(X,over){const cvs=$$('.cv',X),rec=[X,[X.style.zoom,X.style.width,X.style.marginInline,...cvs.map(c=>c.style.minHeight)]];
+  cvs.forEach(c=>{let v=parseFloat(getComputedStyle(c).minHeight)||0;while(over()&&v>150){v=Math.max(150,v-10);c.style.minHeight=v+'px'}});
+  for(let z=40;over()&&z>34;){z--;X.style.zoom=z/40;X.style.width=z*2.5+'%';X.style.marginInline='auto';U2.fitHolds()}
+  if(over()){unsqueeze(rec);U2.fitHolds();return false}SQZ.push(rec);return true}
+const reachesPage=(b,bd)=>b.getBoundingClientRect().top<bd.getBoundingClientRect().bottom-2.2*(parseFloat(getComputedStyle(bd).lineHeight)||24);
+/* move a block to the top of the next page; list pieces of the same list rejoin */
+function moveBlock(last,cb){const f=cb.firstElementChild;
+  if(last._lis&&f&&f._lis&&rootOf(f)===rootOf(last)){
+    if(!last._root){[...f.children].forEach(li=>last.append(li));f.remove();cb.prepend(last)}
+    else{[...last.children].reverse().forEach(li=>f.prepend(li));if(last.getAttribute('start'))f.setAttribute('start',last.getAttribute('start'));else f.removeAttribute('start');last.remove()}}
+  else cb.prepend(last)}
+function paginate(){const anchor=anchorBlock();unpaginate();$$('.check').forEach(c=>c._done=0);
+  const single=narrow.matches;book.classList.toggle('single',single&&mode==='book');
+  if(mode!=='book'||phone.matches){book.style.height='';finalize(anchor);return}
+  book.style.height=(innerHeight-$('.bar').offsetHeight-$('.pager').offsetHeight)+'px';
+  const cs=getComputedStyle(book);const w=(book.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight))/(single?1:2),h=book.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);
+  /* whole pixels, rounded down: the visible page can come out a fraction narrower than an exact fractional width, and text measured wider would overflow */
+  book.style.setProperty('--pw',Math.floor(w)+'px');book.style.setProperty('--ph',Math.floor(h)+'px');
+  /* each section flows as one stream: the right page's blocks continue after the left page's */
+  {const bd=$('.pbody',origPages[0]);origPages.slice(1).forEach(q=>{[...$('.pbody',q).children].forEach(b=>bd.append(b));q.classList.add('merged')})}
+  pages=origPages.filter(p=>!p.classList.contains('merged'));
+  const det=$$('details',book).map(d=>[d,d.open]);det.forEach(([d])=>d.open=true);document.body.classList.add('measuring');
+  for(let i=0;i<pages.length;i++){const p=pages[i];p.classList.add('measure');const bd=$('.pbody',p);reserveChecks(bd);U2.fitHolds();let c=null;
+    const over=()=>bd.scrollHeight>bd.clientHeight+1;const cont=()=>{if(!c){c=newCont(p);p.after(c);pages.splice(i+1,0,c)}return $('.pbody',c)};
+    let guard=0;while(over()&&guard++<300){const last=bd.lastElementChild;
+      if(last&&last._lis&&last.children.length>1){const cb=cont();let L=cb.firstElementChild;
+        if(!L||!L._lis||rootOf(L)!==rootOf(last)){L=last.cloneNode(false);L._root=rootOf(last);L._lis=[];L._sp=last._sp;L.removeAttribute('id');cb.prepend(L)}
+        L.prepend(last.lastElementChild);if(last.tagName==='OL')L.setAttribute('start',(+last.getAttribute('start')||1)+last.children.length);continue}
+      if(last.matches(TEXT)&&reachesPage(last,bd)){const C=splitBlock(last,()=>!over());if(C){cont().prepend(C);continue}}
+      if(bd.children.length<=1)break;
+      if(!last.matches(INTRO)&&!last.matches(TEXT)&&[...bd.children].slice(0,-1).every(k=>k.matches(INTRO))&&squeeze(last,over))break;
+      moveBlock(last,cont())}
+    /* keep headings and instructions with the block they introduce */
+    if(c){let k=0;while(bd.children.length>1&&k++<4){const l=bd.lastElementChild;if(l.matches('p.label,p.do,h3,.sech,header')||(l._lis&&l.children.length&&[...l.children].every(ch=>ch.matches('p.label,p.do'))))moveBlock(l,cont());else break}}
+    /* fill the gap left when a figure or interactive (with its label) did not fit and moved on, like a float in a printed book:
+       first pull back the text that follows it in the same section (splitting it if needed); otherwise pull back a check,
+       key-idea box, figure or table that comes right after it and fits whole */
+    if(c){const cb=$('.pbody',c),lh=parseFloat(getComputedStyle(bd).lineHeight)||24,HEAD='h1,h2,h3,.sech,header';let g2=0;
+      while(g2++<8){const lastB=bd.lastElementChild,kids=[...cb.children];if(!lastB||!kids.length)break;
+        if(bd.getBoundingClientRect().bottom-lastB.getBoundingClientRect().bottom<lh*2.5)break;
+        if(kids[0].matches(TEXT)||kids[0].matches(HEAD)||kids[0]._sp!==lastB._sp)break;
+        let g=0;while(g<kids.length-1&&kids[g].matches('p.label,p.do'))g++;g++;
+        let j=g;while(j<kids.length&&j<g+3&&!kids[j].matches(TEXT)&&!kids[j].matches(HEAD))j++;
+        let T=kids[j];
+        if(T&&T.matches(TEXT)&&T._sp===lastB._sp){bd.append(T);if(!over())continue;const C=splitBlock(T,()=>!over());kids[j-1].after(C||T);break}
+        T=kids[g];
+        if(T&&T.matches('.check,.checkset,aside.key,figure,table')&&T._sp===lastB._sp){bd.append(T);reserveChecks(bd);if(!over())continue;kids[g-1].after(T)}
+        break}}
+    p.classList.remove('measure')}
+  document.body.classList.remove('measuring');det.forEach(([d,o])=>d.open=o);finalize(anchor)}
+function finalize(anchor){pages=$$('.page',book).filter(p=>!p.classList.contains('merged'));const single=narrow.matches||phone.matches;
+  pages.forEach((p,k)=>{const fb=$('.pbody',p).firstElementChild,sp=(fb&&fb._sp)||p._spread,left=k%2===0;$('.pn',p).textContent=k+1;$('.rh',p).textContent=left?CH:(sp.dataset.sec&&sp.dataset.sec!=='review'?'§'+sp.dataset.sec+' · ':'')+sp.dataset.title});
+  if(anchor){const i=pages.findIndex(p=>p.contains(anchor));if(i>=0)cur=i}show(cur,0);U2.kickAll&&U2.kickAll()}
+function anchorBlock(){const p=pages[cur];return p?$('.pbody',p).firstElementChild:null}
+let rpT;function repaginate(){clearTimeout(rpT);rpT=setTimeout(paginate,60)}
+/* after any reveal: if a visible page overflows anyway, flow it again */
+function guard(){requestAnimationFrame(()=>{if(mode!=='book'||phone.matches)return;if($$('.page.on .pbody',book).some(b=>b.scrollHeight>b.clientHeight+1))repaginate()})}
+book.addEventListener('click',guard);book.addEventListener('toggle',guard,true);
+
+/* ---------- navigation ---------- */
+function show(i,dir){stopSpeech();const single=narrow.matches||phone.matches;i=Math.max(0,Math.min(pages.length-1,i||0));if(!single&&mode==='book')i-=i%2;cur=i;store.set('pageAnchor',i);
+  pages.forEach(p=>p.classList.remove('on','pl','pr','fwd','bwd'));
+  if(mode==='book'){const a=pages[i],b=single?null:pages[i+1];a.classList.add('on');if(!single){a.classList.add('pl');if(b)b.classList.add('on','pr')}
+    if(dir){[a,b].forEach(x=>{if(x){void x.offsetWidth;x.classList.add(dir>0?'fwd':'bwd')}})}
+    $('#pinfo').textContent=single?`Page ${i+1} of ${pages.length}`:(b?`Pages ${i+1}–${i+2} of ${pages.length}`:`Page ${i+1} of ${pages.length}`);
+    $('#prev').disabled=i===0;$('#next').disabled=(single?i:i+1)>=pages.length-1;if(phone.matches)window.scrollTo(0,0)}
+  buildToc()}
+function step(d){const single=narrow.matches||phone.matches;const n=cur+d*(single?1:2);if(n<0||n>=pages.length)return;show(n,d)}
+$('#prev').onclick=()=>step(-1);$('#next').onclick=()=>step(1);
+document.addEventListener('keydown',e=>{if(mode!=='book'||e.target.closest('input,select,textarea'))return;if(e.key==='ArrowRight'||e.key==='PageDown'){step(1);e.preventDefault()}if(e.key==='ArrowLeft'||e.key==='PageUp'){step(-1);e.preventDefault()}});
+let tx=null;book.addEventListener('touchstart',e=>{if(e.target.closest('canvas,input,.tl,select'))return;tx=e.touches[0].clientX},{passive:true});book.addEventListener('touchend',e=>{if(tx==null||mode!=='book')return;const dx=e.changedTouches[0].clientX-tx;tx=null;if(Math.abs(dx)>70)step(dx<0?1:-1)});
+function setMode(m){mode=m;store.set('mode',m);book.className=m;$$('#mode button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.m===m)));paginate();
+  if(m==='scroll')requestAnimationFrame(()=>{const p=pages[cur];if(p)p._spread.scrollIntoView({block:'start'})})}
+$$('#mode button').forEach(b=>b.onclick=()=>setMode(b.dataset.m));
+addEventListener('resize',repaginate);narrow.addEventListener('change',repaginate);phone.addEventListener('change',repaginate);
+try{document.fonts.ready.then(repaginate)}catch(e){}
+
+/* contents */
+const tocB=$('#toc-b'),toc=$('#toc');
+function buildToc(){const s=store.get('chk',{});toc.innerHTML='';const onSp=new Set($$('.page.on .pbody>*',book).map(b=>b._sp));spreads.forEach(sp=>{const ids=$$('[data-item]').filter(e=>e._sp===sp).map(b=>b.dataset.item);const done=ids.filter(i=>s[i]===1).length;
+  const b=document.createElement('button');b.type='button';if(mode==='book'&&onSp.has(sp))b.classList.add('cur');
+  b.innerHTML=`<span class="n">${sp.dataset.sec&&sp.dataset.sec!=='review'?'§'+sp.dataset.sec:''}</span><span style="flex:1">${sp.dataset.title}</span><span class="p">${ids.length?done+'/'+ids.length+' ✓':''}</span>`;
+  b.onclick=()=>{toc.hidden=true;tocB.setAttribute('aria-expanded','false');const i=Math.max(0,pages.findIndex(p=>p.contains(sp._first)));if(mode==='book')show(i,i>cur?1:-1);else{cur=i;sp.scrollIntoView({behavior:'smooth',block:'start'})}};toc.append(b)})}
+tocB.onclick=e=>{e.stopPropagation();toc.hidden=!toc.hidden;tocB.setAttribute('aria-expanded',String(!toc.hidden))};
+document.addEventListener('click',e=>{if(!e.target.closest('.dd'))toc.hidden=true});
+{const io=new IntersectionObserver(es=>es.forEach(en=>{if(mode==='scroll'&&en.isIntersecting){cur=pages.indexOf($('.page',en.target))}}),{rootMargin:'-40% 0px -55% 0px'});spreads.forEach(s=>io.observe(s))}
+
+$('#print').onclick=()=>window.print();
+addEventListener('beforeprint',()=>{stopSpeech();if(mode==='book'){unpaginate()}});
+addEventListener('afterprint',()=>{if(mode==='book')paginate()});
+
+cur=Math.max(0,store.get('pageAnchor',0));setMode(mode);progress();
+})();
+
+</script>
+</body>
+</html>

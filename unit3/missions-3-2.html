@@ -1,0 +1,1388 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Radius and Ionization Missions</title>
+<meta name="description" content="Unit 3, Lesson 3.2 missions: Atomic radius and ionization energy (TEKS C.5(C)).">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,600;9..40,700&family=Charis+SIL:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== shared tokens and components (look: design-drafts/labbench-style-draft.html, 2026-10-26) ===== */
+:root{--bg:#eef2ef;--paper:#fcfdfc;--paper2:#f4f7f5;--ink:#1b302e;--muted:#4f605b;--line:#dbe3de;--sunk:#edf3e4;
+  --accent:#0b5951;--accent-ink:#ffffff;--accent-soft:#e6f1ea;--warm:#835811;--warm-soft:#f8eed9;--label:#0b5951;--ok:#1f6e4f;--ok-soft:#e1f0e6;--bad:#a8402f;--bad-soft:#f9e6e1;
+  --pos:#c0391b;--neg:#2b55b8;--neu:#6b7176;--gold:#9c7400;
+  --body:'Charis SIL',Charter,Georgia,serif;--display:'DM Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+  --shadow:0 1px 2px rgba(18,61,45,.05),0 8px 26px rgba(18,61,45,.07);color-scheme:light;--surface:#ffffff;--pick:#dbecc3}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1715;--paper:#152120;--paper2:#182523;--ink:#e3ece8;--muted:#a6b6b0;--line:#283632;--sunk:#22301f;
+  --accent:#73c7b4;--accent-ink:#06231f;--accent-soft:#163029;--warm:#e6bd6c;--warm-soft:#33290f;--label:#9fd7a8;--ok:#7fd1a6;--ok-soft:#163026;--bad:#f39886;--bad-soft:#3a1e19;
+  --pos:#ff9a6c;--neg:#8eb1ff;--neu:#9ba49f;--gold:#e6c65c;--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 26px rgba(0,0,0,.4);color-scheme:dark;--surface:#1c2a27;--pick:#2b4a20}}
+:root[data-theme="dark"]{--bg:#0f1715;--paper:#152120;--paper2:#182523;--ink:#e3ece8;--muted:#a6b6b0;--line:#283632;--sunk:#22301f;
+  --accent:#73c7b4;--accent-ink:#06231f;--accent-soft:#163029;--warm:#e6bd6c;--warm-soft:#33290f;--label:#9fd7a8;--ok:#7fd1a6;--ok-soft:#163026;--bad:#f39886;--bad-soft:#3a1e19;
+  --pos:#ff9a6c;--neg:#8eb1ff;--neu:#9ba49f;--gold:#e6c65c;--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 26px rgba(0,0,0,.4);color-scheme:dark;--surface:#1c2a27;--pick:#2b4a20}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55}
+sup,sub{font-size:.68em;line-height:0}
+button{font:inherit;color:inherit}
+.nw{white-space:nowrap}
+.mono{font-family:var(--mono)}
+.muted{color:var(--muted)}
+.label{font-family:var(--mono);font-size:.7em;letter-spacing:.08em;text-transform:uppercase;color:var(--label);font-weight:500;margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4em;min-height:2.3em;padding:.3em .85em;border-radius:10px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);font-weight:700;cursor:pointer;white-space:nowrap;position:relative;transition:background .15s,border-color .15s}
+.btn:hover{border-color:var(--accent)}
+.btn:focus-visible,.term:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 55%,transparent);outline-offset:2px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent}
+.btn[aria-pressed="true"]{background:var(--pick);color:var(--ink);border-color:var(--accent)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.correct{background:var(--ok-soft);border-color:var(--ok)}
+.btn.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.btn.correct::after,.btn.wrong::after{position:absolute;top:-.5em;right:-.45em;width:1.3em;height:1.3em;border-radius:50%;display:grid;place-items:center;font-size:.72em;line-height:1;color:var(--paper);box-shadow:0 0 0 2px var(--paper)}
+.btn.correct::after{content:"✓";background:var(--ok)}
+.btn.wrong::after{content:"✗";background:var(--bad)}
+.chips{display:flex;flex-wrap:wrap;gap:.4em}
+.chips span{background:var(--sunk);border-radius:99px;padding:.15em .65em;font-size:.88em}
+select{font:inherit;background:var(--paper);color:var(--ink);border:1.5px solid var(--line);border-radius:8px;padding:.25em .5em;min-height:2.1em;max-width:100%}
+input[type=number],input[type=text]{font:inherit;background:var(--paper);color:var(--ink);border:1.5px solid var(--line);border-radius:8px;padding:.25em .5em;min-height:2.1em}
+input[type=range]{accent-color:var(--accent);width:100%}
+.bar .tools .btn,.bar .seg button,.btn.primary{font-family:var(--display)}
+
+/* ===== Unit 2 component kit: sims, checks, glossary (shared by every surface) ===== */
+.seg{display:inline-flex;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper)}
+.seg button{border:0;background:transparent;padding:.35em .8em;font-weight:700;cursor:pointer;min-height:2.2em;white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--pick);color:var(--ink);border-color:var(--accent)}
+/* glossary terms */
+.term{border:0;background:none;padding:0;color:inherit;font:inherit;font-weight:700;cursor:help;border-bottom:2px dotted color-mix(in srgb,var(--accent) 70%,transparent);line-height:1.2}
+.gpop{position:fixed;z-index:60;max-width:min(340px,calc(100vw - 24px));background:var(--paper);border:1.5px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:.7em .9em;font-size:15px;line-height:1.4}
+.gpop b{font-family:var(--display);font-size:1.08em}
+.gpop .es{display:block;margin-top:.35em;font-size:.88em;color:var(--muted)}
+.gpop .es i{color:var(--ink);font-style:normal;font-weight:700}
+
+/* checks */
+.check{border:1.5px solid var(--line);border-radius:14px;background:var(--paper);padding:.8em 1em;display:flex;flex-direction:column;gap:.55em}
+.check .q{font-weight:700;margin:0}
+.check .opts{display:flex;flex-direction:column;gap:.4em}
+.check .opts .btn{display:block;justify-content:flex-start;text-align:left;white-space:normal;line-height:1.3;padding:.45em .8em;font-weight:600}
+.check .fb{margin:0;font-size:.94em;border-radius:10px;padding:.5em .7em;display:none}
+.check .fb.ok{display:block;background:var(--ok-soft);border-left:4px solid var(--ok)}
+.check .fb.no{display:block;background:var(--bad-soft);border-left:4px solid var(--bad)}
+.check .meta{display:flex;justify-content:space-between;gap:.5em;font-family:var(--display);font-size:.68em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+
+/* sim shells */
+.sim{display:flex;flex-direction:column;gap:.55em}
+.sim .cv{position:relative;width:100%;border-radius:12px;overflow:hidden;background:var(--paper2);border:1.5px solid var(--line)}
+.sim canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}
+.sim .ctl{display:flex;flex-wrap:wrap;gap:.45em;align-items:center}
+.sim .ctl .grp{display:flex;align-items:center;gap:.4em;flex-wrap:wrap}
+.sim .ctl .lab{font-family:var(--display);font-size:.68em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.ros{display:flex;flex-wrap:wrap;gap:.45em}
+.ro{background:var(--sunk);border-radius:10px;padding:.3em .6em;min-width:5.5em}
+.ro small{display:block;font-family:var(--display);font-size:.62em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);white-space:nowrap;font-weight:700}
+.ro span{font-family:var(--mono);font-weight:600;font-variant-numeric:tabular-nums}
+.simnote{font-size:.82em;color:var(--muted);margin:0}
+.say{font-size:.95em;margin:0;border-radius:10px;padding:.5em .7em;background:var(--accent-soft)}
+.say.ok{background:var(--ok-soft)}.say.no{background:var(--bad-soft)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* mass table */
+.tscroll{overflow-x:auto}
+table.masst{width:100%;border-collapse:collapse;font-size:.86em}
+table.masst th{font-family:var(--display);font-size:.72em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);text-align:left;padding:.4em .45em;border-bottom:2px solid var(--line);vertical-align:bottom;font-weight:700}
+table.masst td{padding:.45em .45em;border-bottom:1px solid var(--line);vertical-align:middle}
+table.masst td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+table.masst tr.pe td{background:color-mix(in srgb,var(--warm-soft) 70%,transparent)}
+table.masst .calc{display:block;font-family:var(--mono);font-size:.78em;color:var(--muted)}
+/* model builder */
+.mbhead{margin:0;font-size:1em}
+.mbgrid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:.8em;align-items:center}
+.mbopts{display:flex;flex-direction:column;gap:.55em}
+.mbrow{display:flex;flex-direction:column;gap:.25em}
+.mbrow .lab{font-family:var(--display);font-size:.68em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.mbchoices{display:flex;flex-wrap:wrap;gap:.35em}
+.mbchoices .btn{font-size:.82em;min-height:2.1em;padding:.25em .65em;white-space:normal;text-align:left;font-weight:600}
+.mbprev svg{width:100%;max-width:220px;display:block;margin:0 auto}
+.mbuild>.btn.primary{align-self:flex-start}
+@media (max-width:600px){.mbgrid{grid-template-columns:minmax(0,1fr)}}
+/* timeline */
+ol.tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.45em;counter-reset:tl}
+.tlc{display:grid;grid-template-columns:auto 52px minmax(0,1fr) minmax(0,1.6fr) auto;gap:.5em;align-items:center;background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:.35em .5em;counter-increment:tl}
+.tlc .grip{cursor:grab;color:var(--muted);font-weight:800;letter-spacing:-.15em;padding:0 .2em;touch-action:none;user-select:none}
+.tlc .thumb svg{width:52px;height:52px;display:block}
+.tlc .tn{font-size:.92em;line-height:1.2}
+.tlc .tn::before{content:counter(tl)". ";font-family:var(--mono);color:var(--muted);font-size:.85em}
+.tlc select{font-size:.82em;width:100%}
+.tlc .ud{display:flex;flex-direction:column;gap:2px}
+.tlc .ud .btn{min-height:1.5em;padding:0 .45em;font-size:.7em}
+.tlc.dragging{box-shadow:var(--shadow);border-color:var(--accent);opacity:.92}
+.tlc{position:relative}
+.tlc.ok{border-color:var(--ok);background:var(--ok-soft)}
+.tlc.ok::after,.tlc.no::after{position:absolute;top:-7px;right:-7px;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--paper);box-shadow:0 0 0 2px var(--paper)}
+.tlc.ok::after{content:"✓";background:var(--ok)}
+.tlc.no::after{content:"✗";background:var(--bad)}
+.tlc.no{border-color:var(--bad);background:var(--bad-soft)}
+@media (max-width:600px){.tlc{grid-template-columns:auto 40px minmax(0,1fr) auto}.tlc .thumb svg{width:40px;height:40px}.tlc select{grid-column:2/4}}
+
+.sim .seg button{font-size:.82em;padding:.25em .65em;min-height:2.1em}
+.sim .ctl .btn{font-size:.85em;min-height:2.1em;padding:.25em .7em}
+.checkset{display:flex;flex-direction:column;gap:.5em;margin:0 0 1em}
+.checkset .tabs{display:flex;gap:.35em;flex-wrap:wrap}
+.checkset .tabs .btn{font-size:.78em;min-height:1.9em;padding:.15em .7em}
+.checkset .tabs .btn.done::before{content:"✓ ";color:var(--ok)}
+.checkset>.check{margin:0!important}
+table.masst .btn.sm{font-size:.85em}
+/* an element symbol or formula inside a capitalised label keeps its own case: "Na", not "NA" */
+.chem{text-transform:none!important}
+
+body{font-size:17px}
+/* the page's top bar only: a lesson's model may have a control row named .bar of its own */
+header.bar{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:6px 18px;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);font-size:15px}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.brand .logo{width:30px;height:30px;border-radius:9px;background:conic-gradient(from 200deg,#e85d3a,#f5b13d,#5cb85c,#3a7bd5,#7b4fd6,#e85d3a);flex:none}
+.brand b{display:block;font-family:var(--display);font-size:16px;line-height:1.1}
+.brand small{display:block;color:var(--muted);font-size:12.5px}
+.mtabs{display:flex;gap:4px;flex-wrap:wrap}
+.mtabs button{border:0;background:none;padding:8px 12px;border-radius:10px;font-weight:700;cursor:pointer;color:var(--muted);display:flex;gap:6px;align-items:center;font-size:14.5px}
+.mtabs button[aria-current="true"]{background:var(--pick);color:var(--ink);border-color:var(--accent)}
+.mtabs button .c{font-family:var(--mono);font-size:11.5px;font-weight:600;opacity:.85}
+.mtabs button:disabled{opacity:.55;cursor:not-allowed}
+.mwrap{max-width:1240px;margin:0 auto;padding:22px 20px 60px}
+.mhead{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:16px}
+.mhead h1{font-family:var(--display);font-size:36px;line-height:1.05;margin:.1em 0 .2em}
+.mintro{margin:0;color:var(--muted)}
+.mhead>div:first-child{flex:1 1 18em;min-width:0}
+.mprog{text-align:right}
+.dots{display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap}
+.dots button{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--line);background:var(--paper);font-family:var(--mono);font-size:12px;font-weight:600;cursor:pointer;color:var(--muted)}
+.dots button.cur{background:var(--pick);border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 35%,transparent);color:var(--ink)}
+.dots button.done{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.dots button.part{background:var(--warm-soft);border-color:var(--warm)}
+#mscore{margin:.4em 0 0;font-size:13px;color:var(--muted)}
+.case{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:0;background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+.case .ev{padding:24px 26px;background:var(--paper2);border-right:1px solid var(--line)}
+.case .tasks{padding:24px 26px;display:flex;flex-direction:column;gap:14px}
+/* the place label wraps like text: a long one breaks between words, not into a second column for "· Objective" */
+.ctx{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--label);font-weight:500}
+.ctx .oid{color:var(--muted);margin-left:.3em}
+.case h2{font-family:var(--display);font-size:28px;line-height:1.1;margin:.25em 0 .6em}
+.case .evb p{margin:0 0 .7em}
+table.dt{border-collapse:collapse;width:100%;font-size:.92em;margin:.3em 0 .8em;background:var(--paper);border-radius:10px;overflow:hidden}
+table.dt th{font-family:var(--display);font-size:11.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);text-align:left;padding:.45em .6em;border-bottom:2px solid var(--line);font-weight:700}
+table.dt td{padding:.45em .6em;border-bottom:1px solid var(--line)}
+.lines svg{width:100%;height:auto;display:block;border-radius:8px}
+.task{border:1.5px solid var(--line);border-radius:14px;padding:.75em .95em;display:flex;flex-direction:column;gap:.5em}
+.task .tl{display:flex;justify-content:space-between;gap:10px;font-family:var(--display);font-size:11.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.task .tl b{color:var(--warm)}
+.task.ok{border-color:var(--ok)}
+.task .q{margin:0;font-weight:700}
+.numrow{display:flex;gap:.5em;align-items:center;flex-wrap:wrap}
+.numrow input{width:8em}
+.numrow .u{color:var(--muted)}
+/* an answer-button row is laid out by missions.js (rows()): balanced rows, as many across as fit at --mbmin each and at most
+   --mbmax, fewer when a word would be cut. A lesson tunes a row with these two, never with grid-template-columns, which the
+   script sets. The grid here only shows until the script runs. */
+@property --mbmin{syntax:'<length>';inherits:true;initial-value:0px}
+@property --mbmax{syntax:'<integer>';inherits:true;initial-value:99}
+.mbtns{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.4em;--mbmin:8em}
+.mbtns .btn{flex-direction:column;padding:.4em .3em;gap:.15em;font-size:.86em;white-space:normal;line-height:1.1}
+.mbtns .btn svg{width:42px;height:42px}
+.fbx{margin:0;font-size:.94em;border-radius:10px;padding:.5em .7em}
+.fbx.ok{background:var(--ok-soft);border-left:4px solid var(--ok)}
+.fbx.no{background:var(--bad-soft);border-left:4px solid var(--bad)}
+.task .check{border:0;padding:0;background:none}
+.task .check .meta{display:none}
+.cnav{display:flex;justify-content:space-between;gap:10px;margin-top:4px}
+.build{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:18px;align-items:start}
+.build .card{background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:20px 22px}
+.btrack{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.btrack li{display:grid;grid-template-columns:56px minmax(0,1fr);gap:10px;align-items:center;border:1.5px solid var(--line);border-radius:12px;padding:6px 10px;background:var(--paper2)}
+.btrack li svg{width:56px;height:56px}
+.btrack li.cur{border-color:var(--accent)}
+.btrack li.done{border-color:var(--ok);background:var(--ok-soft)}
+.btrack li .yr{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.evq{display:flex;flex-direction:column;gap:.5em;margin-top:1em;border-top:1px solid var(--line);padding-top:1em}
+.summary{background:var(--ok-soft);border-radius:14px;padding:14px 18px;margin-top:16px}
+.summary h3{font-family:var(--display);margin:0 0 .3em}
+.locked{background:var(--paper);border:1.5px dashed var(--line);border-radius:18px;padding:28px;max-width:760px}
+.locked h2{font-family:var(--display);margin:.2em 0 .4em}
+.pager{display:flex;gap:8px;align-items:center;justify-content:flex-end}
+.pager .pg{min-height:34px;padding:.3em .8em;font-size:.86em;white-space:nowrap}
+.numrow,.qrow{min-width:0}
+/* docked (missions.js dock()): the header is the top strip of the .case card and holds the pager. The card grows with its
+   content and the page scrolls; the header stays frozen under the sticky bar. Sized for a 1536x726 laptop window. */
+.mwrap.docked{max-width:1440px;padding:0 20px calc(12px - var(--gapcut,0px))}
+/* the card hangs from the bar: no gap, no top border, square top corners */
+.docked .case{grid-template-columns:minmax(0,1fr) minmax(0,1.45fr);border-top:0;border-radius:0 0 18px 18px}
+/* flat (a view without a .case card, missions.js dock()): the header is a strip of its own above the view, shaped like the top of a card */
+.docked.flat>.mhead{border:1px solid var(--line);border-top:0;border-radius:0 0 18px 18px;margin-bottom:16px}
+.docked .mhead{grid-column:1/-1;display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"lab intro prog" "ttl intro prog";gap:0 24px;align-items:center;margin:0;padding:10px 24px;border-bottom:1px solid var(--line);background:var(--paper)}
+.docked .mhead>div:first-child{display:contents}
+.docked .mhead .label{grid-area:lab;align-self:end;margin:0;font-size:11.5px}
+.docked .mhead h1{grid-area:ttl;align-self:start;font-size:25px;margin:0}
+.docked .mhead .mintro{grid-area:intro;font-size:14.5px;line-height:1.4;padding-left:24px;border-left:1px solid var(--line);max-width:46em}
+.docked .mhead .mprog{grid-area:prog}
+/* frozen while the page scrolls: the header under the bar, the evidence column under the header. overflow:clip, not the base
+   hidden, which makes the card a scroll container that sticky parts would stick inside. The evidence column is only as tall as
+   its content, so it paints its background and divider through a border image reaching far above and below it (the card clips
+   it): the shading follows the column whatever the lesson makes the split. A column taller than the window sticks by its
+   bottom instead (missions.js frz() sets --evtop), so its end comes into view as the page scrolls. */
+@media (min-width:901px){.docked .case{overflow:clip}.docked .case>.ev{position:sticky;top:var(--evtop,calc(var(--barh,50px) + var(--mhh,80px)));align-self:start;border-right:0;background:none;border-image:linear-gradient(90deg,var(--paper2) calc(100% - 1px),var(--line) 0) fill 0/0/100vmax 0}.docked .mhead{position:sticky;top:var(--barh,50px);z-index:20;transition:box-shadow .2s}.docked.stuck .mhead{box-shadow:0 10px 14px -12px rgba(0,0,0,.35)}}
+.docked .mhead #mscore{margin:.35em 0 0;font-size:12px}
+.docked .case .ev,.docked .case .tasks{padding:16px 24px calc(18px - var(--padcut,0px))}
+.docked .case .tasks{gap:10px}
+.docked .case .tasks>.summary{margin:0}
+.docked .case h2{font-size:24px;margin:.2em 0 .5em}
+.docked .task{padding:.5em .85em .6em;gap:.3em}
+.docked .task .tl{margin:0;line-height:1.3}
+.docked .qrow{display:flex;flex-wrap:wrap;align-items:center;gap:.4em 1em}
+.docked .qrow .q{flex:1 1 15em}
+.docked .task .check{gap:.35em}
+.docked .task .check .opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(11em,1fr));gap:.45em}
+.docked .task .check .opts .btn{padding:.4em .7em;line-height:1.25;font-size:.94em}
+/* the Decide options in one row on a laptop, each as wide as its share of the text, so a long option does not wrap to five
+   lines beside two short ones and a third option is never left alone on a second row; none narrower than 9em, or than its
+   longest word (missions.js). Options with pictures keep the grid. */
+@media (min-width:901px){.docked .task .check .opts:not(:has(svg)){display:flex;flex-flow:row nowrap}.docked .task .check .opts:not(:has(svg))>.btn{flex:1 1 auto;min-width:9em}}
+/* a pick: the icon beside the label, at least 8em wide, so a short label like "Group 16" stays on one line (five across at
+   1536, three at 1024). A phone keeps the base layout: icon above the label, at most three across. */
+@media (min-width:901px){.docked .mbtns{grid-template-columns:repeat(auto-fit,minmax(8em,1fr))}.docked .mbtns .btn{flex-direction:row;justify-content:flex-start;gap:.5em;padding:.3em .6em;text-align:left;min-height:2.6em}.docked .mbtns .btn svg{width:40px;height:24px;flex:none}}
+/* a pick row where an icon beside its label would cut a word (missions.js, .stk): each icon above its label instead */
+@media (min-width:901px){.docked .mbtns.stk .btn{flex-direction:column;justify-content:center;text-align:center;gap:.2em;padding:.35em .3em}}
+.docked .ptx .pc{aspect-ratio:1.36/1}
+@media (max-width:1180px){.docked .mhead{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"lab prog" "ttl prog" "intro intro"}.docked .mhead .mintro{padding:6px 0 0;border-left:0;max-width:none}}
+@media (max-width:900px){.case,.docked .case,.build{grid-template-columns:minmax(0,1fr)}.case .ev{border-right:0;border-bottom:1px solid var(--line)}.mbtns{grid-template-columns:repeat(3,minmax(0,1fr));--mbmin:0px;--mbmax:3}.mhead h1{font-size:28px}.mprog{text-align:left}.dots,.pager{justify-content:flex-start}.docked .mhead{grid-template-columns:minmax(0,1fr);grid-template-areas:"lab" "ttl" "intro" "prog";row-gap:4px}.docked .mhead .mprog{margin-top:6px}.pager{flex-wrap:wrap}}
+/* page controls take the heading face */
+.mtabs button,.pager .pg{font-family:var(--display)}
+
+/* Unit 3 missions stylesheet: every lesson's missions page and the case file get it, after the kit's (kit/build.py) */
+/* phones: the evidence data tables (up to 8 columns) fit a 390 px screen with tighter cells; a wider one scrolls inside its own box */
+@media (max-width:600px){
+.evb .dt{font-size:.88em;display:block;max-width:100%;overflow-x:auto}
+.evb .dt th,.evb .dt td{padding:.3em .25em}
+}
+
+/* Lesson 3.2 ranking tab (the set dots are shared: common/sims.js) */
+.rank #rmap{margin-top:.6em}
+.rmini{display:block;width:100%;max-width:360px;height:auto}
+.rtiles{display:flex;flex-wrap:wrap;gap:.5em}
+.rtiles .btn{position:relative;flex-direction:column;align-items:flex-start;gap:.1em;min-width:8.5em;padding:.5em .7em;line-height:1.15;white-space:normal}
+.rtiles .btn b{font-family:var(--display);font-size:1.5em}
+.rtiles .btn small{color:var(--muted);font-family:var(--mono);font-size:.78em}
+.rtiles .btn.used{opacity:.5}
+.rtiles .ord{position:absolute;top:.3em;right:.4em;font-style:normal;font-family:var(--mono);font-weight:700;color:var(--warm)}
+.rorder{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5em}
+.rorder .lab{font-family:var(--body);font-size:11.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.rorder ol{display:flex;flex-wrap:wrap;gap:.3em;margin:0;padding:0;list-style:none;font-weight:700}
+.rorder li+li::before{content:"> ";color:var(--muted);font-weight:400}
+.rorder li small{font-weight:400;color:var(--muted)}
+.rorder li.empty{font-weight:400;color:var(--muted);font-style:italic}
+
+a.brand{color:inherit;text-decoration:none}
+</style>
+</head>
+<body>
+<header class="bar">
+  <a class="brand" href="index.html" title="Unit 3 home"><span class="logo" aria-hidden="true"></span><span><b>Chemistry Case Files</b><small>Unit 3 · Lesson 3.2 · Missions · TEKS C.5(C)</small></span></a>
+  <nav class="mtabs" id="mtabs" aria-label="Missions"></nav>
+  <div class="tools"><button class="btn ghost" id="theme" type="button">Theme</button></div>
+</header>
+<main id="m" class="mwrap">
+  <section class="mhead"><div><p class="label" id="msub"></p><h1 id="mtitle"></h1><p class="mintro" id="mintro"></p></div><div class="mprog"><div class="pager"><div class="dots" id="dots"></div></div><p id="mscore" class="mono"></p></div></section>
+  <section id="mbody"></section>
+</main>
+
+<script>
+window.U2LESSON="32";
+/* Unit 3 glossary, part 1: terms carried over from Unit 2 and the terms of Lesson 3.1. Lessons 3.2 to 3.4 add their own.
+   Every page of the unit loads every lesson's glossary, so a term defined here pops up in all four lessons. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "atom":{d:"The smallest particle of an element that keeps the element's identity in chemical reactions.",es:"átomo"},
+ "nucleus":{d:"The small, dense, positively charged center of an atom. It contains the protons and neutrons.",es:"núcleo"},
+ "energy level":{d:"One of the fixed energies an electron in an atom can have. Higher levels are farther from the nucleus on average.",es:"nivel de energía"},
+ "orbital":{d:"A region around the nucleus where an electron is likely to be found.",es:"orbital"},
+ "sublevel":{d:"A part of an energy level (s, p, d or f) made of one or more orbitals.",es:"subnivel"},
+ "electron configuration":{d:"A list of the sublevels an atom's electrons occupy, with the number in each, such as 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>1</sup> for sodium.",es:"configuración electrónica"},
+ "valence electron":{d:"An electron in the highest occupied energy level of an atom. Valence electrons take part in bonding.",es:"electrón de valencia"},
+ "isotope":{d:"Atoms of the same element (same number of protons) with different numbers of neutrons, and so different masses.",es:"isótopo"},
+ "average atomic mass":{d:"The weighted average mass of an element's naturally occurring isotopes, in atomic mass units (u). It is the mass shown on the periodic table.",es:"masa atómica promedio"},
+ "atomic number":{d:"The number of protons in an atom's nucleus, Z. It equals the positive charge of the nucleus and identifies the element.",es:"número atómico"},
+ "nuclear charge":{d:"The positive charge of the nucleus, equal to its number of protons, Z.",es:"carga nuclear"},
+ "ion":{d:"An atom or group of atoms with a net electric charge because it has gained or lost electrons.",es:"ion"},
+ "periodic table":{d:"A chart of the elements in order of atomic number, arranged so that elements with similar properties fall in the same column.",es:"tabla periódica"},
+ "periodic law":{d:"When elements are arranged in order of atomic number, their properties repeat at regular intervals.",es:"ley periódica"},
+ "triad":{d:"Döbereiner's name (1829) for a set of three similar elements in which the middle element's properties, including its atomic mass, lie close to the average of the other two.",es:"tríada"},
+ "law of octaves":{d:"Newlands' pattern (1865): listed by atomic mass, each element resembles the element seven places after it, so the eighth repeats the first, like notes in a musical scale.",es:"ley de las octavas"},
+ "inversion":{d:"A pair of neighboring elements in which the element with the higher atomic number has the lower average atomic mass, such as argon (18) and potassium (19).",es:"inversión"},
+ "X-ray":{d:"Electromagnetic radiation of very high frequency and short wavelength, emitted when fast electrons strike a solid target.",es:"rayos X"},
+ "period":{d:"A horizontal row of the periodic table. The period number matches the highest energy level occupied in the atom's ground state.",es:"periodo"},
+ "group":{d:"A vertical column of the periodic table, numbered 1 to 18. Main-group elements in the same group have the same number of valence electrons and similar properties.",es:"grupo"},
+ "family":{d:"A group of elements with shared chemical properties, such as the alkali metals or the halogens.",es:"familia"},
+ "block":{d:"A region of the periodic table named for the sublevel being filled: the s block (groups 1 and 2, plus helium), the p block (groups 13 to 18), the d block (groups 3 to 12) and the f block (the two detached rows).",es:"bloque"},
+ "main-group element":{d:"An element in groups 1, 2 or 13 to 18, also called a representative element. Groups 1 and 2 have 1 and 2 valence electrons; groups 13 to 18 have the group number minus 10, except helium, which has 2.",es:"elemento representativo"},
+ "metal":{d:"An element that is shiny, conducts heat and electricity well, and can be hammered or drawn into shape. Most elements are metals.",es:"metal"},
+ "nonmetal":{d:"An element that is usually a poor conductor of heat and electricity. Solid nonmetals are brittle; some, such as sulfur, look dull, and others, such as iodine, are shiny. Nonmetals lie to the upper right of the table, plus hydrogen.",es:"no metal"},
+ "metalloid":{d:"An element with some properties of metals and some of nonmetals, found along the staircase line. Boron, silicon, germanium, arsenic, antimony and tellurium are the six most often listed.",es:"metaloide"},
+ "semiconductor":{d:"A material that conducts electricity better than an insulator but much less well than a metal, such as silicon.",es:"semiconductor"},
+ "alkali metal":{d:"A group 1 element other than hydrogen (lithium to francium): one valence electron, very reactive, forms 1+ ions.",es:"metal alcalino"},
+ "alkaline earth metal":{d:"A group 2 element (beryllium to radium): two valence electrons, reactive, forms 2+ ions.",es:"metal alcalinotérreo"},
+ "halogen":{d:"A group 17 element (fluorine to astatine): seven valence electrons, a reactive nonmetal, forms 1− ions.",es:"halógeno"},
+ "noble gas":{d:"A group 18 element (helium to radon): a filled outer energy level, so it reacts very little.",es:"gas noble"},
+ "transition metal":{d:"An element of groups 3 to 12, where a d sublevel is being filled. This is the usual school grouping; a strict definition requires a partly filled d sublevel in the atom or one of its ions.",es:"metal de transición"},
+ "lanthanide":{d:"One of the elements of the upper detached row of the table (cerium to lutetium in this course's layout), which belong to period 6.",es:"lantánido"},
+ "actinide":{d:"One of the elements of the lower detached row of the table (thorium to lawrencium in this course's layout), which belong to period 7.",es:"actínido"},
+ "prediction":{d:"A statement, based on evidence or a model, about something not yet observed. It can be tested by a later observation or measurement.",es:"predicción"},
+ "evidence":{d:"Observations or data used to support or test a scientific explanation.",es:"evidencia"}
+});
+
+/* Unit 3 glossary, part 2: the terms of Lesson 3.2 (atomic radius and ionization energy). */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "atomic radius":{d:"A measure of the size of an atom. In this course it means the covalent radius.",es:"radio atómico"},
+ "covalent radius":{d:"Half the distance between the nuclei of two bonded atoms of the same element. This course uses the values of Cordero and coworkers (2008).",es:"radio covalente"},
+ "picometer":{d:"A unit of length used for atoms: 1 pm = 10<sup>−12</sup> m, a trillionth of a meter.",es:"picómetro"},
+ "ionization energy":{d:"The energy needed to remove an electron from an atom or ion in the gas state.",es:"energía de ionización"},
+ "first ionization energy":{d:"The energy needed to remove the most loosely held electron from each atom in one mole of gaseous atoms, forming 1+ ions. It is given in kJ/mol.",es:"primera energía de ionización"},
+ "shielding":{d:"The way inner electrons, between the nucleus and the outer electrons, cancel part of the nucleus's pull on the outer electrons.",es:"apantallamiento"},
+ "inner electron":{d:"An electron in a lower energy level than the valence electrons. Inner electrons shield the valence electrons from the nucleus.",es:"electrón interno"},
+ "periodic trend":{d:"A regular change in a property across a period or down a group that repeats in each period of the table.",es:"tendencia periódica"},
+ "effective nuclear charge":{d:"The net positive charge that an outer electron feels after shielding by the electrons between it and the nucleus. A rough estimate is protons minus inner electrons.",es:"carga nuclear efectiva"}
+});
+
+/* Unit 3 glossary, part 3: the terms of Lesson 3.3 (electronegativity and reactivity).
+   compound, cation and anion are copied word for word from Unit 2, so the two units agree. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "compound":{d:"A substance made of two or more elements chemically combined in a fixed ratio.",es:"compuesto"},
+ "cation":{d:"A positive ion. It has fewer electrons than protons.",es:"catión"},
+ "anion":{d:"A negative ion. It has more electrons than protons.",es:"anión"},
+ "chemical bond":{d:"A strong attraction that holds atoms together in a substance. Unit 4 explains the kinds of bonds.",es:"enlace químico"},
+ "electronegativity":{d:"The ability of an atom in a chemical bond to attract the shared electrons toward itself. It has no unit.",es:"electronegatividad"},
+ "Pauling scale":{d:"The most widely used electronegativity scale, introduced by Linus Pauling in 1932. Its values have no unit; in this unit's data they run from 0.79 for cesium to 3.98 for fluorine.",es:"escala de Pauling"},
+ "reactivity":{d:"How readily a substance takes part in chemical reactions. In this lesson it is judged from observations, such as how fast a metal reacts with water.",es:"reactividad"},
+ "second ionization energy":{d:"The energy needed to remove a second electron from each 1+ ion in one mole of gaseous ions, forming 2+ ions. It is given in kJ/mol.",es:"segunda energía de ionización"},
+ "displacement reaction":{d:"A reaction in which a more reactive element takes the place of a less reactive element in a compound.",es:"reacción de desplazamiento"},
+ "halide ion":{d:"The 1− ion of a halogen, such as chloride (Cl<sup>−</sup>), bromide (Br<sup>−</sup>) or iodide (I<sup>−</sup>).",es:"ion haluro"}
+});
+
+/* Unit 3 glossary, part 4: the terms of Lesson 3.4 (predicting family properties).
+   diatomic molecule and radioactive are copied word for word from Unit 2, so the two units agree. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "diatomic molecule":{d:"A molecule made of two atoms joined together, such as Cl<sub>2</sub> or O<sub>2</sub>.",es:"molécula diatómica"},
+ "radioactive":{d:"Describes an unstable nucleus that emits radiation on its own. Some isotopes are radioactive; others are stable.",es:"radiactivo"},
+ "physical property":{d:"A property you can observe or measure without changing the substance into a new substance, such as melting point, density or color.",es:"propiedad física"},
+ "chemical property":{d:"A property that describes how a substance reacts to form new substances, such as how fast a metal reacts with water.",es:"propiedad química"},
+ "melting point":{d:"The temperature at which a solid turns into a liquid. The values in this unit are at standard pressure.",es:"punto de fusión"},
+ "boiling point":{d:"The temperature at which a liquid boils and turns into a gas. The values in this unit are at standard pressure.",es:"punto de ebullición"},
+ "density":{d:"The mass of a substance in a given volume, often in grams per cubic centimeter (g/cm³).",es:"densidad"},
+ "half-life":{d:"The time it takes for half of the atoms in a sample of a radioactive isotope to decay.",es:"vida media"}
+});
+
+/* Lesson 3.2 item bank. Every item: id, objective, reading section, surface, DOK.
+   opts: [text, correct?, feedback]. Feedback for a wrong option names the misconception and gives the correction. */
+window.OBJ=Object.assign(window.OBJ||{},{
+ "3.2.1":{teks:"C.5(C)",t:"Read and graph atomic radius and first ionization energy data against atomic number to identify their repeating patterns."},
+ "3.2.2":{teks:"C.5(C)",t:"Describe the trend in atomic radius across a period and down a group, and explain it using energy levels, nuclear charge and shielding by inner electrons."},
+ "3.2.3":{teks:"C.5(C)",t:"Describe the trend in first ionization energy across a period and down a group, and explain it with the same model."},
+ "3.2.4":{teks:"C.5(C)",t:"Use the trends to rank elements by atomic radius and first ionization energy and to predict missing values from their neighbors."}
+});
+window.ITEMS=(window.ITEMS||[]).concat([
+ /* ---------- reading ---------- */
+ {id:"u32-r1",obj:"3.2.1",sec:"3.2.1",surf:"reading",dok:1,q:"How is the covalent radius of an element found?",
+  opts:[["Half the distance between the nuclei of two bonded atoms of the element",1,"Correct. The distance between nuclei can be measured, and half of it is the radius of one atom."],
+        ["The whole distance between the nuclei of two bonded atoms",0,"That distance covers two atoms. The covalent radius is half of it."],
+        ["The distance from the nucleus to the outer surface of one atom",0,"An atom has no hard surface to measure to. That is why chemists measure the distance between two bonded nuclei and take half."]]},
+ {id:"u32-r2",obj:"3.2.1",sec:"3.2.1",surf:"reading",dok:2,q:"Why does this unit's radius data set leave out the noble gases?",
+  opts:[["They form few or no compounds, so there are few bonded atoms to measure.",1,"Correct. A covalent radius comes from bonded atoms. Under ordinary conditions, helium, neon and argon form no compounds."],
+        ["Their atoms have a radius of zero.",0,"Every atom has electrons around its nucleus, so no atom has zero size. A missing value is not a zero."],
+        ["Gases cannot be measured.",0,"Being a gas is not the problem: hydrogen, nitrogen and chlorine are gases and have covalent radii. The noble gases are missing because they form few or no bonds."]]},
+ {id:"u32-r3",obj:"3.2.1",sec:"3.2.1",surf:"reading",dok:2,q:"On the radius graph, which element is the largest atom in each period from 2 to 6?",
+  opts:[["The group 1 metal at the start of the period",1,"Correct. Each tooth of the sawtooth starts at a group 1 metal, such as sodium at 166 pm."],
+        ["The halogen near the end of the period",0,"The halogens are the smallest atoms in the data for each period, such as chlorine at 102 pm. Radius decreases across a period."],
+        ["The element with the most protons in the period",0,"More protons pull the same energy level closer, so the element with the most protons is among the smallest. The largest atom starts the period."]]},
+ {id:"u32-r4",obj:"3.2.1",sec:"3.2.1",surf:"reading",dok:1,q:"On the periodic table colored by atomic radius, where are the largest atoms?",
+  opts:[["At the lower left",1,"Correct. Radius increases down a group and decreases across a period, so the largest atoms, such as cesium at 244 pm, are at the lower left."],
+        ["At the upper right",0,"The upper right holds the smallest atoms, such as fluorine at 57 pm. It is where the ionization energies are highest."],
+        ["At the lower right",0,"Atoms grow down a group, but they shrink across a period. The largest atoms are at the lower left, at the start of the bottom periods."]]},
+ {id:"u32-r5",obj:"3.2.2",sec:"3.2.2",surf:"reading",dok:2,q:"In the model of the atom, what is shielding?",
+  opts:[["Inner electrons cancel part of the nucleus's pull on the outer electrons.",1,"Correct. In sodium, 10 inner electrons shield the outer electron from most of the 11 protons' pull."],
+        ["Outer electrons protect the nucleus from other atoms.",0,"Shielding is about the pull the outer electrons feel. The inner electrons lie between the nucleus and the outer electrons and cancel part of that pull."],
+        ["Neutrons block part of the protons' pull.",0,"Neutrons have no charge, so they do not change the pull. The shielding comes from the negative charge of the inner electrons."]]},
+ {id:"u32-r6",obj:"3.2.2",sec:"3.2.2",surf:"reading",dok:2,q:"A chlorine atom (102 pm) is smaller than a sodium atom (166 pm). Why?",
+  opts:[["Chlorine has 6 more protons pulling on the same energy level, with the same 10 inner electrons.",1,"Correct. The pull on the level 3 electrons is stronger, so they are drawn closer to the nucleus."],
+        ["Chlorine has more electrons, and electrons attract each other.",0,"Electrons repel each other. The atom shrinks because the extra protons pull the outer level closer."],
+        ["Chlorine's outer electrons are in a lower energy level.",0,"Both atoms are in period 3, so both have their outer electrons in level 3. The difference is the nuclear charge."]]},
+ {id:"u32-r7",obj:"3.2.2",sec:"3.2.2",surf:"reading",dok:2,q:"Potassium has 8 more protons than sodium, yet a potassium atom (203 pm) is larger than a sodium atom (166 pm). Why?",
+  opts:[["Its outer electron is in level 4, farther out, and 8 more inner electrons shield most of the extra charge.",1,"Correct. The new energy level adds distance, and the shielding cancels most of the extra pull."],
+        ["The extra protons push the electrons outward.",0,"Protons attract electrons. They never push them away. The atom is larger because its outer electron is in a higher level."],
+        ["Potassium has more neutrons, which take up more space.",0,"Neutrons sit in the tiny nucleus. The size of an atom is set by its outer electrons, and potassium's are in level 4."]]},
+ {id:"u32-r8",obj:"3.2.3",sec:"3.2.3",surf:"reading",dok:2,q:"Which equation shows the first ionization of magnesium?",
+  opts:[["Mg(g) + 738 kJ → Mg<sup>+</sup>(g) + e<sup>−</sup> (for 1 mol of atoms)",1,"Correct. Energy is absorbed to remove one electron from each gaseous atom."],
+        ["Mg(g) + e<sup>−</sup> → Mg<sup>−</sup>(g)",0,"This adds an electron. Ionization removes one, forming a positive ion."],
+        ["Mg(s) → Mg<sup>+</sup>(aq) + e<sup>−</sup>",0,"Ionization energy is measured on separate gaseous atoms, not on a solid metal or ions dissolved in water."],
+        ["Mg(g) → Mg<sup>+</sup>(g) + e<sup>−</sup> + 738 kJ",0,"This shows energy released. Removing an electron always takes energy, so the energy belongs on the left side."]]},
+ {id:"u32-r9",obj:"3.2.3",sec:"3.2.3",surf:"reading",dok:1,q:"Which period 3 element has the highest first ionization energy?",
+  opts:[["Argon",1,"Correct. Argon, the noble gas at the end of period 3, needs 1521 kJ/mol."],
+        ["Sodium",0,"Sodium has the lowest value in period 3, 496 kJ/mol. Ionization energy rises across the period."],
+        ["Chlorine",0,"Chlorine is high, 1251 kJ/mol, but the noble gas after it, argon, is higher at 1521 kJ/mol."]]},
+ {id:"u32-r10",obj:"3.2.3",sec:"3.2.3",surf:"reading",dok:2,q:"Potassium's first ionization energy (419 kJ/mol) is lower than sodium's (496 kJ/mol). Which explanation fits the model?",
+  opts:[["Potassium's outer electron is in a higher level, farther from the nucleus and more shielded.",1,"Correct. An electron held less tightly needs less energy to remove."],
+        ["Potassium has more protons, so it holds its outer electron less tightly.",0,"More protons would pull harder. Potassium's electron is held less tightly because it is farther out and better shielded."],
+        ["Potassium wants to lose its electron more than sodium does.",0,"Atoms do not want anything. Potassium's outer electron is held less tightly because it is farther from the nucleus."]]},
+ {id:"u32-r11",obj:"3.2.3",sec:"3.2.3",surf:"reading",dok:2,q:"Why does first ionization energy drop sharply from neon (2081 kJ/mol) to sodium (496 kJ/mol)?",
+  opts:[["Sodium's outer electron starts a new level, farther away and shielded by 10 inner electrons.",1,"Correct. The new level puts the electron much farther out, so it is far easier to remove."],
+        ["Sodium has fewer protons than neon.",0,"Sodium has 11 protons and neon has 10. The drop comes from the new energy level and the shielding."],
+        ["Neon's outer electrons are in a higher energy level than sodium's.",0,"Neon's outer electrons are in level 2 and sodium's is in level 3. Sodium's is the one farther out."]]},
+ {id:"u32-r12",obj:"3.2.4",sec:"3.2.4",surf:"reading",dok:2,q:"Rank sodium, magnesium and chlorine from largest to smallest atomic radius.",
+  opts:[["Na > Mg > Cl",1,"Correct. All three are in period 3, and radius decreases from left to right: 166, 141 and 102 pm."],
+        ["Cl > Mg > Na",0,"More protons do not make an atom larger. Across a period, more protons pull the same level closer, so chlorine is the smallest."],
+        ["Mg > Na > Cl",0,"Sodium is in group 1 and magnesium in group 2, so sodium comes first in the period and is larger."]]},
+ {id:"u32-r13",obj:"3.2.4",sec:"3.2.4",surf:"reading",dok:2,q:"Which has the lowest first ionization energy: beryllium, magnesium or calcium?",
+  opts:[["Calcium",1,"Correct. Ionization energy decreases down a group, and calcium is the lowest of the three in group 2: 590 kJ/mol."],
+        ["Beryllium",0,"Beryllium is at the top of group 2, so it has the highest value of the three, 900 kJ/mol."],
+        ["Magnesium",0,"Magnesium (738 kJ/mol) is between beryllium and calcium. Calcium, lower in the group, is lowest."]]},
+ {id:"u32-r14",obj:"3.2.4",sec:"3.2.4",surf:"reading",dok:3,q:"A student claims that a larger atom always has a lower first ionization energy. Which data test the claim best?",
+  opts:[["Magnesium (141 pm, 738 kJ/mol) and lithium (128 pm, 520 kJ/mol)",1,"Correct. Magnesium is larger and yet has the higher ionization energy, so the claim is not always true."],
+        ["Sodium (166 pm, 496 kJ/mol) and chlorine (102 pm, 1251 kJ/mol)",0,"This pair agrees with the claim, so it cannot show that the claim fails. A test needs a pair that could break it."],
+        ["Lithium (128 pm, 520 kJ/mol) and cesium (244 pm, 376 kJ/mol)",0,"This pair also agrees with the claim. Look for a pair in different periods and groups, where the two trends can disagree."]]},
+ /* ---------- slides ---------- */
+ {id:"u32-s-def",obj:"3.2.1",sec:"3.2.1",surf:"slides",dok:2,q:"The nuclei of two bonded atoms of an element are 200 pm apart. What is the element's covalent radius?",
+  opts:[["100 pm",1,"Correct. The covalent radius is half the distance between the nuclei: 200 pm ÷ 2 = 100 pm."],
+        ["200 pm",0,"200 pm is the distance between the two nuclei, which covers two atoms. Divide by 2."],
+        ["400 pm",0,"The radius is half the distance between nuclei, not double it. Divide 200 pm by 2."]]},
+ {id:"u32-s-rgraph",obj:"3.2.1",sec:"3.2.1",surf:"slides",dok:2,q:"Where does the radius jump up?",
+  opts:[["At each group 1 metal, the start of a new period",1,"Correct. A new period starts a new energy level, so the radius jumps, from 102 pm (chlorine) to 203 pm (potassium)."],
+        ["At each halogen",0,"The halogens are the smallest atoms in their periods. The jump comes right after the noble gas, at the next group 1 metal."],
+        ["A little at every step, as atomic number increases",0,"Across a period the radius falls with every step. It rises only where a new period begins."]]},
+ {id:"u32-s-across",obj:"3.2.2",sec:"3.2.2",surf:"slides",dok:2,q:"From sodium to chlorine, the number of inner electrons…",
+  opts:[["stays at 10",1,"Correct. Each added electron goes into level 3, the outer level, so the shielding stays about the same while the protons increase."],
+        ["increases by one at each step",0,"The added electron goes into level 3, the outer level. The inner levels 1 and 2 stay full with 10 electrons."],
+        ["decreases by one at each step",0,"No inner electrons are removed across a period. Levels 1 and 2 hold 10 electrons from sodium to chlorine."]]},
+ {id:"u32-s-down",obj:"3.2.2",sec:"3.2.2",surf:"slides",dok:2,q:"A cesium atom (55 protons) is larger than a lithium atom (3 protons) because…",
+  opts:[["its outer electron is in level 6, shielded by 54 inner electrons",1,"Correct. The higher level puts the electron farther out, and the inner electrons cancel most of the extra charge."],
+        ["the extra protons push the electrons outward",0,"Protons attract electrons. The atom is larger because its outer electron is in a much higher energy level."],
+        ["it has fewer inner electrons",0,"Cesium has 54 inner electrons and lithium has 2. The extra inner electrons shield the outer electron."]]},
+ {id:"u32-s-ie",obj:"3.2.3",sec:"3.2.3",surf:"slides",dok:2,q:"Which group 2 element has the lowest first ionization energy?",
+  opts:[["Barium",1,"Correct. Ionization energy decreases down a group, and barium needs only 503 kJ/mol."],
+        ["Beryllium",0,"Beryllium, at the top of group 2, has the highest value in the group, 900 kJ/mol."],
+        ["Magnesium",0,"Magnesium (738 kJ/mol) is near the top of group 2. Values decrease down the group, so barium is lowest."]]},
+ {id:"u32-s-drop",obj:"3.2.3",sec:"3.2.3",surf:"slides",dok:2,q:"Why is potassium's first ionization energy so much lower than argon's?",
+  opts:[["Potassium's outer electron is the first in level 4, outside 18 inner electrons.",1,"Correct. A new level puts the electron farther out and well shielded, so it is easy to remove."],
+        ["Potassium has fewer protons than argon.",0,"Potassium has 19 protons and argon has 18. The drop comes from the new level and the shielding."],
+        ["Argon's outer electrons are farther from the nucleus.",0,"Argon's outer electrons are in level 3. Potassium's is in level 4, farther out."]]},
+ {id:"u32-s-rank",obj:"3.2.4",sec:"3.2.4",surf:"slides",dok:2,q:"Rank chlorine, phosphorus and sodium from highest to lowest first ionization energy.",
+  opts:[["Cl > P > Na",1,"Correct. In period 3, ionization energy generally rises from left to right: 1251, 1012 and 496 kJ/mol."],
+        ["Na > P > Cl",0,"This order is reversed. Across a period, more protons hold the electrons more tightly, so chlorine has the highest value."],
+        ["P > Cl > Na",0,"Chlorine is farther right than phosphorus, with 2 more protons pulling on the same level, so its value is higher."]]},
+ {id:"u32-s-dip",obj:"3.2.3",sec:"3.2.3",surf:"slides",dok:3,q:"Honors: why is oxygen's first ionization energy lower than nitrogen's?",
+  opts:[["Oxygen's fourth 2p electron shares an orbital, and the two paired electrons repel each other.",1,"Correct. The repulsion makes one of the paired electrons easier to remove."],
+        ["Oxygen has fewer protons than nitrogen.",0,"Oxygen has 8 protons and nitrogen has 7. The dip comes from the paired electrons in one 2p orbital."],
+        ["Oxygen's outer electrons are in level 3.",0,"Both atoms are in period 2, so their outer electrons are in level 2. The dip comes from electron pairing."]]}
+]);
+
+/* ===== Unit 2 simulation kit: helpers shared by every lesson's simulations ===== */
+(function(){
+const U2=window.U2=window.U2||{};
+const TAU=Math.PI*2;
+const REDUCED=(()=>{try{return matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){return false}})();
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const FK=()=>window.U2FONTK||1;
+const F=(px,wt=600,fam='--body')=>`${wt} ${(px*FK()).toFixed(1)}px ${css(fam)}`;
+const el=(tag,cls,html)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e};
+const btn=(label,cls='btn')=>{const b=el('button',cls,label);b.type='button';return b};
+U2.el=el;U2.btn=btn;U2.css=css;
+function shell(root,aspect,label){root.classList.add('sim');const cv=el('div','cv');cv.style.aspectRatio=String(1/aspect);const c=el('canvas');c.setAttribute('role','img');if(label)c.setAttribute('aria-label',label);cv.append(c);root.append(cv);return{cv,c}}
+function fit(c){const w=c.clientWidth||300,h=c.clientHeight||180,r=(window.devicePixelRatio||1)*(window.U2SCALE||1)*(c._zoom||1);
+  if(c._w!==w||c._h!==h||c._r!==r){c.width=Math.max(1,Math.round(w*r));c.height=Math.max(1,Math.round(h*r));c._w=w;c._h=h;c._r=r}
+  const x=c.getContext('2d');x.setTransform(r,0,0,r,0,0);x.clearRect(0,0,w,h);return{x,w,h}}
+U2.fit=fit;
+/* draw loop: redraw on resize; animate while visible and busy */
+U2._loops=[];U2.kickAll=()=>U2._loops.forEach(f=>f());
+function loop(c,draw){let raf=null,vis=true,run=false,last=0;
+  function frame(t){raf=null;const dt=last?Math.min(.05,(t-last)/1000):0;last=t;const more=draw(dt);if(vis&&(run||more))raf=requestAnimationFrame(frame);else last=0}
+  const kick=()=>{if(!raf&&vis)raf=requestAnimationFrame(frame)};
+  try{new IntersectionObserver(es=>{vis=es[es.length-1].isIntersecting;if(vis)kick()}).observe(c)}catch(e){}
+  try{new ResizeObserver(()=>kick()).observe(c)}catch(e){addEventListener('resize',kick)}
+  U2._loops.push(kick);return{kick,set run(v){run=v;if(v)kick()}}}
+U2.loop=loop;
+function seg(labels,onPick,init=0){const s=el('div','seg');const bs=labels.map((l,i)=>{const b=btn(l,'');b.setAttribute('aria-pressed',String(i===init));b.onclick=()=>{bs.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));onPick(i)};s.append(b);return b});s.set=i=>{bs.forEach((x,k)=>x.setAttribute('aria-pressed',String(k===i)))};return s}
+U2.seg=seg;
+/* a readout: a small label over a value (r.v). r.hold(texts) keeps it as tall as the tallest of texts would make it, so a
+   value that wraps onto a second line does not push the rest of the simulation around. It re-measures when the row it sits in
+   changes width, not when it does itself: in a wrapping row its own width follows its text, and re-measuring then ratchets.
+   That check runs late, after layout, so the reading and the deck call U2.fitHolds() before they measure a page or slide. */
+const holds=[];U2.fitHolds=()=>holds.forEach(f=>f());
+function ro(label,val=''){const r=el('div','ro');r.innerHTML=`<small>${label}</small><span>${val}</span>`;r.v=r.querySelector('span');
+  r.hold=texts=>{let w=0;const box=r.parentElement||r;const fit=force=>{const cw=box.clientWidth;if(!cw||(cw===w&&!force))return;w=cw;const keep=r.v.textContent;r.style.minHeight='';let mh=0;
+      for(const t of texts){r.v.textContent=t;const b=r.getBoundingClientRect();mh=Math.max(mh,b.height*r.offsetWidth/(b.width||1))}r.v.textContent=keep;r.style.minHeight=mh+'px'};holds.push(fit);
+    try{new ResizeObserver(()=>fit()).observe(box)}catch(e){}if(document.fonts)document.fonts.ready.then(()=>fit(true));fit();return r};
+  return r}
+function grp(label,...kids){const g=el('div','grp');if(label)g.append(el('span','lab',label));kids.forEach(k=>g.append(k));return g}
+function sayBox(){const p=el('p','say');p.setAttribute('role','status');p.hidden=true;p.show=(t,k)=>{p.hidden=false;p.className='say'+(k?' '+k:'');p.innerHTML=t};return p}
+function wl2rgb(nm){let r=0,g=0,b=0;
+  if(nm<380)return'#8a7fd6';
+  if(nm<440){r=-(nm-440)/60;b=1}else if(nm<490){g=(nm-440)/50;b=1}else if(nm<510){g=1;b=-(nm-510)/20}else if(nm<580){r=(nm-510)/70;g=1}else if(nm<645){r=1;g=-(nm-645)/65}else if(nm<=780){r=1}
+  let f=nm<420?.3+.7*(nm-380)/40:nm>700?.3+.7*(780-nm)/80:1;const c=v=>Math.round(255*Math.pow(Math.max(0,v*f),.8));return`rgb(${c(r)},${c(g)},${c(b)})`}
+U2.wl2rgb=wl2rgb;
+function arrow(x,x0,y0,x1,y1,hd=8){const a=Math.atan2(y1-y0,x1-x0);x.beginPath();x.moveTo(x0,y0);x.lineTo(x1,y1);x.stroke();x.beginPath();x.moveTo(x1,y1);x.lineTo(x1-hd*Math.cos(a-.45),y1-hd*Math.sin(a-.45));x.lineTo(x1-hd*Math.cos(a+.45),y1-hd*Math.sin(a+.45));x.closePath();x.fill()}
+/* labels along one axis (items {at, sz}: the wanted centre and the label's size along the axis): sorted by position,
+   pushed apart just enough to leave `gap` between neighbours, and kept inside [a,b]. Each label's centre lands in .c,
+   so the caller can draw a leader from .c back to .at. If the labels cannot all fit, the ones nearest a overlap. */
+function spread(items,a,b,gap=0){items.sort((p,q)=>p.at-q.at);items.forEach(it=>it.c=Math.max(it.at,a+it.sz/2));
+  for(let i=1;i<items.length;i++){const p=items[i-1],q=items[i],d=(p.sz+q.sz)/2+gap;if(q.c-p.c<d)q.c=p.c+d}
+  const z=items[items.length-1];if(z&&z.c+z.sz/2>b){z.c=b-z.sz/2;for(let i=items.length-2;i>=0;i--){const q=items[i+1];items[i].c=Math.min(items[i].c,q.c-(items[i].sz+q.sz)/2-gap)}}
+  items.forEach(it=>{it.c=Math.max(it.c,a+it.sz/2)});return items}
+/* a pointer event's position in the canvas's own CSS pixels, the units its drawing uses. The deck scales every slide
+   and the zoom scales a card with a CSS transform, so the on-screen box differs from that size; reading clientX
+   against getBoundingClientRect() alone lands on the wrong point whenever the slide is not at 100%. */
+function ptr(c,e){const r=c.getBoundingClientRect(),k=c.clientWidth/(r.width||1);return{x:(e.clientX-r.left)*k,y:(e.clientY-r.top)*k}}
+
+Object.assign(U2,{TAU,REDUCED,FK,F,shell,ro,grp,sayBox,arrow,spread,ptr});
+})();
+
+/* ===== Keep symbols in their case inside uppercase labels =====
+   Labels styled text-transform:uppercase would turn λ into Λ, f into F, h into H and nm into NM:
+   different quantities and units. Any standalone symbol or lowercase unit inside such a label is
+   wrapped in span.kc (text-transform:none). Runs on load and on every later DOM change, so
+   readouts that sims rebuild stay correct. The English word "a" is left alone. */
+(function(){
+const TOK=/(^|[\s(=÷×·/,:;+−-])([b-zλνμΔδρ]|nm|pm|km|mm|cm|µm|μm|kg|mol)(?=$|[\s)=÷×·/,.:;+−-])/g;
+const UP=new WeakMap();
+function upper(e){if(UP.has(e))return UP.get(e);const v=getComputedStyle(e).textTransform==='uppercase';UP.set(e,v);return v}
+function fix(root){
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:t=>{
+    const p=t.parentElement;if(!p||p.closest('.kc,script,style,svg,textarea,input'))return NodeFilter.FILTER_REJECT;
+    TOK.lastIndex=0;return TOK.test(t.data)&&upper(p)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT}});
+  const hits=[];while(w.nextNode())hits.push(w.currentNode);
+  hits.forEach(t=>{const f=document.createDocumentFragment();let last=0;TOK.lastIndex=0;
+    t.data.replace(TOK,(m,pre,sym,i)=>{const s=i+pre.length;f.append(t.data.slice(last,s));const k=document.createElement('span');k.className='kc';k.textContent=sym;f.append(k);last=s+sym.length;return m});
+    f.append(t.data.slice(last));t.replaceWith(f)});
+}
+let q=new Set(),raf=0;
+function run(){raf=0;const r=[...q];q.clear();r.forEach(n=>{if(n.isConnected)fix(n)})}
+function start(){
+  const st=document.createElement('style');st.textContent='.kc{text-transform:none}';document.head.append(st);
+  fix(document.body);
+  new MutationObserver(ms=>{ms.forEach(m=>{const n=m.type==='characterData'?m.target.parentElement:m.target;if(n)q.add(n)});if(!raf)raf=requestAnimationFrame(run)})
+    .observe(document.body,{childList:true,subtree:true,characterData:true});
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
+})();
+
+/* Renders an item from ITEMS into a .check element. Shared by reading, slides and missions. */
+(function(){
+const U2=window.U2=window.U2||{};
+/* progress is kept per lesson; the theme choice is shared by the whole unit */
+const SKEY=(pre,k)=>k==='theme'?pre+k:pre+(window.U2LESSON?window.U2LESSON+':':'')+k;
+const store={get(k,d){try{const v=localStorage.getItem(SKEY('u2:',k));return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(SKEY('u2:',k),JSON.stringify(v))}catch(e){}}};
+U2.store=store;
+U2.item=id=>(window.ITEMS||[]).find(i=>i.id===id);
+U2.renderCheck=function(box,item,{onAnswer,remember=true,shuffle=true,label='Stop and check'}={}){
+  if(!item){box.textContent='Missing item';return}
+  box.classList.add('check');box.innerHTML='';
+  const meta=document.createElement('div');meta.className='meta';meta.innerHTML=`<span>${label}</span><span>Objective ${item.obj}${window.OBJ&&OBJ[item.obj]?' · '+OBJ[item.obj].teks:''}</span>`;
+  const q=document.createElement('p');q.className='q';q.innerHTML=item.q;
+  const opts=document.createElement('div');opts.className='opts';const fb=document.createElement('p');fb.className='fb';fb.setAttribute('role','status');
+  let order=item.opts.map((o,i)=>i);if(shuffle){const seed=[...item.id].reduce((a,c)=>a+c.charCodeAt(0),0);order.sort((a,b)=>((a*7+seed)%5)-((b*7+seed)%5))}
+  order.forEach(i=>{const[t,ok,f]=item.opts[i];const b=document.createElement('button');b.type='button';b.className='btn';b.innerHTML=t;b.dataset.i=i;
+    b.onclick=()=>{opts.querySelectorAll('.btn').forEach(x=>x.classList.remove('correct','wrong'));b.classList.add(ok?'correct':'wrong');fb.className='fb '+(ok?'ok':'no');fb.innerHTML=f;
+      if(remember){const s=store.get('chk',{});s[item.id]=ok?1:(s[item.id]===1?1:0);store.set('chk',s)}onAnswer&&onAnswer(ok,item)};opts.append(b)});
+  box.append(meta,q,opts,fb);
+  const prev=remember&&store.get('chk',{})[item.id];if(prev===1){const ci=item.opts.findIndex(o=>o[1]);const b=opts.querySelector(`[data-i="${ci}"]`);if(b){b.classList.add('correct');fb.className='fb ok';fb.innerHTML=item.opts[ci][2]}}
+};
+U2.glossaryPop=function(){let pop=null;
+  function close(){if(pop){pop.remove();pop=null}}
+  document.addEventListener('click',e=>{const t=e.target.closest('.term');if(!t){if(!e.target.closest('.gpop'))close();return}
+    const key=t.dataset.t,g=(window.GLOSS||{})[key];if(!g)return;close();pop=document.createElement('div');pop.className='gpop';pop.setAttribute('role','dialog');
+    pop.innerHTML=`<b>${key}</b><br>${g.d}<span class="es">Español: <i>${g.es}</i></span>`;document.body.append(pop);
+    const r=t.getBoundingClientRect(),pw=pop.offsetWidth,ph=pop.offsetHeight;let x=Math.min(innerWidth-pw-12,Math.max(12,r.left+r.width/2-pw/2)),y=r.bottom+8;if(y+ph>innerHeight-8)y=r.top-ph-8;pop.style.left=x+'px';pop.style.top=y+'px'});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});addEventListener('scroll',close,true)};
+})();
+
+/* ===== Unit 3 shared element data and models. Every Unit 3 lesson loads this file (meta.json "uses": ["common"]).
+   One data set per property, never mixed:
+     mass  CIAAW abridged standard atomic weights (u); H shown as 1.008 to match Unit 2; null = no standard atomic weight
+     ie    NIST ASD first ionization energies, eV x 96.485 rounded once to whole kJ/mol; Z 1 to 88
+     r     Cordero et al. (2008) covalent radii (pm), 31 selected main-group elements; noble gases omitted; C is the sp3 value
+     en    Pauling scale (no unit); noble gases omitted in this teaching set; Fr has no value in the Pauling column
+     PHYS  PubChem periodic-table CSV; temperatures K - 273.15, rounded once to 0.1 degC with halves away from zero
+           PubChem's predicted values for elements never collected in bulk are removed: At melting point and density,
+           Fr melting point, Fm to Lr melting points. They are estimates, not measurements.
+   A missing value stays missing: graphs leave a gap and tables say so. Nothing is ever drawn as zero.
+   Models here: U2.ptExplorer (clickable table), U2.trendPlot (property against atomic number), U2.groupPlot (one family, with a
+   hidden member to predict). Mount with U2.<name>(el, opts); options may also come from the element's data- attributes. ===== */
+(function(){
+const U2=window.U2=window.U2||{};
+const {el,btn,css,F,FK,shell,fit,loop,seg,ro,grp,sayBox,TAU,ptr}=U2;
+const DATA=[{"z": 1, "s": "H", "mass": "1.008", "ie": 1312, "r": 31, "en": "2.20", "name": "Hydrogen"}, {"z": 2, "s": "He", "mass": "4.0026", "ie": 2372, "r": null, "en": null, "name": "Helium"}, {"z": 3, "s": "Li", "mass": "6.94", "ie": 520, "r": 128, "en": "0.98", "name": "Lithium"}, {"z": 4, "s": "Be", "mass": "9.0122", "ie": 900, "r": 96, "en": "1.57", "name": "Beryllium"}, {"z": 5, "s": "B", "mass": "10.81", "ie": 801, "r": 84, "en": "2.04", "name": "Boron"}, {"z": 6, "s": "C", "mass": "12.011", "ie": 1086, "r": 76, "en": "2.55", "name": "Carbon"}, {"z": 7, "s": "N", "mass": "14.007", "ie": 1402, "r": 71, "en": "3.04", "name": "Nitrogen"}, {"z": 8, "s": "O", "mass": "15.999", "ie": 1314, "r": 66, "en": "3.44", "name": "Oxygen"}, {"z": 9, "s": "F", "mass": "18.998", "ie": 1681, "r": 57, "en": "3.98", "name": "Fluorine"}, {"z": 10, "s": "Ne", "mass": "20.180", "ie": 2081, "r": null, "en": null, "name": "Neon"}, {"z": 11, "s": "Na", "mass": "22.990", "ie": 496, "r": 166, "en": "0.93", "name": "Sodium"}, {"z": 12, "s": "Mg", "mass": "24.305", "ie": 738, "r": 141, "en": "1.31", "name": "Magnesium"}, {"z": 13, "s": "Al", "mass": "26.982", "ie": 578, "r": 121, "en": "1.61", "name": "Aluminum"}, {"z": 14, "s": "Si", "mass": "28.085", "ie": 787, "r": 111, "en": "1.90", "name": "Silicon"}, {"z": 15, "s": "P", "mass": "30.974", "ie": 1012, "r": 107, "en": "2.19", "name": "Phosphorus"}, {"z": 16, "s": "S", "mass": "32.06", "ie": 1000, "r": 105, "en": "2.58", "name": "Sulfur"}, {"z": 17, "s": "Cl", "mass": "35.45", "ie": 1251, "r": 102, "en": "3.16", "name": "Chlorine"}, {"z": 18, "s": "Ar", "mass": "39.95", "ie": 1521, "r": null, "en": null, "name": "Argon"}, {"z": 19, "s": "K", "mass": "39.098", "ie": 419, "r": 203, "en": "0.82", "name": "Potassium"}, {"z": 20, "s": "Ca", "mass": "40.078", "ie": 590, "r": 176, "en": "1.00", "name": "Calcium"}, {"z": 21, "s": "Sc", "mass": "44.956", "ie": 633, "r": null, "en": "1.36", "name": "Scandium"}, {"z": 22, "s": "Ti", "mass": "47.867", "ie": 659, "r": null, "en": "1.54", "name": "Titanium"}, {"z": 23, "s": "V", "mass": "50.942", "ie": 651, "r": null, "en": "1.63", "name": "Vanadium"}, {"z": 24, "s": "Cr", "mass": "51.996", "ie": 653, "r": null, "en": "1.66", "name": "Chromium"}, {"z": 25, "s": "Mn", "mass": "54.938", "ie": 717, "r": null, "en": "1.55", "name": "Manganese"}, {"z": 26, "s": "Fe", "mass": "55.845", "ie": 762, "r": null, "en": "1.83", "name": "Iron"}, {"z": 27, "s": "Co", "mass": "58.933", "ie": 760, "r": null, "en": "1.88", "name": "Cobalt"}, {"z": 28, "s": "Ni", "mass": "58.693", "ie": 737, "r": null, "en": "1.91", "name": "Nickel"}, {"z": 29, "s": "Cu", "mass": "63.546", "ie": 745, "r": null, "en": "1.90", "name": "Copper"}, {"z": 30, "s": "Zn", "mass": "65.38", "ie": 906, "r": null, "en": "1.65", "name": "Zinc"}, {"z": 31, "s": "Ga", "mass": "69.723", "ie": 579, "r": 122, "en": "1.81", "name": "Gallium"}, {"z": 32, "s": "Ge", "mass": "72.630", "ie": 762, "r": 120, "en": "2.01", "name": "Germanium"}, {"z": 33, "s": "As", "mass": "74.922", "ie": 944, "r": 119, "en": "2.18", "name": "Arsenic"}, {"z": 34, "s": "Se", "mass": "78.971", "ie": 941, "r": 120, "en": "2.55", "name": "Selenium"}, {"z": 35, "s": "Br", "mass": "79.904", "ie": 1140, "r": 120, "en": "2.96", "name": "Bromine"}, {"z": 36, "s": "Kr", "mass": "83.798", "ie": 1351, "r": null, "en": null, "name": "Krypton"}, {"z": 37, "s": "Rb", "mass": "85.468", "ie": 403, "r": 220, "en": "0.82", "name": "Rubidium"}, {"z": 38, "s": "Sr", "mass": "87.62", "ie": 549, "r": 195, "en": "0.95", "name": "Strontium"}, {"z": 39, "s": "Y", "mass": "88.906", "ie": 600, "r": null, "en": "1.22", "name": "Yttrium"}, {"z": 40, "s": "Zr", "mass": "91.222", "ie": 640, "r": null, "en": "1.33", "name": "Zirconium"}, {"z": 41, "s": "Nb", "mass": "92.906", "ie": 652, "r": null, "en": "1.6", "name": "Niobium"}, {"z": 42, "s": "Mo", "mass": "95.95", "ie": 684, "r": null, "en": "2.16", "name": "Molybdenum"}, {"z": 43, "s": "Tc", "mass": null, "ie": 687, "r": null, "en": "1.9", "name": "Technetium"}, {"z": 44, "s": "Ru", "mass": "101.07", "ie": 710, "r": null, "en": "2.2", "name": "Ruthenium"}, {"z": 45, "s": "Rh", "mass": "102.91", "ie": 720, "r": null, "en": "2.28", "name": "Rhodium"}, {"z": 46, "s": "Pd", "mass": "106.42", "ie": 804, "r": null, "en": "2.20", "name": "Palladium"}, {"z": 47, "s": "Ag", "mass": "107.87", "ie": 731, "r": null, "en": "1.93", "name": "Silver"}, {"z": 48, "s": "Cd", "mass": "112.41", "ie": 868, "r": null, "en": "1.69", "name": "Cadmium"}, {"z": 49, "s": "In", "mass": "114.82", "ie": 558, "r": 142, "en": "1.78", "name": "Indium"}, {"z": 50, "s": "Sn", "mass": "118.71", "ie": 709, "r": 139, "en": "1.96", "name": "Tin"}, {"z": 51, "s": "Sb", "mass": "121.76", "ie": 831, "r": 139, "en": "2.05", "name": "Antimony"}, {"z": 52, "s": "Te", "mass": "127.60", "ie": 869, "r": 138, "en": "2.1", "name": "Tellurium"}, {"z": 53, "s": "I", "mass": "126.90", "ie": 1008, "r": 139, "en": "2.66", "name": "Iodine"}, {"z": 54, "s": "Xe", "mass": "131.29", "ie": 1170, "r": null, "en": null, "name": "Xenon"}, {"z": 55, "s": "Cs", "mass": "132.91", "ie": 376, "r": 244, "en": "0.79", "name": "Cesium"}, {"z": 56, "s": "Ba", "mass": "137.33", "ie": 503, "r": 215, "en": "0.89", "name": "Barium"}, {"z": 57, "s": "La", "mass": "138.91", "ie": 538, "r": null, "en": "1.10", "name": "Lanthanum"}, {"z": 58, "s": "Ce", "mass": "140.12", "ie": 534, "r": null, "en": "1.12", "name": "Cerium"}, {"z": 59, "s": "Pr", "mass": "140.91", "ie": 528, "r": null, "en": "1.13", "name": "Praseodymium"}, {"z": 60, "s": "Nd", "mass": "144.24", "ie": 533, "r": null, "en": "1.14", "name": "Neodymium"}, {"z": 61, "s": "Pm", "mass": null, "ie": 539, "r": null, "en": "1.10", "name": "Promethium"}, {"z": 62, "s": "Sm", "mass": "150.36", "ie": 545, "r": null, "en": "1.17", "name": "Samarium"}, {"z": 63, "s": "Eu", "mass": "151.96", "ie": 547, "r": null, "en": "1.1", "name": "Europium"}, {"z": 64, "s": "Gd", "mass": "157.25", "ie": 593, "r": null, "en": "1.20", "name": "Gadolinium"}, {"z": 65, "s": "Tb", "mass": "158.93", "ie": 566, "r": null, "en": "1.1", "name": "Terbium"}, {"z": 66, "s": "Dy", "mass": "162.50", "ie": 573, "r": null, "en": "1.22", "name": "Dysprosium"}, {"z": 67, "s": "Ho", "mass": "164.93", "ie": 581, "r": null, "en": "1.23", "name": "Holmium"}, {"z": 68, "s": "Er", "mass": "167.26", "ie": 589, "r": null, "en": "1.24", "name": "Erbium"}, {"z": 69, "s": "Tm", "mass": "168.93", "ie": 597, "r": null, "en": "1.25", "name": "Thulium"}, {"z": 70, "s": "Yb", "mass": "173.05", "ie": 603, "r": null, "en": "1.1", "name": "Ytterbium"}, {"z": 71, "s": "Lu", "mass": "174.97", "ie": 524, "r": null, "en": "1.27", "name": "Lutetium"}, {"z": 72, "s": "Hf", "mass": "178.49", "ie": 659, "r": null, "en": "1.3", "name": "Hafnium"}, {"z": 73, "s": "Ta", "mass": "180.95", "ie": 728, "r": null, "en": "1.5", "name": "Tantalum"}, {"z": 74, "s": "W", "mass": "183.84", "ie": 759, "r": null, "en": "2.36", "name": "Tungsten"}, {"z": 75, "s": "Re", "mass": "186.21", "ie": 756, "r": null, "en": "1.9", "name": "Rhenium"}, {"z": 76, "s": "Os", "mass": "190.23", "ie": 814, "r": null, "en": "2.2", "name": "Osmium"}, {"z": 77, "s": "Ir", "mass": "192.22", "ie": 865, "r": null, "en": "2.20", "name": "Iridium"}, {"z": 78, "s": "Pt", "mass": "195.08", "ie": 864, "r": null, "en": "2.28", "name": "Platinum"}, {"z": 79, "s": "Au", "mass": "196.97", "ie": 890, "r": null, "en": "2.54", "name": "Gold"}, {"z": 80, "s": "Hg", "mass": "200.59", "ie": 1007, "r": null, "en": "2.00", "name": "Mercury"}, {"z": 81, "s": "Tl", "mass": "204.38", "ie": 589, "r": null, "en": "1.62", "name": "Thallium"}, {"z": 82, "s": "Pb", "mass": "207.2", "ie": 716, "r": null, "en": "2.33", "name": "Lead"}, {"z": 83, "s": "Bi", "mass": "208.98", "ie": 703, "r": null, "en": "2.02", "name": "Bismuth"}, {"z": 84, "s": "Po", "mass": null, "ie": 812, "r": null, "en": "2.0", "name": "Polonium"}, {"z": 85, "s": "At", "mass": null, "ie": 899, "r": null, "en": "2.2", "name": "Astatine"}, {"z": 86, "s": "Rn", "mass": null, "ie": 1037, "r": null, "en": null, "name": "Radon"}, {"z": 87, "s": "Fr", "mass": null, "ie": 393, "r": null, "en": null, "name": "Francium"}, {"z": 88, "s": "Ra", "mass": null, "ie": 509, "r": null, "en": "0.9", "name": "Radium"}, {"z": 89, "s": "Ac", "mass": null, "ie": null, "r": null, "en": "1.1", "name": "Actinium"}, {"z": 90, "s": "Th", "mass": "232.04", "ie": null, "r": null, "en": "1.3", "name": "Thorium"}, {"z": 91, "s": "Pa", "mass": "231.04", "ie": null, "r": null, "en": "1.5", "name": "Protactinium"}, {"z": 92, "s": "U", "mass": "238.03", "ie": null, "r": null, "en": "1.38", "name": "Uranium"}, {"z": 93, "s": "Np", "mass": null, "ie": null, "r": null, "en": "1.36", "name": "Neptunium"}, {"z": 94, "s": "Pu", "mass": null, "ie": null, "r": null, "en": "1.28", "name": "Plutonium"}, {"z": 95, "s": "Am", "mass": null, "ie": null, "r": null, "en": "1.3", "name": "Americium"}, {"z": 96, "s": "Cm", "mass": null, "ie": null, "r": null, "en": "1.3", "name": "Curium"}, {"z": 97, "s": "Bk", "mass": null, "ie": null, "r": null, "en": "1.3", "name": "Berkelium"}, {"z": 98, "s": "Cf", "mass": null, "ie": null, "r": null, "en": "1.3", "name": "Californium"}, {"z": 99, "s": "Es", "mass": null, "ie": null, "r": null, "en": "1.3", "name": "Einsteinium"}, {"z": 100, "s": "Fm", "mass": null, "ie": null, "r": null, "en": "1.3", "name": "Fermium"}, {"z": 101, "s": "Md", "mass": null, "ie": null, "r": null, "en": "1.3", "name": "Mendelevium"}, {"z": 102, "s": "No", "mass": null, "ie": null, "r": null, "en": "1.3", "name": "Nobelium"}, {"z": 103, "s": "Lr", "mass": null, "ie": null, "r": null, "en": null, "name": "Lawrencium"}, {"z": 104, "s": "Rf", "mass": null, "ie": null, "r": null, "en": null, "name": "Rutherfordium"}, {"z": 105, "s": "Db", "mass": null, "ie": null, "r": null, "en": null, "name": "Dubnium"}, {"z": 106, "s": "Sg", "mass": null, "ie": null, "r": null, "en": null, "name": "Seaborgium"}, {"z": 107, "s": "Bh", "mass": null, "ie": null, "r": null, "en": null, "name": "Bohrium"}, {"z": 108, "s": "Hs", "mass": null, "ie": null, "r": null, "en": null, "name": "Hassium"}, {"z": 109, "s": "Mt", "mass": null, "ie": null, "r": null, "en": null, "name": "Meitnerium"}, {"z": 110, "s": "Ds", "mass": null, "ie": null, "r": null, "en": null, "name": "Darmstadtium"}, {"z": 111, "s": "Rg", "mass": null, "ie": null, "r": null, "en": null, "name": "Roentgenium"}, {"z": 112, "s": "Cn", "mass": null, "ie": null, "r": null, "en": null, "name": "Copernicium"}, {"z": 113, "s": "Nh", "mass": null, "ie": null, "r": null, "en": null, "name": "Nihonium"}, {"z": 114, "s": "Fl", "mass": null, "ie": null, "r": null, "en": null, "name": "Flerovium"}, {"z": 115, "s": "Mc", "mass": null, "ie": null, "r": null, "en": null, "name": "Moscovium"}, {"z": 116, "s": "Lv", "mass": null, "ie": null, "r": null, "en": null, "name": "Livermorium"}, {"z": 117, "s": "Ts", "mass": null, "ie": null, "r": null, "en": null, "name": "Tennessine"}, {"z": 118, "s": "Og", "mass": null, "ie": null, "r": null, "en": null, "name": "Oganesson"}];
+const PHYS={"H": {"MeltingPoint": -259.3, "BoilingPoint": -252.9, "Density": 8.988e-05}, "He": {"MeltingPoint": -272.2, "BoilingPoint": -268.9, "Density": 0.0001785}, "Li": {"MeltingPoint": 180.5, "BoilingPoint": 1341.9, "Density": 0.534}, "Be": {"MeltingPoint": 1286.9, "BoilingPoint": 2470.9, "Density": 1.85}, "B": {"MeltingPoint": 2074.9, "BoilingPoint": 3999.9, "Density": 2.37}, "C": {"MeltingPoint": 3549.9, "BoilingPoint": 3824.9, "Density": 2.267}, "N": {"MeltingPoint": -210.0, "BoilingPoint": -195.8, "Density": 0.0012506}, "O": {"MeltingPoint": -218.8, "BoilingPoint": -183.0, "Density": 0.001429}, "F": {"MeltingPoint": -219.6, "BoilingPoint": -188.1, "Density": 0.001696}, "Ne": {"MeltingPoint": -248.6, "BoilingPoint": -246.1, "Density": 0.0008999}, "Na": {"MeltingPoint": 97.8, "BoilingPoint": 882.9, "Density": 0.97}, "Mg": {"MeltingPoint": 649.9, "BoilingPoint": 1089.9, "Density": 1.74}, "Al": {"MeltingPoint": 660.3, "BoilingPoint": 2518.9, "Density": 2.7}, "Si": {"MeltingPoint": 1413.9, "BoilingPoint": 3264.9, "Density": 2.3296}, "P": {"MeltingPoint": 44.2, "BoilingPoint": 280.5, "Density": 1.82}, "S": {"MeltingPoint": 115.2, "BoilingPoint": 444.6, "Density": 2.067}, "Cl": {"MeltingPoint": -101.5, "BoilingPoint": -34.0, "Density": 0.003214}, "Ar": {"MeltingPoint": -189.4, "BoilingPoint": -185.9, "Density": 0.0017837}, "K": {"MeltingPoint": 63.4, "BoilingPoint": 758.9, "Density": 0.89}, "Ca": {"MeltingPoint": 841.9, "BoilingPoint": 1483.9, "Density": 1.54}, "Sc": {"MeltingPoint": 1540.9, "BoilingPoint": 2835.9, "Density": 2.99}, "Ti": {"MeltingPoint": 1667.9, "BoilingPoint": 3286.9, "Density": 4.5}, "V": {"MeltingPoint": 1909.9, "BoilingPoint": 3406.9, "Density": 6.0}, "Cr": {"MeltingPoint": 1906.9, "BoilingPoint": 2670.9, "Density": 7.15}, "Mn": {"MeltingPoint": 1245.9, "BoilingPoint": 2060.9, "Density": 7.3}, "Fe": {"MeltingPoint": 1537.9, "BoilingPoint": 2860.9, "Density": 7.874}, "Co": {"MeltingPoint": 1494.9, "BoilingPoint": 2926.9, "Density": 8.86}, "Ni": {"MeltingPoint": 1454.9, "BoilingPoint": 2912.9, "Density": 8.912}, "Cu": {"MeltingPoint": 1084.6, "BoilingPoint": 2561.9, "Density": 8.933}, "Zn": {"MeltingPoint": 419.5, "BoilingPoint": 906.9, "Density": 7.134}, "Ga": {"MeltingPoint": 29.8, "BoilingPoint": 2203.9, "Density": 5.91}, "Ge": {"MeltingPoint": 938.3, "BoilingPoint": 2832.9, "Density": 5.323}, "As": {"MeltingPoint": 816.9, "BoilingPoint": 613.9, "Density": 5.776}, "Se": {"MeltingPoint": 220.5, "BoilingPoint": 684.9, "Density": 4.809}, "Br": {"MeltingPoint": -7.2, "BoilingPoint": 58.8, "Density": 3.11}, "Kr": {"MeltingPoint": -157.4, "BoilingPoint": -153.2, "Density": 0.003733}, "Rb": {"MeltingPoint": 39.3, "BoilingPoint": 687.9, "Density": 1.53}, "Sr": {"MeltingPoint": 776.9, "BoilingPoint": 1381.9, "Density": 2.64}, "Y": {"MeltingPoint": 1521.9, "BoilingPoint": 3344.9, "Density": 4.47}, "Zr": {"MeltingPoint": 1854.9, "BoilingPoint": 4408.9, "Density": 6.52}, "Nb": {"MeltingPoint": 2476.9, "BoilingPoint": 4743.9, "Density": 8.57}, "Mo": {"MeltingPoint": 2622.9, "BoilingPoint": 4638.9, "Density": 10.2}, "Tc": {"MeltingPoint": 2156.9, "BoilingPoint": 4264.9, "Density": 11.0}, "Ru": {"MeltingPoint": 2333.9, "BoilingPoint": 4149.9, "Density": 12.1}, "Rh": {"MeltingPoint": 1963.9, "BoilingPoint": 3694.9, "Density": 12.4}, "Pd": {"MeltingPoint": 1554.9, "BoilingPoint": 2962.9, "Density": 12.0}, "Ag": {"MeltingPoint": 961.8, "BoilingPoint": 2161.9, "Density": 10.501}, "Cd": {"MeltingPoint": 321.1, "BoilingPoint": 766.9, "Density": 8.69}, "In": {"MeltingPoint": 156.6, "BoilingPoint": 2071.9, "Density": 7.31}, "Sn": {"MeltingPoint": 231.9, "BoilingPoint": 2601.9, "Density": 7.287}, "Sb": {"MeltingPoint": 630.6, "BoilingPoint": 1586.9, "Density": 6.685}, "Te": {"MeltingPoint": 449.5, "BoilingPoint": 987.9, "Density": 6.232}, "I": {"MeltingPoint": 113.7, "BoilingPoint": 184.4, "Density": 4.93}, "Xe": {"MeltingPoint": -111.8, "BoilingPoint": -108.1, "Density": 0.005887}, "Cs": {"MeltingPoint": 28.4, "BoilingPoint": 670.9, "Density": 1.93}, "Ba": {"MeltingPoint": 726.9, "BoilingPoint": 1896.9, "Density": 3.62}, "La": {"MeltingPoint": 917.9, "BoilingPoint": 3463.9, "Density": 6.15}, "Ce": {"MeltingPoint": 797.9, "BoilingPoint": 3423.9, "Density": 6.77}, "Pr": {"MeltingPoint": 930.9, "BoilingPoint": 3519.9, "Density": 6.77}, "Nd": {"MeltingPoint": 1020.9, "BoilingPoint": 3073.9, "Density": 7.01}, "Pm": {"MeltingPoint": 1041.9, "BoilingPoint": 2999.9, "Density": 7.26}, "Sm": {"MeltingPoint": 1073.9, "BoilingPoint": 1793.9, "Density": 7.52}, "Eu": {"MeltingPoint": 821.9, "BoilingPoint": 1528.9, "Density": 5.24}, "Gd": {"MeltingPoint": 1312.9, "BoilingPoint": 3272.9, "Density": 7.9}, "Tb": {"MeltingPoint": 1355.9, "BoilingPoint": 3229.9, "Density": 8.23}, "Dy": {"MeltingPoint": 1411.9, "BoilingPoint": 2566.9, "Density": 8.55}, "Ho": {"MeltingPoint": 1473.9, "BoilingPoint": 2699.9, "Density": 8.8}, "Er": {"MeltingPoint": 1528.9, "BoilingPoint": 2867.9, "Density": 9.07}, "Tm": {"MeltingPoint": 1544.9, "BoilingPoint": 1949.9, "Density": 9.32}, "Yb": {"MeltingPoint": 818.9, "BoilingPoint": 1195.9, "Density": 6.9}, "Lu": {"MeltingPoint": 1662.9, "BoilingPoint": 3401.9, "Density": 9.84}, "Hf": {"MeltingPoint": 2232.9, "BoilingPoint": 4602.9, "Density": 13.3}, "Ta": {"MeltingPoint": 3016.9, "BoilingPoint": 5457.9, "Density": 16.4}, "W": {"MeltingPoint": 3421.9, "BoilingPoint": 5554.9, "Density": 19.3}, "Re": {"MeltingPoint": 3185.9, "BoilingPoint": 5595.9, "Density": 20.8}, "Os": {"MeltingPoint": 3032.9, "BoilingPoint": 5011.9, "Density": 22.57}, "Ir": {"MeltingPoint": 2445.9, "BoilingPoint": 4427.9, "Density": 22.42}, "Pt": {"MeltingPoint": 1768.4, "BoilingPoint": 3824.9, "Density": 21.46}, "Au": {"MeltingPoint": 1064.2, "BoilingPoint": 2855.9, "Density": 19.282}, "Hg": {"MeltingPoint": -38.8, "BoilingPoint": 356.7, "Density": 13.5336}, "Tl": {"MeltingPoint": 303.9, "BoilingPoint": 1472.9, "Density": 11.8}, "Pb": {"MeltingPoint": 327.5, "BoilingPoint": 1748.9, "Density": 11.342}, "Bi": {"MeltingPoint": 271.4, "BoilingPoint": 1563.9, "Density": 9.807}, "Po": {"MeltingPoint": 253.9, "BoilingPoint": 961.9, "Density": 9.32}, "At": {"MeltingPoint": null, "BoilingPoint": null, "Density": null}, "Rn": {"MeltingPoint": -71.2, "BoilingPoint": -61.7, "Density": 0.00973}, "Fr": {"MeltingPoint": null, "BoilingPoint": null, "Density": null}, "Ra": {"MeltingPoint": 699.9, "BoilingPoint": 1139.9, "Density": 5.0}, "Ac": {"MeltingPoint": 1050.9, "BoilingPoint": 3197.9, "Density": 10.07}, "Th": {"MeltingPoint": 1749.9, "BoilingPoint": 4787.9, "Density": 11.72}, "Pa": {"MeltingPoint": 1571.9, "BoilingPoint": null, "Density": 15.37}, "U": {"MeltingPoint": 1134.9, "BoilingPoint": 4130.9, "Density": 18.95}, "Np": {"MeltingPoint": 643.9, "BoilingPoint": 3901.9, "Density": 20.25}, "Pu": {"MeltingPoint": 639.9, "BoilingPoint": 3227.9, "Density": 19.84}, "Am": {"MeltingPoint": 1175.9, "BoilingPoint": 2010.9, "Density": 13.69}, "Cm": {"MeltingPoint": 1344.9, "BoilingPoint": 3126.9, "Density": 13.51}, "Bk": {"MeltingPoint": 1049.9, "BoilingPoint": null, "Density": 14.0}, "Cf": {"MeltingPoint": 899.9, "BoilingPoint": null, "Density": null}, "Es": {"MeltingPoint": 859.9, "BoilingPoint": null, "Density": null}, "Fm": {"MeltingPoint": null, "BoilingPoint": null, "Density": null}, "Md": {"MeltingPoint": null, "BoilingPoint": null, "Density": null}, "No": {"MeltingPoint": null, "BoilingPoint": null, "Density": null}, "Lr": {"MeltingPoint": null, "BoilingPoint": null, "Density": null}, "Rf": {"MeltingPoint": null, "BoilingPoint": null, "Density": null}, "Db": {"MeltingPoint": null, "BoilingPoint": null, "Density": null}, "Sg": {"MeltingPoint": null, "BoilingPoint": null, "Density": null}, "Bh": {"MeltingPoint": null, "BoilingPoint": null, "Density": null}, "Hs": {"MeltingPoint": null, "BoilingPoint": null, "Density": null}, "Mt": {"MeltingPoint": null, "BoilingPoint": null, "Density": null}, "Ds": {"MeltingPoint": null, "BoilingPoint": null, "Density": null}, "Rg": {"MeltingPoint": null, "BoilingPoint": null, "Density": null}, "Cn": {"MeltingPoint": null, "BoilingPoint": null, "Density": null}, "Nh": {"MeltingPoint": null, "BoilingPoint": null, "Density": null}, "Fl": {"MeltingPoint": null, "BoilingPoint": null, "Density": null}, "Mc": {"MeltingPoint": null, "BoilingPoint": null, "Density": null}, "Lv": {"MeltingPoint": null, "BoilingPoint": null, "Density": null}, "Ts": {"MeltingPoint": null, "BoilingPoint": null, "Density": null}, "Og": {"MeltingPoint": null, "BoilingPoint": null, "Density": null}};
+
+/* ---------- properties: name, unit, source line, slider step ---------- */
+const META={
+ mass:{name:'Average atomic mass',unit:'u',src:'CIAAW standard atomic weights',step:.1},
+ ie:{name:'First ionization energy',unit:'kJ/mol',src:'NIST, rounded to whole kJ/mol',step:5},
+ r:{name:'Atomic radius (covalent)',unit:'pm',src:'covalent radii, Cordero et al. 2008',step:1},
+ en:{name:'Electronegativity',unit:'',src:'Pauling scale, no unit',step:.01},
+ mp:{name:'Melting point',unit:'°C',src:'PubChem',step:1,phys:'MeltingPoint'},
+ bp:{name:'Boiling point',unit:'°C',src:'PubChem',step:1,phys:'BoilingPoint'},
+ d:{name:'Density',unit:'g/cm³',src:'PubChem',step:.01,phys:'Density'}};
+const E=z=>DATA[z-1];
+/* the displayed string keeps the source's digits (22.990 stays 22.990); num() is for drawing and arithmetic */
+function txt(z,p){const m=META[p];if(m.phys){const v=(PHYS[E(z).s]||{})[m.phys];return v==null?null:String(v)}const v=E(z)[p];return v==null?null:String(v)}
+function num(z,p){const t=txt(z,p);return t==null?null:+t}
+const fmtv=(z,p)=>{const t=txt(z,p);if(t==null)return'no value in this data set';const u=META[p].unit;return t.replace('-','−')+(u?' '+u:'')};
+
+/* ---------- table geometry, RSC layout: La and Ac sit in group 3; Ce to Lu and Th to Lr form the two detached f rows ---------- */
+function pos(z){if(z===1)return{p:1,g:1};if(z===2)return{p:1,g:18};
+  if(z<=10)return{p:2,g:z<=4?z-2:z+8};if(z<=18)return{p:3,g:z<=12?z-10:z};
+  if(z<=36)return{p:4,g:z-18};if(z<=54)return{p:5,g:z-36};
+  if(z<=57)return{p:6,g:z-54};if(z<=71)return{p:6,g:null,f:z-57};if(z<=86)return{p:6,g:z-68};
+  if(z<=89)return{p:7,g:z-86};if(z<=103)return{p:7,g:null,f:z-89};return{p:7,g:z-100}}
+const period=z=>pos(z).p,group=z=>pos(z).g;
+function block(z){const{g}=pos(z);if(g===null)return'f';if(z===2||g<=2)return's';return g>=13?'p':'d'}
+const METALLOIDS=[5,14,32,33,51,52],NONMETALS=[1,2,6,7,8,9,10,15,16,17,18,34,35,36,53,54,86];
+function region(z){if(z===85||z>=104)return'unknown';return METALLOIDS.includes(z)?'metalloid':NONMETALS.includes(z)?'nonmetal':'metal'}
+function family(z){const{g}=pos(z);if(z===1)return'hydrogen';if(g===null)return'inner';
+  return g===1?'alkali':g===2?'alkaline':g===17?'halogen':g===18?'noble':g<=12?'transition':'other'}
+const FAMNAME={alkali:'Alkali metals',alkaline:'Alkaline earth metals',transition:'Transition metals',inner:'Lanthanides and actinides',halogen:'Halogens',noble:'Noble gases',other:'Other main-group elements',hydrogen:'Hydrogen'};
+const FAM1={alkali:'alkali metal',alkaline:'alkaline earth metal',transition:'transition metal',inner:'lanthanide or actinide',halogen:'halogen',noble:'noble gas',other:'main-group element',hydrogen:'nonmetal, not an alkali metal'};
+const REGNAME={metal:'Metals',metalloid:'Metalloids',nonmetal:'Nonmetals',unknown:'Too little data'};
+/* valence electrons for main-group elements (Unit 2's rule); null for d and f blocks */
+function valence(z){const{g}=pos(z);if(z===2)return 2;if(g===null||(g>=3&&g<=12))return null;return g<=2?g:g-10}
+U2.E3={DATA,PHYS,META,E,txt,num,fmtv,pos,period,group,block,region,family,valence,FAMNAME,FAM1,REGNAME};
+/* mission-page helpers: choice buttons whose icon is a small periodic-table outline with one group or one period lit, and a data table */
+const pkOut=lit=>{let s='<svg class="pki" viewBox="0 0 40 24" aria-hidden="true">';
+  for(let c=1;c<=18;c++){const top=c===1||c===18?1:c===2||c>=13?2:4;for(let r=top;r<=7;r++)s+=`<rect x="${(1+(c-1)*2.12).toFixed(2)}" y="${((r-1)*3.3+.6).toFixed(2)}" width="1.8" height="2.9" rx=".3" fill="${lit(c,r)?'var(--warm)':'var(--line)'}"/>`}
+  return s+'</svg>'};
+U2.M3={G:(g,lab)=>[String(g),lab||'Group '+g,pkOut(c=>c===g)],P:p=>['p'+p,'Period '+p,pkOut((c,r)=>r===p)],
+ /* the factors of the atom model: nuclear charge, energy level, mass */
+ IC:{charge:'<svg class="pki" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" fill="none" stroke="var(--line)" stroke-width="2"/><circle cx="20" cy="20" r="8" fill="var(--warm)"/><path d="M16 20h8M20 16v8" stroke="#fff" stroke-width="2.4"/><path d="M8 9l5 5M32 9l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+ level:'<svg class="pki" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="5" fill="var(--warm)"/><circle cx="20" cy="20" r="10.5" fill="none" stroke="var(--line)" stroke-width="2"/><circle cx="20" cy="20" r="17" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="37" cy="20" r="2.6" fill="currentColor"/></svg>',
+ mass:'<svg class="pki" viewBox="0 0 40 40" aria-hidden="true"><path d="M10 34 L14 15 H26 L30 34 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="20" cy="10" r="4" fill="none" stroke="currentColor" stroke-width="2"/><text x="20" y="30" text-anchor="middle" font-size="11" fill="currentColor" style="font-family:var(--mono)">m</text></svg>'},
+ TBL:(head,rows)=>`<table class="dt"><thead><tr>${head.map(h=>`<th${DATA.some(d=>d.s===String(h).replace(/ \(.*\)$/,''))?' class="chem"':''}>${h}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(v=>`<td>${v}</td>`).join('')}</tr>`).join('')}</tbody></table>`,
+/* a custom mission tab made of numbered sets (3.2 Rank it, 3.3 Mystery halogen): the dots, the solved list saved under one store
+   key, and the Next / Finish button. show(i,ok,solve) draws set i; it calls solve() once the set is answered correctly. */
+ sets(api,{key,count,dots,next,show,noun='Set'}){const solved=new Set(api.store.get(key,[]));let cur=0;
+  const nextOpen=()=>{for(let k=1;k<count;k++){const j=(cur+k)%count;if(!solved.has(j))return j}return -1};
+  const paint=()=>{dots.innerHTML='';for(let i=0;i<count;i++){const b=document.createElement('button');b.type='button';b.textContent=i+1;b.className=(i===cur?'cur ':'')+(solved.has(i)?'done':'');
+    b.setAttribute('aria-label',`${noun} ${i+1}${solved.has(i)?', solved':''}`);b.onclick=()=>go(i);dots.append(b)}
+   next.textContent=nextOpen()>=0?'Next '+noun.toLowerCase():'Finish'};
+  function go(i){cur=i;paint();show(i,solved.has(i),()=>{solved.add(i);api.store.set(key,[...solved]);api.done(solved.size);paint()})}
+  next.onclick=()=>{const n=nextOpen();if(n>=0)go(n);else api.next()};
+  go(Math.max(0,[...Array(count).keys()].findIndex(i=>!solved.has(i))));api.done(solved.size)}};
+
+/* ---------- styles, prepended so each surface's own CSS can override ---------- */
+const STY=`
+.ptx{--c-s:#4c78c8;--c-p:#3fae6e;--c-d:#e0a030;--c-f:#a070dc;--c-metal:#4c78c8;--c-metalloid:#b49b2c;--c-nonmetal:#e8743b;--c-unknown:#9a96a6;
+ --c-alkali:#e05d5d;--c-alkaline:#e0a030;--c-transition:#4c78c8;--c-inner:#7f8fa8;--c-halogen:#3fae6e;--c-noble:#a070dc;--c-other:#b6ae9c;--c-hydrogen:#b6ae9c}
+.ptx .ptgrid{display:grid;grid-template-columns:1.3em repeat(18,minmax(0,1fr));gap:2px;font-size:13px;line-height:1}
+.ptx .ptg,.ptx .ptp{font-family:var(--mono);font-size:.62em;color:var(--muted);display:flex;align-items:flex-end;justify-content:center;padding-bottom:2px}
+.ptx .ptp{align-items:center;padding:0}
+.ptx .pc{position:relative;aspect-ratio:1/1;min-width:0;border:1px solid color-mix(in srgb,var(--cc,var(--line)) 70%,var(--line));border-radius:4px;padding:0;margin:0;
+ background:color-mix(in srgb,var(--cc,var(--paper)) var(--ck,30%),var(--paper));color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.08em;cursor:pointer;font:inherit}
+.ptx .pc b{font-family:var(--display);font-weight:700;font-size:1em}
+.ptx .pc small{font-family:var(--mono);font-size:.56em;opacity:.8}
+.ptx .pc.dk{color:#fff}
+.ptx .pc.nov{background:var(--sunk);border-style:dashed;color:var(--muted)}
+.ptx .pc.unk{border-style:dashed}
+.ptx .pc[aria-pressed="true"]{outline:3px solid var(--ink);outline-offset:1px;z-index:1}
+.ptx .pc.hl{box-shadow:0 0 0 3px var(--warm);z-index:1}
+.ptx .pc.ok{box-shadow:0 0 0 3px var(--ok);z-index:1}
+.ptx .pc.no{box-shadow:0 0 0 3px var(--bad);z-index:1}
+.ptx .pc.dim{opacity:.35}
+.ptx .ph{grid-column:4/5;font-family:var(--mono);font-size:.5em;color:var(--muted);display:flex;align-items:center;justify-content:center;border:1px dashed var(--line);border-radius:4px}
+.ptx .fgap{height:.45em}
+.ptx .ptleg{display:flex;flex-wrap:wrap;gap:.25em .8em;font-size:.82em;margin:0;align-items:center}
+.ptx .ptleg span{display:inline-flex;align-items:center;gap:.3em}
+/* table hunt: the feedback says where the clicked element sits, so the info line is not repeated; the legend keeps the height of
+   the two-line Blocks legend and the feedback keeps two lines from the start, so nothing moves or runs off a reading page */
+.ptx.hunt .ptinfo{display:none}
+.ptx.hunt .ptleg{min-height:3.2em;align-content:flex-start}
+.ptx.hunt .ptask{min-height:1.8em} /* the closing line holds a compact Start again button */
+.ptx.hunt .ptask .btn{min-height:1.6em;padding:.1em .75em}
+/* while a reading lays out its pages: the hunt's feedback needs two lines, not the kit's general 6.4em, and the full info box
+   needs up to 6.4em (oganesson at 1280 px), so the page keeps room for whichever element is picked */
+body.measuring .page .sim.ptx.hunt .say{min-height:calc(2*1.4em + .7em)}
+body.measuring .page .ptx.full .ptinfo{min-height:6.5em}
+.ptx.hunt .say[hidden]{display:block!important;visibility:hidden}
+.ptx.hunt .say{min-height:calc(2*1.4em + .7em)}
+.ptx .ptleg i{width:1em;height:1em;border-radius:3px;display:inline-block;border:1px solid var(--line)}
+.ptx .ptleg .grad{width:7em;height:.8em;border-radius:3px;background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 8%,var(--paper)),var(--accent))}
+.ptx .ptinfo{margin:0;font-size:.9em;background:var(--sunk);border-radius:10px;padding:.4em .7em;min-height:2.6em}
+.ptx .ptinfo:empty{display:none}
+.ptx .ptinfo .vals{display:block;font-family:var(--mono);font-size:.86em;color:var(--muted);margin-top:.15em}
+.ptx .ptask{display:flex;align-items:center;gap:.6em;flex-wrap:wrap;margin:0;font-weight:700}
+.tplot .cv,.gplot .cv{cursor:crosshair}
+.tplot .ctl select,.gplot .ctl select{font:inherit;font-size:.9em}
+.sim .est{display:flex;align-items:center;gap:.5em;flex-wrap:wrap}
+.sim .est input[type=range]{flex:1 1 10em;min-width:8em;accent-color:var(--warm)}
+.sim .est output{font-family:var(--mono);font-weight:700;width:7em;flex:none;white-space:nowrap}
+.sim .est .lab{white-space:nowrap}
+.slide .sim .est{flex-wrap:nowrap}
+/* a trend plot with several properties stacks one source note per property in one cell: the note keeps the height of the longest */
+.tplot .simnote{display:grid}.tplot .simnote>span{grid-area:1/1}
+.sim .est .lab{font-family:var(--body);font-size:.68em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.rdots{display:flex;flex-wrap:wrap;gap:.35em}
+.rdots button{min-width:2.4em;padding:.3em .5em;border:1.5px solid var(--line);border-radius:999px;background:var(--paper);font:inherit;font-family:var(--mono);cursor:pointer;color:inherit}
+.rdots button.done{border-color:var(--ok);background:var(--ok-soft)}
+.rdots button.cur{outline:2px solid var(--warm);outline-offset:1px}
+`;
+if(!document.getElementById('u3common')){const s=document.createElement('style');s.id='u3common';s.textContent=STY;document.head.prepend(s)}
+
+const opt=(root,opts)=>Object.assign({},root.dataset,opts);
+const list=v=>Array.isArray(v)?v:v==null||v===''?[]:String(v).split(',').map(s=>s.trim()).filter(Boolean);
+
+/* ---------- 1. Periodic table explorer ----------
+   opts: modes "block,region,family,mass,ie,r,en" (first is the start unless mode= is given), z (selected), hl (Z list to ring),
+   frows ("no" hides the f rows), info ("short" for slides), tasks ([{q, ok:z=>bool, why, no}] turns it into a locate quiz), onPick(z) */
+const MODES={block:'Blocks',region:'Metals',family:'Families',mass:'Mass',ie:'Ionization energy',r:'Radius',en:'Electronegativity',plain:'Plain'};
+U2.ptExplorer=function(root,opts={}){const o=opt(root,opts);root.classList.add('sim','ptx');
+  const modes=list(o.modes).length?list(o.modes):['block','region','family'];let mode=modes.includes(o.mode)?o.mode:modes[0];
+  let z=+o.z||0;const frows=o.frows!=='no',short=o.info==='short',hl=list(o.hl).map(Number),tasks=o.tasks||null;let ti=0,tdone=[];if(tasks)root.classList.add('hunt');else if(!short)root.classList.add('full');
+  if(modes.length>1){const ctl=el('div','ctl');ctl.append(grp('Color by',seg(modes.map(m=>MODES[m]),i=>{mode=modes[i];paint()},modes.indexOf(mode))));root.append(ctl)}
+  const g=el('div','ptgrid');g.setAttribute('role','group');g.setAttribute('aria-label','Periodic table');
+  for(let k=1;k<=18;k++){const n=el('span','ptg',String(k));n.style.gridColumn=k+1;n.style.gridRow=1;n.setAttribute('aria-hidden','true');g.append(n)}
+  for(let p=1;p<=7;p++){const n=el('span','ptp',String(p));n.style.gridColumn=1;n.style.gridRow=p+1;n.setAttribute('aria-hidden','true');g.append(n)}
+  const cells={};
+  for(let k=1;k<=118;k++){const P=pos(k);if(P.g===null&&!frows)continue;const e=E(k);
+    const b=btn(`<small>${k}</small><b>${e.s}</b>`,'pc');b.setAttribute('aria-pressed','false');
+    if(P.g===null){b.style.gridColumn=P.f+4;b.style.gridRow=P.p===6?10:11}else{b.style.gridColumn=P.g+1;b.style.gridRow=P.p+1}
+    b.onclick=()=>pick(k);cells[k]=b;g.append(b)}
+  if(frows){const gap=el('div','fgap');gap.style.gridColumn='1/-1';gap.style.gridRow=9;g.append(gap);
+    [[10,'58–71'],[11,'90–103']].forEach(([r,t])=>{const h=el('span','ph',t);h.style.gridRow=r;h.setAttribute('aria-hidden','true');g.append(h)})}
+  const ask=el('p','ptask');const leg=el('p','ptleg');const info=el('p','ptinfo');info.setAttribute('role','status');const msg=sayBox();
+  if(tasks)root.append(ask);root.append(g,leg,info);if(tasks)root.append(msg);
+  function color(k){const b=cells[k];if(!b)return;b.classList.remove('nov','unk','dk');b.style.removeProperty('--cc');b.style.removeProperty('--ck');let lab='';
+    if(mode==='plain'){}
+    else if(mode==='block'){b.style.setProperty('--cc',`var(--c-${block(k)})`);lab=block(k)+' block'}
+    else if(mode==='region'){const r=region(k);b.style.setProperty('--cc',`var(--c-${r})`);if(r==='unknown')b.classList.add('unk');lab=REGNAME[r].toLowerCase().replace(/s$/,'')}
+    else if(mode==='family'){const f=family(k);b.style.setProperty('--cc',`var(--c-${f})`);if(k>=104)b.classList.add('unk');lab=FAM1[f]}
+    else{const v=num(k,mode);if(v==null){b.classList.add('nov');lab='no value in this data set'}
+      else{const t=(v-rng.lo)/(rng.hi-rng.lo||1);b.style.setProperty('--cc','var(--accent)');b.style.setProperty('--ck',Math.round(8+80*t)+'%');if(t>.55)b.classList.add('dk');lab=fmtv(k,mode)}}
+    b.setAttribute('aria-label',`${E(k).name}, ${E(k).s}, atomic number ${k}${lab?', '+lab:''}`)}
+  let rng={lo:0,hi:1};
+  function paint(){if(META[mode]){const vs=DATA.map(e=>num(e.z,mode)).filter(v=>v!=null);rng={lo:Math.min(...vs),hi:Math.max(...vs)}}
+    for(const k in cells){color(+k);cells[k].classList.toggle('hl',hl.includes(+k))}
+    if(mode==='block')leg.innerHTML=['s','p','d','f'].map(b=>`<span><i style="background:var(--c-${b})"></i>${b} block</span>`).join('')+'<span class="mono">He is an s-block element placed in group 18</span>';
+    else if(mode==='region')leg.innerHTML=['metal','metalloid','nonmetal','unknown'].map(r=>`<span><i style="background:var(--c-${r})"></i>${REGNAME[r]}</span>`).join('');
+    else if(mode==='family')leg.innerHTML=['alkali','alkaline','transition','halogen','noble','inner','other'].map(f=>`<span><i style="background:var(--c-${f})"></i>${FAMNAME[f]}</span>`).join('');
+    else if(META[mode]){const m=META[mode],d=mode==='en'?2:0,f=v=>v.toFixed(d);leg.innerHTML=`<span><b>${m.name}</b>${m.unit?' ('+m.unit+')':''}</span><span>${f(rng.lo)} <i class="grad" aria-hidden="true"></i> ${f(rng.hi)}</span><span><i style="background:var(--sunk);border-style:dashed"></i>no value in this data set</span><span class="mono">${m.src}</span>`}
+    else leg.innerHTML='';
+    show()}
+  function show(){if(!z){info.innerHTML=tasks?'':'Click any element to read its data.';return}const e=E(z),P=pos(z),f=family(z),v=valence(z);
+    const where=`period ${P.p} · ${P.g?'group '+P.g:'detached row'} · ${block(z)} block`;
+    const kind=z>=104?'placed by its expected electron arrangement; few properties measured':z===85?'halogen; too little has been collected to classify it as metal or nonmetal':f==='hydrogen'?'nonmetal, not an alkali metal':`${region(z)}${f!=='other'?', '+FAM1[f]:''}`;
+    if(short){info.innerHTML=`<b>${e.name}</b> (${e.s}), Z = ${z} · ${where} · ${kind}`+(META[mode]?` · <b>${fmtv(z,mode)}</b>`:'');return}
+    info.innerHTML=`<b>${e.name}</b> (${e.s}), Z = ${z} · ${where} · ${kind}${v!=null?` · ${v} valence electron${v===1?'':'s'}`:''}<span class="vals">${vals(z)}</span>`}
+  /* measured values first; the missing ones are named once instead of repeating "no value" four times */
+  function vals(z){const ps=[['mass','mass'],['ie','ionization energy'],['r','radius'],['en','electronegativity']],
+    has=ps.filter(([k])=>num(z,k)!=null).map(([k,n])=>`${n} ${fmtv(z,k)}`),miss=ps.filter(([k])=>num(z,k)==null).map(([,n])=>n);
+    if(miss.length)has.push('no value in this data set for '+(miss.length>1?miss.slice(0,-1).join(', ')+' or '+miss[miss.length-1]:miss[0]));
+    return has.join(' · ')}
+  function pick(k){z=k;for(const c in cells)cells[c].setAttribute('aria-pressed',String(+c===k));show();
+    if(tasks&&ti<tasks.length){const t=tasks[ti],ok=t.ok(k);cells[k].classList.add(ok?'ok':'no');setTimeout(()=>cells[k]&&cells[k].classList.remove('no'),900);
+      if(ok){tdone.push(k);msg.show('✓ '+t.why(k),'ok');ti++;setTimeout(task,0)}else msg.show(t.no?t.no(k):`Not ${E(k).name}. Read the question again.`,'no')}
+    if(o.onPick)o.onPick(k)}
+  function task(){if(!tasks)return;if(ti>=tasks.length){ask.innerHTML=`All ${tasks.length} found. <button class="btn ghost" type="button">Start again</button>`;ask.querySelector('button').onclick=()=>{ti=0;tdone.forEach(k=>cells[k].classList.remove('ok'));tdone=[];msg.hidden=true;task()};return}
+    ask.innerHTML=`<span class="mono">${ti+1} of ${tasks.length}</span> ${tasks[ti].q}`}
+  paint();task();if(z)pick(z);
+  return{pick,set mode(m){mode=m;paint()},cells}};
+
+/* ---------- shared canvas helpers ---------- */
+function niceMax(v){if(v<=0)return 1;const p=Math.pow(10,Math.floor(Math.log10(v))),m=v/p;return(m<=1?1:m<=2?2:m<=2.5?2.5:m<=5?5:10)*p}
+/* axis top: a round number just above the data, so the plot uses its height */
+function niceTop(v){if(v<=0)return 1;const p=Math.pow(10,Math.floor(Math.log10(v))),m=v/p;return[1,1.5,2,2.5,3,4,5,6,8,10].find(q=>m<=q+1e-9)*p}
+function ticks(lo,hi,n=5){const st=niceMax((hi-lo)/n),a=Math.ceil(lo/st)*st,t=[];for(let v=a;v<=hi+st*1e-6;v+=st)t.push(+v.toFixed(6));return t}
+const tickTxt=v=>String(v).replace('-','−');
+/* chart kit, shared with the lesson models (U2.C3):
+   halo   text with a paper-colored outline, legible over lines and bands
+   place  label placement: each label tries positions around its point, nearest first, and keeps clear of the plot edge,
+          the labels already placed and every other point. items {x,y,r,t,font,h,pri}; sets item.at {cx,cy,far}
+   tag    a filled value tag kept inside the canvas
+   hatch  diagonal hatching, used for "no value in this data set" (never drawn as zero) */
+const C3={
+ halo(x,t,px,py,col){x.save();x.lineJoin='round';x.lineWidth=4;x.strokeStyle=col||css('--paper');x.strokeText(t,px,py);x.restore();x.fillText(t,px,py)},
+ place(x,items,box,dots){const done=[],hit=(a,b)=>a.l<b.r&&b.l<a.r&&a.t<b.b&&b.t<a.b;
+  const near=(d,R)=>{const qx=Math.max(R.l,Math.min(d.x,R.r)),qy=Math.max(R.t,Math.min(d.y,R.b));return Math.hypot(d.x-qx,d.y-qy)<d.r+1.5};
+  const C=[[0,-1,1],[0,1,1],[1,-1,1],[-1,-1,1],[1,1,1],[-1,1,1],[1,0,1],[-1,0,1],[0,-1,2.6],[0,1,2.6],[1,-1,2.6],[-1,-1,2.6],[1,1,2.6],[-1,1,2.6],[0,-1,4.2],[0,1,4.2]];
+  items.slice().sort((a,b)=>b.pri-a.pri).forEach(it=>{x.font=it.font;const tw=x.measureText(it.t).width+4,th=it.h;let best=null,bs=1e9;
+   for(const[dx,dy,f]of C){const d=(it.r+2)*f+(f>1?4:0),dg=dx&&dy?.62:1,cx=it.x+dx*(d*dg+tw/2),cy=it.y+dy*(d*dg+th/2),R={l:cx-tw/2,r:cx+tw/2,t:cy-th/2,b:cy+th/2};
+    let s=f>1?3*f:0;if(R.l<box.l||R.r>box.r||R.t<box.t||R.b>box.b)s+=1000;
+    for(const q of done)if(hit(R,q))s+=100;
+    for(const p of dots)if((p.x!==it.x||p.y!==it.y)&&near(p,R))s+=8;
+    if(s<bs){bs=s;best={cx,cy,far:f>1}}if(s===0)break}
+   x.font=it.font;const w2=(x.measureText(it.t).width+4)/2;done.push({l:best.cx-w2,r:best.cx+w2,t:best.cy-th/2,b:best.cy+th/2});it.at=best});
+  return items},
+ tag(x,t,px,py,w,h,o){const pad=o.pad||5;x.font=o.font;const tw=x.measureText(t).width+pad*2,th=parseFloat(o.font.split(' ')[1])*1.5,ax=o.ax||'center',ay=o.ay||'bottom';
+  let l=ax==='center'?px-tw/2:ax==='left'?px:px-tw,tp=ay==='bottom'?py-th:ay==='top'?py:py-th/2;l=Math.max(1,Math.min(w-tw-1,l));tp=Math.max(1,Math.min(h-th-1,tp));
+  x.fillStyle=o.bg;x.beginPath();if(x.roundRect)x.roundRect(l,tp,tw,th,4);else x.rect(l,tp,tw,th);x.fill();
+  x.fillStyle=o.fg;x.textAlign='center';x.textBaseline='middle';x.fillText(t,l+tw/2,tp+th/2+.5);return{l,t:tp,w:tw,h:th}},
+ hatch(x,l,t,w,h,col){x.save();x.beginPath();x.rect(l,t,w,h);x.clip();x.strokeStyle=col;x.lineWidth=1;for(let s=-h;s<w;s+=7){x.beginPath();x.moveTo(l+s,t+h);x.lineTo(l+s+h,t);x.stroke()}x.restore()}};
+C3.ticks=ticks;C3.tickTxt=tickTxt;
+/* a hex color token at an alpha, for gradients and soft fills */
+C3.rgba=(c,a)=>{const m=/^#([0-9a-f]{6})$/i.exec(c);if(!m)return c;const n=parseInt(m[1],16);return `rgba(${n>>16},${n>>8&255},${n&255},${a})`};U2.C3=C3;
+const posTxt=k=>{const P=pos(k);return P.g?`period ${P.p}, group ${P.g}`:`period ${P.p}, f block`};
+
+/* ---------- 2. Trend plot: one property against atomic number ----------
+   opts: prop, props (choices), zmax (default 56), hl (start highlight: g1 g2 g17 g18 p2 p3 p4 p5 tm), hls (highlight choices),
+   mark (Z list to label), z (start selection), hide (Z drawn as "?" until revealed, with an estimate slider).
+   A highlighted family is joined by a dashed line (its trend down the group); a highlighted period or block by a solid one. */
+const HL={none:['None',()=>false],g1:['Group 1',z=>group(z)===1&&z>1],g2:['Group 2',z=>group(z)===2],g17:['Group 17',z=>group(z)===17],g18:['Group 18',z=>group(z)===18],
+ p2:['Period 2',z=>period(z)===2],p3:['Period 3',z=>period(z)===3],p4:['Period 4',z=>period(z)===4],p5:['Period 5',z=>period(z)===5],
+ tm:['Transition metals',z=>{const g=group(z);return g!=null&&g>=3&&g<=12}]};
+U2.trendPlot=function(root,opts={}){const o=opt(root,opts);root.classList.add('sim','tplot');
+  const slide=!!root.closest('.slide'),SK=slide?1.18:1,f=(px,wt,fam)=>F(px*SK,wt,fam);
+  const props=list(o.props).length?list(o.props):[o.prop||'ie'];let prop=o.prop&&props.includes(o.prop)?o.prop:props[0];
+  const zmax=+o.zmax||56,mark=list(o.mark).map(Number);let hl=HL[o.hl]?o.hl:'none',sel=+o.z||0,hov=0;
+  const hide=+o.hide||0;let est=null,shown=!hide;
+  const ctl=el('div','ctl');if(props.length>1)ctl.append(grp('Property',seg(props.map(p=>META[p].name.replace(' (covalent)','')),i=>{prop=props[i];sel=0;upd()},props.indexOf(prop))));
+  const hls=list(o.hls).length?list(o.hls):['none','g1','g18','p2','p3'];
+  if(hls.length>1){const s=el('select');s.setAttribute('aria-label','Highlight');hls.forEach(k=>s.append(new Option(HL[k][0],k)));s.value=hl;s.onchange=()=>{hl=s.value;L.kick()};ctl.append(grp('Highlight',s))}
+  if(ctl.children.length)root.append(ctl);
+  const{cv,c}=shell(root,+o.aspect||.5,'Graph');cv.tabIndex=0;cv.setAttribute('aria-label','Graph. Use the left and right arrow keys to step through the elements.');
+  const rE=ro('Element','click a point'),rP=ro('Position','–'),rV=ro('Value','–');const rs=el('div','ros');rs.append(rE,rP,rV);root.append(rs);
+  let estUI=null;const msg=sayBox();
+  if(hide){estUI=el('div','est');const r=el('input');r.type='range';r.setAttribute('aria-label',`Your estimate for ${E(hide).name}`);const out=el('output');const rev=btn('Reveal','btn primary');
+    estUI.append(el('span','lab',`Estimate for ${E(hide).s}`),r,out,rev);root.append(estUI,msg);
+    r.oninput=()=>{est=+r.value;out.textContent=fmtN(est)+(META[prop].unit?' '+META[prop].unit:'');shown=false;L.kick()};
+    rev.onclick=()=>{if(est==null){msg.show('Move the slider to make an estimate first.');return}shown=true;sel=hide;upd();
+      const v=num(hide,prop),d=Math.abs(est-v),pc=Math.round(100*d/Math.abs(v));
+      msg.show(`Reference value for ${E(hide).name.toLowerCase()}: <b>${fmtv(hide,prop)}</b>. Your estimate was ${fmtN(est)}, off by ${fmtN(d)} (${pc}%). `+(pc<=10?'A close estimate: the trend predicts the value well.':'The trend gives the direction; the exact value needs data.'),pc<=10?'ok':'')};
+    estUI.r=r;estUI.out=out}
+  const note=el('p','simnote');root.append(note);
+  const fmtN=v=>prop==='en'?v.toFixed(2):prop==='mass'?v.toFixed(1):String(Math.round(v));
+  let pts=[],geo=null;
+  const has=q=>q>=1&&q<=zmax&&num(q,prop)!=null,vis=q=>!(q===hide&&!shown);
+  const noteTxt=p=>{const m=META[p];let n=0;for(let k=1;k<=zmax;k++)if(num(k,p)!=null)n++;
+    return `${m.name}${m.unit?' ('+m.unit+')':''} for Z = 1 to ${zmax}. Source: ${m.src}.`+(n<zmax?' Hatched columns are elements with no value in this data set, not zeros.':'')};
+  props.forEach(p=>note.append(el('span','',noteTxt(p))));
+  function upd(){const m=META[prop];pts=[];for(let k=1;k<=zmax;k++){const v=num(k,prop);if(v!=null)pts.push([k,v])}
+    if(estUI){const vs=pts.map(p=>p[1]);const hi=niceTop(Math.max(...vs)*1.05);estUI.r.min=0;estUI.r.max=hi;estUI.r.step=m.step;if(est==null)estUI.r.value=hi/2}
+    [...note.children].forEach((sp,i)=>{sp.style.visibility=props[i]===prop?'':'hidden'});
+    read(sel);L.kick()}
+  function read(k){if(!k||!vis(k)){rE.v.textContent=k?`${E(k).s} · Z = ${k}`:'click a point';rP.v.textContent=k?posTxt(k):'–';rV.v.textContent=k?'hidden: estimate it':'–';return}
+    rE.v.textContent=`${E(k).name} · Z = ${k}`;rP.v.textContent=posTxt(k);rV.v.textContent=fmtv(k,prop)}
+  function draw(){const{x,w,h}=fit(c);const k=FK()*SK,m=META[prop],isH=HL[hl][1],anyH=hl!=='none';
+    const ink=css('--ink'),mut=css('--muted'),acc=css('--accent'),warm=css('--warm'),paper=css('--paper'),line=css('--line');
+    const L0=62*k,R0=12*k,T0=24*k,B0=44*k,W=w-L0-R0,H=h-T0-B0;
+    const vs=pts.map(p=>p[1]),hi=niceTop(Math.max(...vs)*1.05);
+    const X=z=>L0+W*(z-.5)/zmax,Y=v=>T0+H*(1-v/hi);geo={X,Y,hi,L0,W,T0,H};
+    const step=W/zmax,rN=Math.min(3.3*k,step*.32),rOn=Math.min(4.8*k,step*.45);
+    /* period bands, named in a strip above the plot */
+    for(let p=1;p<=7;p++){let a=0,b=0;for(let q=1;q<=zmax;q++)if(period(q)===p){if(!a)a=q;b=q}if(!a)continue;
+      const xa=X(a-.5),xb=X(b+.5),wd=xb-xa;x.fillStyle=p%2?css('--paper2'):css('--sunk');x.fillRect(xa,T0,wd,H);
+      x.fillStyle=mut;x.font=f(11,700,'--mono');x.textAlign='center';x.textBaseline='bottom';
+      const t=wd>x.measureText('Period '+p).width+8?'Period '+p:wd>x.measureText('P'+p).width+4?'P'+p:'';if(t)x.fillText(t,(xa+xb)/2,T0-6*k);
+      if(p>1){x.strokeStyle=line;x.lineWidth=1;x.beginPath();x.moveTo(xa,T0-18*k);x.lineTo(xa,T0);x.stroke()}}
+    /* elements with no value: hatched, never drawn as zero */
+    for(let q=1;q<=zmax;q++){if(has(q))continue;let b=q;while(b<zmax&&!has(b+1))b++;const xa=X(q-.5),xb=X(b+.5);C3.hatch(x,xa,T0,xb-xa,H,line);
+      if(xb-xa>52*k){x.fillStyle=mut;x.font=f(10.5,600);x.textAlign='center';x.textBaseline='bottom';C3.halo(x,'no value',(xa+xb)/2,T0+H-5*k)}q=b}
+    /* grid and axes */
+    x.lineWidth=1;x.font=f(11.5,600,'--mono');x.textAlign='right';x.textBaseline='middle';
+    ticks(0,hi,5).forEach(v=>{const y=Y(v);x.strokeStyle=line;x.beginPath();x.moveTo(L0,y);x.lineTo(L0+W,y);x.stroke();x.fillStyle=mut;x.fillText(prop==='en'?v.toFixed(1):tickTxt(v),L0-8*k,y)});
+    x.strokeStyle=mut;x.lineWidth=1.25;x.beginPath();x.moveTo(L0,T0);x.lineTo(L0,T0+H);x.lineTo(L0+W,T0+H);x.stroke();
+    x.lineWidth=1;x.textAlign='center';x.textBaseline='top';x.fillStyle=mut;
+    for(let q=1;q<=zmax;q++){const xx=X(q),maj=q%5===0;x.beginPath();x.moveTo(xx,T0+H);x.lineTo(xx,T0+H+(maj?6:3)*k);x.stroke();if(maj)x.fillText(q,xx,T0+H+8*k)}
+    x.font=f(12,700);x.fillStyle=ink;x.fillText('Atomic number, Z',L0+W/2,T0+H+25*k);
+    x.save();x.translate(15*k,T0+H/2);x.rotate(-Math.PI/2);x.textBaseline='middle';x.fillText(m.name.replace(' (covalent)','')+(m.unit?' ('+m.unit+')':' (Pauling scale)'),0,0);x.restore();
+    /* the data: neighbors joined only when both have values */
+    x.strokeStyle=acc;x.globalAlpha=anyH?.3:.6;x.lineWidth=2*SK;x.lineJoin='round';
+    for(let i=1;i<pts.length;i++){const[a,va]=pts[i-1],[b,vb]=pts[i];if(b!==a+1||!vis(a)||!vis(b))continue;x.beginPath();x.moveTo(X(a),Y(va));x.lineTo(X(b),Y(vb));x.stroke()}
+    x.globalAlpha=1;
+    const hp=pts.filter(([q])=>isH(q)&&vis(q));
+    if(hp.length>1){const fam=hl[0]==='g';x.strokeStyle=warm;x.lineWidth=2.6*SK;if(fam)x.setLineDash([7*SK,5*SK]);x.beginPath();
+      hp.forEach(([q,v],i)=>{if(i&&(fam||q===hp[i-1][0]+1))x.lineTo(X(q),Y(v));else x.moveTo(X(q),Y(v))});x.stroke();x.setLineDash([])}
+    const dots=[];
+    pts.forEach(([q,v])=>{if(!vis(q))return;const on=isH(q),r=on?rOn:rN;x.globalAlpha=anyH&&!on?.55:1;x.fillStyle=on?warm:acc;x.beginPath();x.arc(X(q),Y(v),r,0,TAU);x.fill();
+      if(on){x.strokeStyle=paper;x.lineWidth=1.5;x.stroke()}x.globalAlpha=1;dots.push({x:X(q),y:Y(v),r})});
+    /* labels: the selection first, then marked points, then the highlight */
+    const items=[];pts.forEach(([q,v])=>{if(!vis(q))return;const on=isH(q);if(on||mark.includes(q)||q===sel)items.push({q,x:X(q),y:Y(v),r:(on?rOn:rN)+(q===sel?5*k:0),t:E(q).s,font:f(12.5,800,'--display'),h:14*k,pri:q===sel?3:mark.includes(q)?2:1})});
+    C3.place(x,items,{l:L0+2,t:T0+2,r:L0+W-2,b:T0+H-2},dots);
+    items.forEach(it=>{const a=it.at;if(a.far){x.strokeStyle=mut;x.lineWidth=1;x.beginPath();x.moveTo(it.x,it.y);x.lineTo(a.cx,a.cy);x.stroke()}
+      x.font=it.font;x.fillStyle=ink;x.textAlign='center';x.textBaseline='middle';C3.halo(x,it.t,a.cx,a.cy)});
+    /* the hidden member and the estimate */
+    if(hide&&!shown){const xx=X(hide);x.setLineDash([4,4]);x.strokeStyle=warm;x.lineWidth=1.5;x.beginPath();x.moveTo(xx,T0+H);x.lineTo(xx,T0+20*k);x.stroke();x.setLineDash([]);
+      x.fillStyle=warm;x.textAlign='center';x.textBaseline='bottom';x.font=f(16,800,'--display');C3.halo(x,'?',xx,T0+H-4);x.font=f(12.5,800,'--display');C3.halo(x,E(hide).s,xx,T0+H-24*k)}
+    if(hide&&est!=null){x.strokeStyle=warm;x.lineWidth=2.5;x.beginPath();x.arc(X(hide),Y(est),6*k,0,TAU);x.stroke()}
+    /* selection: ring, guides to both axes and a value tag on the y axis */
+    if(sel&&vis(sel)&&num(sel,prop)!=null&&sel<=zmax){const sx=X(sel),sy=Y(num(sel,prop));
+      x.strokeStyle=ink;x.globalAlpha=.5;x.lineWidth=1;x.setLineDash([3,3]);x.beginPath();x.moveTo(L0,sy);x.lineTo(sx,sy);x.moveTo(sx,sy);x.lineTo(sx,T0+H);x.stroke();x.setLineDash([]);x.globalAlpha=1;
+      x.lineWidth=2;x.beginPath();x.arc(sx,sy,rOn+4*k,0,TAU);x.stroke();
+      C3.tag(x,fmtN(num(sel,prop)),L0-2,sy,w,h,{font:f(11,700,'--mono'),bg:ink,fg:paper,ax:'right',ay:'middle',pad:4})}
+    /* hover: a tooltip with the value, or "no value" over a hatched column */
+    if(hov>0&&hov!==sel&&vis(hov)){const hx=X(hov),hy=Y(num(hov,prop));x.strokeStyle=ink;x.lineWidth=1.5;x.beginPath();x.arc(hx,hy,rOn+2,0,TAU);x.stroke();
+      C3.tag(x,`${E(hov).s} · ${fmtv(hov,prop)}`,hx,hy-rOn-6,w,h,{font:f(11.5,700),bg:ink,fg:paper})}
+    else if(hov<0)C3.tag(x,`${E(-hov).s} · no value in this data set`,X(-hov),T0+H*.5,w,h,{font:f(11.5,700),bg:mut,fg:paper})}
+  function near(ev){if(!geo)return 0;const{x:mx,y:my}=ptr(c,ev);let best=0,bd=22*FK();
+    pts.forEach(([q,v])=>{if(!vis(q))return;const d=Math.hypot(geo.X(q)-mx,geo.Y(v)-my);if(d<bd){bd=d;best=q}});
+    if(!best){const q=Math.round((mx-geo.L0)/geo.W*zmax+.5);if(q>=1&&q<=zmax&&Math.abs(geo.X(q)-mx)<geo.W/zmax/2&&my>geo.T0&&my<geo.T0+geo.H&&num(q,prop)==null)return -q}return best}
+  c.addEventListener('pointermove',e=>{const q=near(e);if(q!==hov){hov=q;L.kick()}});
+  c.addEventListener('pointerleave',()=>{hov=0;L.kick()});
+  c.addEventListener('click',e=>{const q=near(e);if(q>0){sel=q;read(q);L.kick()}else if(q<0){sel=0;rE.v.textContent=`${E(-q).name} · Z = ${-q}`;rP.v.textContent=posTxt(-q);rV.v.textContent='no value in this data set';L.kick()}});
+  /* the arrow keys step through the points; stopPropagation keeps them from also turning the slide or the page */
+  cv.addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;e.preventDefault();e.stopPropagation();const zs=pts.map(p=>p[0]).filter(vis);let i=zs.indexOf(sel);
+    i=e.key==='Home'?0:e.key==='End'?zs.length-1:i<0?0:Math.max(0,Math.min(zs.length-1,i+(e.key==='ArrowRight'?1:-1)));sel=zs[i];read(sel);L.kick()});
+  /* every text each readout can show, so the plot keeps one height whichever point is chosen */
+  const zs=[...Array(zmax)].map((_,i)=>i+1);
+  rE.hold(['click a point',...zs.flatMap(k=>[`${E(k).name} · Z = ${k}`,`${E(k).s} · Z = ${k}`])]);rP.hold(['–',...zs.map(posTxt)]);
+  rV.hold(['–','hidden: estimate it','no value in this data set',...props.flatMap(p=>zs.filter(k=>num(k,p)!=null).map(k=>fmtv(k,p)))]);
+  const L=loop(c,draw);upd();
+  return{set prop(p){prop=p;upd()},select(k){sel=k;read(k);L.kick()}}};
+
+/* ---------- 3. Group plot: one property for the members of a family, as bars; hide one member to predict it ----------
+   opts: zs (Z list, top of the group first), prop (any META key, including mp, bp, d), hide (Z), aspect.
+   Under each bar: the period when the set is one group, the group when it is one period, otherwise the group. */
+U2.groupPlot=function(root,opts={}){const o=opt(root,opts);root.classList.add('sim','gplot');
+  const slide=!!root.closest('.slide'),SK=slide?1.12:1,f=(px,wt,fam)=>F(px*SK,wt,fam);
+  const zs=list(o.zs).map(Number),prop=o.prop||'mp',m=META[prop],hide=+o.hide||0;let est=null,shown=!hide,hov=-1;
+  const{c}=shell(root,+o.aspect||.48,`Bar chart: ${m.name.toLowerCase()} of ${zs.map(k=>E(k).name.toLowerCase()).join(', ')}`);
+  const vals=zs.map(k=>num(k,prop));
+  let lo=Math.min(0,...vals.filter(v=>v!=null)),hi=Math.max(0,...vals.filter(v=>v!=null));const pad=(hi-lo)*.12||1;lo=lo<0?lo-pad:0;hi=hi>0?hi+pad:0;
+  const fmtN=v=>m.step<1?(m.step<.1?v.toFixed(2):v.toFixed(1)):String(Math.round(v)).replace('-','−');
+  const oneG=zs.every(q=>group(q)===group(zs[0]));
+  const sub=q=>oneG?'period '+period(q):'group '+group(q);
+  const msg=sayBox();
+  if(hide){const est0=el('div','est');const r=el('input');r.type='range';r.min=lo;r.max=hi;r.step=m.step;r.value=(lo+hi)/2;r.setAttribute('aria-label',`Your estimate for ${E(hide).name}`);
+    const out=el('output','',`?${m.unit?' '+m.unit:''}`);const rev=btn('Reveal','btn primary');est0.append(el('span','lab',`Your estimate for <span class="chem">${E(hide).s}</span>`),r,out,rev);root.append(est0,msg);
+    r.oninput=()=>{est=+r.value;out.textContent=fmtN(est)+(m.unit?' '+m.unit:'');if(shown)judge();L.kick()};
+    rev.onclick=()=>{if(est==null){msg.show('Move the slider to make your estimate first.');return}shown=true;rev.disabled=true;L.kick();judge()};
+    const judge=()=>{
+      const v=num(hide,prop),i=zs.indexOf(hide),a=vals[i-1],b=vals[i+1],between=a!=null&&b!=null&&(v-a)*(v-b)<=0,eb=a!=null&&b!=null&&(est-a)*(est-b)<=0;
+      msg.show(`Reference value for ${E(hide).name.toLowerCase()}: <b>${fmtv(hide,prop)}</b> (${m.src}). Your estimate: ${fmtN(est)}${m.unit?' '+m.unit:''}. `+
+        (between?(eb?'Your estimate sits between the neighbors, as the trend suggests. ':'The value sits between its neighbors; an estimate between them would have followed the trend. '):'')+
+        'A family trend gives a likely range, not an exact value.',eb||!between?'ok':'')}}
+  root.append(el('p','simnote',`${m.name} (${m.unit}). Source: ${m.src}.${hide?' The hidden value is a reference value, not a measurement you made.':''}`));
+  let geo=null;
+  /* temperatures below 0 °C: 0 °C is not a true zero, so the bars rise from the bottom of the axis (a higher temperature is a
+     taller bar) and 0 °C is a dashed reference line. Every other property keeps its bars on zero. */
+  const temp=m.unit==='°C'&&lo<0,up=v=>temp||v>=0;
+  function draw(){const{x,w,h}=fit(c);const k=FK()*SK,L0=64*k,R0=12*k,T0=26*k,B0=48*k,W=w-L0-R0,H=h-T0-B0,Y=v=>T0+H*(hi-v)/(hi-lo),y0=Y(0),base=temp?T0+H:y0;
+    const ink=css('--ink'),mut=css('--muted'),acc=css('--accent'),warm=css('--warm'),paper=css('--paper'),line=css('--line');
+    x.lineWidth=1;x.font=f(11.5,600,'--mono');x.textAlign='right';x.textBaseline='middle';
+    ticks(lo,hi,5).forEach(v=>{const y=Y(v);x.strokeStyle=line;x.beginPath();x.moveTo(L0,y);x.lineTo(L0+W,y);x.stroke();x.fillStyle=mut;x.fillText(tickTxt(v),L0-8*k,y)});
+    x.strokeStyle=mut;x.lineWidth=1.25;x.beginPath();x.moveTo(L0,T0);x.lineTo(L0,T0+H);x.stroke();
+    x.strokeStyle=ink;x.globalAlpha=.7;x.lineWidth=1.5;if(temp)x.setLineDash([6,4]);x.beginPath();x.moveTo(L0,y0);x.lineTo(L0+W,y0);x.stroke();x.setLineDash([]);
+    if(temp){x.beginPath();x.moveTo(L0,base);x.lineTo(L0+W,base);x.stroke()}x.globalAlpha=1;
+    x.save();x.translate(15*k,T0+H/2);x.rotate(-Math.PI/2);x.textAlign='center';x.textBaseline='middle';x.fillStyle=ink;x.font=f(12,700);x.fillText(`${m.name} (${m.unit})`,0,0);x.restore();
+    const bw=W/zs.length;geo={L0,bw,T0,H};let youTag=null;x.font=f(11,600,'--mono');
+    const tight=Math.max(...zs.map(q=>x.measureText(sub(q)).width))+14*k>bw,subT=q=>tight?String(oneG?period(q):group(q)):sub(q);
+    if(tight){x.fillStyle=mut;x.textAlign='right';x.textBaseline='top';x.fillText(oneG?'period':'group',L0-8*k,T0+H+27*k)}
+    zs.forEach((q,i)=>{const cx=L0+bw*(i+.5),v=vals[i],wd=Math.min(bw*.58,96*k),rr=Math.min(6*k,wd/4);let clash=false;
+      if(i===hov){x.fillStyle=css('--sunk');x.fillRect(cx-bw/2+2,T0,bw-4,H)}
+      x.fillStyle=ink;x.font=f(16,800,'--display');x.textAlign='center';x.textBaseline='top';x.fillText(E(q).s,cx,T0+H+7*k);
+      x.fillStyle=mut;x.font=f(11,600,'--mono');x.fillText(subT(q),cx,T0+H+27*k);
+      if(v==null){x.fillStyle=mut;x.font=f(11.5,600);x.textBaseline='bottom';x.fillText('no value',cx,base-4);return}
+      if(q===hide&&!shown){const top=up(v)?T0+2:y0,bot=up(v)?base:T0+H-2;x.fillStyle=css('--warm-soft')||paper;x.globalAlpha=.6;x.fillRect(cx-wd/2,top,wd,bot-top);x.globalAlpha=1;
+        x.setLineDash([6,4]);x.strokeStyle=warm;x.lineWidth=2;x.strokeRect(cx-wd/2,top,wd,bot-top);x.setLineDash([]);
+        x.fillStyle=warm;x.font=f(28,800,'--display');x.textBaseline='middle';
+        /* the question mark keeps clear of the estimate line and its tag: it moves to the middle of the larger part of the box */
+        const mid=(top+bot)/2,ye=est!=null?Y(est):NaN,qy=Math.abs(ye-mid)<40*k?(ye-top>bot-ye?(top+ye-22*k)/2:(ye+22*k+bot)/2):mid;x.fillText('?',cx,qy)}
+      else{const y=Y(v),t=Math.min(y,base),hh=Math.abs(base-y);x.fillStyle=q===hide?warm:acc;x.globalAlpha=q===hide?.92:.85;x.beginPath();
+        if(x.roundRect)x.roundRect(cx-wd/2,t,wd,hh,up(v)?[rr,rr,0,0]:[0,0,rr,rr]);else x.rect(cx-wd/2,t,wd,hh);x.fill();x.globalAlpha=1;
+        x.font=f(12.5,700,'--mono');const lh=12.5*k*1.3,o0=up(v)?y-4-lh:y+4,yE=q===hide&&est!=null?Y(est):NaN;clash=yE>o0-6&&yE<o0+lh+6;
+        const ly=clash?(up(v)?Math.min(y,yE)-6*k:Math.max(y,yE)+6*k):(up(v)?y-4:y+4);
+        x.fillStyle=ink;x.textBaseline=up(v)?'bottom':'top';x.fillText(fmtv(q,prop).replace(' '+m.unit,''),cx,ly)}
+      if(q===hide&&est!=null){const y=Y(est);x.strokeStyle=ink;x.lineWidth=2.5;if(shown)x.setLineDash([5,4]);x.beginPath();x.moveTo(cx-wd/2-8*k,y);x.lineTo(cx+wd/2+8*k,y);x.stroke();x.setLineDash([]);
+        const ab=clash?!up(v):shown&&v!=null?y<Y(v):y>T0+H/2;youTag=[`you: ${fmtN(est)}`,cx,ab?y-5*k:y+5*k,ab?'bottom':'top']}});
+    if(youTag)C3.tag(x,youTag[0],youTag[1],youTag[2],w,h,{font:f(11,700),bg:ink,fg:paper,ay:youTag[3],pad:4});
+    if(hov>=0&&!(zs[hov]===hide&&!shown)&&vals[hov]!=null){const q=zs[hov],t=`${E(q).name}: ${fmtv(q,prop)}`,ft=f(11.5,700);x.font=ft;const hw=x.measureText(t).width/2+9*k;
+      C3.tag(x,t,Math.max(L0+hw,Math.min(L0+W-hw,L0+bw*(hov+.5))),T0-2*k,w,h,{font:ft,bg:ink,fg:paper,ay:'bottom'})}}
+  c.addEventListener('pointermove',e=>{if(!geo)return;const i=Math.floor((ptr(c,e).x-geo.L0)/geo.bw),n=i>=0&&i<zs.length?i:-1;if(n!==hov){hov=n;L.kick()}});
+  c.addEventListener('pointerleave',()=>{hov=-1;L.kick()});
+  const L=loop(c,draw);
+  return{redraw:()=>L.kick()}};
+})();
+
+/* ===== Lesson 3.2 model: an atom drawn to its covalent radius, with its nucleus, inner electrons and outer electrons.
+   Data come from U2.E3 (common/sims.js). The outer circle is to scale; the inner levels are schematic and the page says so.
+   opts: sets "p2,p3,g1,g2,g17" (first is the start), z (start element), show "r" (radius bars, default) or "ie" (remove an electron) ===== */
+(function(){
+const U2=window.U2;const {el,btn,css,F,FK,shell,fit,loop,seg,ro,grp,sayBox,TAU,REDUCED,E3}=U2;
+const {E,num,txt,period,group}=E3;
+
+const STY=`
+.atm .pick{display:flex;flex-wrap:wrap;gap:.4em;align-items:center}
+.atm .pick .seg button{min-width:2.6em;font-family:var(--display);font-weight:700}
+.atm .rmv{display:flex;gap:.5em;align-items:center;flex-wrap:wrap}
+`;
+if(!document.getElementById('u32sims')){const s=document.createElement('style');s.id='u32sims';s.textContent=STY;document.head.prepend(s)}
+
+const SETS={p2:['Period 2',[3,4,5,6,7,8,9]],p3:['Period 3',[11,12,13,14,15,16,17]],g1:['Group 1',[3,11,19,37,55]],g2:['Group 2',[4,12,20,38,56]],g17:['Group 17',[9,17,35,53]]};
+/* filling order of sublevels: [energy level, electrons it holds]; correct for every main-group element used here */
+const ORDER=[[1,2],[2,2],[2,6],[3,2],[3,6],[4,2],[3,10],[4,6],[5,2],[4,10],[5,6],[6,2],[4,14],[5,10],[6,6],[7,2]];
+function levels(z){const n=[];let left=z;for(const[k,cap]of ORDER){if(left<=0)break;const a=Math.min(cap,left);n[k-1]=(n[k-1]||0)+a;left-=a}return n}
+const outer=z=>{const l=levels(z);return l[l.length-1]};
+const PM_MAX=250;/* the drawing scale is fixed, so atoms from different sets can be compared */
+
+const nm=k=>E(k).name.toLowerCase();
+U2.atomModel=function(root,opts={}){const o=Object.assign({},root.dataset,opts);root.classList.add('sim','atm');
+  const keys=String(o.sets||'p3').split(',').map(s=>s.trim()).filter(k=>SETS[k]);let set=keys[0];
+  const ie=o.show==='ie',slide=!!root.closest('.slide'),KB=slide?1.2:1,Fz=(px,w,f)=>F(px*KB,w,f);let zs=SETS[set][1];let z=zs.includes(+o.z)?+o.z:zs[0],prev=0,cmp=0,last=0;
+  let seen=new Set(ie?[]:[z]),gone=new Set(),anim=0,busy=false;
+  const ctl=el('div','ctl');
+  if(keys.length>1)ctl.append(grp('Compare',seg(keys.map(k=>SETS[k][0]),i=>{set=keys[i];zs=SETS[set][1];prev=0;cmp=0;last=0;seen=new Set();gone=new Set();pick(zs[0],true)},0)));
+  const pk=el('div','pick');ctl.append(pk);root.append(ctl);
+  function picker(){pk.innerHTML='';const s=seg(zs.map(k=>E(k).s),i=>pick(zs[i]),zs.indexOf(z));s.setAttribute('aria-label','Choose an element');pk.append(grp('Element',s));pk.s=s}
+  const{c}=shell(root,+o.aspect||.6,ie?'Atom model with a bar chart of first ionization energies':'Atom model with a bar chart of covalent radii');
+  let rmv=null;if(ie){rmv=el('div','rmv');const b=btn('Remove one outer electron','btn primary');b.onclick=remove;rmv.append(b);root.append(rmv);rmv.b=b}
+  const rP=ro('Protons','–'),rI=ro('Inner electrons','–'),rO=ro('Outer electrons','–'),rR=ro('Covalent radius','–'),rE=ro('First ionization energy','–');
+  const rs=el('div','ros');if(slide)rs.append(rI,rO,ie?rE:rR);else{rs.append(rP,rI,rO,rR);if(ie)rs.append(rE)}root.append(rs);const msg=sayBox();root.append(msg);
+  root.append(el('p','simnote',slide?'Model, not a picture: the outer circle is to scale; the inner levels are not.':'Model, not a picture. The outer circle is drawn to scale from the covalent radius (Cordero et al. 2008); the inner energy levels are evenly spaced for clarity. '+(ie?'Ionization energies: NIST, rounded to whole kJ/mol.':'Noble gases have no covalent radius in this data set.')));
+
+  function pick(k,fresh){z=k;anim=0;busy=false;if(!ie){seen.add(k)}if(fresh)picker();else if(pk.s)pk.s.set(zs.indexOf(k));
+    if(!ie){if(prev&&prev!==k){cmp=prev;msg.show(explain(prev,k,'r'),'')}else msg.show(`Click another element to compare it with ${nm(k)}.`,'')}
+    else msg.show(gone.has(k)?`You already removed an electron from ${nm(k)}: ${txt(k,'ie')} kJ/mol. Choose another element.`:`Click <b>Remove one outer electron</b> to measure the energy needed for ${nm(k)}.`,'');
+    if(!ie)prev=k;read();L.kick()}
+  function remove(){if(busy)return;if(gone.has(z)){msg.show(`The bar for ${nm(z)} is already on the chart. Choose another element.`,'');return}
+    busy=true;anim=REDUCED?1:0.001;L.run=true;if(REDUCED)done()}
+  function done(){if(!busy)return;busy=false;L.run=false;gone.add(z);
+    msg.show(`Removing one outer electron from each atom in a mole of gaseous ${E(z).name.toLowerCase()} atoms takes <b>${txt(z,'ie')} kJ/mol</b>. `+(last&&last!==z?explain(last,z,'ie'):'Now try another element.'),'ok');last=z;read();L.kick()}
+  function read(){const lv=levels(z),n=lv.length,out=lv[n-1];rP.v.textContent=`+${z} (${nm(z)})`;rI.v.textContent=slide?String(z-out):`${z-out} in level${n>2?'s':''} 1${n>2?' to '+(n-1):''}`;
+    rO.v.textContent=ie&&gone.has(z)?`${out-1} in level ${n}, after removal`:`${out} in level ${n}`;rR.v.textContent=txt(z,'r')+' pm';if(ie)rE.v.textContent=gone.has(z)?txt(z,'ie')+' kJ/mol':slide?'?':'remove an electron to measure it'}
+
+  /* the comparison sentence: same period, or same group */
+  function explain(a,b,p){const A=E(a),B=E(b),va=num(a,p),vb=num(b,p),unit=p==='r'?'pm':'kJ/mol',la=levels(a),lb=levels(b),ia=a-outer(a),ib=b-outer(b);
+    const head=`<b>${A.s} → ${B.s}:</b> `;
+    if(period(a)===period(b)){const d=b-a,more=d>0,n=la.length;
+      let s=head+`${Math.abs(d)} ${more?'more':'fewer'} proton${Math.abs(d)>1?'s':''}, the same ${ia} inner electrons, and the outer electrons stay in level ${n}. `;
+      if(p==='r')return s+`The pull on the outer electrons is ${more?'stronger, so the atom is smaller':'weaker, so the atom is larger'}: ${va} → ${vb} pm.`;
+      const up=vb>va;if(up===more)return s+`The outer electrons are held ${more?'more':'less'} tightly, so removing one takes ${more?'more':'less'} energy: ${va} → ${vb} kJ/mol.`;
+      return s+`Here the energy goes ${up?'up':'down'} (${va} → ${vb} kJ/mol), against the general trend across a period. This small exception has its own explanation (Honors).`}
+    if(group(a)===group(b)){const d=lb.length-la.length,down=d>0;
+      let s=head+`${Math.abs(d)} ${down?'more':'fewer'} occupied energy level${Math.abs(d)>1?'s':''} and ${Math.abs(ib-ia)} ${down?'more':'fewer'} inner electrons. `;
+      if(p==='r')return s+`The outer electrons are ${down?'farther from the nucleus and more shielded, so the atom is larger':'closer to the nucleus and less shielded, so the atom is smaller'}: ${va} → ${vb} pm.`;
+      return s+`The outer electrons are ${down?'farther out and more shielded, so removing one takes less energy':'closer and less shielded, so removing one takes more energy'}: ${va} → ${vb} kJ/mol.`}
+    return head+`${va} → ${vb} ${unit}.`}
+
+  function draw(dt){const{x,w,h}=fit(c);const k=FK()*KB,C3=U2.C3,rgba=C3.rgba;
+    const ink=css('--ink'),mut=css('--muted'),acc=css('--accent'),warm=css('--warm'),paper=css('--paper'),line=css('--line');
+    if(busy){anim=Math.min(1,anim+dt/0.9);if(anim>=1)setTimeout(done,0)}
+    const AW=w*.56,cx=AW/2,cy=h/2+4*k,maxR=Math.min(AW/2-14*k,h/2-30*k),S=maxR/PM_MAX;
+    const lv=levels(z),n=lv.length,out=lv[n-1],R=num(z,'r')*S,rn=Math.max(10*k,Math.min(15*k,R*.28));
+    const ion=ie&&gone.has(z),leaving=busy?anim:0,eA=i=>-Math.PI/2+i*TAU/out;
+    /* electron cloud to the covalent radius: denser toward the edge, with a crisp boundary */
+    const gr=x.createRadialGradient(cx,cy,rn,cx,cy,R);gr.addColorStop(0,rgba(acc,.03));gr.addColorStop(.7,rgba(acc,.08));gr.addColorStop(1,rgba(acc,.2));
+    x.fillStyle=gr;x.beginPath();x.arc(cx,cy,R,0,TAU);x.fill();x.strokeStyle=acc;x.lineWidth=2.2*KB;x.beginPath();x.arc(cx,cy,R,0,TAU);x.stroke();
+    /* inner levels: a shaded shield and one ring per level, each labeled with its electron count */
+    const ring=i=>rn+(R-rn)*(i+1)/n;
+    if(n>1){x.fillStyle=rgba(mut,.14);x.beginPath();x.arc(cx,cy,ring(n-2)+3*k,0,TAU);x.fill()}
+    for(let i=0;i<n-1;i++){const r=ring(i);x.strokeStyle=rgba(mut,.75);x.lineWidth=1.2;x.beginPath();x.arc(cx,cy,r,0,TAU);x.stroke()}
+    for(let i=0;i<n-1;i++){const r=ring(i),ang=-Math.PI*.6-i*Math.min(.3,.95/Math.max(1,n-2)),lx=cx+r*Math.cos(ang),ly=cy+r*Math.sin(ang);x.font=Fz(10.5,800,'--mono');const t=String(lv[i]),tw=Math.max(x.measureText(t).width+8*k,16*k),th=15*k;
+      x.fillStyle=paper;x.strokeStyle=mut;x.lineWidth=1;x.beginPath();if(x.roundRect)x.roundRect(lx-tw/2,ly-th/2,tw,th,th/2);else x.rect(lx-tw/2,ly-th/2,tw,th);x.fill();x.stroke();
+      x.fillStyle=ink;x.textAlign='center';x.textBaseline='middle';x.fillText(t,lx,ly+.5)}
+    /* nucleus */
+    const ng=x.createRadialGradient(cx-rn*.35,cy-rn*.35,rn*.1,cx,cy,rn);ng.addColorStop(0,rgba(warm,.8));ng.addColorStop(1,warm);
+    x.fillStyle=ng;x.beginPath();x.arc(cx,cy,rn,0,TAU);x.fill();x.fillStyle=paper;x.font=Fz(rn>12*k?12:10.5,800,'--mono');x.textAlign='center';x.textBaseline='middle';x.fillText('+'+z,cx,cy+.5);
+    /* the radius: a leader from the nucleus to the edge, in the widest gap between outer electrons */
+    const gap=(t,skip)=>{let g=t,bd=9;if(out<2)return t;for(let i=0;i<out;i++){const a=eA(i)+Math.PI/out,d=Math.abs(Math.atan2(Math.sin(a-t),Math.cos(a-t)));if(d<bd&&(skip==null||Math.abs(Math.atan2(Math.sin(a-skip),Math.cos(a-skip)))>.5)){bd=d;g=a}}return g};
+    const th=gap(.45),ghost=ie?last:cmp,gR=ghost&&ghost!==z&&num(ghost,'r')!=null?num(ghost,'r')*S:0,Ro=Math.max(R,gR);
+    const ux=Math.cos(th),uy=Math.sin(th);if(!ion){x.strokeStyle=ink;x.lineWidth=1.5;x.beginPath();x.moveTo(cx+ux*(rn+3*k),cy+uy*(rn+3*k));x.lineTo(cx+ux*(R-2),cy+uy*(R-2));x.stroke();
+    x.fillStyle=ink;x.beginPath();x.moveTo(cx+ux*R,cy+uy*R);x.lineTo(cx+ux*(R-8*k)-uy*4*k,cy+uy*(R-8*k)+ux*4*k);x.lineTo(cx+ux*(R-8*k)+uy*4*k,cy+uy*(R-8*k)-ux*4*k);x.closePath();x.fill();
+    /* when the compared atom is larger, its dashed ring would cut the label, so the label moves past it on a thin extension */
+    if(gR>R){x.strokeStyle=rgba(ink,.45);x.lineWidth=1;x.beginPath();x.moveTo(cx+ux*(R+2*k),cy+uy*(R+2*k));x.lineTo(cx+ux*(Ro+5*k),cy+uy*(Ro+5*k));x.stroke()}
+    x.font=Fz(12.5,800,'--mono');const rt=`r = ${txt(z,'r')} pm`,rx=cx+ux*(Ro+8*k),rw=x.measureText(rt).width;
+    if(ux>=0&&rx+rw>AW+2*k)C3.tag(x,rt,cx+ux*R*.6,cy+uy*R*.6,w,h,{font:Fz(12,800,'--mono'),bg:ink,fg:paper,ay:'middle',pad:5});/* a large atom: the label sits on the leader */
+    else{x.textAlign=ux>=0?'left':'right';x.textBaseline='middle';C3.halo(x,rt,rx,cy+uy*(Ro+8*k)+(uy>.5?6*k:0))}}
+    /* outer electrons, one leaving when removed */
+    for(let i=0;i<out;i++){let r=R,al=1;
+      if(i===0&&(busy||ion)){if(ion)continue;r=R+(Math.hypot(AW,h)/2-R)*leaving;al=1-leaving*.6}
+      const ex=cx+r*Math.cos(eA(i)),ey=cy+r*Math.sin(eA(i));x.globalAlpha=al;x.fillStyle=acc;x.strokeStyle=paper;x.lineWidth=1.5;x.beginPath();x.arc(ex,ey,5.5*k,0,TAU);x.fill();x.stroke();x.globalAlpha=1}
+    /* ghost of the element compared last, labeled on the side away from the radius leader */
+    if(gR){x.setLineDash([6,5]);x.strokeStyle=mut;x.lineWidth=1.6;x.beginPath();x.arc(cx,cy,gR,0,TAU);x.stroke();x.setLineDash([]);
+      const ga=gap(-1,th),gx=cx+Math.cos(ga)*gR,gy=cy+Math.sin(ga)*gR,Rm=Math.max(R,gR)+12*k;x.font=Fz(11.5,700,'--mono');
+      const gt=`${E(ghost).s} ${txt(ghost,'r')} pm`,gw=x.measureText(gt).width,lx=Math.min(cx+Math.cos(ga)*Rm,AW+4*k-gw-3*k),ly=Math.max(30*k,cy+Math.sin(ga)*Rm);
+      x.strokeStyle=mut;x.lineWidth=1;x.beginPath();x.moveTo(gx,gy);x.lineTo(lx,ly);x.stroke();
+      x.fillStyle=mut;x.textAlign=Math.cos(ga)>=0?'left':'right';x.textBaseline='middle';C3.halo(x,gt,lx+(Math.cos(ga)>=0?3:-3)*k,ly)}
+    /* title and scale bar */
+    x.fillStyle=ink;x.font=Fz(17,800,'--display');x.textAlign='left';x.textBaseline='top';x.fillText(E(z).s+(ion?'⁺':''),8*k,6*k);const sw=x.measureText(E(z).s+(ion?'⁺':'')).width;
+    x.fillStyle=mut;x.font=Fz(11.5,600);x.fillText(`${nm(z)}${ion?' ion':''}`,8*k+sw+8*k,10*k);
+    const sb=100*S,sx=AW-12*k-sb,sy=h-12*k;x.strokeStyle=ink;x.lineWidth=2;x.beginPath();x.moveTo(sx,sy-5*k);x.lineTo(sx,sy);x.lineTo(sx+sb,sy);x.lineTo(sx+sb,sy-5*k);x.stroke();
+    x.fillStyle=ink;x.font=Fz(11,700,'--mono');x.textAlign='center';x.textBaseline='bottom';x.fillText('100 pm',sx+sb/2,sy-4*k);
+    x.fillStyle=mut;x.font=Fz(10.5,600,'--mono');x.textAlign='left';x.textBaseline='bottom';x.fillText(`level ${n} outer · ${n-1} inner level${n>2?'s':''}`,8*k,h-6*k);
+    /* bar chart: one row per element of the set */
+    const BX=AW+10*k,BW=w-BX-8*k,p=ie?'ie':'r',vmax=Math.max(...zs.map(q=>num(q,p)))*1.08,top=30*k,rowH=Math.min(36*k,(h-top-8*k)/zs.length);
+    x.fillStyle=ink;x.font=Fz(11.5,700);x.textAlign='left';x.textBaseline='top';x.fillText(ie?'First ionization energy (kJ/mol)':'Covalent radius (pm)',BX,8*k);
+    const lw=32*k,bw=BW-lw-46*k;
+    zs.forEach((q,i)=>{const y=top+i*rowH,bh=Math.min(18*k,rowH*.6),yy=y+(rowH-bh)/2,on=ie?gone.has(q)||(busy&&q===z):seen.has(q);
+      if(q===z){x.fillStyle=css('--sunk');x.beginPath();if(x.roundRect)x.roundRect(BX-4*k,y+1,BW+4*k,rowH-2,6*k);else x.rect(BX-4*k,y+1,BW+4*k,rowH-2);x.fill()}
+      x.fillStyle=q===z?ink:mut;x.font=Fz(13,800,'--display');x.textAlign='left';x.textBaseline='middle';x.fillText(E(q).s,BX,yy+bh/2);
+      if(!on){x.setLineDash([4,4]);x.strokeStyle=line;x.lineWidth=1.5;x.strokeRect(BX+lw,yy,bw,bh);x.setLineDash([]);x.fillStyle=mut;x.font=Fz(11,700,'--mono');x.textAlign='center';x.fillText('?',BX+lw+bw/2,yy+bh/2);return}
+      const fr=busy&&q===z?anim:1,len=Math.max(2,bw*num(q,p)/vmax*fr);x.fillStyle=q===z?warm:acc;x.globalAlpha=q===z?.95:.72;x.beginPath();
+      if(x.roundRect)x.roundRect(BX+lw,yy,len,bh,[0,4*k,4*k,0]);else x.rect(BX+lw,yy,len,bh);x.fill();x.globalAlpha=1;
+      if(fr>=1){x.fillStyle=ink;x.font=Fz(11.5,700,'--mono');x.textAlign='left';x.fillText(txt(q,p),BX+lw+len+5*k,yy+bh/2)}});
+    x.strokeStyle=mut;x.lineWidth=1.25;x.beginPath();x.moveTo(BX+lw,top);x.lineTo(BX+lw,top+rowH*zs.length);x.stroke();
+    return busy}
+  const L=loop(c,draw);picker();pick(z);
+  return{pick:k=>pick(k),remove}};
+})();
+
+/* Lesson 3.2 missions. Every case carries an objective ID. Covalent radii: Cordero et al. 2008. First ionization energies: NIST, rounded to whole kJ/mol. */
+(function(){
+/* choice icons (G, P, IC) and TBL are shared with the other Unit 3 missions (common/sims.js) */
+const {G,P,IC,TBL}=U2.M3;
+const FACT=[['charge','More protons, same level',IC.charge],['level','A new level, more shielding',IC.level],['mass','A heavier nucleus',IC.mass]];
+
+window.MISSIONS={order:['data','model','rank'],
+data:{title:'Data detective',sub:'Read the radius and ionization energy data',intro:'Each case starts with something you can see or use today. Read the data, calculate, find where the elements sit on the table, then decide what pattern the data show.',
+ pickLabel:'Locate',pickTeks:'C.5(C)',pickQ:'Which part of the table do these data come from?',
+ next:'Next: Explain the model',
+ cases:[
+ {id:'d-1',obj:'3.2.1',ctx:'A computer chip factory, today',title:'The atoms around silicon',
+  ev:'<p>Computer chips are made from very pure <b>silicon</b>. Small amounts of <b>phosphorus</b> are added to change how the silicon conducts. A phosphorus atom can take the place of a silicon atom in the crystal, partly because the two atoms are almost the same size.</p>'+TBL(['Element','Na','Mg','Al','Si','P','S','Cl'],[['Radius (pm)','166','141','121','111','107','105','102']])+'<p>The elements in the table are listed in order of atomic number.</p>',
+  num:{p:'How much larger is a sodium atom\'s radius than a silicon atom\'s?',unit:'pm',ans:55,tol:0.5,why:'166 pm − 111 pm = 55 pm. Sodium, at the start of the row, is the largest atom in it.',hint:'Not yet. Find the sodium and silicon radii in the table, then subtract the smaller from the larger.'},
+  pick:{q:'Which part of today\'s table holds all seven elements?',ans:'p3',opts:[P(3),G(14),G(1)],why:'Sodium to chlorine is period 3, from group 1 to group 17. Silicon is the period 3 element of group 14.',no:'The seven elements fill one row, from sodium in group 1 to chlorine in group 17. That row is period 3.'},
+  q:'What pattern do these radius data show?',opts:[['The radius decreases from sodium to chlorine, across the period.',1,'Correct. Each element has one more proton pulling on the same energy level, so the atoms get smaller.'],['The radius increases from sodium to chlorine, because each atom has more electrons.',0,'The numbers fall, from 166 pm to 102 pm. More electrons in the same level do not make the atom larger, because the extra protons pull them closer.'],['The radius changes at random, with no pattern.',0,'Every value is smaller than the one before it, from 166 pm to 102 pm. That steady change across a period is a periodic trend.']]},
+ {id:'d-2',obj:'3.2.1',ctx:'A Fourth of July fireworks show',title:'Red and green stars',
+  ev:'<p>The deep red stars in fireworks come from <b>strontium</b> compounds, and the green ones from <b>barium</b> compounds. Both metals are in the same group as magnesium and calcium.</p>'+TBL(['Element','Be','Mg','Ca','Sr','Ba'],[['Radius (pm)','96','141','176','195','215']])+'<p>The elements are listed from the top of the group to the bottom.</p>',
+  num:{p:'How much larger is a barium atom\'s radius than a beryllium atom\'s?',unit:'pm',ans:119,tol:0.5,why:'215 pm − 96 pm = 119 pm. Barium\'s radius is more than twice beryllium\'s.',hint:'Not yet. Subtract beryllium\'s radius from barium\'s radius.'},
+  pick:{q:'Which group of today\'s table holds these five metals?',ans:'2',opts:[G(1),G(2),G(13)],why:'Beryllium to barium are the alkaline earth metals of group 2.',no:'These metals are in group 2, the alkaline earth metals, one column to the right of the alkali metals.'},
+  q:'What pattern do the group 2 radii show, and why?',opts:[['The radius increases down the group, because each element adds an energy level.',1,'Correct. The outer electrons of barium are in level 6, far from the nucleus, while beryllium\'s are in level 2.'],['The radius increases down the group, because each atom has more protons pushing the electrons out.',0,'Protons attract electrons. They never push them away. The atoms grow because each one adds an energy level.'],['The radius decreases down the group, because heavier atoms are packed more tightly.',0,'The data rise from 96 pm to 215 pm. The atoms grow down the group because each adds an energy level.']]},
+ {id:'d-3',obj:'3.2.1',ctx:'A neon sign on a Texas main street',title:'Pulling electrons off neon',
+  ev:'<p>A neon sign glows when electricity passes through neon gas at low pressure. Fast electrons strike neon atoms, and some collisions knock an electron off an atom. Neon is in period 2.</p>'+TBL(['Element','Li','Be','B','C','N','O','F','Ne'],[['First ionization energy (kJ/mol)','520','900','801','1086','1402','1314','1681','2081']]),
+  num:{p:'How much more energy does it take to ionize neon than lithium?',unit:'kJ/mol',ans:1561,tol:0.5,why:'2081 kJ/mol − 520 kJ/mol = 1561 kJ/mol. Neon\'s value is four times lithium\'s.',hint:'Not yet. Subtract lithium\'s value from neon\'s value.'},
+  pick:{q:'Which part of today\'s table holds these eight elements?',ans:'p2',opts:[P(2),P(3),G(18)],why:'Lithium to neon is period 2, the first row with eight elements.',no:'These eight elements fill one row, from lithium in group 1 to neon in group 18. That row is period 2.'},
+  q:'Which statement describes the period 2 data?',opts:[['Ionization energy generally increases across the period, with small dips at boron and oxygen.',1,'Correct. The overall rise is large, from 520 to 2081 kJ/mol. The two dips are explained in the Honors box of the reading.'],['Ionization energy increases at every step across the period.',0,'Two steps go down: beryllium to boron (900 to 801) and nitrogen to oxygen (1402 to 1314). The rise is general, not at every step.'],['Ionization energy decreases across the period.',0,'The values rise from 520 kJ/mol for lithium to 2081 kJ/mol for neon. They decrease down a group, not across a period.']]},
+ {id:'d-4',obj:'3.2.3',ctx:'A banana in your lunch, and the air around it',title:'From argon to potassium',
+  ev:'<p>Bananas are rich in <b>potassium</b>, which the body uses for nerve signals. The air around you is almost 1% <b>argon</b>. In the periodic table, potassium comes right after argon.</p>'+TBL(['Element','Cl','Ar','K','Ca'],[['Atomic number','17','18','19','20'],['First ionization energy (kJ/mol)','1251','1521','419','590']]),
+  num:{p:'How large is the drop in first ionization energy from argon to potassium?',unit:'kJ/mol',ans:1102,tol:0.5,why:'1521 kJ/mol − 419 kJ/mol = 1102 kJ/mol, the largest step in the table.',hint:'Not yet. Subtract potassium\'s value from argon\'s value.'},
+  pick:{q:'Potassium starts which period?',ans:'p4',opts:[P(3),P(4),P(5)],why:'Potassium starts period 4. Its outer electron is the first electron in energy level 4.',no:'Argon ends period 3, so potassium, the next element, starts period 4.'},
+  q:'Why is potassium\'s first ionization energy so much lower than argon\'s?',opts:[['Potassium\'s outer electron is the first in level 4, farther out and shielded by 18 inner electrons.',1,'Correct. A new energy level puts the electron farther from the nucleus, so it is held much less tightly.'],['Potassium has fewer protons than argon.',0,'Potassium has 19 protons and argon has 18. The drop comes from the new energy level and the shielding.'],['Potassium is a solid and argon is a gas.',0,'Ionization energy is measured on separate gaseous atoms of both elements. The drop comes from potassium\'s new energy level.']]},
+ {id:'d-5',obj:'3.2.3',ctx:'Car headlights at night',title:'Xenon headlights',
+  ev:'<p>Some bright, bluish-white car headlights are xenon lamps. An electric arc passes through <b>xenon</b> gas inside a small quartz bulb. Xenon is a noble gas, like helium in a party balloon.</p>'+TBL(['Element','He','Ne','Ar','Kr','Xe'],[['First ionization energy (kJ/mol)','2372','2081','1521','1351','1170']])+'<p>The elements are listed from the top of the group to the bottom.</p>',
+  num:{p:'How much less energy does xenon need than helium?',unit:'kJ/mol',ans:1202,tol:0.5,why:'2372 kJ/mol − 1170 kJ/mol = 1202 kJ/mol. Xenon needs about half as much energy as helium.',hint:'Not yet. Subtract xenon\'s value from helium\'s value.'},
+  pick:{q:'Which group of today\'s table holds these gases?',ans:'18',opts:[G(1),G(17),G(18)],why:'Helium to xenon are noble gases, in group 18 at the right edge of the table.',no:'These are the noble gases, in group 18 at the right edge of the table.'},
+  q:'Why does xenon need much less energy than helium to lose an electron?',opts:[['Xenon\'s outer electrons are in level 5, far from the nucleus and shielded by many inner electrons.',1,'Correct. Helium\'s two electrons are in level 1, close to the nucleus with nothing shielding them.'],['Xenon has fewer protons than helium.',0,'Xenon has 54 protons and helium has 2. Xenon\'s outer electrons are held less tightly because they are farther out and shielded.'],['Xenon is used in headlights, so it has already lost its electrons.',0,'The values describe neutral gaseous atoms. Xenon\'s outer electrons are easier to remove because they are farther from the nucleus.']]}
+ ]},
+model:{title:'Explain the model',sub:'Nuclear charge, energy level and shielding',intro:'Each case compares two atoms you can find in everyday things. Calculate the difference, choose the main reason for it, then pick the best explanation.',
+ pickLabel:'Main factor',pickTeks:'C.5(C)',pickQ:'What is the main difference between the two atoms?',
+ next:'Next: Rank it',
+ cases:[
+ {id:'m-1',obj:'3.2.2',ctx:'A salt shaker',title:'Sodium and chlorine',
+  ev:'<p>Table salt is sodium chloride. Sodium and chlorine are both in period 3, at opposite ends of the row.</p>'+TBL(['Atom','Protons','Inner electrons','Outer level','Radius (pm)'],[['Sodium','11','10','3','166'],['Chlorine','17','10','3','102']]),
+  num:{p:'How much smaller is a chlorine atom\'s radius than a sodium atom\'s?',unit:'pm',ans:64,tol:0.5,why:'166 pm − 102 pm = 64 pm.',hint:'Not yet. Subtract chlorine\'s radius from sodium\'s radius.'},
+  pick:{q:'What is the main difference between the two atoms?',ans:'charge',opts:FACT,why:'Chlorine has 6 more protons, while the outer level (3) and the inner electrons (10) are the same.',no:'Compare the columns. The level and the inner electrons are the same; only the number of protons changes.'},
+  q:'Which explanation fits the model?',opts:[['Chlorine\'s 6 extra protons pull on the same level 3, with the same shielding, so its outer electrons are drawn closer.',1,'Correct. The stronger pull makes the chlorine atom smaller.'],['Chlorine has more electrons, and the electrons attract each other into a smaller space.',0,'Electrons repel each other. The atom is smaller because the extra protons pull the outer level closer.'],['Chlorine is heavier, so its atom is packed more tightly.',0,'Mass comes mostly from the tiny nucleus and does not set the size. The extra protons pull the outer electrons closer.']]},
+ {id:'m-2',obj:'3.2.2',ctx:'A phone battery and a banana',title:'Lithium and potassium',
+  ev:'<p>Phone batteries move lithium ions. Bananas are rich in potassium. Lithium and potassium are both alkali metals in group 1.</p>'+TBL(['Atom','Protons','Inner electrons','Outer level','Radius (pm)'],[['Lithium','3','2','2','128'],['Potassium','19','18','4','203']]),
+  num:{p:'How much larger is a potassium atom\'s radius than a lithium atom\'s?',unit:'pm',ans:75,tol:0.5,why:'203 pm − 128 pm = 75 pm.',hint:'Not yet. Subtract lithium\'s radius from potassium\'s radius.'},
+  pick:{q:'What is the main difference between the two atoms?',ans:'level',opts:FACT,why:'Potassium\'s outer electron is in level 4, two levels above lithium\'s, and 16 more inner electrons shield it.',no:'Look at the outer level and the inner electrons. Potassium has two more levels, and its extra inner electrons cancel most of its extra protons.'},
+  q:'Potassium has 16 more protons than lithium. Why is its atom still larger?',opts:[['Its outer electron is in a higher level, and the extra inner electrons shield most of the extra charge.',1,'Correct. Distance wins over the extra protons, so potassium is larger.'],['The extra protons push the outer electron away.',0,'Protons attract electrons. Potassium is larger because its outer electron is in level 4.'],['Potassium\'s extra neutrons take up space in the atom.',0,'Neutrons sit in the tiny nucleus. The size is set by the outer electrons, and potassium\'s are in level 4.']]},
+ {id:'m-3',obj:'3.2.3',ctx:'A green leaf and a glass of milk',title:'Magnesium and calcium',
+  ev:'<p>A magnesium ion sits at the center of every chlorophyll molecule in a green leaf. Milk is rich in calcium. Both are in group 2.</p>'+TBL(['Atom','Protons','Inner electrons','Outer level','First ionization energy (kJ/mol)'],[['Magnesium','12','10','3','738'],['Calcium','20','18','4','590']]),
+  num:{p:'How much less energy does calcium need to lose an electron than magnesium?',unit:'kJ/mol',ans:148,tol:0.5,why:'738 kJ/mol − 590 kJ/mol = 148 kJ/mol.',hint:'Not yet. Subtract calcium\'s value from magnesium\'s value.'},
+  pick:{q:'What is the main difference between the two atoms?',ans:'level',opts:FACT,why:'Calcium\'s outer electrons are in level 4, one level higher, with 8 more inner electrons shielding them.',no:'Compare the outer levels: calcium\'s outer electrons are one level higher, with more inner electrons shielding them.'},
+  q:'Why is calcium\'s first ionization energy lower than magnesium\'s?',opts:[['Calcium\'s outer electrons are farther from the nucleus and more shielded, so they are held less tightly.',1,'Correct. An electron held less tightly needs less energy to remove.'],['Calcium has more protons, so it holds its outer electrons less tightly.',0,'More protons would pull harder. Calcium\'s electrons are held less tightly because they are farther out and better shielded.'],['Calcium is heavier, so its electrons fall off more easily.',0,'Mass does not set the pull on the electrons. Calcium\'s outer electrons are in a higher level, farther from the nucleus.']]},
+ {id:'m-4',obj:'3.2.3',ctx:'The air you breathe and your toothpaste',title:'Nitrogen and fluorine',
+  ev:'<p>Air is about 78% nitrogen. Many toothpastes contain fluoride. Nitrogen and fluorine are both in period 2.</p>'+TBL(['Atom','Protons','Inner electrons','Outer level','First ionization energy (kJ/mol)'],[['Nitrogen','7','2','2','1402'],['Fluorine','9','2','2','1681']]),
+  num:{p:'How much more energy does fluorine need to lose an electron than nitrogen?',unit:'kJ/mol',ans:279,tol:0.5,why:'1681 kJ/mol − 1402 kJ/mol = 279 kJ/mol.',hint:'Not yet. Subtract nitrogen\'s value from fluorine\'s value.'},
+  pick:{q:'What is the main difference between the two atoms?',ans:'charge',opts:FACT,why:'Fluorine has 2 more protons, with the same outer level (2) and the same 2 inner electrons.',no:'Compare the columns. The outer level and the inner electrons are the same; only the number of protons changes.'},
+  q:'Why does fluorine need more energy than nitrogen to lose an electron?',opts:[['Fluorine\'s 2 extra protons pull harder on the same level, with the same shielding.',1,'Correct. Its outer electrons are held more tightly, so removing one takes more energy.'],['Fluorine\'s outer electrons are in a lower energy level.',0,'Both atoms are in period 2, so both have their outer electrons in level 2. The difference is the nuclear charge.'],['Fluorine wants to keep its electrons more than nitrogen does.',0,'Atoms do not want anything. Fluorine holds its electrons more tightly because its nucleus has more protons.']]},
+ {id:'m-5',obj:'3.2.3',ctx:'A neon sign and an old orange streetlight',title:'Neon and sodium',
+  ev:'<p>Neon glows red-orange in signs. Older streetlights glow orange-yellow from sodium vapor. Sodium comes right after neon in the periodic table.</p>'+TBL(['Atom','Protons','Inner electrons','Outer level','First ionization energy (kJ/mol)'],[['Neon','10','2','2','2081'],['Sodium','11','10','3','496']]),
+  num:{p:'How much lower is sodium\'s first ionization energy than neon\'s?',unit:'kJ/mol',ans:1585,tol:0.5,why:'2081 kJ/mol − 496 kJ/mol = 1585 kJ/mol.',hint:'Not yet. Subtract sodium\'s value from neon\'s value.'},
+  pick:{q:'What is the main difference between the two atoms?',ans:'level',opts:FACT,why:'Sodium\'s outer electron starts level 3, outside 10 inner electrons. Neon\'s outer electrons are in level 2, shielded by only 2.',no:'Sodium has only one more proton. Compare the outer level and the inner electrons instead.'},
+  q:'Sodium has one more proton than neon. Why is its first ionization energy so much lower?',opts:[['Its outer electron starts a new level, farther out and shielded by 10 inner electrons.',1,'Correct. The new level and the extra shielding outweigh the one extra proton.'],['Sodium has fewer protons than neon.',0,'Sodium has 11 protons and neon has 10. The drop comes from the new energy level and the shielding.'],['Neon\'s outer electrons are farther from the nucleus.',0,'Neon\'s outer electrons are in level 2 and sodium\'s is in level 3. Sodium\'s is the one farther out.']]}
+ ]},
+rank:{title:'Rank it',sub:'Order elements by the two trends',intro:'Eight sets of elements. Find them on the small table, click the tiles in order, then check. The values appear once your order is right.',total:8,
+ mount(el,api){
+  const {E,num,txt,pos}=U2.E3;
+  const nm=z=>E(z).name.toLowerCase();
+  /* each set lists its elements in the correct order */
+  const SETS=[
+   {p:'r',zs:[11,15,17],why:'Across period 3, each element has more protons pulling on the same level 3.',hint:'All three are in period 3. Across a period, more protons pull the same level closer, so atoms get smaller.'},
+   {p:'r',zs:[53,17,9],why:'Down group 17, each element adds an energy level: level 2 in fluorine, level 3 in chlorine and level 5 in iodine.',hint:'All three are in group 17. Down a group, each element adds an energy level, so atoms get larger.'},
+   {p:'r',zs:[37,19,20],why:'Rubidium has one more energy level than potassium. Calcium has one more proton than potassium on the same level 4.',hint:'Rubidium is below potassium in group 1, and calcium is next to potassium in period 4. Use one rule for each pair.'},
+   {p:'ie',zs:[3,11,19],why:'Down group 1, the outer electron is one level higher each time, farther out and easier to remove.',hint:'All three are in group 1. Down a group, the outer electron is farther out and easier to remove.'},
+   {p:'ie',zs:[18,12,11],why:'Across period 3, the nuclear charge grows, so the outer electrons are held more tightly.',hint:'All three are in period 3. Across a period, the outer electrons are held more tightly.'},
+   {p:'ie',zs:[10,9,11],why:'Neon has one more proton than fluorine on the same level. Sodium\'s outer electron starts level 3, so it is far easier to remove.',hint:'Fluorine and neon end period 2; sodium starts period 3. A new energy level makes an electron much easier to remove.'},
+   {p:'r',zs:[38,20,12,4],why:'Down group 2, each element adds an energy level, from level 2 in beryllium to level 5 in strontium.',hint:'All four are in group 2. Down a group, each element adds an energy level.'},
+   {p:'ie',zs:[38,56,55],why:'Strontium\'s outer electrons are one level lower than barium\'s. Cesium has one proton fewer than barium on the same level 6.',hint:'Strontium is above barium in group 2, and cesium is next to barium in period 6. Use one rule for each pair.'}];
+  const LAB={r:'Atomic radius, largest first',ie:'First ionization energy, highest first'};
+  const UNIT={r:'pm',ie:'kJ/mol'};
+  /* tiles start in alphabetical order of symbol, rotated if that happens to be the answer */
+  const shown=s=>{let a=[...s.zs].sort((x,y)=>E(x).s.localeCompare(E(y).s));if(a.join()===s.zs.join())a=[...a.slice(1),a[0]];return a};
+  const mini=zs=>{let s='<svg class="rmini" viewBox="0 0 190 64" role="img" aria-label="Positions on the periodic table: '+zs.map(z=>{const q=pos(z);return `${E(z).name}, period ${q.p}, group ${q.g}`}).join('; ')+'">';
+   for(let c=1;c<=18;c++){const top=c===1||c===18?1:c===2||c>=13?2:4;for(let r=top;r<=6;r++)s+=`<rect x="${1+(c-1)*10.5}" y="${1+(r-1)*10.5}" width="9.5" height="9.5" rx="1.5" fill="var(--line)" opacity=".55"/>`}
+   zs.forEach(z=>{const q=pos(z),x=1+(q.g-1)*10.5,y=1+(q.p-1)*10.5;s+=`<rect x="${x}" y="${y}" width="9.5" height="9.5" rx="1.5" fill="var(--warm)"/><text x="${x+4.75}" y="${y+7.2}" text-anchor="middle" font-size="5.6" font-weight="700" fill="#fff" style="font-family:var(--display)">${E(z).s}</text>`});
+   return s+'</svg>'};
+  el.innerHTML=`<article class="case rank"><div class="ev"><p class="ctx">Ranking practice <span class="oid">· Objective 3.2.4 · C.5(C) · SEP 2(C)</span></p><h2>Rank by position</h2><div class="evb">
+   <p><b>1. Find the elements.</b> The small table and each tile show the period and group.</p>
+   <p><b>2. Same period:</b> farther right means more protons on the same level, so a smaller radius and usually a higher ionization energy.</p>
+   <p><b>3. Same group:</b> lower down means a new energy level, so a larger radius and a lower ionization energy.</p>
+   <p><b>4. Mixed set:</b> compare one pair at a time, with the rule that fits that pair.</p></div><div id="rmap"></div></div>
+   <div class="tasks"><div class="rdots" id="rdots" role="group" aria-label="Choose a set"></div><div class="task" id="rtask"></div></div></article>
+   <div class="cnav"><span></span><button class="btn primary" id="rnext" type="button">Finish</button></div>`;
+  const map=el.querySelector('#rmap');
+  U2.M3.sets(api,{key:'rankdone',count:SETS.length,dots:el.querySelector('#rdots'),next:el.querySelector('#rnext'),show(i,ok,solve){
+   const box=el.querySelector('#rtask'),s=SETS[i];let pick=ok?[...s.zs]:[];
+   map.innerHTML=mini(s.zs);
+   box.className='task'+(ok?' ok':'');
+   const names=s.zs.length===3?`${nm(shown(s)[0])}, ${nm(shown(s)[1])} and ${nm(shown(s)[2])}`:shown(s).slice(0,-1).map(nm).join(', ')+' and '+nm(shown(s).at(-1));
+   box.innerHTML=`<p class="tl"><b>Set ${i+1} of ${SETS.length} · ${LAB[s.p]}</b><span>C.5(C)</span></p><p class="q">Rank ${names} by ${s.p==='r'?'atomic radius, largest first':'first ionization energy, highest first'}.</p><div class="rtiles"></div><div class="rorder"><span class="lab">Your order</span><ol></ol></div><div class="numrow"><button class="btn primary" type="button" data-a="chk">Check</button><button class="btn" type="button" data-a="clr">Clear</button></div><p class="fbx" hidden></p>`;
+   const tiles=box.querySelector('.rtiles'),ord=box.querySelector('.rorder ol'),fb=box.querySelector('.fbx');
+   function paint(){tiles.innerHTML='';shown(s).forEach(z=>{const q=pos(z),k=pick.indexOf(z),b=document.createElement('button');b.type='button';b.className='btn'+(k>=0?' used':'');b.disabled=k>=0||ok;
+     b.innerHTML=`${k>=0?`<i class="ord">${k+1}</i>`:''}<b>${E(z).s}</b><span>${E(z).name}</span><small>period ${q.p} · group ${q.g}</small>`;b.setAttribute('aria-label',`${E(z).name}, period ${q.p}, group ${q.g}`);
+     b.onclick=()=>{pick.push(z);fb.hidden=true;paint()};tiles.append(b)});
+    ord.innerHTML=pick.map(z=>`<li>${E(z).s}${ok?` <small>${txt(z,s.p)} ${UNIT[s.p]}</small>`:''}</li>`).join('')||'<li class="empty">click the tiles</li>'}
+   function done(){fb.hidden=false;fb.className='fbx ok';fb.innerHTML='✓ Correct. '+s.zs.map(z=>`${E(z).s} ${txt(z,s.p)} ${UNIT[s.p]}`).join(' &gt; ')+'. '+s.why;box.classList.add('ok')}
+   box.querySelector('[data-a="chk"]').onclick=()=>{if(ok)return;fb.hidden=false;
+    if(pick.length<s.zs.length){fb.className='fbx no';fb.textContent='Click every tile first, in the order you choose.';return}
+    if(pick.join()===s.zs.join()){ok=true;paint();done();solve();return}
+    fb.className='fbx no';fb.textContent='Not yet. '+s.hint};
+   box.querySelector('[data-a="clr"]').onclick=()=>{if(ok)return;pick=[];fb.hidden=true;paint()};
+   paint();if(ok)done()}})}}
+};
+})();
+
+(function(){
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const store=U2.store,root=document.documentElement;
+let theme=store.get('theme',null);const tb=$('#theme');
+const applyTheme=()=>{if(theme)root.setAttribute('data-theme',theme);else root.removeAttribute('data-theme');tb.textContent=theme==='dark'?'Dark':theme==='light'?'Light':'Theme'};
+tb.onclick=()=>{theme=theme==='dark'?'light':theme==='light'?null:'dark';store.set('theme',theme);applyTheme();U2.kickAll&&U2.kickAll()};applyTheme();
+/* MISSIONS: {order:[tab keys], <key>:{title,sub,intro,next, cases:[…]} | {…, targets:[…]} (2.1 model builder) | {…, mount(el,api), total} (custom), caseUrl, noCaseTab (the case file itself)}
+   A case has up to three tasks: num (one or an array; numeric with tolerance), pick (name the idea: {q,ans,why,no,opts}) or the 2.1 shorthand model/modelWhy, and the decide item (q, opts). */
+const M=window.MISSIONS,ORDER=M.order||['court','build','work'];
+const kind=k=>M[k].cases?'cases':M[k].targets?'build':M[k].mount?'custom':'none';
+const TABS=ORDER.map(k=>[k,M[k].title,M[k].cases?M[k].cases.length:M[k].targets?M[k].targets.length:M[k].total||null]).concat(M.noCaseTab?[]:[['case','Case file',null]]);
+let tab=store.get('mtab',ORDER[0]);if(!TABS.some(t=>t[0]===tab))tab=ORDER[0];const idx={};
+const prog=()=>store.get('mprog',{});const setProg=(id,k,v)=>{const p=prog();p[id]=p[id]||{};if(p[id][k]===undefined||p[id][k]===0)p[id][k]=v;if(v===1&&p[id]['f_'+k]===undefined)p[id]['f_'+k]=1;if(v===0&&p[id]['f_'+k]===undefined)p[id]['f_'+k]=0;store.set('mprog',p)};
+const nums=c=>c.num?[].concat(c.num):[];
+const tasksOf=c=>(c.pick||c.model?['model']:[]).concat(['mc'],nums(c).map((x,i)=>'num'+(i||'')));
+/* icon buttons for the "name the idea" task: tab picks, global PICKS, or (2.1) the five atomic models */
+const picksFor=m=>m.picks||window.PICKS||(window.MODELS||[]).map(([k,n])=>{const t=U2.TARGETS&&U2.TARGETS[k];return[k,n,t?U2.modelSVG({pos:t.pos,e:t.e,m:t.m},'pk'+k):'']});
+const solved=c=>{const p=prog()[c.id]||{};return tasksOf(c).every(k=>p[k]===1)};
+const partial=c=>{const p=prog()[c.id]||{};return tasksOf(c).some(k=>p[k]!==undefined)};
+const firstScore=cs=>{const p=prog();let a=0,t=0;cs.forEach(c=>tasksOf(c).forEach(k=>{const f=(p[c.id]||{})['f_'+k];if(f!==undefined){t++;if(f===1)a++}}));return[a,t]};
+function tabs(){const n=$('#mtabs');n.innerHTML='';TABS.forEach(([k,t,c])=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-current',String(k===tab));
+  let done='';if(k!=='case'){const kd=kind(k);if(kd==='cases')done=M[k].cases.filter(solved).length+'/'+c;if(kd==='build')done=(store.get('built',[]).length)+'/'+c;if(kd==='custom'&&c)done=(store.get('cdone',{})[k]||0)+'/'+c}
+  b.innerHTML=`${t}${done?` <span class="c">${done}</span>`:''}`;b.onclick=()=>{tab=k;store.set('mtab',k);render()};n.append(b)})}
+function lines(el){const S=el.dataset.lines.split(',').map(t=>t.trim()),L=S.map(Number),W=600,X=l=>10+(W-20)*(l-380)/320;
+  /* labels keep the author's digits (589.0 stays 589.0); a label too close to the previous one drops to a second row */
+  let last=-1e9,row=0;const R=L.map(l=>{row=X(l)-last<44&&row===0?1:0;if(!row)last=X(l);return row});const hh=R.some(r=>r)?74:58;
+  const abs=!!el.dataset.abs,gid='g'+Math.random().toString(36).slice(2,7);const bg=abs?`<defs><linearGradient id="${gid}">${[380,420,460,500,540,580,620,660,700].map(l=>`<stop offset="${(l-380)/320}" stop-color="${U2.wl2rgb(l)}"/>`).join('')}</linearGradient></defs><rect x="10" y="4" width="${W-20}" height="34" rx="4" fill="url(#${gid})"/>`:`<rect x="10" y="4" width="${W-20}" height="34" rx="4" fill="#0b0b12"/>`;
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${hh}" role="img" aria-label="${abs?'Absorption':'Emission'} spectrum: lines at ${S.join(', ')} nm">${bg}${L.map((l,i)=>`<rect x="${X(l)-2}" y="4" width="4" height="34" fill="${abs?'#0b0b12':U2.wl2rgb(l)}"/>${R[i]?`<line x1="${X(l)}" y1="40" x2="${X(l)}" y2="58" stroke="var(--line)"/>`:''}<text x="${X(l)}" y="${R[i]?70:54}" text-anchor="middle" font-family="var(--mono)" font-size="13" fill="var(--muted)">${S[i]}</text>`).join('')}</svg>`}
+function head(m){$('#msub').textContent=m.sub;$('#mtitle').textContent=m.title;$('#mintro').textContent=m.intro}
+/* the mission header docks as the top strip of a view's .case card, so the card starts near the top of the screen; render() undocks it first */
+const MH=$('.mhead');
+/* the dots sit in a .pager row with Previous and Next; a unit's case file has its own page.html without that wrapper, so add it here */
+if(!$('.pager',MH)){const pg=document.createElement('div');pg.className='pager';$('#dots').before(pg);pg.append($('#dots'))}
+/* the frozen parts (missions.css): the docked header is sticky just under the sticky bar, so it needs the bar's height, which
+   changes when its tabs wrap; the evidence column is sticky just under the header, so it needs the header's height too, and a
+   column taller than the space under them sticks by its bottom (--evtop), so its end comes into view as the page scrolls.
+   Each is watched by its outer size (BB), as frz() reads it: fit() trims the columns' bottom padding, which changes the column's
+   height and not its content's */
+const BAR=$('header.bar'),BB={box:'border-box'};let evSeen=null;
+function frz(){const b=BAR.offsetHeight,h=MH.offsetHeight,c=$('#mbody>.case'),ev=c&&$(':scope>.ev',c);root.style.setProperty('--barh',b+'px');root.style.setProperty('--mhh',h+'px');
+  if(ev){const t=innerHeight-ev.offsetHeight;if(t<b+h)c.style.setProperty('--evtop',t+'px');else c.style.removeProperty('--evtop')}}
+const frzRO=new ResizeObserver(frz);frzRO.observe(BAR,BB);frzRO.observe(MH,BB);addEventListener('resize',frz);
+/* stuck: the page has scrolled, so the frozen header gets a shadow over the content passing under it */
+addEventListener('scroll',()=>$('#m').classList.toggle('stuck',scrollY>0),{passive:true});
+/* a case that fits the window once the spare space under its last task is taken away does not scroll the page for that space:
+   up to 12px of the gap under the card, then up to 14px of the columns' 18px bottom padding (missions.css), only as much as it needs.
+   Measured from the untrimmed size, so trimming never feeds back; the observer defers to a frame so it never resizes in its own callback */
+const fitRO=new ResizeObserver(()=>requestAnimationFrame(fit));addEventListener('resize',fit);
+function fit(){const M=$('#m'),c=$('#mbody>.case');let o=0;
+  if(c&&M.classList.contains('docked')){o=Math.ceil(c.getBoundingClientRect().bottom+scrollY+(parseFloat(M.style.getPropertyValue('--padcut'))||0)+12-innerHeight);if(o>26)o=0}
+  o=Math.max(0,o);M.style.setProperty('--gapcut',Math.min(o,12)+'px');M.style.setProperty('--padcut',Math.max(0,o-12)+'px')}
+/* an element whose bottom is below the window's bottom edge scrolls the page up to it, and only that far, so a tall task does not
+   jump to its top; a custom tab calls it as api.reveal(el) for a result outside a task card */
+const reveal=el=>{const d=el.getBoundingClientRect().bottom+16-innerHeight;if(d>0)scrollBy({top:d,behavior:'smooth'})};
+/* feedback that a click changed in a task card is revealed. A click that changes no feedback (the table's Color by buttons) leaves
+   the page where it is: the capture listener notes the task's feedback before the click's own handler runs. composedPath, not
+   target.closest: a check re-renders its buttons on answer, so the clicked one is already detached. On #mbody, which every view renders into */
+{const task=e=>e.composedPath().find(x=>x.classList&&x.classList.contains('task')),fbs=t=>$$('.fbx,.fb,.say',t).map(f=>[f,f.hidden+f.className+f.innerHTML]);let was=[];
+  $('#mbody').addEventListener('click',e=>{const t=task(e);was=t?fbs(t).map(x=>x[1]):[]},true);
+  $('#mbody').addEventListener('click',e=>{const t=task(e);if(t)setTimeout(()=>{const fb=fbs(t).filter(([f,s],i)=>s!==was[i]&&!f.hidden&&f.textContent.trim()).map(x=>x[0]).pop();
+    if(fb)reveal(fb)},60)})}
+/* answer-button rows (.mbtns, missions.css): balanced rows with no empty slot and no button alone on the last row (four make 2+2
+   where four across do not fit, five 3+2, seven 3+2+2), as many across as fit at --mbmin each and never more than --mbmax, and
+   fewer when a label's word would be cut, once each icon above its label (.stk) has not saved that count. The row becomes a
+   grid of L columns, each button spanning L / the buttons in its row. A row a lesson made a flex row is left alone.
+   A Decide row in one line (.check .opts, missions.css) keeps its order and widths, except that a button whose longest word
+   is wider than its share keeps that word's width; if the row then overflows, it wraps.
+   Laid out when a row appears and whenever its size changes, a frame later, so a layout never resizes a row inside its own
+   observer callback */
+const plan=(n,k)=>{for(let r=Math.ceil(n/k);;r++){const c=Math.ceil(n/r),big=n-(c-1)*r;if(big===r||c>2)return Array.from({length:r},(_,i)=>i<big?c:c-1)}};
+const cut=b=>b.scrollWidth>b.clientWidth+1;
+function optRow(o){const bs=[...o.children];o.style.flexWrap='';bs.forEach(b=>b.style.minWidth='');if(getComputedStyle(o).display!=='flex')return;
+  for(let c;(c=bs.filter(b=>!b.style.minWidth&&cut(b))).length;)c.forEach(b=>b.style.minWidth='min-content');
+  if(cut(o))o.style.flexWrap='wrap'}
+function rows(mb){if(mb.matches('.opts'))return optRow(mb);const cs=getComputedStyle(mb),bs=[...mb.children],w=mb.clientWidth;if(cs.display!=='grid'||!bs.length||!w)return;
+  const g=parseFloat(cs.columnGap)||0,ico=bs.some(b=>b.children.length>1);let k=Math.min(bs.length,parseInt(cs.getPropertyValue('--mbmax'))||99,Math.max(1,Math.floor((w+g)/((parseFloat(cs.getPropertyValue('--mbmin'))||0)+g))));
+  for(;;){const R=plan(bs.length,k),c=R[0],L=R[R.length-1]<c?c*(c-1):c;let i=0;mb.style.gridTemplateColumns=`repeat(${L},minmax(0,1fr))`;
+    R.forEach(x=>{for(let j=0;j<x;j++)bs[i++].style.gridColumn=L>x?'span '+L/x:''});
+    mb.classList.remove('stk');if(!bs.some(cut))return;
+    if(ico){mb.classList.add('stk');if(!bs.some(cut))return;mb.classList.remove('stk')}
+    if(c===1)return;k=c-1}}
+{const ro=new ResizeObserver(es=>requestAnimationFrame(()=>es.forEach(e=>rows(e.target)))),seen=new WeakSet(),all=()=>$$('#mbody .mbtns,#mbody .check .opts');
+  new MutationObserver(()=>all().forEach(x=>{if(!seen.has(x)){seen.add(x);ro.observe(x)}})).observe($('#mbody'),{childList:true,subtree:true});
+  document.fonts&&document.fonts.ready.then(()=>all().forEach(rows))}
+/* a view that starts with a .case card takes the header as the card's top strip. Any other view (a case file's briefing or
+   recommendation, a build, the Case file tab) docks flat: the header stays above it as the same compact strip, frozen under the bar */
+function dock(){const c=$('#mbody>.case'),M=$('#m'),ev=c&&$(':scope>.ev',c);if(c)c.prepend(MH);M.classList.add('docked');M.classList.toggle('flat',!c);fitRO.disconnect();if(c)fitRO.observe(c);fit();
+  if(evSeen)frzRO.unobserve(evSeen);evSeen=ev;if(ev)frzRO.observe(ev,BB);frz();
+  /* a custom tab's own .cnav (under its card, or at the top level of a flat view) joins the pager: plain buttons before the dots, the primary one after */
+  const n=c?c.nextElementSibling:$('#mbody>.cnav');if(n&&n.classList.contains('cnav')){$$('button',n).forEach(x=>{x.classList.add('pg');x.classList.contains('primary')?$('.pager',MH).append(x):$('#dots').before(x)});n.remove()}}
+function undock(){$('#m').insertBefore(MH,$('#mbody'));$('#m').classList.remove('docked','flat');$$('.pg',MH).forEach(b=>b.remove())}
+function caseView(key){const m=M[key],cs=m.cases,i=idx[key]=Math.min(idx[key]??0,cs.length-1),c=cs[i];head(m);
+  const dots=$('#dots');dots.innerHTML='';cs.forEach((x,k)=>{const b=document.createElement('button');b.type='button';b.textContent=k+1;b.className=(k===i?'cur ':'')+(solved(x)?'done':partial(x)?'part':'');b.setAttribute('aria-label','Case '+(k+1)+(solved(x)?', solved':partial(x)?', in progress':''));b.onclick=()=>{idx[key]=k;render()};dots.append(b)});
+  const[a,t]=firstScore(cs);$('#mscore').textContent=`${cs.filter(solved).length} of ${cs.length} cases solved · first-try accuracy ${t?Math.round(100*a/t)+'%':'–'}`;
+  const o=window.OBJ[c.obj];const body=$('#mbody');
+  body.innerHTML=`<article class="case"><div class="ev"><p class="ctx">${c.ctx} <span class="oid">· Objective ${c.obj} · ${o.teks}</span></p><h2>${c.title}</h2><div class="evb">${c.ev}</div></div><div class="tasks" id="tasks"></div></article>`;
+  dots.before(Object.assign(document.createElement('button'),{className:'btn pg',id:'cprev',type:'button',textContent:'← Previous'}));
+  dots.after(Object.assign(document.createElement('button'),{className:'btn pg',id:'cnext',type:'button',textContent:'Next case →'}));
+  $$('[data-lines]',body).forEach(lines);
+  const T=$('#tasks',body);let n=0;const P=prog()[c.id]||{};
+  nums(c).forEach((nm,ni)=>{const key='num'+(ni||'');n++;const d=document.createElement('div');d.className='task';d.innerHTML=`<p class="tl"><b>Task ${n} · Calculate</b><span>SEP 2(C)</span></p><div class="qrow"><p class="q">${nm.p}</p><div class="numrow"><input type="number" step="any" inputmode="decimal" aria-label="${nm.p.replace(/<[^>]+>/g,'')}"><span class="u">${nm.unit}</span><button class="btn" type="button">Check</button></div></div><p class="fbx" hidden></p>`;
+    const inp=$('input',d),fb=$('.fbx',d);const show=ok=>{fb.hidden=false;fb.className='fbx '+(ok?'ok':'no');fb.innerHTML=ok?'✓ '+nm.why:(nm.hint||'Not yet. Check which quantities to compare, then try again.');d.classList.toggle('ok',ok)};
+    $('button',d).onclick=()=>{const v=parseFloat(inp.value);if(isNaN(v)){fb.hidden=false;fb.className='fbx no';fb.textContent='Enter a number first.';return}const ok=Math.abs(v-nm.ans)<=nm.tol;setProg(c.id,key,ok?1:0);show(ok);upd()};
+    if(P[key]===1){inp.value=nm.ans;show(true)}T.append(d)});
+  const pk=c.pick||(c.model?{ans:c.model,why:c.modelWhy}:null);
+  if(pk){n++;const dm=document.createElement('div');dm.className='task';dm.innerHTML=`<p class="tl"><b>Task ${n} · ${m.pickLabel||'Model'}</b><span>${m.pickTeks||o.teks}</span></p><p class="q">${pk.q||m.pickQ||'Which model first explained this evidence?'}</p><div class="mbtns"></div><p class="fbx" hidden></p>`;
+    const mb=$('.mbtns',dm),mf=$('.fbx',dm);
+    (pk.opts||picksFor(m)).forEach(([k,name,icon])=>{const b=document.createElement('button');b.type='button';b.className='btn';b.innerHTML=(icon||'')+`<span>${name}</span>`;
+      b.onclick=()=>{$$('.btn',mb).forEach(x=>x.classList.remove('correct','wrong'));const ok=k===pk.ans;b.classList.add(ok?'correct':'wrong');setProg(c.id,'model',ok?1:0);mf.hidden=false;mf.className='fbx '+(ok?'ok':'no');
+        mf.innerHTML=ok?'✓ '+pk.why:(pk.no||m.pickNo||`Not ${name}. Ask which model first had the idea this evidence needs. Earlier models lacked it; later ones inherited it.`);dm.classList.toggle('ok',ok);upd()};mb.append(b);
+      if(P.model===1&&k===pk.ans){b.classList.add('correct');mf.hidden=false;mf.className='fbx ok';mf.innerHTML='✓ '+pk.why;dm.classList.add('ok')}});
+    T.append(dm)}
+  n++;const dq=document.createElement('div');dq.className='task';dq.innerHTML=`<p class="tl"><b>Task ${n} · Decide</b><span>SEP 3(A)</span></p><div class="ck"></div>`;
+  U2.renderCheck($('.ck',dq),{id:c.id,obj:c.obj,q:c.q,opts:c.opts},{label:'',onAnswer:ok=>{setProg(c.id,'mc',ok?1:0);dq.classList.toggle('ok',ok);upd()}});
+  if(P.mc===1)dq.classList.add('ok');T.append(dq);
+  $('#cprev').disabled=i===0;$('#cprev').onclick=()=>{idx[key]=i-1;render()};
+  const nx=$('#cnext');if(i===cs.length-1){nx.textContent='Finish';nx.onclick=()=>summary(key)}else nx.onclick=()=>{idx[key]=i+1;render()};
+  /* Next stays a plain button while the case is open and turns primary once it is solved: the cue to move on */
+  const go=()=>nx.classList.toggle('primary',solved(c));go();
+  function upd(){tabs();go();const d=$$('#dots button')[i];if(d)d.className='cur '+(solved(c)?'done':partial(c)?'part':'');const[a2,t2]=firstScore(cs);$('#mscore').textContent=`${cs.filter(solved).length} of ${cs.length} cases solved · first-try accuracy ${t2?Math.round(100*a2/t2)+'%':'–'}`}
+  window.scrollTo({top:0})}
+/* the summary opens at the top of the tasks column, inside the card, and replaces any earlier one; no accuracy before any attempt */
+function summary(key){const cs=M[key].cases,[a,t]=firstScore(cs),s=cs.filter(solved).length;$$('.summary').forEach(x=>x.remove());const box=document.createElement('div');box.className='summary';box.setAttribute('role','status');
+  box.innerHTML=`<h3>${s===cs.length?'Mission complete':'Almost there'}</h3><p>${s} of ${cs.length} cases solved.${t?` First-try accuracy: ${Math.round(100*a/t)}%.`:''} ${s<cs.length?'Open the dots that are not green to finish the remaining cases.':(M[key].next||'Next: the Unit 3 case file.')}</p>`;
+  const T=$('#tasks');if(T){T.prepend(box);scrollTo({top:0,behavior:'smooth'})}else{$('#mbody').append(box);box.scrollIntoView({behavior:'smooth'})}}
+function buildView(){const m=M.build;head(m);let built=store.get('built',[]);const T=m.targets;let cur=T.find(t=>!built.includes(t))||T[T.length-1];
+  const dots=$('#dots');dots.innerHTML='';T.forEach((t,k)=>{const b=document.createElement('button');b.type='button';b.textContent=k+1;b.className=(t===cur?'cur ':'')+(built.includes(t)?'done':'');b.onclick=()=>{cur=t;draw()};dots.append(b)});
+  $('#mscore').textContent=`${built.length} of ${T.length} models built`;
+  const body=$('#mbody');body.innerHTML=`<div class="build"><div class="card" id="bwork"></div><div class="card"><p class="label">Your model timeline</p><ol class="btrack" id="btrack"></ol></div></div>`;
+  function track(){$('#btrack').innerHTML=T.map(t=>{const x=U2.TARGETS[t];return`<li class="${built.includes(t)?'done':''} ${t===cur?'cur':''}">${built.includes(t)?U2.modelSVG({pos:x.pos,e:x.e,m:x.m},'bt'+t):U2.modelSVG({pos:-1,e:-1,m:-1},'bt'+t)}<span><b>${x.name.replace(/ \(.*/,'')}</b><br><span class="yr">${x.name.match(/\((.*)\)/)[1]}</span></span></li>`}).join('')}
+  function draw(){const w=$('#bwork');w.innerHTML='';const bd=document.createElement('div');w.append(bd);
+    $$('#dots button').forEach((b,k)=>b.className=(T[k]===cur?'cur ':'')+(built.includes(T[k])?'done':''));
+    U2.modelBuilder(bd,{target:cur,onDone:ok=>{if(!ok)return;const wi=m.why[cur];if(wi===undefined){finish();return}
+      const q=document.createElement('div');q.className='evq';q.innerHTML=`<p class="q"><b>Which evidence forced this model?</b></p>`;const s=document.createElement('select');s.append(new Option('Choose the evidence…',''));m.ev.forEach((e,i)=>s.append(new Option(e,i)));
+      const c=U2.btn('Check','btn');const f=document.createElement('p');f.className='fbx';f.hidden=true;const r=document.createElement('div');r.className='numrow';r.append(s,c);q.append(r,f);w.append(q);
+      c.onclick=()=>{const ok=+s.value===wi&&s.value!=='';f.hidden=false;f.className='fbx '+(ok?'ok':'no');f.innerHTML=ok?'✓ Right. '+U2.TARGETS[cur].why.e:'Not that one. Which result could the previous model not explain?';if(ok)finish()}}});
+    track()}
+  function finish(){if(!built.includes(cur)){built.push(cur);store.set('built',built)}tabs();$('#mscore').textContent=`${built.length} of ${T.length} models built`;track();
+    const nxt=T.find(t=>!built.includes(t));const w=$('#bwork');const b=U2.btn(nxt?'Next model →':'All five built. Go to Models at work →','btn primary');b.style.marginTop='12px';b.onclick=()=>{if(nxt){cur=nxt;draw()}else{tab='work';store.set('mtab','work');render()}};w.append(b)}
+  draw()}
+function caseFile(){$('#msub').textContent='Unit 3 capstone';$('#mtitle').textContent='Case file: Can sodium stand in for lithium?';$('#mintro').textContent='';$('#dots').innerHTML='';$('#mscore').textContent='';
+  $('#mbody').innerHTML=`<div class="locked"><p class="label">Unit 3 case file</p><h2>Should a Texas battery pilot test sodium in place of lithium?</h2><p>You advise a fictional Texas electric cooperative. Six evidence files use the periodic table to compare lithium and sodium, covering C.5(A), C.5(B) and C.5(C), and end in a recommendation you write in your notebook.${M.caseNote?' '+M.caseNote:''}</p><p><a class="btn primary" href="${M.caseUrl||'casefile.html'}">Open the case file →</a></p></div>`}
+/* custom tab: the lesson mounts its own activity and reports progress through api.done(n) */
+function customView(k){const m=M[k];head(m);$('#dots').innerHTML='';const sc=()=>{const d=store.get('cdone',{});$('#mscore').textContent=m.total?`${d[k]||0} of ${m.total} done`:''};
+  const body=$('#mbody');body.innerHTML='';
+  m.mount(body,{store,reveal,done(n){const d=store.get('cdone',{});d[k]=Math.max(d[k]||0,n);store.set('cdone',d);tabs();sc()},
+    next(){const i=ORDER.indexOf(k);tab=ORDER[i+1]||'case';store.set('mtab',tab);render()}});
+  sc();window.scrollTo({top:0})}
+function render(){tabs();undock();if(tab==='case')caseFile();else{const kd=kind(tab);if(kd==='cases')caseView(tab);else if(kd==='build')buildView();else if(kd==='custom')customView(tab)}dock()}
+U2.glossaryPop&&U2.glossaryPop();render();
+})();
+
+</script>
+</body>
+</html>

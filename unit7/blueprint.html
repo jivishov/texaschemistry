@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unit 7 Blueprint</title>
+<meta name="description" content="Teacher blueprint for Unit 7 Gas Laws and Kinetic Theory: exact TEKS, objectives, lesson map, misconceptions, missions, the case file and data sources.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500..800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fb;--paper:#fff;--ink:#14162b;--muted:#5b6078;--line:#dfe2ee;--sunk:#eef0f7;--accent:#3a3fc9;--accent-soft:#e6e7fb;--warm:#b0430f;--ok:#17734a;--ok-soft:#e3f4ea;--bad:#b4232a;
+  --body:"Atkinson Hyperlegible",system-ui,sans-serif;--display:"Bricolage Grotesque",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1120;--paper:#171a2e;--ink:#eceefb;--muted:#a3a8c6;--line:#2c3150;--sunk:#1f2340;--accent:#9ea3ff;--accent-soft:#272b55;--warm:#ff9a62;--ok:#5fd39b;--ok-soft:#173528;--bad:#ff7b7b}}
+:root[data-theme="dark"]{--bg:#0f1120;--paper:#171a2e;--ink:#eceefb;--muted:#a3a8c6;--line:#2c3150;--sunk:#1f2340;--accent:#9ea3ff;--accent-soft:#272b55;--warm:#ff9a62;--ok:#5fd39b;--ok-soft:#173528;--bad:#ff7b7b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 20px 80px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px}
+nav.toc{position:sticky;top:20px;align-self:start;font-size:14px}
+nav.toc p{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:4px 0 4px 10px;border-left:2px solid var(--line)}
+nav.toc a:hover{color:var(--ink);border-color:var(--accent)}
+main{min-width:0}
+header.top{margin-bottom:28px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm);margin:0}.eyebrow a{color:inherit;text-decoration:none}.eyebrow a:hover{text-decoration:underline}
+h1{font-family:var(--display);font-size:44px;line-height:1.02;margin:.15em 0 .3em;font-weight:800}
+h2{font-family:var(--display);font-size:28px;line-height:1.1;margin:56px 0 10px;font-weight:700;scroll-margin-top:16px}
+h3{font-family:var(--display);font-size:20px;margin:28px 0 8px;font-weight:700}
+h4{font-size:16px;margin:18px 0 6px}
+p{margin:0 0 12px}
+a{color:var(--accent)}
+.lede{font-size:19px;color:var(--muted)}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pill{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-radius:99px;padding:3px 10px;background:var(--paper);color:var(--muted)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid2 .card,.grid3 .card{margin:0}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--warm);margin:0 0 6px;font-weight:600}
+table{border-collapse:collapse;width:100%;font-size:15px;background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:12px 0}
+th,td{text-align:left;vertical-align:top;padding:9px 12px;border-bottom:1px solid var(--line)}
+th{font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);background:var(--sunk);font-weight:600}
+tr:last-child td{border-bottom:0}
+td code,p code,li code{font-family:var(--mono);font-size:.88em;background:var(--sunk);padding:.05em .35em;border-radius:5px}
+ul,ol{margin:0 0 12px;padding-left:1.3em}
+li{margin:3px 0}
+.teks{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:10px 0}
+.teks b{font-family:var(--mono);font-size:13px;color:var(--accent)}
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}
+.flow div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px;position:relative}
+.flow div:not(:last-child)::after{content:"→";position:absolute;right:-10px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:700}
+.flow b{display:block;font-family:var(--display);font-size:17px}
+.flow span{font-size:13.5px;color:var(--muted)}
+.tag{display:inline-block;font-family:var(--mono);font-size:11.5px;border-radius:6px;padding:1px 6px;background:var(--accent-soft);color:var(--ink);white-space:nowrap}
+.tag.w{background:color-mix(in srgb,var(--warm) 16%,var(--paper))}
+.tag.g{background:var(--ok-soft)}
+.note{background:var(--accent-soft);border-radius:12px;padding:12px 16px;margin:14px 0;font-size:15.5px}
+.mis td:first-child{width:38%}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.evid{counter-reset:ev}
+.evid .card{position:relative;padding-left:62px}
+.evid .card::before{counter-increment:ev;content:counter(ev);position:absolute;left:18px;top:18px;width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--paper);display:grid;place-items:center;font-family:var(--display);font-weight:800}
+footer{margin-top:60px;font-size:14px;color:var(--muted)}
+.tt{position:fixed;right:16px;top:14px;font:600 13px var(--body);background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:6px 12px;cursor:pointer}
+@media (max-width:900px){.wrap{grid-template-columns:minmax(0,1fr)}nav.toc{position:static}.grid3,.grid2,.flow{grid-template-columns:minmax(0,1fr)}.flow div::after{display:none}h1{font-size:34px}table{display:block;overflow-x:auto}}
+@media print{nav.toc,.tt{display:none}.wrap{display:block;padding:0}body{background:#fff;font-size:12pt}.card,table{break-inside:avoid}h2{break-after:avoid}}
+sub,sup{font-size:.72em;line-height:0}
+</style>
+</head>
+<body>
+<button class="tt" id="tt" type="button">Theme</button>
+<div class="wrap">
+<nav class="toc" aria-label="Contents">
+  <p>Blueprint</p>
+  <a href="#package">1. The package</a>
+  <a href="#teks">2. Standards</a>
+  <a href="#map">3. Lesson map and pacing</a>
+  <a href="#l71">4. Lesson 7.1</a>
+  <a href="#l72">5. Lesson 7.2</a>
+  <a href="#l73">6. Lesson 7.3</a>
+  <a href="#l74">7. Lesson 7.4</a>
+  <a href="#l75">8. Lesson 7.5</a>
+  <a href="#l76">9. Lesson 7.6</a>
+  <a href="#case">10. Case file: gas for the reef survey</a>
+  <a href="#matrix">11. Alignment matrix</a>
+  <a href="#assess">12. Using the results</a>
+  <a href="#access">13. Access and Honors</a>
+  <a href="#data">14. Data and accuracy</a>
+  <a href="#src">Sources</a>
+</nav>
+<main>
+<header class="top">
+  <p class="eyebrow"><a href="index.html">Chemistry Case Files · Unit 7</a> · Teacher blueprint</p>
+  <h1>Gas Laws and Kinetic Theory: unit blueprint</h1>
+  <p class="lede">One set of objectives drives four surfaces: a student reading, a teacher slide deck, missions and a case file. Every check item carries an objective ID, so alignment to TEKS C.10(A), C.10(B) and C.10(C) can be traced item by item.</p>
+  <div class="meta"><span class="pill">Grade 10 on-level, Honors optional</span><span class="pill">19 TAC §112.43(c), adopted 2020</span><span class="pill">About 12 to 13 class periods</span><span class="pill">Exact TEKS wording</span></div>
+</header>
+
+<section id="package">
+<h2>1. The package</h2>
+<p>Twenty-one pages: six readings, six slide decks, six mission sets, one case file, this blueprint and the unit index. Each surface has one job, and none of them tests content that the reading does not teach.</p>
+<div class="flow">
+  <div><b>Read</b><span>Student reading in book or continuous mode, with a simpler-language toggle, worked examples, stop-and-check items and interactives.</span></div>
+  <div><b>Teach</b><span>Teacher deck of 21 slides. Each slide shows its reading section, and the notes give timings, safety and the wrong answers to expect.</span></div>
+  <div><b>Practice</b><span>Missions. Texas places, real data and a model beside the tasks, with feedback on every wrong answer.</span></div>
+  <div><b>Apply</b><span>Case file. One decision about the breathing gas for a coral survey in the Gulf that needs the whole unit.</span></div>
+</div>
+<div class="grid2">
+  <div class="card"><p class="label">Teacher flow, one lesson</p><ol class="small"><li>Open the deck. The driving question and three predictions come first.</li><li>Teach through the deck. Students follow the matching reading section or read it as homework.</li><li>Students work the worked examples and stop-and-check items, then the missions.</li><li>The CER exit ticket and the self-rating close the lesson. Students write in their notebooks.</li></ol></div>
+  <div class="card"><p class="label">Design rules</p><ul class="small"><li>Every number is computed by one shared gas calculator from stated data, so the same value appears on every surface.</li><li>One objective ID per item. Every wrong choice and every common wrong number gets feedback that names the faulty step: a Celsius temperature, a gauge pressure, an R in the wrong units, a ratio upside down.</li><li>Writing happens in notebooks. Pages offer choices, numbers, sliders and reveals, never text boxes.</li><li>Every gas law uses absolute pressure and kelvins, and every molar volume is given with its temperature and pressure.</li><li>The particle models are drawn to scale where they can be, and each caption says when particles are drawn larger than life or fewer than in a real gas.</li></ul></div>
+</div>
+</section>
+
+<section id="teks">
+<h2>2. Standards</h2>
+<p>Exact wording of 19 TAC §112.43(c)(10), "The student understands the principles of the kinetic molecular theory and ideal gas behavior." The right column states what a student must produce to show mastery.</p>
+<table>
+<thead><tr><th style="width:52%">Student expectation</th><th>Mastery evidence</th></tr></thead>
+<tbody>
+<tr><td><div class="teks"><b>C.10(A)</b> describe the postulates of the kinetic molecular theory;</div></td><td>States the five postulates and uses them to explain why a gas fills its container, can be compressed and exerts pressure. Relates the kelvin temperature to the average kinetic energy of the particles, compares the speeds of light and heavy particles at one temperature, and explains with collisions why diffusion through still air is slow. Explains pressure as the push of particles hitting a wall. Names the two postulates that fail for real gases, and when. Lessons 7.1 and 7.2; case file File 1.</td></tr>
+<tr><td><div class="teks"><b>C.10(B)</b> describe and calculate the relationships among volume, pressure, number of moles, and temperature for an ideal gas; and</div></td><td>Measures and converts pressures, and tells gauge from absolute pressure. Describes Boyle's, Charles's, Gay-Lussac's and Avogadro's laws in words, particle pictures and graphs, and calculates with each, with the combined gas law and with PV = nRT, choosing R in matching units. Finds a molar volume as RT/P at stated conditions and the volume of a gas made in a reaction. Lessons 7.2 to 7.5; case file Files 2 to 5.</td></tr>
+<tr><td><div class="teks"><b>C.10(C)</b> define and apply Dalton's law of partial pressure.</div></td><td>Defines partial pressure and Dalton's law of partial pressures, and explains with particles why the partial pressures add up. Calculates partial pressures from mole fractions and back, for air at the coast, on Guadalupe Peak and under the Gulf. Corrects a gas collected over water for water's vapor pressure. Lesson 7.6; case file File 6.</td></tr>
+</tbody></table>
+<p class="small">Lesson 7.5 also serves Unit 6's <span class="tag">C.9(C)</span>, "perform stoichiometric calculations, including determination of mass relationships, gas volume relationships, and percent yield; and", by turning the moles of a gas made in a reaction into liters at stated conditions.</p>
+<div class="note"><b>Science and engineering practices</b> used most in this unit:
+<ul class="small">
+<li>1(D) and 1(E) tools and SI data: the barometer, manometer and tire gauge in 7.2, and the syringe with a pressure sensor in 7.3. Pressures are in kPa, with atm, mm Hg, torr, bar and psi converted to it.</li>
+<li>1(F) and 2(B) organizing data and sources of error: the syringe table and its graphs of P against V and P against 1/V, with a random error (the sensor's last digit) and a systematic one (the tube the scale does not count). 2(B) also covers the four baths of 7.4 and the levels in the tube of 7.6.</li>
+<li>1(G) and 2(A) models and their limits: the gas box of moving particles, the ideal gas itself, and where real gases depart from it (7.1, 7.5 and case file File 5).</li>
+<li>2(C) mathematical calculations: every gas-law task. 3(A) explanations from data: the four baths and the tire after a blue norther (7.4). 3(C) argumentation: the exit tickets and the case file recommendation.</li>
+<li>4(B) history: Bernoulli to Boltzmann (7.1), Torricelli (7.2), Boyle and Towneley (7.3), Amontons, Charles, Gay-Lussac and Kelvin (7.4), Avogadro and Clapeyron (7.5), Dalton (7.6).</li>
+<li>1(C) safety: mercury appears only in drawings, sealed containers are never heated, and pressurized cylinders appear only as simulations.</li>
+</ul>
+<b>Boundaries.</b> How temperature affects gas solubility is C.11(C), Unit 8; Henry's law and gases dissolved in blood or water are not taught. Heat and calorimetry are C.13, Unit 10: pages say only that temperature measures the average kinetic energy of the particles. Effusion and Graham's law are not in the TEKS and do not appear. Phase diagrams are not taught; vapor pressure appears only as far as a gas collected over water needs it. Gas density from the ideal gas law and the van der Waals equation go beyond C.10(B) and appear only in Honors boxes in 7.5. No new reaction types and no molarity. "STP" is named once, in 7.5, as a reference condition that sources define differently; every other page states the temperature and pressure in full.</div>
+</section>
+
+<section id="map">
+<h2>3. Lesson map and pacing</h2>
+<table>
+<thead><tr><th>Lesson</th><th>TEKS</th><th>Periods</th><th>Core interactives</th><th>Mission tabs</th></tr></thead>
+<tbody>
+<tr><td><b>7.1</b> The kinetic molecular theory</td><td><span class="tag">C.10(A)</span></td><td>2</td><td>A gas box of moving particles, the postulate sorter, one molecule's path, diffusion from a bottle, a real gas squeezed and cooled</td><td>Match the postulates, Energy and speed, Diffusion and real gases</td></tr>
+<tr><td><b>7.2</b> Gas pressure</td><td><span class="tag">C.10(A)</span> <span class="tag">C.10(B)</span></td><td>1.5</td><td>Particles hitting a wall, the collapsing can, a barometer at four Texas places, the tire gauge</td><td>Barometer readings, Unit conversions, Gauge and absolute</td></tr>
+<tr><td><b>7.3</b> Boyle's law</td><td><span class="tag">C.10(B)</span></td><td>1.5</td><td>A piston of particles, the syringe and pressure sensor, the chip bag from Houston to the McDonald Observatory</td><td>Syringe data, Boyle's law, Free or taut</td></tr>
+<tr><td><b>7.4</b> Charles's and Gay-Lussac's laws</td><td><span class="tag">C.10(B)</span></td><td>1.5</td><td>Particles heated under a piston and in a rigid box, a flask in four baths, a tire through a blue norther</td><td>Four baths, Charles and Gay-Lussac, A night in a norther</td></tr>
+<tr><td><b>7.5</b> The ideal gas law</td><td><span class="tag">C.10(B)</span> <span class="tag">C.9(C)</span></td><td>2</td><td>Avogadro's law with particles, the PV = nRT solver, molar volume at chosen conditions, a weather balloon's flight, gas from a reaction, two real gases</td><td>Launch day, Find the unknown, Gas from a reaction</td></tr>
+<tr><td><b>7.6</b> Dalton's law of partial pressures</td><td><span class="tag">C.10(C)</span></td><td>2</td><td>A mixture of particles, the partial pressures of air from the coast to the Gulf floor, hydrogen collected over water, the vapor-pressure table</td><td>Gas in the tube, Mixtures, Up a mountain and under the Gulf</td></tr>
+<tr><td><b>Case file</b> Gas for the reef survey</td><td>All</td><td>1</td><td>Six evidence files, four 3D scenes drawn to scale, a gas box, a pressure chart and an oxygen chart, and a recommendation</td><td>case file</td></tr>
+<tr><td><b>Review and assessment</b></td><td>All</td><td>1</td><td>Teacher's own review and unit test</td><td>n/a</td></tr>
+</tbody></table>
+<p class="small muted">Each deck's cover notes give its pacing, about one and a half or two 45 to 50 minute periods, with the slide where the second period starts. Teach the lessons in order: 7.2 builds pressure on the collisions of 7.1, 7.3 and 7.4 each hold two quantities fixed, 7.5 joins all four, and 7.6 splits a total pressure among gases. Worksheets are deferred: they are not part of this release, and no student page mentions one.</p>
+</section>
+
+<section id="l71">
+<h2>4. Lesson 7.1 · The kinetic molecular theory</h2>
+<p><b>Driving question.</b> A bottle of vanilla extract is opened at the front of a classroom, and a student at the back smells it a few minutes later. If air molecules move at hundreds of meters per second, why does a scent take minutes to cross a room?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>7.1.1</td><td>Describe the five postulates of the kinetic molecular theory and use them to explain why a gas fills its container, can be compressed and exerts pressure.</td><td><span class="tag">C.10(A)</span></td><td>5, 6, 14</td></tr>
+<tr><td>7.1.2</td><td>Relate the temperature of a gas to the average kinetic energy of its particles, compare the speeds of gases at one temperature, and explain why diffusion through still air is slow.</td><td><span class="tag">C.10(A)</span></td><td>7 to 11</td></tr>
+<tr><td>7.1.3</td><td>Explain when and why real gases depart from the ideal-gas model, and describe how the kinetic molecular theory developed from Bernoulli to Boltzmann.</td><td><span class="tag">C.10(A)</span></td><td>12, 13</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">The five postulates are quoted from OpenStax Chemistry 2e, and the page names the theory as a theory and the gas laws as laws. The numbers test them. In air at 25 °C and 1 atm the molecules sit about nine diameters apart and fill only about 0.06% of the space, which is why a gas compresses. At 25 °C every gas has the same average kinetic energy, 6.17 × 10<sup>−21</sup> J, so helium's root-mean-square speed (1,363 m/s) is √(28.01 ÷ 4.003) = 2.65 times nitrogen's (515 m/s). A nitrogen molecule travels only about 65 nm between collisions and collides about 7 billion times a second, so a scent molecule wanders instead of travelling. With ethanol's diffusion coefficient in air, 0.129 cm<sup>2</sup>/s, √(6Dt) gives 6.8 cm in a minute and 53 cm in an hour, and about ten days to cross an 8 m room. Air currents carry the scent; the page says plainly that some books get this wrong. Real gases depart from the model when squeezed hard or cooled toward condensing (nitrogen at 77 K). The history runs from Bernoulli (1738) through Clausius (1857 and 1858) and Maxwell (1859 and 1860) to Boltzmann (1868 and 1872).</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>The molecules of a gas are packed closely together, as in a liquid.</td><td>In air at 25 °C and 1 atm the molecules are about nine diameters apart and fill well under 1% of the space.</td></tr>
+<tr><td>At one temperature, all the particles of a gas move at the same speed.</td><td>A sample has a wide spread of speeds. The temperature sets their average kinetic energy, and the speed chart shows the spread.</td></tr>
+<tr><td>Helium atoms are faster, so they carry more energy than nitrogen molecules at the same temperature.</td><td>At one temperature every gas has the same average kinetic energy. Helium atoms are lighter, so they move faster for the same energy.</td></tr>
+<tr><td>A scent crosses a room by diffusion, because its molecules move at hundreds of meters per second.</td><td>Billions of collisions a second turn the path into a zig-zag. Diffusion alone would take about ten days to cross an 8 m room; air currents do the work.</td></tr>
+<tr><td>Heating a gas makes its particles bigger.</td><td>The particles keep their size; heated, they move faster on average.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §7.1 · 24 paragraphs, each with a simpler version</p><ol class="small"><li>Gases and the kinetic theory</li><li>The five postulates</li><li>Small particles, wide spaces</li><li>Temperature and kinetic energy</li><li>Speeds in a gas sample</li><li>Collisions in a gas</li><li>Diffusion through still air</li><li>How far a scent diffuses</li><li>Real gases</li><li>Where the theory came from</li><li>Review: the kinetic molecular theory</li></ol><p class="small">Nine worked examples. Honors box: The root-mean-square speed.</p></div>
+  <div class="card"><p class="label">Slides and missions</p><ul class="small"><li>Deck: 21 slides. Checkpoint 15 to 18, predictions revisited 19, CER exit ticket 20, self-rating 21.</li><li>Match the postulates: six everyday observations, each matched with the postulate that explains it</li><li>Energy and speed: 4 cases (Warming the air; Helium and air; Hydrogen and oxygen; Doubling the energy)</li><li>Diffusion and real gases: 4 cases (One hour of still air; Two meters by diffusion; Nitrogen at 200 bar; Nitrogen becomes a liquid)</li><li>Item bank: 20 items (12 reading, 8 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="l72">
+<h2>5. Lesson 7.2 · Gas pressure</h2>
+<p><b>Driving question.</b> A teacher heats a spoonful of water in an empty soda can until steam pours out, then turns it upside down into cold water. Why does a hot, empty soda can crumple the instant it is turned upside down into cold water?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>7.2.1</td><td>Explain gas pressure as force per unit area produced by particle collisions, and use it to explain why the air crushes an empty can.</td><td><span class="tag">C.10(A)</span></td><td>5 to 8</td></tr>
+<tr><td>7.2.2</td><td>Describe how a barometer and a manometer measure pressure, and convert pressures among atm, kPa, mm Hg, torr, bar and psi.</td><td><span class="tag">C.10(B)</span> <span class="tag w">C.1(D)</span> <span class="tag w">C.1(E)</span></td><td>9 to 12</td></tr>
+<tr><td>7.2.3</td><td>Tell gauge pressure from absolute pressure, and explain why air pressure falls with altitude.</td><td><span class="tag">C.10(B)</span></td><td>13, 14</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">Pressure is P = F/A, and the pascal is one newton on a square meter. Air at 1 atm, exactly 101,325 Pa, pushes about 10 N on every square centimeter. The particle model counts the hits on a wall: more particles, or faster ones, mean more pressure. A gas only pushes; a vacuum does not pull. The collapsing can is a teacher demonstration, explained by condensation: if the steam only cooled from 100 °C to 20 °C as a gas, its pressure would drop by about a fifth, but condensing leaves only water's vapor pressure, about 2.3 kPa, so the net push is about four and a half times as large (99.0 kPa against 21.7 kPa). Torricelli's barometer is dated by his letter to Ricci of June 11, 1644. Mercury is toxic and appears only in drawings; school labs use sealed electronic sensors. 1 torr equals 1 mm Hg to better than one part in a million. A gauge reads the pressure above the air's, so a flat tire reads zero yet still holds air at about 1 atm. The barometer at four Texas places (Galveston, Houston, the McDonald Observatory and Guadalupe Peak) is calculated from the U.S. Standard Atmosphere, 1976, and the page says it is a model of average conditions, not a weather reading.</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>The cold gas inside the can pulls its walls in.</td><td>A gas cannot pull. The steam condenses, so almost nothing pushes outward, and the air outside pushes the walls in.</td></tr>
+<tr><td>The air is too light to push hard on anything.</td><td>Air at 1 atm pushes about 10 N on every square centimeter, more than a thousand newtons on a 10 cm square card.</td></tr>
+<tr><td>A barometer reads the same everywhere.</td><td>At Guadalupe Peak less air lies above, so it holds the mercury about 549 mm high instead of about 760 mm.</td></tr>
+<tr><td>The mm Hg and the torr are two very different units.</td><td>1 atm is exactly 760 torr, and 1 torr equals 1 mm Hg to better than one part in a million.</td></tr>
+<tr><td>A gauge that reads zero means the tire has no air in it.</td><td>A gauge reads the pressure above the air outside. A flat tire still holds air at about 1 atm.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §7.2 · 26 paragraphs, each with a simpler version</p><ol class="small"><li>Pressure is force on an area</li><li>Pressure from collisions</li><li>The collapsing can</li><li>Condensing, not just cooling</li><li>Torricelli's barometer</li><li>Units of pressure</li><li>Converting pressures</li><li>The manometer</li><li>Gauge and absolute pressure</li><li>Pressure and altitude</li><li>Review: gas pressure</li></ol><p class="small">Twelve worked examples. Honors box: Why mercury, not water?</p></div>
+  <div class="card"><p class="label">Slides and missions</p><ul class="small"><li>Deck: 21 slides. Checkpoint 15 to 18, predictions revisited 19, CER exit ticket 20, self-rating 21.</li><li>Barometer readings: 4 tasks beside the barometer model, one for each Texas place, in kPa or atm</li><li>Unit conversions: 4 cases (A barometer reading; Tire pressure in kPa; Atmospheres to torr; Kilopascals to atmospheres)</li><li>Gauge and absolute: 4 cases (A tire's absolute pressure; Absolute pressure in kPa; The gauge climbs with the car; If the gas only cooled)</li><li>Item bank: 20 items (12 reading, 8 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="l73">
+<h2>6. Lesson 7.3 · Boyle's law</h2>
+<p><b>Driving question.</b> A family drives a sealed bag of chips from Houston up Mount Locke to the McDonald Observatory, with the car kept near one temperature. Why is a sealed bag of chips from Houston puffed up tight by the time it reaches the McDonald Observatory?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>7.3.1</td><td>Explain with particle collisions why the pressure of a gas rises when its volume shrinks at a constant temperature.</td><td><span class="tag">C.10(B)</span></td><td>5, 6</td></tr>
+<tr><td>7.3.2</td><td>Organize pressure and volume data from a syringe and a pressure sensor, graph P against V and P against 1/V, evaluate the sources of error, and describe Boyle's experiments.</td><td><span class="tag">C.10(B)</span> <span class="tag w">C.1(F)</span> <span class="tag w">C.2(B)</span></td><td>7 to 10</td></tr>
+<tr><td>7.3.3</td><td>Calculate pressures and volumes with Boyle's law, P₁V₁ = P₂V₂, and explain why, with the outside air's pressure as P₂, it gives the volume of a gas that is free to expand, but a gas held by a taut bag stays at a higher pressure.</td><td><span class="tag">C.10(B)</span></td><td>11 to 14</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">In half the volume, particles that move just as fast hit each part of the wall about twice as often. The syringe lab is a model built from a real school lab: a syringe joined to a pressure sensor, the plunger pushed in 2.0 mL steps from 20.0 mL, with a sensor whose last digit flickers. Students record P and V, work out P × V and 1/V, and see that P against V is a curve while P against 1/V is close to a straight line. P × V falls steadily from 2026 to 1953 kPa·mL, a systematic error: the 0.8 mL tube to the sensor is gas the scale does not count, 4% of it at 20.0 mL and 7% at 10.0 mL. Adding the tube's volume makes P × V steady. Boyle published his air-pump work in 1660 and his J-tube table in 1662, in his Defence against Linus, and credited "Mr Towneley's hypothesis". The chip bag: 1.50 L at 101.1 kPa in Houston would fill 1.92 L at the observatory's 78.94 kPa if its film could stretch freely; a taut film stops it short, so the gas stays above the outside pressure. Boyle's law needs absolute pressures, a fixed amount and a constant temperature, and each condition has its own example.</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>Squeezing a gas makes its particles hit the walls harder.</td><td>At the same temperature the particles move just as fast. They hit more often, because they have half the space to cross.</td></tr>
+<tr><td>A graph of P against V for a gas at one temperature is a straight line.</td><td>P against V is a curve. P against 1/V is the straight line, as the syringe data show.</td></tr>
+<tr><td>More readings remove every error.</td><td>Averaging reduces the sensor's flicker, a random error, but not the steady fall of P × V caused by the tube, a systematic one.</td></tr>
+<tr><td>A gauge reading can go straight into Boyle's law.</td><td>A pump whose gauge reads 0 still holds air at the outside pressure; 0 × V₁ would give zero at every volume.</td></tr>
+<tr><td>A sealed bag at the observatory always grows to the volume Boyle's law predicts.</td><td>Boyle's law gives the free volume. Once the film is taut, the gas stays at a higher pressure than the air outside.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §7.3 · 21 paragraphs, each with a simpler version</p><ol class="small"><li>Pressure and volume</li><li>A syringe and a pressure sensor</li><li>Graphing Boyle's data</li><li>Sources of error</li><li>Boyle's J-tube</li><li>Boyle's law</li><li>Absolute pressure in Boyle's law</li><li>The chip bag</li><li>Review: pressure and volume, Boyle's law</li></ol><p class="small">Twelve worked examples. Honors panel: Why the plunger is pushed slowly, with a piston that warms the gas when pushed fast.</p></div>
+  <div class="card"><p class="label">Slides and missions</p><ul class="small"><li>Deck: 21 slides. Checkpoint 15 to 18, predictions revisited 19, CER exit ticket 20, self-rating 21.</li><li>Syringe data: 4 tasks beside the syringe model (P × V at two marks, the tube's correction, a prediction at a mark the model does not offer)</li><li>Boyle's law: 4 cases (Squeezing a syringe; Finding a volume; A balloon in a vacuum chamber; Pressures in torr)</li><li>Free or taut: 4 cases (The free volume; The taut bag; A gauge on a pump; A bottle that crumples)</li><li>Item bank: 20 items (12 reading, 8 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="l74">
+<h2>7. Lesson 7.4 · Charles's and Gay-Lussac's laws</h2>
+<p><b>Driving question.</b> A blue norther can drop the temperature 40 °F in minutes, and the next morning many dashboards show a tire warning, though nobody let air out. Why do tire-pressure warnings come on the morning after a blue norther, and what does the light tell the driver?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>7.4.1</td><td>Explain with particle motion why a gas heated at a constant pressure expands, and why a gas heated in a fixed volume pushes harder on its walls.</td><td><span class="tag">C.10(B)</span></td><td>5, 6</td></tr>
+<tr><td>7.4.2</td><td>Analyze volume and pressure data against temperature, extrapolate the lines to absolute zero, convert temperatures to kelvins, and describe the work of Amontons, Charles, Gay-Lussac and Kelvin.</td><td><span class="tag">C.10(B)</span> <span class="tag w">C.3(A)</span></td><td>7 to 10</td></tr>
+<tr><td>7.4.3</td><td>Calculate with Charles's law, Gay-Lussac's law and the combined gas law, and use them to explain from data when a tire-pressure warning after a blue norther means the tire was already low.</td><td><span class="tag">C.10(B)</span> <span class="tag w">C.3(A)</span></td><td>11 to 14</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">Heated, the particles move faster and hit harder and more often: under a free piston the gas expands, and in a rigid box its pressure rises. The four baths (ice water, room, warm and hot) hold a 250 mL flask with a balloon or a free syringe; the model's readings, with a small stated scatter, rise about 1 mL a degree and extrapolate to near −274 °C. Absolute zero is −273.15 °C, and air turns liquid near −190 °C long before reaching it. Kelvin's scale dates from 1848. The history is told as the sources give it: Amontons around 1700 on pressure, Charles's unpublished work of about 1787, and Gay-Lussac's 1802 paper on volume, which credited Charles. In this course "Gay-Lussac's law" always means the pressure law at fixed volume, and the page gives OpenStax's other name for it. The tire: FMVSS No. 138 sets the warning within 20 minutes of a pressure 25% under the placard (26.25 psi for a 35 psi placard). With absolute pressures, a tire filled to 35 psi at 75 °F would have to cool to about −19 °F to reach that point by cold alone, so with a light set at that latest point, a warning after a norther means the tire was already low. A maker may set an earlier trigger, and a cooled tire below its placard needs air either way. The rule of about 1 psi per 10 °F (a GM service bulletin posted by NHTSA; 1 to 2 psi per the U.S. Tire Manufacturers Association) comes out near 0.9 psi with absolute pressures and only 0.7 psi if the gauge reading goes straight into the law. Hot water is handled by the teacher, and a sealed container is never heated.</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>Heating a gas makes its particles bigger.</td><td>The particles keep their size. They move faster, hit the walls harder and more often, and push a free piston or balloon outward.</td></tr>
+<tr><td>A gas at 20 °C has twice the average kinetic energy it had at 10 °C.</td><td>In kelvins the temperatures are 293.15 K and 283.15 K, only about 3.5% apart.</td></tr>
+<tr><td>Celsius temperatures can go into a gas-law ratio.</td><td>Gas cooled from 22 °C to 0 °C would shrink to 0 × V₁/22, no volume at all, though the flask still holds gas.</td></tr>
+<tr><td>Gay-Lussac's 1802 paper reported the law of pressure and temperature.</td><td>His 1802 paper was on volume, and it credited Charles's unpublished work. Amontons had studied pressure about a century earlier.</td></tr>
+<tr><td>A blue norther alone can trip the warning on a tire filled to its placard.</td><td>A 35 psi tire filled at 75 °F reads about 30.8 psi at 30 °F, above the 26.25 psi warning point.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §7.4 · 23 paragraphs, each with a simpler version</p><ol class="small"><li>Heating a gas</li><li>A flask in four baths</li><li>Absolute zero and the Kelvin scale</li><li>Pressure, temperature and who found what</li><li>Charles's law</li><li>Gay-Lussac's law</li><li>The combined gas law</li><li>Tires in a blue norther</li><li>One psi per ten degrees</li><li>Review: temperature, Charles's and Gay-Lussac's laws</li></ol><p class="small">Eighteen worked examples, the most of any lesson. This lesson has no Honors box.</p></div>
+  <div class="card"><p class="label">Slides and missions</p><ul class="small"><li>Deck: 21 slides. Checkpoint 15 to 18, predictions revisited 19, CER exit ticket 20, self-rating 21.</li><li>Four baths: 4 tasks beside the bath model (V/T, the slope, absolute zero by extrapolation, a prediction for boiling water)</li><li>Charles and Gay-Lussac: 4 cases (A balloon taken outside; A rigid tank in the sun; A bike tire in the sun; Everything changes at once)</li><li>A night in a norther: 4 tasks beside the tire model (two overnight readings, the highest afternoon reading that still trips the warning, how cold a full tire would have to get)</li><li>Item bank: 20 items (12 reading, 8 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="l75">
+<h2>8. Lesson 7.5 · The ideal gas law</h2>
+<p><b>Driving question.</b> A National Weather Service team at Corpus Christi releases a balloon about 1.5 m across, and two hours later it bursts more than 30 km up. A weather balloon leaves Corpus Christi 1.5 m across. How wide is it 30 km up, and why does it burst?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>7.5.1</td><td>Explain Avogadro's law with particles, and describe how the ideal gas law, PV = nRT, joins Boyle's, Charles's, Gay-Lussac's and Avogadro's laws.</td><td><span class="tag">C.10(B)</span></td><td>5 to 7</td></tr>
+<tr><td>7.5.2</td><td>Calculate pressure, volume, amount or temperature with PV = nRT, choosing R in units that match, and use RT/P to find molar volumes and a weather balloon's size as it rises.</td><td><span class="tag">C.10(B)</span> <span class="tag w">C.2(C)</span></td><td>8 to 11</td></tr>
+<tr><td>7.5.3</td><td>Calculate the volume of a gas made in a reaction at stated conditions from the mass of a reactant, and explain when real gases depart from the ideal gas model.</td><td><span class="tag">C.10(B)</span> <span class="tag">C.9(C)</span> <span class="tag w">C.2(A)</span></td><td>12 to 14</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">Avogadro's 1811 idea, which Unit 6 used for the law of combining volumes, becomes Avogadro's law: at one temperature and pressure, V is proportional to n. Clapeyron joined the four laws in 1834 as PV = nRT. R is one exact constant written three ways, 0.08206 L·atm/(mol·K), 8.314 L·kPa/(mol·K) and 62.36 L·torr/(mol·K), and the page warns about the two common slips, a Celsius temperature and an R in the wrong units. Dividing by n and P gives the molar volume RT/P, and Unit 6's three values come out of it: 22.41 L/mol at 0 °C and 101.325 kPa, 22.71 L/mol at 0 °C and 100 kPa, and 24.5 L/mol (24.47) at 25 °C and 1 atm. STP is named here once: IUPAC changed its standard pressure to 100 kPa in 1982, while OpenStax and many U.S. textbooks use 0 °C and 1 atm, so the course writes the conditions out. The balloon is sealed and thin, so V₂/V₁ = (P₁/P₂)(T₂/T₁). From the U.S. Standard Atmosphere's 101.325 kPa and 288.15 K at sea level to 1.197 kPa and 226.5 K at 30 km, it grows about 66 times in volume but only ∛66.5 = 4.05 times in width, from 1.50 m to about 6.1 m; the Weather Service says its balloons burst at 6 to 8 m. Gas stoichiometry adds one step to Unit 6's path: moles of gas to liters by RT/P at the stated conditions, and back by n = PV/RT. Real gases depart from the model at high pressure and low temperature, and carbon dioxide departs sooner than nitrogen or helium.</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>Equal volumes of helium and argon at one temperature and pressure have equal masses.</td><td>They hold equal numbers of atoms. An argon atom has about ten times the mass of a helium atom.</td></tr>
+<tr><td>0.08206 and 8.314 are two different gas constants.</td><td>They are one constant in different units: 0.08206 × 101.325 = 8.314.</td></tr>
+<tr><td>One mole of any gas always fills 22.4 L.</td><td>22.4 L/mol holds only at 0 °C and 1 atm. At 25 °C and 1 atm a mole fills 24.47 L; the molar volume is RT/P.</td></tr>
+<tr><td>A balloon holding 66 times its launch volume is about 66 times as wide.</td><td>Volume grows as the cube of the width, so 66 times the volume is about 4 times the width.</td></tr>
+<tr><td>Real gases always behave as ideal gases.</td><td>They come closest at low pressure and high temperature. Squeezed or cooled, attractions and the particles' own size matter.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §7.5 · 21 paragraphs, each with a simpler version</p><ol class="small"><li>Avogadro's law</li><li>One law for all four</li><li>Using PV = nRT</li><li>Molar volume at stated conditions</li><li>The balloon's flight</li><li>Gas from a reaction</li><li>When a real gas is not ideal</li><li>Review: the ideal gas law</li></ol><p class="small">Fifteen worked examples. Honors boxes: The van der Waals equation; Density from the ideal gas law.</p></div>
+  <div class="card"><p class="label">Slides and missions</p><ul class="small"><li>Deck: 21 slides. Checkpoint 15 to 18, predictions revisited 19, CER exit ticket 20, self-rating 21. Slide 14 (two real gases) is marked Honors.</li><li>Launch day: 5 tasks beside the balloon model (its volume at launch, its moles of helium, the growth factor and width at 15 km, the volume at a 7.0 m burst)</li><li>Find the unknown: 4 cases (How much helium in the cylinder?; A can in a hot car; How warm is the air?; Fog that sinks)</li><li>Gas from a reaction: 4 cases (A baking-soda volcano; Filling an airbag; Working backward; Volumes in a ratio)</li><li>Item bank: 20 items (12 reading, 8 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="l76">
+<h2>9. Lesson 7.6 · Dalton's law of partial pressures</h2>
+<p><b>Driving question.</b> A class in San Antonio repeats Unit 6's reaction of magnesium with hydrochloric acid and collects the hydrogen over water. Gas from 0.0500 g of magnesium fills 52.3 mL of a tube over water. How much of that gas is hydrogen?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>7.6.1</td><td>Define partial pressure and Dalton's law of partial pressures, and explain with particles why the partial pressures of a mixture add up to its total pressure.</td><td><span class="tag">C.10(C)</span></td><td>5, 6</td></tr>
+<tr><td>7.6.2</td><td>Calculate partial pressures from mole fractions and mole fractions from partial pressures, including the air's oxygen at the coast, on Guadalupe Peak and under the Gulf at the Flower Garden Banks.</td><td><span class="tag">C.10(C)</span> <span class="tag w">C.2(C)</span></td><td>7 to 10</td></tr>
+<tr><td>7.6.3</td><td>Correct the pressure of a gas collected over water for water's vapor pressure, and use the corrected pressure to find how much gas a reaction made.</td><td><span class="tag">C.10(C)</span> <span class="tag w">C.2(C)</span></td><td>11 to 14</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">Dalton read his essay "On the Constitution of mixed Gases; and particularly of the Atmosphere" to the Manchester Literary and Philosophical Society in October 1801, and it was printed in 1802. Ideal particles neither attract nor repel, so each gas hits the walls as it would alone and the pushes add. Each gas's share is its mole fraction, and the share follows moles, not mass. Dry air is 78.08% nitrogen, 20.95% oxygen, 0.934% argon and 0.042% carbon dioxide by volume (NASA), and carbon dioxide is rising (425.62 ppm in 2025, NOAA). On Guadalupe Peak the U.S. Standard Atmosphere gives 73.14 kPa, so oxygen's partial pressure falls with the total although the air is still 20.95% oxygen. Under the Gulf each 10 m of seawater adds about 1 atm (more exactly 100.5 kPa). In the tube over water, the lesson's model has hydrogen plus water vapor, starting with no air in the flask (in a real lab the air pushed into the tube is matched, in moles, by hydrogen left in the flask), and with the levels matched its total is the barometer's 99.2 kPa. Water's vapor pressure at 22 °C is 2.645 kPa (NIST), so the hydrogen's partial pressure is 96.6 kPa; skipping the correction would overstate the hydrogen by 2.7%. Then n = PV/RT and the mole ratio return to Unit 6's magnesium.</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>The gases in a mixture get in each other's way, so their pressures do not simply add.</td><td>Ideal particles do not attract or repel, so each gas pushes on the walls as it would alone, and the pushes add.</td></tr>
+<tr><td>In air, nitrogen, oxygen and argon each give one third of the pressure.</td><td>Each share is the mole fraction: nitrogen gives 78.08%, argon less than 1%.</td></tr>
+<tr><td>On Guadalupe Peak the air has less oxygen in it.</td><td>The air is still 20.95% oxygen. The total pressure falls, so oxygen's partial pressure falls to about 72% of its sea-level value.</td></tr>
+<tr><td>Hydrogen collected over water is pure hydrogen.</td><td>Water evaporates into the tube. The hydrogen's pressure is the total minus water's vapor pressure.</td></tr>
+<tr><td>Water's vapor pressure depends on the barometer or on how much gas is in the tube.</td><td>It depends only on the water's temperature: 2.06 kPa at 18 °C, 4.25 kPa at 30 °C.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §7.6 · 13 paragraphs, each with a simpler version</p><ol class="small"><li>Partial pressures</li><li>Mole fraction</li><li>The partial pressures of air</li><li>Gas collected over water</li><li>Correcting for water vapor</li><li>Review: Dalton's law of partial pressures</li></ol><p class="small">Twelve worked examples. Honors box: Levels that are not matched.</p></div>
+  <div class="card"><p class="label">Slides and missions</p><ul class="small"><li>Deck: 21 slides. Checkpoint 15 to 18, predictions revisited 19, CER exit ticket 20, self-rating 21.</li><li>Gas in the tube: 4 tasks beside the collection model (the hydrogen's partial pressure, its moles, the magnesium that reacted, and an Honors task with the levels not matched)</li><li>Mixtures: 4 cases (Helium and oxygen in one tank; Oxygen over water; What is in the natural gas?; A shielding gas)</li><li>Up a mountain and under the Gulf: 3 cases (Thin air at the telescope; Oxygen on the East bank; Twice the oxygen)</li><li>Item bank: 18 items (10 reading, 8 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="case">
+<h2>10. Case file: Gas for the reef survey</h2>
+<p class="lede">Students act as a fictional support team for a coral survey at NOAA's Flower Garden Banks National Marine Sanctuary, in the Gulf about 113 miles south of the Texas–Louisiana border. The plan has two stations on each dive: transects on the West Bank's reef cap at 18 m and a photo station on the bank's slope at 36 m. The cylinders can hold air or a fictional mix of 32% oxygen, the oxygen share of NOAA Nitrox 32, one of the mixes in NOAA's nitrox tables. The report answers one question: which gas keeps the oxygen within NOAA's limit at every station of the plan?</p>
+<div class="card"><p class="label">Briefing</p><p class="small">The memo explains the task and lists the six files with their TEKS, above a 3D scene, drawn to scale, of the bank, the boat and the two stations with the absolute pressure every 10 m. A fact box gives the real setting: the West Bank 113 miles and the East Bank 119 miles south of the Texas–Louisiana border; the West Bank's reef rising to about 17 to 18 m (56 to 59 ft) below the surface and the bank sloping down to about 166 m (NOAA); the sanctuary designated in 1992 and expanded in 1996 and 2021, and monitored every year since 1989; August surface water at the East Bank averaging about 29 to 30.5 °C from 2009 to 2018 (buoy 42047, NOAA's National Data Buoy Center); and the limit, quoted from the NOAA Diving Standards and Safety Manual (2025): "The maximum allowable PO2 for any NOAA dive is 1.40 ATA", with the reason for a limit: oxygen at a high partial pressure can harm the nervous system and the lungs. The briefing and the recommendation carry the same note: the case is a classroom model, not dive planning, and real diving needs training, certification and the procedures of a recognized diving program.</p></div>
+<p>Each file has three steps: one to three calculations (15 in all), the Unit 7 idea it uses, then a decision about a claim. Every number is computed from the stated data by the shared gas calculator.</p>
+<div class="evid">
+  <div class="card"><p class="label">File 1 · Particles in the cylinder · <span class="tag">C.10(A)</span></p><p class="small">A cylinder grows warm (104 °F) while it is filled quickly, and once cooled to 68 °F its gauge reads 2,700 psi. A gas box with its thermostat off lets students push a piston in and watch the gas warm. Task: the average kinetic energy changes by 293.15 ÷ 313.15 = 0.936 as the gas cools, with feedback for a ratio in °F, in °C or upside down. Decide why the cylinder warms and why its gauge then reads lower.</p></div>
+  <div class="card"><p class="label">File 2 · Pressure at the reef · <span class="tag">C.10(B)</span></p><p class="small">The water's pressure is ρgh with seawater at 1025 kg/m³ (the Navy's 64.0 lb/ft³). Task: on the reef cap at 18 m the absolute pressure is 282.3 kPa, or 2.79 atm, and the gauge pressure is 26.2 psi. A chart of absolute and gauge pressure against depth shows the air's 1 atm between them at every depth. The rule of about 1 atm per 10 m is approximate, and the file accepts it within ±1% (at least half a psi for the gauge pressure).</p></div>
+  <div class="card"><p class="label">File 3 · A lift bag on the way up · <span class="tag">C.10(B)</span></p><p class="small">A bag holding 40 L of air on the reef cap, keeping all its gas at one temperature. Task: by Boyle's law it grows to 111 L at the surface and to 58.9 L halfway up, at 9 m. A 3D scene drawn to scale grows the bag as it rises, beside its size at 18 m. Decide why a bag that keeps its gas rises faster and faster. The file gives no procedure for handling a lift bag.</p></div>
+  <div class="card"><p class="label">File 4 · A cylinder on a hot deck · <span class="tag">C.10(B)</span></p><p class="small">The 2,700 psi cylinder warms to 113 °F on deck and then cools to 86 °F (30 °C) in the water. Task: by Gay-Lussac's law, with absolute pressures and kelvins, the gauge reads 2,932 psi on deck and 2,793 psi in the water. Decide how far off a classmate was who skipped the atmosphere: by less than 0.05% here, a contrast with File 2. A gauge reading given as an absolute pressure gets its own feedback.</p></div>
+  <div class="card"><p class="label">File 5 · How much gas is aboard · <span class="tag">C.10(B)</span> <span class="tag w">SEP 2(A)</span></p><p class="small">The cylinder's inside volume is 11.3 L (the Navy's Table 7-1 lists 0.399 ft³), at 2,714.7 psi absolute, 18,717 kPa, and 20 °C. Task: by PV = nRT it holds 86.8 mol, which fills about 2,160 L at the surface and 775 L on the reef cap, both at 30 °C; a 3D scene drawn to scale sets the cylinder beside the two volumes. Decide how far the answers can be trusted: air, from NIST's data for its three main gases, has Z ≈ 1.02 at that pressure, so the real gas holds about 2% fewer moles, about 85.1 mol.</p></div>
+  <div class="card"><p class="label">File 6 · Oxygen at depth · <span class="tag">C.10(C)</span></p><p class="small">P<sub>O₂</sub> = x<sub>O₂</sub> × P<sub>total</sub>, with air at 20.95% oxygen and the mix at 32%. Task: air gives 0.58 atm on the reef cap and 0.96 atm at 36 m; the mix gives 0.89 atm and 1.46 atm. A chart of P<sub>O₂</sub> against depth shows air reaching NOAA's 1.40 ATA at about 57 m and the mix at about 34 m. Decide why the mix gives more oxygen on the reef cap.</p></div>
+</div>
+<div class="card"><p class="label">Recommendation · claim, evidence, reasoning · SEP 3(A), 3(C)</p><p class="small">The survey lead asks whether the popular 32% mix can serve the whole plan. Students choose a claim (fill with air, which stays within the limit at both stations; use the mix only if the deep station moves well above 34 m, where the mix reaches the limit; use the mix for both stations, because more oxygen is always better; or either gas, because both stay within the limit on the reef cap), select at least three files, and mark what the files cannot show. They then write the reasoning in their notebooks using sentence starters and a word bank. The check rejects the last two claims with feedback (at 36 m the mix gives 1.46 atm, above the limit), and expects three limits: what the extra nitrogen in air does to a diver at depth, how long a diver may stay at each station, and whether a filled cylinder really holds the mix on its label. The partial pressure of oxygen and the absolute pressure are not limits, because Files 6 and 2 settle them. After a successful check, a sample report appears for comparison. Either of the first two claims can be strong.</p>
+<p class="small"><b>Grading the notebook.</b> A strong report adds the atmosphere to the water's pressure, multiplies by oxygen's mole fraction at each station, compares both stations with 1.40 ATA, and says that a trained diving program must make the real plan. A report that judges by the reef cap alone has left out the deep station.</p></div>
+<div class="note small"><b>Case-file boundary.</b> The support team, the survey, its two stations, the cylinder and its fill, the lift bag, the 32% mix and every measurement are fictional; the sanctuary, its depths and water temperatures, NOAA's limit and mixes, the Navy's seawater density and cylinder table, and NIST's data for nitrogen, oxygen and argon are real and cited. What nitrogen does at depth and how long a diver may stay are named only as things the files cannot show; the case teaches no physiology and no dive procedure. Pressurized cylinders appear only as simulations.</div>
+</section>
+
+<section id="matrix">
+<h2>11. Alignment matrix</h2>
+<table>
+<thead><tr><th>TEKS</th><th>Reading</th><th>Slides</th><th>Missions</th><th>Case file</th></tr></thead>
+<tbody>
+<tr><td><span class="tag">C.10(A)</span> the postulates</td><td>§7.1.1 to §7.1.3</td><td>Deck 7.1, slides 5 to 14</td><td>7.1: all three tabs</td><td>File 1</td></tr>
+<tr><td><span class="tag">C.10(A)</span> pressure from collisions</td><td>§7.2.1, §7.3.1, §7.4.1</td><td>Deck 7.2, slides 5 to 8; Deck 7.3, slides 5, 6; Deck 7.4, slides 5, 6</td><td>7.1: Match the postulates</td><td>File 1</td></tr>
+<tr><td><span class="tag">C.10(B)</span> measuring pressure</td><td>§7.2.2, §7.2.3</td><td>Deck 7.2, slides 9 to 14</td><td>7.2: Barometer readings, Unit conversions, Gauge and absolute</td><td>File 2</td></tr>
+<tr><td><span class="tag">C.10(B)</span> pressure and volume</td><td>§7.3.1 to §7.3.3</td><td>Deck 7.3, slides 5 to 14</td><td>7.3: all three tabs</td><td>File 3</td></tr>
+<tr><td><span class="tag">C.10(B)</span> temperature</td><td>§7.4.1 to §7.4.3</td><td>Deck 7.4, slides 5 to 14</td><td>7.4: all three tabs</td><td>File 4</td></tr>
+<tr><td><span class="tag">C.10(B)</span> moles and PV = nRT</td><td>§7.5.1 to §7.5.3</td><td>Deck 7.5, slides 5 to 14</td><td>7.5: all three tabs</td><td>File 5</td></tr>
+<tr><td><span class="tag">C.9(C)</span> gas volume relationships</td><td>§7.5.3, §7.6.3</td><td>Deck 7.5, slide 12; Deck 7.6, slide 13</td><td>7.5: Gas from a reaction; 7.6: Gas in the tube</td><td>None</td></tr>
+<tr><td><span class="tag">C.10(C)</span></td><td>§7.6.1 to §7.6.3</td><td>Deck 7.6, slides 5 to 14</td><td>7.6: all three tabs</td><td>File 6</td></tr>
+<tr><td>All three</td><td>Chapter reviews</td><td>Checkpoints and exit tickets</td><td></td><td>Recommendation</td></tr>
+</tbody></table>
+</section>
+
+<section id="assess">
+<h2>12. Using the results</h2>
+<div class="grid2">
+  <div class="card"><p class="label">What the pages record</p><ul class="small"><li>Each mission set shows the cases solved and the first-try accuracy, so a first answer can be told apart from eventual completion.</li><li>Numeric answers are accepted within about ±0.5%, and a temperature in °C or °F within at most ±0.5% of its kelvin value; the few exceptions, each with its reason, are in section 14. Each common wrong number (a Celsius temperature, a gauge pressure, an R in the wrong units, a ratio upside down, grams in place of moles) gets its own feedback, and a test checks that none of them falls inside the tolerance.</li><li>Tasks beside a model use readings that students take from the model, so the numbers on the page match the model on the screen.</li><li>Progress is saved in the student's own browser only. Nothing is sent to a server, so the pages are not a gradebook.</li></ul></div>
+  <div class="card"><p class="label">What they do not show</p><ul class="small"><li>A correct number does not prove a correct setup. Ask for the rearranged equation in the notebook, with kelvins, absolute pressures and units that cancel.</li><li>A correct match of a postulate does not prove understanding. Ask students to explain an observation with what the particles do.</li><li>Judge explanations from notebooks and discussion: the exit tickets, the checkpoints and the case file report.</li><li>A completed self-rating is a reflection, not proof of mastery.</li></ul></div>
+</div>
+<p class="small">Each deck runs checkpoints as Think, Talk, Write, Self-check and Compare, with 30 second thinking and 60 second partner timers. The three predictions from slide 3 are revisited on slide 19, and the CER exit ticket returns to the driving question.</p>
+</section>
+
+<section id="access">
+<h2>13. Access, simpler language and Honors</h2>
+<div class="grid3">
+  <div class="card"><p class="label">Reading supports</p><ul class="small"><li>A simpler-language version of every core paragraph (129 in all), one toggle per page</li><li>Worked examples in a faded sequence (Watch, Finish it, On your own), with steps labeled Given, Asked, Equation, Setup and Result, and feedback on each answer (78 in all)</li><li>Read-aloud of any section</li><li>Tap-to-define vocabulary with Spanish terms</li><li>Sentence starters and word banks for notebook writing</li></ul></div>
+  <div class="card"><p class="label">Projector and devices</p><ul class="small"><li>Slides sized for the back row, with zoom on any card</li><li>Light and dark themes</li><li>Particle models with Play and Pause; with reduced motion they open paused and step only on request</li><li>A still description of every model for screen readers</li><li>Readings, missions and the case file work at phone width</li></ul></div>
+  <div class="card"><p class="label">Extension and Honors</p><ul class="small"><li>Honors boxes are collapsible, never on the core path and never assessed</li><li>7.1 the root-mean-square speed; 7.2 why mercury, not water; 7.3 why the plunger is pushed slowly; 7.5 the van der Waals equation, and density from the ideal gas law; 7.6 levels that are not matched</li><li>Lesson 7.4 has no Honors box</li></ul></div>
+</div>
+</section>
+
+<section id="data">
+<h2>14. Data and accuracy notes</h2>
+<ul class="small">
+<li><b>One shared calculator.</b> Every gas-law number on every surface is computed by the shared gas calculator from stated data, with R = 8.314 462 618... J/(mol·K) (exact; CODATA 2022), K = °C + 273.15, and molar masses from the course's average atomic masses.</li>
+<li><b>Pressure units.</b> 1 atm = 101,325 Pa = 760 torr exactly; 1 psi = 6.894 757 kPa; 1 torr is taken as 1 mm Hg, which differ by less than one part in a million (NIST SP 811).</li>
+<li><b>Air pressure at height.</b> Every pressure at a Texas place or a balloon height is calculated from the U.S. Standard Atmosphere, 1976, a model of average conditions: 101.1 kPa at Houston (15 m), 78.94 kPa at the McDonald Observatory (2,057 m), 73.14 kPa at Guadalupe Peak (2,667 m), and 1.197 kPa and 226.5 K at 30 km. Elevations are from USGS, the observatory and the National Park Service.</li>
+<li><b>Water's vapor pressure.</b> One table, at whole degrees from 15 to 30 °C, from the NIST Chemistry WebBook (SRD 69, IAPWS-95); every value the pages quote is checked against it by the unit's tests.</li>
+<li><b>Air and seawater.</b> Dry air by volume from NASA's Earth Fact Sheet (78.08% N<sub>2</sub>, 20.95% O<sub>2</sub>, 0.934% Ar, 0.042% CO<sub>2</sub>), with NOAA's 425.62 ppm for 2025 noted. Seawater at 64.0 lb/ft³, 1025 kg/m³ (U.S. Navy Diving Manual, Revision 7, Change A), with standard gravity 9.806 65 m/s². "About 1 atm per 10 m" is called approximate everywhere: 10 m adds 100.5 kPa.</li>
+<li><b>Molar volumes.</b> The same three values as Unit 6: 22.41 and 22.71 L/mol from CODATA 2022, and 24.47 L/mol at 25 °C and 1 atm computed from R, written 24.5. 22.4 L/mol appears only beside its conditions, 0 °C and 1 atm.</li>
+<li><b>Real gases.</b> NIST's fluid tables have no entry for air, so the case file uses its three main gases: at 187.17 bar and 293.15 K, nitrogen (206.292 kg/m³), oxygen (262.218) and argon (325.654) give Z = 1.043, 0.937 and 0.942, and averaged by mole fraction, a good first approximation, Z ≈ 1.02 for air. The van der Waals constants in the Honors box are from OpenStax Table 9.3.</li>
+<li><b>Tolerances.</b> About ±0.5% on every numeric answer, with these exceptions, each for a stated reason. In the case file, Files 2a to 2c and 6a to 6c take ±1% (2c at least half a psi), so that the approximate rule of 1 atm per 10 m is accepted wherever it can be used; Files 5a to 5c take ±1%, so that a gauge pressure is accepted all the way through, since at 2,700 psi leaving out the atmosphere changes the answer by only 0.5% while the ideal gas law itself is about 2% off for air; and File 4's two gauge readings take ±0.3%, so that an absolute pressure, 14.7 psi above the reading, is caught as a slip. A temperature answer in °C or °F takes a stated tolerance no wider than ±0.5% of its kelvin value, except absolute zero extrapolated from the line through two of the four baths in 7.4, which takes ±1.2 °C, because two scattered readings move it a degree or so.</li>
+<li><b>Models and scale.</b> The gas box draws nitrogen and helium at their kinetic diameters, in boxes about 12 nm across with a few dozen particles, and each caption says when particles are drawn larger or the colors are a code. The syringe, baths, tire, balloon and tube are drawn diagrams with calculated readings and a stated scatter, labeled as simulations. The case file's 3D scenes (the bank, the lift bag, the cylinder, and the cylinder beside the space its gas fills) are drawn to scale; the bank's shape and its stations are simplified.</li>
+<li><b>History.</b> Bernoulli 1738; Clausius 1857 and 1858; Maxwell 1859 and 1860; Boltzmann 1868 and 1872. Torricelli's letter to Ricci, June 11, 1644. Boyle 1660 and 1662, crediting Towneley. Amontons about 1700, Charles about 1787 (unpublished), Gay-Lussac 1802, Kelvin 1848. Avogadro 1811 and Clapeyron 1834. Dalton's essays read in October 1801 and printed in 1802.</li>
+</ul>
+</section>
+
+<section id="src">
+<h2>Sources</h2>
+<ul class="small">
+<li>19 Tex. Admin. Code §112.43, Chemistry (adopted 2020, effective April 28, 2021).</li>
+<li>Lesson 7.1: OpenStax Chemistry 2e, 9.5, The Kinetic-Molecular Theory, and 9.6, Non-Ideal Gas Behavior; NIST CODATA 2022, the Boltzmann constant and the molar gas constant; Wikipedia, Kinetic diameter (citing Ismail, Khulbe and Matsuura, 2015); Seinfeld and Pandis, Atmospheric Chemistry and Physics, chapter 9 (mean free path); NIST Technical Note 2279 (Burgess, 2024), ethanol's diffusion in air; 21 CFR 169.175, Vanilla extract; NIST Chemistry WebBook, nitrogen; Flamm, The kinetic theory of gases; Stanford Encyclopedia of Philosophy, Boltzmann's Work in Statistical Physics.</li>
+<li>Lesson 7.2: OpenStax Chemistry 2e, 9.1, Gas Pressure; NIST Special Publication 811, appendix B.8; Museo Galileo, Torricelli's barometric experiment; MacTutor, Evangelista Torricelli and Vincenzo Viviani; Vanderbilt University physics demonstration 098 and UC Davis chemistry demonstrations, the collapsing can; NIST Chemistry WebBook, water's vapor pressure; U.S. Standard Atmosphere, 1976; National Park Service, Guadalupe Peak; McDonald Observatory, the Harlan J. Smith Telescope; U.S. EPA, Health effects of exposures to mercury.</li>
+<li>Lesson 7.3: OpenStax Chemistry 2e, 9.2; Science History Institute, Robert Boyle; Wellcome Collection, Boyle's Defence against Franciscus Linus (1662); Wikipedia, Richard Towneley (citing C. Webster, 1965) and Franciscus Linus; U.S. Standard Atmosphere, 1976; McDonald Observatory, the Harlan J. Smith Telescope and Plan your visit; U.S. EPA, mercury.</li>
+<li>Lesson 7.4: OpenStax Chemistry 2e, 9.2; Wikipedia, Charles's law, Gay-Lussac's law, Guillaume Amontons and Kelvin; National Weather Service, Amarillo (blue northers; December 12, 1919) and Springfield (November 11, 1911); 49 CFR 571.138, FMVSS No. 138; General Motors service bulletin 09-03-16-002B, posted by NHTSA; U.S. Tire Manufacturers Association, Tire Care and Safety Guide; U.S. Standard Atmosphere, 1976.</li>
+<li>Lesson 7.5: OpenStax Chemistry 2e, 9.2, 9.3 and 9.6 (Table 9.3); Wikipedia, Ideal gas law and Standard temperature and pressure; NIST CODATA 2022, the molar gas constant and the molar volumes at 273.15 K; National Weather Service, Radiosonde Observation fact sheet, Upper Air Sites, and Amarillo Upper Air; U.S. Standard Atmosphere, 1976; Unit 6, Lesson 6.6.</li>
+<li>Lesson 7.6: OpenStax Chemistry 2e, 9.3 and 10.3; Memoirs of the Literary and Philosophical Society of Manchester, vol. V, part II (1802), Dalton's Experimental Essays; Wikipedia, Dalton's law; NIST Chemistry WebBook, SRD 69; NASA Goddard, Earth Fact Sheet; NOAA Global Monitoring Laboratory, Trends in Atmospheric Carbon Dioxide; U.S. Standard Atmosphere, 1976; National Park Service, Hike Guadalupe Peak; NOAA, Flower Garden Banks National Marine Sanctuary and its 2008 Condition Report; U.S. Navy Diving Manual, Revision 7, Change A; Unit 6, Lesson 6.5.</li>
+<li>Case file: NOAA, Flower Garden Banks National Marine Sanctuary, West and East Flower Garden Banks; NOAA, Flower Garden Banks 2008 Condition Report: Site History and Resources; NOAA Office of National Marine Sanctuaries; NOAA, long-term monitoring at Flower Garden Banks, 2022 report; NOAA Diving Standards and Safety Manual (effective March 6, 2025), section 6.6.1; NOAA nitrox no-decompression tables (2016); U.S. Navy Diving Manual, Revision 7, Change A (2018), paras. 2-9.1, 2-9.4.1 and 10-3 and Table 7-1; NOAA National Data Buoy Center, station 42047; NIST Chemistry WebBook, thermophysical properties of fluids; NASA Earth Fact Sheet; OpenStax Chemistry 2e, 9.1, 9.2, 9.3, 9.5 and 9.6; NIST SP 811.</li>
+</ul>
+</section>
+<footer>Chemistry Case Files · Unit 7 · Teacher blueprint</footer>
+</main>
+</div>
+<script>
+(function(){const r=document.documentElement,b=document.getElementById('tt');let t=null;try{t=localStorage.getItem('u2:theme')}catch(e){}
+function ap(){if(t)r.setAttribute('data-theme',t);else r.removeAttribute('data-theme');b.textContent=t==='dark'?'Dark':t==='light'?'Light':'Theme'}
+ap();b.onclick=function(){t=t==='dark'?'light':t==='light'?null:'dark';try{t?localStorage.setItem('u2:theme',t):localStorage.removeItem('u2:theme')}catch(e){}ap()}})();
+</script>
+</body>
+</html>

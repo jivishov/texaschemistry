@@ -1,0 +1,1548 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Electron Configurations Reading</title>
+<meta name="description" content="Unit 2, Lesson 2.5 reading chapter: Arranging electrons (TEKS C.6(E), C.5(B)).">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,600;9..40,700&family=Charis+SIL:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== shared tokens and components (look: design-drafts/labbench-style-draft.html, 2026-10-26) ===== */
+:root{--bg:#eef2ef;--paper:#fcfdfc;--paper2:#f4f7f5;--ink:#1b302e;--muted:#4f605b;--line:#dbe3de;--sunk:#edf3e4;
+  --accent:#0b5951;--accent-ink:#ffffff;--accent-soft:#e6f1ea;--warm:#835811;--warm-soft:#f8eed9;--label:#0b5951;--ok:#1f6e4f;--ok-soft:#e1f0e6;--bad:#a8402f;--bad-soft:#f9e6e1;
+  --pos:#c0391b;--neg:#2b55b8;--neu:#6b7176;--gold:#9c7400;
+  --body:'Charis SIL',Charter,Georgia,serif;--display:'DM Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+  --shadow:0 1px 2px rgba(18,61,45,.05),0 8px 26px rgba(18,61,45,.07);color-scheme:light;--surface:#ffffff;--pick:#dbecc3}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1715;--paper:#152120;--paper2:#182523;--ink:#e3ece8;--muted:#a6b6b0;--line:#283632;--sunk:#22301f;
+  --accent:#73c7b4;--accent-ink:#06231f;--accent-soft:#163029;--warm:#e6bd6c;--warm-soft:#33290f;--label:#9fd7a8;--ok:#7fd1a6;--ok-soft:#163026;--bad:#f39886;--bad-soft:#3a1e19;
+  --pos:#ff9a6c;--neg:#8eb1ff;--neu:#9ba49f;--gold:#e6c65c;--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 26px rgba(0,0,0,.4);color-scheme:dark;--surface:#1c2a27;--pick:#2b4a20}}
+:root[data-theme="dark"]{--bg:#0f1715;--paper:#152120;--paper2:#182523;--ink:#e3ece8;--muted:#a6b6b0;--line:#283632;--sunk:#22301f;
+  --accent:#73c7b4;--accent-ink:#06231f;--accent-soft:#163029;--warm:#e6bd6c;--warm-soft:#33290f;--label:#9fd7a8;--ok:#7fd1a6;--ok-soft:#163026;--bad:#f39886;--bad-soft:#3a1e19;
+  --pos:#ff9a6c;--neg:#8eb1ff;--neu:#9ba49f;--gold:#e6c65c;--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 26px rgba(0,0,0,.4);color-scheme:dark;--surface:#1c2a27;--pick:#2b4a20}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55}
+sup,sub{font-size:.68em;line-height:0}
+button{font:inherit;color:inherit}
+.nw{white-space:nowrap}
+.mono{font-family:var(--mono)}
+.muted{color:var(--muted)}
+.label{font-family:var(--mono);font-size:.7em;letter-spacing:.08em;text-transform:uppercase;color:var(--label);font-weight:500;margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4em;min-height:2.3em;padding:.3em .85em;border-radius:10px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);font-weight:700;cursor:pointer;white-space:nowrap;position:relative;transition:background .15s,border-color .15s}
+.btn:hover{border-color:var(--accent)}
+.btn:focus-visible,.term:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 55%,transparent);outline-offset:2px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent}
+.btn[aria-pressed="true"]{background:var(--pick);color:var(--ink);border-color:var(--accent)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.correct{background:var(--ok-soft);border-color:var(--ok)}
+.btn.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.btn.correct::after,.btn.wrong::after{position:absolute;top:-.5em;right:-.45em;width:1.3em;height:1.3em;border-radius:50%;display:grid;place-items:center;font-size:.72em;line-height:1;color:var(--paper);box-shadow:0 0 0 2px var(--paper)}
+.btn.correct::after{content:"✓";background:var(--ok)}
+.btn.wrong::after{content:"✗";background:var(--bad)}
+.chips{display:flex;flex-wrap:wrap;gap:.4em}
+.chips span{background:var(--sunk);border-radius:99px;padding:.15em .65em;font-size:.88em}
+select{font:inherit;background:var(--paper);color:var(--ink);border:1.5px solid var(--line);border-radius:8px;padding:.25em .5em;min-height:2.1em;max-width:100%}
+input[type=number],input[type=text]{font:inherit;background:var(--paper);color:var(--ink);border:1.5px solid var(--line);border-radius:8px;padding:.25em .5em;min-height:2.1em}
+input[type=range]{accent-color:var(--accent);width:100%}
+.bar .tools .btn,.bar .seg button,.btn.primary{font-family:var(--display)}
+
+/* ===== Unit 2 component kit: sims, checks, glossary (shared by every surface) ===== */
+.seg{display:inline-flex;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper)}
+.seg button{border:0;background:transparent;padding:.35em .8em;font-weight:700;cursor:pointer;min-height:2.2em;white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--pick);color:var(--ink);border-color:var(--accent)}
+/* glossary terms */
+.term{border:0;background:none;padding:0;color:inherit;font:inherit;font-weight:700;cursor:help;border-bottom:2px dotted color-mix(in srgb,var(--accent) 70%,transparent);line-height:1.2}
+.gpop{position:fixed;z-index:60;max-width:min(340px,calc(100vw - 24px));background:var(--paper);border:1.5px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:.7em .9em;font-size:15px;line-height:1.4}
+.gpop b{font-family:var(--display);font-size:1.08em}
+.gpop .es{display:block;margin-top:.35em;font-size:.88em;color:var(--muted)}
+.gpop .es i{color:var(--ink);font-style:normal;font-weight:700}
+
+/* checks */
+.check{border:1.5px solid var(--line);border-radius:14px;background:var(--paper);padding:.8em 1em;display:flex;flex-direction:column;gap:.55em}
+.check .q{font-weight:700;margin:0}
+.check .opts{display:flex;flex-direction:column;gap:.4em}
+.check .opts .btn{display:block;justify-content:flex-start;text-align:left;white-space:normal;line-height:1.3;padding:.45em .8em;font-weight:600}
+.check .fb{margin:0;font-size:.94em;border-radius:10px;padding:.5em .7em;display:none}
+.check .fb.ok{display:block;background:var(--ok-soft);border-left:4px solid var(--ok)}
+.check .fb.no{display:block;background:var(--bad-soft);border-left:4px solid var(--bad)}
+.check .meta{display:flex;justify-content:space-between;gap:.5em;font-family:var(--display);font-size:.68em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+
+/* sim shells */
+.sim{display:flex;flex-direction:column;gap:.55em}
+.sim .cv{position:relative;width:100%;border-radius:12px;overflow:hidden;background:var(--paper2);border:1.5px solid var(--line)}
+.sim canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}
+.sim .ctl{display:flex;flex-wrap:wrap;gap:.45em;align-items:center}
+.sim .ctl .grp{display:flex;align-items:center;gap:.4em;flex-wrap:wrap}
+.sim .ctl .lab{font-family:var(--display);font-size:.68em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.ros{display:flex;flex-wrap:wrap;gap:.45em}
+.ro{background:var(--sunk);border-radius:10px;padding:.3em .6em;min-width:5.5em}
+.ro small{display:block;font-family:var(--display);font-size:.62em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);white-space:nowrap;font-weight:700}
+.ro span{font-family:var(--mono);font-weight:600;font-variant-numeric:tabular-nums}
+.simnote{font-size:.82em;color:var(--muted);margin:0}
+.say{font-size:.95em;margin:0;border-radius:10px;padding:.5em .7em;background:var(--accent-soft)}
+.say.ok{background:var(--ok-soft)}.say.no{background:var(--bad-soft)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* mass table */
+.tscroll{overflow-x:auto}
+table.masst{width:100%;border-collapse:collapse;font-size:.86em}
+table.masst th{font-family:var(--display);font-size:.72em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);text-align:left;padding:.4em .45em;border-bottom:2px solid var(--line);vertical-align:bottom;font-weight:700}
+table.masst td{padding:.45em .45em;border-bottom:1px solid var(--line);vertical-align:middle}
+table.masst td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+table.masst tr.pe td{background:color-mix(in srgb,var(--warm-soft) 70%,transparent)}
+table.masst .calc{display:block;font-family:var(--mono);font-size:.78em;color:var(--muted)}
+/* model builder */
+.mbhead{margin:0;font-size:1em}
+.mbgrid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:.8em;align-items:center}
+.mbopts{display:flex;flex-direction:column;gap:.55em}
+.mbrow{display:flex;flex-direction:column;gap:.25em}
+.mbrow .lab{font-family:var(--display);font-size:.68em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.mbchoices{display:flex;flex-wrap:wrap;gap:.35em}
+.mbchoices .btn{font-size:.82em;min-height:2.1em;padding:.25em .65em;white-space:normal;text-align:left;font-weight:600}
+.mbprev svg{width:100%;max-width:220px;display:block;margin:0 auto}
+.mbuild>.btn.primary{align-self:flex-start}
+@media (max-width:600px){.mbgrid{grid-template-columns:minmax(0,1fr)}}
+/* timeline */
+ol.tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.45em;counter-reset:tl}
+.tlc{display:grid;grid-template-columns:auto 52px minmax(0,1fr) minmax(0,1.6fr) auto;gap:.5em;align-items:center;background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:.35em .5em;counter-increment:tl}
+.tlc .grip{cursor:grab;color:var(--muted);font-weight:800;letter-spacing:-.15em;padding:0 .2em;touch-action:none;user-select:none}
+.tlc .thumb svg{width:52px;height:52px;display:block}
+.tlc .tn{font-size:.92em;line-height:1.2}
+.tlc .tn::before{content:counter(tl)". ";font-family:var(--mono);color:var(--muted);font-size:.85em}
+.tlc select{font-size:.82em;width:100%}
+.tlc .ud{display:flex;flex-direction:column;gap:2px}
+.tlc .ud .btn{min-height:1.5em;padding:0 .45em;font-size:.7em}
+.tlc.dragging{box-shadow:var(--shadow);border-color:var(--accent);opacity:.92}
+.tlc{position:relative}
+.tlc.ok{border-color:var(--ok);background:var(--ok-soft)}
+.tlc.ok::after,.tlc.no::after{position:absolute;top:-7px;right:-7px;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--paper);box-shadow:0 0 0 2px var(--paper)}
+.tlc.ok::after{content:"✓";background:var(--ok)}
+.tlc.no::after{content:"✗";background:var(--bad)}
+.tlc.no{border-color:var(--bad);background:var(--bad-soft)}
+@media (max-width:600px){.tlc{grid-template-columns:auto 40px minmax(0,1fr) auto}.tlc .thumb svg{width:40px;height:40px}.tlc select{grid-column:2/4}}
+
+.sim .seg button{font-size:.82em;padding:.25em .65em;min-height:2.1em}
+.sim .ctl .btn{font-size:.85em;min-height:2.1em;padding:.25em .7em}
+.checkset{display:flex;flex-direction:column;gap:.5em;margin:0 0 1em}
+.checkset .tabs{display:flex;gap:.35em;flex-wrap:wrap}
+.checkset .tabs .btn{font-size:.78em;min-height:1.9em;padding:.15em .7em}
+.checkset .tabs .btn.done::before{content:"✓ ";color:var(--ok)}
+.checkset>.check{margin:0!important}
+table.masst .btn.sm{font-size:.85em}
+/* an element symbol or formula inside a capitalised label keeps its own case: "Na", not "NA" */
+.chem{text-transform:none!important}
+
+/* ===== Reading chapter: compact book. Pages never scroll; content flows onto more pages. ===== */
+:root{--hdr:48px;--pgr:46px}
+body{font-size:16.5px;line-height:1.47}
+.skip{position:absolute;left:-999px;top:8px;background:var(--paper);padding:.4em .8em;border-radius:8px;z-index:99}
+.skip:focus{left:12px}
+.bar{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;min-height:var(--hdr);padding:6px 14px;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);font-size:14px}
+.brand{display:flex;align-items:center;gap:9px;min-width:0}
+.brand .logo{width:26px;height:26px;border-radius:8px;background:conic-gradient(from 200deg,#e85d3a,#f5b13d,#5cb85c,#3a7bd5,#7b4fd6,#e85d3a);flex:none}
+.brand b{display:block;font-family:var(--display);font-size:15px;line-height:1.1}
+.brand small{display:block;color:var(--muted);font-size:12px;white-space:nowrap}
+.tools{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.tools .btn,.tools .seg button{font-size:13.5px;min-height:32px;padding:.15em .7em}
+.prog{position:absolute;left:0;right:0;bottom:-1px;height:3px}
+.prog i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.dd{position:relative}
+.toc{position:absolute;right:0;top:calc(100% + 6px);width:min(360px,90vw);max-height:70vh;overflow:auto;background:var(--paper);border:1.5px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:6px}
+.toc button{display:flex;justify-content:space-between;gap:10px;width:100%;text-align:left;border:0;background:none;padding:7px 9px;border-radius:8px;cursor:pointer;font-size:14.5px}
+.toc button:hover{background:var(--accent-soft)}.toc button.cur{background:var(--pick);color:var(--ink);border-color:var(--accent)}
+.toc .n{font-family:var(--mono);font-size:12px;color:var(--muted);min-width:4.5em}
+.toc .p{font-family:var(--mono);font-size:12px;color:var(--ok);white-space:nowrap}
+
+/* ---------- pages ---------- */
+.page{background:var(--paper);position:relative;min-width:0;display:flex;flex-direction:column}
+.pbody{padding:14px 26px 8px;min-width:0;flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+.pbody>*{flex:none}
+.pfoot{flex:none;display:flex;justify-content:space-between;align-items:center;gap:12px;height:26px;padding:0 26px;font-family:var(--display);font-size:10.5px;letter-spacing:.03em;color:var(--muted);text-transform:uppercase;border-top:1px solid color-mix(in srgb,var(--line) 70%,transparent);font-weight:700}
+.pfoot .rh{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.page.pr .pfoot{flex-direction:row-reverse}
+.pfoot .lw{flex:none}
+.listen{font-size:11.5px!important;min-height:21px!important;padding:0 .55em!important;border-radius:6px!important;text-transform:none;letter-spacing:0;font-family:var(--body)}
+
+/* ---------- book mode ---------- */
+main.book{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr);width:min(1440px,100%);margin:0 auto;padding:8px 16px;height:calc(100vh - var(--hdr) - var(--pgr));perspective:2200px}
+main.book .spread{display:contents}
+main.book .page{display:none;grid-row:1;overflow:hidden;box-shadow:0 8px 24px rgba(40,30,10,.12)}
+main.book .page.on{display:flex}
+main.book .pbody{overflow:auto;scrollbar-width:thin}
+main.book .pbody>:last-child{margin-bottom:0} /* a trailing margin would push the last block past the page */
+main.book .pbody>[data-sim]:has(>.cv){flex:1 1 auto}
+main.book .page.merged{display:none!important}
+main.book .pbody>[data-sim] .cv{aspect-ratio:auto!important;flex:1 1 auto;min-height:150px}
+main.book .page.pl{grid-column:1;border-radius:12px 0 0 12px;background:linear-gradient(to left,color-mix(in srgb,var(--ink) 7%,var(--paper)) 0,var(--paper) 28px)}
+main.book .page.pr{grid-column:2;border-radius:0 12px 12px 0;background:linear-gradient(to right,color-mix(in srgb,var(--ink) 9%,var(--paper)) 0,var(--paper) 26px);box-shadow:inset 1px 0 0 var(--line),0 8px 24px rgba(40,30,10,.12)}
+/* the spine line is an inset shadow, not a border, so the right page is as wide as the measuring page */
+main.book.single{grid-template-columns:minmax(0,1fr);width:min(860px,100%)}
+main.book.single .page.on{grid-column:1;border-radius:12px;background:var(--paper);border-left:0;box-shadow:0 8px 24px rgba(40,30,10,.12)}
+main.book .page.measure{display:flex!important;position:fixed;left:-20000px;top:0;visibility:hidden;width:var(--pw);height:var(--ph);grid-row:auto}
+main.book .page.on.fwd.pr,main.book.single .page.on.fwd{animation:turnF .45s cubic-bezier(.2,.7,.2,1)}
+main.book .page.on.bwd.pl,main.book.single .page.on.bwd{animation:turnB .45s cubic-bezier(.2,.7,.2,1)}
+main.book .page.on.fwd.pl,main.book .page.on.bwd.pr{animation:fadeIn .45s ease}
+@keyframes turnF{from{transform:rotateY(-22deg);transform-origin:left center;opacity:.2}to{transform:none;opacity:1}}
+@keyframes turnB{from{transform:rotateY(22deg);transform-origin:right center;opacity:.2}to{transform:none;opacity:1}}
+@keyframes fadeIn{from{opacity:.35}to{opacity:1}}
+.pager{position:fixed;left:0;right:0;bottom:0;height:var(--pgr);display:flex;align-items:center;justify-content:center;gap:14px;background:color-mix(in srgb,var(--bg) 94%,transparent);border-top:1px solid var(--line);z-index:20}
+.pager .btn{min-height:34px;font-size:14.5px}
+.pager #pinfo{font-family:var(--mono);font-size:12.5px;color:var(--muted);min-width:12em;text-align:center}
+
+/* ---------- scroll mode ---------- */
+main.scroll{max-width:1280px;margin:0 auto;padding:18px 16px 60px}
+main.scroll .spread{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);margin:0 0 22px;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);scroll-margin-top:64px}
+main.scroll .page.right{background:var(--paper2);border-left:1px solid var(--line)}
+main.scroll .pbody{padding:18px 26px 12px}
+main.scroll .pbody>[data-sim]{margin-bottom:.6em}
+main.scroll ~ .pager,main.scroll .pfoot{display:none}
+
+/* ---------- typography (no balance, no max-width: lines run to the container edge) ---------- */
+.page p{margin:0 0 .6em}
+.page h1{font-family:var(--display);font-weight:600;letter-spacing:-.03em;font-size:34px;line-height:1.04;margin:.05em 0 .3em}
+.page h2{font-family:var(--display);font-weight:700;font-size:25px;line-height:1.1;margin:0}
+.page h3{font-family:var(--display);font-weight:700;font-size:19px;line-height:1.2;margin:.15em 0 .3em}
+.sech{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 .45em}
+.secno{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;color:var(--label);font-weight:500}
+.chapno{font-family:var(--mono);font-weight:500;font-size:52px;line-height:.9;margin:.05em 0 0;color:var(--accent)}
+.dual .sim{display:none}
+body.simple .dual .std{display:none}
+body.simple .dual .sim{display:inline}
+body.simple .dual{background:color-mix(in srgb,var(--accent-soft) 45%,transparent);border-radius:5px;box-decoration-break:clone}
+.page .do{font-weight:700;color:var(--warm);margin:.05em 0 .45em;font-size:.94em}
+.page .do::before{content:"→ "}
+.page .label{margin-bottom:.3em}
+.key{border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 10px 10px 0;padding:.4em .75em;margin:.3em 0 .6em}
+.key p{margin:0}
+.key .label{margin-bottom:.15em}
+.dq{border:2px solid var(--warm);border-radius:10px;padding:.4em .75em;margin:.2em 0 .5em}
+.dq p{margin:0}
+.dq p:last-child{font-family:var(--display);font-weight:700;font-size:19px;line-height:1.2}
+.objs{padding-left:1.3em;margin:.1em 0 .6em}
+.objs li{margin:.18em 0}
+.oid{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-left:.3em}
+.teksline{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:.45em}
+.laws,.post,.obs{padding-left:1.3em;margin:.1em 0 .6em}
+.laws li,.post li,.obs li{margin:.25em 0}
+.laws .who{display:inline-block;font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-left:.4em}
+.laws .dual{display:block}
+.post .ex{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.03em;background:var(--ok-soft);border-radius:5px;padding:0 .4em;margin-left:.3em;white-space:nowrap}
+blockquote{margin:.3em 0 .6em;padding:.35em .75em;border-left:4px solid var(--warm);background:var(--warm-soft);border-radius:0 10px 10px 0;font-style:italic}
+.aside-note{font-size:.86em;color:var(--muted)}
+table.oc,table.sum{width:100%;border-collapse:collapse;font-size:.86em;margin:.1em 0 .6em}
+table.oc th,table.sum th{font-family:var(--display);font-size:10.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);text-align:left;padding:.25em .45em;border-bottom:2px solid var(--line);font-weight:700}
+table.oc td,table.sum td{padding:.3em .45em;border-bottom:1px solid var(--line);vertical-align:top}
+.fig{margin:.2em 0 .6em;text-align:center}
+.fig svg{width:100%;height:auto;max-height:150px}
+.fig svg.msvg{width:auto;height:140px}
+.fig figcaption,.stm figcaption{font-size:.8em;color:var(--muted);margin-top:.2em;text-align:left;line-height:1.35}
+.stm{margin:.2em 0 .6em}
+.stm svg{width:100%;height:92px;border-radius:10px;display:block}
+.honors{border:1.5px dashed var(--accent);border-radius:10px;padding:.3em .75em;margin:.2em 0 .6em;font-size:.9em}
+.honors summary{cursor:pointer;font-weight:700;color:var(--accent)}
+.honors[open] summary{margin-bottom:.3em}
+.honors p{margin:0 0 .4em}
+.eqn{font-family:var(--mono);font-size:.9em;background:var(--sunk);border-radius:6px;padding:.25em .5em}
+.ag .row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.5em;align-items:center;padding:.28em 0;border-bottom:1px solid var(--line)}
+.ag .row p{margin:0;font-size:.94em}
+.ag .row .seg button{font-size:12.5px;padding:.1em .55em;min-height:28px}
+.ag .verdict{grid-column:1/-1;font-size:.85em;border-radius:6px;padding:.25em .5em;margin:0}
+.ag .verdict.ok{background:var(--ok-soft)}.ag .verdict.no{background:var(--bad-soft)}
+.ag .before{display:block;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.review{padding-left:1.1em;margin:.1em 0 .6em}
+.review li{margin:.28em 0}
+.review b{font-family:var(--mono);font-size:12px;color:var(--accent);margin-right:.3em}
+.vocab{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.1em 1.1em;font-size:.86em;margin-bottom:.6em}
+.vocab div{display:flex;justify-content:space-between;gap:.6em;border-bottom:1px dotted var(--line);padding:.12em 0}
+.vocab i{color:var(--muted);font-style:normal;text-align:right}
+.starters{margin:.1em 0 .6em;padding-left:1.4em}
+.starters li{margin:.2em 0}
+.starters li::marker{color:var(--accent);font-weight:700}
+.next{background:var(--ok-soft);border-radius:10px;padding:.4em .75em;margin:.2em 0 .6em}
+.next p{margin:0}
+.src{font-size:.86em;padding-left:1.1em;margin:0 0 .4em}
+.src a{color:var(--accent)}
+/* worked examples */
+.we{border:1.5px solid var(--line);border-radius:10px;padding:.4em .7em;margin:0 0 .5em;background:var(--paper)}
+.weh{margin:0 0 .3em!important}
+.lvl{display:inline-block;font-family:var(--display);font-size:11px;letter-spacing:.03em;text-transform:uppercase;background:var(--accent);color:var(--accent-ink);border-radius:5px;padding:0 .45em;margin-right:.35em;font-weight:700}
+#we2 .lvl{background:color-mix(in srgb,var(--accent) 60%,var(--paper));color:var(--ink)}
+#we3 .lvl{background:var(--accent-soft);color:var(--ink)}
+.steps{margin:0;padding-left:0;list-style:none;font-size:.93em}
+.steps li{display:grid;grid-template-columns:5.3em minmax(0,1fr);gap:.5em;align-items:baseline;margin:.18em 0}
+.steps .k{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--label);font-weight:500}
+.we .row{display:flex;gap:.45em;flex-wrap:wrap;align-items:center;margin:.2em 0}
+.wein{width:6em}
+.wex{background:var(--ok-soft);border-radius:6px;padding:.25em .5em;margin:.25em 0 0!important;font-size:.92em}
+.wehint{color:var(--muted);font-size:.9em}
+.wein.bad{border-color:var(--bad)}
+.wein.good{border-color:var(--ok);background:var(--ok-soft)}
+.reading{background:color-mix(in srgb,var(--warm) 18%,transparent);border-radius:5px;transition:background .2s}
+
+/* ---------- compact interactive kit inside pages ---------- */
+.page .sim{gap:.4em;margin:0 0 .6em}
+.page .sim .cv{border-radius:10px}
+.page .sim .ctl{gap:.35em .45em}
+.page .sim .ctl .btn,.page .sim>.btn,.page .sim .seg button{font-size:13px;min-height:30px;padding:.12em .6em}
+.page .sim .ctl .lab{font-size:10.5px}
+.page .sim .ctl select{font-size:13px;min-height:30px;padding:.1em .4em}
+.page .ros{gap:.35em}
+.page .ro{padding:.12em .5em;min-width:0;border-radius:8px}
+.page .ro small{font-size:9.5px}
+.page .ro span{font-size:13.5px}
+.page .say{font-size:.88em;padding:.3em .55em;border-radius:8px}
+.page .simnote{font-size:11.5px;line-height:1.3}
+.page .check{padding:.45em .7em;gap:.35em;font-size:.92em;border-radius:10px;margin:0 0 .6em}
+.page .check .opts{gap:.28em}
+.page .check .opts .btn{padding:.25em .6em;min-height:2em;border-radius:8px}
+.page .check .fb{padding:.3em .55em;border-radius:6px}
+.page .check .meta{font-size:10px}
+.page table.masst{font-size:.8em}
+.page table.masst th{padding:.25em .35em}
+.page table.masst td{padding:.25em .35em;height:2.7em}
+.page table.masst .btn{min-height:26px;font-size:12px!important;padding:.05em .5em}
+.page .mbgrid{gap:.5em}
+.page .mbopts{gap:.35em}
+.page .mbchoices{gap:.25em}
+.page .mbchoices .btn{font-size:12.5px;min-height:28px;padding:.1em .5em}
+.page .mbgrid{grid-template-columns:minmax(0,3fr) minmax(0,1fr)}
+.page .mbprev svg{max-width:120px}
+.page .mbuild>.btn.primary{font-size:13px;min-height:30px}
+.page ol.tl{gap:.28em}
+.page .tlc{padding:.18em .4em;gap:.4em;grid-template-columns:auto 38px minmax(0,1fr) minmax(0,1.6fr) auto}
+.page .tlc .thumb svg{width:38px;height:38px}
+.page .tlc select{font-size:12.5px;min-height:28px}
+.checkset{display:flex;flex-direction:column;gap:.3em;margin:0 0 .6em}
+.checkset .tabs{display:flex;gap:.3em;flex-wrap:wrap}
+.checkset .tabs .btn{font-size:12px;min-height:26px;padding:.05em .6em}
+.checkset .tabs .btn.done::before{content:"✓ ";color:var(--ok)}
+.checkset>.check{margin:0!important}
+
+/* ---------- measuring: reveal every hidden answer so space is reserved ---------- */
+body.measuring .wex[hidden],body.measuring .ag .verdict[hidden],body.measuring .page .sim .say[hidden]{display:block!important}
+body.measuring .wehint{display:none!important}
+
+/* ---------- small screens ---------- */
+@media (max-width:1000px){.brand small{display:none}.page h1{font-size:30px}.chapno{font-size:46px}}
+@media (max-width:700px){
+  main.book{height:auto!important;display:block;padding:8px 8px 70px}
+  main.book .page.on{display:flex;border-radius:12px}
+  main.book .pbody{overflow:visible}
+  main.book .pbody>[data-sim] .cv{aspect-ratio:1.6!important;min-height:0}
+  main.scroll .spread{grid-template-columns:minmax(0,1fr)}
+  main.scroll .page.right{border-left:0;border-top:1px solid var(--line)}
+  .pbody{padding:16px 16px 10px}.pfoot{padding:0 16px}
+  .vocab{grid-template-columns:minmax(0,1fr)}
+  .bar{position:static}
+}
+@media (max-width:560px){.tools .btn,.tools .seg button{font-size:12.5px;padding:.1em .5em}#print{display:none}}
+@media print{
+  .bar,.pager,.listen,.skip{display:none!important}
+  body{background:#fff;font-size:11pt}
+  main.book,main.scroll{height:auto!important;display:block;padding:0;max-width:none;width:auto}
+  main .spread{display:block!important;box-shadow:none!important;margin:0}
+  main .page{display:block!important;overflow:visible!important;height:auto!important;break-after:page;background:#fff!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+  .pbody{overflow:visible!important;padding:0 0 16px!important}
+  .pfoot{border:0}.sim .ctl,.sim .say{display:none}
+  .checkset .tabs{display:none}.checkset>.check{display:flex!important}
+}
+body.measuring .page .sim:not(:has(>.cv)) .say{min-height:6.4em}
+/* page controls take the heading face */
+.pager .btn,.listen,.toc button{font-family:var(--display)!important}
+
+/* Lesson 2.5 reading additions */
+#we5 .lvl{background:color-mix(in srgb,var(--accent) 60%,var(--paper));color:var(--ink)}
+#we6 .lvl{background:var(--accent-soft);color:var(--ink)}
+table.lewtab td,table.lewtab th{text-align:center;vertical-align:middle;padding:.3em .2em}
+table.lewtab tbody th{font-family:var(--body);font-size:10.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);text-align:left;border-bottom:1px solid var(--line);white-space:nowrap;font-weight:700}
+table.lewtab .lwi{font-size:1.15em}
+.swatch{display:flex;flex-wrap:wrap;gap:.3em .8em;font-size:.84em;margin:.1em 0 .6em}
+.swatch span{display:inline-flex;align-items:center;gap:.35em}
+.swatch i{width:1.1em;height:1.1em;border-radius:4px;border:1px solid var(--line);display:inline-block}
+.fig svg.diag{max-height:250px}
+.fig svg.blocks{max-height:190px}
+.fig.sm svg{max-height:112px}
+.opts .lwi{font-size:1.45em;margin:.1em 0}
+
+a.brand{color:inherit;text-decoration:none}
+</style>
+</head>
+<body>
+<a class="skip" href="#book">Skip to the reading</a>
+<header class="bar">
+  <a class="brand" href="index.html" title="Unit 2 home"><span class="logo" aria-hidden="true"></span><span><b>Chemistry Case Files</b><small>Unit 2 · Atomic Structure &amp; Theory</small></span></a>
+  <div class="tools">
+    <div class="seg" id="mode" role="group" aria-label="Reading mode"><button type="button" data-m="book" aria-pressed="true">Book</button><button type="button" data-m="scroll" aria-pressed="false">Scroll</button></div>
+    <button class="btn" id="simple" type="button" aria-pressed="false" title="Show every paragraph in simpler language">Simpler language</button>
+    <div class="dd"><button class="btn" id="toc-b" type="button" aria-expanded="false" aria-controls="toc">Contents</button><div class="toc" id="toc" hidden></div></div>
+    <button class="btn ghost" id="theme" type="button">Theme</button>
+    <button class="btn ghost" id="print" type="button">Print</button>
+  </div>
+  <div class="prog" aria-hidden="true"><i id="progbar"></i></div>
+</header>
+
+<main id="book" class="book">
+
+<!-- ===== Opener ===== -->
+<article class="spread" data-title="Chapter opener" data-short="Opener">
+ <div class="page left">
+   <p class="label">Unit 2 · Atomic Structure &amp; Theory</p>
+   <p class="chapno">2.5</p>
+   <h1>Arranging electrons</h1>
+   <figure class="stm"><svg viewBox="0 0 520 120" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration: on the left, a lump of sodium fizzing on water in a glass dish; on the right, a neon sign glowing red-orange in the dark"><defs><linearGradient id="h2o" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fc7e8"/><stop offset="1" stop-color="#3f86b8"/></linearGradient><filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+    <rect width="260" height="120" fill="#eef3f6"/><rect x="260" width="260" height="120" fill="#16111c"/>
+    <path d="M40 52 L40 104 Q40 112 48 112 L212 112 Q220 112 220 104 L220 52" fill="none" stroke="#7c8b96" stroke-width="2.5"/><rect x="42" y="64" width="176" height="46" rx="4" fill="url(#h2o)" opacity=".85"/>
+    <ellipse cx="128" cy="64" rx="15" ry="6" fill="#d9d4c8" stroke="#8d8676"/><g fill="#ffffff" opacity=".9"><circle cx="112" cy="58" r="3"/><circle cx="146" cy="55" r="2.4"/><circle cx="121" cy="48" r="2"/><circle cx="138" cy="44" r="2.6"/><circle cx="130" cy="36" r="1.8"/><circle cx="104" cy="70" r="2"/><circle cx="152" cy="70" r="2.2"/></g>
+    <text x="128" y="26" text-anchor="middle" font-family="'Charis SIL', Georgia, serif" font-size="13" font-weight="700" fill="#344">Na fizzes</text>
+    <g filter="url(#glow)" fill="none" stroke="#ff6a3d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M330 92 L330 30 L372 92 L372 30"/><path d="M440 52 Q410 50 408 70 Q408 92 432 92 Q446 92 450 84 M409 72 L448 72 Q448 52 430 52"/></g>
+    <text x="390" y="112" text-anchor="middle" font-family="'Charis SIL', Georgia, serif" font-size="12" fill="#c9b9d6">neon does not react</text></svg>
+    <figcaption>Illustration. A pea-sized piece of sodium fizzes and skates across water, releasing hydrogen gas. Neon, the element just before it in the periodic table, reacts with nothing, so it can glow safely inside a sign for decades.</figcaption></figure>
+   <p class="dual"><span class="std">Sodium has 11 electrons and neon has 10. A difference of one electron separates a gas that reacts with nothing from a metal that must be stored under oil. The total number of electrons is not what matters most. What matters is how the electrons are arranged, and especially how many occupy the outermost level.</span><span class="sim">Sodium has 11 electrons. Neon has 10. Neon does not react with anything. Sodium reacts with water and air. The difference is not the total number of electrons. It is how they are arranged, especially the outermost ones.</span></p>
+   <div class="dq"><p class="label">Driving question</p><p>How does the arrangement of an atom's electrons predict how the element behaves?</p></div>
+ </div>
+ <div class="page right">
+  <p class="label">In this chapter you will</p>
+  <ol class="objs">
+   <li><b>Describe energy levels, sublevels and orbitals</b> and how many electrons each holds. <span class="oid">2.5.1</span></li>
+   <li><b>Use the filling order</b> to write full electron configurations. <span class="oid">2.5.2</span></li>
+   <li><b>Write noble-gas configurations</b> and find valence electrons. <span class="oid">2.5.3</span></li>
+   <li><b>Draw Lewis dot structures</b> for representative elements. <span class="oid">2.5.4</span></li>
+   <li><b>Predict the properties</b> of alkali metals, alkaline earth metals, halogens and noble gases from their valence electrons. <span class="oid">2.5.5</span></li>
+   <li><b>Explain how transition metals differ</b> from the other families. <span class="oid">2.5.6</span></li>
+  </ol>
+  <p class="teksline">TEKS C.6(E): construct models to express the arrangement of electrons in atoms of representative elements using electron configurations and Lewis dot structures. TEKS C.5(B): predict the properties of elements in chemical families, including alkali metals, alkaline earth metals, halogens, noble gases, and transition metals, based on valence electrons patterns using the Periodic Table.</p>
+  <div class="ag" id="ag-before"><p class="label">Before you read · Agree or disagree?</p><p class="do">Decide for each statement. You will check your answers at the end of the chapter.</p></div>
+ </div>
+</article>
+
+<!-- ===== 2.5.1 ===== -->
+<article class="spread" data-sec="2.5.1" data-title="Levels, sublevels and orbitals">
+ <div class="page left">
+  <header class="sech"><span class="secno">§2.5.1</span><h2>Levels, sublevels and orbitals</h2></header>
+  <p class="dual"><span class="std">Lesson 2.1 introduced the modern model of the atom: electrons occupy <button class="term" type="button" data-t="orbital">orbitals</button>, regions where an electron is likely to be found. Orbitals are grouped by energy. Each main <button class="term" type="button" data-t="energy level">energy level</button> is numbered n = 1, 2, 3 and so on, and higher levels are farther from the nucleus on average and higher in energy.</span><span class="sim">Electrons are found in orbitals. An orbital is a region where an electron is likely to be found. Orbitals are grouped into energy levels, numbered 1, 2, 3 and up. Higher levels have more energy and are farther from the nucleus.</span></p>
+  <p class="dual"><span class="std">Each energy level is split into <button class="term" type="button" data-t="sublevel">sublevels</button> named s, p, d and f. Level 1 has only an s sublevel. Level 2 has s and p, level 3 has s, p and d, and level 4 has all four. A sublevel is written with its level number first: 3p means the p sublevel of energy level 3.</span><span class="sim">Each energy level has smaller groups called sublevels: s, p, d and f. Level 1 has only s. Level 2 has s and p. Level 3 has s, p and d. Level 4 has all four. "3p" means the p sublevel in level 3.</span></p>
+  <table class="oc"><thead><tr><th>Sublevel</th><th>Orbitals</th><th>Electrons it holds</th></tr></thead><tbody>
+   <tr><td><b>s</b></td><td>1</td><td>2</td></tr>
+   <tr><td><b>p</b></td><td>3</td><td>6</td></tr>
+   <tr><td><b>d</b></td><td>5</td><td>10</td></tr>
+   <tr><td><b>f</b></td><td>7</td><td>14</td></tr>
+  </tbody></table>
+  <p class="dual"><span class="std">The table follows from one rule: every orbital holds at most two electrons. A p sublevel has three orbitals, so it holds 3 × 2 = 6 electrons. Adding up the sublevels gives the capacity of a whole level: level 2 holds 2 + 6 = 8, and level 3 holds 2 + 6 + 10 = 18.</span><span class="sim">Every orbital holds 2 electrons at most. A p sublevel has 3 orbitals, so it holds 6 electrons. Level 2 holds 2 + 6 = 8 electrons. Level 3 holds 2 + 6 + 10 = 18.</span></p>
+  <aside class="key"><p class="label">Key idea</p><p>Energy levels contain sublevels (s, p, d, f), and sublevels contain orbitals. Each orbital holds 2 electrons, so s holds 2, p holds 6, d holds 10 and f holds 14.</p></aside>
+ </div>
+ <div class="page right">
+  <figure class="fig"><svg viewBox="0 0 520 130" role="img" aria-label="Simplified shapes of orbitals: an s orbital is a sphere; the three p orbitals are dumbbells pointing along three directions at right angles">
+    <g font-family="'Charis SIL', Georgia, serif" fill="var(--ink)" font-size="14" font-weight="700" text-anchor="middle"><text x="70" y="124">s: 1 orbital</text><text x="330" y="124">p: 3 orbitals</text></g>
+    <circle cx="70" cy="58" r="40" fill="var(--accent)" fill-opacity=".28" stroke="var(--accent)" stroke-width="1.5"/><circle cx="70" cy="58" r="3" fill="var(--ink)"/>
+    <g fill="#e8743b" fill-opacity=".35" stroke="#e8743b" stroke-width="1.5"><ellipse cx="202" cy="58" rx="22" ry="14"/><ellipse cx="248" cy="58" rx="22" ry="14"/></g><text x="225" y="22" text-anchor="middle" font-size="12" fill="var(--muted)" font-family="var(--mono)">p (x)</text>
+    <g fill="#3fae6e" fill-opacity=".35" stroke="#3fae6e" stroke-width="1.5"><ellipse cx="330" cy="36" rx="14" ry="22"/><ellipse cx="330" cy="82" rx="14" ry="22"/></g><text x="368" y="22" text-anchor="middle" font-size="12" fill="var(--muted)" font-family="var(--mono)">p (y)</text>
+    <g fill="#a070dc" fill-opacity=".35" stroke="#a070dc" stroke-width="1.5"><ellipse cx="420" cy="70" rx="19" ry="12" transform="rotate(-35 420 70)"/><ellipse cx="452" cy="46" rx="19" ry="12" transform="rotate(-35 452 46)"/></g><text x="478" y="88" text-anchor="middle" font-size="12" fill="var(--muted)" font-family="var(--mono)">p (z)</text>
+    <g fill="var(--ink)"><circle cx="225" cy="58" r="3"/><circle cx="330" cy="59" r="3"/><circle cx="436" cy="58" r="3"/></g></svg>
+   <figcaption><b>Simplified.</b> These shapes mark where an electron spends most of its time; the real electron cloud has no sharp edge. The d and f orbitals have more complex shapes, which you do not need to draw.</figcaption></figure>
+  <p class="dual"><span class="std"><b>An analogy:</b> an atom is like a hotel. Energy levels are floors, sublevels are types of rooms on a floor, and each orbital is a room with exactly two beds. Floor 1 has a single room; floor 2 has one s room and three p rooms. The analogy has limits: electrons do not stay at fixed spots as hotel guests do, and the floors overlap in energy, so a room on floor 4 can be lower in energy than one on floor 3. The next section shows this overlap.</span><span class="sim"><b>An analogy:</b> an atom is like a hotel. Energy levels are floors. Sublevels are room types. Each orbital is a room with two beds. The analogy has limits. Electrons do not stay in one spot. Also, some rooms on floor 4 are lower in energy than rooms on floor 3.</span></p>
+  <p class="aside-note">Extension: a whole level n holds 2n<sup>2</sup> electrons (2, 8, 18, 32). Only the sublevel capacities are required.</p>
+  <div data-item="c-r1"></div>
+  <div data-item="c-r2"></div>
+ </div>
+</article>
+
+<!-- ===== 2.5.2 Filling order (a) ===== -->
+<article class="spread" data-sec="2.5.2" data-title="The filling order">
+ <div class="page left">
+  <header class="sech"><span class="secno">§2.5.2</span><h2>The filling order</h2></header>
+  <p class="dual"><span class="std">An <button class="term" type="button" data-t="electron configuration">electron configuration</button> lists which sublevels an atom's electrons occupy. Electrons fill the lowest-energy sublevels first, the way water fills a container from the bottom. Each sublevel is written with a superscript for the number of electrons in it. Hydrogen is 1s<sup>1</sup> and helium is 1s<sup>2</sup>; lithium's third electron must go into level 2, so lithium is 1s<sup>2</sup> 2s<sup>1</sup>.</span><span class="sim">An electron configuration shows which sublevels hold an atom's electrons. Electrons fill the lowest-energy sublevels first. The small raised number is the number of electrons in that sublevel. Hydrogen is 1s<sup>1</sup>. Helium is 1s<sup>2</sup>. Lithium is 1s<sup>2</sup> 2s<sup>1</sup>.</span></p>
+  <p class="dual"><span class="std">The energy levels overlap. The 4s sublevel is lower in energy than 3d, so after 3p fills, the next two electrons go into 4s, and only then does 3d begin. The diagonal rule below gives the complete order: 1s 2s 2p 3s 3p 4s 3d 4p 5s 4d 5p.</span><span class="sim">Levels overlap in energy. 4s is lower in energy than 3d. So after 3p, electrons go into 4s first. Then 3d fills. Follow the arrows in the diagram to get the order: 1s 2s 2p 3s 3p 4s 3d 4p 5s 4d 5p.</span></p>
+  <figure class="fig"><svg class="diag" viewBox="0 0 572 376" role="img" aria-label="Diagonal rule: sublevels listed in rows by energy level, with diagonal arrows giving the filling order 1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p, 5s, 4d, 5p, 6s, 4f"></svg>
+   <figcaption>The diagonal rule. Write the sublevels in rows, then follow each arrow from its top to its bottom, starting with the top arrow.</figcaption></figure>
+  <aside class="key"><p class="label">Key idea</p><p>Electrons fill sublevels from lowest to highest energy. The order is 1s 2s 2p 3s 3p 4s 3d 4p: 4s fills before 3d.</p></aside>
+ </div>
+ <div class="page right">
+  <p class="label">Try it · Fill an atom electron by electron</p>
+  <p class="do">Add electrons one at a time and watch the configuration grow. Where does electron 19 go? (SEP 1(G))</p>
+  <div data-sim="orbitalBoard"></div>
+  <p class="dual"><span class="std">Check that the superscripts in a configuration add up to the atomic number. Phosphorus (Z = 15) is 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>3</sup>, and 2 + 2 + 6 + 2 + 3 = 15.</span><span class="sim">The raised numbers must add up to the atomic number. Phosphorus has 15 electrons: 2 + 2 + 6 + 2 + 3 = 15.</span></p>
+  <div data-item="c-r3"></div>
+  <div data-item="c-r4"></div>
+ </div>
+</article>
+
+<!-- ===== 2.5.2 Filling order (b) ===== -->
+<article class="spread" data-sec="2.5.2" data-title="Reading the order from the table">
+ <div class="page left">
+  <header class="sech"><span class="secno">§2.5.2</span><h2>Reading the order from the table</h2></header>
+  <p class="dual"><span class="std">You do not need to memorize the diagonal rule. The periodic table is arranged in the same order. Groups 1 and 2 form the s <button class="term" type="button" data-t="block">block</button>, groups 13 to 18 the p block, and groups 3 to 12 the d block. Reading across a period, left to right, gives the order in which sublevels fill. In period 4 that is 4s, then 3d, then 4p. The d block is always one level behind: in period 4 it is 3d.</span><span class="sim">The periodic table follows the same order. Groups 1 and 2 are the s block. Groups 13 to 18 are the p block. Groups 3 to 12 are the d block. Read a period (row) from left to right to get the order. In period 4: 4s, then 3d, then 4p. The d block number is one less than the period number.</span></p>
+  <figure class="fig"><svg class="blocks" viewBox="0 0 592 292" role="img" aria-label="Periods 1 to 5 of the periodic table colored by block: s block in groups 1 and 2, d block in groups 3 to 12, labeled 3d in period 4 and 4d in period 5, and p block in groups 13 to 18. Helium sits in group 18 but is an s-block element, 1s."></svg>
+   <figcaption>The blocks. Helium sits in group 18 with the noble gases, but its two electrons are 1s electrons. The f block (lanthanides and actinides) is placed below the main table.</figcaption></figure>
+  <div class="we" id="we1">
+   <p class="weh"><span class="lvl">1 · Watch</span> Write the full configuration of magnesium, Z = 12.</p>
+   <ol class="steps"><li><span class="k">Find</span><span>Magnesium is in period 3, group 2: its last electrons are in 3s.</span></li><li><span class="k">Fill</span><span>1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> holds 10 electrons; 2 are left for 3s.</span></li><li><span class="k">Check</span><span><b>1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup></b>: 2 + 2 + 6 + 2 = 12.</span></li></ol>
+  </div>
+ </div>
+ <div class="page right">
+  <div class="we" id="we2" data-msg="Not yet. 1s, 2s, 2p and 3s together hold 12 electrons. Chlorine has 17. How many are left for 3p?">
+   <p class="weh"><span class="lvl">2 · Finish it</span> Write the full configuration of chlorine, Z = 17.</p>
+   <ol class="steps"><li><span class="k">Find</span><span>Chlorine is in period 3, group 17: its last electrons are in 3p.</span></li><li><span class="k">Fill</span><span>1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>?</sup>, where ? = <input type="number" step="1" class="wein" data-ans="5" data-tol="0" aria-label="Electrons in 3p"> <button class="btn wechk" type="button">Check</button></span></li><li><span class="k">Check</span><span><span class="wex" hidden>1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>5</sup>: 2 + 2 + 6 + 2 + 5 = 17.</span><span class="wehint">Subtract the electrons already placed from 17.</span></span></li></ol>
+  </div>
+  <div class="we" id="we3" data-msg="Not yet. Calcium is in period 4, group 2. Which sublevel comes right after 3p, and how many electrons are left after 18?">
+   <p class="weh"><span class="lvl">3 · On your own</span> Calcium has Z = 20. After 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup>, which sublevel holds the last electrons, and how many does it hold?</p>
+   <div class="row"><select class="wesel" aria-label="Sublevel for the last electrons"><option value="">sublevel…</option><option>3d</option><option value="ok">4s</option><option>4p</option></select><input type="number" step="1" class="wein" data-ans="2" data-tol="0" aria-label="Number of electrons"><button class="btn wechk" type="button">Check</button></div>
+   <p class="wex" hidden>Calcium is <b>1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>2</sup></b>. 4s fills before 3d, which is why calcium sits in the s block.</p>
+  </div>
+  <p class="aside-note">This book writes sublevels in filling order. Many books list them by level number instead (iron as …3p<sup>6</sup> 3d<sup>6</sup> 4s<sup>2</sup>). Both forms describe the same electrons.</p>
+  <details class="honors"><summary>Honors · Three rules and orbital diagrams</summary>
+   <p>An orbital diagram draws each orbital as a box and each electron as an arrow. Three rules determine where the arrows go. <b><button class="term" type="button" data-t="Aufbau principle">Aufbau principle</button>:</b> electrons fill the lowest-energy orbital available. <b><button class="term" type="button" data-t="Pauli exclusion principle">Pauli exclusion principle</button>:</b> one orbital holds at most two electrons, and they must have opposite spins (↑↓). <b><button class="term" type="button" data-t="Hund's rule">Hund's rule</button>:</b> in a sublevel with several orbitals, electrons occupy the orbitals one at a time, with the same spin, before any pair up.</p>
+   <p>Nitrogen's 2p<sup>3</sup> is drawn [↑][↑][↑], not [↑↓][↑][ ]. Switch the orbital board to Arrows (Honors) to see Hund's rule as you fill.</p></details>
+  <div data-item="c-r5"></div>
+ </div>
+</article>
+
+<!-- ===== 2.5.3 Noble-gas configuration and valence (a) ===== -->
+<article class="spread" data-sec="2.5.3" data-title="Shortcuts and valence electrons">
+ <div class="page left">
+  <header class="sech"><span class="secno">§2.5.3</span><h2>Shortcuts and valence electrons</h2></header>
+  <p class="dual"><span class="std">Full configurations can be long. A <button class="term" type="button" data-t="noble-gas configuration">noble-gas configuration</button> shortens them: write the symbol of the noble gas from the end of the previous period in square brackets, then only the electrons added after it. Sodium, 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>1</sup>, becomes [Ne] 3s<sup>1</sup>. The bracket stands for the 10 inner <button class="term" type="button" data-t="core electron">core electrons</button>, arranged exactly as in a neon atom.</span><span class="sim">A noble-gas configuration is a shorter form. Write the noble gas before the element in brackets. Then write only the electrons after it. Sodium becomes [Ne] 3s<sup>1</sup>. [Ne] stands for the 10 inner electrons, the core electrons.</span></p>
+  <p class="dual"><span class="std">The electrons in the highest occupied energy level are the <button class="term" type="button" data-t="valence electron">valence electrons</button>. They are the outermost electrons, the ones involved when atoms react. Sulfur is [Ne] 3s<sup>2</sup> 3p<sup>4</sup>: its highest level is 3, which holds 2 + 4 = 6 electrons, so sulfur has 6 valence electrons.</span><span class="sim">Valence electrons are the electrons in the highest energy level. They are the outermost electrons. They take part in reactions. Sulfur is [Ne] 3s<sup>2</sup> 3p<sup>4</sup>. Level 3 has 2 + 4 = 6 electrons. So sulfur has 6 valence electrons.</span></p>
+  <p class="dual"><span class="std">For <button class="term" type="button" data-t="representative element">representative elements</button> (groups 1, 2 and 13 to 18) the periodic table gives the count directly. Groups 1 and 2 have 1 and 2 valence electrons. For groups 13 to 18, subtract 10: chlorine, in group 17, has 7. Every element in a <button class="term" type="button" data-t="group">group</button> has the same number, which is why the elements of a group behave as a chemical family.</span><span class="sim">For representative elements, you can also use the group number. Group 1 has 1 valence electron. Group 2 has 2. For groups 13 to 18, subtract 10. Chlorine is in group 17, so it has 7. All elements in a group have the same number.</span></p>
+  <p class="dual"><span class="std">Helium is the exception to the group rule. It is placed in group 18, but it has only 2 electrons in total (1s<sup>2</sup>). Two electrons fill its first level, so helium behaves like the other noble gases. The other noble gases have 8 valence electrons, a full s and p set called an <button class="term" type="button" data-t="octet">octet</button>.</span><span class="sim">Helium is the exception. It is in group 18 but has only 2 electrons. These 2 fill its only level. So helium behaves like the other noble gases. The other noble gases have 8 valence electrons, called an octet.</span></p>
+  <aside class="key"><p class="label">Key idea</p><p>Valence electrons are those in the highest energy level. For representative elements: group 1 has 1, group 2 has 2, groups 13 to 18 have the group number minus 10. Helium has 2.</p></aside>
+ </div>
+ <div class="page right">
+  <div class="we" id="we4">
+   <p class="weh"><span class="lvl">1 · Watch</span> Write the noble-gas configuration of sulfur (Z = 16) and count its valence electrons.</p>
+   <ol class="steps"><li><span class="k">Core</span><span>The noble gas before sulfur is neon (10 electrons): [Ne].</span></li><li><span class="k">Add</span><span>16 − 10 = 6 electrons: 3s<sup>2</sup> 3p<sup>4</sup>. Sulfur is therefore <b>[Ne] 3s<sup>2</sup> 3p<sup>4</sup></b>.</span></li><li><span class="k">Count</span><span>Level 3 holds 2 + 4 = <b>6 valence electrons</b>. Check: group 16, and 16 − 10 = 6.</span></li></ol>
+  </div>
+  <div class="we" id="we5" data-msg="Not yet. Count only the electrons in the highest level, n = 4: add the superscripts of 4s and 4p.">
+   <p class="weh"><span class="lvl">2 · Finish it</span> Bromine (Z = 35) is [Ar] 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>5</sup>. How many valence electrons does it have?</p>
+   <ol class="steps"><li><span class="k">Level</span><span>The highest level is n = 4. The 3d electrons belong to level 3, so they are not valence electrons.</span></li><li><span class="k">Count</span><span>4s<sup>2</sup> + 4p<sup>5</sup> = <input type="number" step="1" class="wein" data-ans="7" data-tol="0" aria-label="Valence electrons in bromine"> <button class="btn wechk" type="button">Check</button></span></li><li><span class="k">Check</span><span><span class="wex" hidden>7 valence electrons. Bromine is in group 17 like chlorine: 17 − 10 = 7.</span><span class="wehint">Add the two superscripts in level 4.</span></span></li></ol>
+  </div>
+  <div class="we" id="we6" data-msg="Not yet. Strontium is in period 5, group 2. Which noble gas ends period 4, and which sublevel starts period 5?">
+   <p class="weh"><span class="lvl">3 · On your own</span> Strontium has Z = 38. Choose its noble-gas configuration and give its number of valence electrons.</p>
+   <div class="row"><select class="wesel" aria-label="Noble-gas configuration of strontium"><option value="">configuration…</option><option>[Ar] 4s²</option><option value="ok">[Kr] 5s²</option><option>[Kr] 4d²</option></select><input type="number" step="1" class="wein" data-ans="2" data-tol="0" aria-label="Valence electrons in strontium"><button class="btn wechk" type="button">Check</button></div>
+   <p class="wex" hidden>Strontium is <b>[Kr] 5s<sup>2</sup></b>, with <b>2 valence electrons</b>, like every group 2 element. 5s fills before 4d.</p>
+  </div>
+  <div data-item="c-r6"></div>
+  <div data-item="c-r7"></div>
+ </div>
+</article>
+
+<!-- ===== 2.5.3 (b) ===== -->
+<article class="spread" data-sec="2.5.3" data-title="Valence electrons repeat down a group">
+ <div class="page left">
+  <header class="sech"><span class="secno">§2.5.3</span><h2>Valence electrons repeat down a group</h2></header>
+  <table class="oc"><thead><tr><th>Group 1</th><th>Configuration</th><th>Group 17</th><th>Configuration</th></tr></thead><tbody>
+   <tr><td><b>Li</b></td><td>[He] 2s<sup>1</sup></td><td><b>F</b></td><td>[He] 2s<sup>2</sup> 2p<sup>5</sup></td></tr>
+   <tr><td><b>Na</b></td><td>[Ne] 3s<sup>1</sup></td><td><b>Cl</b></td><td>[Ne] 3s<sup>2</sup> 3p<sup>5</sup></td></tr>
+   <tr><td><b>K</b></td><td>[Ar] 4s<sup>1</sup></td><td><b>Br</b></td><td>[Ar] 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>5</sup></td></tr>
+  </tbody></table>
+  <p class="dual"><span class="std">Look down each column. Every group 1 configuration ends in s<sup>1</sup>, and every group 17 configuration ends in s<sup>2</sup> p<sup>5</sup>. The core grows, but the outer pattern repeats. This repeating pattern explains the structure of the periodic table: elements in the same column have matching valence electrons, and matching valence electrons give similar chemical properties.</span><span class="sim">Look down each column. Group 1 always ends in s<sup>1</sup>. Group 17 always ends in s<sup>2</sup> p<sup>5</sup>. The core grows, but the outer pattern stays the same. That is why elements in a group behave alike.</span></p>
+  <p class="dual"><span class="std">This pattern does not hold for transition metals. Iron is in group 8, but it does not have 8 valence electrons; §2.5.6 explains why. The group rule applies only to representative elements.</span><span class="sim">This rule does not work for transition metals. Iron is in group 8 but does not have 8 valence electrons. Use the group rule only for representative elements.</span></p>
+ </div>
+ <div class="page right">
+  <div data-item="c-r8"></div>
+  <div data-item="c-r9"></div>
+ </div>
+</article>
+
+<!-- ===== 2.5.4 Lewis dot structures ===== -->
+<article class="spread" data-sec="2.5.4" data-title="Lewis dot structures">
+ <div class="page left">
+  <header class="sech"><span class="secno">§2.5.4</span><h2>Lewis dot structures</h2></header>
+  <p class="dual"><span class="std">A <button class="term" type="button" data-t="Lewis dot structure">Lewis dot structure</button> is a model that shows only an atom's valence electrons, as dots around its symbol. The symbol stands for the nucleus and all the core electrons. Chemists use it because valence electrons are the ones that take part in reactions, so the dots show at a glance the electrons available for reactions.</span><span class="sim">A Lewis dot structure shows only the valence electrons. They are drawn as dots around the element's symbol. The symbol stands for the nucleus and the core electrons. The dots show the electrons that take part in reactions.</span></p>
+  <p class="dual"><span class="std">The drawing convention has three steps. (1) Find the number of valence electrons. (2) Place one dot on each of the four sides of the symbol before you pair any. (3) Pair the remaining dots, up to two per side, for at most 8. Which side you start on does not matter. Helium is drawn with its 2 dots as a pair, because its 2 electrons fill its only level, the way 8 fill the outer level of the other noble gases.</span><span class="sim">To draw one: (1) Count the valence electrons. (2) Put one dot on each of the four sides first. (3) Then pair them up. A side can hold 2 dots, so the most is 8. You can start on any side. Helium is the exception: its 2 electrons fill its only level, so they are drawn as a pair.</span></p>
+  <table class="oc lewtab" aria-label="Lewis dot structures of periods 2 and 3"><thead><tr><th>Group</th><th>1</th><th>2</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th></tr></thead><tbody>
+   <tr><th>Period 2</th><td data-lewis="3"></td><td data-lewis="4"></td><td data-lewis="5"></td><td data-lewis="6"></td><td data-lewis="7"></td><td data-lewis="8"></td><td data-lewis="9"></td><td data-lewis="10"></td></tr>
+   <tr><th>Period 3</th><td data-lewis="11"></td><td data-lewis="12"></td><td data-lewis="13"></td><td data-lewis="14"></td><td data-lewis="15"></td><td data-lewis="16"></td><td data-lewis="17"></td><td data-lewis="18"></td></tr>
+  </tbody></table>
+  <aside class="key"><p class="label">Key idea</p><p>A Lewis dot structure shows the valence electrons only: one dot per side first, then pairs. Elements in the same group have the same pattern.</p></aside>
+ </div>
+ <div class="page right">
+  <p class="label">Try it · Build a Lewis dot structure</p>
+  <p class="do">Choose an element, place its valence electrons, then check. Try one from each group. (SEP 1(G))</p>
+  <div data-sim="lewisBuilder"></div>
+  <p class="aside-note">Lewis structures are drawn for representative elements. You will use them to build molecules in Unit 4.</p>
+  <div data-item="c-r10"></div>
+  <div data-item="c-r11"></div>
+ </div>
+</article>
+
+<!-- ===== 2.5.5 Families (a) ===== -->
+<article class="spread" data-sec="2.5.5" data-title="Metals that lose electrons">
+ <div class="page left">
+  <header class="sech"><span class="secno">§2.5.5</span><h2>Metals that lose electrons</h2></header>
+  <p class="dual"><span class="std">An atom whose outer level is full, like neon, is very stable. Atoms with only one or two valence electrons can reach that same arrangement by losing them, and atoms one or two short can reach it by gaining electrons. This single idea predicts the chemistry of whole families. You will often hear that an atom "wants" a full outer level. That is shorthand: atoms do not want anything, but a full outer level is a low-energy, stable arrangement.</span><span class="sim">A full outer level is very stable. Atoms with 1 or 2 valence electrons can lose them to reach a full level. Atoms that are 1 or 2 short can gain electrons. People often say atoms "want" a full level. This is only shorthand. Atoms do not want anything. A full level is simply a stable arrangement.</span></p>
+  <p class="dual"><span class="std"><b><button class="term" type="button" data-t="alkali metal">Alkali metals</button> (group 1)</b> have 1 valence electron, which they lose easily to form 1+ ions such as Na<sup>+</sup> and K<sup>+</sup>. They are the most reactive metals. Sodium and potassium react with water, releasing hydrogen gas and leaving a basic solution; because they also react with air, both are stored under oil. Potassium reacts more violently than sodium; the hydrogen can ignite, and potassium colors the flame lilac. Hydrogen is also placed in group 1, but it is a nonmetal gas, not an alkali metal.</span><span class="sim">Alkali metals are in group 1. They have 1 valence electron. They lose it easily and form 1+ ions, like Na<sup>+</sup>. They are very reactive. Sodium and potassium react with water and give off hydrogen gas. They also react with air, so they are kept under oil. Hydrogen is in group 1 but is not an alkali metal.</span></p>
+  <p class="dual"><span class="std"><b><button class="term" type="button" data-t="alkaline earth metal">Alkaline earth metals</button> (group 2)</b> have 2 valence electrons and lose both, forming 2+ ions such as Mg<sup>2+</sup> and Ca<sup>2+</sup>. They are reactive, but less so than the group 1 metal beside them: calcium reacts steadily with water, while potassium reacts violently. Magnesium burns with a brilliant white light, which is why it is used in flares and fireworks.</span><span class="sim">Alkaline earth metals are in group 2. They have 2 valence electrons. They lose both and form 2+ ions, like Mg<sup>2+</sup>. They are reactive, but less reactive than group 1 metals. Magnesium burns with a bright white light. It is used in flares and fireworks.</span></p>
+  <aside class="key"><p class="label">Key idea</p><p>Group 1: 1 valence electron, 1+ ions, very reactive. Group 2: 2 valence electrons, 2+ ions, reactive but less than group 1.</p></aside>
+ </div>
+ <div class="page right">
+  <p class="label">Try it · Predict a family's behavior</p>
+  <p class="do">Click an element. Use its valence electrons to predict its ion and how reactive it is, then check. (SEP 3(A))</p>
+  <div data-sim="familyPredictor"></div>
+  <div data-item="c-r12"></div>
+  <div data-item="c-r13"></div>
+ </div>
+</article>
+
+<!-- ===== 2.5.5 Families (b) ===== -->
+<article class="spread" data-sec="2.5.5" data-title="Gaining electrons, or none at all">
+ <div class="page left">
+  <header class="sech"><span class="secno">§2.5.5</span><h2>Gaining electrons, or none at all</h2></header>
+  <p class="dual"><span class="std"><b><button class="term" type="button" data-t="halogen">Halogens</button> (group 17)</b> have 7 valence electrons, one short of an octet. They gain one electron to form 1− ions such as Cl<sup>−</sup>, which is the chloride ion in table salt, NaCl. Halogens are very reactive nonmetals, and fluorine is the most reactive nonmetal of all. As elements they exist as <button class="term" type="button" data-t="diatomic molecule">diatomic molecules</button>: at room temperature F<sub>2</sub> and Cl<sub>2</sub> are gases, Br<sub>2</sub> is a red-brown liquid and I<sub>2</sub> is a gray-black solid. Chlorine compounds disinfect swimming pools and drinking water.</span><span class="sim">Halogens are in group 17. They have 7 valence electrons. They gain 1 electron and form 1− ions, like Cl<sup>−</sup> in table salt. They are very reactive. Their atoms come in pairs, as diatomic molecules like Cl<sub>2</sub>. Chlorine compounds kill germs in pools.</span></p>
+  <p class="dual"><span class="std"><b><button class="term" type="button" data-t="noble gas">Noble gases</button> (group 18)</b> already have a full outer level: 8 valence electrons, or 2 for helium. They form no ions in ordinary chemistry and are almost unreactive. This lack of reactivity makes them useful. Neon glows red-orange in signs without reacting with the tube, argon fills incandescent light bulbs so the hot filament does not burn, and helium fills balloons because it is less dense than air and cannot burn. Liquid helium, at about −269&nbsp;°C, cools the magnets in MRI scanners. Xenon and krypton form some compounds, made only under special conditions.</span><span class="sim">Noble gases are in group 18. Their outer level is full: 8 valence electrons, or 2 for helium. They almost never react. Neon glows in signs. Argon fills light bulbs. Helium fills balloons and, as a very cold liquid, cools MRI machines.</span></p>
+  <aside class="key"><p class="label">Key idea</p><p>Group 17: 7 valence electrons, gain 1 to form 1− ions, very reactive diatomic nonmetals. Group 18: full outer level, almost unreactive.</p></aside>
+ </div>
+ <div class="page right">
+  <figure class="fig sm"><svg viewBox="0 0 520 120" role="img" aria-label="Lewis dot structures across period 3 with arrows: sodium loses 1 electron to form Na plus, magnesium loses 2 to form Mg 2 plus, chlorine gains 1 to form Cl minus, argon is already full and forms no ion">
+    <g font-family="'Charis SIL', Georgia, serif" text-anchor="middle" fill="var(--ink)">
+     <g font-size="26" font-weight="700"><text x="65" y="52">Na</text><text x="195" y="52">Mg</text><text x="325" y="52">Cl</text><text x="455" y="52">Ar</text></g>
+     <g fill="var(--neg)"><circle cx="65" cy="18" r="3.5"/><circle cx="195" cy="18" r="3.5"/><circle cx="227" cy="43" r="3.5"/>
+      <circle cx="319" cy="18" r="3.5"/><circle cx="331" cy="18" r="3.5"/><circle cx="355" cy="37" r="3.5"/><circle cx="355" cy="49" r="3.5"/><circle cx="319" cy="66" r="3.5"/><circle cx="331" cy="66" r="3.5"/><circle cx="295" cy="43" r="3.5"/>
+      <circle cx="449" cy="18" r="3.5"/><circle cx="461" cy="18" r="3.5"/><circle cx="485" cy="37" r="3.5"/><circle cx="485" cy="49" r="3.5"/><circle cx="449" cy="66" r="3.5"/><circle cx="461" cy="66" r="3.5"/><circle cx="425" cy="37" r="3.5"/><circle cx="425" cy="49" r="3.5"/></g>
+     <g font-size="14"><text x="65" y="92">loses 1</text><text x="195" y="92">loses 2</text><text x="325" y="92">gains 1</text><text x="455" y="92">already full</text></g>
+     <g font-size="17" font-weight="700" fill="var(--accent)"><text x="65" y="114">Na<tspan dy="-7" font-size="12">+</tspan></text><text x="195" y="114">Mg<tspan dy="-7" font-size="12">2+</tspan></text><text x="325" y="114">Cl<tspan dy="-7" font-size="12">−</tspan></text><text x="455" y="114">no ion</text></g></g></svg>
+   <figcaption>Period 3 in Lewis dots. Each ion has the electron arrangement of a noble gas: Na<sup>+</sup> and Mg<sup>2+</sup> match neon, and Cl<sup>−</sup> matches argon.</figcaption></figure>
+  <p class="dual"><span class="std">Notice how the prediction works: count the valence electrons, ask whether losing or gaining is the shorter route to a full level, and the charge follows. Why reactivity also changes down a group (potassium is more reactive than sodium, but fluorine is more reactive than chlorine) is a periodic trend explained in Unit 3.</span><span class="sim">To predict: count the valence electrons. Is it easier to lose them or to gain more? That gives the charge. Unit 3 explains why reactivity changes down a group.</span></p>
+  <div data-item="c-r14"></div>
+  <div data-item="c-r15"></div>
+ </div>
+</article>
+
+<!-- ===== 2.5.6 Transition metals ===== -->
+<article class="spread" data-sec="2.5.6" data-title="Transition metals">
+ <div class="page left">
+  <header class="sech"><span class="secno">§2.5.6</span><h2>Transition metals</h2></header>
+  <p class="dual"><span class="std">The <button class="term" type="button" data-t="transition metal">transition metals</button> occupy groups 3 to 12, the d block. Across period 4, from scandium to zinc, each new electron goes into the 3d sublevel while 4s usually remains full. Iron, for example, is [Ar] 4s<sup>2</sup> 3d<sup>6</sup>. Its highest level, n = 4, holds only 2 electrons, so the group number 8 is <b>not</b> its number of valence electrons. The 4s and 3d electrons are close in energy, and different numbers of them can be lost.</span><span class="sim">Transition metals are in groups 3 to 12, the d block. Their added electrons fill a d sublevel. Iron is [Ar] 4s<sup>2</sup> 3d<sup>6</sup>. Iron is in group 8, but it does not have 8 valence electrons. Its 4s and 3d electrons are close in energy, so it can lose different numbers of them.</span></p>
+  <p class="dual"><span class="std">This closeness in energy explains why most transition metals form ions with more than one charge: iron forms Fe<sup>2+</sup> and Fe<sup>3+</sup>, and copper forms Cu<sup>+</sup> and Cu<sup>2+</sup>. Transition metals are also generally less reactive than group 1 and 2 metals. Copper does not react with water, so it is used for water pipes; it conducts electricity well, so it is used for wiring. Many of their compounds are brightly colored, which makes them important pigments.</span><span class="sim">Because of this, most transition metals can form more than one ion. Iron forms Fe<sup>2+</sup> and Fe<sup>3+</sup>. Copper forms Cu<sup>+</sup> and Cu<sup>2+</sup>. They are less reactive than group 1 and 2 metals. Copper does not react with water, so it is used for pipes. It carries electricity well, so it is used for wires. Many of their compounds are brightly colored.</span></p>
+  <div class="swatch" role="list" aria-label="Pigments made from transition metal compounds">
+   <span role="listitem"><i style="background:#f4f3ee"></i>titanium dioxide: white paint</span>
+   <span role="listitem"><i style="background:#a4452c"></i>iron oxide: red ochre</span>
+   <span role="listitem"><i style="background:#1f4fa8"></i>cobalt blue</span>
+   <span role="listitem"><i style="background:#2f8f6b"></i>copper compounds: green</span>
+   <span role="listitem"><i style="background:#ffd23c"></i>cadmium yellow</span>
+  </div>
+  <aside class="key"><p class="label">Key idea</p><p>In transition metals, a d sublevel is being filled. Their group number does not give valence electrons, they often form ions with more than one charge, they are less reactive than groups 1 and 2, and many of their compounds are colored.</p></aside>
+ </div>
+ <div class="page right">
+  <p class="dual"><span class="std">Because transition metals do not follow a simple valence pattern, they are not drawn with Lewis dot structures in this course. The name chromium gives a clue to the family: it comes from the Greek word for color, because chromium compounds have so many different colors.</span><span class="sim">Lewis dot structures are not drawn for transition metals in this course. The name chromium comes from the Greek word for color. Its compounds have many different colors.</span></p>
+  <details class="honors"><summary>Honors · Where the filling order breaks down</summary>
+   <p>The filling order predicts chromium (Z = 24) as [Ar] 4s<sup>2</sup> 3d<sup>4</sup>. Measurements show [Ar] 4s<sup>1</sup> 3d<sup>5</sup>, often written [Ar] 3d<sup>5</sup> 4s<sup>1</sup>. Copper (Z = 29) is predicted as [Ar] 4s<sup>2</sup> 3d<sup>9</sup> but is measured as [Ar] 4s<sup>1</sup> 3d<sup>10</sup>, often written [Ar] 3d<sup>10</sup> 4s<sup>1</sup>.</p>
+   <p>A half-filled (d<sup>5</sup>) or full (d<sup>10</sup>) d sublevel is especially stable, and 4s and 3d are so close in energy that moving one electron to 3d lowers the atom's energy. The orbital board shows both exceptions when you reach Z = 24 and Z = 29.</p>
+   <p>Once the 3d sublevel holds electrons, it is slightly lower in energy than 4s, so a transition metal loses its 4s electrons first when it forms an ion. Iron, [Ar] 4s<sup>2</sup> 3d<sup>6</sup>, forms Fe<sup>2+</sup>, [Ar] 3d<sup>6</sup>.</p></details>
+  <div data-item="c-r16"></div>
+  <div data-item="c-r17"></div>
+ </div>
+</article>
+
+<!-- ===== Review (a) ===== -->
+<article class="spread" data-sec="review" data-title="Chapter review" data-short="Review">
+ <div class="page left">
+  <header class="sech"><span class="secno">Review</span><h2>Families at a glance</h2></header>
+  <table class="sum"><thead><tr><th>Family</th><th>Group</th><th>Valence e<sup>−</sup></th><th>Usual ion</th><th>Reactivity</th><th>Example</th></tr></thead><tbody>
+   <tr><td><b>Alkali metals</b></td><td>1</td><td>1</td><td>1+</td><td>Very reactive</td><td>Na reacts with water</td></tr>
+   <tr><td><b>Alkaline earth metals</b></td><td>2</td><td>2</td><td>2+</td><td>Reactive, less than group 1</td><td>Mg in flares</td></tr>
+   <tr><td><b>Halogens</b></td><td>17</td><td>7</td><td>1−</td><td>Very reactive</td><td>Cl compounds in pools</td></tr>
+   <tr><td><b>Noble gases</b></td><td>18</td><td>8 (He: 2)</td><td>None</td><td>Almost unreactive</td><td>Ne signs, Ar bulbs, He balloons</td></tr>
+   <tr><td><b>Transition metals</b></td><td>3 to 12</td><td>Varies</td><td>Often several</td><td>Less reactive</td><td>Cu wiring, pigments</td></tr>
+  </tbody></table>
+  <ul class="review">
+   <li><b>2.5.1</b> Energy levels contain sublevels s, p, d and f with 1, 3, 5 and 7 orbitals. Each orbital holds 2 electrons, so the sublevels hold 2, 6, 10 and 14.</li>
+   <li><b>2.5.2</b> Electrons fill sublevels in the order 1s 2s 2p 3s 3p 4s 3d 4p, which matches the s, p and d blocks of the periodic table.</li>
+   <li><b>2.5.3</b> A noble-gas configuration replaces the core with [noble gas]. Valence electrons are those in the highest level: group 1 has 1, group 2 has 2, groups 13 to 18 have the group number minus 10, and helium has 2.</li>
+   <li><b>2.5.4</b> A Lewis dot structure shows valence electrons around the symbol: one dot per side, then pairs.</li>
+   <li><b>2.5.5</b> Valence electrons predict each family's ions: alkali metals form 1+ ions, alkaline earth metals 2+, halogens 1−, and noble gases none.</li>
+   <li><b>2.5.6</b> In transition metals a d sublevel is being filled; they often form several ions, are less reactive than groups 1 and 2, and form colored compounds.</li>
+  </ul>
+ </div>
+ <div class="page right">
+  <p class="label">Vocabulary · Vocabulario</p>
+  <div class="vocab" id="vocab"></div>
+  <div class="ag" id="ag-after"><p class="label">Revisit your predictions</p><p class="do">Answer again, then reveal. Did the evidence change your mind?</p></div>
+ </div>
+</article>
+
+<!-- ===== Review (b) ===== -->
+<article class="spread" data-sec="review" data-title="Summarize and go further">
+ <div class="page left">
+  <div class="sumup"><p class="label">Summarize in your notebook</p><p class="do">Answer the driving question in 3 to 4 sentences. Use these sentence starters and the word bank. (SEP 3(B))</p>
+   <ol class="starters"><li>An element's valence electrons are…</li><li>I can find them from the configuration by… or from the group number by…</li><li>For example, sodium has… so it tends to…</li><li>Transition metals are different because…</li></ol>
+   <p class="aside-note"><b>Word bank:</b> valence electron, energy level, sublevel, full outer level, group, lose, gain, ion, reactive.</p></div>
+  <div class="next"><p class="label">Next</p><p><b><a href="missions-2-5.html">Missions for Lesson 2.5</a>:</b> Electron detective, Family files and Lewis lab. Unit 3 explains the periodic trends behind reactivity, and Unit 4 uses Lewis structures to build molecules.</p></div>
+ </div>
+ <div class="page right">
+  <p class="label">Sources and further reading</p>
+  <ul class="src"><li><a href="https://openstax.org/books/chemistry-2e/pages/6-4-electronic-structure-of-atoms-electron-configurations" target="_blank" rel="noopener">OpenStax Chemistry 2e, 6.4 Electronic Structure of Atoms (Electron Configurations)</a></li><li><a href="https://openstax.org/books/chemistry-2e/pages/2-5-the-periodic-table" target="_blank" rel="noopener">OpenStax Chemistry 2e, 2.5 The Periodic Table</a></li><li><a href="https://openstax.org/books/chemistry-2e/pages/7-3-lewis-symbols-and-structures" target="_blank" rel="noopener">OpenStax Chemistry 2e, 7.3 Lewis Symbols and Structures</a></li><li><a href="https://www.rsc.org/periodic-table" target="_blank" rel="noopener">Royal Society of Chemistry, Periodic Table (element uses and properties)</a></li></ul>
+ </div>
+</article>
+</main>
+
+<nav class="pager" aria-label="Page navigation">
+  <button class="btn" id="prev" type="button">← Previous</button>
+  <span id="pinfo" aria-live="polite"></span>
+  <button class="btn primary" id="next" type="button">Next →</button>
+</nav>
+
+<script>
+window.U2LESSON="25";
+/* Lesson 2.1 glossary (merged with every other lesson's at build time): term -> definition, Spanish term. One source for reading, slides and worksheets. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "model":{d:"A simplified picture, object or set of rules that explains observations and predicts new ones.",es:"modelo"},
+ "evidence":{d:"Observations or data that support or contradict an idea.",es:"evidencia"},
+ "scientific law":{d:"A statement that describes a pattern in nature, often as an equation. It states what happens, not why.",es:"ley científica"},
+ "scientific theory":{d:"A well-tested explanation of why patterns in nature happen, supported by many lines of evidence.",es:"teoría científica"},
+ "law of conservation of mass":{d:"In a chemical reaction, the total mass of the products equals the total mass of the reactants.",es:"ley de conservación de la masa"},
+ "law of definite proportions":{d:"A compound always contains the same elements in the same proportions by mass, whatever its source.",es:"ley de las proporciones definidas"},
+ "law of multiple proportions":{d:"When two elements form more than one compound, the masses of one element that combine with a fixed mass of the other are in a small whole-number ratio.",es:"ley de las proporciones múltiples"},
+ "postulate":{d:"A basic statement accepted as the starting point of a theory.",es:"postulado"},
+ "atom":{d:"The smallest particle of an element that keeps the element's identity in chemical reactions.",es:"átomo"},
+ "compound":{d:"A substance made of two or more elements chemically combined in a fixed ratio.",es:"compuesto"},
+ "cathode ray":{d:"A beam of electrons that travels from the negative electrode (the cathode) in a tube with almost no air.",es:"rayo catódico"},
+ "cathode":{d:"In a cathode-ray (discharge) tube, the negative electrode. In a battery or other cell, the cathode is named by the reaction there, not by its sign, and it can be positive.",es:"cátodo"},
+ "electron":{d:"A negatively charged particle with very little mass, found in all atoms outside the nucleus.",es:"electrón"},
+ "charge-to-mass ratio":{d:"A particle's electric charge divided by its mass. A large value means a large charge for a small mass.",es:"relación carga-masa"},
+ "alpha particle":{d:"A fast, positively charged particle made of 2 protons and 2 neutrons: a helium nucleus. Some radioactive substances emit it.",es:"partícula alfa"},
+ "nucleus":{d:"The tiny, dense, positively charged center of an atom. It holds almost all of the atom's mass.",es:"núcleo"},
+ "proton":{d:"A positively charged particle in the nucleus.",es:"protón"},
+ "energy level":{d:"One of the fixed energies an electron in an atom can have.",es:"nivel de energía"},
+ "line spectrum":{d:"The set of separate colored lines produced when light from a glowing element is spread out by a prism or grating. Each element has its own.",es:"espectro de líneas"},
+ "photon":{d:"A single packet of light energy.",es:"fotón"},
+ "quantized":{d:"Limited to certain fixed amounts, with no values in between.",es:"cuantizado"},
+ "momentum":{d:"Mass times velocity: a measure of an object's motion.",es:"cantidad de movimiento"},
+ "uncertainty principle":{d:"Heisenberg's principle: the exact position and the exact momentum of a particle cannot both be known at the same time.",es:"principio de incertidumbre"},
+ "orbital":{d:"A region around the nucleus where an electron is likely to be found.",es:"orbital"},
+ "electron cloud":{d:"The fuzzy region around the nucleus where electrons are likely to be. It is dense where an electron is likely and thin where it is unlikely.",es:"nube electrónica"},
+ "probability":{d:"How likely something is to happen, from 0 (never) to 1 (always).",es:"probabilidad"},
+ "vacuum":{d:"A space that contains almost no matter, including air.",es:"vacío"},
+ "deflect":{d:"To turn something away from its straight path.",es:"desviar"}
+});
+
+/* Lesson 2.2 glossary (merged with every other lesson's at build time). 2.1 already defines atom, electron, proton, nucleus, electron cloud. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "subatomic particle":{d:"A particle smaller than an atom. Atoms are built from three kinds: protons, neutrons and electrons.",es:"partícula subatómica"},
+ "neutron":{d:"A particle in the nucleus with no electric charge and a mass about equal to a proton's.",es:"neutrón"},
+ "element":{d:"A substance made of atoms that all have the same number of protons.",es:"elemento"},
+ "atomic number":{d:"The number of protons in an atom's nucleus (Z). It identifies the element.",es:"número atómico"},
+ "mass number":{d:"The number of protons plus neutrons in an atom's nucleus (A).",es:"número másico"},
+ "isotope":{d:"Atoms of the same element (same number of protons) with different numbers of neutrons, and so different mass numbers.",es:"isótopo"},
+ "isotope notation":{d:"A symbol that shows an atom's mass number at the upper left and atomic number at the lower left of the element symbol, such as carbon-14 written as ¹⁴₆C.",es:"notación isotópica"},
+ "ion":{d:"An atom or group of atoms with a net electric charge because it has gained or lost electrons.",es:"ion"},
+ "cation":{d:"A positive ion. It has fewer electrons than protons.",es:"catión"},
+ "anion":{d:"A negative ion. It has more electrons than protons.",es:"anión"},
+ "relative mass":{d:"A mass compared with a standard instead of given in kilograms. On this scale a proton and a neutron are each about 1 and an electron is about 1/1836.",es:"masa relativa"},
+ "neutral atom":{d:"An atom with equal numbers of protons and electrons, so its charges cancel and its net charge is zero.",es:"átomo neutro"},
+ "radioactive":{d:"Describes an unstable nucleus that emits radiation on its own. Some isotopes are radioactive; others are stable.",es:"radiactivo"},
+ "electrolyte":{d:"A substance that forms ions in water. In medicine, the word also means the dissolved ions themselves, such as Na⁺, K⁺, Ca²⁺ and Cl⁻ in body fluids.",es:"electrolito"}
+});
+
+/* Lesson 2.3 glossary (merged with every other lesson's at build time). 2.2 defines isotope, mass number, atomic number. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "atomic mass unit":{d:"A unit for the mass of atoms (u, also written amu): one twelfth of the mass of a carbon-12 atom.",es:"unidad de masa atómica"},
+ "isotopic mass":{d:"The mass of one atom of a particular isotope, in atomic mass units.",es:"masa isotópica"},
+ "percent abundance":{d:"The percentage of an element's atoms, in a natural sample, that are a particular isotope.",es:"abundancia porcentual"},
+ "weighted average":{d:"An average in which each value counts in proportion to how often it occurs.",es:"promedio ponderado"},
+ "average atomic mass":{d:"The weighted average mass of an element's naturally occurring isotopes, in atomic mass units. It is the value on the periodic table.",es:"masa atómica promedio"},
+ "mass spectrometer":{d:"An instrument that separates ions by their mass-to-charge ratio and measures how many of each there are. When every ion has the same charge, as in this lesson, that means sorting by mass.",es:"espectrómetro de masas"},
+ "mass spectrum":{d:"A graph from a mass spectrometer: mass on one axis, relative abundance on the other.",es:"espectro de masas"},
+ "isotope ratio":{d:"The amount of one isotope in a sample compared with the amount of another, such as carbon-13 compared with carbon-12. Small differences can reveal where a sample came from.",es:"relación isotópica"}
+});
+
+/* Lesson 2.4 glossary (merged with every other lesson's at build time). 2.1 already defines photon, energy level, line spectrum, quantized. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "electromagnetic radiation":{d:"Energy that travels through space as waves of electric and magnetic fields, such as visible light, radio waves and X-rays.",es:"radiación electromagnética"},
+ "electromagnetic spectrum":{d:"The whole range of electromagnetic radiation, ordered by wavelength or frequency, from radio waves to gamma rays.",es:"espectro electromagnético"},
+ "wavelength":{d:"The distance from one wave crest to the next (λ), measured in meters or nanometers.",es:"longitud de onda"},
+ "frequency":{d:"The number of wave crests that pass a point each second (f), measured in hertz (Hz).",es:"frecuencia"},
+ "hertz":{d:"The unit of frequency: one wave per second (1 Hz = 1 s⁻¹).",es:"hercio"},
+ "Planck's constant":{d:"The constant h = 6.626 × 10⁻³⁴ J·s that links a photon's energy to its frequency in E = hf.",es:"constante de Planck"},
+ "ground state":{d:"The lowest energy state of an atom, with every electron in the lowest levels available.",es:"estado fundamental"},
+ "excited state":{d:"A state of an atom in which an electron is in a higher energy level than in the ground state.",es:"estado excitado"},
+ "emission spectrum":{d:"The pattern of bright lines emitted by an excited gas. Each element's pattern is unique.",es:"espectro de emisión"},
+ "absorption spectrum":{d:"Dark lines in a continuous spectrum where a cooler gas has absorbed particular wavelengths.",es:"espectro de absorción"},
+ "continuous spectrum":{d:"An unbroken band containing every wavelength, like the rainbow from a glowing solid or dense gas.",es:"espectro continuo"},
+ "flame test":{d:"A test that identifies a metal ion by the color it gives a flame.",es:"prueba de llama"},
+ "spectroscope":{d:"An instrument that spreads light into its separate wavelengths so its lines can be seen and measured.",es:"espectroscopio"},
+ "speed of light":{d:"The speed of all electromagnetic radiation in a vacuum: c = 2.998 × 10⁸ m/s.",es:"velocidad de la luz"},
+ "nanometer":{d:"One billionth of a meter: 1 nm = 10⁻⁹ m. Visible light has wavelengths of about 380 to 700 nm.",es:"nanómetro"},
+ "visible light":{d:"The small part of the electromagnetic spectrum that human eyes can see, about 380 nm (violet) to 700 nm (red).",es:"luz visible"},
+ "infrared":{d:"Electromagnetic radiation with wavelengths longer than red light but shorter than microwaves. It is felt as heat.",es:"infrarrojo"},
+ "ultraviolet":{d:"Electromagnetic radiation with wavelengths shorter than violet light but longer than X-rays. It can cause sunburn.",es:"ultravioleta"},
+ "inverse relationship":{d:"When one quantity is multiplied by a factor, the other is divided by the same factor. Wavelength and frequency are inversely related.",es:"relación inversa"},
+ "direct relationship":{d:"When one quantity is multiplied by a factor, the other is multiplied by the same factor. Photon energy and frequency are directly related.",es:"relación directa"}
+});
+
+/* Lesson 2.5 glossary (merged with every other lesson's at build time). 2.1 already defines orbital, energy level, electron cloud. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "electron configuration":{d:"A list of the sublevels an atom's electrons occupy, with the number in each, such as 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>1</sup> for sodium.",es:"configuración electrónica"},
+ "sublevel":{d:"A set of orbitals of the same type (s, p, d or f) within one energy level.",es:"subnivel"},
+ "noble-gas configuration":{d:"A shortened electron configuration that starts from the previous noble gas in brackets, such as [Ne] 3s<sup>1</sup> for sodium.",es:"configuración de gas noble"},
+ "valence electron":{d:"An electron in the highest occupied energy level of an atom. Valence electrons take part in bonding.",es:"electrón de valencia"},
+ "Lewis dot structure":{d:"An element symbol surrounded by one dot for each valence electron.",es:"estructura de puntos de Lewis"},
+ "octet":{d:"A set of eight valence electrons, as in every noble gas except helium. It is a very stable arrangement.",es:"octeto"},
+ "group":{d:"A vertical column of the periodic table. Representative elements in the same group have the same number of valence electrons and similar properties.",es:"grupo"},
+ "period":{d:"A horizontal row of the periodic table. Its number matches the highest energy level occupied in the ground state.",es:"periodo"},
+ "representative element":{d:"An element in groups 1, 2 or 13 to 18, where the s or p sublevel is being filled.",es:"elemento representativo"},
+ "alkali metal":{d:"A group 1 element other than hydrogen (lithium to francium): one valence electron, very reactive, forms 1+ ions.",es:"metal alcalino"},
+ "alkaline earth metal":{d:"A group 2 element (beryllium to radium): two valence electrons, reactive, forms 2+ ions.",es:"metal alcalinotérreo"},
+ "halogen":{d:"A group 17 element (fluorine to astatine): seven valence electrons, a very reactive nonmetal, forms 1− ions.",es:"halógeno"},
+ "noble gas":{d:"A group 18 element (helium to radon): a filled outer level, so almost unreactive.",es:"gas noble"},
+ "transition metal":{d:"An element in groups 3 to 12, where a d sublevel is being filled.",es:"metal de transición"},
+ "core electron":{d:"An electron in the filled inner levels of an atom, below the valence electrons. The noble-gas symbol in brackets stands for the core.",es:"electrón interno"},
+ "block":{d:"A region of the periodic table named for the sublevel being filled: the s block (groups 1 and 2, plus helium), the p block (groups 13 to 18), the d block (groups 3 to 12) and the f block.",es:"bloque"},
+ "orbital diagram":{d:"A drawing of an atom's electrons as arrows in boxes, one box per orbital. The arrow direction shows the electron's spin.",es:"diagrama de orbitales"},
+ "diatomic molecule":{d:"A molecule made of two atoms joined together, such as Cl<sub>2</sub> or O<sub>2</sub>.",es:"molécula diatómica"},
+ "Aufbau principle":{d:"Electrons fill the lowest-energy orbitals available first.",es:"principio de Aufbau"},
+ "Pauli exclusion principle":{d:"An orbital holds at most two electrons, and they must have opposite spins.",es:"principio de exclusión de Pauli"},
+ "Hund's rule":{d:"Electrons occupy orbitals of equal energy one at a time, with the same spin, before any pair up.",es:"regla de Hund"}
+});
+
+/* Lesson 2.5 item bank. Every item: id, objective, reading section, surface, DOK.
+   opts: [text, correct?, feedback]. Feedback for wrong options names the misconception.
+   U2.lewisHTML draws a Lewis dot structure in plain HTML (no canvas). It lives here because items.js loads first on
+   every surface (reading, slides, missions), so items, sims and figures all share this one helper.
+   d = dots per side as four digits: top, right, bottom, left (for example "2111" = a pair on top, one dot on each other side). */
+window.U2=window.U2||{};
+U2.lewisHTML=function(sym,d,cls){const c=String(d).split('').map(Number),v=c.reduce((a,b)=>a+b,0),dots=n=>'<i></i>'.repeat(n);
+  return `<span class="lwi${cls?' '+cls:''}" role="img" aria-label="Lewis dot structure: ${sym} with ${v} dot${v===1?'':'s'}"><span class="lt">${dots(c[0])}</span><span class="ll">${dots(c[3])}</span><b>${sym}</b><span class="lr">${dots(c[1])}</span><span class="lb">${dots(c[2])}</span></span>`};
+(function(){const L=U2.lewisHTML;
+window.OBJ=Object.assign(window.OBJ||{},{
+ "2.5.1":{teks:"C.6(E)",t:"Describe energy levels, sublevels (s, p, d, f) and orbitals, and how many electrons each can hold."},
+ "2.5.2":{teks:"C.6(E)",t:"Use the filling order to write full electron configurations."},
+ "2.5.3":{teks:"C.6(E)",t:"Write noble-gas configurations and find valence electrons from the configuration and the group number."},
+ "2.5.4":{teks:"C.6(E)",t:"Draw Lewis dot structures for representative elements."},
+ "2.5.5":{teks:"C.5(B)",t:"Predict properties of alkali metals, alkaline earth metals, halogens and noble gases from their valence electrons."},
+ "2.5.6":{teks:"C.5(B)",t:"Explain how transition metals differ: a filling d sublevel, lower reactivity, more than one ion charge and colored compounds."}
+});
+window.ITEMS=(window.ITEMS||[]).concat([
+ /* ---------- reading ---------- */
+ {id:"c-r1",obj:"2.5.1",sec:"2.5.1",surf:"reading",dok:1,q:"What is the largest number of electrons that one orbital can hold?",
+  opts:[["2",1,"Correct. Every orbital, whatever its shape or energy level, holds at most two electrons."],
+        ["8",0,"Eight is the number of valence electrons in a full outer s and p set (an octet). That takes four orbitals, not one."],
+        ["It depends on the energy level.",0,"The energy level changes how many orbitals there are, not how many electrons fit in each one. Every orbital holds 2."]]},
+ {id:"c-r2",obj:"2.5.1",sec:"2.5.1",surf:"reading",dok:2,q:"How many electrons can the 3p sublevel hold?",
+  opts:[["6",1,"Correct. A p sublevel has 3 orbitals, and each holds 2 electrons: 3 × 2 = 6."],
+        ["3",0,"Three is the number of p orbitals. Each orbital holds 2 electrons, so the sublevel holds 6."],
+        ["18",0,"Eighteen is the capacity of the whole third energy level (3s, 3p and 3d together). The 3p sublevel alone holds 6."]]},
+ {id:"c-r3",obj:"2.5.2",sec:"2.5.2",surf:"reading",dok:1,q:"In the filling order, which sublevel comes right after 3p?",
+  opts:[["4s",1,"Correct. 4s is lower in energy than 3d, so it fills first. The periodic table shows this: potassium and calcium (4s) come before the transition metals (3d)."],
+        ["3d",0,"This is the most common mistake. 3d is in the third energy level, but it is higher in energy than 4s, so 4s fills first."],
+        ["4p",0,"4p comes later. After 3p, the 4s sublevel fills, then 3d, then 4p."]]},
+ {id:"c-r4",obj:"2.5.2",sec:"2.5.2",surf:"reading",dok:2,q:"Phosphorus has 15 electrons. Which is its full electron configuration?",
+  opts:[["1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>3</sup>",1,"Correct. The superscripts add up to 15: 2 + 2 + 6 + 2 + 3."],
+        ["1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>8</sup> 3s<sup>2</sup> 3p<sup>1</sup>",0,"A p sublevel holds at most 6 electrons (3 orbitals × 2). 2p<sup>8</sup> is impossible."],
+        ["1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>5</sup>",0,"These superscripts add up to 17, which is chlorine. The total must equal the atomic number, 15."]]},
+ {id:"c-r5",obj:"2.5.2",sec:"2.5.2",surf:"reading",dok:3,q:"A student writes potassium (Z = 19) as 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 3d<sup>1</sup>. What is wrong?",
+  opts:[["The 19th electron goes into 4s, which is lower in energy than 3d.",1,"Correct. Potassium is 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>2</sup> 3p<sup>6</sup> 4s<sup>1</sup>. It sits in the s block of period 4, not in the d block."],
+        ["Nothing. The third level must be full before the fourth starts.",0,"Levels overlap in energy. 4s is lower than 3d, so 4s fills before the third level is complete."],
+        ["The 3p sublevel can hold another electron.",0,"3p<sup>6</sup> is already full: 3 orbitals × 2 electrons = 6."]]},
+ {id:"c-r6",obj:"2.5.3",sec:"2.5.3",surf:"reading",dok:2,q:"Calcium has 20 electrons. Which is its noble-gas configuration?",
+  opts:[["[Ar] 4s<sup>2</sup>",1,"Correct. Argon accounts for 18 electrons; the last 2 go into 4s."],
+        ["[Ar] 3d<sup>2</sup>",0,"After argon, 4s fills before 3d. Calcium is in the s block, so its last electrons are 4s electrons."],
+        ["[Ne] 4s<sup>2</sup>",0,"Neon covers only 10 electrons, and [Ne] 4s<sup>2</sup> skips 3s and 3p. Use the noble gas just before calcium: argon."]]},
+ {id:"c-r7",obj:"2.5.3",sec:"2.5.3",surf:"reading",dok:2,q:"Selenium is in group 16. How many valence electrons does it have?",
+  opts:[["6",1,"Correct. For groups 13 to 18, subtract 10 from the group number: 16 − 10 = 6. Its configuration ends in 4s<sup>2</sup> 4p<sup>4</sup>."],
+        ["16",0,"The group number is not the count for groups 13 to 18: subtract 10. The ten d electrons are not in the outer level."],
+        ["34",0,"34 is selenium's total number of electrons. Valence electrons are only those in the highest occupied energy level: 4s<sup>2</sup> 4p<sup>4</sup>, so 6."]]},
+ {id:"c-r8",obj:"2.5.3",sec:"2.5.3",surf:"reading",dok:3,q:"Helium sits in group 18 with the other noble gases. How many valence electrons does it have?",
+  opts:[["2",1,"Correct. Helium is 1s<sup>2</sup>. Its only level is full with 2 electrons, so it behaves like the other noble gases."],
+        ["8",0,"Neon, argon and the heavier noble gases have 8, but helium has only 2 electrons in total. Its full level holds just 2."],
+        ["18",0,"18 is the group number, not a count of electrons. Helium has 2 electrons in all."]]},
+ {id:"c-r9",obj:"2.5.3",sec:"2.5.3",surf:"reading",dok:2,q:"Which pair of elements has the same number of valence electrons?",
+  opts:[["Oxygen and sulfur",1,"Correct. Both are in group 16 and end in s<sup>2</sup> p<sup>4</sup>: 6 valence electrons each."],
+        ["Oxygen and fluorine",0,"These are neighbors in the same period, not the same group. Oxygen has 6 valence electrons and fluorine has 7."],
+        ["Sodium and neon",0,"Neon has 8 valence electrons (2s<sup>2</sup> 2p<sup>6</sup>). Sodium begins a new level with only 1 (3s<sup>1</sup>)."]]},
+ {id:"c-r10",obj:"2.5.4",sec:"2.5.4",surf:"reading",dok:2,q:"Nitrogen has 5 valence electrons. Which Lewis dot structure follows the convention?",
+  opts:[[L('N','2111'),1,"Correct. One dot on each of the four sides first, then the fifth dot makes a pair. Which side gets the pair does not matter."],
+        [L('N','2201'),0,"Two pairs and an empty side: this pairs dots before every side has one. Place one dot per side first, then pair."],
+        [L('N','5000'),0,"Putting all the dots on one side breaks the convention. Spread them around the symbol: one per side, then pairs."]]},
+ {id:"c-r11",obj:"2.5.4",sec:"2.5.4",surf:"reading",dok:2,q:"How many dots belong around Mg in the Lewis dot structure of magnesium?",
+  opts:[["2, on two different sides",1,"Correct. Magnesium is group 2 with 3s<sup>2</sup> outside its neon core. The convention puts one dot per side before pairing."],
+        ["12",0,"12 is the total number of electrons. A Lewis structure shows only the valence electrons, so magnesium gets 2."],
+        ["2, as a pair on one side",0,"The count is right, but dots go one per side before any pair. Only helium is drawn with its 2 dots as a pair."]]},
+ {id:"c-r12",obj:"2.5.5",sec:"2.5.5",surf:"reading",dok:2,q:"Sodium and potassium are both stored under oil, and both react with water. What do they share that explains this?",
+  opts:[["One valence electron, which each loses easily.",1,"Correct. Both are alkali metals: one electron outside a noble-gas core, lost easily to form a 1+ ion."],
+        ["The same number of total electrons.",0,"Sodium has 11 electrons and potassium has 19. What they share is the outer arrangement: 1 valence electron."],
+        ["A full outer energy level.",0,"A full outer level makes an element almost unreactive, like neon. Sodium and potassium each have just 1 electron in their outer level."]]},
+ {id:"c-r13",obj:"2.5.5",sec:"2.5.5",surf:"reading",dok:2,q:"Magnesium is in group 2. Which ion does it usually form?",
+  opts:[["Mg<sup>2+</sup>",1,"Correct. It loses its 2 valence electrons and is left with neon's arrangement of 10 electrons."],
+        ["Mg<sup>2−</sup>",0,"Metals lose electrons, which leaves a positive charge. Losing 2 electrons from a neutral atom gives 2+, not 2−."],
+        ["Mg<sup>+</sup>",0,"Group 2 metals have 2 valence electrons and lose both. A 1+ ion is typical of group 1."]]},
+ {id:"c-r14",obj:"2.5.5",sec:"2.5.5",surf:"reading",dok:2,q:"Chlorine has 7 valence electrons. What ion does it form in table salt, NaCl?",
+  opts:[["Cl<sup>−</sup>, by gaining one electron",1,"Correct. Gaining one electron fills its outer level (8 electrons), the same arrangement as argon."],
+        ["Cl<sup>7+</sup>, by losing seven electrons",0,"Removing seven electrons would take far more energy than gaining one. Halogens gain one electron and form 1− ions."],
+        ["Cl<sup>+</sup>, by losing one electron",0,"Losing an electron moves chlorine farther from a full outer level. It gains one instead."]]},
+ {id:"c-r15",obj:"2.5.5",sec:"2.5.5",surf:"reading",dok:3,q:"Why is argon, not air, used inside many incandescent light bulbs?",
+  opts:[["Its full outer level makes it almost unreactive, so it does not react with the hot filament.",1,"Correct. Oxygen in air would react with the hot tungsten filament and burn it out. Argon, a noble gas, does not."],
+        ["Argon atoms want to share electrons with the filament.",0,"Noble gases almost never share or exchange electrons. Atoms do not want anything; argon's full outer level is simply very stable."],
+        ["Argon has 18 valence electrons, the most of any gas.",0,"Argon has 18 electrons in total but only 8 valence electrons (3s<sup>2</sup> 3p<sup>6</sup>). A full set of 8 is what makes it stable."]]},
+ {id:"c-r16",obj:"2.5.6",sec:"2.5.6",surf:"reading",dok:2,q:"Iron is in group 8. Does iron have 8 valence electrons?",
+  opts:[["No. Group numbers 3 to 12 do not give valence electrons; iron is [Ar] 4s<sup>2</sup> 3d<sup>6</sup>.",1,"Correct. Iron has 2 electrons in its outer 4s sublevel, and some of its 3d electrons can also be lost. That is why iron forms both Fe<sup>2+</sup> and Fe<sup>3+</sup>."],
+        ["Yes. The group number always equals the number of valence electrons.",0,"That shortcut works only for groups 1 and 2. For groups 13 to 18 subtract 10, and for transition metals it does not work at all."],
+        ["No. Iron has 26 valence electrons.",0,"26 is iron's total number of electrons. Most of them are core electrons."]]},
+ {id:"c-r17",obj:"2.5.6",sec:"2.5.6",surf:"reading",dok:2,q:"Copper forms Cu<sup>+</sup> in some compounds and Cu<sup>2+</sup> in others. Which family pattern does this show?",
+  opts:[["Transition metals can often form ions with more than one charge.",1,"Correct. Their outer s electrons and d electrons are close in energy, so different numbers can be lost. Iron (Fe<sup>2+</sup>, Fe<sup>3+</sup>) does the same."],
+        ["Copper is an alkali metal, so it forms 1+ ions.",0,"Copper is a transition metal in group 11. Alkali metals (group 1) form only 1+ ions; copper forms 1+ and 2+."],
+        ["Copper gains electrons like a halogen.",0,"Both ions are positive, so copper loses electrons. Metals lose electrons; halogens gain them."]]},
+ /* ---------- slides ---------- */
+ {id:"c-s-cap",obj:"2.5.1",sec:"2.5.1",surf:"slides",dok:1,q:"How many electrons fit in a d sublevel?",
+  opts:[["10",1,"Correct. A d sublevel has 5 orbitals × 2 electrons = 10."],["5",0,"Five is the number of d orbitals. Each holds 2 electrons, so 10 in all."],["2",0,"Two is the limit for one orbital, not for a sublevel. A d sublevel has 5 orbitals: 10 electrons."]]},
+ {id:"c-s-4s",obj:"2.5.2",sec:"2.5.2",surf:"slides",dok:2,q:"Calcium has 20 electrons. Where do electrons 19 and 20 go?",
+  opts:[["4s",1,"Correct. 4s is lower in energy than 3d, so calcium ends 4s<sup>2</sup>. The orbital board shows this."],["3d",0,"3d is higher in energy than 4s. It starts filling only at scandium, element 21."],["3p",0,"3p is already full at argon (3p<sup>6</sup>). A p sublevel holds only 6."]]},
+ {id:"c-s-val",obj:"2.5.3",sec:"2.5.3",surf:"slides",dok:2,q:"Bromine is [Ar] 4s<sup>2</sup> 3d<sup>10</sup> 4p<sup>5</sup>. How many valence electrons?",
+  opts:[["7",1,"Correct. Only the highest level counts: 4s<sup>2</sup> 4p<sup>5</sup>, so 2 + 5 = 7. Group 17 agrees: 17 − 10 = 7."],["17",0,"The 3d electrons are in level 3, not the outer level. Count only 4s and 4p: 7."],["35",0,"35 is bromine's total. Valence electrons are only those in the highest occupied energy level."]]},
+ {id:"c-s-lew",obj:"2.5.4",sec:"2.5.4",surf:"slides",dok:2,q:"Which is the Lewis dot structure of oxygen?",
+  opts:[[L('O','2211'),1,"Correct. Six valence electrons: one per side first, then two pairs."],[L('O','2220'),0,"The count is right (6), but one side is empty while three have pairs. Place one per side before pairing."],[L('O','2222'),0,"Eight dots is neon's count. Oxygen is group 16: 16 − 10 = 6 dots."]]},
+ {id:"c-s-fam",obj:"2.5.5",sec:"2.5.5",surf:"slides",dok:2,q:"Rubidium is below potassium in group 1. Predict its behavior in water.",
+  opts:[["It reacts violently, forming Rb<sup>+</sup> ions and hydrogen gas.",1,"Correct. One valence electron, like sodium and potassium. Down group 1, the reaction becomes even more violent (Unit 3 explains why)."],["It does not react, because it is a metal.",0,"Group 1 metals are the most reactive metals of all. One valence electron is easily lost."],["It forms Rb<sup>−</sup> ions by gaining an electron.",0,"Metals lose electrons. With one valence electron, rubidium loses it to form a 1+ ion."]]},
+ {id:"c-s-hal",obj:"2.5.5",sec:"2.5.5",surf:"slides",dok:2,q:"Which element is the best match for chlorine's chemistry?",
+  opts:[["Bromine",1,"Correct. Same group (17), same 7 valence electrons: both gain one electron to form 1− ions and exist as diatomic molecules (Cl<sub>2</sub>, Br<sub>2</sub>)."],["Argon",0,"Argon is chlorine's neighbor in period 3, but it has 8 valence electrons and almost never reacts. Families are columns, not rows."],["Sulfur",0,"Sulfur has 6 valence electrons. Elements with similar chemistry share a group, and chlorine's group is 17."]]},
+ {id:"c-s-tm",obj:"2.5.6",sec:"2.5.6",surf:"slides",dok:2,q:"A student says, “Copper is in group 11, so it has 11 valence electrons.” Your response?",
+  opts:[["Wrong: copper is a transition metal, and group numbers 3 to 12 do not give valence electrons.",1,"Correct. Copper's outer level holds just 1 electron (4s<sup>1</sup>), and copper forms both Cu<sup>+</sup> and Cu<sup>2+</sup>."],["Right: the group number always equals the valence electrons.",0,"That shortcut works for groups 1 and 2 only. For groups 13 to 18 subtract 10, and transition metals do not follow it."],["Wrong: it has 29, its atomic number.",0,"29 is copper's total. Most are core electrons; valence electrons are only the outer ones."]]}
+]);
+})();
+
+/* ===== Unit 2 simulation kit: helpers shared by every lesson's simulations ===== */
+(function(){
+const U2=window.U2=window.U2||{};
+const TAU=Math.PI*2;
+const REDUCED=(()=>{try{return matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){return false}})();
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const FK=()=>window.U2FONTK||1;
+const F=(px,wt=600,fam='--body')=>`${wt} ${(px*FK()).toFixed(1)}px ${css(fam)}`;
+const el=(tag,cls,html)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e};
+const btn=(label,cls='btn')=>{const b=el('button',cls,label);b.type='button';return b};
+U2.el=el;U2.btn=btn;U2.css=css;
+function shell(root,aspect,label){root.classList.add('sim');const cv=el('div','cv');cv.style.aspectRatio=String(1/aspect);const c=el('canvas');c.setAttribute('role','img');if(label)c.setAttribute('aria-label',label);cv.append(c);root.append(cv);return{cv,c}}
+function fit(c){const w=c.clientWidth||300,h=c.clientHeight||180,r=(window.devicePixelRatio||1)*(window.U2SCALE||1)*(c._zoom||1);
+  if(c._w!==w||c._h!==h||c._r!==r){c.width=Math.max(1,Math.round(w*r));c.height=Math.max(1,Math.round(h*r));c._w=w;c._h=h;c._r=r}
+  const x=c.getContext('2d');x.setTransform(r,0,0,r,0,0);x.clearRect(0,0,w,h);return{x,w,h}}
+U2.fit=fit;
+/* draw loop: redraw on resize; animate while visible and busy */
+U2._loops=[];U2.kickAll=()=>U2._loops.forEach(f=>f());
+function loop(c,draw){let raf=null,vis=true,run=false,last=0;
+  function frame(t){raf=null;const dt=last?Math.min(.05,(t-last)/1000):0;last=t;const more=draw(dt);if(vis&&(run||more))raf=requestAnimationFrame(frame);else last=0}
+  const kick=()=>{if(!raf&&vis)raf=requestAnimationFrame(frame)};
+  try{new IntersectionObserver(es=>{vis=es[es.length-1].isIntersecting;if(vis)kick()}).observe(c)}catch(e){}
+  try{new ResizeObserver(()=>kick()).observe(c)}catch(e){addEventListener('resize',kick)}
+  U2._loops.push(kick);return{kick,set run(v){run=v;if(v)kick()}}}
+U2.loop=loop;
+function seg(labels,onPick,init=0){const s=el('div','seg');const bs=labels.map((l,i)=>{const b=btn(l,'');b.setAttribute('aria-pressed',String(i===init));b.onclick=()=>{bs.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));onPick(i)};s.append(b);return b});s.set=i=>{bs.forEach((x,k)=>x.setAttribute('aria-pressed',String(k===i)))};return s}
+U2.seg=seg;
+/* a readout: a small label over a value (r.v). r.hold(texts) keeps it as tall as the tallest of texts would make it, so a
+   value that wraps onto a second line does not push the rest of the simulation around. It re-measures when the row it sits in
+   changes width, not when it does itself: in a wrapping row its own width follows its text, and re-measuring then ratchets.
+   That check runs late, after layout, so the reading and the deck call U2.fitHolds() before they measure a page or slide. */
+const holds=[];U2.fitHolds=()=>holds.forEach(f=>f());
+function ro(label,val=''){const r=el('div','ro');r.innerHTML=`<small>${label}</small><span>${val}</span>`;r.v=r.querySelector('span');
+  r.hold=texts=>{let w=0;const box=r.parentElement||r;const fit=force=>{const cw=box.clientWidth;if(!cw||(cw===w&&!force))return;w=cw;const keep=r.v.textContent;r.style.minHeight='';let mh=0;
+      for(const t of texts){r.v.textContent=t;const b=r.getBoundingClientRect();mh=Math.max(mh,b.height*r.offsetWidth/(b.width||1))}r.v.textContent=keep;r.style.minHeight=mh+'px'};holds.push(fit);
+    try{new ResizeObserver(()=>fit()).observe(box)}catch(e){}if(document.fonts)document.fonts.ready.then(()=>fit(true));fit();return r};
+  return r}
+function grp(label,...kids){const g=el('div','grp');if(label)g.append(el('span','lab',label));kids.forEach(k=>g.append(k));return g}
+function sayBox(){const p=el('p','say');p.setAttribute('role','status');p.hidden=true;p.show=(t,k)=>{p.hidden=false;p.className='say'+(k?' '+k:'');p.innerHTML=t};return p}
+function wl2rgb(nm){let r=0,g=0,b=0;
+  if(nm<380)return'#8a7fd6';
+  if(nm<440){r=-(nm-440)/60;b=1}else if(nm<490){g=(nm-440)/50;b=1}else if(nm<510){g=1;b=-(nm-510)/20}else if(nm<580){r=(nm-510)/70;g=1}else if(nm<645){r=1;g=-(nm-645)/65}else if(nm<=780){r=1}
+  let f=nm<420?.3+.7*(nm-380)/40:nm>700?.3+.7*(780-nm)/80:1;const c=v=>Math.round(255*Math.pow(Math.max(0,v*f),.8));return`rgb(${c(r)},${c(g)},${c(b)})`}
+U2.wl2rgb=wl2rgb;
+function arrow(x,x0,y0,x1,y1,hd=8){const a=Math.atan2(y1-y0,x1-x0);x.beginPath();x.moveTo(x0,y0);x.lineTo(x1,y1);x.stroke();x.beginPath();x.moveTo(x1,y1);x.lineTo(x1-hd*Math.cos(a-.45),y1-hd*Math.sin(a-.45));x.lineTo(x1-hd*Math.cos(a+.45),y1-hd*Math.sin(a+.45));x.closePath();x.fill()}
+/* labels along one axis (items {at, sz}: the wanted centre and the label's size along the axis): sorted by position,
+   pushed apart just enough to leave `gap` between neighbours, and kept inside [a,b]. Each label's centre lands in .c,
+   so the caller can draw a leader from .c back to .at. If the labels cannot all fit, the ones nearest a overlap. */
+function spread(items,a,b,gap=0){items.sort((p,q)=>p.at-q.at);items.forEach(it=>it.c=Math.max(it.at,a+it.sz/2));
+  for(let i=1;i<items.length;i++){const p=items[i-1],q=items[i],d=(p.sz+q.sz)/2+gap;if(q.c-p.c<d)q.c=p.c+d}
+  const z=items[items.length-1];if(z&&z.c+z.sz/2>b){z.c=b-z.sz/2;for(let i=items.length-2;i>=0;i--){const q=items[i+1];items[i].c=Math.min(items[i].c,q.c-(items[i].sz+q.sz)/2-gap)}}
+  items.forEach(it=>{it.c=Math.max(it.c,a+it.sz/2)});return items}
+/* a pointer event's position in the canvas's own CSS pixels, the units its drawing uses. The deck scales every slide
+   and the zoom scales a card with a CSS transform, so the on-screen box differs from that size; reading clientX
+   against getBoundingClientRect() alone lands on the wrong point whenever the slide is not at 100%. */
+function ptr(c,e){const r=c.getBoundingClientRect(),k=c.clientWidth/(r.width||1);return{x:(e.clientX-r.left)*k,y:(e.clientY-r.top)*k}}
+
+Object.assign(U2,{TAU,REDUCED,FK,F,shell,ro,grp,sayBox,arrow,spread,ptr});
+})();
+
+/* ===== Keep symbols in their case inside uppercase labels =====
+   Labels styled text-transform:uppercase would turn λ into Λ, f into F, h into H and nm into NM:
+   different quantities and units. Any standalone symbol or lowercase unit inside such a label is
+   wrapped in span.kc (text-transform:none). Runs on load and on every later DOM change, so
+   readouts that sims rebuild stay correct. The English word "a" is left alone. */
+(function(){
+const TOK=/(^|[\s(=÷×·/,:;+−-])([b-zλνμΔδρ]|nm|pm|km|mm|cm|µm|μm|kg|mol)(?=$|[\s)=÷×·/,.:;+−-])/g;
+const UP=new WeakMap();
+function upper(e){if(UP.has(e))return UP.get(e);const v=getComputedStyle(e).textTransform==='uppercase';UP.set(e,v);return v}
+function fix(root){
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:t=>{
+    const p=t.parentElement;if(!p||p.closest('.kc,script,style,svg,textarea,input'))return NodeFilter.FILTER_REJECT;
+    TOK.lastIndex=0;return TOK.test(t.data)&&upper(p)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT}});
+  const hits=[];while(w.nextNode())hits.push(w.currentNode);
+  hits.forEach(t=>{const f=document.createDocumentFragment();let last=0;TOK.lastIndex=0;
+    t.data.replace(TOK,(m,pre,sym,i)=>{const s=i+pre.length;f.append(t.data.slice(last,s));const k=document.createElement('span');k.className='kc';k.textContent=sym;f.append(k);last=s+sym.length;return m});
+    f.append(t.data.slice(last));t.replaceWith(f)});
+}
+let q=new Set(),raf=0;
+function run(){raf=0;const r=[...q];q.clear();r.forEach(n=>{if(n.isConnected)fix(n)})}
+function start(){
+  const st=document.createElement('style');st.textContent='.kc{text-transform:none}';document.head.append(st);
+  fix(document.body);
+  new MutationObserver(ms=>{ms.forEach(m=>{const n=m.type==='characterData'?m.target.parentElement:m.target;if(n)q.add(n)});if(!raf)raf=requestAnimationFrame(run)})
+    .observe(document.body,{childList:true,subtree:true,characterData:true});
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
+})();
+
+/* Renders an item from ITEMS into a .check element. Shared by reading, slides and missions. */
+(function(){
+const U2=window.U2=window.U2||{};
+/* progress is kept per lesson; the theme choice is shared by the whole unit */
+const SKEY=(pre,k)=>k==='theme'?pre+k:pre+(window.U2LESSON?window.U2LESSON+':':'')+k;
+const store={get(k,d){try{const v=localStorage.getItem(SKEY('u2:',k));return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(SKEY('u2:',k),JSON.stringify(v))}catch(e){}}};
+U2.store=store;
+U2.item=id=>(window.ITEMS||[]).find(i=>i.id===id);
+U2.renderCheck=function(box,item,{onAnswer,remember=true,shuffle=true,label='Stop and check'}={}){
+  if(!item){box.textContent='Missing item';return}
+  box.classList.add('check');box.innerHTML='';
+  const meta=document.createElement('div');meta.className='meta';meta.innerHTML=`<span>${label}</span><span>Objective ${item.obj}${window.OBJ&&OBJ[item.obj]?' · '+OBJ[item.obj].teks:''}</span>`;
+  const q=document.createElement('p');q.className='q';q.innerHTML=item.q;
+  const opts=document.createElement('div');opts.className='opts';const fb=document.createElement('p');fb.className='fb';fb.setAttribute('role','status');
+  let order=item.opts.map((o,i)=>i);if(shuffle){const seed=[...item.id].reduce((a,c)=>a+c.charCodeAt(0),0);order.sort((a,b)=>((a*7+seed)%5)-((b*7+seed)%5))}
+  order.forEach(i=>{const[t,ok,f]=item.opts[i];const b=document.createElement('button');b.type='button';b.className='btn';b.innerHTML=t;b.dataset.i=i;
+    b.onclick=()=>{opts.querySelectorAll('.btn').forEach(x=>x.classList.remove('correct','wrong'));b.classList.add(ok?'correct':'wrong');fb.className='fb '+(ok?'ok':'no');fb.innerHTML=f;
+      if(remember){const s=store.get('chk',{});s[item.id]=ok?1:(s[item.id]===1?1:0);store.set('chk',s)}onAnswer&&onAnswer(ok,item)};opts.append(b)});
+  box.append(meta,q,opts,fb);
+  const prev=remember&&store.get('chk',{})[item.id];if(prev===1){const ci=item.opts.findIndex(o=>o[1]);const b=opts.querySelector(`[data-i="${ci}"]`);if(b){b.classList.add('correct');fb.className='fb ok';fb.innerHTML=item.opts[ci][2]}}
+};
+U2.glossaryPop=function(){let pop=null;
+  function close(){if(pop){pop.remove();pop=null}}
+  document.addEventListener('click',e=>{const t=e.target.closest('.term');if(!t){if(!e.target.closest('.gpop'))close();return}
+    const key=t.dataset.t,g=(window.GLOSS||{})[key];if(!g)return;close();pop=document.createElement('div');pop.className='gpop';pop.setAttribute('role','dialog');
+    pop.innerHTML=`<b>${key}</b><br>${g.d}<span class="es">Español: <i>${g.es}</i></span>`;document.body.append(pop);
+    const r=t.getBoundingClientRect(),pw=pop.offsetWidth,ph=pop.offsetHeight;let x=Math.min(innerWidth-pw-12,Math.max(12,r.left+r.width/2-pw/2)),y=r.bottom+8;if(y+ph>innerHeight-8)y=r.top-ph-8;pop.style.left=x+'px';pop.style.top=y+'px'});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});addEventListener('scroll',close,true)};
+})();
+
+/* ===== Lesson 2.5 simulations: orbital filling board, Lewis dot builder, family predictor (mount with U2.<name>(el, opts)) ===== */
+(function(){
+const U2=window.U2;const {TAU,css,FK,F,el,btn,shell,fit,loop,seg,ro,grp,sayBox,arrow}=U2;
+
+/* ---------- element data, Z = 1 to 54 (one source for every 2.5 surface) ---------- */
+const SYM='H He Li Be B C N O F Ne Na Mg Al Si P S Cl Ar K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Kr Rb Sr Y Zr Nb Mo Tc Ru Rh Pd Ag Cd In Sn Sb Te I Xe'.split(' ');
+const NAME='Hydrogen Helium Lithium Beryllium Boron Carbon Nitrogen Oxygen Fluorine Neon Sodium Magnesium Aluminum Silicon Phosphorus Sulfur Chlorine Argon Potassium Calcium Scandium Titanium Vanadium Chromium Manganese Iron Cobalt Nickel Copper Zinc Gallium Germanium Arsenic Selenium Bromine Krypton Rubidium Strontium Yttrium Zirconium Niobium Molybdenum Technetium Ruthenium Rhodium Palladium Silver Cadmium Indium Tin Antimony Tellurium Iodine Xenon'.split(' ');
+function pos(z){if(z<=2)return{p:1,g:z===1?1:18};
+  if(z<=18){const p=z<=10?2:3,i=z-(p===2?2:10);return{p,g:i<=2?i:i+10}}
+  const p=z<=36?4:5,i=z-(p===4?18:36);return{p,g:i}}
+/* sublevels in filling order (diagonal rule) and their orbital counts */
+const ORDER=[[1,'s'],[2,'s'],[2,'p'],[3,'s'],[3,'p'],[4,'s'],[3,'d'],[4,'p'],[5,'s'],[4,'d'],[5,'p']];
+const NORB={s:1,p:3,d:5,f:7},CAP={s:2,p:6,d:10,f:14};
+/* measured ground states that break the simple filling order (Cr and Cu are the Honors examples) */
+const EXC={24:{'4s':1,'3d':5},29:{'4s':1,'3d':10},41:{'5s':1,'4d':4},42:{'5s':1,'4d':5},44:{'5s':1,'4d':7},45:{'5s':1,'4d':8},46:{'5s':0,'4d':10},47:{'5s':1,'4d':10}};
+function occ(z,aufbau){let left=z;const o=ORDER.map(([n,l])=>{const c=Math.min(CAP[l],left);left-=c;return c});
+  const x=!aufbau&&EXC[z];if(x)ORDER.forEach(([n,l],i)=>{if(n+l in x)o[i]=x[n+l]});return o}
+const sub=(n,l,k,txt)=>txt?`${n}${l}${k}`:`${n}${l}<sup>${k}</sup>`;
+function cfg(z,txt,aufbau){const o=occ(z,aufbau);return ORDER.map(([n,l],i)=>o[i]?sub(n,l,o[i],txt):'').filter(Boolean).join(' ')}
+const NOBLE=[2,10,18,36,54];
+const coreOf=z=>NOBLE.filter(g=>g<z).pop()||0;
+function noble(z,txt,aufbau){const c=coreOf(z);if(!c)return cfg(z,txt,aufbau);const oc=occ(c),o=occ(z,aufbau);
+  return `[${SYM[c-1]}] `+ORDER.map(([n,l],i)=>o[i]&&o[i]!==oc[i]?sub(n,l,o[i],txt):'').filter(Boolean).join(' ')}
+function family(z){const{g}=pos(z);if(z===1)return'hydrogen';if(g===1)return'alkali';if(g===2)return'alkaline';if(g===17)return'halogen';if(g===18)return'noble';if(g>=3&&g<=12)return'transition';return'other'}
+/* valence electrons = electrons in the highest occupied energy level (representative elements only) */
+function valence(z){if(family(z)==='transition')return null;const o=occ(z);let mx=0,v=0;ORDER.forEach(([n],i)=>{if(o[i])mx=Math.max(mx,n)});ORDER.forEach(([n],i)=>{if(n===mx)v+=o[i]});return v}
+const FAMNAME={alkali:'Alkali metal',alkaline:'Alkaline earth metal',halogen:'Halogen',noble:'Noble gas',transition:'Transition metal',other:'Other representative element',hydrogen:'Hydrogen (a nonmetal in group 1)'};
+U2.EL={SYM,NAME,pos,occ,cfg,noble,valence,family,FAMNAME,ORDER,CAP,NORB,EXC};
+
+/* ---------- styles for this lesson's sims, prepended so each surface's own CSS can still override ---------- */
+(()=>{if(document.getElementById('u2-25-css'))return;const s=document.createElement('style');s.id='u2-25-css';s.textContent=`
+.lwi{display:inline-grid;grid-template-columns:auto auto auto;grid-template-areas:". t ." "l s r" ". b .";align-items:center;justify-items:center;vertical-align:middle;line-height:1;gap:.1em;font-family:var(--body);color:var(--ink)}
+.lwi>b{grid-area:s;font-size:1.15em;font-weight:700;padding:0 .02em}
+.lwi .lt{grid-area:t}.lwi .lb{grid-area:b}.lwi .ll{grid-area:l}.lwi .lr{grid-area:r}
+.lwi .lt,.lwi .lb{display:flex;gap:.18em;height:.3em;align-items:center}
+.lwi .ll,.lwi .lr{display:flex;flex-direction:column;gap:.18em;width:.3em;justify-content:center}
+.lwi i{width:.27em;height:.27em;border-radius:50%;background:var(--neg);display:block;flex:none}
+.ob .obcfg{display:flex;flex-direction:column;gap:.1em;background:var(--sunk);border-radius:10px;padding:.3em .6em}
+.ob .obcfg p{margin:0;display:grid;grid-template-columns:7.2em minmax(0,1fr);gap:.5em;align-items:baseline}
+.ob .obcfg small{font-family:var(--body);font-size:.68em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.ob .obcfg span{font-family:var(--mono);font-weight:600}
+/* Lewis builder: every track has a fixed size and the message sits below the board, so a new element,
+   a longer message or the shown configuration never moves a control */
+.lwb .ctl.lwpick{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:.5em;align-items:center}
+.lwb .lwpick select{width:100%;min-width:0}
+.lwgrid{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.8em;align-items:center}
+.lwb .ctl.lwact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.4em}
+.lwb .lwact .btn{width:100%;margin:0}
+.lwb .lwact .btn:last-child{grid-column:1/-1}
+.lwb .lwside .ros{display:grid;grid-template-columns:minmax(0,1fr);gap:.4em}
+.lwb .lwside .ro span{white-space:nowrap}
+.lwb>.say,.fpred>.say{min-height:5em}
+.lwboard{display:grid;grid-template-columns:2.3em 4.4em 2.3em;grid-template-rows:2.3em 4.4em 2.3em;grid-template-areas:". t ." "l s r" ". b .";place-items:center;background:var(--paper2);border:1.5px solid var(--line);border-radius:12px;padding:.25em;transition:border-color .2s,background-color .2s}
+.lwboard.ok{border-color:var(--ok);background:var(--ok-soft)}
+.lws{display:flex;gap:.35em;align-items:center;justify-content:center}
+.lws-top{grid-area:t}.lws-bottom{grid-area:b}.lws-left{grid-area:l;flex-direction:column}.lws-right{grid-area:r;flex-direction:column}
+.lwsym{grid-area:s;font-family:var(--display);font-weight:800;font-size:2.6em;line-height:1}
+.lwdot{width:1.25em;height:1.25em;border-radius:50%;border:2px dashed var(--muted);background:transparent;cursor:pointer;padding:0;opacity:.55}
+.lwdot:hover{opacity:1;border-color:var(--accent)}
+.lwdot[aria-pressed="true"]{background:var(--neg);border:2px solid var(--neg);opacity:1}
+.lwside{display:flex;flex-direction:column;gap:.5em;min-width:0}
+.fpred{container-type:inline-size}
+.fpred .ptab{display:grid;grid-template-columns:repeat(18,minmax(0,1fr));gap:2px}
+.fpred .gn{font-family:var(--mono);font-size:.56em;color:var(--muted);text-align:center;align-self:end;line-height:1.1}
+.fpred .pt{aspect-ratio:1/.72;border:1px solid color-mix(in srgb,var(--ink) 18%,transparent);border-radius:4px;padding:0;font:inherit;font-weight:700;font-size:.7em;cursor:pointer;display:grid;place-items:center;min-width:0;color:var(--ink);line-height:1;background:var(--paper)}
+.fpred .pt:hover{border-color:var(--accent)}
+.fpred .pt[aria-pressed="true"]{outline:3px solid var(--accent);outline-offset:1px;position:relative;z-index:1}
+.fpred [data-f=alkali]{background:color-mix(in srgb,#e8743b 34%,var(--paper))}
+.fpred [data-f=alkaline]{background:color-mix(in srgb,#e2b52c 38%,var(--paper))}
+.fpred [data-f=transition]{background:color-mix(in srgb,#5f8ee0 30%,var(--paper))}
+.fpred [data-f=halogen]{background:color-mix(in srgb,#3fae6e 32%,var(--paper))}
+.fpred [data-f=noble]{background:color-mix(in srgb,#a070dc 32%,var(--paper))}
+.fpred [data-f=other],.fpred [data-f=hydrogen]{background:color-mix(in srgb,#9aa0ae 22%,var(--paper))}
+.fpred .leg{display:flex;flex-wrap:wrap;gap:.2em .8em;font-size:.78em;margin:0}
+.fpred .leg span{display:inline-flex;align-items:center;gap:.3em}
+.fpred .leg i{width:.9em;height:.9em;border-radius:3px;display:inline-block;border:1px solid var(--line)}
+.check .opts .btn{display:block}
+/* chosen element: a periodic-table tile in its family colour, then the facts that drive the prediction.
+   It is a cell of the table grid: below the table when narrow, in the empty top of the d block when there is room. */
+.fpred .fpinfo{grid-column:1/-1;grid-row:7;margin-top:.45em;display:grid;grid-template-columns:auto minmax(0,1fr);gap:.7em;align-items:start;font-size:.92em;line-height:1.35}
+.fpred .fpinfo p{margin:0}
+.fpred .fptile{width:5.2em;aspect-ratio:1;border:1.5px solid color-mix(in srgb,var(--ink) 25%,transparent);border-radius:10px;display:grid;grid-template-rows:auto 1fr auto;padding:.3em .4em;line-height:1}
+.fpred .fptile .z{font-family:var(--mono);font-size:max(.8em,var(--fpmin,0px));font-weight:600}
+.fpred .fptile b{font-family:var(--display);font-size:2.3em;font-weight:800;align-self:center;justify-self:center}
+.fpred .fptile .nm{font-size:max(.72em,var(--fpmin,0px));text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fpred .fpfacts .fam{font-weight:700}
+.fpred .fpfacts .mono{font-family:var(--mono);font-weight:600}
+/* the two predictions: fixed answer grids, so a choice never re-wraps the row */
+.fpred .fpq{display:flex;flex-direction:column;gap:.45em}
+.fpred .fpq .grp{display:grid;gap:.25em}
+.fpred .fpq .lab{font-family:var(--body);font-size:.68em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.fpred .fpq .seg{display:grid;gap:1.5px;background:var(--line)}
+.fpred .fpq .seg.fpion{grid-template-columns:repeat(4,minmax(0,1fr))}
+.fpred .fpq .seg.fpion button:nth-child(n+5){grid-column:span 2}
+.fpred .fpq .seg.fprx{grid-template-columns:repeat(2,minmax(0,1fr))}
+.fpred .fpq .seg button{background:var(--paper);white-space:normal;line-height:1.15}
+.fpred .fpq .seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.fpred .fpq .seg button:disabled{opacity:.45;cursor:not-allowed}
+.fpred .fpq>.btn{align-self:stretch}
+/* the element facts move into the table's d-block gap only when it is wide enough to hold them; the two predictions sit
+   side by side from a reading-page width up, which keeps the sim on one book page at 1280 x 650 */
+@container (min-width:640px){
+ .fpred .fpinfo{grid-column:3/13;grid-row:2/5;margin:0;padding:0 .4em;align-items:center;align-self:center}}
+@container (min-width:520px){
+ .fpred .fpq{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) auto;grid-template-rows:auto auto;grid-auto-flow:column;gap:.25em .8em}
+ .fpred .fpq .grp{display:contents}
+ .fpred .fpq>.btn{grid-row:2;max-width:7em;white-space:normal;line-height:1.15}}
+@media (max-width:520px){.fpred .pt{font-size:.6em}.lwgrid{grid-template-columns:minmax(0,1fr);justify-items:center}.lwb .lwside{width:100%}}`;document.head.prepend(s)})();
+
+/* ---------- 1. Orbital filling board: add electrons one at a time in filling order ---------- */
+const NOTE={19:'<b>Electron 19 goes into 4s, not 3d.</b> The 4s sublevel is lower in energy, so it fills before 3d. Potassium is [Ar] 4s<sup>1</sup>.',
+  21:'<b>Now 3d starts filling.</b> Scandium is the first transition metal: its newest electron goes into a d sublevel.',
+  31:'<b>3d is full, so 4p starts.</b> Gallium, in group 13, is a representative element again.',
+  37:'<b>5s fills before 4d.</b> Rubidium starts period 5 with one 5s electron, as potassium did in period 4.',
+  24:'<b>Chromium is an exception (Honors).</b> The filling order predicts [Ar] 4s<sup>2</sup> 3d<sup>4</sup>, but experiments show [Ar] 4s<sup>1</sup> 3d<sup>5</sup>. The board shows the measured arrangement.',
+  29:'<b>Copper is an exception (Honors).</b> The filling order predicts [Ar] 4s<sup>2</sup> 3d<sup>9</sup>, but experiments show [Ar] 4s<sup>1</sup> 3d<sup>10</sup>. The board shows the measured arrangement.'};
+U2.orbitalBoard=function(root,{z:z0=0,max=38}={}){root.classList.add('ob');
+  const G=[];{let cum=0;ORDER.forEach(([n,l],i)=>{if(cum<max)G.push(i);cum+=CAP[l]})}
+  let z=z0,view=0,fresh=null;
+  const{c}=shell(root,.46,'Orbital filling board');
+  const bAdd=btn('Add electron','btn primary'),bRem=btn('Remove one'),bClr=btn('Empty','btn ghost');
+  const sel=el('select');sel.setAttribute('aria-label','Jump to an element');sel.append(new Option('Jump to…',''));for(let k=1;k<=max;k++)sel.append(new Option(`${k} ${SYM[k-1]} ${NAME[k-1]}`,k));
+  const vs=seg(['Dots','Arrows (Honors)'],i=>{view=i;say();L.kick()});
+  const ctl=el('div','ctl');ctl.append(grp('',bAdd,bRem,bClr),grp('Jump to',sel),grp('Show',vs));
+  const box=el('div','obcfg');box.innerHTML='<p><small>Full</small><span class="c1"></span></p><p><small>Noble gas</small><span class="c2"></span></p>';
+  const rE=ro('Element','none'),rV=ro('Valence electrons','–');const rs=el('div','ros');rs.append(rE,rV);
+  const msg=sayBox();
+  root.append(ctl,box,rs,msg,el('p','simnote','Each box is one orbital. Boxes rise in the order sublevels fill; the heights are not to scale.'));
+  /* electrons per orbital: one in each box first (same spin), then pairs */
+  const perOrb=(k,m)=>Array.from({length:m},(_,j)=>(k>j?1:0)+(k>m+j?1:0));
+  function where(zz){if(zz<1)return null;const a=occ(zz-1),b=occ(zz);for(const i of G)if(b[i]>a[i])return{i,k:b[i]};return null}
+  function say(added){if(!z){msg.show('No electrons yet. Press <b>Add electron</b> to start with hydrogen.');return}
+    const nm=`<b>${NAME[z-1]} (Z = ${z})</b>`,w=where(z);
+    if(added&&NOTE[z]){msg.show(NOTE[z]+(view&&z!==24&&z!==29?' '+spin(w):''),z===24||z===29?'':'ok');return}
+    if(NOBLE.includes(z)){msg.show(`${nm}: the outer level is full. `+(z===2?'Helium has only 2 electrons, both in 1s: its full level holds 2, not 8.':'Its outer s and p sublevels hold 8 electrons.'),'ok');return}
+    if(!added||!w){msg.show(`${nm}: ${z} electrons. Read the configuration below.`);return}
+    const[n,l]=ORDER[w.i];msg.show(`Electron ${z} ${w.k===1?'starts':'goes into'} the <b>${n}${l}</b> sublevel (${w.k} of ${CAP[l]}). ${nm}.`+(view?' '+spin(w):''))}
+  function spin(w){if(!w)return'';const[,l]=ORDER[w.i],m=NORB[l];if(m===1)return w.k===2?'Pauli: the second electron pairs with opposite spin.':'';
+    return w.k<=m?'Hund\'s rule: it takes an empty orbital, spin up, before any pairing.':'Pauli: it pairs with opposite spin in a half-filled orbital.'}
+  function upd(added){const fam=z?family(z):'';
+    box.querySelector('.c1').innerHTML=z?cfg(z):'–';box.querySelector('.c2').innerHTML=z?noble(z):'–';
+    rE.v.textContent=z?`${SYM[z-1]} · ${NAME[z-1]}`:'none';rV.v.textContent=!z?'–':fam==='transition'?'d block: varies':String(valence(z));
+    bAdd.disabled=z>=max;bRem.disabled=bClr.disabled=z<=0;sel.value=z?String(z):'';
+    c.setAttribute('aria-label',`Orbital filling board: ${z?NAME[z-1]+', '+z+' electrons, '+cfg(z,true):'no electrons'}. Boxes are orbitals in filling order.`);
+    fresh=added?where(z):null;say(added);L.kick()}
+  bAdd.onclick=()=>{if(z<max){z++;upd(true)}};bRem.onclick=()=>{if(z>0){z--;upd(false)}};bClr.onclick=()=>{z=0;upd(false)};
+  sel.onchange=()=>{if(sel.value){z=+sel.value;upd(false)}};
+  function draw(){const{x,w,h}=fit(c);const o=occ(z),nb=G.reduce((a,i)=>a+NORB[ORDER[i][1]],0),ng=G.length,gk=.55;
+    const ax=Math.max(20,w*.04);let bw=(w-ax-14)/(nb+gk*(ng-1));const lab=12*FK()+8;
+    bw=Math.min(bw,(h-lab-14)/1.8);const tot=nb*bw+gk*bw*(ng-1),x0=ax+Math.max(6,(w-ax-tot)/2);
+    const base=h-lab-4-bw,step=ng>1?(base-8)/(ng-1):0;
+    /* energy axis */
+    x.strokeStyle=css('--muted');x.fillStyle=css('--muted');x.lineWidth=1.5;arrow(x,ax*.55,h-lab,ax*.55,10,7);
+    x.save();x.translate(ax*.55-6,h*.5);x.rotate(-Math.PI/2);x.font=F(14,600);x.textAlign='center';x.fillText('energy',0,0);x.restore();
+    /* element name in the empty upper-left corner */
+    if(z){x.textAlign='left';x.fillStyle=css('--ink');x.font=F(26,800,'--display');x.fillText(SYM[z-1],x0,8+26*FK());x.font=F(14,600);x.fillStyle=css('--muted');x.fillText(`${NAME[z-1]} · ${z} e⁻`,x0,14+40*FK())}
+    const nxt=z<max?where(z+1):null;let cx=x0;
+    G.forEach((i,k)=>{const[n,l]=ORDER[i],m=NORB[l],y=base-k*step,e=perOrb(o[i],m),full=o[i]===CAP[l];
+      for(let j=0;j<m;j++){const bx=cx+j*bw;
+        if(full){x.globalAlpha=.16;x.fillStyle=css('--ok');x.fillRect(bx,y,bw,bw);x.globalAlpha=1}
+        x.strokeStyle=css('--ink');x.globalAlpha=.7;x.lineWidth=1.4;x.strokeRect(bx+.5,y+.5,bw-1,bw-1);x.globalAlpha=1;
+        for(let s=0;s<e[j];s++){const ex=bx+bw*(s?.68:.32);const isNew=fresh&&fresh.i===i&&perOrb(fresh.k,m).findIndex((v,q)=>v!==perOrb(fresh.k-1,m)[q])===j&&s===e[j]-1;
+          x.fillStyle=x.strokeStyle=isNew?css('--warm'):css('--neg');
+          if(view){x.lineWidth=Math.max(1.6,bw*.07);s?arrow(x,ex,y+bw*.2,ex,y+bw*.82,bw*.2):arrow(x,ex,y+bw*.8,ex,y+bw*.18,bw*.2)}
+          else{x.beginPath();x.arc(ex,y+bw/2,Math.max(2.4,bw*.13),0,TAU);x.fill()}}}
+      if(nxt&&nxt.i===i){const j=perOrb(nxt.k,m).findIndex((v,q)=>v!==perOrb(nxt.k-1,m)[q]);x.save();x.strokeStyle=css('--accent');x.lineWidth=2;x.setLineDash([4,3]);x.strokeRect(cx+j*bw-2.5,y-2.5,bw+5,bw+5);x.restore()}
+      x.fillStyle=full?css('--ok'):css('--ink');x.font=F(14,700,'--mono');x.textAlign='center';x.fillText(n+l,cx+m*bw/2,y+bw+lab-5);
+      cx+=m*bw+gk*bw})}
+  const L=loop(c,draw);vs.set(0);upd(false);
+  return{set(n){z=Math.max(0,Math.min(max,n));upd(false)},redraw:()=>L.kick()}};
+
+/* ---------- 2. Lewis dot builder: place dots around a symbol, then check count and the one-per-side convention ---------- */
+const LW_LIST=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,35,53];
+U2.lewisBuilder=function(root,{list=LW_LIST,z:z0,pick=true,onDone}={}){root.classList.add('sim','lwb');
+  let z=z0||list[0],solved=false;const SIDES=['top','right','bottom','left'];
+  const sel=el('select');sel.setAttribute('aria-label','Element');list.forEach(k=>sel.append(new Option(`${SYM[k-1]} · ${NAME[k-1]}`,k)));
+  const bNext=btn('Next element','btn ghost');const top=el('div','ctl lwpick');top.append(el('span','lab','Element'),sel,bNext);
+  const board=el('div','lwboard');const sym=el('div','lwsym');
+  const slots=SIDES.map(s=>{const d=el('div','lws lws-'+s);const bs=[0,1].map(k=>{const b=btn('','lwdot');b.setAttribute('aria-label',`${s} side, dot ${k+1}`);b.setAttribute('aria-pressed','false');
+      b.onclick=()=>{b.setAttribute('aria-pressed',String(b.getAttribute('aria-pressed')!=='true'));solved=false;count()};d.append(b);return b});board.append(d);return bs});
+  board.setAttribute('role','group');
+  board.append(sym);
+  const rD=ro('Dots placed','0'),rC=ro('Configuration','hidden');const rs=el('div','ros');rs.append(rD,rC);
+  const bChk=btn('Check','btn primary'),bClr=btn('Clear'),bHint=btn('Show configuration','btn ghost');bHint.setAttribute('aria-pressed','false');
+  const act=el('div','ctl lwact');act.append(bChk,bClr,bHint);const msg=sayBox();
+  /* element picker on top, board beside its controls, the message full width underneath */
+  const side=el('div','lwside');side.append(act,rs);
+  const wrap=el('div','lwgrid');wrap.append(board,side);
+  if(pick)root.append(top);root.append(wrap,msg,el('p','simnote','Lewis dot structures are drawn for representative elements. Which side you start on does not matter.'));
+  const dots=()=>slots.map(bs=>bs.filter(b=>b.getAttribute('aria-pressed')==='true').length);
+  function count(){rD.v.textContent=String(dots().reduce((a,b)=>a+b,0));board.classList.toggle('ok',solved)}
+  function hint(on){bHint.setAttribute('aria-pressed',String(on));rC.v.innerHTML=on?noble(z):'hidden'}
+  function load(k){z=k;sel.value=String(k);sym.textContent=SYM[k-1];board.setAttribute('aria-label',`Lewis board for ${NAME[k-1]}: eight dot positions, two on each side of the symbol`);slots.flat().forEach(b=>b.setAttribute('aria-pressed','false'));solved=false;hint(false);count();
+    msg.show(`Draw the Lewis dot structure of <b>${NAME[k-1]}</b>. Click the circles around the symbol to place its valence electrons.`)}
+  sel.onchange=()=>load(+sel.value);bNext.onclick=()=>load(list[(list.indexOf(z)+1)%list.length]);
+  bClr.onclick=()=>{slots.flat().forEach(b=>b.setAttribute('aria-pressed','false'));solved=false;count();msg.show('Cleared. Place the valence electrons again.')};
+  bHint.onclick=()=>hint(bHint.getAttribute('aria-pressed')!=='true');
+  bChk.onclick=()=>{const d=dots(),n=d.reduce((a,b)=>a+b,0),v=valence(z),{g}=pos(z),nm=NAME[z-1];let ok=false,t;
+    const grpTxt=g>=13?`group ${g}, and ${g} − 10 = ${v}`:`group ${g}`;
+    if(!n)t='Place some dots first.';
+    else if(n!==v){if(n===z&&z!==v)t=`You drew ${n} dots, one for every electron in ${nm}. A Lewis structure shows only the <b>valence</b> electrons: ${nm} has ${v} (${noble(z)}).`;
+      else t=`${n>v?'Too many':'Too few'} dots. ${nm} is in ${z===2?'group 18, but helium has only 2 electrons':grpTxt}, so it has <b>${v}</b> valence electron${v===1?'':'s'}.`}
+    else if(z===2){ok=d.includes(2);t=ok?'<b>Correct.</b> Helium\'s 2 electrons fill its only level, the way 8 fill the outer level of the other noble gases, so they are drawn as a pair.':'The count is right. Helium\'s 2 electrons fill its only level, the way 8 fill the outer level of the other noble gases, so draw them as a <b>pair</b> on one side.'}
+    else{const pairs=d.filter(k=>k===2).length,empty=d.filter(k=>k===0).length;ok=!(pairs&&empty);
+      t=ok?`<b>Correct.</b> ${nm}: ${noble(z)} gives ${v} valence electron${v===1?'':'s'}, placed one per side${v>4?', then paired':''}.`:'The count is right, but a side has a pair while another side is still empty. Place one dot on each of the four sides before you pair any.'}
+    msg.show(t,ok?'ok':n?'no':'');if(ok&&!solved){solved=true;onDone&&onDone(z)}board.classList.toggle('ok',ok)};
+  load(z);return{set:load}};
+
+/* ---------- 3. Family predictor: pick an element on a mini periodic table, predict its ion and reactivity ---------- */
+const FACT={1:'Hydrogen sits in group 1 with 1 valence electron, but it is a nonmetal gas, not an alkali metal.',
+ 2:'Helium (1s<sup>2</sup>) fills balloons because it is less dense than air and does not burn. As a liquid at about −269 °C it cools the magnets in MRI scanners.',
+ 3:'Lithium reacts with water less vigorously than sodium. It is the metal in lithium-ion batteries.',
+ 4:'Beryllium is the least reactive alkaline earth metal; it does not react with cold water.',
+ 9:'Fluorine (F<sub>2</sub>) is the most reactive nonmetal of all.',
+ 10:'Neon glows red-orange in signs when electricity passes through it, and it does not react with the glass or the metal inside.',
+ 11:'Sodium is stored under oil because it reacts with water and with oxygen in air. In water it fizzes, releasing hydrogen gas.',
+ 12:'Magnesium burns with a brilliant white light, which is why it is used in flares and fireworks.',
+ 17:'Chlorine compounds disinfect swimming pools. The element itself is a toxic yellow-green gas made of Cl<sub>2</sub> molecules.',
+ 18:'Argon fills many incandescent light bulbs because it does not react with the hot filament, as oxygen would.',
+ 19:'Potassium reacts with water even more violently than sodium. The hydrogen released can ignite; potassium colors the flame lilac.',
+ 20:'Calcium reacts steadily with water, less violently than potassium beside it in period 4.',
+ 22:'Titanium dioxide is the bright white pigment in most paints.',
+ 24:'Chromium is named from the Greek word for color, because its compounds have many different colors.',
+ 25:'Potassium permanganate, a manganese compound, is deep purple.',
+ 26:'Iron forms Fe<sup>2+</sup> and Fe<sup>3+</sup> ions. Iron oxides make up rust and the red and yellow ochre pigments.',
+ 27:'Cobalt compounds give cobalt blue, a pigment used in paint and glass.',
+ 29:'Copper carries electricity in house wiring. It forms Cu<sup>+</sup> and Cu<sup>2+</sup>; copper(II) compounds are often blue or green.',
+ 30:'Zinc is an exception among transition metals: it forms only Zn<sup>2+</sup> ions.',
+ 48:'Cadmium, like zinc, forms only 2+ ions. Cadmium pigments are bright yellow and red.',
+ 21:'Scandium forms only one ion, Sc<sup>3+</sup>.',
+ 39:'Yttrium forms only one ion, Y<sup>3+</sup>.',
+ 35:'Bromine (Br<sub>2</sub>) is one of only two elements that are liquid at room temperature.',
+ 36:'Krypton is used in some energy-saving lamps and flash bulbs.',
+ 37:'Rubidium reacts with water even more violently than potassium.',
+ 38:'Strontium compounds give fireworks their red color.',
+ 47:'Silver forms mostly Ag<sup>+</sup> ions.',
+ 53:'Iodine (I<sub>2</sub>) is a gray-black solid; iodine solutions disinfect cuts.',
+ 54:'Xenon fills some car headlights and camera flashes. Xenon forms some compounds, made only under special conditions.'};
+const ION=['1+','2+','3+','1−','No ion','Several charges'],REACT=['Very reactive','Reactive','Less reactive','Almost unreactive'];
+const ANS={alkali:[0,0],alkaline:[1,1],halogen:[3,0],noble:[4,3],transition:[5,2]};
+const WHY={alkali:'One valence electron, easily lost: alkali metals form <b>1+ ions</b> and are <b>very reactive</b>. They react with water, releasing hydrogen gas.',
+ alkaline:'Two valence electrons, both lost: alkaline earth metals form <b>2+ ions</b>. They are <b>reactive</b>, but less than the group 1 metal beside them, because losing two electrons takes more energy than losing one (more in Unit 3).',
+ halogen:'Seven valence electrons, one short of eight: halogens gain one electron to form <b>1− ions</b>. They are <b>very reactive</b> nonmetals made of diatomic molecules such as Cl<sub>2</sub>.',
+ noble:'A full outer level (8 electrons; helium 2): noble gases form <b>no ions</b> in ordinary chemistry and are <b>almost unreactive</b>.',
+ transition:'A d sublevel is filling. Most transition metals form ions with <b>several possible charges</b> (iron: Fe<sup>2+</sup> and Fe<sup>3+</sup>), are generally <b>less reactive</b> than group 1 and 2 metals, and form colored compounds.'};
+const WRONG={alkali:{3:'An alkali metal has just 1 valence electron. Losing that one is far easier than gaining 7.'},
+ halogen:{0:'A halogen is one electron short of a full level. Gaining one electron is far easier than losing seven.'},
+ noble:{0:'A full outer level is very stable, so noble gases do not lose electrons in ordinary chemistry.',1:'Noble gases do not form 2+ ions. Even helium, with only 2 valence electrons, has a full level (1s<sup>2</sup>), like neon.',5:'Noble gases do not form ions in ordinary chemistry: their outer level is already full.'},
+ transition:{1:'Many transition metals do form 2+ ions, but most can also form other charges (iron: Fe<sup>2+</sup> and Fe<sup>3+</sup>).',0:'A 1+ ion is the alkali-metal pattern. Transition metals usually have more than one possible charge.'}};
+const EXTRA={30:[1],48:[1],47:[0],21:[2],39:[2]};
+U2.familyPredictor=function(root,{maxZ=54,z:z0=11}={}){root.classList.add('sim','fpred');
+  let z=null,pi=-1,pr=-1;
+  const tab=el('div','ptab');tab.setAttribute('role','group');tab.setAttribute('aria-label','Mini periodic table, elements 1 to '+maxZ);
+  for(let g=1;g<=18;g++){const n=el('span','gn',String(g));n.style.gridColumn=g;n.style.gridRow=1;n.setAttribute('aria-hidden','true');tab.append(n)}
+  const cells=[];for(let k=1;k<=maxZ;k++){const{p,g}=pos(k);const b=btn(SYM[k-1],'pt');b.dataset.f=family(k);b.style.gridColumn=g;b.style.gridRow=p+1;
+    b.setAttribute('aria-label',`${NAME[k-1]}, ${SYM[k-1]}, atomic number ${k}, group ${g}`);b.setAttribute('aria-pressed','false');b.onclick=()=>choose(k);tab.append(b);cells.push(b)}
+  const leg=el('p','leg');leg.innerHTML=['alkali','alkaline','transition','halogen','noble','other'].map(f=>`<span><i data-f="${f}"></i>${f==='other'?'Other':FAMNAME[f]}</span>`).join('');
+  const info=el('div','fpinfo');const sI=seg(ION,i=>{pi=i},-1),sR=seg(REACT,i=>{pr=i},-1);sI.classList.add('fpion');sR.classList.add('fprx');
+  const chk=btn('Check prediction','btn primary');const q=el('div','fpq');q.append(grp('Most likely ion',sI),grp('Reactivity',sR),chk);
+  const msg=sayBox();tab.append(info);root.append(tab,leg,q,msg);
+  const able=on=>[...sI.querySelectorAll('button'),...sR.querySelectorAll('button'),chk].forEach(b=>b.disabled=!on);
+  function choose(k){z=k;pi=pr=-1;sI.set(-1);sR.set(-1);cells.forEach((b,i)=>b.setAttribute('aria-pressed',String(i===k-1)));
+    const{p,g}=pos(k),f=family(k),v=valence(k);
+    info.innerHTML=`<div class="fptile" data-f="${f}" role="img" aria-label="${NAME[k-1]}, ${SYM[k-1]}, atomic number ${k}"><span class="z" aria-hidden="true">${k}</span><b aria-hidden="true">${SYM[k-1]}</b><span class="nm" aria-hidden="true">${NAME[k-1]}</span></div>`+
+      `<div class="fpfacts"><p class="fam">${FAMNAME[f]}</p><p>Group ${g} · period ${p}</p><p><span class="mono">${noble(k)}</span></p><p>Valence electrons: <b>${v==null?'varies (d block)':v}</b></p></div>`;
+    if(ANS[f]){able(true);msg.show('Use the valence electrons to predict the ion and the reactivity, then check.')}
+    else{able(false);msg.show(f==='hydrogen'?FACT[1]:`${NAME[k-1]} is not in one of the five families in this lesson. It has ${v} valence electron${v===1?'':'s'}; Unit 4 explains how elements like it bond.`)}}
+  chk.onclick=()=>{if(z==null){msg.show('Pick an element on the table first.');return}const f=family(z),a=ANS[f];if(!a)return;
+    if(pi<0||pr<0){msg.show('Choose a predicted ion and a reactivity first.');return}
+    const ex=EXTRA[z];const okI=pi===a[0]||(ex||[]).includes(pi),okR=pr===a[1];const w=(WRONG[f]||{})[pi];
+    let t=(okI&&okR?(ex&&pi===a[0]?'<b>Both predictions fit the family pattern.</b> ':'<b>Both predictions fit.</b> '):`<b>${okI?'Ion: right.':'Ion: not quite.'} ${okR?'Reactivity: right.':'Reactivity: not quite.'}</b> `)+(!okI&&w?w+' ':'')+WHY[f];
+    /* the extra fact rewards a right answer; an exception element always gets it, because it explains the exception */
+    if(FACT[z]&&(okI&&okR||ex))t+=(ex?' <i>Exception:</i> ':' ')+FACT[z];msg.show(t,okI&&okR?'ok':'no')};
+  able(false);msg.show('Pick an element on the table.');if(z0)choose(z0);
+  return{set:choose}};
+
+/* ---------- shared figures for reading and slides: diagonal rule, blocks, Lewis glyphs by atomic number ---------- */
+/* Both figures colour a sublevel by its block (s, p, d, f), so the diagonal rule and the table read as one code.
+   Text is 18 to 20 viewBox units: the slide draws each figure at about 1:1 on the 1600 x 900 canvas, which keeps it at projector size. */
+const BLK={s:'#e8743b',p:'#3fae6e',d:'#5f8ee0',f:'#a070dc'};
+const txt=(x,y,t,{size=18,weight=400,fill='var(--ink)',font='--mono',anchor='middle',halo=false}={})=>`<text x="${x}" y="${y}" text-anchor="${anchor}" font-size="${size}" font-weight="${weight}" fill="${fill}" font-family="var(${font})"${halo?' stroke="var(--paper)" stroke-width="5" paint-order="stroke"':''}>${t}</text>`;
+/* a sublevel chip: block-tinted rounded box; 4s and 3d, the pair students most often swap, get a warm outline */
+const chip=(cx,cy,lab,hot)=>{const l=lab.slice(-1),r=`x="${cx-27}" y="${cy-17}" width="54" height="34" rx="8"`;
+  return `<rect ${r} fill="var(--paper)"/><rect ${r} fill="${BLK[l]}" fill-opacity=".24" stroke="${hot?'var(--warm)':BLK[l]}" stroke-width="${hot?3.2:1.6}"/>`+txt(cx,cy+7,lab,{size:20,weight:700})};
+const HOT=['4s','3d'];
+U2.fillFigures=function(root){
+  /* diagonal rule (viewBox 572 x 376): rows of sublevels by level, arrows along n + l = constant, and the order they give */
+  root.querySelectorAll('svg.diag').forEach(dg=>{const N='spdf',rows=[1,2,3,4,4,3,2];let s='';
+   const X=c=>60+c*80,Y=r=>44+r*50,DX=80,DY=50;
+   for(let k=0;k<=7;k++){const cells=[];rows.forEach((m,r)=>{const c=k-r;if(c>=0&&c<m)cells.push([r,c])});
+    const a=cells[0],b=cells[cells.length-1];
+    s+=`<line x1="${X(a[1])+DX*.55}" y1="${Y(a[0])-DY*.55}" x2="${X(b[1])-DX*.5}" y2="${Y(b[0])+DY*.5}" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" marker-end="url(#dgh)" opacity=".75"/>`}
+   rows.forEach((m,r)=>{for(let c=0;c<m;c++){const lab=(r+1)+N[c];s+=chip(X(c),Y(r),lab,HOT.includes(lab))}});
+   /* the order the arrows give, two columns aligned to the rows */
+   s+=`<line x1="374" y1="8" x2="374" y2="368" stroke="var(--line)" stroke-width="1.5"/>`+txt(474,18,'Filling order',{weight:700,font:'--body'});
+   '1s 2s 2p 3s 3p 4s 3d 4p 5s 4d 5p 6s 4f'.split(' ').forEach((t,i)=>{const col=i<7?0:1,y=Y(i%7);
+    s+=txt(col?508:408,y+7,(i+1)+'.',{fill:'var(--muted)',anchor:'end'})+chip(col?541:440,y,t,HOT.includes(t))});
+   dg.innerHTML=`<defs><marker id="dgh" viewBox="0 0 8 8" refX="5" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--accent)"/></marker></defs>`+s});
+  /* blocks (viewBox 592 x 292): one cell per element in periods 1 to 5; a block is as wide as its sublevel holds electrons */
+  root.querySelectorAll('svg.blocks').forEach(bk=>{const W=28.6,H=38,x0=70,y0=40,Yp=p=>y0+(p-1)*(H+4),gx=g=>x0+(g-1)*W;let s='';
+   const reg=p=>p===1?[['s',1,1,'1s'],['s',18,18,'1s']]:p<4?[['s',1,2,p+'s'],['p',13,18,p+'p']]:[['s',1,2,p+'s'],['d',3,12,(p-1)+'d'],['p',13,18,p+'p']];
+   s+=txt(x0-12,24,'period',{fill:'var(--muted)',font:'--body',anchor:'end'});
+   for(let p=1;p<=5;p++){const y=Yp(p);s+=txt(x0-12,y+26,p,{fill:'var(--muted)',anchor:'end'});
+    reg(p).forEach(([b,g0,g1,lab])=>{for(let g=g0;g<=g1;g++)s+=`<rect x="${gx(g)+1}" y="${y}" width="${W-2}" height="${H}" rx="3" fill="${BLK[b]}" fill-opacity="${HOT.includes(lab)?.42:.24}" stroke="${BLK[b]}" stroke-opacity=".6" stroke-width="1"/>`;
+     s+=txt((gx(g0)+gx(g1+1))/2,y+26,lab,{size:19,weight:700,halo:true})})}
+   const yb=Yp(5)+H+8;
+   [['s',1,2,'holds 2'],['d',3,12,'holds 10'],['p',13,18,'holds 6']].forEach(([b,g0,g1,t])=>{const a=gx(g0)+2,z=gx(g1+1)-2,m=(a+z)/2;
+    s+=txt(m,24,b+' block',{weight:700,font:'--body'})+`<path d="M${a} ${yb}v8H${z}v-8" fill="none" stroke="${BLK[b]}" stroke-width="2"/>`+txt(m,yb+30,t,{fill:'var(--muted)',font:'--body'})});
+   bk.innerHTML=s});
+  const D={1:'1000',2:'1100',3:'1110',4:'1111',5:'2111',6:'2211',7:'2221',8:'2222'};
+  root.querySelectorAll('[data-lewis]').forEach(e=>{const z=+e.dataset.lewis,E=U2.EL,v=E.valence(z);e.innerHTML=U2.lewisHTML(E.SYM[z-1],z===2?'2000':D[v])});
+  root.querySelectorAll('[data-cfg]').forEach(e=>{const z=+e.dataset.cfg;e.innerHTML=e.dataset.form==='noble'?noble(z):cfg(z)});
+ };
+})();
+
+/* Lesson 2.5 reading setup: running head, anticipation guide, Lewis glyphs and configuration figures */
+window.LESSON={
+ ch:'2.5 Arranging electrons',
+ weMsg:'Not yet. Fill the sublevels in order (1s 2s 2p 3s 3p 4s 3d 4p), count the electrons in the highest energy level, then try again.',
+ ag:[["The 3d sublevel fills before the 4s sublevel.",0,"Disagree. 4s is lower in energy for these atoms, so it fills first: potassium is [Ar] 4s<sup>1</sup> (§2.5.2)."],
+  ["Every noble gas has 8 valence electrons.",0,"Disagree. Helium has only 2 (1s<sup>2</sup>), but these 2 fill its first level, so it is just as unreactive (§2.5.3)."],
+  ["Representative elements in the same group have the same number of valence electrons.",1,"Agree. That is why elements in a group behave alike (§2.5.3)."],
+  ["In a Lewis structure you pair up dots before putting one on each side.",0,"Disagree. Place one dot on each of the four sides first, then pair them (§2.5.4)."],
+  ["Iron is in group 8, so it has 8 valence electrons.",0,"Disagree. The group number gives the valence electrons only for representative elements. Iron is a transition metal (§2.5.6)."]],
+ init(){
+  U2.fillFigures(document);
+ }
+};
+
+/* ===== Reading chapter controller: automatic pagination, book and scroll modes ===== */
+(function(){
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const store=U2.store,book=$('#book'),spreads=$$('.spread',book),origPages=$$('.page',book);
+const LS=window.LESSON||{};const CH=LS.ch||document.title;
+origPages.forEach(p=>{const b=document.createElement('div');b.className='pbody';while(p.firstChild)b.append(p.firstChild);p.append(b);p._spread=p.closest('.spread')});
+let pages=origPages.slice(),mode=store.get('mode','book'),cur=0;
+const narrow=matchMedia('(max-width:1000px)'),phone=matchMedia('(max-width:700px)');
+
+/* theme */
+const root=document.documentElement;let theme=store.get('theme',null);
+function applyTheme(){if(theme)root.setAttribute('data-theme',theme);else root.removeAttribute('data-theme');$('#theme').textContent=theme==='dark'?'Dark':theme==='light'?'Light':'Theme';U2.kickAll&&U2.kickAll()}
+$('#theme').onclick=()=>{theme=theme==='dark'?'light':theme==='light'?null:'dark';store.set('theme',theme);applyTheme()};applyTheme();
+
+/* simpler language */
+let simple=store.get('simple',false);const sb=$('#simple');
+function applySimple(){document.body.classList.toggle('simple',simple);sb.setAttribute('aria-pressed',String(simple))}
+sb.onclick=()=>{simple=!simple;store.set('simple',simple);applySimple();stopSpeech();repaginate()};applySimple();
+
+/* lesson-specific setup (opener art, model figures) */
+if(LS.init)LS.init();
+
+/* checks and check tabs */
+$$('[data-item]').forEach(b=>U2.renderCheck(b,U2.item(b.dataset.item),{onAnswer:()=>{progress();tabs()}}));
+const sets=[];origPages.forEach(p=>{const its=$$('[data-item]',p);if(its.length<2)return;const set=document.createElement('div');set.className='checkset';const tb=document.createElement('div');tb.className='tabs';set.append(tb);its[0].before(set);
+  its.forEach((it,i)=>{const b=U2.btn('Check '+(i+1),'btn');b.onclick=()=>{its.forEach((x,k)=>x.hidden=k!==i);[...tb.children].forEach(x=>x.setAttribute('aria-pressed',String(x===b)))};tb.append(b);set.append(it)});tb.children[0].click();sets.push({its,tb,set})});
+function tabs(){const s=store.get('chk',{});sets.forEach(({its,tb})=>its.forEach((it,i)=>tb.children[i].classList.toggle('done',s[it.dataset.item]===1)))}tabs();
+function progress(){const ids=$$('[data-item]').map(b=>b.dataset.item);const s=store.get('chk',{});const done=ids.filter(i=>s[i]===1).length;$('#progbar').style.width=(100*done/ids.length)+'%';buildToc()}
+
+/* sims */
+$$('[data-sim]').forEach(b=>{const f=U2[b.dataset.sim];if(f)f(b,{target:b.dataset.target})});
+
+/* worked examples */
+$$('.we').forEach(w=>{const ch=$('.wechk',w);if(!ch)return;ch.onclick=()=>{let ok=true;
+  $$('.wein',w).forEach(i=>{const v=parseFloat(i.value),a=+i.dataset.ans,t=+i.dataset.tol;const g=Math.abs(v-a)<=t;i.classList.toggle('good',g);i.classList.toggle('bad',!g);ok=ok&&g});
+  const sel=$('.wesel',w);if(sel){const g=sel.value==='ok';sel.classList.toggle('bad',!g);ok=ok&&g}
+  $$('.wex',w).forEach(x=>x.hidden=!ok);const h=$('.wehint',w);if(h)h.hidden=ok;
+  const m=$('.wemsg',w);m.hidden=ok;guard()}});
+$$('.we').forEach(w=>{if(!$('.wechk',w))return;const m=document.createElement('p');m.className='wemsg wex';m.style.background='var(--bad-soft)';m.hidden=true;m.textContent=w.dataset.msg||LS.weMsg||'Not yet. Check each step against the worked example, then try again.';w.append(m)});
+
+/* anticipation guide */
+const AG=LS.ag||[];
+function agRender(box,phase){const prev=store.get('ag',{});AG.forEach(([t,a,why],i)=>{const row=document.createElement('div');row.className='row';const p=document.createElement('p');p.textContent=t;row.append(p);
+    const v=document.createElement('p');v.className='verdict';v.hidden=true;v.innerHTML='✓ '+why;
+    const seg=U2.seg(['Agree','Disagree'],k=>{const s=store.get('ag',{});s[phase+i]=k===0?1:0;store.set('ag',s);if(phase==='a'){v.hidden=false;const ok=(k===0?1:0)===a;v.className='verdict '+(ok?'ok':'no');v.innerHTML=(ok?'✓ ':'✗ ')+why}},-1);
+    const cur0=prev[phase+i];if(cur0!=null)seg.set(cur0===1?0:1);row.append(seg);
+    if(phase==='a'){const b=prev['b'+i];const bf=document.createElement('span');bf.className='before';bf.textContent=b==null?'Before: no answer':'Before: '+(b===1?'Agree':'Disagree');p.append(bf);row.append(v);if(cur0!=null){const ok=cur0===a;v.hidden=false;v.className='verdict '+(ok?'ok':'no');v.innerHTML=(ok?'✓ ':'✗ ')+why}}
+    box.append(row)})}
+agRender($('#ag-before'),'b');agRender($('#ag-after'),'a');
+
+/* vocabulary */
+(()=>{const used=[...new Set($$('.term').map(t=>t.dataset.t))].sort();$('#vocab').innerHTML=used.map(k=>`<div><button class="term" type="button" data-t="${k}">${k}</button><i>${(GLOSS[k]||{}).es||''}</i></div>`).join('')})();
+U2.glossaryPop();
+
+/* page chrome: footer and listen button */
+let speaking=null;
+function stopSpeech(){try{speechSynthesis.cancel()}catch(e){}$$('.reading').forEach(x=>x.classList.remove('reading'));$$('.listen').forEach(b=>{b.textContent='Listen';b.setAttribute('aria-pressed','false')});speaking=null}
+function chrome(p){const f=document.createElement('div');f.className='pfoot';f.innerHTML='<span class="pn"></span><span class="lw"></span><span class="rh"></span>';p.append(f);
+  if(!('speechSynthesis' in window))return;const b=U2.btn('Listen','btn ghost listen');b.setAttribute('aria-pressed','false');b.title='Read this page aloud';$('.lw',f).append(b);
+  b.onclick=()=>{if(speaking===p){stopSpeech();return}stopSpeech();speaking=p;b.textContent='Stop';b.setAttribute('aria-pressed','true');
+    const parts=$$('h1,h2,h3,.dual,.laws li,.post li,.obs li,blockquote,.key p:not(.label),.objs li,.oc tr,.do,.weh,.review li,.starters li,figcaption,.aside-note',p).filter(e=>e.offsetParent!==null&&!e.closest('.check')&&!(e.classList.contains('dual')&&e.closest('li')&&e.closest('li')!==e));
+    let i=0;const next=()=>{$$('.reading',p).forEach(x=>x.classList.remove('reading'));if(speaking!==p||i>=parts.length){if(speaking===p)stopSpeech();return}
+      const e=parts[i++];const t=(e.classList.contains('dual')?($(simple?'.sim':'.std',e)||e):e).innerText.replace(/\s+/g,' ').trim();if(!t){next();return}
+      e.classList.add('reading');const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=simple?.88:.95;u.onend=next;u.onerror=next;speechSynthesis.speak(u)};next()}}
+origPages.forEach(chrome);
+
+/* ---------- automatic pagination ----------
+   Each authored page keeps its block list. In book mode, blocks that do not fit flow onto continuation pages,
+   measured with every hidden answer revealed so later reveals never overflow. Lists split item by item. */
+origPages.forEach(p=>{p._blocks=[...$('.pbody',p).children];p._blocks.forEach(b=>b._sp=p._spread)});
+spreads.forEach(sp=>{const fp=origPages.find(p=>p._spread===sp);sp._first=fp&&fp._blocks[0]});
+$$('[data-item]').forEach(e=>e._sp=e.closest('.spread'));
+const LISTS=$$('ol.laws,ol.post,ul.obs,ul.review,ol.objs,ol.starters,.ag,.vocab',book);LISTS.forEach(l=>l._lis=[...l.children]);
+function unpaginate(){origPages.forEach(p=>{const bd=$('.pbody',p);p._blocks.forEach(b=>bd.append(b))});LISTS.forEach(l=>l._lis.forEach(li=>l.append(li)));
+  $$('.page.cont',book).forEach(c=>c.remove());$$('.contp',book).forEach(c=>c.remove());SPLITS.forEach(t=>{t.innerHTML=t._orig;t._orig=null});SPLITS=[];SQZ.forEach(unsqueeze);SQZ=[];$$('.check').forEach(c=>c.style.minHeight='');origPages.forEach(p=>p.classList.remove('merged'));pages=origPages.slice()}
+function newCont(src){const c=document.createElement('div');c.className='page cont '+(src.classList.contains('left')?'left':'right');c._spread=src._spread;const bd=document.createElement('div');bd.className='pbody';c.append(bd);chrome(c);return c}
+function longestFb(ck){const it=U2.item(ck.dataset.item);return it?it.opts.map(o=>o[2]).sort((a,b)=>b.length-a.length)[0]:''}
+function reserveChecks(bd){$$('.check',bd).forEach(ck=>{const set=ck.closest('.checkset');const group=set?$$('.check',set):[ck];if(ck._done)return;
+  let mx=0;const vis=group.map(g=>g.hidden);group.forEach(g=>{group.forEach(x=>x.hidden=x!==g);const fb=$('.fb',g);const keep=[fb.className,fb.innerHTML];fb.className='fb no';fb.innerHTML=longestFb(g);g.style.minHeight='';mx=Math.max(mx,g.offsetHeight);fb.className=keep[0];fb.innerHTML=keep[1]});
+  group.forEach((g,k)=>{g.hidden=vis[k];g.style.minHeight=(mx+3)+'px';g._done=1})})}
+const rootOf=x=>x._root||x;
+/* a text paragraph may break across pages between words, like a printed book; the tail continues as the same paragraph */
+const TEXT='p.dual,p:not([class])';let SPLITS=[];
+function splitBlock(T,fits){const dual=T.matches('.dual'),span=dual?$(simple?'.sim':'.std',T):T;if(!span)return null;
+  if(T._orig==null){T._orig=T.innerHTML;SPLITS.push(T)}
+  const units=[];[...span.childNodes].forEach(n=>{if(n.nodeType===3)n.textContent.split(/(?<=\s)/).forEach(w=>w&&units.push(document.createTextNode(w)));else units.push(n)});
+  if(units.length<12)return null;
+  const put=k=>span.replaceChildren(...units.slice(0,k));let lo=5,hi=units.length-5,best=0;
+  while(lo<=hi){const m=(lo+hi)>>1;put(m);if(fits()){best=m;lo=m+1}else hi=m-1}
+  if(!best){span.replaceChildren(...units);return null}
+  put(best);const C=T.cloneNode(false);C.removeAttribute('id');C.classList.add('contp');C._sp=T._sp;
+  if(dual){const a=span.cloneNode(false),o=$(simple?'.std':'.sim',T).cloneNode(false);a.append(...units.slice(best));C.append(...(simple?[o,a]:[a,o]))}else C.append(...units.slice(best));
+  return C}
+/* a "Try it" label and instruction start a page, but the block they introduce does not fit after them: rather than leave
+   them stranded, shrink that block until the group fits, first a simulation's drawing area (not below the 150 px floor),
+   then the whole block (not below 85%). If it still does not fit, it moves on alone as before.
+   Zoom alone does not shrink a periodic table, whose cells follow the width it is given, so the width is narrowed by the
+   same factor: together they scale the block evenly, centred on the page */
+const INTRO='p.label,p.do,h2,h3,.sech,header';let SQZ=[];
+function unsqueeze([X,keep]){[X.style.zoom,X.style.width,X.style.marginInline]=keep;$$('.cv',X).forEach((c,k)=>c.style.minHeight=keep[k+3])}
+function squeeze(X,over){const cvs=$$('.cv',X),rec=[X,[X.style.zoom,X.style.width,X.style.marginInline,...cvs.map(c=>c.style.minHeight)]];
+  cvs.forEach(c=>{let v=parseFloat(getComputedStyle(c).minHeight)||0;while(over()&&v>150){v=Math.max(150,v-10);c.style.minHeight=v+'px'}});
+  for(let z=40;over()&&z>34;){z--;X.style.zoom=z/40;X.style.width=z*2.5+'%';X.style.marginInline='auto';U2.fitHolds()}
+  if(over()){unsqueeze(rec);U2.fitHolds();return false}SQZ.push(rec);return true}
+const reachesPage=(b,bd)=>b.getBoundingClientRect().top<bd.getBoundingClientRect().bottom-2.2*(parseFloat(getComputedStyle(bd).lineHeight)||24);
+/* move a block to the top of the next page; list pieces of the same list rejoin */
+function moveBlock(last,cb){const f=cb.firstElementChild;
+  if(last._lis&&f&&f._lis&&rootOf(f)===rootOf(last)){
+    if(!last._root){[...f.children].forEach(li=>last.append(li));f.remove();cb.prepend(last)}
+    else{[...last.children].reverse().forEach(li=>f.prepend(li));if(last.getAttribute('start'))f.setAttribute('start',last.getAttribute('start'));else f.removeAttribute('start');last.remove()}}
+  else cb.prepend(last)}
+function paginate(){const anchor=anchorBlock();unpaginate();$$('.check').forEach(c=>c._done=0);
+  const single=narrow.matches;book.classList.toggle('single',single&&mode==='book');
+  if(mode!=='book'||phone.matches){book.style.height='';finalize(anchor);return}
+  book.style.height=(innerHeight-$('.bar').offsetHeight-$('.pager').offsetHeight)+'px';
+  const cs=getComputedStyle(book);const w=(book.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight))/(single?1:2),h=book.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);
+  /* whole pixels, rounded down: the visible page can come out a fraction narrower than an exact fractional width, and text measured wider would overflow */
+  book.style.setProperty('--pw',Math.floor(w)+'px');book.style.setProperty('--ph',Math.floor(h)+'px');
+  /* each section flows as one stream: the right page's blocks continue after the left page's */
+  {const bd=$('.pbody',origPages[0]);origPages.slice(1).forEach(q=>{[...$('.pbody',q).children].forEach(b=>bd.append(b));q.classList.add('merged')})}
+  pages=origPages.filter(p=>!p.classList.contains('merged'));
+  const det=$$('details',book).map(d=>[d,d.open]);det.forEach(([d])=>d.open=true);document.body.classList.add('measuring');
+  for(let i=0;i<pages.length;i++){const p=pages[i];p.classList.add('measure');const bd=$('.pbody',p);reserveChecks(bd);U2.fitHolds();let c=null;
+    const over=()=>bd.scrollHeight>bd.clientHeight+1;const cont=()=>{if(!c){c=newCont(p);p.after(c);pages.splice(i+1,0,c)}return $('.pbody',c)};
+    let guard=0;while(over()&&guard++<300){const last=bd.lastElementChild;
+      if(last&&last._lis&&last.children.length>1){const cb=cont();let L=cb.firstElementChild;
+        if(!L||!L._lis||rootOf(L)!==rootOf(last)){L=last.cloneNode(false);L._root=rootOf(last);L._lis=[];L._sp=last._sp;L.removeAttribute('id');cb.prepend(L)}
+        L.prepend(last.lastElementChild);if(last.tagName==='OL')L.setAttribute('start',(+last.getAttribute('start')||1)+last.children.length);continue}
+      if(last.matches(TEXT)&&reachesPage(last,bd)){const C=splitBlock(last,()=>!over());if(C){cont().prepend(C);continue}}
+      if(bd.children.length<=1)break;
+      if(!last.matches(INTRO)&&!last.matches(TEXT)&&[...bd.children].slice(0,-1).every(k=>k.matches(INTRO))&&squeeze(last,over))break;
+      moveBlock(last,cont())}
+    /* keep headings and instructions with the block they introduce */
+    if(c){let k=0;while(bd.children.length>1&&k++<4){const l=bd.lastElementChild;if(l.matches('p.label,p.do,h3,.sech,header')||(l._lis&&l.children.length&&[...l.children].every(ch=>ch.matches('p.label,p.do'))))moveBlock(l,cont());else break}}
+    /* fill the gap left when a figure or interactive (with its label) did not fit and moved on, like a float in a printed book:
+       first pull back the text that follows it in the same section (splitting it if needed); otherwise pull back a check,
+       key-idea box, figure or table that comes right after it and fits whole */
+    if(c){const cb=$('.pbody',c),lh=parseFloat(getComputedStyle(bd).lineHeight)||24,HEAD='h1,h2,h3,.sech,header';let g2=0;
+      while(g2++<8){const lastB=bd.lastElementChild,kids=[...cb.children];if(!lastB||!kids.length)break;
+        if(bd.getBoundingClientRect().bottom-lastB.getBoundingClientRect().bottom<lh*2.5)break;
+        if(kids[0].matches(TEXT)||kids[0].matches(HEAD)||kids[0]._sp!==lastB._sp)break;
+        let g=0;while(g<kids.length-1&&kids[g].matches('p.label,p.do'))g++;g++;
+        let j=g;while(j<kids.length&&j<g+3&&!kids[j].matches(TEXT)&&!kids[j].matches(HEAD))j++;
+        let T=kids[j];
+        if(T&&T.matches(TEXT)&&T._sp===lastB._sp){bd.append(T);if(!over())continue;const C=splitBlock(T,()=>!over());kids[j-1].after(C||T);break}
+        T=kids[g];
+        if(T&&T.matches('.check,.checkset,aside.key,figure,table')&&T._sp===lastB._sp){bd.append(T);reserveChecks(bd);if(!over())continue;kids[g-1].after(T)}
+        break}}
+    p.classList.remove('measure')}
+  document.body.classList.remove('measuring');det.forEach(([d,o])=>d.open=o);finalize(anchor)}
+function finalize(anchor){pages=$$('.page',book).filter(p=>!p.classList.contains('merged'));const single=narrow.matches||phone.matches;
+  pages.forEach((p,k)=>{const fb=$('.pbody',p).firstElementChild,sp=(fb&&fb._sp)||p._spread,left=k%2===0;$('.pn',p).textContent=k+1;$('.rh',p).textContent=left?CH:(sp.dataset.sec&&sp.dataset.sec!=='review'?'§'+sp.dataset.sec+' · ':'')+sp.dataset.title});
+  if(anchor){const i=pages.findIndex(p=>p.contains(anchor));if(i>=0)cur=i}show(cur,0);U2.kickAll&&U2.kickAll()}
+function anchorBlock(){const p=pages[cur];return p?$('.pbody',p).firstElementChild:null}
+let rpT;function repaginate(){clearTimeout(rpT);rpT=setTimeout(paginate,60)}
+/* after any reveal: if a visible page overflows anyway, flow it again */
+function guard(){requestAnimationFrame(()=>{if(mode!=='book'||phone.matches)return;if($$('.page.on .pbody',book).some(b=>b.scrollHeight>b.clientHeight+1))repaginate()})}
+book.addEventListener('click',guard);book.addEventListener('toggle',guard,true);
+
+/* ---------- navigation ---------- */
+function show(i,dir){stopSpeech();const single=narrow.matches||phone.matches;i=Math.max(0,Math.min(pages.length-1,i||0));if(!single&&mode==='book')i-=i%2;cur=i;store.set('pageAnchor',i);
+  pages.forEach(p=>p.classList.remove('on','pl','pr','fwd','bwd'));
+  if(mode==='book'){const a=pages[i],b=single?null:pages[i+1];a.classList.add('on');if(!single){a.classList.add('pl');if(b)b.classList.add('on','pr')}
+    if(dir){[a,b].forEach(x=>{if(x){void x.offsetWidth;x.classList.add(dir>0?'fwd':'bwd')}})}
+    $('#pinfo').textContent=single?`Page ${i+1} of ${pages.length}`:(b?`Pages ${i+1}–${i+2} of ${pages.length}`:`Page ${i+1} of ${pages.length}`);
+    $('#prev').disabled=i===0;$('#next').disabled=(single?i:i+1)>=pages.length-1;if(phone.matches)window.scrollTo(0,0)}
+  buildToc()}
+function step(d){const single=narrow.matches||phone.matches;const n=cur+d*(single?1:2);if(n<0||n>=pages.length)return;show(n,d)}
+$('#prev').onclick=()=>step(-1);$('#next').onclick=()=>step(1);
+document.addEventListener('keydown',e=>{if(mode!=='book'||e.target.closest('input,select,textarea'))return;if(e.key==='ArrowRight'||e.key==='PageDown'){step(1);e.preventDefault()}if(e.key==='ArrowLeft'||e.key==='PageUp'){step(-1);e.preventDefault()}});
+let tx=null;book.addEventListener('touchstart',e=>{if(e.target.closest('canvas,input,.tl,select'))return;tx=e.touches[0].clientX},{passive:true});book.addEventListener('touchend',e=>{if(tx==null||mode!=='book')return;const dx=e.changedTouches[0].clientX-tx;tx=null;if(Math.abs(dx)>70)step(dx<0?1:-1)});
+function setMode(m){mode=m;store.set('mode',m);book.className=m;$$('#mode button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.m===m)));paginate();
+  if(m==='scroll')requestAnimationFrame(()=>{const p=pages[cur];if(p)p._spread.scrollIntoView({block:'start'})})}
+$$('#mode button').forEach(b=>b.onclick=()=>setMode(b.dataset.m));
+addEventListener('resize',repaginate);narrow.addEventListener('change',repaginate);phone.addEventListener('change',repaginate);
+try{document.fonts.ready.then(repaginate)}catch(e){}
+
+/* contents */
+const tocB=$('#toc-b'),toc=$('#toc');
+function buildToc(){const s=store.get('chk',{});toc.innerHTML='';const onSp=new Set($$('.page.on .pbody>*',book).map(b=>b._sp));spreads.forEach(sp=>{const ids=$$('[data-item]').filter(e=>e._sp===sp).map(b=>b.dataset.item);const done=ids.filter(i=>s[i]===1).length;
+  const b=document.createElement('button');b.type='button';if(mode==='book'&&onSp.has(sp))b.classList.add('cur');
+  b.innerHTML=`<span class="n">${sp.dataset.sec&&sp.dataset.sec!=='review'?'§'+sp.dataset.sec:''}</span><span style="flex:1">${sp.dataset.title}</span><span class="p">${ids.length?done+'/'+ids.length+' ✓':''}</span>`;
+  b.onclick=()=>{toc.hidden=true;tocB.setAttribute('aria-expanded','false');const i=Math.max(0,pages.findIndex(p=>p.contains(sp._first)));if(mode==='book')show(i,i>cur?1:-1);else{cur=i;sp.scrollIntoView({behavior:'smooth',block:'start'})}};toc.append(b)})}
+tocB.onclick=e=>{e.stopPropagation();toc.hidden=!toc.hidden;tocB.setAttribute('aria-expanded',String(!toc.hidden))};
+document.addEventListener('click',e=>{if(!e.target.closest('.dd'))toc.hidden=true});
+{const io=new IntersectionObserver(es=>es.forEach(en=>{if(mode==='scroll'&&en.isIntersecting){cur=pages.indexOf($('.page',en.target))}}),{rootMargin:'-40% 0px -55% 0px'});spreads.forEach(s=>io.observe(s))}
+
+$('#print').onclick=()=>window.print();
+addEventListener('beforeprint',()=>{stopSpeech();if(mode==='book'){unpaginate()}});
+addEventListener('afterprint',()=>{if(mode==='book')paginate()});
+
+cur=Math.max(0,store.get('pageAnchor',0));setMode(mode);progress();
+})();
+
+</script>
+</body>
+</html>

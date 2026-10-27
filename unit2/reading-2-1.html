@@ -1,0 +1,1580 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Atomic Models Reading</title>
+<meta name="description" content="Unit 2, Lesson 2.1 reading chapter: The development of atomic models (TEKS C.6(A)).">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,600;9..40,700&family=Charis+SIL:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== shared tokens and components (look: design-drafts/labbench-style-draft.html, 2026-10-26) ===== */
+:root{--bg:#eef2ef;--paper:#fcfdfc;--paper2:#f4f7f5;--ink:#1b302e;--muted:#4f605b;--line:#dbe3de;--sunk:#edf3e4;
+  --accent:#0b5951;--accent-ink:#ffffff;--accent-soft:#e6f1ea;--warm:#835811;--warm-soft:#f8eed9;--label:#0b5951;--ok:#1f6e4f;--ok-soft:#e1f0e6;--bad:#a8402f;--bad-soft:#f9e6e1;
+  --pos:#c0391b;--neg:#2b55b8;--neu:#6b7176;--gold:#9c7400;
+  --body:'Charis SIL',Charter,Georgia,serif;--display:'DM Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+  --shadow:0 1px 2px rgba(18,61,45,.05),0 8px 26px rgba(18,61,45,.07);color-scheme:light;--surface:#ffffff;--pick:#dbecc3}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1715;--paper:#152120;--paper2:#182523;--ink:#e3ece8;--muted:#a6b6b0;--line:#283632;--sunk:#22301f;
+  --accent:#73c7b4;--accent-ink:#06231f;--accent-soft:#163029;--warm:#e6bd6c;--warm-soft:#33290f;--label:#9fd7a8;--ok:#7fd1a6;--ok-soft:#163026;--bad:#f39886;--bad-soft:#3a1e19;
+  --pos:#ff9a6c;--neg:#8eb1ff;--neu:#9ba49f;--gold:#e6c65c;--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 26px rgba(0,0,0,.4);color-scheme:dark;--surface:#1c2a27;--pick:#2b4a20}}
+:root[data-theme="dark"]{--bg:#0f1715;--paper:#152120;--paper2:#182523;--ink:#e3ece8;--muted:#a6b6b0;--line:#283632;--sunk:#22301f;
+  --accent:#73c7b4;--accent-ink:#06231f;--accent-soft:#163029;--warm:#e6bd6c;--warm-soft:#33290f;--label:#9fd7a8;--ok:#7fd1a6;--ok-soft:#163026;--bad:#f39886;--bad-soft:#3a1e19;
+  --pos:#ff9a6c;--neg:#8eb1ff;--neu:#9ba49f;--gold:#e6c65c;--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 26px rgba(0,0,0,.4);color-scheme:dark;--surface:#1c2a27;--pick:#2b4a20}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55}
+sup,sub{font-size:.68em;line-height:0}
+button{font:inherit;color:inherit}
+.nw{white-space:nowrap}
+.mono{font-family:var(--mono)}
+.muted{color:var(--muted)}
+.label{font-family:var(--mono);font-size:.7em;letter-spacing:.08em;text-transform:uppercase;color:var(--label);font-weight:500;margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4em;min-height:2.3em;padding:.3em .85em;border-radius:10px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);font-weight:700;cursor:pointer;white-space:nowrap;position:relative;transition:background .15s,border-color .15s}
+.btn:hover{border-color:var(--accent)}
+.btn:focus-visible,.term:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 55%,transparent);outline-offset:2px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent}
+.btn[aria-pressed="true"]{background:var(--pick);color:var(--ink);border-color:var(--accent)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.correct{background:var(--ok-soft);border-color:var(--ok)}
+.btn.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.btn.correct::after,.btn.wrong::after{position:absolute;top:-.5em;right:-.45em;width:1.3em;height:1.3em;border-radius:50%;display:grid;place-items:center;font-size:.72em;line-height:1;color:var(--paper);box-shadow:0 0 0 2px var(--paper)}
+.btn.correct::after{content:"✓";background:var(--ok)}
+.btn.wrong::after{content:"✗";background:var(--bad)}
+.chips{display:flex;flex-wrap:wrap;gap:.4em}
+.chips span{background:var(--sunk);border-radius:99px;padding:.15em .65em;font-size:.88em}
+select{font:inherit;background:var(--paper);color:var(--ink);border:1.5px solid var(--line);border-radius:8px;padding:.25em .5em;min-height:2.1em;max-width:100%}
+input[type=number],input[type=text]{font:inherit;background:var(--paper);color:var(--ink);border:1.5px solid var(--line);border-radius:8px;padding:.25em .5em;min-height:2.1em}
+input[type=range]{accent-color:var(--accent);width:100%}
+.bar .tools .btn,.bar .seg button,.btn.primary{font-family:var(--display)}
+
+/* ===== Unit 2 component kit: sims, checks, glossary (shared by every surface) ===== */
+.seg{display:inline-flex;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper)}
+.seg button{border:0;background:transparent;padding:.35em .8em;font-weight:700;cursor:pointer;min-height:2.2em;white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--pick);color:var(--ink);border-color:var(--accent)}
+/* glossary terms */
+.term{border:0;background:none;padding:0;color:inherit;font:inherit;font-weight:700;cursor:help;border-bottom:2px dotted color-mix(in srgb,var(--accent) 70%,transparent);line-height:1.2}
+.gpop{position:fixed;z-index:60;max-width:min(340px,calc(100vw - 24px));background:var(--paper);border:1.5px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:.7em .9em;font-size:15px;line-height:1.4}
+.gpop b{font-family:var(--display);font-size:1.08em}
+.gpop .es{display:block;margin-top:.35em;font-size:.88em;color:var(--muted)}
+.gpop .es i{color:var(--ink);font-style:normal;font-weight:700}
+
+/* checks */
+.check{border:1.5px solid var(--line);border-radius:14px;background:var(--paper);padding:.8em 1em;display:flex;flex-direction:column;gap:.55em}
+.check .q{font-weight:700;margin:0}
+.check .opts{display:flex;flex-direction:column;gap:.4em}
+.check .opts .btn{display:block;justify-content:flex-start;text-align:left;white-space:normal;line-height:1.3;padding:.45em .8em;font-weight:600}
+.check .fb{margin:0;font-size:.94em;border-radius:10px;padding:.5em .7em;display:none}
+.check .fb.ok{display:block;background:var(--ok-soft);border-left:4px solid var(--ok)}
+.check .fb.no{display:block;background:var(--bad-soft);border-left:4px solid var(--bad)}
+.check .meta{display:flex;justify-content:space-between;gap:.5em;font-family:var(--display);font-size:.68em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+
+/* sim shells */
+.sim{display:flex;flex-direction:column;gap:.55em}
+.sim .cv{position:relative;width:100%;border-radius:12px;overflow:hidden;background:var(--paper2);border:1.5px solid var(--line)}
+.sim canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}
+.sim .ctl{display:flex;flex-wrap:wrap;gap:.45em;align-items:center}
+.sim .ctl .grp{display:flex;align-items:center;gap:.4em;flex-wrap:wrap}
+.sim .ctl .lab{font-family:var(--display);font-size:.68em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.ros{display:flex;flex-wrap:wrap;gap:.45em}
+.ro{background:var(--sunk);border-radius:10px;padding:.3em .6em;min-width:5.5em}
+.ro small{display:block;font-family:var(--display);font-size:.62em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);white-space:nowrap;font-weight:700}
+.ro span{font-family:var(--mono);font-weight:600;font-variant-numeric:tabular-nums}
+.simnote{font-size:.82em;color:var(--muted);margin:0}
+.say{font-size:.95em;margin:0;border-radius:10px;padding:.5em .7em;background:var(--accent-soft)}
+.say.ok{background:var(--ok-soft)}.say.no{background:var(--bad-soft)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* mass table */
+.tscroll{overflow-x:auto}
+table.masst{width:100%;border-collapse:collapse;font-size:.86em}
+table.masst th{font-family:var(--display);font-size:.72em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);text-align:left;padding:.4em .45em;border-bottom:2px solid var(--line);vertical-align:bottom;font-weight:700}
+table.masst td{padding:.45em .45em;border-bottom:1px solid var(--line);vertical-align:middle}
+table.masst td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+table.masst tr.pe td{background:color-mix(in srgb,var(--warm-soft) 70%,transparent)}
+table.masst .calc{display:block;font-family:var(--mono);font-size:.78em;color:var(--muted)}
+/* model builder */
+.mbhead{margin:0;font-size:1em}
+.mbgrid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:.8em;align-items:center}
+.mbopts{display:flex;flex-direction:column;gap:.55em}
+.mbrow{display:flex;flex-direction:column;gap:.25em}
+.mbrow .lab{font-family:var(--display);font-size:.68em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.mbchoices{display:flex;flex-wrap:wrap;gap:.35em}
+.mbchoices .btn{font-size:.82em;min-height:2.1em;padding:.25em .65em;white-space:normal;text-align:left;font-weight:600}
+.mbprev svg{width:100%;max-width:220px;display:block;margin:0 auto}
+.mbuild>.btn.primary{align-self:flex-start}
+@media (max-width:600px){.mbgrid{grid-template-columns:minmax(0,1fr)}}
+/* timeline */
+ol.tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.45em;counter-reset:tl}
+.tlc{display:grid;grid-template-columns:auto 52px minmax(0,1fr) minmax(0,1.6fr) auto;gap:.5em;align-items:center;background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:.35em .5em;counter-increment:tl}
+.tlc .grip{cursor:grab;color:var(--muted);font-weight:800;letter-spacing:-.15em;padding:0 .2em;touch-action:none;user-select:none}
+.tlc .thumb svg{width:52px;height:52px;display:block}
+.tlc .tn{font-size:.92em;line-height:1.2}
+.tlc .tn::before{content:counter(tl)". ";font-family:var(--mono);color:var(--muted);font-size:.85em}
+.tlc select{font-size:.82em;width:100%}
+.tlc .ud{display:flex;flex-direction:column;gap:2px}
+.tlc .ud .btn{min-height:1.5em;padding:0 .45em;font-size:.7em}
+.tlc.dragging{box-shadow:var(--shadow);border-color:var(--accent);opacity:.92}
+.tlc{position:relative}
+.tlc.ok{border-color:var(--ok);background:var(--ok-soft)}
+.tlc.ok::after,.tlc.no::after{position:absolute;top:-7px;right:-7px;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--paper);box-shadow:0 0 0 2px var(--paper)}
+.tlc.ok::after{content:"✓";background:var(--ok)}
+.tlc.no::after{content:"✗";background:var(--bad)}
+.tlc.no{border-color:var(--bad);background:var(--bad-soft)}
+@media (max-width:600px){.tlc{grid-template-columns:auto 40px minmax(0,1fr) auto}.tlc .thumb svg{width:40px;height:40px}.tlc select{grid-column:2/4}}
+
+.sim .seg button{font-size:.82em;padding:.25em .65em;min-height:2.1em}
+.sim .ctl .btn{font-size:.85em;min-height:2.1em;padding:.25em .7em}
+.checkset{display:flex;flex-direction:column;gap:.5em;margin:0 0 1em}
+.checkset .tabs{display:flex;gap:.35em;flex-wrap:wrap}
+.checkset .tabs .btn{font-size:.78em;min-height:1.9em;padding:.15em .7em}
+.checkset .tabs .btn.done::before{content:"✓ ";color:var(--ok)}
+.checkset>.check{margin:0!important}
+table.masst .btn.sm{font-size:.85em}
+/* an element symbol or formula inside a capitalised label keeps its own case: "Na", not "NA" */
+.chem{text-transform:none!important}
+
+/* ===== Reading chapter: compact book. Pages never scroll; content flows onto more pages. ===== */
+:root{--hdr:48px;--pgr:46px}
+body{font-size:16.5px;line-height:1.47}
+.skip{position:absolute;left:-999px;top:8px;background:var(--paper);padding:.4em .8em;border-radius:8px;z-index:99}
+.skip:focus{left:12px}
+.bar{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;min-height:var(--hdr);padding:6px 14px;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);font-size:14px}
+.brand{display:flex;align-items:center;gap:9px;min-width:0}
+.brand .logo{width:26px;height:26px;border-radius:8px;background:conic-gradient(from 200deg,#e85d3a,#f5b13d,#5cb85c,#3a7bd5,#7b4fd6,#e85d3a);flex:none}
+.brand b{display:block;font-family:var(--display);font-size:15px;line-height:1.1}
+.brand small{display:block;color:var(--muted);font-size:12px;white-space:nowrap}
+.tools{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.tools .btn,.tools .seg button{font-size:13.5px;min-height:32px;padding:.15em .7em}
+.prog{position:absolute;left:0;right:0;bottom:-1px;height:3px}
+.prog i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.dd{position:relative}
+.toc{position:absolute;right:0;top:calc(100% + 6px);width:min(360px,90vw);max-height:70vh;overflow:auto;background:var(--paper);border:1.5px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:6px}
+.toc button{display:flex;justify-content:space-between;gap:10px;width:100%;text-align:left;border:0;background:none;padding:7px 9px;border-radius:8px;cursor:pointer;font-size:14.5px}
+.toc button:hover{background:var(--accent-soft)}.toc button.cur{background:var(--pick);color:var(--ink);border-color:var(--accent)}
+.toc .n{font-family:var(--mono);font-size:12px;color:var(--muted);min-width:4.5em}
+.toc .p{font-family:var(--mono);font-size:12px;color:var(--ok);white-space:nowrap}
+
+/* ---------- pages ---------- */
+.page{background:var(--paper);position:relative;min-width:0;display:flex;flex-direction:column}
+.pbody{padding:14px 26px 8px;min-width:0;flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+.pbody>*{flex:none}
+.pfoot{flex:none;display:flex;justify-content:space-between;align-items:center;gap:12px;height:26px;padding:0 26px;font-family:var(--display);font-size:10.5px;letter-spacing:.03em;color:var(--muted);text-transform:uppercase;border-top:1px solid color-mix(in srgb,var(--line) 70%,transparent);font-weight:700}
+.pfoot .rh{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.page.pr .pfoot{flex-direction:row-reverse}
+.pfoot .lw{flex:none}
+.listen{font-size:11.5px!important;min-height:21px!important;padding:0 .55em!important;border-radius:6px!important;text-transform:none;letter-spacing:0;font-family:var(--body)}
+
+/* ---------- book mode ---------- */
+main.book{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr);width:min(1440px,100%);margin:0 auto;padding:8px 16px;height:calc(100vh - var(--hdr) - var(--pgr));perspective:2200px}
+main.book .spread{display:contents}
+main.book .page{display:none;grid-row:1;overflow:hidden;box-shadow:0 8px 24px rgba(40,30,10,.12)}
+main.book .page.on{display:flex}
+main.book .pbody{overflow:auto;scrollbar-width:thin}
+main.book .pbody>:last-child{margin-bottom:0} /* a trailing margin would push the last block past the page */
+main.book .pbody>[data-sim]:has(>.cv){flex:1 1 auto}
+main.book .page.merged{display:none!important}
+main.book .pbody>[data-sim] .cv{aspect-ratio:auto!important;flex:1 1 auto;min-height:150px}
+main.book .page.pl{grid-column:1;border-radius:12px 0 0 12px;background:linear-gradient(to left,color-mix(in srgb,var(--ink) 7%,var(--paper)) 0,var(--paper) 28px)}
+main.book .page.pr{grid-column:2;border-radius:0 12px 12px 0;background:linear-gradient(to right,color-mix(in srgb,var(--ink) 9%,var(--paper)) 0,var(--paper) 26px);box-shadow:inset 1px 0 0 var(--line),0 8px 24px rgba(40,30,10,.12)}
+/* the spine line is an inset shadow, not a border, so the right page is as wide as the measuring page */
+main.book.single{grid-template-columns:minmax(0,1fr);width:min(860px,100%)}
+main.book.single .page.on{grid-column:1;border-radius:12px;background:var(--paper);border-left:0;box-shadow:0 8px 24px rgba(40,30,10,.12)}
+main.book .page.measure{display:flex!important;position:fixed;left:-20000px;top:0;visibility:hidden;width:var(--pw);height:var(--ph);grid-row:auto}
+main.book .page.on.fwd.pr,main.book.single .page.on.fwd{animation:turnF .45s cubic-bezier(.2,.7,.2,1)}
+main.book .page.on.bwd.pl,main.book.single .page.on.bwd{animation:turnB .45s cubic-bezier(.2,.7,.2,1)}
+main.book .page.on.fwd.pl,main.book .page.on.bwd.pr{animation:fadeIn .45s ease}
+@keyframes turnF{from{transform:rotateY(-22deg);transform-origin:left center;opacity:.2}to{transform:none;opacity:1}}
+@keyframes turnB{from{transform:rotateY(22deg);transform-origin:right center;opacity:.2}to{transform:none;opacity:1}}
+@keyframes fadeIn{from{opacity:.35}to{opacity:1}}
+.pager{position:fixed;left:0;right:0;bottom:0;height:var(--pgr);display:flex;align-items:center;justify-content:center;gap:14px;background:color-mix(in srgb,var(--bg) 94%,transparent);border-top:1px solid var(--line);z-index:20}
+.pager .btn{min-height:34px;font-size:14.5px}
+.pager #pinfo{font-family:var(--mono);font-size:12.5px;color:var(--muted);min-width:12em;text-align:center}
+
+/* ---------- scroll mode ---------- */
+main.scroll{max-width:1280px;margin:0 auto;padding:18px 16px 60px}
+main.scroll .spread{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);margin:0 0 22px;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);scroll-margin-top:64px}
+main.scroll .page.right{background:var(--paper2);border-left:1px solid var(--line)}
+main.scroll .pbody{padding:18px 26px 12px}
+main.scroll .pbody>[data-sim]{margin-bottom:.6em}
+main.scroll ~ .pager,main.scroll .pfoot{display:none}
+
+/* ---------- typography (no balance, no max-width: lines run to the container edge) ---------- */
+.page p{margin:0 0 .6em}
+.page h1{font-family:var(--display);font-weight:600;letter-spacing:-.03em;font-size:34px;line-height:1.04;margin:.05em 0 .3em}
+.page h2{font-family:var(--display);font-weight:700;font-size:25px;line-height:1.1;margin:0}
+.page h3{font-family:var(--display);font-weight:700;font-size:19px;line-height:1.2;margin:.15em 0 .3em}
+.sech{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 .45em}
+.secno{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;color:var(--label);font-weight:500}
+.chapno{font-family:var(--mono);font-weight:500;font-size:52px;line-height:.9;margin:.05em 0 0;color:var(--accent)}
+.dual .sim{display:none}
+body.simple .dual .std{display:none}
+body.simple .dual .sim{display:inline}
+body.simple .dual{background:color-mix(in srgb,var(--accent-soft) 45%,transparent);border-radius:5px;box-decoration-break:clone}
+.page .do{font-weight:700;color:var(--warm);margin:.05em 0 .45em;font-size:.94em}
+.page .do::before{content:"→ "}
+.page .label{margin-bottom:.3em}
+.key{border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 10px 10px 0;padding:.4em .75em;margin:.3em 0 .6em}
+.key p{margin:0}
+.key .label{margin-bottom:.15em}
+.dq{border:2px solid var(--warm);border-radius:10px;padding:.4em .75em;margin:.2em 0 .5em}
+.dq p{margin:0}
+.dq p:last-child{font-family:var(--display);font-weight:700;font-size:19px;line-height:1.2}
+.objs{padding-left:1.3em;margin:.1em 0 .6em}
+.objs li{margin:.18em 0}
+.oid{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-left:.3em}
+.teksline{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:.45em}
+.laws,.post,.obs{padding-left:1.3em;margin:.1em 0 .6em}
+.laws li,.post li,.obs li{margin:.25em 0}
+.laws .who{display:inline-block;font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-left:.4em}
+.laws .dual{display:block}
+.post .ex{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.03em;background:var(--ok-soft);border-radius:5px;padding:0 .4em;margin-left:.3em;white-space:nowrap}
+blockquote{margin:.3em 0 .6em;padding:.35em .75em;border-left:4px solid var(--warm);background:var(--warm-soft);border-radius:0 10px 10px 0;font-style:italic}
+.aside-note{font-size:.86em;color:var(--muted)}
+table.oc,table.sum{width:100%;border-collapse:collapse;font-size:.86em;margin:.1em 0 .6em}
+table.oc th,table.sum th{font-family:var(--display);font-size:10.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);text-align:left;padding:.25em .45em;border-bottom:2px solid var(--line);font-weight:700}
+table.oc td,table.sum td{padding:.3em .45em;border-bottom:1px solid var(--line);vertical-align:top}
+.fig{margin:.2em 0 .6em;text-align:center}
+.fig svg{width:100%;height:auto;max-height:150px}
+.fig svg.msvg{width:auto;height:140px}
+.fig figcaption,.stm figcaption{font-size:.8em;color:var(--muted);margin-top:.2em;text-align:left;line-height:1.35}
+.stm{margin:.2em 0 .6em}
+.stm svg{width:100%;height:92px;border-radius:10px;display:block}
+.honors{border:1.5px dashed var(--accent);border-radius:10px;padding:.3em .75em;margin:.2em 0 .6em;font-size:.9em}
+.honors summary{cursor:pointer;font-weight:700;color:var(--accent)}
+.honors[open] summary{margin-bottom:.3em}
+.honors p{margin:0 0 .4em}
+.eqn{font-family:var(--mono);font-size:.9em;background:var(--sunk);border-radius:6px;padding:.25em .5em}
+.ag .row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.5em;align-items:center;padding:.28em 0;border-bottom:1px solid var(--line)}
+.ag .row p{margin:0;font-size:.94em}
+.ag .row .seg button{font-size:12.5px;padding:.1em .55em;min-height:28px}
+.ag .verdict{grid-column:1/-1;font-size:.85em;border-radius:6px;padding:.25em .5em;margin:0}
+.ag .verdict.ok{background:var(--ok-soft)}.ag .verdict.no{background:var(--bad-soft)}
+.ag .before{display:block;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.review{padding-left:1.1em;margin:.1em 0 .6em}
+.review li{margin:.28em 0}
+.review b{font-family:var(--mono);font-size:12px;color:var(--accent);margin-right:.3em}
+.vocab{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.1em 1.1em;font-size:.86em;margin-bottom:.6em}
+.vocab div{display:flex;justify-content:space-between;gap:.6em;border-bottom:1px dotted var(--line);padding:.12em 0}
+.vocab i{color:var(--muted);font-style:normal;text-align:right}
+.starters{margin:.1em 0 .6em;padding-left:1.4em}
+.starters li{margin:.2em 0}
+.starters li::marker{color:var(--accent);font-weight:700}
+.next{background:var(--ok-soft);border-radius:10px;padding:.4em .75em;margin:.2em 0 .6em}
+.next p{margin:0}
+.src{font-size:.86em;padding-left:1.1em;margin:0 0 .4em}
+.src a{color:var(--accent)}
+/* worked examples */
+.we{border:1.5px solid var(--line);border-radius:10px;padding:.4em .7em;margin:0 0 .5em;background:var(--paper)}
+.weh{margin:0 0 .3em!important}
+.lvl{display:inline-block;font-family:var(--display);font-size:11px;letter-spacing:.03em;text-transform:uppercase;background:var(--accent);color:var(--accent-ink);border-radius:5px;padding:0 .45em;margin-right:.35em;font-weight:700}
+#we2 .lvl{background:color-mix(in srgb,var(--accent) 60%,var(--paper));color:var(--ink)}
+#we3 .lvl{background:var(--accent-soft);color:var(--ink)}
+.steps{margin:0;padding-left:0;list-style:none;font-size:.93em}
+.steps li{display:grid;grid-template-columns:5.3em minmax(0,1fr);gap:.5em;align-items:baseline;margin:.18em 0}
+.steps .k{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--label);font-weight:500}
+.we .row{display:flex;gap:.45em;flex-wrap:wrap;align-items:center;margin:.2em 0}
+.wein{width:6em}
+.wex{background:var(--ok-soft);border-radius:6px;padding:.25em .5em;margin:.25em 0 0!important;font-size:.92em}
+.wehint{color:var(--muted);font-size:.9em}
+.wein.bad{border-color:var(--bad)}
+.wein.good{border-color:var(--ok);background:var(--ok-soft)}
+.reading{background:color-mix(in srgb,var(--warm) 18%,transparent);border-radius:5px;transition:background .2s}
+
+/* ---------- compact interactive kit inside pages ---------- */
+.page .sim{gap:.4em;margin:0 0 .6em}
+.page .sim .cv{border-radius:10px}
+.page .sim .ctl{gap:.35em .45em}
+.page .sim .ctl .btn,.page .sim>.btn,.page .sim .seg button{font-size:13px;min-height:30px;padding:.12em .6em}
+.page .sim .ctl .lab{font-size:10.5px}
+.page .sim .ctl select{font-size:13px;min-height:30px;padding:.1em .4em}
+.page .ros{gap:.35em}
+.page .ro{padding:.12em .5em;min-width:0;border-radius:8px}
+.page .ro small{font-size:9.5px}
+.page .ro span{font-size:13.5px}
+.page .say{font-size:.88em;padding:.3em .55em;border-radius:8px}
+.page .simnote{font-size:11.5px;line-height:1.3}
+.page .check{padding:.45em .7em;gap:.35em;font-size:.92em;border-radius:10px;margin:0 0 .6em}
+.page .check .opts{gap:.28em}
+.page .check .opts .btn{padding:.25em .6em;min-height:2em;border-radius:8px}
+.page .check .fb{padding:.3em .55em;border-radius:6px}
+.page .check .meta{font-size:10px}
+.page table.masst{font-size:.8em}
+.page table.masst th{padding:.25em .35em}
+.page table.masst td{padding:.25em .35em;height:2.7em}
+.page table.masst .btn{min-height:26px;font-size:12px!important;padding:.05em .5em}
+.page .mbgrid{gap:.5em}
+.page .mbopts{gap:.35em}
+.page .mbchoices{gap:.25em}
+.page .mbchoices .btn{font-size:12.5px;min-height:28px;padding:.1em .5em}
+.page .mbgrid{grid-template-columns:minmax(0,3fr) minmax(0,1fr)}
+.page .mbprev svg{max-width:120px}
+.page .mbuild>.btn.primary{font-size:13px;min-height:30px}
+.page ol.tl{gap:.28em}
+.page .tlc{padding:.18em .4em;gap:.4em;grid-template-columns:auto 38px minmax(0,1fr) minmax(0,1.6fr) auto}
+.page .tlc .thumb svg{width:38px;height:38px}
+.page .tlc select{font-size:12.5px;min-height:28px}
+.checkset{display:flex;flex-direction:column;gap:.3em;margin:0 0 .6em}
+.checkset .tabs{display:flex;gap:.3em;flex-wrap:wrap}
+.checkset .tabs .btn{font-size:12px;min-height:26px;padding:.05em .6em}
+.checkset .tabs .btn.done::before{content:"✓ ";color:var(--ok)}
+.checkset>.check{margin:0!important}
+
+/* ---------- measuring: reveal every hidden answer so space is reserved ---------- */
+body.measuring .wex[hidden],body.measuring .ag .verdict[hidden],body.measuring .page .sim .say[hidden]{display:block!important}
+body.measuring .wehint{display:none!important}
+
+/* ---------- small screens ---------- */
+@media (max-width:1000px){.brand small{display:none}.page h1{font-size:30px}.chapno{font-size:46px}}
+@media (max-width:700px){
+  main.book{height:auto!important;display:block;padding:8px 8px 70px}
+  main.book .page.on{display:flex;border-radius:12px}
+  main.book .pbody{overflow:visible}
+  main.book .pbody>[data-sim] .cv{aspect-ratio:1.6!important;min-height:0}
+  main.scroll .spread{grid-template-columns:minmax(0,1fr)}
+  main.scroll .page.right{border-left:0;border-top:1px solid var(--line)}
+  .pbody{padding:16px 16px 10px}.pfoot{padding:0 16px}
+  .vocab{grid-template-columns:minmax(0,1fr)}
+  .bar{position:static}
+}
+@media (max-width:560px){.tools .btn,.tools .seg button{font-size:12.5px;padding:.1em .5em}#print{display:none}}
+@media print{
+  .bar,.pager,.listen,.skip{display:none!important}
+  body{background:#fff;font-size:11pt}
+  main.book,main.scroll{height:auto!important;display:block;padding:0;max-width:none;width:auto}
+  main .spread{display:block!important;box-shadow:none!important;margin:0}
+  main .page{display:block!important;overflow:visible!important;height:auto!important;break-after:page;background:#fff!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+  .pbody{overflow:visible!important;padding:0 0 16px!important}
+  .pfoot{border:0}.sim .ctl,.sim .say{display:none}
+  .checkset .tabs{display:none}.checkset>.check{display:flex!important}
+}
+body.measuring .page .sim:not(:has(>.cv)) .say{min-height:6.4em}
+/* page controls take the heading face */
+.pager .btn,.listen,.toc button{font-family:var(--display)!important}
+
+a.brand{color:inherit;text-decoration:none}
+</style>
+</head>
+<body>
+<a class="skip" href="#book">Skip to the reading</a>
+<header class="bar">
+  <a class="brand" href="index.html" title="Unit 2 home"><span class="logo" aria-hidden="true"></span><span><b>Chemistry Case Files</b><small>Unit 2 · Atomic Structure &amp; Theory</small></span></a>
+  <div class="tools">
+    <div class="seg" id="mode" role="group" aria-label="Reading mode"><button type="button" data-m="book" aria-pressed="true">Book</button><button type="button" data-m="scroll" aria-pressed="false">Scroll</button></div>
+    <button class="btn" id="simple" type="button" aria-pressed="false" title="Show every paragraph in simpler language">Simpler language</button>
+    <div class="dd"><button class="btn" id="toc-b" type="button" aria-expanded="false" aria-controls="toc">Contents</button><div class="toc" id="toc" hidden></div></div>
+    <button class="btn ghost" id="theme" type="button">Theme</button>
+    <button class="btn ghost" id="print" type="button">Print</button>
+  </div>
+  <div class="prog" aria-hidden="true"><i id="progbar"></i></div>
+</header>
+
+<main id="book" class="book">
+
+<!-- ===== Opener ===== -->
+<article class="spread" data-title="Chapter opener" data-short="Opener">
+ <div class="page left">
+   <p class="label">Unit 2 · Atomic Structure &amp; Theory</p>
+   <p class="chapno">2.1</p>
+   <h1>The development of atomic models</h1>
+   <figure class="stm"><svg viewBox="0 0 520 210" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration of a scanning tunneling microscope image: rows of soft, fuzzy bumps, one per atom"><defs><radialGradient id="bump" cx="45%" cy="40%"><stop offset="0" stop-color="#ffe6a8"/><stop offset=".45" stop-color="#e59a3c"/><stop offset="1" stop-color="#3b1d0c" stop-opacity="0"/></radialGradient></defs><rect width="520" height="210" fill="#1d0f08"/><g id="bumps"></g></svg>
+    <figcaption>Illustration of an image from a scanning tunneling microscope. Each bump is one atom: a fuzzy cloud, not a hard ball with orbits. Even this instrument senses only the outer surface of atoms.</figcaption></figure>
+   <p class="dual"><span class="std">No one has ever looked inside an atom the way one looks inside a box. A row of one million atoms would be roughly as wide as a human hair is thick. Yet chemists can describe what is inside an atom, where its mass is located and how its electrons behave. Each of these claims rests on experimental evidence.</span><span class="sim">Atoms are too small to see inside. A million atoms in a row are about as wide as one hair. Still, scientists know what is inside an atom. They learned it from experiments.</span></p>
+   <div class="dq"><p class="label">Driving question</p><p>How do scientists build a model of something they cannot see?</p></div>
+ </div>
+ <div class="page right">
+  <p class="label">In this chapter you will</p>
+  <ol class="objs">
+   <li><b>Build Dalton's model</b> and connect it to mass data. <span class="oid">2.1.1</span></li>
+   <li><b>Explain what cathode rays revealed</b> about electrons and build Thomson's model. <span class="oid">2.1.2</span></li>
+   <li><b>Use gold-foil results</b> to build the nuclear model. <span class="oid">2.1.3</span></li>
+   <li><b>Explain how Bohr's energy levels</b> produce hydrogen's line spectrum. <span class="oid">2.1.4</span></li>
+   <li><b>Explain why the uncertainty principle</b> replaced orbits with an electron cloud. <span class="oid">2.1.5</span></li>
+   <li><b>Explain why models change</b> and what each model explained. <span class="oid">2.1.6</span></li>
+  </ol>
+  <p class="teksline">TEKS C.6(A): construct models using Dalton's Postulates, Thomson's discovery of electron properties, Rutherford's nuclear atom, Bohr's nuclear atom, and Heisenberg's Uncertainty Principle to show the development of modern atomic theory over time.</p>
+  <div class="ag" id="ag-before"><p class="label">Before you read · Agree or disagree?</p><p class="do">Decide for each statement. You will check your answers at the end of the chapter.</p></div>
+ </div>
+</article>
+
+<!-- ===== 2.1.1 ===== -->
+<article class="spread" data-sec="2.1.1" data-title="How a model earns trust">
+ <div class="page left">
+  <header class="sech"><span class="secno">§2.1.1</span><h2>How a model earns trust</h2></header>
+  <p class="dual"><span class="std">A scientific <button class="term" type="button" data-t="model">model</button> is a simplified picture, object or set of rules that explains what we observe and predicts what we will observe next. A model of the atom need not look like a real atom. It must agree with the <button class="term" type="button" data-t="evidence">evidence</button>.</span><span class="sim">A model is a simple picture or set of rules. It explains what we see and predicts what we will see next. A model of the atom does not need to look like an atom. It needs to match the evidence.</span></p>
+  <p class="dual"><span class="std">Atomic models were built from indirect evidence. Scientists fired particles at atoms, sent electricity through gases and measured the light that atoms emit. They never saw inside an atom. They reasoned from the results to a model, much as one can infer the shape of an object sealed in a box by probing it from outside.</span><span class="sim">Scientists could not look inside atoms. So they did experiments: they shot particles at atoms, sent electricity through gases and studied the light atoms give off. Then they used the results to build a model, like finding the shape inside a sealed box by poking it.</span></p>
+  <p class="dual"><span class="std">A model is kept as long as it explains the evidence. When a reliable new result cannot be explained, scientists revise the model or replace it. This is not a failure; it is how science advances. This chapter traces four such changes.</span><span class="sim">Scientists keep a model while it fits the evidence. If new evidence does not fit, they fix the model or replace it. This is normal. In this chapter, the model of the atom changes four times.</span></p>
+  <p class="dual"><span class="std">Two terms must be kept distinct. A <button class="term" type="button" data-t="scientific law">scientific law</button> describes a pattern, such as “mass is conserved in a chemical reaction.” A <button class="term" type="button" data-t="scientific theory">scientific theory</button> explains why patterns happen; atomic theory explains why mass is conserved. A theory does not become a law, however well it is supported. The two serve different purposes.</span><span class="sim">A law describes what always happens. Example: mass stays the same in a reaction. A theory explains why it happens. Example: atomic theory. A theory never turns into a law. They have different jobs.</span></p>
+  <aside class="key"><p class="label">Key idea</p><p>A model is judged by evidence. When evidence appears that the model cannot explain, the model changes.</p></aside>
+ </div>
+ <div class="page right">
+  <p class="label">Try it · A model from indirect evidence</p>
+  <p class="do">A shape is sealed inside the box. Probe it, then choose the model that fits every probe.</p>
+  <div data-sim="blackBox"></div>
+  <div data-item="r1"></div>
+  <div data-item="r1b"></div>
+ </div>
+</article>
+
+<!-- ===== 2.1.2 Dalton (a) ===== -->
+<article class="spread" data-sec="2.1.2" data-title="Dalton: atoms from mass data">
+ <div class="page left">
+  <header class="sech"><span class="secno">§2.1.2</span><h2>Dalton: atoms from mass data</h2></header>
+  <p class="dual"><span class="std">Around 1800, chemists were carefully measuring masses in their reactions. Three patterns appeared repeatedly.</span><span class="sim">Around 1800, chemists carefully measured masses in reactions. They found three patterns.</span></p>
+  <ol class="laws">
+   <li><b>Conservation of mass</b> <span class="who">Antoine Lavoisier, 1780s</span><span class="dual"><span class="std">In a chemical reaction, the total mass of the products equals the total mass of the reactants. This is the <button class="term" type="button" data-t="law of conservation of mass">law of conservation of mass</button>.</span><span class="sim">The mass after a reaction equals the mass before it.</span></span></li>
+   <li><b>Definite proportions</b> <span class="who">Joseph Proust, 1790s</span><span class="dual"><span class="std">A <button class="term" type="button" data-t="compound">compound</button> always contains the same elements in the same proportions by mass. Pure water is 11.2% hydrogen by mass, whether it comes from a lake or a lab. This is the <button class="term" type="button" data-t="law of definite proportions">law of definite proportions</button>.</span><span class="sim">A compound always has the same makeup by mass. Water is always 11.2% hydrogen by mass, from any source.</span></span></li>
+   <li><b>Multiple proportions</b> <span class="who">John Dalton, 1803</span><span class="dual"><span class="std">When two elements form more than one compound, the masses of one element that combine with a fixed mass of the other are in a small whole-number ratio. This is the <button class="term" type="button" data-t="law of multiple proportions">law of multiple proportions</button>.</span><span class="sim">For a fixed mass of one element, the masses of the other in two compounds compare as small whole numbers, like 1 : 2.</span></span></li>
+  </ol>
+  <p class="dual"><span class="std">Dalton asked what kind of matter would produce these patterns. Whole-number ratios suggested that matter comes in countable pieces. He proposed that matter is made of tiny, separate particles that combine in fixed numbers. He called them <button class="term" type="button" data-t="atom">atoms</button>.</span><span class="sim">Dalton asked: what must matter be like to follow these patterns? Whole numbers suggest countable pieces. His answer: matter is made of tiny pieces called atoms.</span></p>
+  <aside class="key"><p class="label">Key idea</p><p>Mass data, not direct observation, were the first evidence for atoms.</p></aside>
+ </div>
+ <div class="page right">
+  <p class="label">Try it · Weigh the evidence</p>
+  <p class="do">Analyze each sample. Compare the three water samples with each other, then with hydrogen peroxide.</p>
+  <div data-sim="massTable"></div>
+  <div data-item="r2"></div>
+ </div>
+</article>
+
+<!-- ===== 2.1.2 Dalton (b) ===== -->
+<article class="spread" data-sec="2.1.2" data-title="Dalton's postulates">
+ <div class="page left">
+  <h3>Dalton's postulates (1808)</h3>
+  <p class="dual"><span class="std">Dalton stated his theory as four <button class="term" type="button" data-t="postulate">postulates</button>. Together they explain all three mass laws.</span><span class="sim">Dalton's theory has four main ideas. Together they explain the mass patterns.</span></p>
+  <ol class="post">
+   <li>All matter is made of tiny, indivisible particles called atoms.</li>
+   <li>Atoms of the same element are identical in mass and properties. Atoms of different elements differ. <span class="ex">explains definite proportions</span></li>
+   <li>Atoms combine in simple whole-number ratios to form compounds. <span class="ex">explains definite and multiple proportions</span></li>
+   <li>In a chemical reaction, atoms are rearranged. They are not created, destroyed or changed into atoms of another element. <span class="ex">explains conservation of mass</span></li>
+  </ol>
+  <figure class="fig"><svg viewBox="0 0 460 120" role="img" aria-label="Dalton's model: solid spheres. One carbon atom joins one oxygen atom to make carbon monoxide; one carbon atom joins two oxygen atoms to make carbon dioxide."><defs><radialGradient id="dC" cx="38%" cy="35%"><stop offset="0" stop-color="#9a9aa6"/><stop offset="1" stop-color="#2f3038"/></radialGradient><radialGradient id="dO" cx="38%" cy="35%"><stop offset="0" stop-color="#ff9b8a"/><stop offset="1" stop-color="#b3261e"/></radialGradient></defs>
+   <g font-family="var(--body)" font-size="13" font-weight="700" fill="var(--ink)" text-anchor="middle">
+   <circle cx="60" cy="52" r="24" fill="url(#dC)"/><circle cx="98" cy="52" r="20" fill="url(#dO)"/><text x="80" y="104">carbon monoxide</text><text x="80" y="118" font-weight="400" fill="var(--muted)">1 C : 1 O</text>
+   <circle cx="282" cy="52" r="20" fill="url(#dO)"/><circle cx="320" cy="52" r="24" fill="url(#dC)"/><circle cx="358" cy="52" r="20" fill="url(#dO)"/><text x="320" y="104">carbon dioxide</text><text x="320" y="118" font-weight="400" fill="var(--muted)">1 C : 2 O</text>
+   <text x="200" y="58" fill="var(--muted)" font-size="12" font-weight="400">same carbon,</text><text x="200" y="74" fill="var(--muted)" font-size="12" font-weight="400">twice the oxygen</text></g></svg>
+   <figcaption>Dalton pictured atoms as solid, indivisible spheres. One extra oxygen atom per carbon atom explains the 1 : 2 mass ratio.</figcaption></figure>
+  <p class="dual"><span class="std">Two postulates did not survive later evidence. Atoms contain smaller particles (§2.1.3), and atoms of one element can differ in mass (isotopes, Lesson 2.2). Postulate 4 still holds for chemical reactions. You use it every time you balance an equation.</span><span class="sim">Later, scientists found two problems. Atoms have smaller parts inside. Also, atoms of one element can have different masses. Postulate 4 is still true for chemical reactions.</span></p>
+ </div>
+ <div class="page right">
+  <p class="label">Worked examples · Multiple proportions</p>
+  <div class="we" id="we1">
+   <p class="weh"><span class="lvl">1 · Watch</span> Carbon forms two oxides. 1.00 g of carbon combines with <b>1.33 g</b> of oxygen in one and <b>2.66 g</b> in the other.</p>
+   <ol class="steps"><li><span class="k">Fix</span><span>Both masses are per 1.00 g of carbon, so they can be compared directly.</span></li><li><span class="k">Divide</span><span>larger ÷ smaller: 2.66 ÷ 1.33 = <b>2.0</b></span></li><li><span class="k">Interpret</span><span>The second compound has twice as many oxygen atoms per carbon atom: <b>CO and CO<sub>2</sub></b>.</span></li></ol>
+  </div>
+  <div class="we" id="we2">
+   <p class="weh"><span class="lvl">2 · Finish it</span> Nitrogen forms N<sub>2</sub>O and NO. 1.00 g of nitrogen combines with <b>0.571 g</b> of oxygen in one and <b>1.14 g</b> in the other.</p>
+   <ol class="steps"><li><span class="k">Fix</span><span>Both masses are per 1.00 g of nitrogen.</span></li><li><span class="k">Divide</span><span>1.14 ÷ 0.571 = <input type="number" step="0.01" class="wein" data-ans="2.0" data-tol="0.05" aria-label="Ratio"> <button class="btn wechk" type="button">Check</button></span></li><li><span class="k">Interpret</span><span><span class="wex" hidden>The ratio is 2 : 1. NO has twice as much oxygen per nitrogen atom as N<sub>2</sub>O.</span><span class="wehint">Compute the ratio first.</span></span></li></ol>
+  </div>
+  <div class="we" id="we3">
+   <p class="weh"><span class="lvl">3 · On your own</span> Sulfur forms SO<sub>2</sub> and SO<sub>3</sub>. 1.00 g of sulfur combines with <b>0.998 g</b> of oxygen in one and <b>1.497 g</b> in the other. What is the ratio of oxygen masses, and which whole-number ratio is it?</p>
+   <div class="row"><input type="number" step="0.01" class="wein" data-ans="1.5" data-tol="0.03" aria-label="Ratio of oxygen masses"><select class="wesel" aria-label="Whole-number ratio"><option value="">ratio…</option><option>1 : 1</option><option>2 : 1</option><option value="ok">3 : 2</option><option>4 : 3</option></select><button class="btn wechk" type="button">Check</button></div>
+   <p class="wex" hidden>1.497 ÷ 0.998 = 1.50 = 3/2, so the ratio is <b>3 : 2</b>. SO<sub>3</sub> has 3 oxygen atoms for every 2 in SO<sub>2</sub>, per sulfur atom.</p>
+  </div>
+  <div data-item="r3"></div>
+ </div>
+</article>
+
+<!-- ===== 2.1.3 Thomson (a) ===== -->
+<article class="spread" data-sec="2.1.3" data-title="Thomson: a particle smaller than an atom">
+ <div class="page left">
+  <header class="sech"><span class="secno">§2.1.3</span><h2>Thomson: a particle smaller than an atom</h2></header>
+  <p class="dual"><span class="std">In the late 1800s, physicists sealed two metal plates inside a glass tube, pumped out nearly all the air to make a near <button class="term" type="button" data-t="vacuum">vacuum</button>, and applied a high voltage. A beam traveled from the negative plate, the <button class="term" type="button" data-t="cathode">cathode</button>, and made the far end of the tube glow. They called it a <button class="term" type="button" data-t="cathode ray">cathode ray</button>, but scientists disagreed about what it was.</span><span class="sim">Scientists put two metal plates in a glass tube and pumped out almost all the air. With high voltage, a beam flowed from the negative plate, called the cathode. They named it a cathode ray. No one knew what it was.</span></p>
+  <p class="dual"><span class="std">In 1897, J. J. Thomson tested the beam. Each observation led to a conclusion.</span><span class="sim">In 1897, J. J. Thomson tested the beam. Here is what he saw and what he decided.</span></p>
+  <table class="oc"><thead><tr><th>Observation</th><th>Conclusion</th></tr></thead><tbody>
+   <tr><td>The beam bends toward a positive plate.</td><td>The particles are <b>negative</b>.</td></tr>
+   <tr><td>From how far electric and magnetic fields bend the beam, Thomson calculated its <button class="term" type="button" data-t="charge-to-mass ratio">charge-to-mass ratio</button>: more than 1,000 times that of a hydrogen ion.</td><td>The particles have <b>far less mass</b> than any atom.</td></tr>
+   <tr><td>The ratio is the same for every cathode metal and every gas he tested.</td><td>The same particle is part of <b>all atoms</b>.</td></tr>
+  </tbody></table>
+  <p class="dual"><span class="std">Thomson concluded that cathode rays are streams of tiny, negatively charged particles that are part of every atom. We now call them <button class="term" type="button" data-t="electron">electrons</button>. The atom was not indivisible after all.</span><span class="sim">Thomson decided the beam is made of tiny negative particles. They are in every atom. Today we call them electrons. So atoms do have smaller parts.</span></p>
+  <aside class="key"><p class="label">Key idea</p><p>Electrons are negatively charged, very light and found in all atoms.</p></aside>
+ </div>
+ <div class="page right">
+  <p class="label">Try it · Thomson's tube</p>
+  <p class="do">Turn on the plates, then the magnet. Then change the cathode metal and the gas. What stays the same?</p>
+  <div data-sim="cathode"></div>
+  <div data-item="r4"></div>
+  <div data-item="r5"></div>
+ </div>
+</article>
+
+<!-- ===== 2.1.3 Thomson (b) ===== -->
+<article class="spread" data-sec="2.1.3" data-title="Thomson's model">
+ <div class="page left">
+  <h3>Thomson's model (1904)</h3>
+  <p class="dual"><span class="std">Atoms have no overall charge. If they contain negative electrons, they must also contain an equal amount of positive charge. In 1904 Thomson proposed that an atom is a sphere of evenly spread positive charge with electrons embedded in it. It is often called the <i>plum pudding model</i>, after a British dessert dotted with raisins.</span><span class="sim">Atoms have no overall charge. So if they have negative electrons, they also need the same amount of positive charge. Thomson pictured a ball of spread-out positive charge with electrons inside it, like raisins in a pudding.</span></p>
+  <figure class="fig small" data-model="thomson"><figcaption>Thomson's model: positive charge spread through the whole atom, with electrons embedded in it.</figcaption></figure>
+  <p class="dual"><span class="std">Notice two features. The positive charge is spread out, not concentrated in one place, and the mass is spread through the whole atom. The next experiment tested exactly these two features.</span><span class="sim">Two features matter here. The positive charge is spread out, and the mass is spread out. The next experiment tested these two ideas.</span></p>
+  <details class="honors"><summary>Honors · How light is an electron?</summary>
+   <p>In 1909 Robert Millikan measured the electron's charge: e = 1.60 × 10<sup>−19</sup> C. Combine it with the charge-to-mass ratio, e/m = 1.76 × 10<sup>11</sup> C/kg:</p>
+   <p class="eqn">m = e ÷ (e/m) = 1.60 × 10<sup>−19</sup> C ÷ 1.76 × 10<sup>11</sup> C/kg ≈ 9.1 × 10<sup>−31</sup> kg</p>
+   <p>A hydrogen atom has a mass of 1.67 × 10<sup>−27</sup> kg, so an electron has about 1/1,800 the mass of the lightest atom.</p></details>
+ </div>
+ <div class="page right">
+  <p class="label">Construct it · Thomson's model</p>
+  <p class="do">Choose one option in each row to build Thomson's atom. Your drawing updates as you choose.</p>
+  <div data-sim="modelBuilder" data-target="thomson"></div>
+  <div data-item="r5b"></div>
+ </div>
+</article>
+
+<!-- ===== 2.1.4 Rutherford (a) ===== -->
+<article class="spread" data-sec="2.1.4" data-title="Rutherford: the nucleus">
+ <div class="page left">
+  <header class="sech"><span class="secno">§2.1.4</span><h2>Rutherford: the nucleus</h2></header>
+  <p class="dual"><span class="std">Starting in 1909, Hans Geiger and Ernest Marsden, working in Ernest Rutherford's lab in Manchester, England, aimed beams of <button class="term" type="button" data-t="alpha particle">alpha particles</button> at thin metal foils, including gold foil less than a thousandth of a millimeter thick. Alpha particles are fast, positively charged and about 7,300 times more massive than an electron. A screen around the foil flashed wherever one struck it.</span><span class="sim">Starting in 1909, Rutherford's team shot alpha particles at very thin gold foil. Alpha particles are fast and positive. Each has about 7,300 times the mass of an electron. A screen around the foil flashed where each one hit.</span></p>
+  <p class="dual"><span class="std">Thomson's model made a clear prediction. Its positive charge is spread thin, so nothing in the foil should be strong enough to turn a heavy, fast alpha particle around. Every particle should pass through, deflected by a degree or less.</span><span class="sim">Thomson's model predicted that every alpha particle would go almost straight through. Spread-out charge is too weak to turn them around.</span></p>
+  <h3>What they observed</h3>
+  <ul class="obs"><li>Most alpha particles passed straight through.</li><li>Some were <button class="term" type="button" data-t="deflect">deflected</button> at large angles.</li><li>A tiny fraction were turned through about 90° or more: roughly 1 in 20,000 for thin gold foil.</li></ul>
+  <p class="aside-note">Geiger and Marsden's first result (1909, platinum foil) was about 1 in 8,000. Rutherford's 1911 paper reports about 1 in 20,000 for gold. The key point is how tiny the fraction is.</p>
+  <blockquote>Rutherford later said it was “almost as incredible as if you fired a 15-inch shell at a piece of tissue paper and it came back and hit you.”</blockquote>
+ </div>
+ <div class="page right">
+  <p class="label">Try it · The gold-foil experiment</p>
+  <p class="do">Fire with Thomson's prediction first. Then switch to the real experiment and fire 20,000.</p>
+  <div data-sim="goldFoil"></div>
+  <div data-item="r6"></div>
+ </div>
+</article>
+
+<!-- ===== 2.1.4 Rutherford (b) ===== -->
+<article class="spread" data-sec="2.1.4" data-title="The nuclear model">
+ <div class="page left">
+  <h3>The nuclear model (1911)</h3>
+  <p class="dual"><span class="std">In 1911 Rutherford explained the results with a new model of the atom.</span><span class="sim">In 1911, Rutherford made a new model to explain the results.</span></p>
+  <ul class="obs">
+   <li><span class="dual"><span class="std">Most of the atom is empty space, so most alpha particles pass straight through.</span><span class="sim">The atom is mostly empty space. That is why most particles went straight through.</span></span></li>
+   <li><span class="dual"><span class="std">Nearly all the mass and all the positive charge are packed into a tiny center, the <button class="term" type="button" data-t="nucleus">nucleus</button>. Only a near head-on approach to this concentrated charge can turn an alpha particle back.</span><span class="sim">Almost all the mass and all the positive charge are in a tiny center, the nucleus. Only a near hit on the nucleus can push a particle back.</span></span></li>
+   <li><span class="dual"><span class="std">Electrons move through the space around the nucleus.</span><span class="sim">Electrons move around the nucleus.</span></span></li>
+  </ul>
+  <figure class="fig"><svg viewBox="0 0 460 150" role="img" aria-label="Scale comparison: a football stadium with a marble at its center"><g font-family="var(--body)" text-anchor="middle">
+   <ellipse cx="230" cy="78" rx="200" ry="62" fill="color-mix(in srgb,var(--ok) 18%,transparent)" stroke="var(--ok)" stroke-width="2"/><ellipse cx="230" cy="78" rx="150" ry="40" fill="none" stroke="var(--ok)" stroke-dasharray="4 5" opacity=".6"/>
+   <circle cx="230" cy="78" r="3" fill="var(--pos)"/><line x1="234" y1="76" x2="300" y2="40" stroke="var(--muted)" stroke-width="1"/><text x="335" y="36" font-size="12.5" font-weight="700" fill="var(--ink)">marble = nucleus</text>
+   <text x="230" y="146" font-size="12.5" font-weight="700" fill="var(--ink)">stadium = whole atom</text></g></svg>
+   <figcaption><b>An analogy:</b> if an atom were a football stadium, its nucleus would be a marble at the center, yet it would hold more than 99.9% of the atom's mass. Unlike a stadium, an atom has no hard outer wall: its edge is the fuzzy electron cloud.</figcaption></figure>
+  <p class="dual"><span class="std">The nuclear model left two puzzles. The physics of the time predicted that an electron moving around a nucleus should emit energy and spiral into it within a tiny fraction of a second, yet atoms are stable. The model also could not explain why each element emits only certain colors of light.</span><span class="sim">The model had two problems. Older physics said electrons should fall into the nucleus, but atoms do not collapse. The model also could not explain why each element gives off only certain colors of light.</span></p>
+  <p class="aside-note">Rutherford named the positive particles in the nucleus <b><button class="term" type="button" data-t="proton">protons</button></b> in 1920. Neutrons, discovered in 1932, are introduced in Lesson 2.2.</p>
+ </div>
+ <div class="page right">
+  <figure class="fig" data-model="rutherford"><figcaption>Rutherford's nuclear atom. The nucleus is drawn thousands of times too large; at true scale it would be invisible here.</figcaption></figure>
+  <div data-item="r7"></div>
+  <div data-item="r8"></div>
+ </div>
+</article>
+
+<!-- ===== 2.1.5 Bohr ===== -->
+<article class="spread" data-sec="2.1.5" data-title="Bohr: energy levels">
+ <div class="page left">
+  <header class="sech"><span class="secno">§2.1.5</span><h2>Bohr: energy levels</h2></header>
+  <p class="dual"><span class="std">When electricity passes through hydrogen gas, the gas glows pink-purple. A prism does not spread this light into a full rainbow. Instead, it separates the light into thin lines; four are bright: red, blue-green, blue-violet and violet. Each element produces its own pattern of lines, its <button class="term" type="button" data-t="line spectrum">line spectrum</button>.</span><span class="sim">Hydrogen gas glows when electricity passes through it. A prism splits this light into a few colored lines, not a rainbow. Four are bright. Each element has its own set of lines, its line spectrum.</span></p>
+  <p class="dual"><span class="std">In 1913 Niels Bohr explained hydrogen's lines with three ideas.</span><span class="sim">In 1913, Niels Bohr explained the lines with three ideas.</span></p>
+  <ol class="post">
+   <li>The electron can move only in certain orbits, each with a fixed energy. These are <button class="term" type="button" data-t="energy level">energy levels</button>, numbered n = 1, 2, 3 and so on.</li>
+   <li>While it stays in one level, the electron does not lose energy.</li>
+   <li>When the electron drops from a higher level to a lower one, the atom emits one <button class="term" type="button" data-t="photon">photon</button> whose energy equals the difference between the two levels.</li>
+  </ol>
+  <p class="dual"><span class="std">Only certain levels exist, so only certain energy differences exist, and only certain colors appear. The electron's energy is <button class="term" type="button" data-t="quantized">quantized</button>: it can have only certain fixed values, like the steps of a staircase rather than a ramp.</span><span class="sim">Energy is quantized: only some values are allowed, like steps on a staircase. So only some energy drops can happen, and only some colors appear.</span></p>
+  <p class="dual"><span class="std">Bohr's model matched hydrogen's lines almost exactly. It failed for atoms with more than one electron, and later evidence showed that electrons do not travel in fixed circular paths. The idea of fixed energy levels survived.</span><span class="sim">Bohr's model worked for hydrogen. It did not work for atoms with more than one electron. Electrons also do not move in circles. But the idea of energy levels is still used.</span></p>
+  <aside class="key"><p class="label">Key idea</p><p>A line spectrum is evidence that an electron's energy is quantized.</p></aside>
+ </div>
+ <div class="page right">
+  <p class="label">Try it · Hydrogen's energy ladder</p>
+  <p class="do">Excite the electron to a higher level, then let it drop to n = 2. Which drop produces which color?</p>
+  <div data-sim="bohr"></div>
+  <div data-item="r9"></div>
+  <div data-item="r10"></div>
+  <p class="aside-note">You will calculate these photon energies with E = hf in Lesson 2.4.</p>
+ </div>
+</article>
+
+<!-- ===== 2.1.6 Heisenberg ===== -->
+<article class="spread" data-sec="2.1.6" data-title="Heisenberg: the electron cloud">
+ <div class="page left">
+  <header class="sech"><span class="secno">§2.1.6</span><h2>Heisenberg: the electron cloud</h2></header>
+  <p class="dual"><span class="std">To locate an object, an observer must interact with it, for example by bouncing light off it. For a baseball, the push from that light is far too small to notice. For an electron, it is not.</span><span class="sim">To find where something is, you must bounce something off it, like light. Light barely moves a baseball. But it does move an electron.</span></p>
+  <p class="dual"><span class="std">In 1927 Werner Heisenberg showed that the limit runs deeper than any instrument. His <button class="term" type="button" data-t="uncertainty principle">uncertainty principle</button> states that it is impossible to know both the exact position and the exact <button class="term" type="button" data-t="momentum">momentum</button> (mass × velocity) of a particle at the same time. The more precisely one is known, the less precisely the other can be known. This is a property of nature, not a flaw in equipment.</span><span class="sim">In 1927, Heisenberg showed it is not just a problem with tools. His uncertainty principle says we can never know both exactly where an electron is and exactly how it is moving. The better we know one, the worse we know the other. Better tools cannot fix this.</span></p>
+  <p class="dual"><span class="std">If an electron's position and momentum can never both be known exactly, it cannot be pictured as following a definite orbit. The quantum mechanical model, developed between 1925 and 1927 by Heisenberg, Erwin Schrödinger and others, replaces orbits with <button class="term" type="button" data-t="orbital">orbitals</button>: regions where an electron is likely to be found. Together they form the <button class="term" type="button" data-t="electron cloud">electron cloud</button>, dense where the electron is likely to be and thin where it is unlikely.</span><span class="sim">So an electron cannot have an exact path. The modern model uses orbitals instead: places where the electron is likely to be. Together they make the electron cloud.</span></p>
+  <p class="dual"><span class="std">Bohr's energy levels survive in the quantum model. Electrons still have quantized energies, which is why the quantum model still explains line spectra. What changed is the description of where the electron is.</span><span class="sim">Energy levels are still part of the modern model. What changed is how we picture where the electron is.</span></p>
+  <aside class="key"><p class="label">Key idea</p><p>Electrons do not follow definite paths. The electron cloud shows where an electron is likely to be found.</p></aside>
+ </div>
+ <div class="page right">
+  <p class="label">Try it · Find the electron</p>
+  <p class="do">Measure the electron's position again and again. What pattern builds up?</p>
+  <div data-sim="cloud"></div>
+  <p class="label" style="margin-top:.6em">The trade-off</p>
+  <p class="do">Pin down the position more precisely. Watch what happens to the momentum spread.</p>
+  <div data-sim="uncertainty"></div>
+  <div data-item="r11"></div>
+  <div data-item="r12"></div>
+ </div>
+</article>
+
+<!-- ===== 2.1.7 Putting it together ===== -->
+<article class="spread" data-sec="2.1.7" data-title="Putting the models in order">
+ <div class="page left">
+  <header class="sech"><span class="secno">§2.1.7</span><h2>Putting the models in order</h2></header>
+  <table class="sum"><thead><tr><th>Model</th><th>Key evidence</th><th>Explained</th><th>Could not explain</th></tr></thead><tbody>
+   <tr><td><b>Dalton</b> 1808</td><td>Whole-number mass ratios</td><td>Mass laws</td><td>Charged particles inside atoms</td></tr>
+   <tr><td><b>Thomson</b> 1904</td><td>Cathode rays</td><td>Electrons in all atoms</td><td>Gold-foil bounce-backs</td></tr>
+   <tr><td><b>Rutherford</b> 1911</td><td>Gold-foil scattering</td><td>Tiny, dense, positive nucleus</td><td>Line spectra; stable atoms</td></tr>
+   <tr><td><b>Bohr</b> 1913</td><td>Hydrogen's line spectrum</td><td>Quantized energy levels</td><td>Atoms with more than one electron</td></tr>
+   <tr><td><b>Quantum</b> 1925 to 1927</td><td>Uncertainty principle and later experiments</td><td>Electron clouds with quantized energies</td><td>Still being refined</td></tr>
+  </tbody></table>
+  <p class="dual"><span class="std">Each model kept what still worked. Dalton's atoms are still the basic units of chemical reactions. Thomson's electrons, Rutherford's nucleus and Bohr's energy levels all remain part of the quantum model. A new model replaces an old one only if it explains everything the old one did, plus the new evidence.</span><span class="sim">Each new model kept the good parts of the old one. Today's model still has atoms, electrons, a nucleus and energy levels. A new model must explain everything the old one did, and the new evidence too.</span></p>
+  <aside class="key"><p class="label">Key idea</p><p>Models build on each other. Replacing a model does not mean it was useless.</p></aside>
+ </div>
+ <div class="page right">
+  <p class="label">Try it · Order the models</p>
+  <p class="do">Drag or use the arrows to put the models in time order. Match each one to the evidence that produced it.</p>
+  <div data-sim="timeline"></div>
+ </div>
+</article>
+
+<!-- ===== Review ===== -->
+<article class="spread" data-sec="review" data-title="Chapter review" data-short="Review">
+ <div class="page left">
+  <header class="sech"><span class="secno">Review</span><h2>Chapter review</h2></header>
+  <ul class="review">
+   <li><b>2.1.1</b> Mass laws led Dalton to propose solid, indivisible atoms that combine in whole-number ratios.</li>
+   <li><b>2.1.2</b> Cathode rays showed that atoms contain electrons: negatively charged, very light and present in all matter. Thomson's model spread the positive charge through the atom.</li>
+   <li><b>2.1.3</b> Gold-foil bounce-backs showed a tiny, dense, positive nucleus in an atom that is mostly empty space.</li>
+   <li><b>2.1.4</b> Hydrogen's line spectrum showed that electrons have fixed energy levels. Bohr's model explained it but failed for atoms with more than one electron.</li>
+   <li><b>2.1.5</b> The uncertainty principle rules out exact orbits. Electrons are described by a cloud of probability.</li>
+   <li><b>2.1.6</b> Models change when evidence demands it, and each new model keeps what still works.</li>
+  </ul>
+  <p class="label">Vocabulary · Vocabulario</p>
+  <div class="vocab" id="vocab"></div>
+ </div>
+ <div class="page right">
+  <div class="ag" id="ag-after"><p class="label">Revisit your predictions</p><p class="do">Answer again, then reveal. Did the evidence change your mind?</p></div>
+  <div class="sumup"><p class="label">Summarize in your notebook</p><p class="do">Answer the driving question in 3 to 4 sentences. Use these sentence starters.</p>
+   <ol class="starters"><li>Scientists could not see inside atoms, so they…</li><li>For example, the gold-foil experiment showed that…</li><li>When new evidence did not fit a model, scientists…</li><li>Today's model describes electrons as…</li></ol></div>
+  <div class="next"><p class="label">Next</p><p><b><a href="missions-2-1.html">Missions for Lesson 2.1</a>:</b> Evidence court, Model builder and Models at work.</p></div>
+  <p class="label" style="margin-top:1em">Sources and further reading</p>
+  <ul class="src"><li><a href="https://openstax.org/books/chemistry-2e/pages/2-2-evolution-of-atomic-theory" target="_blank" rel="noopener">OpenStax Chemistry 2e, 2.2 Evolution of Atomic Theory</a></li><li><a href="https://openstax.org/books/chemistry-2e/pages/6-2-the-bohr-model" target="_blank" rel="noopener">OpenStax Chemistry 2e, 6.2 The Bohr Model</a></li><li><a href="https://history.aip.org/exhibits/electron/jj1897.htm" target="_blank" rel="noopener">AIP History Center: Thomson's 1897 experiments</a></li></ul>
+ </div>
+</article>
+</main>
+
+<nav class="pager" aria-label="Page navigation">
+  <button class="btn" id="prev" type="button">← Previous</button>
+  <span id="pinfo" aria-live="polite"></span>
+  <button class="btn primary" id="next" type="button">Next →</button>
+</nav>
+
+<script>
+window.U2LESSON="21";
+/* Lesson 2.1 glossary (merged with every other lesson's at build time): term -> definition, Spanish term. One source for reading, slides and worksheets. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "model":{d:"A simplified picture, object or set of rules that explains observations and predicts new ones.",es:"modelo"},
+ "evidence":{d:"Observations or data that support or contradict an idea.",es:"evidencia"},
+ "scientific law":{d:"A statement that describes a pattern in nature, often as an equation. It states what happens, not why.",es:"ley científica"},
+ "scientific theory":{d:"A well-tested explanation of why patterns in nature happen, supported by many lines of evidence.",es:"teoría científica"},
+ "law of conservation of mass":{d:"In a chemical reaction, the total mass of the products equals the total mass of the reactants.",es:"ley de conservación de la masa"},
+ "law of definite proportions":{d:"A compound always contains the same elements in the same proportions by mass, whatever its source.",es:"ley de las proporciones definidas"},
+ "law of multiple proportions":{d:"When two elements form more than one compound, the masses of one element that combine with a fixed mass of the other are in a small whole-number ratio.",es:"ley de las proporciones múltiples"},
+ "postulate":{d:"A basic statement accepted as the starting point of a theory.",es:"postulado"},
+ "atom":{d:"The smallest particle of an element that keeps the element's identity in chemical reactions.",es:"átomo"},
+ "compound":{d:"A substance made of two or more elements chemically combined in a fixed ratio.",es:"compuesto"},
+ "cathode ray":{d:"A beam of electrons that travels from the negative electrode (the cathode) in a tube with almost no air.",es:"rayo catódico"},
+ "cathode":{d:"In a cathode-ray (discharge) tube, the negative electrode. In a battery or other cell, the cathode is named by the reaction there, not by its sign, and it can be positive.",es:"cátodo"},
+ "electron":{d:"A negatively charged particle with very little mass, found in all atoms outside the nucleus.",es:"electrón"},
+ "charge-to-mass ratio":{d:"A particle's electric charge divided by its mass. A large value means a large charge for a small mass.",es:"relación carga-masa"},
+ "alpha particle":{d:"A fast, positively charged particle made of 2 protons and 2 neutrons: a helium nucleus. Some radioactive substances emit it.",es:"partícula alfa"},
+ "nucleus":{d:"The tiny, dense, positively charged center of an atom. It holds almost all of the atom's mass.",es:"núcleo"},
+ "proton":{d:"A positively charged particle in the nucleus.",es:"protón"},
+ "energy level":{d:"One of the fixed energies an electron in an atom can have.",es:"nivel de energía"},
+ "line spectrum":{d:"The set of separate colored lines produced when light from a glowing element is spread out by a prism or grating. Each element has its own.",es:"espectro de líneas"},
+ "photon":{d:"A single packet of light energy.",es:"fotón"},
+ "quantized":{d:"Limited to certain fixed amounts, with no values in between.",es:"cuantizado"},
+ "momentum":{d:"Mass times velocity: a measure of an object's motion.",es:"cantidad de movimiento"},
+ "uncertainty principle":{d:"Heisenberg's principle: the exact position and the exact momentum of a particle cannot both be known at the same time.",es:"principio de incertidumbre"},
+ "orbital":{d:"A region around the nucleus where an electron is likely to be found.",es:"orbital"},
+ "electron cloud":{d:"The fuzzy region around the nucleus where electrons are likely to be. It is dense where an electron is likely and thin where it is unlikely.",es:"nube electrónica"},
+ "probability":{d:"How likely something is to happen, from 0 (never) to 1 (always).",es:"probabilidad"},
+ "vacuum":{d:"A space that contains almost no matter, including air.",es:"vacío"},
+ "deflect":{d:"To turn something away from its straight path.",es:"desviar"}
+});
+
+/* Lesson 2.2 glossary (merged with every other lesson's at build time). 2.1 already defines atom, electron, proton, nucleus, electron cloud. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "subatomic particle":{d:"A particle smaller than an atom. Atoms are built from three kinds: protons, neutrons and electrons.",es:"partícula subatómica"},
+ "neutron":{d:"A particle in the nucleus with no electric charge and a mass about equal to a proton's.",es:"neutrón"},
+ "element":{d:"A substance made of atoms that all have the same number of protons.",es:"elemento"},
+ "atomic number":{d:"The number of protons in an atom's nucleus (Z). It identifies the element.",es:"número atómico"},
+ "mass number":{d:"The number of protons plus neutrons in an atom's nucleus (A).",es:"número másico"},
+ "isotope":{d:"Atoms of the same element (same number of protons) with different numbers of neutrons, and so different mass numbers.",es:"isótopo"},
+ "isotope notation":{d:"A symbol that shows an atom's mass number at the upper left and atomic number at the lower left of the element symbol, such as carbon-14 written as ¹⁴₆C.",es:"notación isotópica"},
+ "ion":{d:"An atom or group of atoms with a net electric charge because it has gained or lost electrons.",es:"ion"},
+ "cation":{d:"A positive ion. It has fewer electrons than protons.",es:"catión"},
+ "anion":{d:"A negative ion. It has more electrons than protons.",es:"anión"},
+ "relative mass":{d:"A mass compared with a standard instead of given in kilograms. On this scale a proton and a neutron are each about 1 and an electron is about 1/1836.",es:"masa relativa"},
+ "neutral atom":{d:"An atom with equal numbers of protons and electrons, so its charges cancel and its net charge is zero.",es:"átomo neutro"},
+ "radioactive":{d:"Describes an unstable nucleus that emits radiation on its own. Some isotopes are radioactive; others are stable.",es:"radiactivo"},
+ "electrolyte":{d:"A substance that forms ions in water. In medicine, the word also means the dissolved ions themselves, such as Na⁺, K⁺, Ca²⁺ and Cl⁻ in body fluids.",es:"electrolito"}
+});
+
+/* Lesson 2.3 glossary (merged with every other lesson's at build time). 2.2 defines isotope, mass number, atomic number. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "atomic mass unit":{d:"A unit for the mass of atoms (u, also written amu): one twelfth of the mass of a carbon-12 atom.",es:"unidad de masa atómica"},
+ "isotopic mass":{d:"The mass of one atom of a particular isotope, in atomic mass units.",es:"masa isotópica"},
+ "percent abundance":{d:"The percentage of an element's atoms, in a natural sample, that are a particular isotope.",es:"abundancia porcentual"},
+ "weighted average":{d:"An average in which each value counts in proportion to how often it occurs.",es:"promedio ponderado"},
+ "average atomic mass":{d:"The weighted average mass of an element's naturally occurring isotopes, in atomic mass units. It is the value on the periodic table.",es:"masa atómica promedio"},
+ "mass spectrometer":{d:"An instrument that separates ions by their mass-to-charge ratio and measures how many of each there are. When every ion has the same charge, as in this lesson, that means sorting by mass.",es:"espectrómetro de masas"},
+ "mass spectrum":{d:"A graph from a mass spectrometer: mass on one axis, relative abundance on the other.",es:"espectro de masas"},
+ "isotope ratio":{d:"The amount of one isotope in a sample compared with the amount of another, such as carbon-13 compared with carbon-12. Small differences can reveal where a sample came from.",es:"relación isotópica"}
+});
+
+/* Lesson 2.4 glossary (merged with every other lesson's at build time). 2.1 already defines photon, energy level, line spectrum, quantized. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "electromagnetic radiation":{d:"Energy that travels through space as waves of electric and magnetic fields, such as visible light, radio waves and X-rays.",es:"radiación electromagnética"},
+ "electromagnetic spectrum":{d:"The whole range of electromagnetic radiation, ordered by wavelength or frequency, from radio waves to gamma rays.",es:"espectro electromagnético"},
+ "wavelength":{d:"The distance from one wave crest to the next (λ), measured in meters or nanometers.",es:"longitud de onda"},
+ "frequency":{d:"The number of wave crests that pass a point each second (f), measured in hertz (Hz).",es:"frecuencia"},
+ "hertz":{d:"The unit of frequency: one wave per second (1 Hz = 1 s⁻¹).",es:"hercio"},
+ "Planck's constant":{d:"The constant h = 6.626 × 10⁻³⁴ J·s that links a photon's energy to its frequency in E = hf.",es:"constante de Planck"},
+ "ground state":{d:"The lowest energy state of an atom, with every electron in the lowest levels available.",es:"estado fundamental"},
+ "excited state":{d:"A state of an atom in which an electron is in a higher energy level than in the ground state.",es:"estado excitado"},
+ "emission spectrum":{d:"The pattern of bright lines emitted by an excited gas. Each element's pattern is unique.",es:"espectro de emisión"},
+ "absorption spectrum":{d:"Dark lines in a continuous spectrum where a cooler gas has absorbed particular wavelengths.",es:"espectro de absorción"},
+ "continuous spectrum":{d:"An unbroken band containing every wavelength, like the rainbow from a glowing solid or dense gas.",es:"espectro continuo"},
+ "flame test":{d:"A test that identifies a metal ion by the color it gives a flame.",es:"prueba de llama"},
+ "spectroscope":{d:"An instrument that spreads light into its separate wavelengths so its lines can be seen and measured.",es:"espectroscopio"},
+ "speed of light":{d:"The speed of all electromagnetic radiation in a vacuum: c = 2.998 × 10⁸ m/s.",es:"velocidad de la luz"},
+ "nanometer":{d:"One billionth of a meter: 1 nm = 10⁻⁹ m. Visible light has wavelengths of about 380 to 700 nm.",es:"nanómetro"},
+ "visible light":{d:"The small part of the electromagnetic spectrum that human eyes can see, about 380 nm (violet) to 700 nm (red).",es:"luz visible"},
+ "infrared":{d:"Electromagnetic radiation with wavelengths longer than red light but shorter than microwaves. It is felt as heat.",es:"infrarrojo"},
+ "ultraviolet":{d:"Electromagnetic radiation with wavelengths shorter than violet light but longer than X-rays. It can cause sunburn.",es:"ultravioleta"},
+ "inverse relationship":{d:"When one quantity is multiplied by a factor, the other is divided by the same factor. Wavelength and frequency are inversely related.",es:"relación inversa"},
+ "direct relationship":{d:"When one quantity is multiplied by a factor, the other is multiplied by the same factor. Photon energy and frequency are directly related.",es:"relación directa"}
+});
+
+/* Lesson 2.5 glossary (merged with every other lesson's at build time). 2.1 already defines orbital, energy level, electron cloud. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "electron configuration":{d:"A list of the sublevels an atom's electrons occupy, with the number in each, such as 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>1</sup> for sodium.",es:"configuración electrónica"},
+ "sublevel":{d:"A set of orbitals of the same type (s, p, d or f) within one energy level.",es:"subnivel"},
+ "noble-gas configuration":{d:"A shortened electron configuration that starts from the previous noble gas in brackets, such as [Ne] 3s<sup>1</sup> for sodium.",es:"configuración de gas noble"},
+ "valence electron":{d:"An electron in the highest occupied energy level of an atom. Valence electrons take part in bonding.",es:"electrón de valencia"},
+ "Lewis dot structure":{d:"An element symbol surrounded by one dot for each valence electron.",es:"estructura de puntos de Lewis"},
+ "octet":{d:"A set of eight valence electrons, as in every noble gas except helium. It is a very stable arrangement.",es:"octeto"},
+ "group":{d:"A vertical column of the periodic table. Representative elements in the same group have the same number of valence electrons and similar properties.",es:"grupo"},
+ "period":{d:"A horizontal row of the periodic table. Its number matches the highest energy level occupied in the ground state.",es:"periodo"},
+ "representative element":{d:"An element in groups 1, 2 or 13 to 18, where the s or p sublevel is being filled.",es:"elemento representativo"},
+ "alkali metal":{d:"A group 1 element other than hydrogen (lithium to francium): one valence electron, very reactive, forms 1+ ions.",es:"metal alcalino"},
+ "alkaline earth metal":{d:"A group 2 element (beryllium to radium): two valence electrons, reactive, forms 2+ ions.",es:"metal alcalinotérreo"},
+ "halogen":{d:"A group 17 element (fluorine to astatine): seven valence electrons, a very reactive nonmetal, forms 1− ions.",es:"halógeno"},
+ "noble gas":{d:"A group 18 element (helium to radon): a filled outer level, so almost unreactive.",es:"gas noble"},
+ "transition metal":{d:"An element in groups 3 to 12, where a d sublevel is being filled.",es:"metal de transición"},
+ "core electron":{d:"An electron in the filled inner levels of an atom, below the valence electrons. The noble-gas symbol in brackets stands for the core.",es:"electrón interno"},
+ "block":{d:"A region of the periodic table named for the sublevel being filled: the s block (groups 1 and 2, plus helium), the p block (groups 13 to 18), the d block (groups 3 to 12) and the f block.",es:"bloque"},
+ "orbital diagram":{d:"A drawing of an atom's electrons as arrows in boxes, one box per orbital. The arrow direction shows the electron's spin.",es:"diagrama de orbitales"},
+ "diatomic molecule":{d:"A molecule made of two atoms joined together, such as Cl<sub>2</sub> or O<sub>2</sub>.",es:"molécula diatómica"},
+ "Aufbau principle":{d:"Electrons fill the lowest-energy orbitals available first.",es:"principio de Aufbau"},
+ "Pauli exclusion principle":{d:"An orbital holds at most two electrons, and they must have opposite spins.",es:"principio de exclusión de Pauli"},
+ "Hund's rule":{d:"Electrons occupy orbitals of equal energy one at a time, with the same spin, before any pair up.",es:"regla de Hund"}
+});
+
+/* Unit 2 item bank. Every item: id, objective, reading section, surface, DOK.
+   opts: [text, correct?, feedback]. Feedback for wrong options names the misconception. */
+window.OBJ=Object.assign(window.OBJ||{},{
+ "2.1.1":{teks:"C.6(A)",t:"Construct Dalton's model and link each postulate to mass evidence."},
+ "2.1.2":{teks:"C.6(A)",t:"Explain how cathode-ray experiments revealed the electron's properties and construct Thomson's model."},
+ "2.1.3":{teks:"C.6(A)",t:"Use gold-foil results to construct the nuclear model."},
+ "2.1.4":{teks:"C.6(A)",t:"Explain how Bohr's fixed energy levels account for hydrogen's line spectrum, and state the model's limits."},
+ "2.1.5":{teks:"C.6(A)",t:"Explain why the uncertainty principle replaced orbits with an electron cloud."},
+ "2.1.6":{teks:"C.6(A)",t:"Explain why models are revised and compare what each model explains."}
+});
+window.ITEMS=(window.ITEMS||[]).concat([
+ {id:"r1",obj:"2.1.6",sec:"2.1.1",surf:"reading",dok:1,q:"“In a chemical reaction, the total mass stays the same.” What kind of statement is this?",
+  opts:[["A scientific law. It describes a pattern that always happens.",1,"Correct. It describes what happens, not why, so it is a law."],
+        ["A scientific theory. It explains why mass is conserved.",0,"A theory explains why. This statement only describes the pattern. Atomic theory is what explains it."],
+        ["A hypothesis, because no one has proven it.",0,"It has been confirmed in countless experiments. Laws and theories are both well tested; they serve different purposes."]]},
+ {id:"r1b",obj:"2.1.6",sec:"2.1.1",surf:"reading",dok:2,q:"When do scientists replace a model of the atom?",
+  opts:[["When reliable new evidence cannot be explained by it.",1,"Correct. Evidence decides. Every model in this chapter was revised for that reason."],
+        ["When a newer model is easier to draw.",0,"Ease of drawing does not decide. Bohr's model is easier to draw than the quantum model, yet the quantum model replaced it because it fits more evidence."],
+        ["When the scientist who proposed it retires.",0,"Models are judged by evidence, not by who proposed them."]]},
+ {id:"r2",obj:"2.1.1",sec:"2.1.2",surf:"reading",dok:2,q:"Water from Lake Travis, from a lab and from melted ice is always 11.2% hydrogen by mass. Which law does this show?",
+  opts:[["Law of definite proportions",1,"Correct. A compound has the same proportions by mass, whatever its source."],
+        ["Law of conservation of mass",0,"Conservation of mass concerns the total mass before and after a reaction. These are three samples of one compound with the same makeup."],
+        ["Law of multiple proportions",0,"Multiple proportions compares two different compounds of the same elements, like water and hydrogen peroxide."]]},
+ {id:"r3",obj:"2.1.1",sec:"2.1.2",surf:"reading",dok:2,q:"Which of Dalton's postulates best explains the law of conservation of mass?",
+  opts:[["Atoms are rearranged in reactions, never created or destroyed.",1,"Correct. If every atom is still present after the reaction, the total mass cannot change."],
+        ["Atoms of the same element are identical.",0,"That postulate explains why a compound has fixed proportions, not why total mass is conserved."],
+        ["Atoms combine in whole-number ratios.",0,"That explains definite and multiple proportions. Conservation requires atoms that are neither created nor destroyed."]]},
+ {id:"r4",obj:"2.1.2",sec:"2.1.3",surf:"reading",dok:1,q:"A cathode ray bends toward the positive plate. What does this tell you about its particles?",
+  opts:[["They carry negative charge.",1,"Correct. Opposite charges attract, so the beam moves toward the positive plate."],
+        ["They carry positive charge.",0,"Like charges repel. A positive beam would bend away from the positive plate."],
+        ["They have no charge.",0,"A neutral beam would not bend in an electric field at all."]]},
+ {id:"r5",obj:"2.1.2",sec:"2.1.3",surf:"reading",dok:2,q:"Thomson obtained the same charge-to-mass ratio with different cathode metals and different gases. What did he conclude?",
+  opts:[["The same particle is part of all kinds of atoms.",1,"Correct. A particle found in every material must be a building block of all atoms."],
+        ["Only metals contain these particles.",0,"He also changed the gas in the tube and found the same particles, so they are not unique to metals."],
+        ["The particles come from the glass tube, not from atoms.",0,"The beam starts at the cathode and its properties never changed, whatever the materials. The particles come from matter in general."]]},
+ {id:"r5b",obj:"2.1.2",sec:"2.1.3",surf:"reading",dok:2,q:"The electron's charge-to-mass ratio is more than 1,000 times that of a hydrogen ion. If the charges are similar in size, what does that mean?",
+  opts:[["The electron has far less mass than a hydrogen atom.",1,"Correct. A charge of the same size divided by a much smaller mass gives a much larger ratio."],
+        ["The electron has far more mass than a hydrogen atom.",0,"A larger mass would make the ratio smaller, not larger."],
+        ["The electron carries 1,000 times more charge.",0,"The charges are about the same size, so the difference has to come from the mass."]]},
+ {id:"r6",obj:"2.1.3",sec:"2.1.4",surf:"reading",dok:2,q:"Thomson's model spreads positive charge thinly through the atom. What does it predict for alpha particles fired at gold foil?",
+  opts:[["Almost all pass through, bent by a degree or less.",1,"Correct. Spread-out charge is too weak to turn a fast, heavy alpha particle around."],
+        ["Many bounce straight back.",0,"Bouncing back requires a strong push from a concentrated charge. Thomson's model has none."],
+        ["All of them are absorbed by the foil.",0,"The model offers nothing dense enough to stop them. They should pass through."]]},
+ {id:"r7",obj:"2.1.3",sec:"2.1.4",surf:"reading",dok:3,q:"A few alpha particles bounced almost straight back. Why can electrons not be the cause?",
+  opts:[["An electron has about 1/7,300 the mass of an alpha particle and cannot turn it around.",1,"Correct. Like a ping-pong ball striking a bowling ball, a light electron cannot reverse a heavy alpha particle."],
+        ["Electrons are positive, so they repel alpha particles.",0,"Electrons are negatively charged. They would attract alpha particles, not push them back."],
+        ["Gold atoms have no electrons.",0,"All atoms have electrons. However, they are far too light to reverse an alpha particle."]]},
+ {id:"r8",obj:"2.1.3",sec:"2.1.4",surf:"reading",dok:2,q:"Most alpha particles went straight through the foil. What does this show?",
+  opts:[["Most of the atom is empty space.",1,"Correct. Most particles met nothing in their path."],
+        ["The nucleus fills most of the atom.",0,"If the nucleus were large, many particles would hit it and turn. Very few did, so it must be tiny."],
+        ["The foil had holes in it.",0,"The foil was continuous, more than a thousand atoms thick. The empty space is inside the atoms themselves."]]},
+ {id:"r9",obj:"2.1.4",sec:"2.1.5",surf:"reading",dok:2,q:"Glowing hydrogen gives only a few separate lines, not a full rainbow. How did Bohr explain this?",
+  opts:[["The electron can have only certain energies, so only certain energy drops, and certain colors, are possible.",1,"Correct. Fixed levels give fixed energy differences, each producing one color of photon."],
+        ["The electron can have any energy, so it emits every color.",0,"Any energy would produce a continuous rainbow. The lines show that energies are restricted."],
+        ["Hydrogen gas is a mixture of four different elements.",0,"Pure hydrogen produces these four lines. They come from one kind of atom with fixed energy levels."]]},
+ {id:"r10",obj:"2.1.4",sec:"2.1.5",surf:"reading",dok:2,q:"Which drop produces the photon with the most energy?",
+  opts:[["n = 6 to n = 2",1,"Correct. It is the largest of the three drops, so its photon carries the most energy (violet, 410 nm)."],
+        ["n = 3 to n = 2",0,"This is the smallest of the three drops, so it produces the lowest-energy photon (red, 656 nm)."],
+        ["n = 4 to n = 2",0,"This drop is larger than 3 to 2 but smaller than 6 to 2."]]},
+ {id:"r11",obj:"2.1.5",sec:"2.1.6",surf:"reading",dok:2,q:"Why can no microscope, however good, show an electron's exact path around the nucleus?",
+  opts:[["Exact position and exact momentum cannot both be known. That is a property of nature.",1,"Correct. The uncertainty principle is a property of nature, not a limit of instruments."],
+        ["Today's microscopes are not powerful enough yet.",0,"This is a common misconception. Heisenberg showed the limit holds for any instrument, however good."],
+        ["Electrons move too fast to film.",0,"Speed is not the issue. Even in principle, position and momentum cannot both be pinned down exactly."]]},
+ {id:"r12",obj:"2.1.5",sec:"2.1.6",surf:"reading",dok:2,q:"In the electron cloud picture, what does a dense region mean?",
+  opts:[["The electron is more likely to be found there.",1,"Correct. The cloud is a map of probability."],
+        ["Many electrons are packed there.",0,"A hydrogen atom has one electron, yet its cloud still has dense and thin regions. Density shows probability, not a crowd of electrons."],
+        ["The electron is stuck there.",0,"The electron is not fixed in place. A dense region is only where it is most likely to be found."]]},
+ {id:"s-cmp",obj:"2.1.1",sec:"2.1.2",surf:"slides",dok:2,q:"Water is always 11.2% hydrogen by mass. Hydrogen peroxide is always 5.9%. What does this show?",
+  opts:[["They are two different compounds, each with its own fixed proportions.",1,"Correct. Each compound has a fixed makeup, so different proportions mean a different compound."],
+        ["Hydrogen peroxide is impure water.",0,"Every pure sample of peroxide is 5.9% hydrogen. A fixed, repeatable value means a different compound, not a contaminated one."],
+        ["Mass is not conserved when peroxide forms.",0,"Conservation compares mass before and after a reaction. These are two compounds, each with its own fixed makeup."]]},
+ {id:"s-neg",obj:"2.1.2",sec:"2.1.3",surf:"slides",dok:1,q:"The beam bends toward the positive plate, so it is…",
+  opts:[["negative",1,"Correct. Opposite charges attract."],["positive",0,"Like charges repel. A positive beam would bend away from the positive plate."],["neutral",0,"A neutral beam would not bend in an electric field."]]},
+ {id:"s-all",obj:"2.1.2",sec:"2.1.3",surf:"slides",dok:2,q:"The bend stays the same, so these particles are…",
+  opts:[["part of all atoms",1,"Correct. A particle that comes out of every material must be a building block of all atoms."],["made by the glass tube",0,"The beam starts at the cathode, and its properties never change with the materials. The particles come from atoms in general."],["found only in metals",0,"Changing the gas also gave the same particles, so they are not unique to metals."]]},
+ {id:"s-gold",obj:"2.1.3",sec:"2.1.4",surf:"slides",dok:2,q:"Alpha particles are fired at gold foil. What do you predict?",
+  opts:[["Most pass through, but a few bounce back.",1,"Correct. About 1 in 20,000 bounced back from gold foil, and that requires a tiny, dense, positive nucleus."],
+        ["All pass through. None bounce back.",0,"That is what Thomson's model predicts, and it is why the result astonished physicists: about 1 in 20,000 bounced back."],
+        ["Most bounce back.",0,"Most passed straight through, which shows the atom is mostly empty space. Only about 1 in 20,000 bounced back."]]},
+ {id:"s-bohr",obj:"2.1.4",sec:"2.1.5",surf:"slides",dok:2,q:"Which drop produces hydrogen's violet line at 410 nm?",
+  opts:[["n = 6 to n = 2",1,"Correct. The largest drop to n = 2 releases the most energy, so its photon has the shortest wavelength: violet."],["n = 3 to n = 2",0,"This is the smallest drop to n = 2. It gives the lowest-energy photon: the red line at 656 nm."],["n = 4 to n = 2",0,"This drop gives the blue-green line at 486 nm. Violet needs a larger drop."]]},
+ {id:"s-unc",obj:"2.1.5",sec:"2.1.6",surf:"slides",dok:3,q:"A company says its new microscope will film an electron orbiting a nucleus. Your response?",
+  opts:[["Impossible: no instrument can measure exact position and momentum together.",1,"Correct. The uncertainty principle is a property of nature, so better equipment cannot overcome it."],
+        ["Possible, with enough magnification.",0,"Magnification is not the limit. The uncertainty principle holds for any instrument."],
+        ["Possible, if the electron is slowed down first.",0,"Slowing it down does not help. Pinning down position still makes momentum uncertain, and the reverse."]]},
+ {id:"s-keep",obj:"2.1.6",sec:"2.1.7",surf:"slides",dok:2,q:"Which statement about Bohr's model is accurate?",
+  opts:[["It was replaced, but its energy levels live on today.",1,"Correct. New models keep what still works."],["It was wrong, so none of it is used today.",0,"Its fixed energy levels are still part of the quantum model and still explain line spectra."],["It is still today's model.",0,"It failed for atoms with more than one electron and was replaced by the quantum model between 1925 and 1927."]]}
+]);
+
+/* ===== Unit 2 simulation kit: helpers shared by every lesson's simulations ===== */
+(function(){
+const U2=window.U2=window.U2||{};
+const TAU=Math.PI*2;
+const REDUCED=(()=>{try{return matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){return false}})();
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const FK=()=>window.U2FONTK||1;
+const F=(px,wt=600,fam='--body')=>`${wt} ${(px*FK()).toFixed(1)}px ${css(fam)}`;
+const el=(tag,cls,html)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e};
+const btn=(label,cls='btn')=>{const b=el('button',cls,label);b.type='button';return b};
+U2.el=el;U2.btn=btn;U2.css=css;
+function shell(root,aspect,label){root.classList.add('sim');const cv=el('div','cv');cv.style.aspectRatio=String(1/aspect);const c=el('canvas');c.setAttribute('role','img');if(label)c.setAttribute('aria-label',label);cv.append(c);root.append(cv);return{cv,c}}
+function fit(c){const w=c.clientWidth||300,h=c.clientHeight||180,r=(window.devicePixelRatio||1)*(window.U2SCALE||1)*(c._zoom||1);
+  if(c._w!==w||c._h!==h||c._r!==r){c.width=Math.max(1,Math.round(w*r));c.height=Math.max(1,Math.round(h*r));c._w=w;c._h=h;c._r=r}
+  const x=c.getContext('2d');x.setTransform(r,0,0,r,0,0);x.clearRect(0,0,w,h);return{x,w,h}}
+U2.fit=fit;
+/* draw loop: redraw on resize; animate while visible and busy */
+U2._loops=[];U2.kickAll=()=>U2._loops.forEach(f=>f());
+function loop(c,draw){let raf=null,vis=true,run=false,last=0;
+  function frame(t){raf=null;const dt=last?Math.min(.05,(t-last)/1000):0;last=t;const more=draw(dt);if(vis&&(run||more))raf=requestAnimationFrame(frame);else last=0}
+  const kick=()=>{if(!raf&&vis)raf=requestAnimationFrame(frame)};
+  try{new IntersectionObserver(es=>{vis=es[es.length-1].isIntersecting;if(vis)kick()}).observe(c)}catch(e){}
+  try{new ResizeObserver(()=>kick()).observe(c)}catch(e){addEventListener('resize',kick)}
+  U2._loops.push(kick);return{kick,set run(v){run=v;if(v)kick()}}}
+U2.loop=loop;
+function seg(labels,onPick,init=0){const s=el('div','seg');const bs=labels.map((l,i)=>{const b=btn(l,'');b.setAttribute('aria-pressed',String(i===init));b.onclick=()=>{bs.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));onPick(i)};s.append(b);return b});s.set=i=>{bs.forEach((x,k)=>x.setAttribute('aria-pressed',String(k===i)))};return s}
+U2.seg=seg;
+/* a readout: a small label over a value (r.v). r.hold(texts) keeps it as tall as the tallest of texts would make it, so a
+   value that wraps onto a second line does not push the rest of the simulation around. It re-measures when the row it sits in
+   changes width, not when it does itself: in a wrapping row its own width follows its text, and re-measuring then ratchets.
+   That check runs late, after layout, so the reading and the deck call U2.fitHolds() before they measure a page or slide. */
+const holds=[];U2.fitHolds=()=>holds.forEach(f=>f());
+function ro(label,val=''){const r=el('div','ro');r.innerHTML=`<small>${label}</small><span>${val}</span>`;r.v=r.querySelector('span');
+  r.hold=texts=>{let w=0;const box=r.parentElement||r;const fit=force=>{const cw=box.clientWidth;if(!cw||(cw===w&&!force))return;w=cw;const keep=r.v.textContent;r.style.minHeight='';let mh=0;
+      for(const t of texts){r.v.textContent=t;const b=r.getBoundingClientRect();mh=Math.max(mh,b.height*r.offsetWidth/(b.width||1))}r.v.textContent=keep;r.style.minHeight=mh+'px'};holds.push(fit);
+    try{new ResizeObserver(()=>fit()).observe(box)}catch(e){}if(document.fonts)document.fonts.ready.then(()=>fit(true));fit();return r};
+  return r}
+function grp(label,...kids){const g=el('div','grp');if(label)g.append(el('span','lab',label));kids.forEach(k=>g.append(k));return g}
+function sayBox(){const p=el('p','say');p.setAttribute('role','status');p.hidden=true;p.show=(t,k)=>{p.hidden=false;p.className='say'+(k?' '+k:'');p.innerHTML=t};return p}
+function wl2rgb(nm){let r=0,g=0,b=0;
+  if(nm<380)return'#8a7fd6';
+  if(nm<440){r=-(nm-440)/60;b=1}else if(nm<490){g=(nm-440)/50;b=1}else if(nm<510){g=1;b=-(nm-510)/20}else if(nm<580){r=(nm-510)/70;g=1}else if(nm<645){r=1;g=-(nm-645)/65}else if(nm<=780){r=1}
+  let f=nm<420?.3+.7*(nm-380)/40:nm>700?.3+.7*(780-nm)/80:1;const c=v=>Math.round(255*Math.pow(Math.max(0,v*f),.8));return`rgb(${c(r)},${c(g)},${c(b)})`}
+U2.wl2rgb=wl2rgb;
+function arrow(x,x0,y0,x1,y1,hd=8){const a=Math.atan2(y1-y0,x1-x0);x.beginPath();x.moveTo(x0,y0);x.lineTo(x1,y1);x.stroke();x.beginPath();x.moveTo(x1,y1);x.lineTo(x1-hd*Math.cos(a-.45),y1-hd*Math.sin(a-.45));x.lineTo(x1-hd*Math.cos(a+.45),y1-hd*Math.sin(a+.45));x.closePath();x.fill()}
+/* labels along one axis (items {at, sz}: the wanted centre and the label's size along the axis): sorted by position,
+   pushed apart just enough to leave `gap` between neighbours, and kept inside [a,b]. Each label's centre lands in .c,
+   so the caller can draw a leader from .c back to .at. If the labels cannot all fit, the ones nearest a overlap. */
+function spread(items,a,b,gap=0){items.sort((p,q)=>p.at-q.at);items.forEach(it=>it.c=Math.max(it.at,a+it.sz/2));
+  for(let i=1;i<items.length;i++){const p=items[i-1],q=items[i],d=(p.sz+q.sz)/2+gap;if(q.c-p.c<d)q.c=p.c+d}
+  const z=items[items.length-1];if(z&&z.c+z.sz/2>b){z.c=b-z.sz/2;for(let i=items.length-2;i>=0;i--){const q=items[i+1];items[i].c=Math.min(items[i].c,q.c-(items[i].sz+q.sz)/2-gap)}}
+  items.forEach(it=>{it.c=Math.max(it.c,a+it.sz/2)});return items}
+/* a pointer event's position in the canvas's own CSS pixels, the units its drawing uses. The deck scales every slide
+   and the zoom scales a card with a CSS transform, so the on-screen box differs from that size; reading clientX
+   against getBoundingClientRect() alone lands on the wrong point whenever the slide is not at 100%. */
+function ptr(c,e){const r=c.getBoundingClientRect(),k=c.clientWidth/(r.width||1);return{x:(e.clientX-r.left)*k,y:(e.clientY-r.top)*k}}
+
+Object.assign(U2,{TAU,REDUCED,FK,F,shell,ro,grp,sayBox,arrow,spread,ptr});
+})();
+
+/* ===== Keep symbols in their case inside uppercase labels =====
+   Labels styled text-transform:uppercase would turn λ into Λ, f into F, h into H and nm into NM:
+   different quantities and units. Any standalone symbol or lowercase unit inside such a label is
+   wrapped in span.kc (text-transform:none). Runs on load and on every later DOM change, so
+   readouts that sims rebuild stay correct. The English word "a" is left alone. */
+(function(){
+const TOK=/(^|[\s(=÷×·/,:;+−-])([b-zλνμΔδρ]|nm|pm|km|mm|cm|µm|μm|kg|mol)(?=$|[\s)=÷×·/,.:;+−-])/g;
+const UP=new WeakMap();
+function upper(e){if(UP.has(e))return UP.get(e);const v=getComputedStyle(e).textTransform==='uppercase';UP.set(e,v);return v}
+function fix(root){
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:t=>{
+    const p=t.parentElement;if(!p||p.closest('.kc,script,style,svg,textarea,input'))return NodeFilter.FILTER_REJECT;
+    TOK.lastIndex=0;return TOK.test(t.data)&&upper(p)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT}});
+  const hits=[];while(w.nextNode())hits.push(w.currentNode);
+  hits.forEach(t=>{const f=document.createDocumentFragment();let last=0;TOK.lastIndex=0;
+    t.data.replace(TOK,(m,pre,sym,i)=>{const s=i+pre.length;f.append(t.data.slice(last,s));const k=document.createElement('span');k.className='kc';k.textContent=sym;f.append(k);last=s+sym.length;return m});
+    f.append(t.data.slice(last));t.replaceWith(f)});
+}
+let q=new Set(),raf=0;
+function run(){raf=0;const r=[...q];q.clear();r.forEach(n=>{if(n.isConnected)fix(n)})}
+function start(){
+  const st=document.createElement('style');st.textContent='.kc{text-transform:none}';document.head.append(st);
+  fix(document.body);
+  new MutationObserver(ms=>{ms.forEach(m=>{const n=m.type==='characterData'?m.target.parentElement:m.target;if(n)q.add(n)});if(!raf)raf=requestAnimationFrame(run)})
+    .observe(document.body,{childList:true,subtree:true,characterData:true});
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
+})();
+
+/* Renders an item from ITEMS into a .check element. Shared by reading, slides and missions. */
+(function(){
+const U2=window.U2=window.U2||{};
+/* progress is kept per lesson; the theme choice is shared by the whole unit */
+const SKEY=(pre,k)=>k==='theme'?pre+k:pre+(window.U2LESSON?window.U2LESSON+':':'')+k;
+const store={get(k,d){try{const v=localStorage.getItem(SKEY('u2:',k));return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(SKEY('u2:',k),JSON.stringify(v))}catch(e){}}};
+U2.store=store;
+U2.item=id=>(window.ITEMS||[]).find(i=>i.id===id);
+U2.renderCheck=function(box,item,{onAnswer,remember=true,shuffle=true,label='Stop and check'}={}){
+  if(!item){box.textContent='Missing item';return}
+  box.classList.add('check');box.innerHTML='';
+  const meta=document.createElement('div');meta.className='meta';meta.innerHTML=`<span>${label}</span><span>Objective ${item.obj}${window.OBJ&&OBJ[item.obj]?' · '+OBJ[item.obj].teks:''}</span>`;
+  const q=document.createElement('p');q.className='q';q.innerHTML=item.q;
+  const opts=document.createElement('div');opts.className='opts';const fb=document.createElement('p');fb.className='fb';fb.setAttribute('role','status');
+  let order=item.opts.map((o,i)=>i);if(shuffle){const seed=[...item.id].reduce((a,c)=>a+c.charCodeAt(0),0);order.sort((a,b)=>((a*7+seed)%5)-((b*7+seed)%5))}
+  order.forEach(i=>{const[t,ok,f]=item.opts[i];const b=document.createElement('button');b.type='button';b.className='btn';b.innerHTML=t;b.dataset.i=i;
+    b.onclick=()=>{opts.querySelectorAll('.btn').forEach(x=>x.classList.remove('correct','wrong'));b.classList.add(ok?'correct':'wrong');fb.className='fb '+(ok?'ok':'no');fb.innerHTML=f;
+      if(remember){const s=store.get('chk',{});s[item.id]=ok?1:(s[item.id]===1?1:0);store.set('chk',s)}onAnswer&&onAnswer(ok,item)};opts.append(b)});
+  box.append(meta,q,opts,fb);
+  const prev=remember&&store.get('chk',{})[item.id];if(prev===1){const ci=item.opts.findIndex(o=>o[1]);const b=opts.querySelector(`[data-i="${ci}"]`);if(b){b.classList.add('correct');fb.className='fb ok';fb.innerHTML=item.opts[ci][2]}}
+};
+U2.glossaryPop=function(){let pop=null;
+  function close(){if(pop){pop.remove();pop=null}}
+  document.addEventListener('click',e=>{const t=e.target.closest('.term');if(!t){if(!e.target.closest('.gpop'))close();return}
+    const key=t.dataset.t,g=(window.GLOSS||{})[key];if(!g)return;close();pop=document.createElement('div');pop.className='gpop';pop.setAttribute('role','dialog');
+    pop.innerHTML=`<b>${key}</b><br>${g.d}<span class="es">Español: <i>${g.es}</i></span>`;document.body.append(pop);
+    const r=t.getBoundingClientRect(),pw=pop.offsetWidth,ph=pop.offsetHeight;let x=Math.min(innerWidth-pw-12,Math.max(12,r.left+r.width/2-pw/2)),y=r.bottom+8;if(y+ph>innerHeight-8)y=r.top-ph-8;pop.style.left=x+'px';pop.style.top=y+'px'});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});addEventListener('scroll',close,true)};
+})();
+
+/* ===== Lesson 2.1 simulations (mount with U2.<name>(el, opts)) ===== */
+(function(){
+const U2=window.U2;const {TAU,REDUCED,css,FK,F,el,btn,shell,fit,loop,seg,ro,grp,sayBox,wl2rgb,arrow,spread,ptr}=U2;
+/* ---------- 1. Black box: models from indirect evidence ---------- */
+U2.blackBox=function(root){
+  const SH=[{n:'Circle',circ:[.5,.5,.3]},{n:'Triangle',pts:[[.5,.18],[.83,.8],[.17,.8]]},{n:'Square',pts:[[.23,.23],[.77,.23],[.77,.77],[.23,.77]]},{n:'Diamond',pts:[[.5,.17],[.83,.5],[.5,.83],[.17,.5]]}];
+  const inside=(s,x,y)=>{if(s.circ){const[a,b,r]=s.circ;return(x-a)**2+(y-b)**2<r*r}let c=false;const p=s.pts;for(let i=0,j=p.length-1;i<p.length;j=i++){const[xi,yi]=p[i],[xj,yj]=p[j];if((yi>y)!==(yj>y)&&x<(xj-xi)*(y-yi)/(yj-yi)+xi)c=!c}return c};
+  const hit=(s,side,p)=>{for(let t=0;t<=1;t+=.002){const x=side==='L'?t:p,y=side==='L'?p:t;if(inside(s,x,y))return t}return null};
+  let secret=Math.floor(Math.random()*SH.length),probes=[],solved=false,box={x:0,y:0,s:1};
+  const{c}=shell(root,.62,'A sealed box. Probe lines enter from the left and top; dots mark where each probe hit the hidden shape.');const ctl=el('div','ctl');const msg=sayBox();
+  const bL=btn('Probe from the left'),bT=btn('Probe from the top'),cnt=ro('Probes','0');
+  const picks=SH.map((s,i)=>{const b=btn(s.n);b.onclick=()=>guess(i,b);return b});
+  const nb=btn('New box','btn ghost');
+  const START='Probe from the left and the top. When the hits outline a shape, choose your model.';
+  ctl.append(grp('',bL,bT,cnt),grp('Your model',...picks),nb);root.append(ctl,msg,el('p','simnote','Tip: click in the shaded margin left of or above the box to aim a probe yourself.'));msg.show(START);
+  const add=(side,p)=>{if(solved)return;p=Math.min(.97,Math.max(.03,p));probes.push({side,p,t:hit(SH[secret],side,p)});cnt.v.textContent=probes.length;L.kick()};
+  bL.onclick=()=>add('L',.06+Math.random()*.88);bT.onclick=()=>add('T',.06+Math.random()*.88);
+  c.addEventListener('click',e=>{const{x:mx,y:my}=ptr(c,e);
+    if(mx<box.x&&my>box.y&&my<box.y+box.s)add('L',(my-box.y)/box.s);else if(my<box.y&&mx>box.x&&mx<box.x+box.s)add('T',(mx-box.x)/box.s)});
+  function guess(i,b){if(solved)return;if(probes.length<3){msg.show('Collect at least 3 probes first. A model requires evidence.','');return}
+    picks.forEach(x=>x.classList.remove('correct','wrong'));
+    if(i===secret){solved=true;b.classList.add('correct');msg.show(`<b>Your model fits.</b> You never saw the shape. You inferred it from ${probes.length} probes, the way scientists inferred the structure of the atom.`,'ok')}
+    else{b.classList.add('wrong');const bad=probes.findIndex(pr=>{const g=hit(SH[i],pr.side,pr.p);return(g===null)!==(pr.t===null)||(g!==null&&Math.abs(g-pr.t)>.035)});
+      msg.show(bad>=0?`<b>Probe ${bad+1} rules out a ${SH[i].n.toLowerCase()}.</b> Its result does not match that shape. A model must fit every piece of evidence.`:`<b>A ${SH[i].n.toLowerCase()} fits all your probes so far, but it is not the hidden shape.</b> Two models can both fit limited evidence. Probe where the shapes would differ.`,'no')}
+    L.kick()}
+  nb.onclick=()=>{secret=(secret+1+Math.floor(Math.random()*(SH.length-1)))%SH.length;probes=[];solved=false;cnt.v.textContent=0;picks.forEach(x=>x.classList.remove('correct','wrong'));msg.show(START);L.kick()};
+  /* the box with a shaded aiming margin on its left and top; probe numbers sit in the margins, the legend to the right */
+  function draw(){const{x,w,h}=fit(c),k=FK(),fs=14*k,g=fs*2.1,ink=css('--ink'),mu=css('--muted'),ac=css('--accent'),wa=css('--warm');
+    x.font=F(14,600);const LEG=['probe hit the shape','probe passed through','click a margin to aim'],lw=Math.max(...LEG.map(t=>x.measureText(t).width))+fs*1.6;
+    let s=Math.min(h-g-8,w-g-lw-fs*2.5);const leg=s>=w*.4;if(!leg)s=Math.min(h-g-8,w-g-8);
+    const gx=(w-(g+s+(leg?fs+lw:0)))/2;box={x:gx+g,y:g+2,s};
+    x.fillStyle=css('--sunk');x.beginPath();x.roundRect(box.x,box.y-g,s,g-4,6);x.roundRect(box.x-g,box.y,g-4,s,6);x.fill();
+    x.fillStyle=mu;x.globalAlpha=.35;for(let t=.125;t<1;t+=.25){const a=box.x+t*s,b=box.y+t*s;x.beginPath();x.moveTo(a-5,box.y-11);x.lineTo(a+5,box.y-11);x.lineTo(a,box.y-5);x.fill();x.beginPath();x.moveTo(box.x-11,b-5);x.lineTo(box.x-11,b+5);x.lineTo(box.x-5,b);x.fill()}x.globalAlpha=1;
+    x.fillStyle=ink;x.globalAlpha=.88;x.fillRect(box.x,box.y,s,s);x.globalAlpha=1;
+    x.strokeStyle=mu;x.lineWidth=1;x.globalAlpha=.25;for(let q=-s;q<s;q+=14){x.beginPath();x.moveTo(box.x+Math.max(0,q),box.y+Math.max(0,-q));x.lineTo(box.x+Math.min(s,s+q),box.y+Math.min(s,s-q));x.stroke()}x.globalAlpha=1;
+    if(solved){const S=SH[secret];x.save();x.strokeStyle=css('--ok');x.lineWidth=3;x.setLineDash([7,5]);x.beginPath();if(S.circ)x.arc(box.x+S.circ[0]*s,box.y+S.circ[1]*s,S.circ[2]*s,0,TAU);else S.pts.forEach(([a,b],q)=>q?x.lineTo(box.x+a*s,box.y+b*s):x.moveTo(box.x+a*s,box.y+b*s));x.closePath();x.stroke();x.restore()}
+    const tops=[],lefts=[];
+    probes.forEach((p,i)=>{const L2=p.side==='L',sx=L2?box.x-3:box.x+p.p*s,sy=L2?box.y+p.p*s:box.y-3,ex=L2?box.x+(p.t??1)*s:sx,ey=L2?sy:box.y+(p.t??1)*s;
+      x.strokeStyle=p.t===null?mu:ac;x.lineWidth=2.5;x.setLineDash(p.t===null?[5,5]:[]);x.beginPath();x.moveTo(sx,sy);x.lineTo(ex,ey);x.stroke();x.setLineDash([]);
+      if(p.t!==null){x.fillStyle=wa;x.beginPath();x.arc(ex,ey,5,0,TAU);x.fill()}
+      (L2?lefts:tops).push({at:L2?sy:sx,t:String(i+1),miss:p.t===null})});
+    x.font=F(14,700);tops.forEach(it=>it.sz=x.measureText(it.t).width);lefts.forEach(it=>it.sz=fs*.9);
+    const ty=box.y-g*.42,rx=box.x-g*.4;x.lineWidth=1;
+    spread(tops,box.x,box.x+s,5).forEach(it=>{x.fillStyle=it.miss?mu:ink;x.textAlign='center';x.fillText(it.t,it.c,ty);x.strokeStyle=mu;x.beginPath();x.moveTo(it.c,ty+3);x.lineTo(it.at,box.y-3);x.stroke()});
+    spread(lefts,box.y,box.y+s,3).forEach(it=>{x.fillStyle=it.miss?mu:ink;x.textAlign='right';x.fillText(it.t,rx,it.c+fs*.35);x.strokeStyle=mu;x.beginPath();x.moveTo(rx+2,it.c);x.lineTo(box.x-3,it.at);x.stroke()});
+    if(!leg)return;const lx=box.x+s+fs;x.textAlign='left';x.fillStyle=ink;x.font=F(14,700);x.fillText('Sealed box',lx,box.y+fs);x.font=F(14,600);x.fillStyle=mu;
+    LEG.forEach((t,i)=>{const y=box.y+fs*(2.9+i*1.5),m=lx+fs*.55;
+      if(i===0){x.fillStyle=wa;x.beginPath();x.arc(m,y-fs*.32,5,0,TAU);x.fill()}
+      else if(i===1){x.strokeStyle=mu;x.lineWidth=2.5;x.setLineDash([5,5]);x.beginPath();x.moveTo(lx,y-fs*.32);x.lineTo(lx+fs*1.1,y-fs*.32);x.stroke();x.setLineDash([])}
+      else{x.fillStyle=css('--sunk');x.fillRect(lx,y-fs*.8,fs*1.1,fs*.9);x.strokeStyle=css('--line');x.lineWidth=1;x.strokeRect(lx,y-fs*.8,fs*1.1,fs*.9)}
+      x.fillStyle=mu;x.fillText(t,lx+fs*1.6,y)})}
+  const L=loop(c,draw);return{redraw:()=>L.kick()}};
+
+/* ---------- 2. Dalton mass table: definite and multiple proportions ---------- */
+U2.massTable=function(root){root.classList.add('sim');
+  const R=[{s:'Water, Lake Travis',m:25.0,h:2.80},{s:'Water, made in a lab',m:9.00,h:1.01},{s:'Water, melted ice',m:50.0,h:5.60},{s:'Hydrogen peroxide',m:17.0,h:1.01,pe:1}];
+  const t=el('table','masst');t.innerHTML='<thead><tr><th>Sample</th><th>Mass of sample</th><th>Mass of hydrogen</th><th>% hydrogen</th><th>g oxygen per 1 g hydrogen</th></tr></thead>';
+  const tb=el('tbody');t.append(tb);const msg=sayBox();let done=new Set();
+  R.forEach((r,i)=>{const tr=el('tr');if(r.pe)tr.className='pe';const o=r.m-r.h;
+    tr.innerHTML=`<td><b>${r.s}</b></td><td class="num">${r.m.toFixed(2)} g</td><td class="num">${r.h.toFixed(2)} g</td><td class="num a"></td><td class="num b"></td>`;
+    const b=btn('Analyze','btn sm');tr.querySelector('.a').append(b);
+    b.onclick=()=>{tr.querySelector('.a').innerHTML=`<span class="calc">${r.h.toFixed(2)} ÷ ${r.m.toFixed(2)} × 100 =</span> <b>${(r.h/r.m*100).toFixed(1)}%</b>`;
+      tr.querySelector('.b').innerHTML=`<span class="calc">${o.toFixed(2)} ÷ ${r.h.toFixed(2)} =</span> <b>${(o/r.h).toFixed(2)} g</b>`;done.add(i);upd()};tb.append(tr)});
+  function upd(){const w=[0,1,2].filter(i=>done.has(i)).length;
+    if(w>=2&&!done.has(3))msg.show(`<b>${w} water samples, same ${'11.2%'} hydrogen.</b> The source does not matter. Now analyze the hydrogen peroxide.`);
+    if(done.has(3)&&w<2)msg.show('Hydrogen peroxide has a different % hydrogen, so it is a different compound. Analyze two water samples to compare.');
+    if(done.has(3)&&w>=2)msg.show('<b>Definite proportions:</b> every water sample is 11.2% hydrogen by mass. <b>Multiple proportions:</b> per gram of hydrogen, peroxide has 15.83 g of oxygen and water has 7.93 g. 15.83 ÷ 7.93 = <b>2.0</b>, a whole-number ratio. Peroxide has twice as many oxygen atoms per hydrogen atom as water.','ok')}
+  const ts=el('div','tscroll');ts.append(t);root.append(ts,msg);msg.show('Press <b>Analyze</b> for each water sample, then for the hydrogen peroxide.');return{}};
+
+/* ---------- 3. Cathode-ray tube (Thomson) ---------- */
+U2.cathode=function(root){
+  const{c}=shell(root,.5,'Cathode-ray tube: a beam travels from the negative cathode to a glowing screen and bends in electric or magnetic fields.');let E=0,B=0,metal='Aluminum',gas='Air',tried=new Set(),ph=0;
+  const ctl=el('div','ctl');const msg=sayBox();
+  const sE=seg(['Plates off','Top plate +','Top plate −'],i=>{E=[0,1,-1][i];note();L.kick()});
+  const sB=seg(['Magnet off','Magnet on'],i=>{B=i;note();L.kick()});
+  const mSel=el('select');['Aluminum','Copper','Iron','Platinum'].forEach(m=>mSel.append(new Option(m)));
+  const gSel=el('select');['Air','Hydrogen','Carbon dioxide'].forEach(m=>gSel.append(new Option(m)));
+  mSel.onchange=()=>{metal=mSel.value;note(true)};gSel.onchange=()=>{gas=gSel.value;note(true)};
+  const rBend=ro('Beam bends','none'),rRat=ro('Charge-to-mass ratio','turn on a field');
+  ctl.append(grp('Electric field',sE),grp('Magnetic field',sB),grp('Cathode metal',mSel),grp('Trace gas',gSel));
+  const rs=el('div','ros');rs.append(rBend,rRat);root.append(ctl,rs,msg,el('p','simnote','The readout shows the modern value. A hydrogen ion\'s ratio is 9.58 × 10<sup>7</sup> C/kg, about 1,836 times smaller. Thomson\'s 1897 estimate already showed it was more than 1,000 times smaller.'));
+  const D=()=>-(E*.2)+(B?.2:0);
+  /* the message box starts with an instruction, so its reserved space is never blank */
+  function note(changed){const d=D(),on=E||B;
+    rBend.v.textContent=!on?'none':Math.abs(d)<1e-6?'balanced: straight':d<0?'up':'down';
+    rRat.v.innerHTML=on?'1.76 × 10<sup>11</sup> C/kg':'turn on a field';
+    if(on)tried.add(metal+'|'+gas);
+    if(!on){msg.show('Turn on the plates or the magnet and watch where the beam hits the screen.');return}
+    if(E&&!B)msg.show(E>0?'The beam bends <b>toward the positive plate</b>. Opposite charges attract, so the particles are <b>negative</b>.':'With the plate charges reversed, the beam bends the other way, again <b>toward the positive plate</b>. The particles are <b>negative</b>.');
+    else if(B&&!E)msg.show('A magnet also bends the beam, because a magnetic field pushes moving charged particles. How much they bend depends on their speed and charge-to-mass ratio.');
+    else if(Math.abs(d)<1e-6)msg.show('<b>Balanced.</b> The electric and magnetic forces cancel, and the beam travels straight. Thomson used this balance to find the particles\' speed, then their charge-to-mass ratio.','ok');
+    else msg.show('Both fields push the beam the same way. Try <b>Top plate +</b> with the magnet on to balance them.');
+    if(changed&&on){const n=new Set([...tried].map(s=>s.split('|')[0])).size,g=new Set([...tried].map(s=>s.split('|')[1])).size;
+      if(n+g>=3)msg.show(`<b>Same bend, same ratio</b> with ${n} cathode metal${n>1?'s':''} and ${g} gas${g>1?'es':''}. The same particle comes out of every material, so it must be part of <b>all atoms</b>.`,'ok')}}
+  function path(w,h){const y0=h*.5,x2=w*.4,x3=w*.6,x4=w*.925,Lf=x3-x2,k=D()*h/(Lf*Lf+2*Lf*(x4-x3));
+    return s=>{const x=w*.09+s*(x4-w*.09);let y=y0;if(x>x2){const u=Math.min(x,x3)-x2;y+=k*u*u;if(x>x3)y+=2*k*Lf*(x-x3)}return[x,y]}}
+  function draw(dt){ph+=dt;const{x,w,h}=fit(c);const y0=h*.5,ink=css('--ink'),mu=css('--muted');
+    x.strokeStyle=mu;x.lineWidth=2;x.fillStyle=css('--sunk');x.beginPath();x.roundRect(w*.04,h*.16,w*.92,h*.68,h*.2);x.fill();x.stroke();
+    x.fillStyle=css('--neg');x.fillRect(w*.075,y0-h*.14,7,h*.28);x.fillStyle=css('--pos');x.fillRect(w*.2,y0-h*.14,6,h*.11);x.fillRect(w*.2,y0+h*.03,6,h*.11);
+    x.font=F(14,700);x.textAlign='left';x.fillStyle=ink;x.fillText('cathode (−)',w*.05,h*.1);x.textAlign='center';x.fillText('anode (+)',w*.21,h*.93);x.textAlign='right';x.fillText('screen',w-8,h*.1);x.textAlign='center';
+    const tp=E>0?css('--pos'):E<0?css('--neg'):mu,bp=E>0?css('--neg'):E<0?css('--pos'):mu;
+    x.fillStyle=tp;x.fillRect(w*.4,h*.26,w*.2,6);x.fillStyle=bp;x.fillRect(w*.4,h*.74-6,w*.2,6);
+    x.font=F(18,800);x.fillStyle=tp;x.fillText(E>0?'+':E<0?'−':'',w*.5,h*.24);x.fillStyle=bp;x.fillText(E>0?'−':E<0?'+':'',w*.5,h*.81);
+    if(B){x.strokeStyle=css('--accent');x.lineWidth=1.5;x.globalAlpha=.55;for(let i=0;i<4;i++)for(let j=0;j<2;j++){const cx=w*(.425+i*.05),cy=h*(.36+j*.28),r=6;x.beginPath();x.arc(cx,cy,r,0,TAU);x.stroke();x.beginPath();x.moveTo(cx-4,cy-4);x.lineTo(cx+4,cy+4);x.moveTo(cx+4,cy-4);x.lineTo(cx-4,cy+4);x.stroke()}x.globalAlpha=1;
+      x.font=F(14,700);x.fillStyle=css('--accent');x.fillText('field into page',w*.5,h*.93)}
+    x.strokeStyle=css('--gold');x.lineWidth=4;x.beginPath();x.moveTo(w*.925,h*.2);x.lineTo(w*.925,h*.8);x.stroke();
+    const P=path(w,h);x.strokeStyle=css('--accent');x.globalAlpha=.28;x.lineWidth=5;x.beginPath();for(let s=0;s<=1;s+=.01){const[a,b]=P(s);s?x.lineTo(a,b):x.moveTo(a,b)}x.stroke();x.globalAlpha=1;
+    x.fillStyle=css('--accent');for(let i=0;i<14;i++){const s=((ph*.55)+i/14)%1;const[a,b]=P(s);x.beginPath();x.arc(a,b,2.6,0,TAU);x.fill()}
+    const[sx,sy]=P(1);const g=x.createRadialGradient(sx,sy,0,sx,sy,18);g.addColorStop(0,'rgba(120,255,140,.95)');g.addColorStop(1,'rgba(120,255,140,0)');x.fillStyle=g;x.beginPath();x.arc(sx,sy,18,0,TAU);x.fill();
+    x.font=F(14,600);x.fillStyle=mu;x.textAlign='center';x.fillText(metal+' cathode · '+gas.toLowerCase()+' traces',w*.6,h*.1);return !REDUCED}
+  const L=loop(c,draw);L.run=!REDUCED;note();return{}};
+
+/* ---------- 4. Gold foil (Geiger-Marsden / Rutherford) ---------- */
+U2.goldFoil=function(root){
+  const{c}=shell(root,.62,'Gold-foil experiment: alpha particles from a source hit gold foil; flashes on a ring-shaped detector show how far each one was deflected.');let mode=0,view=0,queue=0,flashes=[],bins=new Float32Array(180),n={all:0,st:0,tu:0,bk:0},fly=[],atomP=[];
+  const ctl=el('div','ctl');const msg=sayBox();
+  const sM=seg(["Thomson's prediction",'Real experiment'],i=>{mode=i;reset();say()});
+  const sV=seg(['Lab view','Zoom into atoms'],i=>{view=i;f8.disabled=!!i;L.kick()});
+  const f1=btn('Fire 1'),f100=btn('Fire 100'),f8=btn('Fire 20,000','btn primary'),rs=btn('Reset','btn ghost');
+  const rA=ro('Fired','0'),rS=ro('Nearly straight','0'),rT=ro('Turned 10° to 90°','0'),rB=ro('Bounced back','0');
+  ctl.append(grp('Model',sM),grp('View',sV),grp('',f1,f100,f8,rs));const ros=el('div','ros');ros.append(rA,rS,rT,rB);
+  root.append(ctl,ros,msg,el('p','simnote','Lab view uses the real proportion for gold foil reported by Rutherford in 1911: about 1 in 20,000 alpha particles turned back. In the zoomed view the nuclei are drawn far too large so that you can see them.'));
+  const C=Math.sqrt(1/20000);
+  function angle(){if(mode===0)return Math.abs((Math.random()+Math.random()+Math.random()-1.5)*1.1)*Math.PI/180;const b=Math.sqrt(Math.random());return 2*Math.atan(C/Math.max(b,1e-9))}
+  function rec(th){const d=th*180/Math.PI;n.all++;if(d<10)n.st++;else if(d<90)n.tu++;else n.bk++;bins[Math.min(179,Math.floor(d))]++;flashes.push({th,s:Math.random()<.5?1:-1,a:1});if(flashes.length>160)flashes.shift()}
+  function upd(){rA.v.textContent=n.all.toLocaleString();rS.v.textContent=n.st.toLocaleString();rT.v.textContent=n.tu.toLocaleString();rB.v.textContent=n.bk.toLocaleString()}
+  function reset(){queue=0;flashes=[];bins.fill(0);n={all:0,st:0,tu:0,bk:0};fly=[];atomP=[];upd();L.kick()}
+  function say(){if(!n.all){msg.show(mode===0?'<b>Predict first.</b> In Thomson\'s model the positive charge is spread thin. Fire alpha particles and see what the model predicts.':'<b>Now the real experiment.</b> Fire 20,000 and watch the bounced-back counter.');return}
+    if(mode===0)msg.show(`Thomson's model predicts every alpha particle passes through, deflected by about a degree. ${n.bk?'':'None bounce back.'} Switch to <b>Real experiment</b>.`);
+    else if(n.bk)msg.show(`<b>${n.bk} of ${n.all.toLocaleString()} bounced back.</b> Most passed straight through, so the atom is mostly empty space. The rare bounce-backs require a tiny, dense, positive center: the <b>nucleus</b>.`,'ok');
+    else msg.show(`Most pass straight through. Large deflections are rare. Keep firing: about 1 in 20,000 bounces back.`)}
+  f1.onclick=()=>fire(1);f100.onclick=()=>fire(100);f8.onclick=()=>fire(20000);rs.onclick=()=>{reset();say()};
+  function fire(k){if(view===1){for(let i=0;i<Math.min(k,12);i++)spawnAtom();L.kick();return}
+    if(k===1){fly.push({t:0,th:angle(),s:Math.random()<.5?1:-1});L.kick();return}queue+=k;L.kick()}
+  function spawnAtom(){const{h}={h:c.clientHeight};atomP.push({x:-10,y:20+Math.random()*(h-40),vx:260,vy:0,tr:[]})}
+  function draw(dt){const{x,w,h}=fit(c);const ink=css('--ink'),mu=css('--muted'),ac=css('--accent'),go=css('--gold');
+    if(view===0){const cx=w*.56,cy=h*.5,R=Math.min(h*.42,w*.36);
+      x.strokeStyle=mu;x.lineWidth=10;x.globalAlpha=.18;x.beginPath();x.arc(cx,cy,R,0,TAU);x.stroke();x.globalAlpha=1;
+      x.lineWidth=7;for(let i=0;i<180;i++){if(!bins[i])continue;const a=Math.min(1,.18+Math.log10(1+bins[i])*.32);x.strokeStyle=css('--warm');x.globalAlpha=a;for(const sg of[1,-1]){x.beginPath();x.arc(cx,cy,R,-sg*(i*Math.PI/180),-sg*((i+1)*Math.PI/180),sg>0);x.stroke()}}x.globalAlpha=1;
+      x.fillStyle=css('--muted');x.fillRect(w*.04,cy-16,w*.08,32);x.fillStyle=ink;x.font=F(14,700);x.textAlign='center';x.fillText('alpha source',w*.08,cy-24);
+      x.strokeStyle=ac;x.lineWidth=3;x.globalAlpha=.5;x.beginPath();x.moveTo(w*.12,cy);x.lineTo(cx-4,cy);x.stroke();x.globalAlpha=1;
+      x.fillStyle=go;x.fillRect(cx-3,cy-h*.2,6,h*.4);x.fillStyle=ink;x.fillText('gold foil',cx,cy-h*.22);x.textAlign='left';x.fillStyle=mu;x.fillText('ring = detector screen',8,h-8);x.textAlign='center';
+      if(queue>0){const k=Math.min(queue,420);for(let i=0;i<k;i++)rec(angle());queue-=k;upd();if(!queue)say()}
+      fly=fly.filter(p=>{p.t+=dt*1.6;const u=p.t;let px,py;if(u<1){px=w*.12+(cx-w*.12)*u;py=cy}else{const v=Math.min(1,u-1);px=cx+R*v*Math.cos(p.th);py=cy-p.s*R*v*Math.sin(p.th)}
+        x.fillStyle=ac;x.beginPath();x.arc(px,py,5,0,TAU);x.fill();if(u>=2){rec(p.th);upd();say();return false}return true});
+      flashes.forEach(f=>{f.a-=dt*.6;if(f.a<=0)return;x.fillStyle='rgba(120,255,140,'+f.a.toFixed(2)+')';x.beginPath();x.arc(cx+R*Math.cos(f.th),cy-f.s*R*Math.sin(f.th),5,0,TAU);x.fill()});flashes=flashes.filter(f=>f.a>0);
+      x.font=F(14,600);x.fillStyle=mu;x.textAlign='left';x.fillText('0°',cx+R+8,cy+4);x.textAlign='right';x.fillText('180°',cx-R-8,cy-8);
+      return queue>0||fly.length>0||flashes.length>0}
+    /* atom view */
+    /* the atoms sit below the title line, so the top row never runs under it */
+    const cols=4,rows=3,top=FK()*14*1.6,ra=Math.min(w/(cols*2.2),(h-top)/(rows*2.2)),nuc=[];
+    for(let i=0;i<cols;i++)for(let j=0;j<rows;j++){const ax=w*.32+i*ra*2.15,ay=top+(h-top)/2+(j-1)*ra*2.15+(i%2?ra*.5:0);nuc.push([ax,ay]);
+      if(mode===0){x.fillStyle=css('--pos');x.globalAlpha=.13;x.beginPath();x.arc(ax,ay,ra,0,TAU);x.fill();x.globalAlpha=1;x.fillStyle=css('--neg');for(let k=0;k<6;k++){const a=k*1.05+i+j,r=ra*(.35+.4*((k*37)%10)/10);x.beginPath();x.arc(ax+r*Math.cos(a),ay+r*Math.sin(a),2.2,0,TAU);x.fill()}}
+      else{x.strokeStyle=mu;x.globalAlpha=.25;x.setLineDash([3,4]);x.beginPath();x.arc(ax,ay,ra,0,TAU);x.stroke();x.setLineDash([]);x.globalAlpha=1;x.fillStyle=css('--pos');x.beginPath();x.arc(ax,ay,3.2,0,TAU);x.fill();x.fillStyle=css('--neg');for(let k=0;k<4;k++){const a=k*1.6+i*2+j,r=ra*(.5+.35*((k*53)%10)/10);x.beginPath();x.arc(ax+r*Math.cos(a),ay+r*Math.sin(a),1.6,0,TAU);x.fill()}}}
+    const K=260*260*9/2;atomP.forEach(p=>{let st=8;while(st--){const h2=dt/8;let ax=0,ay=0;if(mode===1)nuc.forEach(([qx,qy])=>{const dx=p.x-qx,dy=p.y-qy,r2=dx*dx+dy*dy+4,r=Math.sqrt(r2);if(r<ra*1.4){ax+=K*dx/(r2*r);ay+=K*dy/(r2*r)}});p.vx+=ax*h2;p.vy+=ay*h2;p.x+=p.vx*h2;p.y+=p.vy*h2}p.tr.push([p.x,p.y]);if(p.tr.length>90)p.tr.shift()});
+    atomP=atomP.filter(p=>p.x>-20&&p.x<w+20&&p.y>-20&&p.y<h+20);
+    x.strokeStyle=ac;x.lineWidth=2;atomP.forEach(p=>{x.beginPath();p.tr.forEach(([a,b],k)=>k?x.lineTo(a,b):x.moveTo(a,b));x.stroke();x.fillStyle=ac;x.beginPath();x.arc(p.x,p.y,3.5,0,TAU);x.fill()});
+    x.font=F(14,700);x.fillStyle=mu;x.textAlign='left';x.fillText(mode===0?'Thomson atoms: spread-out positive charge, electrons embedded':'Real atoms: tiny nucleus (drawn far too large), mostly empty space',10,FK()*14);
+    return atomP.length>0}
+  const L=loop(c,draw);say();return{}};
+
+/* ---------- 5. Bohr model: energy levels and line spectrum ---------- */
+U2.bohr=function(root){
+  const{c}=shell(root,.6,'Bohr model of hydrogen: orbits, an energy-level ladder (to scale above an axis break below n = 2), and the line spectrum produced by each drop.');let ni=3,nf=2,cur=1,anim=null,lines=[],ph=0;
+  const En=n=>-13.6/(n*n);
+  const ctl=el('div','ctl');const msg=sayBox();
+  const sI=seg(['n = 3','n = 4','n = 5','n = 6'],i=>{ni=i+3;rise=true;next()},0),sF=seg(['n = 2','n = 1'],i=>{nf=[2,1][i]});
+  const go=btn('Drop and emit','btn primary'),clr=btn('Clear lines','btn ghost');
+  const rE=ro('Energy drop','–'),rJ=ro('Photon energy','–'),rL=ro('Wavelength','–'),rC=ro('Light','–');
+  ctl.append(grp('Excite electron to',sI),grp('Drop to',sF),go,clr);const ros=el('div','ros');ros.append(rE,rJ,rL,rC);
+  root.append(ctl,ros,msg,el('p','simnote','Levels are to scale above the axis break; the real drop to n = 1 is 3 times the height above n = 2. Orbit sizes are not to scale, and electrons do not really follow circular paths.'));
+  const START='Choose a level to excite the electron, then press <b>Drop and emit</b>.';let pend=false,rise=false;
+  /* one move at a time: rise to the chosen level, then (if Drop and emit was pressed) fall to the chosen lower level.
+     Presses made while something moves wait their turn. Falling always emits, so the electron never moves down
+     between excited levels: the levels below it stay locked until it drops. */
+  function reach(){return Math.max(cur,anim&&anim.k==='up'?anim.to:0)}
+  function lock(){[...sI.children].forEach((b,i)=>{b.disabled=i+3<reach()})}
+  function next(){if(!anim){if(rise&&cur<ni)anim={k:'up',t:0,from:cur,to:ni};else{rise=false;if(pend){pend=false;if(cur>nf)anim={k:'down',t:0,from:cur,to:nf}}}}lock();L.kick()}
+  go.onclick=()=>{pend=rise=true;next()};
+  clr.onclick=()=>{lines=[];[rE,rJ,rL,rC].forEach(r=>r.v.textContent='–');msg.show(START);L.kick()};
+  function emit(a,b){const dE=En(a)-En(b),lam=1239.84/dE;lines.push({lam,a,b});
+    rE.v.textContent=dE.toFixed(2)+' eV';const J=dE*1.602e-19,e=Math.floor(Math.log10(J));rJ.v.innerHTML=(J/10**e).toFixed(2)+' × 10<sup>−'+(-e)+'</sup> J';rL.v.textContent=lam.toFixed(0)+' nm';
+    const vis=lam>=380&&lam<=700;rC.v.textContent=vis?(lam>620?'red':lam>480?'blue-green':lam>425?'blue-violet':'violet'):'ultraviolet';
+    msg.show(vis?`n = ${a} → n = ${b}: a <b>${rC.v.textContent}</b> line at ${lam.toFixed(0)} nm. Larger drops produce higher-energy photons and shorter wavelengths.`:`n = ${a} → n = 1 releases so much energy that the photon is <b>ultraviolet</b> (${lam.toFixed(0)} nm), invisible to the human eye.`,vis?'ok':'')}
+  const orbR=(n,R)=>R*(.16+.84*Math.pow((n-1)/5,.8));
+  /* Orbits (left) and the energy ladder (right of them) share the top; the spectrum strip runs across the bottom.
+     The ladder is to scale from n = 2 up to 0 eV. Its axis is broken above n = 1, whose gap is three times the whole
+     height above n = 2; drawn to scale it would squeeze the other five levels into a sliver. */
+  function draw(dt){ph+=dt;const{x,w,h}=fit(c),k=FK(),fs=14*k;const ink=css('--ink'),mu=css('--muted'),ac=css('--accent');
+    const ay0=h-fs*.35,sh=Math.max(16,Math.min(h*.08,34)),sy=ay0-fs*1.05-4-sh,lr=sy-6,H2=lr-fs-8,sx0=w*.04,sx1=w*.96,X=l=>sx0+(sx1-sx0)*(l-380)/(700-380);
+    const full=H2>=fs*8.9,lf=full?fs:Math.max(fs*.75,Math.min(fs,(H2-fs*.4-2)/6)),ls=lf/fs;
+    x.font=F(14*ls,700);const lab=n=>`n = ${n}   ${En(n).toFixed(2)} eV`,lw=Math.max(...[1,2,3,4,5,6].map(n=>x.measureText(lab(n)).width));x.font=F(14,700);const lw1=x.measureText('n = 1').width+14;
+    const R=Math.max(30,Math.min(w*.16,(H2-fs*1.6)/2)),lwid=Math.max(56,Math.min(w*.12,150)),tot=lw1+2*R+fs*2.5+lwid+14+lw,gx=Math.max(w*.02,(w-tot)/2);
+    const ax=gx+lw1+R,ay=fs*1.5+R,lx0=ax+R+fs*2.5,lx1=lx0+lwid,tx=lx1+14,ty=fs*1.6,y1=H2-fs*.4,yb=y1-Math.max(fs*2.6,H2*.2),bm=(yb+y1)/2;
+    const Y=n=>n===1?y1:ty+(yb-ty)*(En(n)/En(2));
+    /* orbits, with the electron moving between them */
+    for(let n=1;n<=6;n++){x.strokeStyle=mu;x.globalAlpha=n===cur?.9:.35;x.lineWidth=n===cur?2:1;x.beginPath();x.arc(ax,ay,orbR(n,R),0,TAU);x.stroke()}x.globalAlpha=1;
+    x.fillStyle=css('--pos');x.beginPath();x.arc(ax,ay,6,0,TAU);x.fill();
+    x.font=F(14,700);x.textAlign='center';x.lineJoin='round';x.lineWidth=4;x.strokeStyle=css('--paper2');x.strokeText('n = 6',ax,ay-R-5);x.fillStyle=mu;x.fillText('n = 6',ax,ay-R-5);
+    x.textAlign='right';x.fillText('n = 1',ax-R-8,ay+fs*.35);x.strokeStyle=mu;x.lineWidth=.9;x.beginPath();x.moveTo(ax-R-5,ay);x.lineTo(ax-orbR(1,R)-2,ay);x.stroke();
+    let rr=orbR(cur,R),th=ph*1.4;
+    if(anim&&anim.k!=='ph'){anim.t+=dt/.55;const u=Math.min(1,anim.t);rr=orbR(anim.from,R)+(orbR(anim.to,R)-orbR(anim.from,R))*u;if(u>=1){cur=anim.to;if(anim.k==='down'){emit(anim.from,anim.to);anim={k:'ph',t:0,from:anim.from,to:anim.to,lam:lines[lines.length-1].lam,x0:ax+rr*Math.cos(th),y0:ay+rr*Math.sin(th)}}else{anim=null;next()}}}
+    const ex=ax+rr*Math.cos(th),ey=ay+rr*Math.sin(th);
+    /* ladder: axis with a break, 0 eV at the top, each level labelled; labels fan out where levels crowd */
+    x.strokeStyle=mu;x.lineWidth=1.2;x.beginPath();x.moveTo(lx0-8,ty-fs*.4);x.lineTo(lx0-8,bm-6);x.moveTo(lx0-8,bm+6);x.lineTo(lx0-8,y1+3);x.stroke();
+    x.beginPath();x.moveTo(lx0-14,bm-3);x.lineTo(lx0-2,bm-9);x.moveTo(lx0-14,bm+9);x.lineTo(lx0-2,bm+3);x.stroke();
+    x.font=F(14,600);x.fillStyle=mu;x.textAlign='left';x.fillText(full?'0 eV (electron free)':'0 eV',lx0,ty-fs*.45);
+    x.setLineDash([3,4]);x.lineWidth=1;x.beginPath();x.moveTo(lx0,ty);x.lineTo(lx1,ty);x.stroke();x.setLineDash([]);
+    for(let n=6;n>=1;n--){const on=n===cur;x.strokeStyle=on?ac:ink;x.lineWidth=on?3:1.6;x.beginPath();x.moveTo(lx0,Y(n));x.lineTo(lx1,Y(n));x.stroke()}
+    const tags=[1,2,3,4,5,6].map(n=>({at:Y(n),sz:lf*1.1,n}));if(full)tags.push({at:bm,sz:lf*1.1});
+    spread(tags,full?ty-lf*.2:2,y1+lf*.6,0).forEach(t=>{const on=t.n===cur;x.textAlign='left';
+      if(!t.n){x.fillStyle=mu;x.font=F(14*ls,600);x.fillText('axis break: gap not to scale',tx,t.c+lf*.35);return}
+      if(Math.abs(t.c-t.at)>1){x.strokeStyle=mu;x.lineWidth=.9;x.beginPath();x.moveTo(lx1+2,t.at);x.lineTo(tx-3,t.c);x.stroke()}
+      x.fillStyle=on?ac:mu;x.font=F(14*ls,on?700:600);x.fillText(lab(t.n),tx,t.c+lf*.35)});
+    const flying=anim&&anim.k==='ph',last=lines[lines.length-1];
+    if(last){x.strokeStyle=last.lam<380?ink:wl2rgb(last.lam);x.fillStyle=x.strokeStyle;x.lineWidth=3;arrow(x,(lx0+lx1)/2,Y(last.a),(lx0+lx1)/2,Y(last.b)-2,9)}
+    /* spectrum strip: line labels above (spread apart where lines are close), the scale below */
+    x.fillStyle='#0b0b12';x.fillRect(sx0,sy,sx1-sx0,sh);
+    const shown=lines.filter(l=>!(flying&&l===last)),labs=[];
+    shown.forEach(l=>{if(l.lam<380)return;const xx=X(l.lam);x.fillStyle=wl2rgb(l.lam);x.globalAlpha=.3;x.fillRect(xx-5,sy,10,sh);x.globalAlpha=1;x.fillRect(xx-2,sy,4,sh);labs.push({at:xx,t:l.lam.toFixed(0)})});
+    x.font=F(14,700);labs.forEach(it=>it.sz=x.measureText(it.t).width);spread(labs,sx0,sx1,6).forEach(it=>{x.fillStyle=ink;x.textAlign='center';x.fillText(it.t,it.c,lr);x.strokeStyle=mu;x.lineWidth=.9;x.beginPath();x.moveTo(it.c,lr+3);x.lineTo(it.at,sy);x.stroke()});
+    const rg=x.createLinearGradient(sx0,0,sx1,0);for(let l=380;l<=700;l+=20)rg.addColorStop((l-380)/320,wl2rgb(l));x.fillStyle=rg;x.fillRect(sx0,sy+sh,sx1-sx0,4);
+    const uv=shown.filter(l=>l.lam<380).length;x.font=F(14,600);x.fillStyle=mu;x.textAlign='left';x.fillText('380 nm',sx0,ay0);x.textAlign='right';x.fillText('700 nm',sx1,ay0);
+    if(uv){x.textAlign='center';x.fillText(`+${uv} ultraviolet line${uv>1?'s':''} (not visible)`,(sx0+sx1)/2,ay0)}
+    /* the photon leaves the electron and travels to its place on the strip (or off its left end, for ultraviolet) */
+    if(flying){anim.t+=dt*.9;const u=Math.min(1,anim.t),vis=anim.lam>=380,p1=vis?[X(anim.lam),sy]:[sx0,ay0-fs*.4],dx=p1[0]-anim.x0,dy=p1[1]-anim.y0,Ln=Math.hypot(dx,dy),ux=dx/Ln,uy=dy/Ln,wl=Math.max(anim.lam,90)/25;
+      x.strokeStyle=vis?wl2rgb(anim.lam):ink;x.lineWidth=2.5;x.beginPath();const t1=u*Ln,t0=Math.max(0,t1-Math.min(90,Ln*.35));
+      for(let q=t0;q<=t1;q+=2){const a=6*Math.sin(q/wl),px=anim.x0+ux*q-uy*a,py=anim.y0+uy*q+ux*a;q===t0?x.moveTo(px,py):x.lineTo(px,py)}x.stroke();if(u>=1){anim=null;next()}}
+    x.fillStyle=css('--neg');x.beginPath();x.arc(ex,ey,6,0,TAU);x.fill();
+    return !!anim||!REDUCED}
+  const L=loop(c,draw);L.run=!REDUCED;msg.show(START);return{}};
+
+/* ---------- 6. Electron cloud (probability), in 3D ---------- */
+/* Hydrogen 1s. The distance r from the nucleus (in Bohr radii) follows r²·e^(−2r), sampled as the sum of three
+   exponential draws, in a uniformly random direction. The cloud is drawn in perspective and turns slowly: nearer dots
+   are larger and brighter. Dots are drawn in depth bands, far to near, so no per-frame sort is needed. */
+U2.cloud=function(root){
+  const{c}=shell(root,.7,'Electron cloud of a hydrogen atom in 3D: each dot marks one measured position of the electron around the nucleus. Drag, or use the arrow keys, to turn it.');
+  let pts=[],showB=false,showN=false,news=[],yaw=.5,pitch=.32,spin=!REDUCED,drag=null,rest=9;
+  const samp=()=>{const r=-.5*Math.log(Math.random()*Math.random()*Math.random()+1e-12),u=2*Math.random()-1,a=TAU*Math.random(),s=Math.sqrt(1-u*u);return[r*s*Math.cos(a),r*u,r*s*Math.sin(a)]};
+  /* the 90% radius, solved from the 1s cumulative distribution 1 − e^(−2R)(1 + 2R + 2R²) = 0.9 (about 2.66 Bohr radii) */
+  const R90=(()=>{let a=0,b=10;for(let i=0;i<50;i++){const m=(a+b)/2;if(1-Math.exp(-2*m)*(1+2*m+2*m*m)<.9)a=m;else b=m}return a})();
+  const ctl=el('div','ctl');const msg=sayBox();
+  const b1=btn('Find the electron'),b100=btn('Find it 100 times'),b1k=btn('1,000 times','btn primary'),cl=btn('Clear','btn ghost');
+  const tB=btn("Show Bohr's orbit"),tN=btn('Show 90% boundary'),tR=btn('Rotate');[tB,tN].forEach(b=>b.setAttribute('aria-pressed','false'));tR.setAttribute('aria-pressed',String(spin));
+  const rN=ro('Positions recorded','0'),rIn=ro("Inside Bohr's orbit",'–');
+  ctl.append(grp('',b1,b100,b1k,cl),grp('',tB,tN,tR));const ros=el('div','ros');ros.append(rN,rIn);
+  root.append(ctl,ros,msg,el('p','simnote','A hydrogen atom in its lowest energy level, in 3D: nearer dots are larger. Each dot is one measured position, sampled from the quantum model. Drag the cloud to turn it.'));
+  const add=k=>{for(let i=0;i<k;i++){const p=samp();pts.push(p);if(k===1)news.push({p,a:1})}if(pts.length>6000)pts=pts.slice(-6000);upd();L.kick()};
+  b1.onclick=()=>add(1);b100.onclick=()=>add(100);b1k.onclick=()=>add(1000);cl.onclick=()=>{pts=[];news=[];upd();L.kick()};
+  tB.onclick=()=>{showB=!showB;tB.setAttribute('aria-pressed',String(showB));upd();L.kick()};tN.onclick=()=>{showN=!showN;tN.setAttribute('aria-pressed',String(showN));L.kick()};
+  tR.onclick=()=>{spin=!spin;tR.setAttribute('aria-pressed',String(spin));rest=9;L.kick()};
+  /* turning by hand: drag (horizontal drags stay free for page scrolling on touch screens), or arrow keys while the
+     canvas has focus; the slow turn pauses while you hold the cloud and resumes 1.5 s after you let go */
+  c.tabIndex=0;c.style.cursor='grab';c.style.touchAction='pan-y';const tilt=v=>Math.max(-1.35,Math.min(1.35,v));
+  c.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,yaw,pitch};try{c.setPointerCapture(e.pointerId)}catch(_){}c.style.cursor='grabbing'});
+  c.addEventListener('pointermove',e=>{if(!drag)return;yaw=drag.yaw+(e.clientX-drag.x)*.012;pitch=tilt(drag.pitch+(e.clientY-drag.y)*.012);rest=0;L.kick()});
+  const let_go=()=>{drag=null;c.style.cursor='grab';L.kick()};c.addEventListener('pointerup',let_go);c.addEventListener('pointercancel',let_go);
+  c.addEventListener('keydown',e=>{const d={ArrowLeft:[-.2,0],ArrowRight:[.2,0],ArrowUp:[0,-.2],ArrowDown:[0,.2]}[e.key];if(!d)return;e.preventDefault();e.stopPropagation();yaw+=d[0];pitch=tilt(pitch+d[1]);rest=0;L.kick()});
+  function upd(){rN.v.textContent=pts.length.toLocaleString();const inn=pts.filter(p=>Math.hypot(...p)<1).length;rIn.v.textContent=pts.length?Math.round(100*inn/pts.length)+'%':'–';
+    if(pts.length<20)msg.show('Each measurement finds the electron at one point. Where will the next one be? Record more and look for a pattern.');
+    else if(pts.length<400)msg.show('No path appears, only scattered positions. Keep measuring.');
+    else msg.show(`A <b>cloud</b> appears: dense near the nucleus, thinning outward${showB?'':', the same from every side'}. It shows <b>where the electron is likely to be</b>, not a path.${showB?" Bohr's orbit marks the single most likely distance, but the electron is often found inside or outside it.":''}`,'ok')}
+  const D=10,NB=8;
+  function draw(dt){const{x,w,h}=fit(c),k2=FK(),fs=14*k2;if(!drag)rest+=dt;if(spin&&!drag&&rest>1.5)yaw+=dt*.3;
+    const ink=css('--ink'),mu=css('--muted'),ac=css('--accent'),ok=css('--ok'),wa=css('--warm'),pap=css('--paper2');
+    const Rs0=Math.min(w*.42,h*.44),s=Rs0*Math.sqrt(D*D-R90*R90)/(D*R90),cx=w/2,cy=h/2;
+    const cyw=Math.cos(yaw),syw=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);
+    const P=(X,Y,Z)=>{const x1=X*cyw+Z*syw,z1=-X*syw+Z*cyw,y2=Y*cp-z1*sp,z2=Y*sp+z1*cp,k=D/(D-z2);return[cx+x1*s*k,cy-y2*s*k,z2,k]};
+    /* a circle of radius R in the horizontal plane ('y') or a vertical one ('x'); only its front or back half */
+    function ring(R,ax,front){let pr=null,pen=false;x.beginPath();for(let i=0;i<=96;i++){const a=i/96*TAU,u=Math.cos(a)*R,v=Math.sin(a)*R,q=ax==='y'?P(u,0,v):P(0,u,v);
+      if((q[2]>=0)===front){if(!pen){const o=pr||q;x.moveTo(o[0],o[1])}x.lineTo(q[0],q[1]);pen=true}else{if(pen)x.lineTo(q[0],q[1]);pen=false}pr=q}x.stroke()}
+    const Rs=Rs0;
+    /* the 90% sphere: shaded darker toward its rim, lit from the upper left, so it reads as a ball rather than a disc */
+    if(showN){const sg=x.createRadialGradient(cx-Rs*.35,cy-Rs*.4,Rs*.08,cx,cy,Rs);sg.addColorStop(0,pap);sg.addColorStop(1,ok);x.fillStyle=sg;x.globalAlpha=.2;x.beginPath();x.arc(cx,cy,Rs,0,TAU);x.fill();x.globalAlpha=.35;x.strokeStyle=ok;x.lineWidth=1.2;x.setLineDash([3,4]);ring(R90,'y',false);ring(R90,'x',false);x.setLineDash([]);x.globalAlpha=1}
+    if(showB){x.strokeStyle=wa;x.lineWidth=2;x.globalAlpha=.45;x.setLineDash([6,5]);ring(1,'y',false);x.setLineDash([]);x.globalAlpha=1}
+    /* the dots, far to near */
+    const bands=Array.from({length:NB},()=>[]);pts.forEach(p=>{const q=P(p[0],p[1],p[2]);bands[Math.max(0,Math.min(NB-1,Math.floor((q[2]+3.2)/6.4*NB)))].push(q)});
+    const g=pts.length>2000?.6:1;x.fillStyle=ac;
+    bands.forEach((b,i)=>{const t=i/(NB-1),r=(1.05+.95*t);x.globalAlpha=(.2+.7*t)*g;x.beginPath();b.forEach(q=>{const rr=r*q[3];x.moveTo(q[0]+rr,q[1]);x.arc(q[0],q[1],rr,0,TAU)});x.fill()});x.globalAlpha=1;
+    if(showB){x.strokeStyle=wa;x.lineWidth=2.4;x.setLineDash([6,5]);ring(1,'y',true);x.setLineDash([])}
+    if(showN){x.strokeStyle=ok;x.lineWidth=1.4;x.globalAlpha=.8;ring(R90,'y',true);ring(R90,'x',true);x.globalAlpha=1;x.lineWidth=2.2;x.beginPath();x.arc(cx,cy,Rs,0,TAU);x.stroke()}
+    /* the nucleus, a small shaded sphere, kept visible on top */
+    const ng=x.createRadialGradient(cx-1.6,cy-1.6,.4,cx,cy,6);ng.addColorStop(0,'#fff');ng.addColorStop(.4,css('--pos'));ng.addColorStop(1,css('--pos'));x.fillStyle=ng;x.beginPath();x.arc(cx,cy,5.5,0,TAU);x.fill();
+    news.forEach(n=>{n.a-=dt*1.2;const q=P(...n.p);x.strokeStyle=wa;x.lineWidth=2;x.globalAlpha=Math.max(0,n.a);x.beginPath();x.arc(q[0],q[1],(6+10*(1-n.a))*q[3],0,TAU);x.stroke();x.globalAlpha=1});news=news.filter(n=>n.a>0);
+    /* labels, with a halo where they cross the dots */
+    x.lineJoin='round';const halo=(t,a,b2)=>{x.save();x.lineWidth=5;x.strokeStyle=pap;x.strokeText(t,a,b2);x.restore();x.fillText(t,a,b2)};
+    if(showB){let top=null;for(let i=0;i<48;i++){const a=i/48*TAU,q=P(Math.cos(a),0,Math.sin(a));if(!top||q[1]<top[1])top=q}x.font=F(14,700);x.textAlign='center';x.fillStyle=wa;halo("Bohr's orbit",top[0],top[1]-7)}
+    if(showN){x.font=F(14,700);x.fillStyle=ok;const L1='90% of measurements',L2='inside this sphere',tw=Math.max(x.measureText(L1).width,x.measureText(L2).width),ax=cx+Rs*.8,ay=cy-Rs*.6;
+      if(cx+Rs+14+tw<w-4){x.strokeStyle=ok;x.lineWidth=1;x.beginPath();x.moveTo(ax,ay);x.lineTo(cx+Rs+10,ay-fs*.2);x.stroke();x.textAlign='left';halo(L1,cx+Rs+14,ay-fs*.35);halo(L2,cx+Rs+14,ay+fs*.85)}
+      else{x.textAlign='center';halo(L1+' '+L2,cx,Math.min(h-4,cy+Rs+fs))}}
+    x.fillStyle=mu;x.font=F(14,600);x.textAlign='left';x.fillText('nucleus at center',8,h-8);x.textAlign='right';x.fillText('drag to turn',w-8,h-8);
+    return spin||!!drag||news.length>0}
+  const L=loop(c,draw);upd();return{}};
+
+/* ---------- 7. Uncertainty trade-off ---------- */
+U2.uncertainty=function(root){
+  const{c}=shell(root,.42,'Two bell curves side by side: how spread out the electron\'s position is, and how spread out its momentum is. Narrowing one widens the other.');let k=.5;const ctl=el('div','ctl');
+  const sl=el('input');sl.type='range';sl.min=0;sl.max=1;sl.step=.01;sl.value=k;sl.setAttribute('aria-label','How precisely position is pinned down');
+  const rX=ro('Position spread Δx',''),rP=ro('Momentum spread Δp',''),rXP=ro('Δx × Δp','');
+  /* the two end labels flank the slider on one row, so they read as its two ends */
+  const w2=el('div','grp');w2.style.cssText='flex:1;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:.6em';
+  const ends=['Position: loose','precise'].map(t=>{const e=el('span','lab',t);e.style.whiteSpace='nowrap';return e});w2.append(ends[0],sl,ends[1]);ctl.append(w2);const ros=el('div','ros');ros.append(rX,rP,rXP);
+  root.append(ctl,ros,el('p','simnote','Relative units. The product never drops below a fixed minimum, h/4π. Narrowing one spread always widens the other.'));
+  sl.oninput=()=>{k=+sl.value;L.kick()};
+  /* one bell curve per quantity. The curve keeps its area, so a narrow spread is a tall peak (capped at the panel top);
+     the double arrow spans one spread (Δ) either side of the centre, where the curve has fallen to 61% of its peak */
+  function bell(x,x0,x1,top,base,sf,col,t,ax,d,k2){const fs=14*k2,cx=(x0+x1)/2,hw=(x1-x0)/2,sg=sf*hw,pk=(base-top)*Math.min(1,.17/sf),ink=css('--ink'),mu=css('--muted');
+    x.fillStyle=ink;x.font=F(14,700);x.textAlign='center';x.fillText(t,cx,fs);
+    x.beginPath();x.moveTo(x0,base);for(let px=x0;px<=x1;px+=1.5){const u=(px-cx)/sg;x.lineTo(px,base-pk*Math.exp(-u*u/2))}x.lineTo(x1,base);x.closePath();
+    x.globalAlpha=.28;x.fillStyle=col;x.fill();x.globalAlpha=1;x.strokeStyle=col;x.lineWidth=2.4;x.stroke();
+    x.strokeStyle=mu;x.lineWidth=1.4;x.beginPath();x.moveTo(x0,base);x.lineTo(x1,base);x.stroke();
+    x.fillStyle=mu;x.font=F(14,600);x.textAlign='right';x.fillText(ax,x1,base+fs*1.15);
+    const ay=base-pk*Math.exp(-.5);x.strokeStyle=ink;x.fillStyle=ink;x.lineWidth=1.6;
+    if(sg>9){arrow(x,cx,ay,cx-sg,ay,6);arrow(x,cx,ay,cx+sg,ay,6)}else{x.beginPath();x.moveTo(cx-sg,ay);x.lineTo(cx+sg,ay);x.stroke()}
+    x.font=F(14,700);x.textAlign='left';x.fillText(d,cx+sg+6,ay+fs*.35)}
+  function draw(){const{x,w,h}=fit(c),k2=FK(),fs=14*k2;const dx=1.6*Math.pow(.08/1.6,k),dp=1/(dx*4);
+    rX.v.textContent=dx.toFixed(2);rP.v.textContent=dp.toFixed(2);rXP.v.textContent=(dx*dp).toFixed(2)+' (minimum)';
+    const top=fs*1.6,base=h-fs*1.5;
+    bell(x,w*.03,w*.47,top,base,dx/1.6*.42,css('--accent'),'Where is it?','position','Δx',k2);
+    bell(x,w*.53,w*.97,top,base,dp/3.125*.42,css('--warm'),'Where is it going?','momentum','Δp',k2)}
+  const L=loop(c,draw);return{}};
+
+/* ---------- 8. Model builder (construct a model) ---------- */
+const TARGETS={
+ dalton:{name:"Dalton's model (1808)",pos:0,e:0,m:0,why:{pos:"Dalton's atoms had no charges at all. Charged particles were discovered later.",e:"Dalton knew of no particles inside atoms. Electrons were identified in 1897.",m:"Dalton pictured a solid, uniform sphere with its mass spread through it."}},
+ thomson:{name:"Thomson's model (1904)",pos:1,e:1,m:0,why:{pos:"Thomson spread the positive charge through the whole atom. The nucleus came later.",e:"Thomson's electrons were embedded in the positive charge, like raisins in a pudding.",m:"With no nucleus, Thomson's atom had its mass spread through the whole sphere."}},
+ rutherford:{name:"Rutherford's model (1911)",pos:2,e:2,m:1,why:{pos:"Gold-foil bounce-backs require the positive charge packed into a tiny center.",e:"Rutherford placed electrons in the mostly empty space around the nucleus. He did not specify fixed levels.",m:"Only a dense center could turn back heavy alpha particles, so the mass is in the nucleus."}},
+ bohr:{name:"Bohr's model (1913)",pos:2,e:3,m:1,why:{pos:"Bohr kept Rutherford's small positive nucleus.",e:"Bohr's key change: electrons occupy fixed energy levels, which explains line spectra.",m:"Bohr kept the mass in the nucleus."}},
+ quantum:{name:"Quantum model (1925 to 1927)",pos:2,e:4,m:1,why:{pos:"The nucleus is still a tiny positive center.",e:"Because of the uncertainty principle, electrons are described by a probability cloud, not paths.",m:"The mass is still in the nucleus."}}};
+U2.TARGETS=TARGETS;
+const OPT={pos:['None','Spread through the atom','Packed in a tiny center'],e:['None','Embedded in the positive charge','Moving in empty space around a nucleus','In fixed energy levels (orbits)','A cloud of probability'],m:['Spread through the atom','Concentrated in a tiny center']};
+function modelSVG(cfg,id){const S=[];const P=(t)=>S.push(t);
+  P(`<svg viewBox="0 0 200 200" class="msvg" role="img" aria-label="Your model"><defs><radialGradient id="g${id}" cx="38%" cy="35%"><stop offset="0" stop-color="#d9dbe6"/><stop offset="1" stop-color="#7b8097"/></radialGradient><radialGradient id="c${id}"><stop offset="0" stop-color="var(--neg)" stop-opacity=".55"/><stop offset=".6" stop-color="var(--neg)" stop-opacity=".18"/><stop offset="1" stop-color="var(--neg)" stop-opacity="0"/></radialGradient></defs>`);
+  if(cfg.pos===0&&cfg.e===0&&cfg.m===0)P(`<circle cx="100" cy="100" r="78" fill="url(#g${id})"/>`);
+  else P(`<circle cx="100" cy="100" r="80" fill="${cfg.pos===1?'color-mix(in srgb,var(--pos) 22%,transparent)':'none'}" stroke="var(--muted)" stroke-dasharray="${cfg.pos===1?'0':'4 4'}" stroke-width="1.5"/>`);
+  if(cfg.pos===1)[[70,60],[130,70],[100,100],[60,120],[140,125],[95,150],[115,45]].forEach(([a,b])=>P(`<text x="${a}" y="${b}" font-size="16" font-weight="800" fill="var(--pos)" text-anchor="middle">+</text>`));
+  if(cfg.m===0&&cfg.pos!==1&&!(cfg.pos===0&&cfg.e===0))P(`<circle cx="100" cy="100" r="78" fill="var(--muted)" opacity=".12"/>`);
+  if(cfg.e===4)P(`<circle cx="100" cy="100" r="78" fill="url(#c${id})"/>`);
+  if(cfg.e===3)[30,50,70].forEach(r=>P(`<circle cx="100" cy="100" r="${r}" fill="none" stroke="var(--neg)" stroke-width="1.4" opacity=".7"/>`));
+  if(cfg.m===1||cfg.pos===2)P(`<circle cx="100" cy="100" r="5" fill="${cfg.pos===2?'var(--pos)':'var(--muted)'}"/>`);
+  const ep={1:[[72,78],[126,86],[90,122],[134,128],[64,140],[110,58],[100,98]],2:[[52,70],[150,92],[78,150],[136,146],[118,40]],3:[[130,100],[100,50],[51,92],[149,118],[80,165],[30,100]]}[cfg.e];
+  if(ep)ep.forEach(([a,b])=>P(`<circle cx="${a}" cy="${b}" r="5.5" fill="var(--neg)"/><text x="${a}" y="${b+3.5}" font-size="10" font-weight="800" fill="#fff" text-anchor="middle">−</text>`));
+  if(cfg.e===2)P(`<path d="M40 100 A60 40 0 0 1 160 100" fill="none" stroke="var(--neg)" stroke-dasharray="3 5" opacity=".5"/>`);
+  if(cfg.pos<0&&cfg.e<0&&cfg.m<0)P(`<text x="100" y="112" font-size="34" font-weight="800" fill="var(--muted)" text-anchor="middle">?</text>`);
+  P('</svg>');return S.join('')}
+U2.modelSVG=modelSVG;
+let MBid=0;
+U2.modelBuilder=function(root,{target='thomson',onDone}={}){root.classList.add('sim','mbuild');const id=++MBid;let T=TARGETS[target],cfg={pos:-1,e:-1,m:-1};
+  const head=el('p','mbhead');const grid=el('div','mbgrid');const opts=el('div','mbopts');const pv=el('div','mbprev');grid.append(opts,pv);const msg=sayBox();const chk=btn('Check my model','btn primary');
+  const rows={};['pos','e','m'].forEach(k=>{const lab={pos:'Positive charge',e:'Electrons',m:'Mass'}[k];const w=el('div','mbrow');w.append(el('span','lab',lab));const s=el('div','mbchoices');
+    OPT[k].forEach((t,i)=>{const b=btn(t,'btn');b.onclick=()=>{cfg[k]=i;[...s.children].forEach(x=>{x.setAttribute('aria-pressed',String(x===b));x.classList.remove('correct','wrong')});render()};s.append(b)});w.append(s);opts.append(w);rows[k]=s});
+  function render(){pv.innerHTML=modelSVG(cfg,id)+'<p class="simnote" style="text-align:center">Your model</p>'}
+  chk.onclick=()=>{if(cfg.pos<0||cfg.e<0||cfg.m<0){msg.show('Choose one option in each row first.');return}const bad=['pos','e','m'].filter(k=>cfg[k]!==T[k]);
+    ['pos','e','m'].forEach(k=>{const b=rows[k].children[cfg[k]];b.classList.add(cfg[k]===T[k]?'correct':'wrong')});
+    /* one reason at a time (the first row that does not match), so the feedback stays short enough to read from the back */
+    if(!bad.length){msg.show(`<b>That is ${T.name}.</b> Each feature matches the evidence of its time.`,'ok');onDone&&onDone(true)}
+    else{const lab={pos:'Positive charge',e:'Electrons',m:'Mass'};msg.show(`<b>${bad.length===1?'One row does':bad.length+' rows do'} not match yet.</b> ${lab[bad[0]]}: ${T.why[bad[0]]}`,'no');onDone&&onDone(false)}};
+  root.append(head,grid,chk,msg);
+  const api={set(t){target=t;T=TARGETS[t];cfg={pos:-1,e:-1,m:-1};head.innerHTML=`Build <b>${T.name}</b>.`;Object.values(rows).forEach(s=>[...s.children].forEach(x=>{x.setAttribute('aria-pressed','false');x.classList.remove('correct','wrong')}));msg.show('Choose one option in each row, then press <b>Check my model</b>.');render()}};
+  api.set(target);return api};
+
+/* ---------- 9. Timeline sort with evidence match ---------- */
+U2.timeline=function(root){root.classList.add('sim');
+  const M=[{k:'dalton',n:'Dalton',y:1808,ev:0},{k:'thomson',n:'Thomson',y:1904,ev:1},{k:'rutherford',n:'Rutherford',y:1911,ev:2},{k:'bohr',n:'Bohr',y:1913,ev:3},{k:'quantum',n:'Heisenberg and the quantum model',y:1927,ev:4}];
+  const EV=['Whole-number mass ratios in compounds','Cathode rays bent by electric and magnetic fields','Rare alpha-particle bounce-backs from gold foil','Hydrogen emits only certain colors of light','Position and momentum cannot both be known exactly'];
+  let order=[2,0,4,1,3];const list=el('ol','tl');const msg=sayBox();const chk=btn('Check order and evidence','btn primary');
+  function render(){list.innerHTML='';order.forEach((mi,pos)=>{const m=M[mi];const li=el('li','tlc');li.dataset.k=mi;
+      li.innerHTML=`<span class="grip" aria-hidden="true">⋮⋮</span><span class="thumb">${modelSVG({dalton:{pos:0,e:0,m:0},thomson:{pos:1,e:1,m:0},rutherford:{pos:2,e:2,m:1},bohr:{pos:2,e:3,m:1},quantum:{pos:2,e:4,m:1}}[m.k],'t'+mi)}</span><span class="tn"><b>${m.n}</b></span>`;
+      const s=el('select');s.setAttribute('aria-label','Key evidence for '+m.n);s.append(new Option('Key evidence…',''));EV.forEach((t,i)=>s.append(new Option(t,i)));s.value=li._v??(root._sel?.[mi]??'');s.onchange=()=>{root._sel=root._sel||{};root._sel[mi]=s.value};li.append(s);
+      const ud=el('span','ud');const up=btn('▲','btn ghost'),dn=btn('▼','btn ghost');up.setAttribute('aria-label','Move up');dn.setAttribute('aria-label','Move down');up.disabled=pos===0;dn.disabled=pos===order.length-1;
+      up.onclick=()=>{[order[pos-1],order[pos]]=[order[pos],order[pos-1]];render()};dn.onclick=()=>{[order[pos+1],order[pos]]=[order[pos],order[pos+1]];render()};ud.append(up,dn);li.append(ud);list.append(li)})}
+  let drag=null;list.addEventListener('pointerdown',e=>{const g=e.target.closest('.grip');if(!g)return;const li=g.closest('li');drag={li,y:e.clientY};li.classList.add('dragging');li.setPointerCapture(e.pointerId)});
+  list.addEventListener('pointermove',e=>{if(!drag)return;const items=[...list.children];const i=items.indexOf(drag.li);const r=drag.li.getBoundingClientRect();
+    if(e.clientY<r.top-4&&i>0){[order[i-1],order[i]]=[order[i],order[i-1]];list.insertBefore(drag.li,items[i-1])}else if(e.clientY>r.bottom+4&&i<items.length-1){[order[i+1],order[i]]=[order[i],order[i+1]];list.insertBefore(items[i+1],drag.li)}});
+  list.addEventListener('pointerup',()=>{if(drag){drag.li.classList.remove('dragging');drag=null;render()}});
+  chk.onclick=()=>{const okO=order.every((mi,i)=>mi===i);const sel=root._sel||{};const wrongE=M.filter((m,i)=>String(sel[i]??'')!==String(m.ev));
+    [...list.children].forEach((li,pos)=>{const mi=+li.dataset.k;li.classList.toggle('ok',mi===pos&&String(sel[mi]??'')===String(M[mi].ev));li.classList.toggle('no',!(mi===pos&&String(sel[mi]??'')===String(M[mi].ev)))});
+    if(okO&&!wrongE.length)msg.show('<b>All correct.</b> Each model explained the evidence that the one before it could not.','ok');
+    else msg.show((okO?'The order is correct. ':'Check the order: each model came after the evidence that overturned the previous one. ')+(wrongE.length?`${wrongE.length} evidence match${wrongE.length>1?'es need':' needs'} another look.`:''),'no')};
+  render();root.append(list,chk,msg);msg.show('Put the models in order with ▲ ▼ (or drag ⋮⋮) and choose the key evidence for each. Then check.');return{}};
+})();
+
+/* Lesson 2.1 reading setup: running head, anticipation guide, opener art */
+window.LESSON={
+ ch:'2.1 The development of atomic models',
+ weMsg:'Not yet. Divide the larger oxygen mass by the smaller one, then match the decimal to a whole-number ratio.',
+ ag:[["Scientists have photographed electrons orbiting the nucleus.",0,"Disagree. Electrons do not follow paths, and the uncertainty principle means no image can show one (§2.1.6)."],
+  ["Most of an atom is empty space.",1,"Agree. Most alpha particles passed straight through gold foil (§2.1.4)."],
+  ["A model that has been replaced was useless.",0,"Disagree. Each model explained the evidence of its time, and its correct parts survive (§2.1.7)."],
+  ["An atom's mass is spread evenly through it.",0,"Disagree. More than 99.9% of the mass is in the tiny nucleus (§2.1.4)."],
+  ["With better instruments, we could track an electron's exact path.",0,"Disagree. The uncertainty principle is a property of nature, not of instruments (§2.1.6)."]],
+ init(){
+  (()=>{const g=document.querySelector('#bumps');if(!g)return;let s='';for(let r=0;r<6;r++)for(let c=0;c<15;c++){const x=22+c*34+(r%2?17:0),y=22+r*33;s+=`<circle cx="${x}" cy="${y}" r="21" fill="url(#bump)"/>`}g.innerHTML=s})();
+  document.querySelectorAll('[data-model]').forEach(f=>{const t=U2.TARGETS[f.dataset.model];f.insertAdjacentHTML('afterbegin',U2.modelSVG({pos:t.pos,e:t.e,m:t.m},'f'+f.dataset.model))});
+ }
+};
+
+/* ===== Reading chapter controller: automatic pagination, book and scroll modes ===== */
+(function(){
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const store=U2.store,book=$('#book'),spreads=$$('.spread',book),origPages=$$('.page',book);
+const LS=window.LESSON||{};const CH=LS.ch||document.title;
+origPages.forEach(p=>{const b=document.createElement('div');b.className='pbody';while(p.firstChild)b.append(p.firstChild);p.append(b);p._spread=p.closest('.spread')});
+let pages=origPages.slice(),mode=store.get('mode','book'),cur=0;
+const narrow=matchMedia('(max-width:1000px)'),phone=matchMedia('(max-width:700px)');
+
+/* theme */
+const root=document.documentElement;let theme=store.get('theme',null);
+function applyTheme(){if(theme)root.setAttribute('data-theme',theme);else root.removeAttribute('data-theme');$('#theme').textContent=theme==='dark'?'Dark':theme==='light'?'Light':'Theme';U2.kickAll&&U2.kickAll()}
+$('#theme').onclick=()=>{theme=theme==='dark'?'light':theme==='light'?null:'dark';store.set('theme',theme);applyTheme()};applyTheme();
+
+/* simpler language */
+let simple=store.get('simple',false);const sb=$('#simple');
+function applySimple(){document.body.classList.toggle('simple',simple);sb.setAttribute('aria-pressed',String(simple))}
+sb.onclick=()=>{simple=!simple;store.set('simple',simple);applySimple();stopSpeech();repaginate()};applySimple();
+
+/* lesson-specific setup (opener art, model figures) */
+if(LS.init)LS.init();
+
+/* checks and check tabs */
+$$('[data-item]').forEach(b=>U2.renderCheck(b,U2.item(b.dataset.item),{onAnswer:()=>{progress();tabs()}}));
+const sets=[];origPages.forEach(p=>{const its=$$('[data-item]',p);if(its.length<2)return;const set=document.createElement('div');set.className='checkset';const tb=document.createElement('div');tb.className='tabs';set.append(tb);its[0].before(set);
+  its.forEach((it,i)=>{const b=U2.btn('Check '+(i+1),'btn');b.onclick=()=>{its.forEach((x,k)=>x.hidden=k!==i);[...tb.children].forEach(x=>x.setAttribute('aria-pressed',String(x===b)))};tb.append(b);set.append(it)});tb.children[0].click();sets.push({its,tb,set})});
+function tabs(){const s=store.get('chk',{});sets.forEach(({its,tb})=>its.forEach((it,i)=>tb.children[i].classList.toggle('done',s[it.dataset.item]===1)))}tabs();
+function progress(){const ids=$$('[data-item]').map(b=>b.dataset.item);const s=store.get('chk',{});const done=ids.filter(i=>s[i]===1).length;$('#progbar').style.width=(100*done/ids.length)+'%';buildToc()}
+
+/* sims */
+$$('[data-sim]').forEach(b=>{const f=U2[b.dataset.sim];if(f)f(b,{target:b.dataset.target})});
+
+/* worked examples */
+$$('.we').forEach(w=>{const ch=$('.wechk',w);if(!ch)return;ch.onclick=()=>{let ok=true;
+  $$('.wein',w).forEach(i=>{const v=parseFloat(i.value),a=+i.dataset.ans,t=+i.dataset.tol;const g=Math.abs(v-a)<=t;i.classList.toggle('good',g);i.classList.toggle('bad',!g);ok=ok&&g});
+  const sel=$('.wesel',w);if(sel){const g=sel.value==='ok';sel.classList.toggle('bad',!g);ok=ok&&g}
+  $$('.wex',w).forEach(x=>x.hidden=!ok);const h=$('.wehint',w);if(h)h.hidden=ok;
+  const m=$('.wemsg',w);m.hidden=ok;guard()}});
+$$('.we').forEach(w=>{if(!$('.wechk',w))return;const m=document.createElement('p');m.className='wemsg wex';m.style.background='var(--bad-soft)';m.hidden=true;m.textContent=w.dataset.msg||LS.weMsg||'Not yet. Check each step against the worked example, then try again.';w.append(m)});
+
+/* anticipation guide */
+const AG=LS.ag||[];
+function agRender(box,phase){const prev=store.get('ag',{});AG.forEach(([t,a,why],i)=>{const row=document.createElement('div');row.className='row';const p=document.createElement('p');p.textContent=t;row.append(p);
+    const v=document.createElement('p');v.className='verdict';v.hidden=true;v.innerHTML='✓ '+why;
+    const seg=U2.seg(['Agree','Disagree'],k=>{const s=store.get('ag',{});s[phase+i]=k===0?1:0;store.set('ag',s);if(phase==='a'){v.hidden=false;const ok=(k===0?1:0)===a;v.className='verdict '+(ok?'ok':'no');v.innerHTML=(ok?'✓ ':'✗ ')+why}},-1);
+    const cur0=prev[phase+i];if(cur0!=null)seg.set(cur0===1?0:1);row.append(seg);
+    if(phase==='a'){const b=prev['b'+i];const bf=document.createElement('span');bf.className='before';bf.textContent=b==null?'Before: no answer':'Before: '+(b===1?'Agree':'Disagree');p.append(bf);row.append(v);if(cur0!=null){const ok=cur0===a;v.hidden=false;v.className='verdict '+(ok?'ok':'no');v.innerHTML=(ok?'✓ ':'✗ ')+why}}
+    box.append(row)})}
+agRender($('#ag-before'),'b');agRender($('#ag-after'),'a');
+
+/* vocabulary */
+(()=>{const used=[...new Set($$('.term').map(t=>t.dataset.t))].sort();$('#vocab').innerHTML=used.map(k=>`<div><button class="term" type="button" data-t="${k}">${k}</button><i>${(GLOSS[k]||{}).es||''}</i></div>`).join('')})();
+U2.glossaryPop();
+
+/* page chrome: footer and listen button */
+let speaking=null;
+function stopSpeech(){try{speechSynthesis.cancel()}catch(e){}$$('.reading').forEach(x=>x.classList.remove('reading'));$$('.listen').forEach(b=>{b.textContent='Listen';b.setAttribute('aria-pressed','false')});speaking=null}
+function chrome(p){const f=document.createElement('div');f.className='pfoot';f.innerHTML='<span class="pn"></span><span class="lw"></span><span class="rh"></span>';p.append(f);
+  if(!('speechSynthesis' in window))return;const b=U2.btn('Listen','btn ghost listen');b.setAttribute('aria-pressed','false');b.title='Read this page aloud';$('.lw',f).append(b);
+  b.onclick=()=>{if(speaking===p){stopSpeech();return}stopSpeech();speaking=p;b.textContent='Stop';b.setAttribute('aria-pressed','true');
+    const parts=$$('h1,h2,h3,.dual,.laws li,.post li,.obs li,blockquote,.key p:not(.label),.objs li,.oc tr,.do,.weh,.review li,.starters li,figcaption,.aside-note',p).filter(e=>e.offsetParent!==null&&!e.closest('.check')&&!(e.classList.contains('dual')&&e.closest('li')&&e.closest('li')!==e));
+    let i=0;const next=()=>{$$('.reading',p).forEach(x=>x.classList.remove('reading'));if(speaking!==p||i>=parts.length){if(speaking===p)stopSpeech();return}
+      const e=parts[i++];const t=(e.classList.contains('dual')?($(simple?'.sim':'.std',e)||e):e).innerText.replace(/\s+/g,' ').trim();if(!t){next();return}
+      e.classList.add('reading');const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=simple?.88:.95;u.onend=next;u.onerror=next;speechSynthesis.speak(u)};next()}}
+origPages.forEach(chrome);
+
+/* ---------- automatic pagination ----------
+   Each authored page keeps its block list. In book mode, blocks that do not fit flow onto continuation pages,
+   measured with every hidden answer revealed so later reveals never overflow. Lists split item by item. */
+origPages.forEach(p=>{p._blocks=[...$('.pbody',p).children];p._blocks.forEach(b=>b._sp=p._spread)});
+spreads.forEach(sp=>{const fp=origPages.find(p=>p._spread===sp);sp._first=fp&&fp._blocks[0]});
+$$('[data-item]').forEach(e=>e._sp=e.closest('.spread'));
+const LISTS=$$('ol.laws,ol.post,ul.obs,ul.review,ol.objs,ol.starters,.ag,.vocab',book);LISTS.forEach(l=>l._lis=[...l.children]);
+function unpaginate(){origPages.forEach(p=>{const bd=$('.pbody',p);p._blocks.forEach(b=>bd.append(b))});LISTS.forEach(l=>l._lis.forEach(li=>l.append(li)));
+  $$('.page.cont',book).forEach(c=>c.remove());$$('.contp',book).forEach(c=>c.remove());SPLITS.forEach(t=>{t.innerHTML=t._orig;t._orig=null});SPLITS=[];SQZ.forEach(unsqueeze);SQZ=[];$$('.check').forEach(c=>c.style.minHeight='');origPages.forEach(p=>p.classList.remove('merged'));pages=origPages.slice()}
+function newCont(src){const c=document.createElement('div');c.className='page cont '+(src.classList.contains('left')?'left':'right');c._spread=src._spread;const bd=document.createElement('div');bd.className='pbody';c.append(bd);chrome(c);return c}
+function longestFb(ck){const it=U2.item(ck.dataset.item);return it?it.opts.map(o=>o[2]).sort((a,b)=>b.length-a.length)[0]:''}
+function reserveChecks(bd){$$('.check',bd).forEach(ck=>{const set=ck.closest('.checkset');const group=set?$$('.check',set):[ck];if(ck._done)return;
+  let mx=0;const vis=group.map(g=>g.hidden);group.forEach(g=>{group.forEach(x=>x.hidden=x!==g);const fb=$('.fb',g);const keep=[fb.className,fb.innerHTML];fb.className='fb no';fb.innerHTML=longestFb(g);g.style.minHeight='';mx=Math.max(mx,g.offsetHeight);fb.className=keep[0];fb.innerHTML=keep[1]});
+  group.forEach((g,k)=>{g.hidden=vis[k];g.style.minHeight=(mx+3)+'px';g._done=1})})}
+const rootOf=x=>x._root||x;
+/* a text paragraph may break across pages between words, like a printed book; the tail continues as the same paragraph */
+const TEXT='p.dual,p:not([class])';let SPLITS=[];
+function splitBlock(T,fits){const dual=T.matches('.dual'),span=dual?$(simple?'.sim':'.std',T):T;if(!span)return null;
+  if(T._orig==null){T._orig=T.innerHTML;SPLITS.push(T)}
+  const units=[];[...span.childNodes].forEach(n=>{if(n.nodeType===3)n.textContent.split(/(?<=\s)/).forEach(w=>w&&units.push(document.createTextNode(w)));else units.push(n)});
+  if(units.length<12)return null;
+  const put=k=>span.replaceChildren(...units.slice(0,k));let lo=5,hi=units.length-5,best=0;
+  while(lo<=hi){const m=(lo+hi)>>1;put(m);if(fits()){best=m;lo=m+1}else hi=m-1}
+  if(!best){span.replaceChildren(...units);return null}
+  put(best);const C=T.cloneNode(false);C.removeAttribute('id');C.classList.add('contp');C._sp=T._sp;
+  if(dual){const a=span.cloneNode(false),o=$(simple?'.std':'.sim',T).cloneNode(false);a.append(...units.slice(best));C.append(...(simple?[o,a]:[a,o]))}else C.append(...units.slice(best));
+  return C}
+/* a "Try it" label and instruction start a page, but the block they introduce does not fit after them: rather than leave
+   them stranded, shrink that block until the group fits, first a simulation's drawing area (not below the 150 px floor),
+   then the whole block (not below 85%). If it still does not fit, it moves on alone as before.
+   Zoom alone does not shrink a periodic table, whose cells follow the width it is given, so the width is narrowed by the
+   same factor: together they scale the block evenly, centred on the page */
+const INTRO='p.label,p.do,h2,h3,.sech,header';let SQZ=[];
+function unsqueeze([X,keep]){[X.style.zoom,X.style.width,X.style.marginInline]=keep;$$('.cv',X).forEach((c,k)=>c.style.minHeight=keep[k+3])}
+function squeeze(X,over){const cvs=$$('.cv',X),rec=[X,[X.style.zoom,X.style.width,X.style.marginInline,...cvs.map(c=>c.style.minHeight)]];
+  cvs.forEach(c=>{let v=parseFloat(getComputedStyle(c).minHeight)||0;while(over()&&v>150){v=Math.max(150,v-10);c.style.minHeight=v+'px'}});
+  for(let z=40;over()&&z>34;){z--;X.style.zoom=z/40;X.style.width=z*2.5+'%';X.style.marginInline='auto';U2.fitHolds()}
+  if(over()){unsqueeze(rec);U2.fitHolds();return false}SQZ.push(rec);return true}
+const reachesPage=(b,bd)=>b.getBoundingClientRect().top<bd.getBoundingClientRect().bottom-2.2*(parseFloat(getComputedStyle(bd).lineHeight)||24);
+/* move a block to the top of the next page; list pieces of the same list rejoin */
+function moveBlock(last,cb){const f=cb.firstElementChild;
+  if(last._lis&&f&&f._lis&&rootOf(f)===rootOf(last)){
+    if(!last._root){[...f.children].forEach(li=>last.append(li));f.remove();cb.prepend(last)}
+    else{[...last.children].reverse().forEach(li=>f.prepend(li));if(last.getAttribute('start'))f.setAttribute('start',last.getAttribute('start'));else f.removeAttribute('start');last.remove()}}
+  else cb.prepend(last)}
+function paginate(){const anchor=anchorBlock();unpaginate();$$('.check').forEach(c=>c._done=0);
+  const single=narrow.matches;book.classList.toggle('single',single&&mode==='book');
+  if(mode!=='book'||phone.matches){book.style.height='';finalize(anchor);return}
+  book.style.height=(innerHeight-$('.bar').offsetHeight-$('.pager').offsetHeight)+'px';
+  const cs=getComputedStyle(book);const w=(book.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight))/(single?1:2),h=book.clientHeight-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);
+  /* whole pixels, rounded down: the visible page can come out a fraction narrower than an exact fractional width, and text measured wider would overflow */
+  book.style.setProperty('--pw',Math.floor(w)+'px');book.style.setProperty('--ph',Math.floor(h)+'px');
+  /* each section flows as one stream: the right page's blocks continue after the left page's */
+  {const bd=$('.pbody',origPages[0]);origPages.slice(1).forEach(q=>{[...$('.pbody',q).children].forEach(b=>bd.append(b));q.classList.add('merged')})}
+  pages=origPages.filter(p=>!p.classList.contains('merged'));
+  const det=$$('details',book).map(d=>[d,d.open]);det.forEach(([d])=>d.open=true);document.body.classList.add('measuring');
+  for(let i=0;i<pages.length;i++){const p=pages[i];p.classList.add('measure');const bd=$('.pbody',p);reserveChecks(bd);U2.fitHolds();let c=null;
+    const over=()=>bd.scrollHeight>bd.clientHeight+1;const cont=()=>{if(!c){c=newCont(p);p.after(c);pages.splice(i+1,0,c)}return $('.pbody',c)};
+    let guard=0;while(over()&&guard++<300){const last=bd.lastElementChild;
+      if(last&&last._lis&&last.children.length>1){const cb=cont();let L=cb.firstElementChild;
+        if(!L||!L._lis||rootOf(L)!==rootOf(last)){L=last.cloneNode(false);L._root=rootOf(last);L._lis=[];L._sp=last._sp;L.removeAttribute('id');cb.prepend(L)}
+        L.prepend(last.lastElementChild);if(last.tagName==='OL')L.setAttribute('start',(+last.getAttribute('start')||1)+last.children.length);continue}
+      if(last.matches(TEXT)&&reachesPage(last,bd)){const C=splitBlock(last,()=>!over());if(C){cont().prepend(C);continue}}
+      if(bd.children.length<=1)break;
+      if(!last.matches(INTRO)&&!last.matches(TEXT)&&[...bd.children].slice(0,-1).every(k=>k.matches(INTRO))&&squeeze(last,over))break;
+      moveBlock(last,cont())}
+    /* keep headings and instructions with the block they introduce */
+    if(c){let k=0;while(bd.children.length>1&&k++<4){const l=bd.lastElementChild;if(l.matches('p.label,p.do,h3,.sech,header')||(l._lis&&l.children.length&&[...l.children].every(ch=>ch.matches('p.label,p.do'))))moveBlock(l,cont());else break}}
+    /* fill the gap left when a figure or interactive (with its label) did not fit and moved on, like a float in a printed book:
+       first pull back the text that follows it in the same section (splitting it if needed); otherwise pull back a check,
+       key-idea box, figure or table that comes right after it and fits whole */
+    if(c){const cb=$('.pbody',c),lh=parseFloat(getComputedStyle(bd).lineHeight)||24,HEAD='h1,h2,h3,.sech,header';let g2=0;
+      while(g2++<8){const lastB=bd.lastElementChild,kids=[...cb.children];if(!lastB||!kids.length)break;
+        if(bd.getBoundingClientRect().bottom-lastB.getBoundingClientRect().bottom<lh*2.5)break;
+        if(kids[0].matches(TEXT)||kids[0].matches(HEAD)||kids[0]._sp!==lastB._sp)break;
+        let g=0;while(g<kids.length-1&&kids[g].matches('p.label,p.do'))g++;g++;
+        let j=g;while(j<kids.length&&j<g+3&&!kids[j].matches(TEXT)&&!kids[j].matches(HEAD))j++;
+        let T=kids[j];
+        if(T&&T.matches(TEXT)&&T._sp===lastB._sp){bd.append(T);if(!over())continue;const C=splitBlock(T,()=>!over());kids[j-1].after(C||T);break}
+        T=kids[g];
+        if(T&&T.matches('.check,.checkset,aside.key,figure,table')&&T._sp===lastB._sp){bd.append(T);reserveChecks(bd);if(!over())continue;kids[g-1].after(T)}
+        break}}
+    p.classList.remove('measure')}
+  document.body.classList.remove('measuring');det.forEach(([d,o])=>d.open=o);finalize(anchor)}
+function finalize(anchor){pages=$$('.page',book).filter(p=>!p.classList.contains('merged'));const single=narrow.matches||phone.matches;
+  pages.forEach((p,k)=>{const fb=$('.pbody',p).firstElementChild,sp=(fb&&fb._sp)||p._spread,left=k%2===0;$('.pn',p).textContent=k+1;$('.rh',p).textContent=left?CH:(sp.dataset.sec&&sp.dataset.sec!=='review'?'§'+sp.dataset.sec+' · ':'')+sp.dataset.title});
+  if(anchor){const i=pages.findIndex(p=>p.contains(anchor));if(i>=0)cur=i}show(cur,0);U2.kickAll&&U2.kickAll()}
+function anchorBlock(){const p=pages[cur];return p?$('.pbody',p).firstElementChild:null}
+let rpT;function repaginate(){clearTimeout(rpT);rpT=setTimeout(paginate,60)}
+/* after any reveal: if a visible page overflows anyway, flow it again */
+function guard(){requestAnimationFrame(()=>{if(mode!=='book'||phone.matches)return;if($$('.page.on .pbody',book).some(b=>b.scrollHeight>b.clientHeight+1))repaginate()})}
+book.addEventListener('click',guard);book.addEventListener('toggle',guard,true);
+
+/* ---------- navigation ---------- */
+function show(i,dir){stopSpeech();const single=narrow.matches||phone.matches;i=Math.max(0,Math.min(pages.length-1,i||0));if(!single&&mode==='book')i-=i%2;cur=i;store.set('pageAnchor',i);
+  pages.forEach(p=>p.classList.remove('on','pl','pr','fwd','bwd'));
+  if(mode==='book'){const a=pages[i],b=single?null:pages[i+1];a.classList.add('on');if(!single){a.classList.add('pl');if(b)b.classList.add('on','pr')}
+    if(dir){[a,b].forEach(x=>{if(x){void x.offsetWidth;x.classList.add(dir>0?'fwd':'bwd')}})}
+    $('#pinfo').textContent=single?`Page ${i+1} of ${pages.length}`:(b?`Pages ${i+1}–${i+2} of ${pages.length}`:`Page ${i+1} of ${pages.length}`);
+    $('#prev').disabled=i===0;$('#next').disabled=(single?i:i+1)>=pages.length-1;if(phone.matches)window.scrollTo(0,0)}
+  buildToc()}
+function step(d){const single=narrow.matches||phone.matches;const n=cur+d*(single?1:2);if(n<0||n>=pages.length)return;show(n,d)}
+$('#prev').onclick=()=>step(-1);$('#next').onclick=()=>step(1);
+document.addEventListener('keydown',e=>{if(mode!=='book'||e.target.closest('input,select,textarea'))return;if(e.key==='ArrowRight'||e.key==='PageDown'){step(1);e.preventDefault()}if(e.key==='ArrowLeft'||e.key==='PageUp'){step(-1);e.preventDefault()}});
+let tx=null;book.addEventListener('touchstart',e=>{if(e.target.closest('canvas,input,.tl,select'))return;tx=e.touches[0].clientX},{passive:true});book.addEventListener('touchend',e=>{if(tx==null||mode!=='book')return;const dx=e.changedTouches[0].clientX-tx;tx=null;if(Math.abs(dx)>70)step(dx<0?1:-1)});
+function setMode(m){mode=m;store.set('mode',m);book.className=m;$$('#mode button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.m===m)));paginate();
+  if(m==='scroll')requestAnimationFrame(()=>{const p=pages[cur];if(p)p._spread.scrollIntoView({block:'start'})})}
+$$('#mode button').forEach(b=>b.onclick=()=>setMode(b.dataset.m));
+addEventListener('resize',repaginate);narrow.addEventListener('change',repaginate);phone.addEventListener('change',repaginate);
+try{document.fonts.ready.then(repaginate)}catch(e){}
+
+/* contents */
+const tocB=$('#toc-b'),toc=$('#toc');
+function buildToc(){const s=store.get('chk',{});toc.innerHTML='';const onSp=new Set($$('.page.on .pbody>*',book).map(b=>b._sp));spreads.forEach(sp=>{const ids=$$('[data-item]').filter(e=>e._sp===sp).map(b=>b.dataset.item);const done=ids.filter(i=>s[i]===1).length;
+  const b=document.createElement('button');b.type='button';if(mode==='book'&&onSp.has(sp))b.classList.add('cur');
+  b.innerHTML=`<span class="n">${sp.dataset.sec&&sp.dataset.sec!=='review'?'§'+sp.dataset.sec:''}</span><span style="flex:1">${sp.dataset.title}</span><span class="p">${ids.length?done+'/'+ids.length+' ✓':''}</span>`;
+  b.onclick=()=>{toc.hidden=true;tocB.setAttribute('aria-expanded','false');const i=Math.max(0,pages.findIndex(p=>p.contains(sp._first)));if(mode==='book')show(i,i>cur?1:-1);else{cur=i;sp.scrollIntoView({behavior:'smooth',block:'start'})}};toc.append(b)})}
+tocB.onclick=e=>{e.stopPropagation();toc.hidden=!toc.hidden;tocB.setAttribute('aria-expanded',String(!toc.hidden))};
+document.addEventListener('click',e=>{if(!e.target.closest('.dd'))toc.hidden=true});
+{const io=new IntersectionObserver(es=>es.forEach(en=>{if(mode==='scroll'&&en.isIntersecting){cur=pages.indexOf($('.page',en.target))}}),{rootMargin:'-40% 0px -55% 0px'});spreads.forEach(s=>io.observe(s))}
+
+$('#print').onclick=()=>window.print();
+addEventListener('beforeprint',()=>{stopSpeech();if(mode==='book'){unpaginate()}});
+addEventListener('afterprint',()=>{if(mode==='book')paginate()});
+
+cur=Math.max(0,store.get('pageAnchor',0));setMode(mode);progress();
+})();
+
+</script>
+</body>
+</html>

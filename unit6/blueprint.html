@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unit 6 Blueprint</title>
+<meta name="description" content="Teacher blueprint for Unit 6 Reactions and Stoichiometry: exact TEKS, objectives, lesson map, misconceptions, missions, the case file and data sources.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500..800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fb;--paper:#fff;--ink:#14162b;--muted:#5b6078;--line:#dfe2ee;--sunk:#eef0f7;--accent:#3a3fc9;--accent-soft:#e6e7fb;--warm:#b0430f;--ok:#17734a;--ok-soft:#e3f4ea;--bad:#b4232a;
+  --body:"Atkinson Hyperlegible",system-ui,sans-serif;--display:"Bricolage Grotesque",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1120;--paper:#171a2e;--ink:#eceefb;--muted:#a3a8c6;--line:#2c3150;--sunk:#1f2340;--accent:#9ea3ff;--accent-soft:#272b55;--warm:#ff9a62;--ok:#5fd39b;--ok-soft:#173528;--bad:#ff7b7b}}
+:root[data-theme="dark"]{--bg:#0f1120;--paper:#171a2e;--ink:#eceefb;--muted:#a3a8c6;--line:#2c3150;--sunk:#1f2340;--accent:#9ea3ff;--accent-soft:#272b55;--warm:#ff9a62;--ok:#5fd39b;--ok-soft:#173528;--bad:#ff7b7b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 20px 80px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px}
+nav.toc{position:sticky;top:20px;align-self:start;font-size:14px}
+nav.toc p{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:4px 0 4px 10px;border-left:2px solid var(--line)}
+nav.toc a:hover{color:var(--ink);border-color:var(--accent)}
+main{min-width:0}
+header.top{margin-bottom:28px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm);margin:0}.eyebrow a{color:inherit;text-decoration:none}.eyebrow a:hover{text-decoration:underline}
+h1{font-family:var(--display);font-size:44px;line-height:1.02;margin:.15em 0 .3em;font-weight:800}
+h2{font-family:var(--display);font-size:28px;line-height:1.1;margin:56px 0 10px;font-weight:700;scroll-margin-top:16px}
+h3{font-family:var(--display);font-size:20px;margin:28px 0 8px;font-weight:700}
+h4{font-size:16px;margin:18px 0 6px}
+p{margin:0 0 12px}
+a{color:var(--accent)}
+.lede{font-size:19px;color:var(--muted)}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pill{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-radius:99px;padding:3px 10px;background:var(--paper);color:var(--muted)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid2 .card,.grid3 .card{margin:0}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--warm);margin:0 0 6px;font-weight:600}
+table{border-collapse:collapse;width:100%;font-size:15px;background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:12px 0}
+th,td{text-align:left;vertical-align:top;padding:9px 12px;border-bottom:1px solid var(--line)}
+th{font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);background:var(--sunk);font-weight:600}
+tr:last-child td{border-bottom:0}
+td code,p code,li code{font-family:var(--mono);font-size:.88em;background:var(--sunk);padding:.05em .35em;border-radius:5px}
+ul,ol{margin:0 0 12px;padding-left:1.3em}
+li{margin:3px 0}
+.teks{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:10px 0}
+.teks b{font-family:var(--mono);font-size:13px;color:var(--accent)}
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}
+.flow div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px;position:relative}
+.flow div:not(:last-child)::after{content:"→";position:absolute;right:-10px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:700}
+.flow b{display:block;font-family:var(--display);font-size:17px}
+.flow span{font-size:13.5px;color:var(--muted)}
+.tag{display:inline-block;font-family:var(--mono);font-size:11.5px;border-radius:6px;padding:1px 6px;background:var(--accent-soft);color:var(--ink);white-space:nowrap}
+.tag.w{background:color-mix(in srgb,var(--warm) 16%,var(--paper))}
+.tag.g{background:var(--ok-soft)}
+.note{background:var(--accent-soft);border-radius:12px;padding:12px 16px;margin:14px 0;font-size:15.5px}
+.mis td:first-child{width:38%}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.evid{counter-reset:ev}
+.evid .card{position:relative;padding-left:62px}
+.evid .card::before{counter-increment:ev;content:counter(ev);position:absolute;left:18px;top:18px;width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--paper);display:grid;place-items:center;font-family:var(--display);font-weight:800}
+footer{margin-top:60px;font-size:14px;color:var(--muted)}
+.tt{position:fixed;right:16px;top:14px;font:600 13px var(--body);background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:6px 12px;cursor:pointer}
+@media (max-width:900px){.wrap{grid-template-columns:minmax(0,1fr)}nav.toc{position:static}.grid3,.grid2,.flow{grid-template-columns:minmax(0,1fr)}.flow div::after{display:none}h1{font-size:34px}table{display:block;overflow-x:auto}}
+@media print{nav.toc,.tt{display:none}.wrap{display:block;padding:0}body{background:#fff;font-size:12pt}.card,table{break-inside:avoid}h2{break-after:avoid}}
+sub,sup{font-size:.72em;line-height:0}
+</style>
+</head>
+<body>
+<button class="tt" id="tt" type="button">Theme</button>
+<div class="wrap">
+<nav class="toc" aria-label="Contents">
+  <p>Blueprint</p>
+  <a href="#package">1. The package</a>
+  <a href="#teks">2. Standards</a>
+  <a href="#map">3. Lesson map and pacing</a>
+  <a href="#l61">4. Lesson 6.1</a>
+  <a href="#l62">5. Lesson 6.2</a>
+  <a href="#l63">6. Lesson 6.3</a>
+  <a href="#l64">7. Lesson 6.4</a>
+  <a href="#l65">8. Lesson 6.5</a>
+  <a href="#l66">9. Lesson 6.6</a>
+  <a href="#case">10. Case file: air for the crew</a>
+  <a href="#matrix">11. Alignment matrix</a>
+  <a href="#assess">12. Using the results</a>
+  <a href="#access">13. Access and Honors</a>
+  <a href="#data">14. Data and accuracy</a>
+  <a href="#src">Sources</a>
+</nav>
+<main>
+<header class="top">
+  <p class="eyebrow"><a href="index.html">Chemistry Case Files · Unit 6</a> · Teacher blueprint</p>
+  <h1>Reactions and Stoichiometry: unit blueprint</h1>
+  <p class="lede">One set of objectives drives four surfaces: a student reading, a teacher slide deck, missions and a case file. Every check item carries an objective ID, so alignment to TEKS C.9(A), C.9(B), C.9(C) and C.9(D) can be traced item by item.</p>
+  <div class="meta"><span class="pill">Grade 10 on-level, Honors optional</span><span class="pill">19 TAC §112.43(c), adopted 2020</span><span class="pill">About 14 class periods</span><span class="pill">Exact TEKS wording</span></div>
+</header>
+
+<section id="package">
+<h2>1. The package</h2>
+<p>Twenty-one pages: six readings, six slide decks, six mission sets, one case file, this blueprint and the unit index. Each surface has one job, and none of them tests content that the reading does not teach.</p>
+<div class="flow">
+  <div><b>Read</b><span>Student reading in book or continuous mode, with a simpler-language toggle, worked examples, stop-and-check items and interactives.</span></div>
+  <div><b>Teach</b><span>Teacher deck of 21 slides (22 in Lesson 6.3). Each slide shows its reading section, and the notes give timings, safety and the wrong answers to expect.</span></div>
+  <div><b>Practice</b><span>Missions. Everyday reactions and real data for each idea, with feedback on every wrong answer.</span></div>
+  <div><b>Apply</b><span>Case file. One engineering decision about a spacecraft's air that needs the whole unit.</span></div>
+</div>
+<div class="grid2">
+  <div class="card"><p class="label">Teacher flow, one lesson</p><ol class="small"><li>Open the deck. The driving question and three predictions come first.</li><li>Teach through the deck. Students follow the matching reading section or read it as homework.</li><li>Students work the worked examples and stop-and-check items, then the missions.</li><li>The CER exit ticket and the self-rating close the lesson. Students write in their notebooks.</li></ol></div>
+  <div class="card"><p class="label">Design rules</p><ul class="small"><li>Every equation is checked and every number is computed by one shared calculator, so the same value appears on every surface.</li><li>One objective ID per item. Every wrong choice and every common wrong number gets feedback that names the faulty step.</li><li>Writing happens in notebooks. Pages offer choices, numbers, coefficient steppers and reveals, never text boxes.</li><li>Balance with coefficients only. A subscript is part of the formula, and the balancing bench shows what changing one would make.</li><li>Moving 3D reactions keep every atom: each atom of a product is the same atom as one in a reactant, and a tally beside the view counts them.</li></ul></div>
+</div>
+</section>
+
+<section id="teks">
+<h2>2. Standards</h2>
+<p>Exact wording of 19 TAC §112.43(c)(9), "The student understands how matter is accounted for in chemical reactions." The right column states what a student must produce to show mastery.</p>
+<table>
+<thead><tr><th style="width:52%">Student expectation</th><th>Mastery evidence</th></tr></thead>
+<tbody>
+<tr><td><div class="teks"><b>C.9(A)</b> interpret, write, and balance chemical equations, including synthesis, decomposition, single replacement, double replacement, and combustion reactions using the law of conservation of mass;</div></td><td>Reads an equation's reactants, products, state symbols and coefficients, as particles and as moles. Writes a balanced equation from words, with the seven diatomic elements. Balances with coefficients only and checks by counting atoms and by adding masses. Classifies and balances all five named types, including the complete combustion of fuels of C, H and O, and uses the activity series to predict a single replacement. Lessons 6.1 and 6.2; case file File 1.</td></tr>
+<tr><td><div class="teks"><b>C.9(B)</b> differentiate among acid-base reactions, precipitation reactions, and oxidation-reduction reactions;</div></td><td>Recognizes a precipitation reaction (a solid forms from two solutions) and an acid-base reaction (H<sup>+</sup> passes from an acid to a base) from evidence and from the equation. Assigns oxidation numbers by rules in order, finds what is oxidized and what is reduced, and explains why one reaction can carry two labels. Lesson 6.3; case file File 2.</td></tr>
+<tr><td><div class="teks"><b>C.9(C)</b> perform stoichiometric calculations, including determination of mass relationships, gas volume relationships, and percent yield; and</div></td><td>Writes mole ratios from coefficients and converts moles to moles and grams to grams with dimensional analysis. Uses the law of combining volumes, and converts between mass and gas volume with a molar volume whose temperature and pressure are stated. Calculates theoretical and percent yield and judges whether an error makes the yield too high or too low. Lessons 6.4, 6.5 and 6.6; case file Files 3, 4, 5 and 6.</td></tr>
+<tr><td><div class="teks"><b>C.9(D)</b> describe the concept of limiting reactants in a balanced chemical equation.</div></td><td>Describes in words and particle pictures the reactant that runs out first and why it sets the amount of product. Finds it from amounts in moles divided by coefficients, never from the smaller mass, and calculates the product and the excess left over. Lesson 6.5; case file File 4.</td></tr>
+</tbody></table>
+<div class="note"><b>Science and engineering practices</b> used most in this unit:
+<ul class="small">
+<li>1(A) questions from observations: the six opening phenomena (the balance, the rail weld, the three beakers, the gallon, the four balloons, the split water).</li>
+<li>1(C) safety: every reaction a page shows has a note saying whether it is a class activity, a teacher demonstration or a simulation only.</li>
+<li>1(G) develop and use models; 2(A) limits of models: the 3D reactions, the particle batches and the equation itself, which shows ratios but not how fast or whether a reaction happens.</li>
+<li>1(H) laws and hypotheses: the law of conservation of mass, the law of combining volumes and Avogadro's hypothesis are named and told apart.</li>
+<li>2(B) data and sources of error: the open and sealed balances, percent yield and its errors, and the scrubber test in case file File 6. 2(D) evaluate designs: why the sealed jar is the better test in 6.1.</li>
+<li>2(C) mathematical calculations; 3(A) explanations from data; 3(C) argumentation: the exit tickets and the case file recommendation. 4(B) research past and present: Lavoisier, Gay-Lussac, Goldschmidt, Apollo 13 and the space station.</li>
+</ul>
+<b>Boundaries.</b> Solubility rules are C.11(D), Unit 8: a precipitate is recognized from evidence, from an (s) in the equation or from a short table given as data. No reactant is given as a molarity (C.11(E)). Acid naming, strength and pH are C.12, Unit 9. Energy in reactions is C.13, Unit 10; pages say only that a reaction releases heat or gives off light. The ideal gas law and where molar volumes come from are C.10(B), Unit 7. There is no reversible arrow, and net ionic equations appear only in an Honors box. Gas volumes use a molar volume with its conditions, never "STP".</div>
+</section>
+
+<section id="map">
+<h2>3. Lesson map and pacing</h2>
+<table>
+<thead><tr><th>Lesson</th><th>TEKS</th><th>Periods</th><th>Core interactives</th><th>Mission tabs</th></tr></thead>
+<tbody>
+<tr><td><b>6.1</b> Baking soda on a balance</td><td><span class="tag">C.9(A)</span></td><td>2</td><td>Moving 3D reactions, the open and sealed balance, molecule viewer, the balancing bench</td><td>Reading equations, Balancing bench, Equations from words</td></tr>
+<tr><td><b>6.2</b> Types of reactions and the activity series</td><td><span class="tag">C.9(A)</span></td><td>2</td><td>One 3D reaction of each type and thermite, the type sorter, coefficient boxes, the balancing bench</td><td>Balance them, Name the type, Will it react</td></tr>
+<tr><td><b>6.3</b> Acid-base, precipitation and redox reactions</td><td><span class="tag">C.9(B)</span></td><td>2</td><td>Three beakers, 3D reactions, the oxidation-number tool, the class sorter</td><td>Classify it, Oxidation numbers, Who gives electrons, Sort them all</td></tr>
+<tr><td><b>6.4</b> Mole ratios and mass relationships</td><td><span class="tag">C.9(C)</span></td><td>2</td><td>3D methane and octane, the conversion map, the gallon scale, molecule viewer</td><td>Mole to mole, Grams to grams, The gallon</td></tr>
+<tr><td><b>6.5</b> Four balloons: limiting reactants</td><td><span class="tag">C.9(C)</span> <span class="tag">C.9(D)</span></td><td>2</td><td>Four flasks and balloons, particle batches, amount ÷ coefficient bars</td><td>Find the limit, Product from the limit, Excess left over</td></tr>
+<tr><td><b>6.6</b> Splitting water: gas volumes and percent yield</td><td><span class="tag">C.9(C)</span></td><td>2</td><td>The Hofmann apparatus, 3D electrolysis, molecule viewer, the yield lab</td><td>Gas volumes, Molar volume, Percent yield</td></tr>
+<tr><td><b>Case file</b> Air for the crew</td><td>All</td><td>1</td><td>Six evidence files, three 3D scenes and the balancing bench, and a recommendation</td><td>case file</td></tr>
+<tr><td><b>Review and assessment</b></td><td>All</td><td>1</td><td>Teacher's own review and unit test</td><td>n/a</td></tr>
+</tbody></table>
+<p class="small muted">Each deck's cover notes split it into two 45 to 50 minute periods. Teach the lessons in order: 6.2 balances what 6.1 taught to write, 6.3 sorts reactions a second way, 6.4 adds the mole ratio, and 6.5 and 6.6 build on the grams-to-grams path of 6.4. Worksheets are not part of this release; no student page mentions one.</p>
+</section>
+
+<section id="l61">
+<h2>4. Lesson 6.1 · Baking soda on a balance</h2>
+<p><b>Driving question.</b> Vinegar poured onto baking soda in an open cup fizzes, and the balance reading falls from 27.20 g to 26.68 g. The same amounts in a sealed, rigid jar stay at 171.20 g. If mass is never destroyed, why does the open cup get lighter?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>6.1.1</td><td>Read a chemical equation: name the reactants and products, say what each state symbol means, and read a coefficient as a number of particles or of moles.</td><td><span class="tag">C.9(A)</span></td><td>5, 6</td></tr>
+<tr><td>6.1.2</td><td>Use the law of conservation of mass to explain why a chemical equation must be balanced, and why a reaction in an open container seems to lose mass.</td><td><span class="tag">C.9(A)</span></td><td>7, 8, 14</td></tr>
+<tr><td>6.1.3</td><td>Balance a chemical equation by changing only coefficients, working in a fixed order, and check the result by counting atoms and by adding molar masses.</td><td><span class="tag">C.9(A)</span></td><td>9 to 11</td></tr>
+<tr><td>6.1.4</td><td>Write a balanced chemical equation from a word equation, using formula rules and the seven elements that exist as diatomic molecules.</td><td><span class="tag">C.9(A)</span></td><td>12, 13</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">The open and sealed balances are the evidence: the open cup loses the mass of the carbon dioxide that escapes (1.00 g of baking soda makes 0.524 g of CO<sub>2</sub>), and the sealed jar keeps it. A gas-filled bag on a balance reads low by its buoyancy, about 0.34 g for 0.29 L, which the notes explain. Lavoisier's sealed tin vessels of the early 1770s are the history; Lomonosov's 1756 work is mentioned as unpublished. The model is the equation and its 3D scene: atoms of hydrogen and oxygen leave their molecules and join new partners, with a tally that never changes. Balancing follows one order (metals, then nonmetals, then hydrogen and oxygen last), and every result is checked twice, by counting atoms and by adding the masses on each side.</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>Some mass is destroyed when baking soda and vinegar fizz in an open cup.</td><td>The sealed jar's reading does not change. The open cup loses only the carbon dioxide that escapes.</td></tr>
+<tr><td>A subscript may be changed to balance an equation.</td><td>H<sub>2</sub>O is water and H<sub>2</sub>O<sub>2</sub> is hydrogen peroxide. The bench's "change a subscript" button shows the molar mass and the substance both change.</td></tr>
+<tr><td>A coefficient is a mass in grams.</td><td>The 2 in 2H<sub>2</sub>O counts molecules, or moles. The masses are in a different ratio because each substance has its own molar mass.</td></tr>
+<tr><td>Oxygen gas is written O.</td><td>Oxygen gas is made of O<sub>2</sub> molecules. Six other elements are diatomic: H<sub>2</sub>, N<sub>2</sub>, F<sub>2</sub>, Cl<sub>2</sub>, Br<sub>2</sub> and I<sub>2</sub>.</td></tr>
+<tr><td>An equation is balanced when every element appears on both sides.</td><td>Count the atoms: H<sub>2</sub> + O<sub>2</sub> → H<sub>2</sub>O has two oxygen atoms on the left and one on the right.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §6.1 · 27 paragraphs, each with a simpler version</p><ol class="small"><li>Reactions and equations</li><li>State symbols and coefficients</li><li>Mass on a balance</li><li>Why equations balance</li><li>Coefficients and subscripts</li><li>Balancing step by step</li><li>The balancing workbench</li><li>Writing equations from words</li><li>More equations from words</li><li>Review: reading and balancing equations</li></ol><p class="small">Six worked examples. Honors box: A fraction on the way.</p></div>
+  <div class="card"><p class="label">Slides and missions</p><ul class="small"><li>Deck: 21 slides. Checkpoint 15 to 18, predictions revisited 19, CER exit ticket 20, self-rating 21.</li><li>Reading equations: 5 cases (Atoms on the product side; Mass on both sides; Mass of the product; Oxygen atoms in methane combustion; Predict the open-cup reading)</li><li>Balancing bench: built-in skeleton equations, checked by the shared calculator</li><li>Equations from words: 5 cases (Two diatomic gases; Sodium in water; Aluminum and oxygen; Potassium chlorate breaks down; Ethanol burns)</li><li>Item bank: 21 items (13 reading, 8 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="l62">
+<h2>5. Lesson 6.2 · Types of reactions and the activity series</h2>
+<p><b>Driving question.</b> A crew clamps a mold around a gap between two rails and lights a crucible of aluminum powder and iron(III) oxide. Seconds later, glowing liquid iron pours down and fills the gap, with no electricity used. How can the pattern of a reaction help you predict its products?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>6.2.1</td><td>Classify a reaction as synthesis, decomposition, single replacement, double replacement or combustion from the pattern of its reactants and products.</td><td><span class="tag">C.9(A)</span></td><td>5 to 9</td></tr>
+<tr><td>6.2.2</td><td>Write and balance equations for each of the five types, including the complete combustion of fuels made of carbon, hydrogen and oxygen, changing only coefficients.</td><td><span class="tag">C.9(A)</span></td><td>10, 11</td></tr>
+<tr><td>6.2.3</td><td>Use the activity series to predict whether a single-replacement reaction happens, and write its products when it does.</td><td><span class="tag">C.9(A)</span></td><td>12 to 14</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">Each type has one moving 3D example: hydrogen and chlorine make hydrogen chloride (synthesis), hydrogen peroxide breaks down (decomposition), chlorine replaces bromide (single replacement), silver nitrate and sodium chloride swap partners (double replacement) and methane burns (combustion). Thermite, Fe<sub>2</sub>O<sub>3</sub> + 2Al → Al<sub>2</sub>O<sub>3</sub> + 2Fe, is the single replacement that welds rails; it reaches about 2500 °C, and Goldschmidt patented the process in 1895. The activity series is a short table built from observations, such as zinc coating in copper(II) sulfate solution while copper does nothing in zinc sulfate. It is presented as data, not a law. The page gives "combination" and "single displacement" as other names, and links Unit 3's "displacement reaction" to single replacement.</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>Thermite is a combustion reaction because it burns so hot.</td><td>No fuel reacts with O<sub>2</sub>. Aluminum takes the place of iron in iron(III) oxide: single replacement.</td></tr>
+<tr><td>Every reaction fits exactly one of the five types.</td><td>Many reactions fit, but not all. Some fit two patterns, and some fit none; the case file's reactions are examples.</td></tr>
+<tr><td>Any metal replaces any other metal.</td><td>Copper wire in zinc sulfate stays bare. A metal replaces only a metal below it in the activity series.</td></tr>
+<tr><td>Combustion always makes fire and smoke, and any product may appear.</td><td>For a fuel of C, H and O burning completely, the products are CO<sub>2</sub> and H<sub>2</sub>O, written in the equation every time.</td></tr>
+<tr><td>Oxygen should be balanced first in a combustion equation.</td><td>O<sub>2</sub> holds only oxygen, so balancing it last fixes it with one coefficient.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §6.2 · 24 paragraphs, each with a simpler version</p><ol class="small"><li>Five patterns</li><li>Synthesis and decomposition</li><li>Single and double replacement</li><li>Combustion</li><li>Sorting reactions</li><li>Balancing each type</li><li>The balancing bench</li><li>The activity series</li><li>Welding the rail</li><li>Review: types of reactions</li></ol><p class="small">Seven worked examples. This lesson has no Honors box.</p></div>
+  <div class="card"><p class="label">Slides and missions</p><ul class="small"><li>Deck: 21 slides. Checkpoint 15 to 18, predictions revisited 19, CER exit ticket 20, self-rating 21.</li><li>Balance them: one skeleton of each type in coefficient boxes</li><li>Name the type: 6 cases (Heating limestone; Burning ethanol; A cloudy white solid; Chlorine and bromide; Magnesium in a flame; Thermite)</li><li>Will it react: 5 cases (Zinc in copper(II) sulfate; Copper in zinc sulfate; Zinc in acid; Silver in acid; Aluminum and iron oxide)</li><li>Item bank: 19 items (11 reading, 8 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="l63">
+<h2>6. Lesson 6.3 · Acid-base, precipitation and redox reactions</h2>
+<p><b>Driving question.</b> Three beakers on a bench: gray crystals grow on a copper wire in silver nitrate solution, which turns blue; mixing silver nitrate and sodium chloride solutions makes a cloudy white solid at once; baking soda in vinegar fizzes. How can you tell what moves between the reactants in a reaction?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>6.3.1</td><td>Recognize precipitation reactions and acid-base reactions from laboratory evidence and from their balanced equations.</td><td><span class="tag">C.9(B)</span></td><td>5 to 7</td></tr>
+<tr><td>6.3.2</td><td>Assign oxidation numbers to the atoms in elements, ions and compounds by applying the rules in order.</td><td><span class="tag">C.9(B)</span></td><td>8 to 10</td></tr>
+<tr><td>6.3.3</td><td>Identify an oxidation-reduction reaction from changes in oxidation number, name what is oxidized and what is reduced, and differentiate among acid-base, precipitation and redox reactions.</td><td><span class="tag">C.9(B)</span></td><td>11 to 15</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">Each beaker shows one thing moving. In beaker 2, ions from two solutions meet and form an insoluble solid; the page calls it a precipitate only from that evidence or an (s), and Unit 8 teaches the solubility rules. In beaker 3, an acid gives H<sup>+</sup> to a base, and an acid with a metal hydroxide gives water and a salt. In beaker 1, electrons pass from copper atoms to silver ions, which oxidation numbers track (copper 0 to +2, silver +1 to 0). Four rules are applied in order: an element alone is 0; a monatomic ion equals its charge; F is −1, O is −2 (−1 in a peroxide) and H is +1 (−1 with a metal); and the numbers add up to the charge. When two rules disagree, the earlier one wins. The two ways of sorting overlap: combustion and single replacement are always redox, and a double replacement is usually precipitation or acid-base, so one reaction can carry two labels. The reaction of LiOH with CO<sub>2</sub> is neither redox nor acid-base by this unit's definition.</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>Every reaction that makes bubbles is redox.</td><td>Baking soda and vinegar make CO<sub>2</sub> bubbles, but no oxidation number changes: it is acid-base.</td></tr>
+<tr><td>In beaker 1 the copper atoms gain electrons.</td><td>Each copper atom loses two electrons and becomes Cu<sup>2+</sup>, which turns the solution blue. The silver ions gain them.</td></tr>
+<tr><td>Oxygen is always −2.</td><td>Oxygen is −1 in a peroxide such as H<sub>2</sub>O<sub>2</sub> and 0 in O<sub>2</sub>. Hydrogen bonded to a metal is −1.</td></tr>
+<tr><td>A solid that appears is just one of the reactants coming out of solution.</td><td>Silver chloride is a new compound, made from ions that were in two different solutions.</td></tr>
+<tr><td>A reaction has only one correct label.</td><td>Mg + 2HCl → MgCl<sub>2</sub> + H<sub>2</sub> is a single replacement and a redox reaction.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §6.3 · 29 paragraphs, each with a simpler version</p><ol class="small"><li>Three beakers</li><li>Precipitation reactions</li><li>Acid-base reactions</li><li>Oxidation numbers</li><li>Using the rules</li><li>Redox reactions</li><li>Redox all around</li><li>Telling the three apart</li><li>Review: three kinds of reactions</li></ol><p class="small">Three worked examples. Honors box: Net ionic equations (spectator ions are named there).</p></div>
+  <div class="card"><p class="label">Slides and missions</p><ul class="small"><li>Deck: 22 slides. Checkpoint 16 to 19, predictions revisited 20, CER exit ticket 21, self-rating 22.</li><li>Classify it: 6 cases (Settling a sour stomach; Cloudy from clear; Two labels for one reaction; A yellow solid; Removing carbon dioxide; A base that makes a precipitate)</li><li>Oxidation numbers: 7 cases (nitrogen in NH<sub>4</sub><sup>+</sup>, manganese in MnO<sub>4</sub><sup>−</sup>, chromium in Cr<sub>2</sub>O<sub>7</sub><sup>2−</sup>, a metal hydride, a peroxide, sulfur dioxide, carbon in ethanol)</li><li>Who gives electrons: 6 cases (Aluminum and iron oxide; A fizzing metal; The Sabatier reaction; Sodium in water; Chlorine and potassium iodide; One element, both ways)</li><li>Sort them all: the class sorter</li><li>Item bank: 20 items (12 reading, 8 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="l64">
+<h2>7. Lesson 6.4 · Mole ratios and mass relationships</h2>
+<p><b>Driving question.</b> EPA reports that burning one gallon of gasoline makes 8,887 g of carbon dioxide. A gallon of octane, a model for gasoline, has a mass of only 2.66 kg. How can burning a gallon of fuel make three times its own mass of carbon dioxide?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>6.4.1</td><td>Write mole ratios from the coefficients of a balanced equation, and use them to convert the amount in moles of one substance to the amount of another.</td><td><span class="tag">C.9(C)</span></td><td>5 to 7</td></tr>
+<tr><td>6.4.2</td><td>Convert grams of one substance to grams of another, through moles and the mole ratio, set up with dimensional analysis; explain why coefficients never compare grams.</td><td><span class="tag">C.9(C)</span></td><td>8 to 11</td></tr>
+<tr><td>6.4.3</td><td>Apply mass-to-mass calculations to a gallon of octane, and judge the result against conservation of mass and against EPA's figure for gasoline.</td><td><span class="tag">C.9(C)</span></td><td>12 to 14</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">A ratio of molecules is also a ratio of moles, so 2C<sub>8</sub>H<sub>18</sub> + 25O<sub>2</sub> → 16CO<sub>2</sub> + 18H<sub>2</sub>O gives 16 mol CO<sub>2</sub> / 2 mol C<sub>8</sub>H<sub>18</sub>. Every grams-to-grams problem follows one map: grams, moles, mole ratio, moles, grams, with one conversion factor per arrow. The gallon: 3.785 L × 0.703 g/mL (octane at 20 °C) = 2661 g = 23.30 mol of octane, which makes 8202 g of CO<sub>2</sub>, 3.08 g for each gram of fuel. Most of that mass is oxygen taken from the air, and the gallon scale shows the masses on both sides add up. The result is 7.7% below EPA's 8,887 g, because gasoline is a mixture and not pure octane; the page treats the gap as a model's limit, not an error. This lesson states the display rule once: an element alone as the table prints it, a compound or diatomic element to two decimals.</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>The masses of reactants and products are in the ratio of the coefficients.</td><td>Coefficients compare moles. 1.00 g of octane makes 3.08 g of CO<sub>2</sub>, not 8.00 g.</td></tr>
+<tr><td>A balanced equation has the same number of moles on both sides.</td><td>Atoms and mass are conserved; moles need not be. The octane equation has 27 mol of reactants and 34 mol of products.</td></tr>
+<tr><td>Burning fuel cannot make more mass than the fuel had.</td><td>The CO<sub>2</sub> includes oxygen from the air. Fuel plus oxygen equals carbon dioxide plus water.</td></tr>
+<tr><td>A calculation with pure octane should match EPA exactly.</td><td>Octane gives about 8.20 kg; EPA gives 8.887 kg for real gasoline, a mixture with a different carbon content.</td></tr>
+<tr><td>The mole ratio may be used with grams directly.</td><td>The "Common wrong paths" slide shows each shortcut and the number it gives, and every one has its own feedback.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §6.4 · 13 paragraphs, each with a simpler version</p><ol class="small"><li>Mole ratios</li><li>Reading an equation in moles</li><li>Grams to grams</li><li>Why coefficients never compare grams</li><li>Practice: methane and ethanol</li><li>A gallon of gasoline</li><li>Where the mass comes from</li><li>Review: mole ratios and mass relationships</li></ol><p class="small">Ten worked examples, the most of any lesson. Honors box: Count the product molecules.</p></div>
+  <div class="card"><p class="label">Slides and missions</p><ul class="small"><li>Deck: 21 slides. Checkpoint 15 to 18, predictions revisited 19, CER exit ticket 20, self-rating 21.</li><li>Mole to mole: 4 cases (Hydrogen to ammonia; Oxygen for propane; Water to oxygen; Water from octane)</li><li>Grams to grams: 4 cases (Water from methane; Oxygen for ethanol; Nitrogen to ammonia; Water from propane)</li><li>The gallon: 4 cases (The mass of a gallon; Carbon dioxide from a gallon; Oxygen for a gallon; A rule of thumb)</li><li>Item bank: 20 items (12 reading, 8 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="l65">
+<h2>8. Lesson 6.5 · Four balloons: limiting reactants</h2>
+<p><b>Driving question.</b> Four flasks each hold 4.38 g of HCl in dilute acid, and each gets more magnesium than the last. The balloons fill with hydrogen, but the fourth, with the most magnesium, only matches the third. Why does adding more magnesium stop making a bigger balloon?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>6.5.1</td><td>Describe the limiting reactant as the reactant used up first, which stops the reaction and sets the amount of product, and the other reactants as excess reactants.</td><td><span class="tag">C.9(D)</span></td><td>5 to 7</td></tr>
+<tr><td>6.5.2</td><td>Identify the limiting reactant from given masses or amounts by changing each to moles and dividing by its coefficient in the balanced equation.</td><td><span class="tag">C.9(C)</span> <span class="tag">C.9(D)</span></td><td>8 to 10</td></tr>
+<tr><td>6.5.3</td><td>Calculate the amount and mass of a product from the limiting reactant, and the amount of excess reactant left over.</td><td><span class="tag">C.9(C)</span></td><td>11 to 14</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">Each flask holds 0.120 mol of HCl, enough for 0.0600 mol of magnesium in Mg + 2HCl → MgCl<sub>2</sub> + H<sub>2</sub>. The balloons hold 0.490, 0.980, 1.47 and 1.47 L of hydrogen at 25 °C and 1 atm: once the acid runs out, extra magnesium sits in the flask unreacted. The particle batches show the idea as whole reaction batches, and the bars divide each amount in moles by its coefficient so the smaller bar marks the limit. (The particle model rounds the acid's 0.0601 mol of magnesium to 0.0600 mol, and its caption says so.) The smaller-mass trap is shown with a fuel cell: 6.00 g of oxygen runs out before 1.00 g of hydrogen. "Limiting reagent" is named once as another name. A sandwich analogy appears in the reading and on one slide, labeled as an analogy with its limit stated.</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>Adding more of one reactant always makes more product.</td><td>Flasks 3 and 4 make the same 1.47 L of hydrogen; the extra magnesium is left over.</td></tr>
+<tr><td>The reactant with the smaller mass runs out first.</td><td>In 2H<sub>2</sub> + O<sub>2</sub> → 2H<sub>2</sub>O, 1.00 g of hydrogen is 0.495 mol and 6.00 g of oxygen is 0.188 mol; dividing by the coefficients, oxygen limits.</td></tr>
+<tr><td>Equal moles of two reactants means neither one limits.</td><td>In Mg + 2HCl, equal moles leave HCl limiting, because each magnesium atom needs two HCl.</td></tr>
+<tr><td>The product can be calculated from either reactant.</td><td>Only the limiting reactant gives the amount that forms; the other gives an amount that cannot be reached.</td></tr>
+<tr><td>The balloons stop growing because they are full.</td><td>The fourth balloon could stretch further. It stops because no acid is left to react.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §6.5 · 12 paragraphs, each with a simpler version</p><ol class="small"><li>Four balloons</li><li>Particle batches</li><li>Amount divided by coefficient</li><li>The smaller-mass trap</li><li>Product from the limiting reactant</li><li>Excess left over</li><li>Review: limiting reactants</li></ol><p class="small">Six worked examples. Honors box: A second way to find the limit.</p></div>
+  <div class="card"><p class="label">Slides and missions</p><ul class="small"><li>Deck: 21 slides. Checkpoint 15 to 18, predictions revisited 19, CER exit ticket 20, self-rating 21.</li><li>Find the limit: 4 cases (More metal than acid can use; The light reactant; Nearly equal moles; When the smaller mass is limiting)</li><li>Product from the limit: 4 cases (The smallest balloon; Baking soda and vinegar; Amounts given in moles; A different metal)</li><li>Excess left over: 3 cases (Magnesium left in the acid; Unburned fuel; Hydrogen to spare)</li><li>Item bank: 18 items (10 reading, 8 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="l66">
+<h2>9. Lesson 6.6 · Splitting water: gas volumes and percent yield</h2>
+<p><b>Driving question.</b> A current passes through water with a little sodium sulfate dissolved in it, and gas collects in two tubes. One tube fills about twice as fast as the other, every time. When water is split, why is there twice as much hydrogen as oxygen?</p>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>Students will</th><th style="width:14%">TEKS</th><th style="width:12%">Slides</th></tr></thead>
+<tbody>
+<tr><td>6.6.1</td><td>Use the law of combining volumes: at the same temperature and pressure, the volumes of the gases in a reaction are in the ratio of the coefficients of the balanced equation.</td><td><span class="tag">C.9(C)</span></td><td>5 to 7</td></tr>
+<tr><td>6.6.2</td><td>Convert between the mass or amount of a substance and the volume of a gas in a reaction, using a molar volume with its temperature and pressure stated.</td><td><span class="tag">C.9(C)</span></td><td>8 to 10, 14</td></tr>
+<tr><td>6.6.3</td><td>Calculate the theoretical yield and the percent yield of a reaction, and explain errors that make a percent yield too high or too low.</td><td><span class="tag">C.9(C)</span></td><td>11 to 13</td></tr>
+</tbody></table>
+<h3>Evidence and model</h3>
+<p class="small">The Hofmann apparatus collects hydrogen and oxygen in a 2 : 1 volume ratio, the ratio of the coefficients in 2H<sub>2</sub>O → 2H<sub>2</sub> + O<sub>2</sub>. Gay-Lussac read the law of combining volumes in Paris on December 31, 1808 and published it in 1809; Avogadro explained it in 1811 with equal numbers of molecules in equal volumes, and the Honors box tells why Dalton objected. A molar volume is always given with its conditions: 24.5 L/mol at 25 °C and 1 atm (24.47 computed from R), 22.71 L/mol at 0 °C and 100 kPa, or 22.41 L/mol at 0 °C and 101.325 kPa. Unit 7 explains where these numbers come from. The yield lab is a precipitation run with a filtered, dried product: theoretical yield from the limiting reactant, actual yield from the balance, and errors sorted by direction (a product weighed while still wet reads high; solid lost through a torn filter paper reads low).</p>
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>Splitting water makes equal volumes of hydrogen and oxygen.</td><td>The tubes fill 2 : 1, every time, as the coefficients predict.</td></tr>
+<tr><td>A mole of gas has the same volume at any temperature.</td><td>24.5 L/mol at 25 °C and 1 atm, but 22.71 L/mol at 0 °C and 100 kPa. The conditions are always stated.</td></tr>
+<tr><td>Gas volumes are in the ratio of the masses.</td><td>Volumes follow moles. 2 L of hydrogen weighs far less than 1 L of oxygen, yet holds twice the molecules.</td></tr>
+<tr><td>A percent yield of 115% means the reaction made extra product.</td><td>Atoms are conserved. A yield above 100% points to an error, such as a wet product.</td></tr>
+<tr><td>The theoretical yield comes from whichever reactant is given first.</td><td>It comes from the limiting reactant, which sets the most product that can form.</td></tr>
+</tbody></table>
+<h3>Surfaces</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading §6.6 · 17 paragraphs, each with a simpler version</p><ol class="small"><li>Splitting water</li><li>Volumes follow the coefficients</li><li>Why the volumes match</li><li>Molar volume and its conditions</li><li>Grams to liters</li><li>Theoretical, actual and percent yield</li><li>A precipitation lab</li><li>Errors in both directions</li><li>Review: gas volumes and percent yield</li></ol><p class="small">Nine worked examples. Honors box: Why Dalton objected.</p></div>
+  <div class="card"><p class="label">Slides and missions</p><ul class="small"><li>Deck: 21 slides. Checkpoint 15 to 18, predictions revisited 19, CER exit ticket 20, self-rating 21.</li><li>Gas volumes: 4 cases (Splitting water; Two volumes from one; Oxygen for methane; Carbon dioxide from propane)</li><li>Molar volume: 4 cases (Moles to liters; Grams of water to liters of hydrogen; Liters to grams; Oxygen from a decomposition)</li><li>Percent yield: 4 cases (Theoretical yield; Percent yield; Water from hydrogen; A theoretical yield with a ratio of 2)</li><li>Item bank: 20 items (12 reading, 8 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="case">
+<h2>10. Case file: Air for the crew</h2>
+<p class="lede">Students act as life-support engineers on a fictional training team in Houston, home of Mission Control at NASA's Johnson Space Center, planning for a small, fictional research capsule with a crew of four. If the main air system fails, the crew turns to single-use cartridges of lithium hydroxide. The report answers one question: how much lithium hydroxide should the capsule carry for a five-day backup?</p>
+<div class="card"><p class="label">Briefing</p><p class="small">The memo explains the task and lists the six files with their TEKS, beside a 3D scene of the scrubber reaction with its atoms moving. A fact box gives the real context: NASA plans on about 1.08 kg of carbon dioxide per crew member per day, and about 0.74 to 1.31 kg for smaller and larger crew members (BVAD, 2022). Apollo 13's lunar module canisters were designed for "two people for about 30 hours", and three people needed them for at least four days; the command module's spare canisters were square and the openings round, so engineers at the Manned Spacecraft Center in Houston designed and tested the "mailbox" adapter the crew built from materials on board. The center was renamed the Johnson Space Center on February 17, 1973. A Sabatier reactor was launched to the space station on STS-131 on April 5, 2010 and installed in October 2010. The capsule, its crew, the hydrogen supply in File 4 and the test beds in File 6 are fictional, and the page says so.</p></div>
+<p>Each file has three steps: a calculation, the Unit 6 idea it uses, then a decision about a claim. Every molar mass, mole ratio, limiting reactant and oxidation number is computed from the equations by the shared calculator.</p>
+<div class="evid">
+  <div class="card"><p class="label">File 1 · The scrubber equation · <span class="tag">C.9(A)</span></p><p class="small">The skeleton LiOH + CO<sub>2</sub> → Li<sub>2</sub>CO<sub>3</sub> + H<sub>2</sub>O on the balancing bench. Task: the coefficient of LiOH is 2; the reactants' masses, 2 × 23.95 g + 44.01 g = 91.91 g, equal the products'. Decide what is wrong with a trainee's LiCO<sub>3</sub>: a changed formula, not a balancing step.</p></div>
+  <div class="card"><p class="label">File 2 · Is either reaction redox? · <span class="tag">C.9(B)</span></p><p class="small">The scrubber reaction beside the Sabatier reaction, CO<sub>2</sub> + 4H<sub>2</sub> → CH<sub>4</sub> + 2H<sub>2</sub>O. Task: carbon is +4 in Li<sub>2</sub>CO<sub>3</sub> and −4 in CH<sub>4</sub>; the scrubber changes no oxidation number, so it is not redox (and not acid-base by this unit's definition), while in the Sabatier reaction carbon is reduced and hydrogen oxidized.</p></div>
+  <div class="card"><p class="label">File 3 · Lithium hydroxide for a crew · <span class="tag">C.9(C)</span></p><p class="small">The mole ratio 2 mol LiOH / 1 mol CO<sub>2</sub>, and 4 people × 5 days × 1.08 kg = 21.6 kg of carbon dioxide. Task: 1.088 g of LiOH per gram of CO<sub>2</sub>, so 23.5 kg of LiOH in theory. Apollo 13 shows why the amount matters.</p></div>
+  <div class="card"><p class="label">File 4 · The Sabatier reactor · <span class="tag">C.9(D)</span> <span class="tag">C.9(C)</span></p><p class="small">One day of the crew's CO<sub>2</sub> (4320 g, 98.2 mol) meets a fictional 500 g of hydrogen (247.5 mol). Task: dividing by the coefficients, hydrogen limits (61.9 against 98.2); the reactor makes about 2.23 kg of water and leaves about 1.60 kg of CO<sub>2</sub> each day, so the reactor alone cannot clear the cabin.</p></div>
+  <div class="card"><p class="label">File 5 · Gas volumes in the cabin · <span class="tag">C.9(C)</span></p><p class="small">At 25 °C and 1 atm, with 24.5 L/mol. Task: one crew member's 1.08 kg of CO<sub>2</sub> a day fills about 601 L; by the law of combining volumes, the Sabatier reaction needs four times that volume of hydrogen, measured at the same temperature and pressure.</p></div>
+  <div class="card"><p class="label">File 6 · A scrubber test · <span class="tag">C.9(C)</span> <span class="tag">SEP 2(B)</span></p><p class="small">A fictional laboratory packs a bed with 500.0 g of LiOH and runs cabin air through it until CO<sub>2</sub> passes. Task: the theoretical yield is 771.3 g of Li<sub>2</sub>CO<sub>3</sub>; 620.0 g was found, a percent yield of 80.4%. A second bed reporting 104% points to a damp product, not extra matter.</p></div>
+</div>
+<div class="card"><p class="label">Recommendation · claim, evidence, reasoning · SEP 3(A), 3(C)</p><p class="small">Students choose a claim (pack about 29 kg, the theoretical 23.5 kg divided by the test bed's 80.4% yield; pack about 29 kg plus a margin for crew members who breathe out up to 1.31 kg a day; pack the theoretical 23.5 kg; or pack 21.6 kg, the mass of carbon dioxide), select at least three files, and mark what the files cannot show. They then write the reasoning in their notebooks using sentence starters and a word bank. The check rejects the last two claims with feedback (a theoretical amount ignores File 6; a mass of one substance never equals the mass of another), and expects three limits: how much carbon dioxide this crew will actually breathe out, whether flight cartridges react as fully as the test bed, and whether the cartridges fit the capsule's openings, the problem Apollo 13 met. After a successful check, a sample report appears for comparison. Either of the first two claims can be strong.</p>
+<p class="small"><b>Grading the notebook.</b> A strong report traces the number from the balanced equation through the mole ratio to the theoretical mass, corrects it with the measured percent yield, and names what more testing would settle. A report that packs 21.6 kg because the crew breathes out 21.6 kg of carbon dioxide has skipped the mole ratio.</p></div>
+<div class="note small"><b>Case-file boundary.</b> The training team, the capsule and its numbers in Files 4 and 6 are fictional; the crew carbon dioxide figure, the Apollo 13 history and the space station's Sabatier reactor are real and cited. Energy, reactor temperatures and cartridge mass budgets are context only and are not assessed. Lithium hydroxide is corrosive, and nothing in the case is done in class.</div>
+</section>
+
+<section id="matrix">
+<h2>11. Alignment matrix</h2>
+<table>
+<thead><tr><th>TEKS</th><th>Reading</th><th>Slides</th><th>Missions</th><th>Case file</th></tr></thead>
+<tbody>
+<tr><td><span class="tag">C.9(A)</span> interpret, write and balance</td><td>§6.1.1 to §6.1.4</td><td>Deck 6.1, slides 5 to 14</td><td>6.1: all three tabs</td><td>File 1</td></tr>
+<tr><td><span class="tag">C.9(A)</span> the five types</td><td>§6.2.1 to §6.2.3</td><td>Deck 6.2, slides 5 to 14</td><td>6.2: all three tabs</td><td>None (File 2 notes that neither reaction fits a type)</td></tr>
+<tr><td><span class="tag">C.9(B)</span></td><td>§6.3.1 to §6.3.3</td><td>Deck 6.3, slides 5 to 15</td><td>6.3: all four tabs</td><td>File 2</td></tr>
+<tr><td><span class="tag">C.9(C)</span> mass relationships</td><td>§6.4.1 to §6.4.3, §6.5.3</td><td>Deck 6.4, slides 5 to 14; Deck 6.5, slides 11 to 13</td><td>6.4: all three tabs; 6.5: Product from the limit, Excess left over</td><td>Files 3, 4</td></tr>
+<tr><td><span class="tag">C.9(C)</span> gas volume relationships</td><td>§6.6.1, §6.6.2</td><td>Deck 6.5, slide 14; Deck 6.6, slides 5 to 10, 14</td><td>6.6: Gas volumes, Molar volume</td><td>File 5</td></tr>
+<tr><td><span class="tag">C.9(C)</span> percent yield</td><td>§6.6.3</td><td>Deck 6.6, slides 11 to 13</td><td>6.6: Percent yield</td><td>File 6</td></tr>
+<tr><td><span class="tag">C.9(D)</span></td><td>§6.5.1, §6.5.2</td><td>Deck 6.5, slides 5 to 10</td><td>6.5: Find the limit</td><td>File 4</td></tr>
+<tr><td>All four</td><td>Chapter reviews</td><td>Checkpoints and exit tickets</td><td></td><td>Recommendation</td></tr>
+</tbody></table>
+</section>
+
+<section id="assess">
+<h2>12. Using the results</h2>
+<div class="grid2">
+  <div class="card"><p class="label">What the pages record</p><ul class="small"><li>Each mission set shows the cases solved and the first-try accuracy, so a first answer can be told apart from eventual completion.</li><li>Numeric answers are accepted within about ±0.5%; the reference values stay fixed. Each common wrong number (a mole ratio upside down, a ratio applied to grams, the product from the excess reactant, a molar volume without its conditions) gets its own feedback, and a test checks that none of them falls inside the tolerance.</li><li>The balancing bench names the fault in a wrong answer: an element still unbalanced, coefficients that are not the smallest whole numbers, or a changed formula.</li><li>Progress is saved in the student's own browser only. Nothing is sent to a server, so the pages are not a gradebook.</li></ul></div>
+  <div class="card"><p class="label">What they do not show</p><ul class="small"><li>A correct number does not prove a correct setup. Ask for the conversion map written in the notebook, with units that cancel.</li><li>A correct type label does not prove understanding. Ask students to name what moves (atoms changing partners, H<sup>+</sup>, electrons) or which pattern they used.</li><li>Judge explanations from notebooks and discussion: the exit tickets, the checkpoints and the case file report.</li><li>A completed self-rating is a reflection, not proof of mastery.</li></ul></div>
+</div>
+<p class="small">Each deck runs checkpoints as Think, Talk, Write, Self-check and Compare, with 30 second thinking and 60 second partner timers. The three predictions from slide 3 are revisited on slide 19 (slide 20 in deck 6.3), and the CER exit ticket returns to the driving question.</p>
+</section>
+
+<section id="access">
+<h2>13. Access, simpler language and Honors</h2>
+<div class="grid3">
+  <div class="card"><p class="label">Reading supports</p><ul class="small"><li>A simpler-language version of every core paragraph (122 in all), one toggle per page</li><li>Worked examples in one layout (Given, Asked, Equation, Factors, Setup, Result, Check), with a hint and a check at each step (41 in all)</li><li>Read-aloud of any section</li><li>Tap-to-define vocabulary with Spanish terms</li><li>Sentence starters and word banks for notebook writing</li></ul></div>
+  <div class="card"><p class="label">Projector and devices</p><ul class="small"><li>Slides sized for the back row, with zoom on any card</li><li>Light and dark themes</li><li>3D reactions with Play, Step and Start buttons, a caption for each step and an atom tally; with reduced motion they open on the products and step only on request</li><li>A still description of every model for screen readers</li><li>Readings, missions and the case file work at phone width</li></ul></div>
+  <div class="card"><p class="label">Extension and Honors</p><ul class="small"><li>Honors boxes are collapsible, never on the core path and never assessed</li><li>6.1 a fractional coefficient on the way to whole numbers; 6.3 net ionic equations and spectator ions; 6.4 counting product molecules; 6.5 a second way to find the limit; 6.6 why Dalton objected to Avogadro</li><li>Lesson 6.2 has no Honors box</li></ul></div>
+</div>
+</section>
+
+<section id="data">
+<h2>14. Data and accuracy notes</h2>
+<ul class="small">
+<li><b>One shared calculator.</b> Every equation on every surface is checked for balanced atoms (and charge, where ions appear) by the shared reaction calculator, and molar masses, mole ratios, limiting reactants and oxidation numbers are computed from the formulas with the course's average atomic masses (CIAAW abridged standard atomic weights). Molar masses follow Unit 5's display rule: an element alone as the table prints it, a compound or diatomic element to two decimals.</li>
+<li><b>Molar volumes.</b> NIST CODATA 2022 gives 22.710 954 64 L/mol at 0 °C and 100 kPa and 22.413 969 54 L/mol at 0 °C and 101.325 kPa for an ideal gas. The 25 °C value is not a CODATA constant: 24.47 L/mol at 1 atm is computed here from R = 8.314 462 618 J/(mol·K), and the pages use 24.5 L/mol. No page writes 22.4 without its conditions, and none writes "STP".</li>
+<li><b>The gallon.</b> 3.785 L (a U.S. gallon is exactly 3.785 411 784 L) × 0.703 g/mL, octane's density at 20 °C, gives 2661 g. EPA's 8,887 g of CO<sub>2</sub> per gallon of gasoline is cited to 75 FR 25324 (May 7, 2010). The 7.7% gap is the model's limit, stated on the page.</li>
+<li><b>Crew carbon dioxide.</b> NASA BVAD REV2 (2022) Table 3-31 gives 1.085 kg per crew member per day; Table 3-27 gives 1.08 kg for the reference crew member, and 0.74 and 1.31 kg for the 5th- and 95th-percentile cases. The case uses 1.08 kg. The 2015 first edition gave 1.04 kg.</li>
+<li><b>Models and scale.</b> Molecule shapes use measured bond lengths and angles from NIST CCCBDB, and computed shapes from PubChem for ethanol (CID 702), propane (CID 6334), octane (CID 356) and acetic acid. In the moving reactions every product atom is the same atom as one in a reactant, and a test checks that each scene keeps its atoms and that no atom hides another at any step. Monatomic ions are drawn as single spheres carrying their charges, at the size of their neutral atoms, and the water around dissolved ions is not shown. Each moving scene's caption says that real reactions involve vastly more particles and that the motion is schematic, not the mechanism. The reaction scenes show which atoms end up where, not the spacing of particles in a crystal or a solution. The balances, flasks, Hofmann apparatus and yield lab are drawn diagrams with calculated readings, labeled as simulations.</li>
+<li><b>Laboratory data.</b> The open and sealed balance readings, the four balloons, the yield lab and the case file's test beds are simulated or fictional and say so. The four-balloon volumes are calculated at 25 °C and 1 atm.</li>
+<li><b>History.</b> Lavoisier's sealed-vessel experiments with tin date from the early 1770s; Lomonosov's 1756 work was not published at the time. Gay-Lussac read his law on December 31, 1808 and published it in 1809. Goldschmidt's thermite patent dates from 1895, and the reaction reaches about 2500 °C. The space station's Sabatier reactor was launched on April 5, 2010, docked two days later and was installed in October 2010. The Manned Spacecraft Center in Houston was renamed the Johnson Space Center on February 17, 1973.</li>
+</ul>
+</section>
+
+<section id="src">
+<h2>Sources</h2>
+<ul class="small">
+<li>19 Tex. Admin. Code §112.43, Chemistry (adopted 2020, effective April 28, 2021).</li>
+<li>Lesson 6.1: OpenStax Chemistry 2e, 4.1, Writing and Balancing Chemical Equations; Science History Institute, Antoine-Laurent Lavoisier; Le Moyne College, Classic Chemistry, Lavoisier's memoir on heating tin in closed vessels (1774); Crease and Shiltsev (2024), Mikhail Lomonosov's laboratory project, arXiv:2404.08779; ChemPRIME (LibreTexts), 12.3, Group II (magnesium burning in air makes some nitride); NIST CODATA, the molar gas constant.</li>
+<li>Lesson 6.2: Introductory Chemistry (CK-12, LibreTexts), 11.4 to 11.9, the reaction types and the activity series; K. Chapman, How chemistry keeps trains on track, RSC Education (2022); Goldschmidt group, company history (1895 patent, 1899 rail welding), a company source; RSC Education, Observing chemical changes; USGS Open-File Report 2005-1152 (cement and lime); ChemPRIME (LibreTexts), 12.3, Group II; CDC, Carbon monoxide poisoning.</li>
+<li>Lesson 6.3: OpenStax Chemistry 2e, 4.2, Classifying Chemical Reactions (precipitation, acid-base and redox reactions, the oxidation-number rules and net ionic equations), and 17.1, Figure 17.2 (copper wire in silver nitrate); Introductory Chemistry (CK-12, LibreTexts), Chapter 11; RSC Education, Halogens in aqueous solution and their displacement reactions.</li>
+<li>Lesson 6.4: U.S. EPA, Greenhouse Gas Emissions from a Typical Passenger Vehicle, and fact sheet EPA-420-F-14-040a (2014), citing 75 FR 25324; PubChem CID 356, octane (density 0.703 at 20 °C, from U.S. Coast Guard CHRIS data); NIST Handbook 44, Appendix C (1 U.S. gallon = 3.785 411 784 L); OpenStax Chemistry 2e, 4.3, Reaction Stoichiometry; IUPAC CIAAW.</li>
+<li>Lesson 6.5: OpenStax Chemistry 2e, 4.4, Reaction Yields, and 4.3, Reaction Stoichiometry; IUPAC CIAAW; NIST CODATA, the molar gas constant.</li>
+<li>Lesson 6.6: OpenStax Chemistry 2e, 9.3, Stoichiometry of Gaseous Substances, and 4.4, Reaction Yields; NIST CODATA 2022, the molar volume of an ideal gas at 273.15 K (100 kPa and 101.325 kPa) and the molar gas constant; Purdue University, Joseph Louis Gay-Lussac; Le Moyne College, Classic Chemistry, Avogadro's 1811 paper, Journal de Physique 73; Royal Society of Chemistry, How to teach gases at 14 to 16, and Electrolysis of brine.</li>
+<li>Case file: NASA, Life Support Baseline Values and Assumptions Document, NASA/TP-2015-218570/REV2 (February 2022), Tables 3-27 and 3-31; NASA/JPL Education, The Air Up There: Making Space Breathable; Apollo Lunar Surface Journal, Building an Apollo 13 LiOH Canister Adapter; Apollo 13 Mission Report, MSC-02680 (September 1970); NASA, 45 Years Ago: President Names Johnson Space Center (2018); Williams, Dake and Gentry, ISS Environmental Control and Life Support System Status: 2010-2011, ICES 2011; Abney and Greenwood, Methane Post-Processor Development, ICES 2013; OpenStax Chemistry 2e, 4.2, 4.4 and 9.3; NIST CODATA 2022.</li>
+</ul>
+</section>
+<footer>Chemistry Case Files · Unit 6 · Teacher blueprint</footer>
+</main>
+</div>
+<script>
+(function(){const r=document.documentElement,b=document.getElementById('tt');let t=null;try{t=localStorage.getItem('u2:theme')}catch(e){}
+function ap(){if(t)r.setAttribute('data-theme',t);else r.removeAttribute('data-theme');b.textContent=t==='dark'?'Dark':t==='light'?'Light':'Theme'}
+ap();b.onclick=function(){t=t==='dark'?'light':t==='light'?null:'dark';try{t?localStorage.setItem('u2:theme',t):localStorage.removeItem('u2:theme')}catch(e){}ap()}})();
+</script>
+</body>
+</html>

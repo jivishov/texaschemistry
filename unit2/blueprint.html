@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unit 2 Blueprint</title>
+<meta name="description" content="Teacher blueprint for Unit 2 Atomic Structure and Theory: objectives, TEKS alignment, lesson map, misconceptions and the item plan for every surface.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500..800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fb;--paper:#fff;--ink:#14162b;--muted:#5b6078;--line:#dfe2ee;--sunk:#eef0f7;--accent:#3a3fc9;--accent-soft:#e6e7fb;--warm:#b0430f;--ok:#17734a;--ok-soft:#e3f4ea;--bad:#b4232a;
+  --body:"Atkinson Hyperlegible",system-ui,sans-serif;--display:"Bricolage Grotesque",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1120;--paper:#171a2e;--ink:#eceefb;--muted:#a3a8c6;--line:#2c3150;--sunk:#1f2340;--accent:#9ea3ff;--accent-soft:#272b55;--warm:#ff9a62;--ok:#5fd39b;--ok-soft:#173528;--bad:#ff7b7b}}
+:root[data-theme="dark"]{--bg:#0f1120;--paper:#171a2e;--ink:#eceefb;--muted:#a3a8c6;--line:#2c3150;--sunk:#1f2340;--accent:#9ea3ff;--accent-soft:#272b55;--warm:#ff9a62;--ok:#5fd39b;--ok-soft:#173528;--bad:#ff7b7b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 20px 80px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:40px}
+nav.toc{position:sticky;top:20px;align-self:start;font-size:14px}
+nav.toc p{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:4px 0 4px 10px;border-left:2px solid var(--line)}
+nav.toc a:hover{color:var(--ink);border-color:var(--accent)}
+main{min-width:0}
+header.top{margin-bottom:28px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm);margin:0}.eyebrow a{color:inherit;text-decoration:none}.eyebrow a:hover{text-decoration:underline}
+h1{font-family:var(--display);font-size:44px;line-height:1.02;margin:.15em 0 .3em;font-weight:800}
+h2{font-family:var(--display);font-size:28px;line-height:1.1;margin:56px 0 10px;font-weight:700;scroll-margin-top:16px}
+h3{font-family:var(--display);font-size:20px;margin:28px 0 8px;font-weight:700}
+h4{font-size:16px;margin:18px 0 6px}
+p{margin:0 0 12px}
+.lede{font-size:19px;color:var(--muted)}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pill{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-radius:99px;padding:3px 10px;background:var(--paper);color:var(--muted)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.grid2 .card,.grid3 .card{margin:0}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--warm);margin:0 0 6px;font-weight:600}
+table{border-collapse:collapse;width:100%;font-size:15px;background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:12px 0}
+th,td{text-align:left;vertical-align:top;padding:9px 12px;border-bottom:1px solid var(--line)}
+th{font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);background:var(--sunk);font-weight:600}
+tr:last-child td{border-bottom:0}
+td code,p code,li code{font-family:var(--mono);font-size:.88em;background:var(--sunk);padding:.05em .35em;border-radius:5px}
+pre{font-family:var(--mono);font-size:13.5px;background:var(--sunk);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow:auto;line-height:1.5}
+ul,ol{margin:0 0 12px;padding-left:1.3em}
+li{margin:3px 0}
+.teks{border-left:4px solid var(--accent);padding:2px 0 2px 14px;margin:10px 0}
+.teks b{font-family:var(--mono);font-size:13px;color:var(--accent)}
+.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:16px 0}
+.flow div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px;position:relative}
+.flow div:not(:last-child)::after{content:"→";position:absolute;right:-10px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:700}
+.flow b{display:block;font-family:var(--display);font-size:17px}
+.flow span{font-size:13.5px;color:var(--muted)}
+.tag{display:inline-block;font-family:var(--mono);font-size:11.5px;border-radius:6px;padding:1px 6px;background:var(--accent-soft);color:var(--ink);white-space:nowrap}
+.tag.w{background:color-mix(in srgb,var(--warm) 16%,var(--paper))}
+.tag.g{background:var(--ok-soft)}
+.note{background:var(--accent-soft);border-radius:12px;padding:12px 16px;margin:14px 0;font-size:15.5px}
+.mis td:first-child{width:38%}
+.yes{color:var(--ok);font-weight:700}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.evid{counter-reset:ev}
+.evid .card{position:relative;padding-left:62px}
+.evid .card::before{counter-increment:ev;content:counter(ev);position:absolute;left:18px;top:18px;width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--paper);display:grid;place-items:center;font-family:var(--display);font-weight:800}
+footer{margin-top:60px;font-size:14px;color:var(--muted)}
+.tt{position:fixed;right:16px;top:14px;font:600 13px var(--body);background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:6px 12px;cursor:pointer}
+@media (max-width:900px){.wrap{grid-template-columns:minmax(0,1fr)}nav.toc{position:static}.grid3,.grid2,.flow{grid-template-columns:minmax(0,1fr)}.flow div::after{display:none}h1{font-size:34px}table{display:block;overflow-x:auto}}
+@media print{nav.toc,.tt{display:none}.wrap{display:block;padding:0}body{background:#fff;font-size:12pt}.card,table{break-inside:avoid}h2{break-after:avoid}}
+</style>
+</head>
+<body>
+<button class="tt" id="tt" type="button">Theme</button>
+<div class="wrap">
+<nav class="toc" aria-label="Contents">
+  <p>Blueprint</p>
+  <a href="#package">1. The package</a>
+  <a href="#teks">2. Standards</a>
+  <a href="#model">3. Domain model</a>
+  <a href="#map">4. Lesson map</a>
+  <a href="#l21">5. Lesson 2.1 in detail</a>
+  <a href="#l25">6. Lessons 2.2 to 2.5</a>
+  <a href="#case">7. Case file: helium</a>
+  <a href="#matrix">8. Alignment matrix</a>
+  <a href="#access">9. Access and Honors</a>
+  <a href="#port">10. Porting notes</a>
+  <a href="#src">Sources</a>
+</nav>
+<main>
+<header class="top">
+  <p class="eyebrow"><a href="index.html">Chemistry Case Files · Unit 2</a> · Teacher blueprint</p>
+  <h1>Atomic Structure &amp; Theory: unit blueprint</h1>
+  <p class="lede">One set of objectives drives four surfaces: a student reading, teacher slides, missions with a case file, and printable worksheets (deferred for now). Every item on every surface carries an objective ID, so alignment to TEKS C.6 and C.5(B) can be checked line by line.</p>
+  <div class="meta"><span class="pill">Grade 10 on-level, Honors optional</span><span class="pill">19 TAC §112.43(c), adopted 2020</span><span class="pill">About 10 class periods</span><span class="pill">Built from TEKS.md wording</span></div>
+</header>
+
+<section id="package">
+<h2>1. The package</h2>
+<p>A classical textbook package (reading, slides, worksheets) rebuilt as connected digital surfaces. Each surface has one job, and none of them introduces content the reading does not teach.</p>
+<div class="flow">
+  <div><b>Read</b><span>Student reading chapter. Book or continuous mode, checks, interactives.</span></div>
+  <div><b>Teach</b><span>Teacher deck. Each slide points to a reading section.</span></div>
+  <div><b>Practice</b><span>Missions. Real data and real uses of the idea.</span></div>
+  <div><b>Apply</b><span>Case file. One real event that needs the whole unit.</span></div>
+  <div><b>Print</b><span>Worksheets and answer keys mirroring the missions (deferred).</span></div>
+</div>
+<div class="grid2">
+  <div class="card"><p class="label">Teacher flow, one lesson</p><ol class="small"><li>Open the deck. The driving question and predictions come first.</li><li>Teach through the deck. Students follow the matching reading section or read it as homework.</li><li>Students complete the stop-and-check items and the missions.</li><li>Once released, the worksheet serves as notes, homework or a sub plan. The exit ticket closes the lesson.</li></ol></div>
+  <div class="card"><p class="label">Design rules</p><ul class="small"><li>Pedagogy before engagement. Every interactive answers a question the text asks.</li><li>Evidence first, then the model. Students see data before they see the conclusion.</li><li>One objective ID per item. Missions and worksheet items never test content the reading skips.</li><li>"Including" items in a TEKS statement are mastered and assessed. "Such as" items are examples only.</li></ul></div>
+</div>
+</section>
+
+<section id="teks">
+<h2>2. Standards</h2>
+<p>Wording from <code>TEKS.md</code> (19 TAC §112.43(c)). The right column states what a student must produce to show mastery.</p>
+<table>
+<thead><tr><th style="width:52%">Student expectation</th><th>Mastery evidence</th></tr></thead>
+<tbody>
+<tr><td><div class="teks"><b>C.6(A)</b> construct models using Dalton's Postulates, Thomson's discovery of electron properties, Rutherford's nuclear atom, Bohr's nuclear atom, and Heisenberg's Uncertainty Principle to show the development of modern atomic theory over time</div></td><td>Builds each of the five models from evidence and explains which result forced each revision. All five are named, so all five are assessed.</td></tr>
+<tr><td><div class="teks"><b>C.6(B)</b> describe the structure of atoms and ions, including the masses, electrical charges, and locations of protons and neutrons in the nucleus and electrons in the electron cloud</div></td><td>States the relative mass, charge and location of each particle. Determines Z, A, neutrons and ion charge from symbols and the reverse.</td></tr>
+<tr><td><div class="teks"><b>C.6(C)</b> investigate the mathematical relationship between energy, frequency, and wavelength of light using the electromagnetic spectrum and relate it to the quantization of energy in the emission spectrum</div></td><td>Uses c = λf and E = hf from spectroscope or flame-test data. Explains discrete lines as transitions between fixed energy levels.</td></tr>
+<tr><td><div class="teks"><b>C.6(D)</b> calculate average atomic mass of an element using isotopic composition</div></td><td>Calculates a weighted average from isotopic masses and abundances, and explains why the result is a decimal.</td></tr>
+<tr><td><div class="teks"><b>C.6(E)</b> construct models to express the arrangement of electrons in atoms of representative elements using electron configurations and Lewis dot structures</div></td><td>Writes full and noble-gas configurations and draws Lewis dot structures for representative elements.</td></tr>
+<tr><td><div class="teks"><b>C.5(B)</b> predict the properties of elements in chemical families, including alkali metals, alkaline earth metals, halogens, noble gases, and transition metals, based on valence electrons patterns using the Periodic Table</div></td><td>Predicts reactivity and typical ion charge from valence electrons for the five named families. Shared with Unit 3.</td></tr>
+</tbody></table>
+<div class="note"><b>Science and engineering practices.</b> These are woven into every lesson, at least 40% of instructional time per (c)(1). The ones used most in this unit:
+<ul class="small">
+<li>1(G) develop and use models; 1(H) distinguish hypotheses, theories and laws.</li>
+<li>2(A) advantages and limitations of models; 2(B) patterns in data; 2(C) calculations.</li>
+<li>3(A) evidence-based explanations; 3(C) scientific argumentation.</li>
+<li>4(A) critique explanations with evidence; 4(B) how past research shaped scientific thought.</li>
+</ul>Aufbau, Pauli and Hund are not named in C.6(E), so they appear as supporting ideas and Honors extensions.</div>
+</section>
+
+<section id="model">
+<h2>3. Domain model</h2>
+<p>The package is authored as data first. Each surface renders from, or references, the same records. That makes alignment auditable and keeps the reading, slides and missions from drifting apart.</p>
+<pre>Objective   { id: "2.1.3", teks: "C.6(A)", requires: ["Rutherford's nuclear atom"],
+              iCan: "use gold-foil results to construct the nuclear model",
+              sep: ["1G", "2B", "3A"] }
+Concept     { id: "c-nucleus", objective: "2.1.3", keyIdea, evidence[], vocab[],
+              misconceptions: ["m-bounce-electrons", "m-big-nucleus"] }
+Misconception { id: "m-big-nucleus", wrongIdea, whyTempting, evidenceThatFixesIt }
+Item        { id: "2.1.3-r2", objective: "2.1.3", surface: "reading" | "slides" | "mission" | "worksheet" | "case",
+              type: "mc" | "numeric" | "sort" | "build" | "cer", dok: 1 | 2 | 3,
+              answer, feedback: { "m-big-nucleus": "..." } }
+Section     { id: "R2.1.4", objective: ["2.1.3"], slides: [10, 11, 12] }   // reading section ↔ slides</pre>
+<div class="grid3">
+  <div class="card"><p class="label">Rule 1</p><p class="small">Every objective appears on all four surfaces: a reading section, at least one slide, a mission task and a worksheet item.</p></div>
+  <div class="card"><p class="label">Rule 2</p><p class="small">Every wrong answer choice maps to a named misconception, so feedback addresses the reasoning, not just the answer.</p></div>
+  <div class="card"><p class="label">Rule 3</p><p class="small">Every slide shows its reading section number (for example §2.1.4), so teacher and textbook stay in step.</p></div>
+</div>
+</section>
+
+<section id="map">
+<h2>4. Lesson map and pacing</h2>
+<table>
+<thead><tr><th>Lesson</th><th>TEKS</th><th>Periods</th><th>Core interactives</th><th>Site mission ID</th></tr></thead>
+<tbody>
+<tr><td><b>2.1</b> The development of atomic models</td><td><span class="tag">C.6(A)</span></td><td>2</td><td>Dalton mass-ratio table, cathode-ray tube, gold-foil scattering, Bohr energy ladder, uncertainty slider, model builder</td><td><code>models</code></td></tr>
+<tr><td><b>2.2</b> Inside the atom: particles, isotopes, ions</td><td><span class="tag">C.6(B)</span></td><td>1.5</td><td>Build-an-atom with a scale view, isotope notation decoder, ion charge meter</td><td><code>build</code></td></tr>
+<tr><td><b>2.3</b> Average atomic mass</td><td><span class="tag">C.6(D)</span></td><td>1</td><td>Mass-spectrum reader, weighted-average "isotope jar", faded worked examples</td><td><code>mass</code></td></tr>
+<tr><td><b>2.4</b> Light and the quantized atom</td><td><span class="tag">C.6(C)</span></td><td>2</td><td>Spectroscope, flame-test lab data, Bohr transitions, c = λf and E = hf calculator, hydrogen energy ladder</td><td><code>spectra</code></td></tr>
+<tr><td><b>2.5</b> Arranging electrons</td><td><span class="tag">C.6(E)</span> <span class="tag">C.5(B)</span></td><td>2</td><td>Orbital filling board, Lewis dot builder, family predictor, mini periodic table</td><td><code>config</code></td></tr>
+<tr><td><b>Capstone and case file</b></td><td>All</td><td>1</td><td>Final evidence identification, helium case file</td><td><code>capstone</code>, <code>casefile</code></td></tr>
+<tr><td><b>Review and assessment</b></td><td>All</td><td>1</td><td>Unit review worksheet, unit test</td><td>n/a</td></tr>
+</tbody></table>
+<p class="small muted">Lesson 2.4 sits after 2.3 to match the current site order. Teaching 2.4 right after 2.1 (Bohr leads straight into spectra) is a reasonable alternative.</p>
+</section>
+
+<section id="l21">
+<h2>5. Lesson 2.1 in detail: the first full slice</h2>
+<h3>Objectives</h3>
+<table>
+<thead><tr><th style="width:8%">ID</th><th>I can…</th><th style="width:16%">TEKS / SEP</th></tr></thead>
+<tbody>
+<tr><td>2.1.1</td><td>construct Dalton's model and link each postulate to mass evidence (conservation of mass, definite proportions, multiple proportions).</td><td><span class="tag">C.6(A)</span> 1(G) 2(C)</td></tr>
+<tr><td>2.1.2</td><td>explain how cathode-ray experiments revealed the electron's properties (negative charge, very small mass, present in all atoms) and construct Thomson's model.</td><td><span class="tag">C.6(A)</span> 2(B) 3(A)</td></tr>
+<tr><td>2.1.3</td><td>use gold-foil scattering results to construct the nuclear model: a tiny, dense, positive nucleus in an atom that is mostly empty space.</td><td><span class="tag">C.6(A)</span> 1(G) 2(B)</td></tr>
+<tr><td>2.1.4</td><td>explain how fixed energy levels in Bohr's model account for hydrogen's line spectrum, and state the model's limits.</td><td><span class="tag">C.6(A)</span> 2(A)</td></tr>
+<tr><td>2.1.5</td><td>explain why the uncertainty principle replaced exact orbits with an electron cloud described by probability.</td><td><span class="tag">C.6(A)</span> 4(A)</td></tr>
+<tr><td>2.1.6</td><td>explain why scientists revise models when new evidence appears, and compare what each model explains and cannot explain.</td><td><span class="tag">C.6(A)</span> 1(H) 2(A) 4(B)</td></tr>
+</tbody></table>
+
+<h3>Evidence chain (the story the lesson tells)</h3>
+<table>
+<thead><tr><th>Model</th><th>Evidence students examine</th><th>What it explained</th><th>What broke it</th></tr></thead>
+<tbody>
+<tr><td><b>Dalton</b>, 1803 to 1808</td><td>Mass data: carbon monoxide has 1.33 g O per 1.00 g C, carbon dioxide has 2.66 g, a 1 : 2 ratio</td><td>Conservation of mass, fixed composition, whole-number ratios</td><td>Atoms turned out to contain smaller charged particles</td></tr>
+<tr><td><b>Thomson</b>, 1897 to 1904</td><td>Cathode rays bend toward the positive plate. Their charge-to-mass ratio is the same in every tube and gas, and more than 1,000 times that of a hydrogen ion.</td><td>Negative particles much lighter than atoms, found in all matter. Atoms are neutral, so positive charge must exist too.</td><td>Gold-foil results: a spread-out positive charge cannot bounce a fast alpha particle back</td></tr>
+<tr><td><b>Rutherford</b>, 1909 to 1911</td><td>Geiger and Marsden: most alpha particles pass through thin gold foil. About 1 in 20,000 turn back by more than 90° (Rutherford, 1911; their 1909 platinum foil gave about 1 in 8,000).</td><td>A tiny, dense, positive nucleus holding almost all the mass. The atom is mostly empty space.</td><td>Could not explain why hydrogen emits only certain colors, or why electrons do not spiral inward</td></tr>
+<tr><td><b>Bohr</b>, 1913</td><td>Hydrogen's visible line spectrum: 656, 486, 434 and 410 nm</td><td>Electrons occupy fixed energy levels. A jump between levels emits one photon of one energy.</td><td>Failed for atoms with more than one electron. Electrons do not follow fixed paths.</td></tr>
+<tr><td><b>Heisenberg</b>, 1927, and the quantum model (1925 to 1927)</td><td>The uncertainty principle: position and momentum cannot both be known exactly, as a law of nature</td><td>Electrons are described by probability (orbitals, the electron cloud)</td><td>The current model. It is refined, not replaced.</td></tr>
+</tbody></table>
+
+<h3>Misconceptions this lesson targets</h3>
+<table class="mis">
+<thead><tr><th>Misconception</th><th>Evidence that corrects it</th></tr></thead>
+<tbody>
+<tr><td>Old models were wrong, so they are useless.</td><td>Each model correctly explained the evidence of its time. Chemists still use Dalton's idea to balance equations.</td></tr>
+<tr><td>Thomson's model had protons scattered in it.</td><td>Thomson pictured a spread-out sphere of positive charge, not particles. Protons were identified later.</td></tr>
+<tr><td>Alpha particles bounced off electrons.</td><td>Electrons are about 7,000 times lighter than an alpha particle and cannot reverse it. Only a massive, concentrated charge can.</td></tr>
+<tr><td>The nucleus is a large part of the atom.</td><td>Scale: the nucleus is about 1/10,000 to 1/100,000 of the atom's diameter, like a marble at the center of a football stadium.</td></tr>
+<tr><td>Today's model has electrons orbiting like planets.</td><td>The uncertainty principle rules out exact paths. Orbitals are regions of probability.</td></tr>
+<tr><td>Uncertainty exists because our instruments are not good enough.</td><td>It is a property of nature, not a measurement flaw. Better tools cannot remove it.</td></tr>
+<tr><td>A theory becomes a law when it is proven.</td><td>Laws describe patterns (conservation of mass). Theories explain them (atomic theory). Neither turns into the other. SEP 1(H).</td></tr>
+</tbody></table>
+
+<h3>Vocabulary</h3>
+<p>model, evidence, law of conservation of mass, law of definite proportions, law of multiple proportions, postulate, atom, cathode ray, electron, charge-to-mass ratio, alpha particle, nucleus, proton, energy level, line spectrum, photon, quantized, uncertainty principle, orbital, electron cloud, scientific theory, scientific law</p>
+
+<h3>Surfaces for Lesson 2.1</h3>
+<div class="grid2">
+  <div class="card"><p class="label">Reading chapter §2.1</p><ol class="small"><li>§2.1.1 How a model earns trust</li><li>§2.1.2 Dalton: atoms from mass data</li><li>§2.1.3 Thomson: a particle smaller than an atom</li><li>§2.1.4 Rutherford: the nucleus</li><li>§2.1.5 Bohr: energy levels</li><li>§2.1.6 Heisenberg: the electron cloud</li><li>§2.1.7 Putting the models in order</li></ol><p class="small">Each section: key idea, simpler-language version, interactive or figure, stop-and-check, vocabulary taps. It opens with an anticipation guide and closes with a review.</p></div>
+  <div class="card"><p class="label">Teacher deck, about 24 slides, 2 periods</p><p class="small">Driving question, predictions, targets, then one block per model, each in evidence → model → limit order. Then a model timeline, checkpoint questions (think, talk, write with sentence starters), the predictions revisited, a CER exit ticket and a self-rating. Every slide is tagged with its reading section.</p></div>
+  <div class="card"><p class="label">Missions</p><ol class="small"><li><b>Evidence court</b>: a real experimental result; which model does it support and which does it rule out?</li><li><b>Model builder</b>: construct each model from parts, with charges and locations</li><li><b>Models at work</b>: X-ray tubes, chip-lab ion scattering, neon signs and street lights, images of atoms. Which model's idea is in use?</li></ol></div>
+  <div class="card"><p class="label">Worksheet 2.1 and key (deferred)</p><ol class="small"><li>Guided reading notes (cloze, by section)</li><li>Model comparison table: evidence, sketch, explains, limit</li><li>Evidence reasoning items that mirror the missions</li><li>CER exit ticket with sentence starters</li><li>Answer key with scoring notes</li></ol></div>
+</div>
+</section>
+
+<section id="l25">
+<h2>6. Lessons 2.2 to 2.5</h2>
+<p class="small muted">Objectives, reading sections and missions as built. Each lesson follows the 2.1 pattern: reading chapter, two-period deck, missions, shared glossary.</p>
+<h3>Lesson 2.2 · Inside the atom · C.6(B)</h3>
+<table>
+<thead><tr><th>ID</th><th>Students will</th><th>TEKS</th></tr></thead>
+<tbody>
+<tr><td>2.2.1</td><td>Compare the relative mass and charge of protons, neutrons and electrons, using the evidence for the neutron.</td><td><span class="tag">C.6(B)</span></td></tr>
+<tr><td>2.2.2</td><td>Locate each subatomic particle in the atom and describe how small the nucleus is.</td><td><span class="tag">C.6(B)</span></td></tr>
+<tr><td>2.2.3</td><td>Use the atomic number to identify an element and the mass number to count its neutrons.</td><td><span class="tag">C.6(B)</span></td></tr>
+<tr><td>2.2.4</td><td>Explain what isotopes are, and read and write isotope notation.</td><td><span class="tag">C.6(B)</span></td></tr>
+<tr><td>2.2.5</td><td>Explain how ions form and find an ion's charge from its protons and electrons.</td><td><span class="tag">C.6(B)</span></td></tr>
+</tbody></table>
+<div class="grid2">
+  <div class="card"><p class="label">Reading chapter §2.2</p><ol class="small"><li>Finding the neutron</li><li>Where the particles are</li><li>Atomic number and mass number</li><li>Isotopes and isotope notation</li><li>Ions: gaining and losing electrons</li><li>Chapter review</li></ol></div>
+  <div class="card"><p class="label">Slides and missions (<code>build</code>)</p><ul class="small"><li>Deck: 23 slides</li><li>Evidence file: 6 cases (The missing mass in helium; How many electrons make a proton?; Where is the mass of a helium atom?; Moseley puts the elements in order; Two kinds of neon; Making ions to measure mass)</li><li>Atom builder</li><li>Atoms at work: 6 cases (A capsule for the thyroid; The workhorse of nuclear medicine; Electrolytes in a bottle; The ion that moves muscles; Inside a smoke detector; Two chlorides in table salt)</li><li>Item bank: 18 items (12 reading, 6 slides)</li></ul></div>
+</div>
+<h3>Lesson 2.3 · Average atomic mass · C.6(D)</h3>
+<table>
+<thead><tr><th>ID</th><th>Students will</th><th>TEKS</th></tr></thead>
+<tbody>
+<tr><td>2.3.1</td><td>Read isotopic masses and percent abundances from mass-spectrometer data, and tell isotopic mass apart from mass number.</td><td><span class="tag">C.6(D)</span></td></tr>
+<tr><td>2.3.2</td><td>Calculate average atomic mass as a weighted average, using fractions that add up to 1.</td><td><span class="tag">C.6(D)</span></td></tr>
+<tr><td>2.3.3</td><td>Explain why average atomic mass is a decimal pulled toward the most abundant isotope, and why, in a mix of isotopes, no single atom has that mass.</td><td><span class="tag">C.6(D)</span></td></tr>
+</tbody></table>
+<div class="grid2">
+  <div class="card"><p class="label">Reading chapter §2.3</p><ol class="small"><li>Weighing atoms</li><li>The weighted average</li><li>Why the periodic table shows a decimal</li><li>Chapter review</li></ol></div>
+  <div class="card"><p class="label">Slides and missions (<code>mass</code>)</p><ul class="small"><li>Deck: 21 slides</li><li>Spectrum lab: 6 cases (Why chlorine is not 35 or 37; Neon splits in two; Three isotopes of magnesium; A boron mistake; Copper by mass number; Helium in the air)</li><li>Isotopes at work: 6 cases (Where did the testosterone come from?; Is this honey pure?; Twin peaks; A 3 to 1 pair; Why the table gives a range; Gallium in reverse)</li><li>Mix lab</li><li>Item bank: 17 items (10 reading, 7 slides)</li></ul></div>
+</div>
+<h3>Lesson 2.4 · Light and the quantized atom · C.6(C)</h3>
+<table>
+<thead><tr><th>ID</th><th>Students will</th><th>TEKS</th></tr></thead>
+<tbody>
+<tr><td>2.4.1</td><td>Describe the electromagnetic spectrum and order its regions by wavelength, frequency and energy.</td><td><span class="tag">C.6(C)</span></td></tr>
+<tr><td>2.4.2</td><td>Use c = λf to calculate the wavelength or frequency of light.</td><td><span class="tag">C.6(C)</span></td></tr>
+<tr><td>2.4.3</td><td>Use E = hf to calculate the energy of a photon and relate energy to frequency and wavelength.</td><td><span class="tag">C.6(C)</span></td></tr>
+<tr><td>2.4.4</td><td>Investigate flame-test and spectroscope data and tell continuous, emission and absorption spectra apart.</td><td><span class="tag">C.6(C)</span></td></tr>
+<tr><td>2.4.5</td><td>Explain emission lines as photons released when electrons drop between fixed energy levels.</td><td><span class="tag">C.6(C)</span></td></tr>
+<tr><td>2.4.6</td><td>Identify elements from their line patterns in fireworks, street lights, signs and stars.</td><td><span class="tag">C.6(C)</span></td></tr>
+</tbody></table>
+<div class="grid2">
+  <div class="card"><p class="label">Reading chapter §2.4</p><ol class="small"><li>Light is more than you can see</li><li>Wavelength and frequency</li><li>Photons and energy</li><li>Flame tests and spectroscopes</li><li>Lines reveal energy levels</li><li>Spectral fingerprints</li><li>Chapter review</li></ol></div>
+  <div class="card"><p class="label">Slides and missions (<code>spectra</code>)</p><ul class="small"><li>Deck: 25 slides</li><li>Light by the numbers: 6 cases (KUT 90.5 FM; The microwave oven; The TV remote; The sodium street lamp; The germicidal lamp; Two hydrogen colors)</li><li>Spectrum detectives: 7 cases (Two unknown blue lines; The yellow street lights; Red, but which red?; Dark lines in sunlight; Is it the fuel?; Inside a fluorescent tube; The yellow line that was not sodium)</li><li>Mystery lamps</li><li>Item bank: 19 items (12 reading, 7 slides)</li></ul></div>
+</div>
+<h3>Lesson 2.5 · Arranging electrons · C.6(E), C.5(B)</h3>
+<table>
+<thead><tr><th>ID</th><th>Students will</th><th>TEKS</th></tr></thead>
+<tbody>
+<tr><td>2.5.1</td><td>Describe energy levels, sublevels (s, p, d, f) and orbitals, and how many electrons each can hold.</td><td><span class="tag">C.6(E)</span></td></tr>
+<tr><td>2.5.2</td><td>Use the filling order to write full electron configurations.</td><td><span class="tag">C.6(E)</span></td></tr>
+<tr><td>2.5.3</td><td>Write noble-gas configurations and find valence electrons from the configuration and the group number.</td><td><span class="tag">C.6(E)</span></td></tr>
+<tr><td>2.5.4</td><td>Draw Lewis dot structures for representative elements.</td><td><span class="tag">C.6(E)</span></td></tr>
+<tr><td>2.5.5</td><td>Predict properties of alkali metals, alkaline earth metals, halogens and noble gases from their valence electrons.</td><td><span class="tag">C.5(B)</span></td></tr>
+<tr><td>2.5.6</td><td>Explain how transition metals differ: a filling d sublevel, lower reactivity, more than one ion charge and colored compounds.</td><td><span class="tag">C.5(B)</span></td></tr>
+</tbody></table>
+<div class="grid2">
+  <div class="card"><p class="label">Reading chapter §2.5</p><ol class="small"><li>Levels, sublevels and orbitals</li><li>The filling order</li><li>Reading the order from the table</li><li>Shortcuts and valence electrons</li><li>Valence electrons repeat down a group</li><li>Lewis dot structures</li><li>Metals that lose electrons</li><li>Gaining electrons, or none at all</li><li>Transition metals</li><li>Families at a glance</li></ol></div>
+  <div class="card"><p class="label">Slides and missions (<code>config</code>)</p><ul class="small"><li>Deck: 23 slides</li><li>Electron detective: 7 cases (The sodium in salt; Phosphorus on the match; The potassium puzzle; Bromine tablets; Is iron a group 8 element with 8 valence electrons?; The odd noble gas; Drawing sulfur)</li><li>Family files: 7 cases (Sodium under oil; The white flash; Chlorine on duty; Argon inside the bulb; Cold enough for a magnet; Copper wire and blue-green roofs; Pigments from the d block)</li><li>Lewis lab</li><li>Item bank: 24 items (17 reading, 7 slides)</li></ul></div>
+</div>
+</section>
+
+<section id="case">
+<h2>7. Case file: The Sun's element</h2>
+<p class="lede">Helium was found in sunlight in 1868, found on Earth in 1895, and is still extracted from Texas natural gas today. Students act as science advisers to a Texas hospital network after the 2024 sale of the Federal Helium Reserve near Amarillo.</p>
+<div class="card"><p class="label">Driving question</p><p><b>Where does helium come from, and why can't a hospital simply make more?</b></p><p class="small">MRI magnets are cooled by liquid helium. The federal helium program began with the Helium Act of 1925. After 1960, crude helium was stored underground in the Bush Dome reservoir of the Cliffside field, about 12 miles northwest of Amarillo. The BLM sold the Federal Helium System to Messer, which announced the closing on June 27, 2024. In 2022 three Texas Panhandle plants (Rock Creek, Sher-Han, Sunray) extracted helium from natural gas, and MRI used 18% of US helium (USGS Minerals Yearbook 2022, table 2 and figure 3). The hospital network is a made-up client, and the file says so. Built as <a href="casefile.html"><code>casefile.html</code></a>: a briefing, six evidence files (calculate, name the Unit 2 idea, decide), then a recommendation tab.</p></div>
+<div class="evid">
+  <div class="card"><p class="label">Evidence 1 · The yellow line · Guntur, India, Aug 18, 1868 · <span class="tag">C.6(C)</span></p><p class="small">Janssen reports a yellow line at about 587.49 nm; the file uses the modern laboratory value, 587.56 nm, and says so. Lockyer names it D3 because it sits near sodium's D lines (589.0 and 589.6 nm). Task: calculate f (5.102 × 10¹⁴ Hz) and E (3.381 × 10⁻¹⁹ J) for the new line, compare with sodium's, and decide whether the new line can be sodium.</p></div>
+  <div class="card"><p class="label">Evidence 2 · The gas in the rock · London and Uppsala, 1895 · <span class="tag">C.6(C)</span> <span class="tag">C.6(D)</span></p><p class="small">Ramsay releases a gas from the uranium mineral cleveite, and its spectrum shows the same yellow line. Cleve and Langlet measure its atomic weight, close to 4. Task: compare helium's mass with hydrogen's (4.0026 ÷ 1.008 = 3.97); explain why a matching line pattern identifies an element.</p></div>
+  <div class="card"><p class="label">Evidence 3 · Catching alpha particles · Manchester, 1908 · <span class="tag">C.6(A)</span></p><p class="small">Rutherford and Royds trap alpha particles in a sealed tube. After 2 days the helium yellow line appears faintly, and after 6 days all the strong lines are visible. Task: conclude what an alpha particle is, and connect it to the gold-foil experiment, whose probes were helium nuclei.</p></div>
+  <div class="card"><p class="label">Evidence 4 · Inside a helium atom · <span class="tag">C.6(B)</span></p><p class="small">Build helium-4, helium-3 and the alpha particle (He²⁺). Task: find the neutrons in helium-3 (1) and the electrons in He²⁺ (0); explain why helium-3 and helium-4 are the same element (both have 2 protons).</p></div>
+  <div class="card"><p class="label">Evidence 5 · Average atomic mass · <span class="tag">C.6(D)</span></p><p class="small">Natural helium is 99.99987% helium-4 (4.002603 u) and 0.00013% helium-3 (3.016029 u). Task: calculate the average (4.0026 u) and explain why it sits so close to 4.</p></div>
+  <div class="card"><p class="label">Evidence 6 · Why helium will not react · <span class="tag">C.6(E)</span> <span class="tag">C.5(B)</span></p><p class="small">Configuration 1s², Lewis dot structure, a full outer level. Task: count valence electrons (2), match helium to the noble-gas family, and explain why it sits in group 18 rather than group 2 (its n = 1 level is full).</p></div>
+</div>
+<div class="card"><p class="label">Final task · recommendation (CER) · SEP 3(A), 3(C)</p><p class="small">Should the hospital network invest in a helium recovery system? The claim must cite at least three evidence files, for example:</p><ul class="small"><li>Helium is an element. Chemical reactions rearrange atoms but cannot change proton number, so no reaction can make it (2.1.1, C.6(B)).</li><li>It forms no compounds that could hold it (C.5(B)).</li><li>Earth's supply builds up underground from alpha particles over geologic time (context from Evidence 3).</li></ul></div>
+<div class="note small"><b>Case-file boundary.</b> Alpha decay is context only; nuclear equations are assessed in Unit 11 (C.14). MRI physics and boiling points are not assessed. Historical data are simplified for clarity, and each simplification is labeled in the file.</div>
+</section>
+
+<section id="matrix">
+<h2>8. Alignment matrix (unit level)</h2>
+<table>
+<thead><tr><th>TEKS</th><th>Reading</th><th>Slides</th><th>Missions</th><th>Worksheets (deferred)</th><th>Case file</th></tr></thead>
+<tbody>
+<tr><td><span class="tag">C.6(A)</span></td><td>§2.1.1 to §2.1.7</td><td>Deck 2.1</td><td><code>models</code>: court, builder, at work</td><td>WS 2.1 A to D</td><td>Evidence 3</td></tr>
+<tr><td><span class="tag">C.6(B)</span></td><td>§2.2</td><td>Deck 2.2</td><td><code>build</code></td><td>WS 2.2</td><td>Evidence 4</td></tr>
+<tr><td><span class="tag">C.6(C)</span></td><td>§2.4</td><td>Deck 2.4</td><td><code>spectra</code></td><td>WS 2.4</td><td>Evidence 1, 2</td></tr>
+<tr><td><span class="tag">C.6(D)</span></td><td>§2.3</td><td>Deck 2.3</td><td><code>mass</code></td><td>WS 2.3</td><td>Evidence 2, 5</td></tr>
+<tr><td><span class="tag">C.6(E)</span></td><td>§2.5</td><td>Deck 2.5</td><td><code>config</code></td><td>WS 2.5</td><td>Evidence 6</td></tr>
+<tr><td><span class="tag">C.5(B)</span></td><td>§2.5</td><td>Deck 2.5</td><td><code>config</code>, <code>capstone</code></td><td>WS 2.5</td><td>Evidence 6, final</td></tr>
+</tbody></table>
+<p class="small muted">The item-level matrix for Lesson 2.1 will be part of the worksheet answer key, where each item lists its objective ID and its reading section.</p>
+</section>
+
+<section id="access">
+<h2>9. Access, ESL and Honors</h2>
+<div class="grid3">
+  <div class="card"><p class="label">Reading supports</p><ul class="small"><li>"In simpler language" toggle per section</li><li>Read-aloud of any section</li><li>Tap-to-define vocabulary</li><li>Sentence starters for written answers</li></ul></div>
+  <div class="card"><p class="label">Projector and print</p><ul class="small"><li>Slides sized for the back row</li><li>Light and dark themes</li><li>Print styles for the reading and worksheets</li></ul></div>
+  <div class="card"><p class="label">Honors layer</p><ul class="small"><li>Collapsible boxes, never on the core path</li><li>2.1: Millikan's oil drop and the electron's mass from e/m</li><li>2.3 to 2.5: reverse abundance, photon energy, orbital exceptions</li></ul></div>
+</div>
+</section>
+
+<section id="port">
+<h2>10. Porting notes</h2>
+<ul>
+<li>The drafts are standalone HTML for review. If adopted, the lesson text moves into <code>shared/lessons/units/02.js</code> and the interactives into <code>models.js</code>, following the repository README.</li>
+<li>Existing mission and progress IDs stay unchanged (<code>models</code>, <code>build</code>, <code>mass</code>, <code>spectra</code>, <code>config</code>, <code>capstone</code>, <code>casefile</code>). New tasks slot in as sub-rounds.</li>
+<li>Slides are a new surface. A <code>slides.html</code> per unit, next to <code>learn.html</code>, would fit the site's Learn → Missions → Case file tabs as a teacher-only entry.</li>
+</ul>
+</section>
+
+<section id="src">
+<h2>Sources</h2>
+<ul class="small">
+<li>19 Tex. Admin. Code §112.43, Chemistry (adopted 2020), via the course's TEKS.md and the Cornell LII text.</li>
+<li>Geiger and Marsden 1909 (platinum, about 1 in 8,000) and Rutherford 1911 (gold foil about 0.00004 cm thick, about 1 in 20,000): ChemTeam, "Rutherford's Experiment, Part II: The Paper of 1911".</li>
+<li>Thomson 1897 cathode-ray experiments: AIP History Center exhibit "The Discovery of the Electron".</li>
+<li>Rutherford and Royds, Phil. Mag. 17, 281 (1909), dated Nov 13, 1908: Le Moyne College "Elements and Atoms", ch. 19.</li>
+<li>Helium history, isotopes and atomic weight: Wikipedia "Helium". Reserve history: Wikipedia "National Helium Reserve" and BLM press release "BLM Helium System sale provides $460 million to U.S. Treasury". Sale closing: Messer press release, June 27, 2024. Texas helium extraction: USGS Minerals Yearbook 2022, Helium (table 2 lists three Texas plants, not four). Isotopic masses, abundances and the standard atomic weight 4.002602: CIAAW. Modern D3 wavelength 587.56 nm: NIST Atomic Spectra Database.</li>
+</ul>
+</section>
+<footer>Chemistry Case Files · Unit 2 · Teacher blueprint</footer>
+</main>
+</div>
+<script>
+(function(){const r=document.documentElement,b=document.getElementById('tt');let t=null;try{t=localStorage.getItem('u2:theme')}catch(e){}
+function ap(){if(t)r.setAttribute('data-theme',t);else r.removeAttribute('data-theme');b.textContent=t==='dark'?'Dark':t==='light'?'Light':'Theme'}
+ap();b.onclick=function(){t=t==='dark'?'light':t==='light'?null:'dark';try{t?localStorage.setItem('u2:theme',t):localStorage.removeItem('u2:theme')}catch(e){}ap()}})();
+</script>
+</body>
+</html>

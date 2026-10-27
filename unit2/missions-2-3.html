@@ -1,0 +1,1030 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Atomic Mass Missions</title>
+<meta name="description" content="Unit 2, Lesson 2.3 missions: Average atomic mass (TEKS C.6(D)).">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,600;9..40,700&family=Charis+SIL:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== shared tokens and components (look: design-drafts/labbench-style-draft.html, 2026-10-26) ===== */
+:root{--bg:#eef2ef;--paper:#fcfdfc;--paper2:#f4f7f5;--ink:#1b302e;--muted:#4f605b;--line:#dbe3de;--sunk:#edf3e4;
+  --accent:#0b5951;--accent-ink:#ffffff;--accent-soft:#e6f1ea;--warm:#835811;--warm-soft:#f8eed9;--label:#0b5951;--ok:#1f6e4f;--ok-soft:#e1f0e6;--bad:#a8402f;--bad-soft:#f9e6e1;
+  --pos:#c0391b;--neg:#2b55b8;--neu:#6b7176;--gold:#9c7400;
+  --body:'Charis SIL',Charter,Georgia,serif;--display:'DM Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+  --shadow:0 1px 2px rgba(18,61,45,.05),0 8px 26px rgba(18,61,45,.07);color-scheme:light;--surface:#ffffff;--pick:#dbecc3}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1715;--paper:#152120;--paper2:#182523;--ink:#e3ece8;--muted:#a6b6b0;--line:#283632;--sunk:#22301f;
+  --accent:#73c7b4;--accent-ink:#06231f;--accent-soft:#163029;--warm:#e6bd6c;--warm-soft:#33290f;--label:#9fd7a8;--ok:#7fd1a6;--ok-soft:#163026;--bad:#f39886;--bad-soft:#3a1e19;
+  --pos:#ff9a6c;--neg:#8eb1ff;--neu:#9ba49f;--gold:#e6c65c;--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 26px rgba(0,0,0,.4);color-scheme:dark;--surface:#1c2a27;--pick:#2b4a20}}
+:root[data-theme="dark"]{--bg:#0f1715;--paper:#152120;--paper2:#182523;--ink:#e3ece8;--muted:#a6b6b0;--line:#283632;--sunk:#22301f;
+  --accent:#73c7b4;--accent-ink:#06231f;--accent-soft:#163029;--warm:#e6bd6c;--warm-soft:#33290f;--label:#9fd7a8;--ok:#7fd1a6;--ok-soft:#163026;--bad:#f39886;--bad-soft:#3a1e19;
+  --pos:#ff9a6c;--neg:#8eb1ff;--neu:#9ba49f;--gold:#e6c65c;--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 26px rgba(0,0,0,.4);color-scheme:dark;--surface:#1c2a27;--pick:#2b4a20}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55}
+sup,sub{font-size:.68em;line-height:0}
+button{font:inherit;color:inherit}
+.nw{white-space:nowrap}
+.mono{font-family:var(--mono)}
+.muted{color:var(--muted)}
+.label{font-family:var(--mono);font-size:.7em;letter-spacing:.08em;text-transform:uppercase;color:var(--label);font-weight:500;margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4em;min-height:2.3em;padding:.3em .85em;border-radius:10px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);font-weight:700;cursor:pointer;white-space:nowrap;position:relative;transition:background .15s,border-color .15s}
+.btn:hover{border-color:var(--accent)}
+.btn:focus-visible,.term:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 55%,transparent);outline-offset:2px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent}
+.btn[aria-pressed="true"]{background:var(--pick);color:var(--ink);border-color:var(--accent)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.correct{background:var(--ok-soft);border-color:var(--ok)}
+.btn.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.btn.correct::after,.btn.wrong::after{position:absolute;top:-.5em;right:-.45em;width:1.3em;height:1.3em;border-radius:50%;display:grid;place-items:center;font-size:.72em;line-height:1;color:var(--paper);box-shadow:0 0 0 2px var(--paper)}
+.btn.correct::after{content:"✓";background:var(--ok)}
+.btn.wrong::after{content:"✗";background:var(--bad)}
+.chips{display:flex;flex-wrap:wrap;gap:.4em}
+.chips span{background:var(--sunk);border-radius:99px;padding:.15em .65em;font-size:.88em}
+select{font:inherit;background:var(--paper);color:var(--ink);border:1.5px solid var(--line);border-radius:8px;padding:.25em .5em;min-height:2.1em;max-width:100%}
+input[type=number],input[type=text]{font:inherit;background:var(--paper);color:var(--ink);border:1.5px solid var(--line);border-radius:8px;padding:.25em .5em;min-height:2.1em}
+input[type=range]{accent-color:var(--accent);width:100%}
+.bar .tools .btn,.bar .seg button,.btn.primary{font-family:var(--display)}
+
+/* ===== Unit 2 component kit: sims, checks, glossary (shared by every surface) ===== */
+.seg{display:inline-flex;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper)}
+.seg button{border:0;background:transparent;padding:.35em .8em;font-weight:700;cursor:pointer;min-height:2.2em;white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--pick);color:var(--ink);border-color:var(--accent)}
+/* glossary terms */
+.term{border:0;background:none;padding:0;color:inherit;font:inherit;font-weight:700;cursor:help;border-bottom:2px dotted color-mix(in srgb,var(--accent) 70%,transparent);line-height:1.2}
+.gpop{position:fixed;z-index:60;max-width:min(340px,calc(100vw - 24px));background:var(--paper);border:1.5px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:.7em .9em;font-size:15px;line-height:1.4}
+.gpop b{font-family:var(--display);font-size:1.08em}
+.gpop .es{display:block;margin-top:.35em;font-size:.88em;color:var(--muted)}
+.gpop .es i{color:var(--ink);font-style:normal;font-weight:700}
+
+/* checks */
+.check{border:1.5px solid var(--line);border-radius:14px;background:var(--paper);padding:.8em 1em;display:flex;flex-direction:column;gap:.55em}
+.check .q{font-weight:700;margin:0}
+.check .opts{display:flex;flex-direction:column;gap:.4em}
+.check .opts .btn{display:block;justify-content:flex-start;text-align:left;white-space:normal;line-height:1.3;padding:.45em .8em;font-weight:600}
+.check .fb{margin:0;font-size:.94em;border-radius:10px;padding:.5em .7em;display:none}
+.check .fb.ok{display:block;background:var(--ok-soft);border-left:4px solid var(--ok)}
+.check .fb.no{display:block;background:var(--bad-soft);border-left:4px solid var(--bad)}
+.check .meta{display:flex;justify-content:space-between;gap:.5em;font-family:var(--display);font-size:.68em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+
+/* sim shells */
+.sim{display:flex;flex-direction:column;gap:.55em}
+.sim .cv{position:relative;width:100%;border-radius:12px;overflow:hidden;background:var(--paper2);border:1.5px solid var(--line)}
+.sim canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}
+.sim .ctl{display:flex;flex-wrap:wrap;gap:.45em;align-items:center}
+.sim .ctl .grp{display:flex;align-items:center;gap:.4em;flex-wrap:wrap}
+.sim .ctl .lab{font-family:var(--display);font-size:.68em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.ros{display:flex;flex-wrap:wrap;gap:.45em}
+.ro{background:var(--sunk);border-radius:10px;padding:.3em .6em;min-width:5.5em}
+.ro small{display:block;font-family:var(--display);font-size:.62em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);white-space:nowrap;font-weight:700}
+.ro span{font-family:var(--mono);font-weight:600;font-variant-numeric:tabular-nums}
+.simnote{font-size:.82em;color:var(--muted);margin:0}
+.say{font-size:.95em;margin:0;border-radius:10px;padding:.5em .7em;background:var(--accent-soft)}
+.say.ok{background:var(--ok-soft)}.say.no{background:var(--bad-soft)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* mass table */
+.tscroll{overflow-x:auto}
+table.masst{width:100%;border-collapse:collapse;font-size:.86em}
+table.masst th{font-family:var(--display);font-size:.72em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);text-align:left;padding:.4em .45em;border-bottom:2px solid var(--line);vertical-align:bottom;font-weight:700}
+table.masst td{padding:.45em .45em;border-bottom:1px solid var(--line);vertical-align:middle}
+table.masst td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+table.masst tr.pe td{background:color-mix(in srgb,var(--warm-soft) 70%,transparent)}
+table.masst .calc{display:block;font-family:var(--mono);font-size:.78em;color:var(--muted)}
+/* model builder */
+.mbhead{margin:0;font-size:1em}
+.mbgrid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:.8em;align-items:center}
+.mbopts{display:flex;flex-direction:column;gap:.55em}
+.mbrow{display:flex;flex-direction:column;gap:.25em}
+.mbrow .lab{font-family:var(--display);font-size:.68em;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.mbchoices{display:flex;flex-wrap:wrap;gap:.35em}
+.mbchoices .btn{font-size:.82em;min-height:2.1em;padding:.25em .65em;white-space:normal;text-align:left;font-weight:600}
+.mbprev svg{width:100%;max-width:220px;display:block;margin:0 auto}
+.mbuild>.btn.primary{align-self:flex-start}
+@media (max-width:600px){.mbgrid{grid-template-columns:minmax(0,1fr)}}
+/* timeline */
+ol.tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.45em;counter-reset:tl}
+.tlc{display:grid;grid-template-columns:auto 52px minmax(0,1fr) minmax(0,1.6fr) auto;gap:.5em;align-items:center;background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:.35em .5em;counter-increment:tl}
+.tlc .grip{cursor:grab;color:var(--muted);font-weight:800;letter-spacing:-.15em;padding:0 .2em;touch-action:none;user-select:none}
+.tlc .thumb svg{width:52px;height:52px;display:block}
+.tlc .tn{font-size:.92em;line-height:1.2}
+.tlc .tn::before{content:counter(tl)". ";font-family:var(--mono);color:var(--muted);font-size:.85em}
+.tlc select{font-size:.82em;width:100%}
+.tlc .ud{display:flex;flex-direction:column;gap:2px}
+.tlc .ud .btn{min-height:1.5em;padding:0 .45em;font-size:.7em}
+.tlc.dragging{box-shadow:var(--shadow);border-color:var(--accent);opacity:.92}
+.tlc{position:relative}
+.tlc.ok{border-color:var(--ok);background:var(--ok-soft)}
+.tlc.ok::after,.tlc.no::after{position:absolute;top:-7px;right:-7px;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;color:var(--paper);box-shadow:0 0 0 2px var(--paper)}
+.tlc.ok::after{content:"✓";background:var(--ok)}
+.tlc.no::after{content:"✗";background:var(--bad)}
+.tlc.no{border-color:var(--bad);background:var(--bad-soft)}
+@media (max-width:600px){.tlc{grid-template-columns:auto 40px minmax(0,1fr) auto}.tlc .thumb svg{width:40px;height:40px}.tlc select{grid-column:2/4}}
+
+.sim .seg button{font-size:.82em;padding:.25em .65em;min-height:2.1em}
+.sim .ctl .btn{font-size:.85em;min-height:2.1em;padding:.25em .7em}
+.checkset{display:flex;flex-direction:column;gap:.5em;margin:0 0 1em}
+.checkset .tabs{display:flex;gap:.35em;flex-wrap:wrap}
+.checkset .tabs .btn{font-size:.78em;min-height:1.9em;padding:.15em .7em}
+.checkset .tabs .btn.done::before{content:"✓ ";color:var(--ok)}
+.checkset>.check{margin:0!important}
+table.masst .btn.sm{font-size:.85em}
+/* an element symbol or formula inside a capitalised label keeps its own case: "Na", not "NA" */
+.chem{text-transform:none!important}
+
+body{font-size:17px}
+/* the page's top bar only: a lesson's model may have a control row named .bar of its own */
+header.bar{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:6px 18px;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);font-size:15px}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.brand .logo{width:30px;height:30px;border-radius:9px;background:conic-gradient(from 200deg,#e85d3a,#f5b13d,#5cb85c,#3a7bd5,#7b4fd6,#e85d3a);flex:none}
+.brand b{display:block;font-family:var(--display);font-size:16px;line-height:1.1}
+.brand small{display:block;color:var(--muted);font-size:12.5px}
+.mtabs{display:flex;gap:4px;flex-wrap:wrap}
+.mtabs button{border:0;background:none;padding:8px 12px;border-radius:10px;font-weight:700;cursor:pointer;color:var(--muted);display:flex;gap:6px;align-items:center;font-size:14.5px}
+.mtabs button[aria-current="true"]{background:var(--pick);color:var(--ink);border-color:var(--accent)}
+.mtabs button .c{font-family:var(--mono);font-size:11.5px;font-weight:600;opacity:.85}
+.mtabs button:disabled{opacity:.55;cursor:not-allowed}
+.mwrap{max-width:1240px;margin:0 auto;padding:22px 20px 60px}
+.mhead{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:16px}
+.mhead h1{font-family:var(--display);font-size:36px;line-height:1.05;margin:.1em 0 .2em}
+.mintro{margin:0;color:var(--muted)}
+.mhead>div:first-child{flex:1 1 18em;min-width:0}
+.mprog{text-align:right}
+.dots{display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap}
+.dots button{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--line);background:var(--paper);font-family:var(--mono);font-size:12px;font-weight:600;cursor:pointer;color:var(--muted)}
+.dots button.cur{background:var(--pick);border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 35%,transparent);color:var(--ink)}
+.dots button.done{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.dots button.part{background:var(--warm-soft);border-color:var(--warm)}
+#mscore{margin:.4em 0 0;font-size:13px;color:var(--muted)}
+.case{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:0;background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+.case .ev{padding:24px 26px;background:var(--paper2);border-right:1px solid var(--line)}
+.case .tasks{padding:24px 26px;display:flex;flex-direction:column;gap:14px}
+/* the place label wraps like text: a long one breaks between words, not into a second column for "· Objective" */
+.ctx{display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--label);font-weight:500}
+.ctx .oid{color:var(--muted);margin-left:.3em}
+.case h2{font-family:var(--display);font-size:28px;line-height:1.1;margin:.25em 0 .6em}
+.case .evb p{margin:0 0 .7em}
+table.dt{border-collapse:collapse;width:100%;font-size:.92em;margin:.3em 0 .8em;background:var(--paper);border-radius:10px;overflow:hidden}
+table.dt th{font-family:var(--display);font-size:11.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);text-align:left;padding:.45em .6em;border-bottom:2px solid var(--line);font-weight:700}
+table.dt td{padding:.45em .6em;border-bottom:1px solid var(--line)}
+.lines svg{width:100%;height:auto;display:block;border-radius:8px}
+.task{border:1.5px solid var(--line);border-radius:14px;padding:.75em .95em;display:flex;flex-direction:column;gap:.5em}
+.task .tl{display:flex;justify-content:space-between;gap:10px;font-family:var(--display);font-size:11.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.task .tl b{color:var(--warm)}
+.task.ok{border-color:var(--ok)}
+.task .q{margin:0;font-weight:700}
+.numrow{display:flex;gap:.5em;align-items:center;flex-wrap:wrap}
+.numrow input{width:8em}
+.numrow .u{color:var(--muted)}
+/* an answer-button row is laid out by missions.js (rows()): balanced rows, as many across as fit at --mbmin each and at most
+   --mbmax, fewer when a word would be cut. A lesson tunes a row with these two, never with grid-template-columns, which the
+   script sets. The grid here only shows until the script runs. */
+@property --mbmin{syntax:'<length>';inherits:true;initial-value:0px}
+@property --mbmax{syntax:'<integer>';inherits:true;initial-value:99}
+.mbtns{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.4em;--mbmin:8em}
+.mbtns .btn{flex-direction:column;padding:.4em .3em;gap:.15em;font-size:.86em;white-space:normal;line-height:1.1}
+.mbtns .btn svg{width:42px;height:42px}
+.fbx{margin:0;font-size:.94em;border-radius:10px;padding:.5em .7em}
+.fbx.ok{background:var(--ok-soft);border-left:4px solid var(--ok)}
+.fbx.no{background:var(--bad-soft);border-left:4px solid var(--bad)}
+.task .check{border:0;padding:0;background:none}
+.task .check .meta{display:none}
+.cnav{display:flex;justify-content:space-between;gap:10px;margin-top:4px}
+.build{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:18px;align-items:start}
+.build .card{background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:20px 22px}
+.btrack{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.btrack li{display:grid;grid-template-columns:56px minmax(0,1fr);gap:10px;align-items:center;border:1.5px solid var(--line);border-radius:12px;padding:6px 10px;background:var(--paper2)}
+.btrack li svg{width:56px;height:56px}
+.btrack li.cur{border-color:var(--accent)}
+.btrack li.done{border-color:var(--ok);background:var(--ok-soft)}
+.btrack li .yr{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.evq{display:flex;flex-direction:column;gap:.5em;margin-top:1em;border-top:1px solid var(--line);padding-top:1em}
+.summary{background:var(--ok-soft);border-radius:14px;padding:14px 18px;margin-top:16px}
+.summary h3{font-family:var(--display);margin:0 0 .3em}
+.locked{background:var(--paper);border:1.5px dashed var(--line);border-radius:18px;padding:28px;max-width:760px}
+.locked h2{font-family:var(--display);margin:.2em 0 .4em}
+.pager{display:flex;gap:8px;align-items:center;justify-content:flex-end}
+.pager .pg{min-height:34px;padding:.3em .8em;font-size:.86em;white-space:nowrap}
+.numrow,.qrow{min-width:0}
+/* docked (missions.js dock()): the header is the top strip of the .case card and holds the pager. The card grows with its
+   content and the page scrolls; the header stays frozen under the sticky bar. Sized for a 1536x726 laptop window. */
+.mwrap.docked{max-width:1440px;padding:0 20px calc(12px - var(--gapcut,0px))}
+/* the card hangs from the bar: no gap, no top border, square top corners */
+.docked .case{grid-template-columns:minmax(0,1fr) minmax(0,1.45fr);border-top:0;border-radius:0 0 18px 18px}
+/* flat (a view without a .case card, missions.js dock()): the header is a strip of its own above the view, shaped like the top of a card */
+.docked.flat>.mhead{border:1px solid var(--line);border-top:0;border-radius:0 0 18px 18px;margin-bottom:16px}
+.docked .mhead{grid-column:1/-1;display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"lab intro prog" "ttl intro prog";gap:0 24px;align-items:center;margin:0;padding:10px 24px;border-bottom:1px solid var(--line);background:var(--paper)}
+.docked .mhead>div:first-child{display:contents}
+.docked .mhead .label{grid-area:lab;align-self:end;margin:0;font-size:11.5px}
+.docked .mhead h1{grid-area:ttl;align-self:start;font-size:25px;margin:0}
+.docked .mhead .mintro{grid-area:intro;font-size:14.5px;line-height:1.4;padding-left:24px;border-left:1px solid var(--line);max-width:46em}
+.docked .mhead .mprog{grid-area:prog}
+/* frozen while the page scrolls: the header under the bar, the evidence column under the header. overflow:clip, not the base
+   hidden, which makes the card a scroll container that sticky parts would stick inside. The evidence column is only as tall as
+   its content, so it paints its background and divider through a border image reaching far above and below it (the card clips
+   it): the shading follows the column whatever the lesson makes the split. A column taller than the window sticks by its
+   bottom instead (missions.js frz() sets --evtop), so its end comes into view as the page scrolls. */
+@media (min-width:901px){.docked .case{overflow:clip}.docked .case>.ev{position:sticky;top:var(--evtop,calc(var(--barh,50px) + var(--mhh,80px)));align-self:start;border-right:0;background:none;border-image:linear-gradient(90deg,var(--paper2) calc(100% - 1px),var(--line) 0) fill 0/0/100vmax 0}.docked .mhead{position:sticky;top:var(--barh,50px);z-index:20;transition:box-shadow .2s}.docked.stuck .mhead{box-shadow:0 10px 14px -12px rgba(0,0,0,.35)}}
+.docked .mhead #mscore{margin:.35em 0 0;font-size:12px}
+.docked .case .ev,.docked .case .tasks{padding:16px 24px calc(18px - var(--padcut,0px))}
+.docked .case .tasks{gap:10px}
+.docked .case .tasks>.summary{margin:0}
+.docked .case h2{font-size:24px;margin:.2em 0 .5em}
+.docked .task{padding:.5em .85em .6em;gap:.3em}
+.docked .task .tl{margin:0;line-height:1.3}
+.docked .qrow{display:flex;flex-wrap:wrap;align-items:center;gap:.4em 1em}
+.docked .qrow .q{flex:1 1 15em}
+.docked .task .check{gap:.35em}
+.docked .task .check .opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(11em,1fr));gap:.45em}
+.docked .task .check .opts .btn{padding:.4em .7em;line-height:1.25;font-size:.94em}
+/* the Decide options in one row on a laptop, each as wide as its share of the text, so a long option does not wrap to five
+   lines beside two short ones and a third option is never left alone on a second row; none narrower than 9em, or than its
+   longest word (missions.js). Options with pictures keep the grid. */
+@media (min-width:901px){.docked .task .check .opts:not(:has(svg)){display:flex;flex-flow:row nowrap}.docked .task .check .opts:not(:has(svg))>.btn{flex:1 1 auto;min-width:9em}}
+/* a pick: the icon beside the label, at least 8em wide, so a short label like "Group 16" stays on one line (five across at
+   1536, three at 1024). A phone keeps the base layout: icon above the label, at most three across. */
+@media (min-width:901px){.docked .mbtns{grid-template-columns:repeat(auto-fit,minmax(8em,1fr))}.docked .mbtns .btn{flex-direction:row;justify-content:flex-start;gap:.5em;padding:.3em .6em;text-align:left;min-height:2.6em}.docked .mbtns .btn svg{width:40px;height:24px;flex:none}}
+/* a pick row where an icon beside its label would cut a word (missions.js, .stk): each icon above its label instead */
+@media (min-width:901px){.docked .mbtns.stk .btn{flex-direction:column;justify-content:center;text-align:center;gap:.2em;padding:.35em .3em}}
+.docked .ptx .pc{aspect-ratio:1.36/1}
+@media (max-width:1180px){.docked .mhead{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"lab prog" "ttl prog" "intro intro"}.docked .mhead .mintro{padding:6px 0 0;border-left:0;max-width:none}}
+@media (max-width:900px){.case,.docked .case,.build{grid-template-columns:minmax(0,1fr)}.case .ev{border-right:0;border-bottom:1px solid var(--line)}.mbtns{grid-template-columns:repeat(3,minmax(0,1fr));--mbmin:0px;--mbmax:3}.mhead h1{font-size:28px}.mprog{text-align:left}.dots,.pager{justify-content:flex-start}.docked .mhead{grid-template-columns:minmax(0,1fr);grid-template-areas:"lab" "ttl" "intro" "prog";row-gap:4px}.docked .mhead .mprog{margin-top:6px}.pager{flex-wrap:wrap}}
+/* page controls take the heading face */
+.mtabs button,.pager .pg{font-family:var(--display)}
+
+/* Unit 2 missions stylesheet: every lesson's missions page and the case file get it, after the kit's (kit/build.py) */
+/* docked desktop layout: two Calculate tasks in a row share one line (1280 px and wider, where both answer rows fit) */
+@media (min-width:1280px){
+.docked .case .tasks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.docked .case .tasks>*{grid-column:1/-1}
+.docked .case .tasks>.task:has(.numrow input):has(+.task .numrow input),.docked .case .tasks>.task:has(.numrow input)+.task:has(.numrow input){grid-column:auto}
+.docked .case .tasks>.task:has(.numrow input) .qrow{flex:1;align-content:space-between}
+}
+
+/* ===== Lesson 2.3 missions additions ===== */
+.jn{font-family:var(--mono);font-weight:600;min-width:1.6em;text-align:center;font-variant-numeric:tabular-nums}
+.mix23{display:flex;flex-direction:column;gap:12px}
+.mixnav{display:flex;flex-wrap:wrap;gap:.4em}
+.mixcard{display:flex;flex-direction:column;gap:10px;padding:22px 26px;background:var(--paper);border:1.5px solid var(--line);border-radius:18px}
+.mixcard h2{margin:0;font-size:1.35em}
+.mixcard h2 b{color:var(--warm)}
+.mixcard .label,.mixcard .mixdo{margin:0}
+.mixdo{color:var(--muted)}
+.mixafter{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.mixafter:empty{display:none}
+@media (max-width:640px){.mbtns{--mbmax:2}.mixcard{padding:16px}}
+.mixsim{max-width:880px;width:100%}
+/* docked desktop layout: the jar and mass line on the left, the controls and readouts beside them, so the lab fits a
+   1497 x 638 window */
+@media (min-width:901px){
+.mixcard{padding:18px 26px;gap:8px}
+.mixsim{max-width:none;position:relative;min-height:300px;padding-left:calc(64% + 18px);box-sizing:border-box}
+.mixsim>.cv{position:absolute;left:0;top:0;width:64%;height:300px;aspect-ratio:auto}
+.mixsim>:not(.cv){margin:0}
+}
+
+a.brand{color:inherit;text-decoration:none}
+</style>
+</head>
+<body>
+<header class="bar">
+  <a class="brand" href="index.html" title="Unit 2 home"><span class="logo" aria-hidden="true"></span><span><b>Chemistry Case Files</b><small>Unit 2 · Lesson 2.3 · Missions · TEKS C.6(D)</small></span></a>
+  <nav class="mtabs" id="mtabs" aria-label="Missions"></nav>
+  <div class="tools"><button class="btn ghost" id="theme" type="button">Theme</button></div>
+</header>
+<main id="m" class="mwrap">
+  <section class="mhead"><div><p class="label" id="msub"></p><h1 id="mtitle"></h1><p class="mintro" id="mintro"></p></div><div class="mprog"><div class="pager"><div class="dots" id="dots"></div></div><p id="mscore" class="mono"></p></div></section>
+  <section id="mbody"></section>
+</main>
+
+<script>
+window.U2LESSON="23";
+/* Lesson 2.1 glossary (merged with every other lesson's at build time): term -> definition, Spanish term. One source for reading, slides and worksheets. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "model":{d:"A simplified picture, object or set of rules that explains observations and predicts new ones.",es:"modelo"},
+ "evidence":{d:"Observations or data that support or contradict an idea.",es:"evidencia"},
+ "scientific law":{d:"A statement that describes a pattern in nature, often as an equation. It states what happens, not why.",es:"ley científica"},
+ "scientific theory":{d:"A well-tested explanation of why patterns in nature happen, supported by many lines of evidence.",es:"teoría científica"},
+ "law of conservation of mass":{d:"In a chemical reaction, the total mass of the products equals the total mass of the reactants.",es:"ley de conservación de la masa"},
+ "law of definite proportions":{d:"A compound always contains the same elements in the same proportions by mass, whatever its source.",es:"ley de las proporciones definidas"},
+ "law of multiple proportions":{d:"When two elements form more than one compound, the masses of one element that combine with a fixed mass of the other are in a small whole-number ratio.",es:"ley de las proporciones múltiples"},
+ "postulate":{d:"A basic statement accepted as the starting point of a theory.",es:"postulado"},
+ "atom":{d:"The smallest particle of an element that keeps the element's identity in chemical reactions.",es:"átomo"},
+ "compound":{d:"A substance made of two or more elements chemically combined in a fixed ratio.",es:"compuesto"},
+ "cathode ray":{d:"A beam of electrons that travels from the negative electrode (the cathode) in a tube with almost no air.",es:"rayo catódico"},
+ "cathode":{d:"In a cathode-ray (discharge) tube, the negative electrode. In a battery or other cell, the cathode is named by the reaction there, not by its sign, and it can be positive.",es:"cátodo"},
+ "electron":{d:"A negatively charged particle with very little mass, found in all atoms outside the nucleus.",es:"electrón"},
+ "charge-to-mass ratio":{d:"A particle's electric charge divided by its mass. A large value means a large charge for a small mass.",es:"relación carga-masa"},
+ "alpha particle":{d:"A fast, positively charged particle made of 2 protons and 2 neutrons: a helium nucleus. Some radioactive substances emit it.",es:"partícula alfa"},
+ "nucleus":{d:"The tiny, dense, positively charged center of an atom. It holds almost all of the atom's mass.",es:"núcleo"},
+ "proton":{d:"A positively charged particle in the nucleus.",es:"protón"},
+ "energy level":{d:"One of the fixed energies an electron in an atom can have.",es:"nivel de energía"},
+ "line spectrum":{d:"The set of separate colored lines produced when light from a glowing element is spread out by a prism or grating. Each element has its own.",es:"espectro de líneas"},
+ "photon":{d:"A single packet of light energy.",es:"fotón"},
+ "quantized":{d:"Limited to certain fixed amounts, with no values in between.",es:"cuantizado"},
+ "momentum":{d:"Mass times velocity: a measure of an object's motion.",es:"cantidad de movimiento"},
+ "uncertainty principle":{d:"Heisenberg's principle: the exact position and the exact momentum of a particle cannot both be known at the same time.",es:"principio de incertidumbre"},
+ "orbital":{d:"A region around the nucleus where an electron is likely to be found.",es:"orbital"},
+ "electron cloud":{d:"The fuzzy region around the nucleus where electrons are likely to be. It is dense where an electron is likely and thin where it is unlikely.",es:"nube electrónica"},
+ "probability":{d:"How likely something is to happen, from 0 (never) to 1 (always).",es:"probabilidad"},
+ "vacuum":{d:"A space that contains almost no matter, including air.",es:"vacío"},
+ "deflect":{d:"To turn something away from its straight path.",es:"desviar"}
+});
+
+/* Lesson 2.2 glossary (merged with every other lesson's at build time). 2.1 already defines atom, electron, proton, nucleus, electron cloud. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "subatomic particle":{d:"A particle smaller than an atom. Atoms are built from three kinds: protons, neutrons and electrons.",es:"partícula subatómica"},
+ "neutron":{d:"A particle in the nucleus with no electric charge and a mass about equal to a proton's.",es:"neutrón"},
+ "element":{d:"A substance made of atoms that all have the same number of protons.",es:"elemento"},
+ "atomic number":{d:"The number of protons in an atom's nucleus (Z). It identifies the element.",es:"número atómico"},
+ "mass number":{d:"The number of protons plus neutrons in an atom's nucleus (A).",es:"número másico"},
+ "isotope":{d:"Atoms of the same element (same number of protons) with different numbers of neutrons, and so different mass numbers.",es:"isótopo"},
+ "isotope notation":{d:"A symbol that shows an atom's mass number at the upper left and atomic number at the lower left of the element symbol, such as carbon-14 written as ¹⁴₆C.",es:"notación isotópica"},
+ "ion":{d:"An atom or group of atoms with a net electric charge because it has gained or lost electrons.",es:"ion"},
+ "cation":{d:"A positive ion. It has fewer electrons than protons.",es:"catión"},
+ "anion":{d:"A negative ion. It has more electrons than protons.",es:"anión"},
+ "relative mass":{d:"A mass compared with a standard instead of given in kilograms. On this scale a proton and a neutron are each about 1 and an electron is about 1/1836.",es:"masa relativa"},
+ "neutral atom":{d:"An atom with equal numbers of protons and electrons, so its charges cancel and its net charge is zero.",es:"átomo neutro"},
+ "radioactive":{d:"Describes an unstable nucleus that emits radiation on its own. Some isotopes are radioactive; others are stable.",es:"radiactivo"},
+ "electrolyte":{d:"A substance that forms ions in water. In medicine, the word also means the dissolved ions themselves, such as Na⁺, K⁺, Ca²⁺ and Cl⁻ in body fluids.",es:"electrolito"}
+});
+
+/* Lesson 2.3 glossary (merged with every other lesson's at build time). 2.2 defines isotope, mass number, atomic number. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "atomic mass unit":{d:"A unit for the mass of atoms (u, also written amu): one twelfth of the mass of a carbon-12 atom.",es:"unidad de masa atómica"},
+ "isotopic mass":{d:"The mass of one atom of a particular isotope, in atomic mass units.",es:"masa isotópica"},
+ "percent abundance":{d:"The percentage of an element's atoms, in a natural sample, that are a particular isotope.",es:"abundancia porcentual"},
+ "weighted average":{d:"An average in which each value counts in proportion to how often it occurs.",es:"promedio ponderado"},
+ "average atomic mass":{d:"The weighted average mass of an element's naturally occurring isotopes, in atomic mass units. It is the value on the periodic table.",es:"masa atómica promedio"},
+ "mass spectrometer":{d:"An instrument that separates ions by their mass-to-charge ratio and measures how many of each there are. When every ion has the same charge, as in this lesson, that means sorting by mass.",es:"espectrómetro de masas"},
+ "mass spectrum":{d:"A graph from a mass spectrometer: mass on one axis, relative abundance on the other.",es:"espectro de masas"},
+ "isotope ratio":{d:"The amount of one isotope in a sample compared with the amount of another, such as carbon-13 compared with carbon-12. Small differences can reveal where a sample came from.",es:"relación isotópica"}
+});
+
+/* Lesson 2.4 glossary (merged with every other lesson's at build time). 2.1 already defines photon, energy level, line spectrum, quantized. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "electromagnetic radiation":{d:"Energy that travels through space as waves of electric and magnetic fields, such as visible light, radio waves and X-rays.",es:"radiación electromagnética"},
+ "electromagnetic spectrum":{d:"The whole range of electromagnetic radiation, ordered by wavelength or frequency, from radio waves to gamma rays.",es:"espectro electromagnético"},
+ "wavelength":{d:"The distance from one wave crest to the next (λ), measured in meters or nanometers.",es:"longitud de onda"},
+ "frequency":{d:"The number of wave crests that pass a point each second (f), measured in hertz (Hz).",es:"frecuencia"},
+ "hertz":{d:"The unit of frequency: one wave per second (1 Hz = 1 s⁻¹).",es:"hercio"},
+ "Planck's constant":{d:"The constant h = 6.626 × 10⁻³⁴ J·s that links a photon's energy to its frequency in E = hf.",es:"constante de Planck"},
+ "ground state":{d:"The lowest energy state of an atom, with every electron in the lowest levels available.",es:"estado fundamental"},
+ "excited state":{d:"A state of an atom in which an electron is in a higher energy level than in the ground state.",es:"estado excitado"},
+ "emission spectrum":{d:"The pattern of bright lines emitted by an excited gas. Each element's pattern is unique.",es:"espectro de emisión"},
+ "absorption spectrum":{d:"Dark lines in a continuous spectrum where a cooler gas has absorbed particular wavelengths.",es:"espectro de absorción"},
+ "continuous spectrum":{d:"An unbroken band containing every wavelength, like the rainbow from a glowing solid or dense gas.",es:"espectro continuo"},
+ "flame test":{d:"A test that identifies a metal ion by the color it gives a flame.",es:"prueba de llama"},
+ "spectroscope":{d:"An instrument that spreads light into its separate wavelengths so its lines can be seen and measured.",es:"espectroscopio"},
+ "speed of light":{d:"The speed of all electromagnetic radiation in a vacuum: c = 2.998 × 10⁸ m/s.",es:"velocidad de la luz"},
+ "nanometer":{d:"One billionth of a meter: 1 nm = 10⁻⁹ m. Visible light has wavelengths of about 380 to 700 nm.",es:"nanómetro"},
+ "visible light":{d:"The small part of the electromagnetic spectrum that human eyes can see, about 380 nm (violet) to 700 nm (red).",es:"luz visible"},
+ "infrared":{d:"Electromagnetic radiation with wavelengths longer than red light but shorter than microwaves. It is felt as heat.",es:"infrarrojo"},
+ "ultraviolet":{d:"Electromagnetic radiation with wavelengths shorter than violet light but longer than X-rays. It can cause sunburn.",es:"ultravioleta"},
+ "inverse relationship":{d:"When one quantity is multiplied by a factor, the other is divided by the same factor. Wavelength and frequency are inversely related.",es:"relación inversa"},
+ "direct relationship":{d:"When one quantity is multiplied by a factor, the other is multiplied by the same factor. Photon energy and frequency are directly related.",es:"relación directa"}
+});
+
+/* Lesson 2.5 glossary (merged with every other lesson's at build time). 2.1 already defines orbital, energy level, electron cloud. */
+window.GLOSS=Object.assign(window.GLOSS||{},{
+ "electron configuration":{d:"A list of the sublevels an atom's electrons occupy, with the number in each, such as 1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup> 3s<sup>1</sup> for sodium.",es:"configuración electrónica"},
+ "sublevel":{d:"A set of orbitals of the same type (s, p, d or f) within one energy level.",es:"subnivel"},
+ "noble-gas configuration":{d:"A shortened electron configuration that starts from the previous noble gas in brackets, such as [Ne] 3s<sup>1</sup> for sodium.",es:"configuración de gas noble"},
+ "valence electron":{d:"An electron in the highest occupied energy level of an atom. Valence electrons take part in bonding.",es:"electrón de valencia"},
+ "Lewis dot structure":{d:"An element symbol surrounded by one dot for each valence electron.",es:"estructura de puntos de Lewis"},
+ "octet":{d:"A set of eight valence electrons, as in every noble gas except helium. It is a very stable arrangement.",es:"octeto"},
+ "group":{d:"A vertical column of the periodic table. Representative elements in the same group have the same number of valence electrons and similar properties.",es:"grupo"},
+ "period":{d:"A horizontal row of the periodic table. Its number matches the highest energy level occupied in the ground state.",es:"periodo"},
+ "representative element":{d:"An element in groups 1, 2 or 13 to 18, where the s or p sublevel is being filled.",es:"elemento representativo"},
+ "alkali metal":{d:"A group 1 element other than hydrogen (lithium to francium): one valence electron, very reactive, forms 1+ ions.",es:"metal alcalino"},
+ "alkaline earth metal":{d:"A group 2 element (beryllium to radium): two valence electrons, reactive, forms 2+ ions.",es:"metal alcalinotérreo"},
+ "halogen":{d:"A group 17 element (fluorine to astatine): seven valence electrons, a very reactive nonmetal, forms 1− ions.",es:"halógeno"},
+ "noble gas":{d:"A group 18 element (helium to radon): a filled outer level, so almost unreactive.",es:"gas noble"},
+ "transition metal":{d:"An element in groups 3 to 12, where a d sublevel is being filled.",es:"metal de transición"},
+ "core electron":{d:"An electron in the filled inner levels of an atom, below the valence electrons. The noble-gas symbol in brackets stands for the core.",es:"electrón interno"},
+ "block":{d:"A region of the periodic table named for the sublevel being filled: the s block (groups 1 and 2, plus helium), the p block (groups 13 to 18), the d block (groups 3 to 12) and the f block.",es:"bloque"},
+ "orbital diagram":{d:"A drawing of an atom's electrons as arrows in boxes, one box per orbital. The arrow direction shows the electron's spin.",es:"diagrama de orbitales"},
+ "diatomic molecule":{d:"A molecule made of two atoms joined together, such as Cl<sub>2</sub> or O<sub>2</sub>.",es:"molécula diatómica"},
+ "Aufbau principle":{d:"Electrons fill the lowest-energy orbitals available first.",es:"principio de Aufbau"},
+ "Pauli exclusion principle":{d:"An orbital holds at most two electrons, and they must have opposite spins.",es:"principio de exclusión de Pauli"},
+ "Hund's rule":{d:"Electrons occupy orbitals of equal energy one at a time, with the same spin, before any pair up.",es:"regla de Hund"}
+});
+
+/* Lesson 2.3 item bank. Every item: id, objective, reading section, surface, DOK.
+   opts: [text, correct?, feedback]. Feedback for wrong options names and corrects the misconception.
+   Isotope data (NIST, IUPAC): Cl-35 34.968853 u 75.76%, Cl-37 36.965903 u 24.24%; Mg-24 23.985042 u 78.99%,
+   Mg-25 24.985837 u 10.00%, Mg-26 25.982593 u 11.01%; B-10 10.012937 u 19.9%, B-11 11.009305 u 80.1%;
+   Cu-63 62.929598 u 69.15%, Cu-65 64.927790 u 30.85%; Br-79 78.9183376 u 50.69%, Br-81 80.9162897 u 49.31%;
+   Ga-69 68.9255735 u 60.108%, Ga-71 70.92470258 u 39.892%. */
+window.OBJ=Object.assign(window.OBJ||{},{
+ "2.3.1":{teks:"C.6(D)",t:"Read isotopic masses and percent abundances from mass-spectrometer data, and tell isotopic mass apart from mass number."},
+ "2.3.2":{teks:"C.6(D)",t:"Calculate average atomic mass as a weighted average, using fractions that add up to 1."},
+ "2.3.3":{teks:"C.6(D)",t:"Explain why average atomic mass is a decimal pulled toward the most abundant isotope, and why, in a mix of isotopes, no single atom has that mass."}
+});
+window.ITEMS=(window.ITEMS||[]).concat([
+ /* ---------- reading ---------- */
+ {id:"m-r1",obj:"2.3.1",sec:"2.3.1",surf:"reading",dok:1,q:"How is the atomic mass unit (u) defined?",
+  opts:[["As one twelfth of the mass of a carbon-12 atom.",1,"Correct. Carbon-12 is the standard: it is exactly 12 u, and every other mass is measured against it."],
+        ["As the mass of one proton.",0,"Close, but not the definition. A proton is 1.007276 u, slightly more than 1 u. The unit is set by carbon-12."],
+        ["As the mass of one hydrogen atom.",0,"Early chemists compared atomic masses with hydrogen, but today's unit is defined from carbon-12. A hydrogen-1 atom is 1.007825 u."],
+        ["As one gram.",0,"A gram is far too large for one atom. 1 u is about 1.66 × 10<sup>−24</sup> g."]]},
+ {id:"m-r2",obj:"2.3.1",sec:"2.3.1",surf:"reading",dok:2,q:"In chlorine's mass spectrum, the bar at 34.97 u reaches 75.76%. What does the height of that bar tell you?",
+  opts:[["75.76% of chlorine atoms are chlorine-35.",1,"Correct. The height is the percent abundance; the position on the axis gives the isotopic mass."],
+        ["A chlorine-35 atom has a mass of 75.76 u.",0,"The isotopic mass is read from the horizontal axis (34.97 u). The height shows how common the isotope is."],
+        ["75.76% of each chlorine atom is chlorine-35.",0,"Each atom is entirely one isotope. The percent describes how many atoms in the sample are chlorine-35."],
+        ["Chlorine-35 atoms are 75.76% heavier than chlorine-37 atoms.",0,"The bar height is not a mass comparison. Chlorine-35 is actually the lighter isotope."]]},
+ {id:"m-r3",obj:"2.3.1",sec:"2.3.1",surf:"reading",dok:2,q:"Chlorine-37 has a mass number of 37, but its isotopic mass is 36.965903 u. Why are they different?",
+  opts:[["The mass number counts particles; the isotopic mass is a measured mass, and protons and neutrons are not exactly 1 u each.",1,"Correct. 37 is a count of protons plus neutrons. The measured mass is close to 37 u but not equal to it, because the particles are not exactly 1 u each and a small amount of mass is released as energy when the nucleus forms."],
+        ["The mass spectrometer is not accurate enough to read 37.",0,"Mass spectrometers measure to six or more decimal places. The difference is real, not an error."],
+        ["Some chlorine-37 atoms are missing part of a neutron.",0,"Atoms always have whole numbers of protons and neutrons. The mass number is 37; the isotopic mass is not exactly 37 u."],
+        ["They are the same quantity; 36.965903 rounds to 37.",0,"They are close, but they are different quantities: one is a count, the other is a mass in u."]]},
+ {id:"m-r4",obj:"2.3.1",sec:"2.3.1",surf:"reading",dok:2,q:"Magnesium's spectrum shows bars at 23.99 u (78.99%), 24.99 u (10.00%) and 25.98 u (11.01%). Out of 1,000 magnesium atoms, about how many are magnesium-26?",
+  opts:[["About 110",1,"Correct. 11.01% of 1,000 is about 110 atoms."],
+        ["About 11",0,"11 would be the number out of 100. Out of 1,000, there are ten times as many: about 110."],
+        ["About 26",0,"26 is the mass number of the isotope, not a number of atoms. Read the abundance: 11.01%."],
+        ["About 790",0,"That is the number of magnesium-24 atoms, the tallest bar. Magnesium-26 is the 11.01% bar."]]},
+ {id:"m-r5",obj:"2.3.2",sec:"2.3.2",surf:"reading",dok:1,q:"Chlorine-37 is 24.24% of chlorine atoms. Which number goes into the weighted-average calculation?",
+  opts:[["0.2424",1,"Correct. Divide the percent by 100. The fractions for all isotopes then add up to 1."],
+        ["24.24",0,"Using the percent itself makes the answer 100 times too large. Divide by 100 first: 0.2424."],
+        ["2.424",0,"That divides by 10, not 100. Percent means per hundred: 24.24 ÷ 100 = 0.2424."],
+        ["37",0,"37 is the mass number. The weighting factor is the fraction of atoms, 0.2424."]]},
+ {id:"m-r6",obj:"2.3.2",sec:"2.3.2",surf:"reading",dok:2,q:"A student finds chlorine's atomic mass as (34.968853 + 36.965903) ÷ 2 = 35.97 u. The periodic table says 35.45 u. What went wrong?",
+  opts:[["The plain mean treats both isotopes as equally common, but chlorine-35 is about three times as common.",1,"Correct. A weighted average counts each mass by its abundance, which pulls the result toward chlorine-35."],
+        ["The student should have used the mass numbers 35 and 37.",0,"(35 + 37) ÷ 2 = 36 is still a plain mean, and still ignores abundance. Use isotopic masses and weight them."],
+        ["The student should have added the masses instead: 71.93 u.",0,"An average of two masses must lie between them. 71.93 u is the combined mass of two atoms, not an average."],
+        ["Nothing. The periodic table rounds 35.97 down to 35.45.",0,"Rounding cannot turn 35.97 into 35.45. The difference comes from the weighting."]]},
+ {id:"m-r7",obj:"2.3.2",sec:"2.3.2",surf:"reading",dok:2,q:"Boron is 19.9% boron-10 and 80.1% boron-11. Which set of numbers is ready to multiply by the isotopic masses?",
+  opts:[["0.199 and 0.801",1,"Correct. Both percents are divided by 100, and 0.199 + 0.801 = 1."],
+        ["19.9 and 80.1",0,"These are percents. Multiplying by them gives an answer 100 times too large (1,081 u). Divide by 100 first."],
+        ["0.5 and 0.5",0,"Equal weights are a plain mean. Boron-11 is four times as common as boron-10, so it must count more."],
+        ["10 and 11",0,"These are the mass numbers. The weights are the fractions of atoms."]]},
+ {id:"m-r8",obj:"2.3.3",sec:"2.3.3",surf:"reading",dok:2,q:"Boron's average atomic mass is 10.81 u, much closer to boron-11 (11.009305 u) than to boron-10 (10.012937 u). Why?",
+  opts:[["About 80% of boron atoms are boron-11.",1,"Correct. The average is pulled toward the isotope with the most atoms."],
+        ["Heavier isotopes always count more in an average.",0,"The weighting comes from abundance, not from mass. Chlorine's average sits near its lighter isotope, because the lighter one is more common."],
+        ["Boron-11 has more protons than boron-10.",0,"Both are boron, so both have 5 protons. Boron-11 has one more neutron."],
+        ["The periodic table rounds every mass up.",0,"No rounding rule is involved. 10.81 u is the weighted average of the two isotopes."]]},
+ {id:"m-r9",obj:"2.3.3",sec:"2.3.3",surf:"reading",dok:3,q:"Suppose you measured chlorine atoms one at a time. Would you ever find an atom with a mass of 35.45 u?",
+  opts:[["No. Each atom is about 34.97 u or about 36.97 u. 35.45 u describes the mixture.",1,"Correct. The average belongs to the sample, like a class test average of 83.5 when every score is a whole number: no student scored 83.5."],
+        ["Yes. Most chlorine atoms have that mass.",0,"No chlorine atom has the average mass. Most chlorine atoms (75.76%) are chlorine-35, at 34.968853 u."],
+        ["Yes. Some atoms have 18.45 neutrons.",0,"Neutrons are whole particles. An atom has 18 or 20 neutrons, never a fraction."],
+        ["Only in chlorine from a lab, not from nature.",0,"Lab or nature, every atom is one isotope. Only a mixture can average 35.45 u."]]},
+ {id:"m-r10",obj:"2.3.3",sec:"2.3.3",surf:"reading",dok:3,q:"Copper is 69.15% copper-63 (62.929598 u) and 30.85% copper-65 (64.927790 u). Without calculating, which average is reasonable?",
+  opts:[["63.55 u",1,"Correct. It lies between the two masses and closer to copper-63, the more common isotope."],
+        ["63.93 u",0,"That is the plain mean of the two masses, halfway between them. Copper-63 is more common, so the average must sit closer to it."],
+        ["64.93 u",0,"That is the mass of copper-65 alone. The less common isotope cannot set the average."],
+        ["64.00 u",0,"That is the midpoint of the mass numbers, a plain mean again. Weight by abundance."]]},
+ /* ---------- slides ---------- */
+ {id:"m-s-amu",obj:"2.3.1",sec:"2.3.1",surf:"slides",dok:1,q:"Why is a carbon-12 atom exactly 12 u, when chlorine-35 is 34.968853 u?",
+  opts:[["The unit is defined from carbon-12. Every other mass is measured against it.",1,"Correct. 1 u is one twelfth of a carbon-12 atom, so carbon-12 is exactly 12 u by definition."],
+        ["Carbon atoms are made of perfectly round particles.",0,"Shape is not the reason. Carbon-12 is exact only because the unit is defined from it."],
+        ["Carbon-12 was measured more carefully than chlorine.",0,"Both are measured very precisely. Carbon-12 is exact because it is the standard, not a measurement."]]},
+ {id:"m-s-read",obj:"2.3.1",sec:"2.3.1",surf:"slides",dok:2,q:"Copper: 62.93 u (69.15%) and 64.93 u (30.85%). Which is correct?",
+  opts:[["About 69 of every 100 copper atoms have a mass of 62.93 u.",1,"Correct. Position gives the mass; height gives the share of atoms."],
+        ["Copper-63 atoms are 69.15% heavier than copper-65.",0,"Height is not a mass. Copper-63 is the lighter isotope; it is simply more common."],
+        ["Each copper atom is 69.15% copper-63.",0,"Each atom is entirely one isotope. The 69.15% describes how many atoms in the sample are copper-63."]]},
+ {id:"m-s-mn",obj:"2.3.1",sec:"2.3.1",surf:"slides",dok:2,q:"Copper-65: mass number 65, isotopic mass 64.927790 u. Which statement is correct?",
+  opts:[["65 is a count of protons plus neutrons; 64.927790 u is a measured mass.",1,"Correct. They are close, but one is a count and the other is a mass."],
+        ["They are the same quantity; 64.927790 rounds to 65.",0,"Close is not equal. Use isotopic masses in calculations; mass numbers give a slightly wrong answer."],
+        ["The atom has 64.927790 protons and neutrons.",0,"Particles come in whole numbers. The decimal is the mass in u, not a count."]]},
+ {id:"m-s-mean",obj:"2.3.2",sec:"2.3.2",surf:"slides",dok:2,q:"Predict: a jar of chlorine holds 76 chlorine-35 atoms and 24 chlorine-37 atoms. Its average mass is…",
+  opts:[["below 35.97 u, closer to chlorine-35",1,"Correct. The jar gives 35.45 u: with three times as many chlorine-35 atoms, the average is pulled toward 34.97 u."],
+        ["35.97 u, halfway between the isotopes",0,"Halfway is the plain mean. It would be right only if the two isotopes were equally common. The jar shows 35.45 u."],
+        ["above 35.97 u, closer to chlorine-37",0,"A heavier isotope does not count for more. Chlorine-37 is the minority, so the jar's average is 35.45 u, near chlorine-35."]]},
+ {id:"m-s-near",obj:"2.3.3",sec:"2.3.3",surf:"slides",dok:3,q:"Bromine is 50.69% bromine-79 (78.92 u) and 49.31% bromine-81 (80.92 u). Where does its average sit?",
+  opts:[["Almost exactly halfway, at 79.90 u",1,"Correct. The abundances are nearly equal, so the weighted average is close to the plain mean. It is slightly nearer bromine-79."],
+        ["Near 79 u, because the lighter isotope always counts more",0,"The more abundant isotope pulls the average, not the lighter one. Here the abundances are nearly equal."],
+        ["At exactly 80.00 u",0,"80 is halfway between the mass numbers, but bromine-79 is slightly more common and the masses are not whole numbers. The average is 79.90 u."]]},
+ {id:"m-s-ratio",obj:"2.3.3",sec:"2.3.3",surf:"slides",dok:2,q:"An anti-doping lab finds testosterone in an athlete's urine with less carbon-13 than the athlete's own natural steroids. What does that suggest?",
+  opts:[["The testosterone came from outside the body, made from plant starting materials.",1,"Correct. Synthetic testosterone is made from plant sterols with a lower carbon-13 share. The isotope ratio reveals the source."],
+        ["The athlete's carbon atoms have fewer protons.",0,"Every carbon atom has 6 protons. Carbon-13 differs from carbon-12 only in neutrons."],
+        ["The periodic-table mass of carbon has changed.",0,"The tiny shift tells the lab about one sample's source. The standard value used in class, 12.011 u, does not change."]]},
+ {id:"m-s-rev",obj:"2.3.3",sec:"2.3.3",surf:"slides",dok:3,q:"Honors: gallium's average is 69.723 u. Its isotopes are 68.926 u and 70.925 u. About what fraction of gallium atoms is gallium-69?",
+  opts:[["About 0.60",1,"Correct. The average sits about 40% of the way from 68.926 to 70.925, so gallium-69 is about 60% of atoms (60.108%)."],
+        ["About 0.40",0,"That swaps the isotopes. The average is closer to gallium-69, so gallium-69 must be the majority."],
+        ["About 0.50",0,"A 50 : 50 mix would give the plain mean, about 69.93 u. The real average is lower, so gallium-69 is more common."]]}
+]);
+
+/* ===== Unit 2 simulation kit: helpers shared by every lesson's simulations ===== */
+(function(){
+const U2=window.U2=window.U2||{};
+const TAU=Math.PI*2;
+const REDUCED=(()=>{try{return matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){return false}})();
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const FK=()=>window.U2FONTK||1;
+const F=(px,wt=600,fam='--body')=>`${wt} ${(px*FK()).toFixed(1)}px ${css(fam)}`;
+const el=(tag,cls,html)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e};
+const btn=(label,cls='btn')=>{const b=el('button',cls,label);b.type='button';return b};
+U2.el=el;U2.btn=btn;U2.css=css;
+function shell(root,aspect,label){root.classList.add('sim');const cv=el('div','cv');cv.style.aspectRatio=String(1/aspect);const c=el('canvas');c.setAttribute('role','img');if(label)c.setAttribute('aria-label',label);cv.append(c);root.append(cv);return{cv,c}}
+function fit(c){const w=c.clientWidth||300,h=c.clientHeight||180,r=(window.devicePixelRatio||1)*(window.U2SCALE||1)*(c._zoom||1);
+  if(c._w!==w||c._h!==h||c._r!==r){c.width=Math.max(1,Math.round(w*r));c.height=Math.max(1,Math.round(h*r));c._w=w;c._h=h;c._r=r}
+  const x=c.getContext('2d');x.setTransform(r,0,0,r,0,0);x.clearRect(0,0,w,h);return{x,w,h}}
+U2.fit=fit;
+/* draw loop: redraw on resize; animate while visible and busy */
+U2._loops=[];U2.kickAll=()=>U2._loops.forEach(f=>f());
+function loop(c,draw){let raf=null,vis=true,run=false,last=0;
+  function frame(t){raf=null;const dt=last?Math.min(.05,(t-last)/1000):0;last=t;const more=draw(dt);if(vis&&(run||more))raf=requestAnimationFrame(frame);else last=0}
+  const kick=()=>{if(!raf&&vis)raf=requestAnimationFrame(frame)};
+  try{new IntersectionObserver(es=>{vis=es[es.length-1].isIntersecting;if(vis)kick()}).observe(c)}catch(e){}
+  try{new ResizeObserver(()=>kick()).observe(c)}catch(e){addEventListener('resize',kick)}
+  U2._loops.push(kick);return{kick,set run(v){run=v;if(v)kick()}}}
+U2.loop=loop;
+function seg(labels,onPick,init=0){const s=el('div','seg');const bs=labels.map((l,i)=>{const b=btn(l,'');b.setAttribute('aria-pressed',String(i===init));b.onclick=()=>{bs.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));onPick(i)};s.append(b);return b});s.set=i=>{bs.forEach((x,k)=>x.setAttribute('aria-pressed',String(k===i)))};return s}
+U2.seg=seg;
+/* a readout: a small label over a value (r.v). r.hold(texts) keeps it as tall as the tallest of texts would make it, so a
+   value that wraps onto a second line does not push the rest of the simulation around. It re-measures when the row it sits in
+   changes width, not when it does itself: in a wrapping row its own width follows its text, and re-measuring then ratchets.
+   That check runs late, after layout, so the reading and the deck call U2.fitHolds() before they measure a page or slide. */
+const holds=[];U2.fitHolds=()=>holds.forEach(f=>f());
+function ro(label,val=''){const r=el('div','ro');r.innerHTML=`<small>${label}</small><span>${val}</span>`;r.v=r.querySelector('span');
+  r.hold=texts=>{let w=0;const box=r.parentElement||r;const fit=force=>{const cw=box.clientWidth;if(!cw||(cw===w&&!force))return;w=cw;const keep=r.v.textContent;r.style.minHeight='';let mh=0;
+      for(const t of texts){r.v.textContent=t;const b=r.getBoundingClientRect();mh=Math.max(mh,b.height*r.offsetWidth/(b.width||1))}r.v.textContent=keep;r.style.minHeight=mh+'px'};holds.push(fit);
+    try{new ResizeObserver(()=>fit()).observe(box)}catch(e){}if(document.fonts)document.fonts.ready.then(()=>fit(true));fit();return r};
+  return r}
+function grp(label,...kids){const g=el('div','grp');if(label)g.append(el('span','lab',label));kids.forEach(k=>g.append(k));return g}
+function sayBox(){const p=el('p','say');p.setAttribute('role','status');p.hidden=true;p.show=(t,k)=>{p.hidden=false;p.className='say'+(k?' '+k:'');p.innerHTML=t};return p}
+function wl2rgb(nm){let r=0,g=0,b=0;
+  if(nm<380)return'#8a7fd6';
+  if(nm<440){r=-(nm-440)/60;b=1}else if(nm<490){g=(nm-440)/50;b=1}else if(nm<510){g=1;b=-(nm-510)/20}else if(nm<580){r=(nm-510)/70;g=1}else if(nm<645){r=1;g=-(nm-645)/65}else if(nm<=780){r=1}
+  let f=nm<420?.3+.7*(nm-380)/40:nm>700?.3+.7*(780-nm)/80:1;const c=v=>Math.round(255*Math.pow(Math.max(0,v*f),.8));return`rgb(${c(r)},${c(g)},${c(b)})`}
+U2.wl2rgb=wl2rgb;
+function arrow(x,x0,y0,x1,y1,hd=8){const a=Math.atan2(y1-y0,x1-x0);x.beginPath();x.moveTo(x0,y0);x.lineTo(x1,y1);x.stroke();x.beginPath();x.moveTo(x1,y1);x.lineTo(x1-hd*Math.cos(a-.45),y1-hd*Math.sin(a-.45));x.lineTo(x1-hd*Math.cos(a+.45),y1-hd*Math.sin(a+.45));x.closePath();x.fill()}
+/* labels along one axis (items {at, sz}: the wanted centre and the label's size along the axis): sorted by position,
+   pushed apart just enough to leave `gap` between neighbours, and kept inside [a,b]. Each label's centre lands in .c,
+   so the caller can draw a leader from .c back to .at. If the labels cannot all fit, the ones nearest a overlap. */
+function spread(items,a,b,gap=0){items.sort((p,q)=>p.at-q.at);items.forEach(it=>it.c=Math.max(it.at,a+it.sz/2));
+  for(let i=1;i<items.length;i++){const p=items[i-1],q=items[i],d=(p.sz+q.sz)/2+gap;if(q.c-p.c<d)q.c=p.c+d}
+  const z=items[items.length-1];if(z&&z.c+z.sz/2>b){z.c=b-z.sz/2;for(let i=items.length-2;i>=0;i--){const q=items[i+1];items[i].c=Math.min(items[i].c,q.c-(items[i].sz+q.sz)/2-gap)}}
+  items.forEach(it=>{it.c=Math.max(it.c,a+it.sz/2)});return items}
+/* a pointer event's position in the canvas's own CSS pixels, the units its drawing uses. The deck scales every slide
+   and the zoom scales a card with a CSS transform, so the on-screen box differs from that size; reading clientX
+   against getBoundingClientRect() alone lands on the wrong point whenever the slide is not at 100%. */
+function ptr(c,e){const r=c.getBoundingClientRect(),k=c.clientWidth/(r.width||1);return{x:(e.clientX-r.left)*k,y:(e.clientY-r.top)*k}}
+
+Object.assign(U2,{TAU,REDUCED,FK,F,shell,ro,grp,sayBox,arrow,spread,ptr});
+})();
+
+/* ===== Keep symbols in their case inside uppercase labels =====
+   Labels styled text-transform:uppercase would turn λ into Λ, f into F, h into H and nm into NM:
+   different quantities and units. Any standalone symbol or lowercase unit inside such a label is
+   wrapped in span.kc (text-transform:none). Runs on load and on every later DOM change, so
+   readouts that sims rebuild stay correct. The English word "a" is left alone. */
+(function(){
+const TOK=/(^|[\s(=÷×·/,:;+−-])([b-zλνμΔδρ]|nm|pm|km|mm|cm|µm|μm|kg|mol)(?=$|[\s)=÷×·/,.:;+−-])/g;
+const UP=new WeakMap();
+function upper(e){if(UP.has(e))return UP.get(e);const v=getComputedStyle(e).textTransform==='uppercase';UP.set(e,v);return v}
+function fix(root){
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:t=>{
+    const p=t.parentElement;if(!p||p.closest('.kc,script,style,svg,textarea,input'))return NodeFilter.FILTER_REJECT;
+    TOK.lastIndex=0;return TOK.test(t.data)&&upper(p)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT}});
+  const hits=[];while(w.nextNode())hits.push(w.currentNode);
+  hits.forEach(t=>{const f=document.createDocumentFragment();let last=0;TOK.lastIndex=0;
+    t.data.replace(TOK,(m,pre,sym,i)=>{const s=i+pre.length;f.append(t.data.slice(last,s));const k=document.createElement('span');k.className='kc';k.textContent=sym;f.append(k);last=s+sym.length;return m});
+    f.append(t.data.slice(last));t.replaceWith(f)});
+}
+let q=new Set(),raf=0;
+function run(){raf=0;const r=[...q];q.clear();r.forEach(n=>{if(n.isConnected)fix(n)})}
+function start(){
+  const st=document.createElement('style');st.textContent='.kc{text-transform:none}';document.head.append(st);
+  fix(document.body);
+  new MutationObserver(ms=>{ms.forEach(m=>{const n=m.type==='characterData'?m.target.parentElement:m.target;if(n)q.add(n)});if(!raf)raf=requestAnimationFrame(run)})
+    .observe(document.body,{childList:true,subtree:true,characterData:true});
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
+})();
+
+/* Renders an item from ITEMS into a .check element. Shared by reading, slides and missions. */
+(function(){
+const U2=window.U2=window.U2||{};
+/* progress is kept per lesson; the theme choice is shared by the whole unit */
+const SKEY=(pre,k)=>k==='theme'?pre+k:pre+(window.U2LESSON?window.U2LESSON+':':'')+k;
+const store={get(k,d){try{const v=localStorage.getItem(SKEY('u2:',k));return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(SKEY('u2:',k),JSON.stringify(v))}catch(e){}}};
+U2.store=store;
+U2.item=id=>(window.ITEMS||[]).find(i=>i.id===id);
+U2.renderCheck=function(box,item,{onAnswer,remember=true,shuffle=true,label='Stop and check'}={}){
+  if(!item){box.textContent='Missing item';return}
+  box.classList.add('check');box.innerHTML='';
+  const meta=document.createElement('div');meta.className='meta';meta.innerHTML=`<span>${label}</span><span>Objective ${item.obj}${window.OBJ&&OBJ[item.obj]?' · '+OBJ[item.obj].teks:''}</span>`;
+  const q=document.createElement('p');q.className='q';q.innerHTML=item.q;
+  const opts=document.createElement('div');opts.className='opts';const fb=document.createElement('p');fb.className='fb';fb.setAttribute('role','status');
+  let order=item.opts.map((o,i)=>i);if(shuffle){const seed=[...item.id].reduce((a,c)=>a+c.charCodeAt(0),0);order.sort((a,b)=>((a*7+seed)%5)-((b*7+seed)%5))}
+  order.forEach(i=>{const[t,ok,f]=item.opts[i];const b=document.createElement('button');b.type='button';b.className='btn';b.innerHTML=t;b.dataset.i=i;
+    b.onclick=()=>{opts.querySelectorAll('.btn').forEach(x=>x.classList.remove('correct','wrong'));b.classList.add(ok?'correct':'wrong');fb.className='fb '+(ok?'ok':'no');fb.innerHTML=f;
+      if(remember){const s=store.get('chk',{});s[item.id]=ok?1:(s[item.id]===1?1:0);store.set('chk',s)}onAnswer&&onAnswer(ok,item)};opts.append(b)});
+  box.append(meta,q,opts,fb);
+  const prev=remember&&store.get('chk',{})[item.id];if(prev===1){const ci=item.opts.findIndex(o=>o[1]);const b=opts.querySelector(`[data-i="${ci}"]`);if(b){b.classList.add('correct');fb.className='fb ok';fb.innerHTML=item.opts[ci][2]}}
+};
+U2.glossaryPop=function(){let pop=null;
+  function close(){if(pop){pop.remove();pop=null}}
+  document.addEventListener('click',e=>{const t=e.target.closest('.term');if(!t){if(!e.target.closest('.gpop'))close();return}
+    const key=t.dataset.t,g=(window.GLOSS||{})[key];if(!g)return;close();pop=document.createElement('div');pop.className='gpop';pop.setAttribute('role','dialog');
+    pop.innerHTML=`<b>${key}</b><br>${g.d}<span class="es">Español: <i>${g.es}</i></span>`;document.body.append(pop);
+    const r=t.getBoundingClientRect(),pw=pop.offsetWidth,ph=pop.offsetHeight;let x=Math.min(innerWidth-pw-12,Math.max(12,r.left+r.width/2-pw/2)),y=r.bottom+8;if(y+ph>innerHeight-8)y=r.top-ph-8;pop.style.left=x+'px';pop.style.top=y+'px'});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});addEventListener('scroll',close,true)};
+})();
+
+/* ===== Lesson 2.3 simulations: mass-spectrum reader and isotope jar (mount with U2.<name>(el, opts)) =====
+   Isotope data: NIST Atomic Weights and Isotopic Compositions (relative atomic masses and representative
+   isotopic compositions, IUPAC). Every surface of Lesson 2.3 uses these exact values. */
+(function(){
+const U2=window.U2;const {TAU,css,F,FK,el,btn,shell,fit,loop,seg,ro,grp,sayBox}=U2;
+const ISO=U2.ISO23={
+ Cl:{name:'Chlorine',avg:'35.45',iso:[{a:35,m:34.968853,p:75.76},{a:37,m:36.965903,p:24.24}]},
+ Mg:{name:'Magnesium',avg:'24.31',iso:[{a:24,m:23.985042,p:78.99},{a:25,m:24.985837,p:10.00,ps:'10.00'},{a:26,m:25.982593,p:11.01}]},
+ B:{name:'Boron',avg:'10.81',iso:[{a:10,m:10.012937,p:19.9},{a:11,m:11.009305,p:80.1}]},
+ Cu:{name:'Copper',avg:'63.55',iso:[{a:63,m:62.929598,p:69.15},{a:65,m:64.927790,p:30.85}]},
+ Ga:{name:'Gallium',avg:'69.72',iso:[{a:69,m:68.9255735,p:60.108},{a:71,m:70.92470258,p:39.892}]},
+ Br:{name:'Bromine',avg:'79.90',iso:[{a:79,m:78.9183376,p:50.69},{a:81,m:80.9162897,p:49.31}]},
+ Ne:{name:'Neon',avg:'20.18',iso:[{a:20,m:19.9924401762,p:90.48},{a:21,m:20.993846685,p:0.27},{a:22,m:21.991385114,p:9.25}]}
+};
+/* whole-atom mixes for a jar of 100 (abundances rounded to whole atoms) */
+const JAR={Cl:[76,24],B:[20,80],Cu:[69,31],Ga:[60,40],Br:[51,49]};
+const COL=()=>[css('--accent'),css('--warm'),css('--ok')];
+const fx=(v,d)=>v.toFixed(d);
+const lab=(s,i)=>`${s}-${ISO[s].iso[i].a}`;
+const wavg=(s,cnt)=>{const t=cnt.reduce((a,b)=>a+b,0);return ISO[s].iso.reduce((a,x,i)=>a+x.m*cnt[i]/t,0)};
+const plain=s=>ISO[s].iso.reduce((a,x)=>a+x.m,0)/ISO[s].iso.length;
+const list=(root,def)=>(root.dataset.els||def).split(',').filter(k=>ISO[k]);
+/* clamp a centred label inside [lo,hi] */
+function tx(x,t,cx,y,lo,hi){const w=x.measureText(t).width;x.textAlign='left';x.fillText(t,Math.max(lo,Math.min(hi-w,cx-w/2)),y)}
+
+/* ---------- 1. Mass-spectrum reader ---------- */
+U2.massSpec=function(root,opts={}){
+  const els=list(root,'Cl,Mg,B,Cu');let s=root.dataset.el&&ISO[root.dataset.el]?root.dataset.el:els[0],sel=0,showAvg=false;
+  const{c}=shell(root,.5,'Mass spectrum: one bar per isotope, placed at its mass in atomic mass units, with height equal to its percent abundance.');
+  const ctl=el('div','ctl');const msg=sayBox();
+  const sEl=els.length>1?seg(els.map(k=>ISO[k].name),i=>{s=els[i];sel=0;isoSeg();upd()},els.indexOf(s)):null;
+  const isoBox=el('span','grp');const bAvg=btn('Show the average','btn');bAvg.setAttribute('aria-pressed','false');
+  bAvg.onclick=()=>{showAvg=!showAvg;bAvg.setAttribute('aria-pressed',String(showAvg));upd()};
+  const rI=ro('Isotope'),rM=ro('Isotopic mass'),rP=ro('Abundance');
+  if(sEl)ctl.append(grp('Element',sEl));ctl.append(grp('Read a peak',isoBox),bAvg);
+  const rs=el('div','ros');rs.append(rI,rM,rP);root.append(ctl,rs,msg);
+  if(!opts.nonote)root.append(el('p','simnote','Tap or hover over a bar, or use the isotope buttons. Bar height is the percent abundance; the position on the axis is the isotopic mass.'));
+  function isoSeg(){isoBox.innerHTML='';isoBox.append(seg(ISO[s].iso.map((_,i)=>lab(s,i)),i=>{sel=i;upd()},sel))}
+  function upd(){const E=ISO[s],x=E.iso[sel];rI.v.textContent=lab(s,sel);rM.v.textContent=x.m+' u';rP.v.textContent=(x.ps||x.p)+'%';
+    if(showAvg)msg.show(`<b>Average atomic mass of ${E.name.toLowerCase()}: ${E.avg} u.</b> It is pulled toward ${lab(s,E.iso.reduce((b,y,i)=>y.p>E.iso[b].p?i:b,0))}, the most abundant isotope. No single atom has this mass.`,'ok');
+    else msg.show(`<b>${lab(s,sel)}</b> has an isotopic mass of <b>${x.m} u</b> and makes up <b>${x.ps||x.p}%</b> of ${E.name.toLowerCase()} atoms. Its mass number is ${x.a}, but its isotopic mass is not exactly ${x.a} u.`);
+    const sg=isoBox.querySelector('.seg');if(sg)sg.set(sel);L.kick()}
+  let geo=null;
+  function draw(){const{x,w,h}=fit(c);const E=ISO[s],I=E.iso,k=FK();
+    /* the left margin fits the rotated axis title and the widest tick label side by side */
+    x.font=F(14,600);const fs=14*k,pl=fs*1.3+x.measureText('100%').width+10,pr=14,pt=30*k,pb=40*k,W=w-pl-pr,H=h-pt-pb;const lo=Math.min(...I.map(i=>i.a))-1.5,hi=Math.max(...I.map(i=>i.a))+1.5;const X=m=>pl+W*(m-lo)/(hi-lo),Y=p=>pt+H*(1-p/100);
+    x.strokeStyle=css('--line');x.lineWidth=1;x.fillStyle=css('--muted');x.font=F(14,600);
+    [0,25,50,75,100].forEach(p=>{x.beginPath();x.moveTo(pl,Y(p));x.lineTo(pl+W,Y(p));x.stroke();x.textAlign='right';x.fillText(p+'%',pl-6,Y(p)+4)});
+    x.strokeStyle=css('--ink');x.lineWidth=1.5;x.beginPath();x.moveTo(pl,pt);x.lineTo(pl,pt+H);x.lineTo(pl+W,pt+H);x.stroke();
+    x.fillStyle=css('--muted');x.font=F(14,600);for(let m=Math.ceil(lo);m<=hi;m++){x.beginPath();x.moveTo(X(m),pt+H);x.lineTo(X(m),pt+H+5);x.stroke();x.textAlign='center';x.fillText(String(m),X(m),pt+H+17*k)}
+    x.font=F(14,700);tx(x,'mass (u)',pl+W/2,h-6,pl,w-4);
+    x.save();x.translate(fs*.95,pt+H/2);x.rotate(-Math.PI/2);x.textAlign='center';x.fillText('abundance',0,0);x.restore();
+    const bw=Math.max(10,Math.min(W*.06,34*k)),col=COL();geo=I.map((it,i)=>({x:X(it.m),i}));
+    I.forEach((it,i)=>{const bx=X(it.m),by=Y(Math.max(it.p,.6));x.fillStyle=col[i%3];x.globalAlpha=i===sel?1:.55;x.fillRect(bx-bw/2,by,bw,pt+H-by);x.globalAlpha=1;
+      if(i===sel){x.strokeStyle=css('--ink');x.lineWidth=2.5;x.strokeRect(bx-bw/2,by,bw,pt+H-by)}
+      x.fillStyle=css('--ink');x.font=F(14,700);tx(x,lab(s,i),bx,by-(18*k),2,w-2);x.font=F(14,600);x.fillStyle=css('--muted');tx(x,(it.ps||it.p)+'%',bx,by-5,2,w-2)});
+    if(showAvg){const ax=X(I.reduce((a,it)=>a+it.m*it.p/100,0));x.strokeStyle=css('--bad');x.lineWidth=2;x.setLineDash([6,5]);x.beginPath();x.moveTo(ax,pt+6);x.lineTo(ax,pt+H);x.stroke();x.setLineDash([]);
+      x.fillStyle=css('--bad');x.font=F(14,700);const t='average '+E.avg+' u';const tw=x.measureText(t).width;const right=ax+8+tw<w-4;x.textAlign='left';x.fillText(t,right?ax+8:ax-8-tw,pt+12*k)}}
+  const L=loop(c,draw);
+  const pick=e=>{if(!geo)return;const mx=U2.ptr(c,e).x;let b=null,d=1e9;geo.forEach(g=>{const dd=Math.abs(g.x-mx);if(dd<d){d=dd;b=g}});if(b&&d<40&&b.i!==sel){sel=b.i;upd()}};
+  c.addEventListener('pointermove',e=>{if(e.pointerType==='mouse')pick(e)});c.addEventListener('pointerdown',pick);
+  isoSeg();upd();return{redraw:()=>L.kick()}};
+
+/* ---------- 2. Isotope jar: a weighted average of 100 atoms ---------- */
+U2.isotopeJar=function(root,opts={}){
+  const els=(opts.els||list(root,'Cl,B,Cu')).filter(k=>JAR[k]);let s=(opts.target&&opts.target.el)||(root.dataset.el&&JAR[root.dataset.el]?root.dataset.el:els[0]);
+  let cnt=opts.target?(opts.target.start||[50,50]).slice():JAR[s].slice(),picked=-1,done=false;
+  /* fixed shuffled seat order, so changing a count swaps only a few atoms */
+  const seats=[...Array(100).keys()];let sd=7;for(let i=99;i>0;i--){sd=(sd*9301+49297)%233280;const j=Math.floor(sd/233280*(i+1));[seats[i],seats[j]]=[seats[j],seats[i]]}
+  const{c,cv}=shell(root,.5,'A jar of 100 atoms of one element, colored by isotope, beside a mass line that marks each isotope mass, the weighted average and the plain mean.');
+  cv.style.minHeight='240px';/* the mass line needs about 240 px of height on a phone */
+  const ctl=el('div','ctl'),msg=sayBox();const box=el('span','grp');
+  const sEl=!opts.target&&els.length>1?seg(els.map(k=>ISO[k].name),i=>{s=els[i];cnt=JAR[s].slice();picked=-1;build();upd()},els.indexOf(s)):null;
+  const bNat=btn('Natural mix','btn'),bPick=btn('Pick one atom','btn');
+  bNat.onclick=()=>{cnt=JAR[s].slice();picked=-1;upd()};
+  bPick.onclick=()=>{picked=seats[Math.floor(Math.random()*100)];upd(true)};
+  const rW=ro('Weighted average'),rP=ro('Plain mean'),rS=ro('Fractions add to');
+  if(sEl)ctl.append(grp('Element',sEl));ctl.append(box);if(!opts.target)ctl.append(bNat);ctl.append(bPick);
+  const rs=el('div','ros');rs.append(rW,rP,rS);root.append(ctl,rs,msg);
+  if(!opts.nonote)root.append(el('p','simnote',opts.target?'Each + or − swaps one atom, so the jar always holds 100.':'Simplification: a jar holds whole atoms, so 75.76% becomes 76 atoms. A real sample holds billions of billions of atoms and gives the periodic-table value.'));
+  function build(){box.innerHTML='';ISO[s].iso.forEach((_,i)=>{const m=btn('−','btn'),p=btn('+','btn'),r=el('span','jn');m.setAttribute('aria-label','One fewer '+lab(s,i));p.setAttribute('aria-label','One more '+lab(s,i));
+    m.onclick=()=>move(i,-1);p.onclick=()=>move(i,1);const g=grp(lab(s,i),m,r,p);g.firstChild.classList.add('chem');g.dataset.i=i;box.append(g)})}
+  function move(i,d){const n=cnt.length;if(d>0){let j=-1;for(let k=0;k<n;k++)if(k!==i&&cnt[k]>0&&(j<0||cnt[k]>cnt[j]))j=k;if(j<0)return;cnt[i]++;cnt[j]--}
+    else{if(cnt[i]<=0)return;const j=i===0?1:0;cnt[i]--;cnt[j]++}picked=-1;upd()}
+  function calc(){const I=ISO[s].iso;return I.map((x,i)=>`${fx(cnt[i]/100,2)} × ${fx(x.m,3)}`).join(' + ')+` = <b>${fx(wavg(s,cnt),2)} u</b>`}
+  function upd(pk){const a=wavg(s,cnt),I=ISO[s].iso;rW.v.textContent=fx(a,2)+' u';rP.v.textContent=fx(plain(s),2)+' u';rS.v.textContent=cnt.map(n=>fx(n/100,2)).join(' + ')+' = 1.00';
+    $$box();
+    if(pk&&picked>=0){const iso=isoOf(picked);msg.show(`You picked one <b>${lab(s,iso)}</b> atom. Its mass is <b>${I[iso].m} u</b>. No ${ISO[s].name.toLowerCase()} atom has a mass of ${fx(a,2)} u: that number describes the whole jar, not any one atom.`,'')}
+    else if(opts.target){const ok=fx(a,2)===opts.target.avg;msg.show(ok?`<b>Match.</b> ${calc()}. ${opts.target.why||''}`:`Your jar: ${calc()}. Target: <b>${opts.target.avg} u</b>. ${a<+opts.target.avg?'Too light: swap in more of the heavier isotope.':'Too heavy: swap in more of the lighter isotope.'}`,ok?'ok':'');
+      if(ok&&!done){done=true;opts.target.onDone&&opts.target.onDone()}}
+    else{const nat=cnt.every((n,i)=>n===JAR[s][i]);msg.show(`${calc()}${nat?`. The full data give ${ISO[s].avg} u, the periodic-table value.`:'.'} The plain mean, ${fx(plain(s),2)} u, ignores the abundance of each isotope.`,nat?'ok':'')}
+    L.kick()}
+  function $$box(){[...box.querySelectorAll('.grp')].forEach(g=>{const i=+g.dataset.i;g.querySelector('.jn').textContent=cnt[i];const b=g.querySelectorAll('.btn');b[0].disabled=cnt[i]<=0;b[1].disabled=cnt[i]>=100})}
+  const isoOf=seat=>{const r=seats.indexOf(seat);let acc=0;for(let i=0;i<cnt.length;i++){acc+=cnt[i];if(r<acc)return i}return cnt.length-1};
+  function draw(){const{x,w,h}=fit(c);const I=ISO[s].iso,col=COL(),k=FK();
+    /* jar */
+    const jh=h-16,jw=Math.min(jh*.92,w*.42),jx=10,jy=8,r=Math.min(18,jw*.08);
+    x.fillStyle=css('--paper');x.strokeStyle=css('--muted');x.lineWidth=2;x.beginPath();x.moveTo(jx+jw*.2,jy);x.lineTo(jx+jw*.8,jy);x.lineTo(jx+jw*.8,jy+jh*.07);
+    x.arcTo(jx+jw,jy+jh*.1,jx+jw,jy+jh,r);x.arcTo(jx+jw,jy+jh,jx,jy+jh,r);x.arcTo(jx,jy+jh,jx,jy+jh*.1,r);x.arcTo(jx,jy+jh*.1,jx+jw*.2,jy+jh*.07,r);x.lineTo(jx+jw*.2,jy+jh*.07);x.closePath();x.fill();x.stroke();
+    const gx=jx+jw*.08,gy=jy+jh*.16,gw=jw*.84,gh=jh*.8,cw=gw/10,ch=gh/10,rad=Math.min(cw,ch)*.38;
+    for(let q=0;q<100;q++){const seat=seats[q];const iso=isoOf(seat);const cx=gx+cw*(seat%10+.5)+(Math.floor(seat/10)%2?cw*.18:-cw*.18),cy=gy+ch*(Math.floor(seat/10)+.5);
+      x.fillStyle=col[iso%3];x.globalAlpha=picked>=0&&seat!==picked?.35:1;x.beginPath();x.arc(cx,cy,rad*(1+iso*.12),0,TAU);x.fill();x.globalAlpha=1;
+      if(seat===picked){x.strokeStyle=css('--ink');x.lineWidth=3;x.beginPath();x.arc(cx,cy,rad*1.9,0,TAU);x.stroke()}}
+    /* mass line */
+    const L0=jx+jw+24*k,L1=w-12,ly=h*.42;const lo=I[0].m-.25,hi=I[I.length-1].m+.25,X=m=>L0+(L1-L0)*(m-lo)/(hi-lo);
+    x.fillStyle=css('--muted');x.font=F(14,700);x.textAlign='left';x.fillText('MASS LINE (u)',L0,16*k);
+    x.strokeStyle=css('--ink');x.lineWidth=2;x.beginPath();x.moveTo(L0,ly);x.lineTo(L1,ly);x.stroke();
+    I.forEach((it,i)=>{const px=X(it.m);x.fillStyle=col[i%3];x.beginPath();x.arc(px,ly,6,0,TAU);x.fill();x.fillStyle=css('--ink');x.font=F(16,700);tx(x,lab(s,i),px,ly-30*k,L0,L1);x.font=F(14,600);x.fillStyle=css('--muted');tx(x,fx(it.m,3),px,ly-13*k,L0,L1)});
+    const a=wavg(s,cnt),pm=plain(s);
+    x.fillStyle=css('--ok');const ax=X(a);x.beginPath();x.moveTo(ax,ly+4);x.lineTo(ax-8,ly+18);x.lineTo(ax+8,ly+18);x.closePath();x.fill();x.font=F(16,700);tx(x,'weighted '+fx(a,2),ax,ly+34*k,L0,L1);
+    x.strokeStyle=css('--muted');x.setLineDash([4,4]);x.lineWidth=2;const px=X(pm);x.beginPath();x.moveTo(px,ly);x.lineTo(px,ly+50*k);x.stroke();x.setLineDash([]);x.fillStyle=css('--muted');x.font=F(14,600);tx(x,'plain mean '+fx(pm,2),px,ly+64*k,L0,L1);
+    /* share bar */
+    const by=Math.min(h-30*k,ly+82*k),bh=Math.max(14,20*k);let bx=L0;x.font=F(14,700);
+    I.forEach((it,i)=>{const bw=(L1-L0)*cnt[i]/100;x.fillStyle=col[i%3];x.fillRect(bx,by,bw,bh);if(bw>34*k){x.fillStyle='#fff';x.textAlign='center';x.fillText(String(cnt[i]),bx+bw/2,by+bh*.72)}bx+=bw});
+    x.fillStyle=css('--muted');x.font=F(14,600);x.textAlign='left';if(by+bh+14*k<h)x.fillText('atoms of each isotope (out of 100)',L0,by+bh+14*k)}
+  const L=loop(c,draw);build();upd();return{redraw:()=>L.kick()}};
+
+/* ---------- static figures (SVG strings, shared by the reading and the deck) ---------- */
+/* a mass spectrometer, simplified: ionize, accelerate, bend in a magnet, detect */
+U2.msSVG=function(){return`<svg class="msfig" viewBox="0 0 520 168" role="img" aria-label="Simplified mass spectrometer: atoms are ionized, accelerated, bent by a magnet and counted at a detector. Lighter chlorine-35 ions bend more than chlorine-37 ions."><g font-family="var(--body)" font-size="13" fill="var(--ink)">
+ <rect x="8" y="58" width="78" height="44" rx="8" fill="var(--sunk)" stroke="var(--muted)"/><text x="47" y="85" text-anchor="middle" font-weight="700">sample</text>
+ <line x1="104" y1="56" x2="104" y2="104" stroke="var(--pos)" stroke-width="4"/><line x1="122" y1="56" x2="122" y2="104" stroke="var(--neg)" stroke-width="4"/>
+ <rect x="168" y="14" width="200" height="140" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-dasharray="5 4"/><text x="268" y="146" text-anchor="middle" font-weight="700" fill="var(--accent)">magnet</text>
+ <path d="M86 80 H168 Q300 80 446 38" fill="none" stroke="var(--accent)" stroke-width="3"/><path d="M168 80 Q314 80 446 70" fill="none" stroke="var(--warm)" stroke-width="3"/>
+ <rect x="446" y="20" width="12" height="110" rx="3" fill="var(--ink)"/>
+ <text x="440" y="32" text-anchor="end" font-size="12.5" font-weight="700" fill="var(--accent)">Cl-35 bends more</text><text x="440" y="90" text-anchor="end" font-size="12.5" font-weight="700" fill="var(--warm)">Cl-37 bends less</text>
+ <g font-family="var(--mono)" font-size="11.5" fill="var(--muted)" text-anchor="middle"><text x="47" y="122">1 ionize</text><text x="113" y="46">2 accelerate</text><text x="268" y="34">3 bend</text><text x="452" y="148">4 detect</text></g></g></svg>`};
+/* a mass line: isotope masses, the weighted average and the plain mean */
+U2.lineSVG=function(sym){const E=ISO[sym],I=E.iso,lo=I[0].m-.35,hi=I[I.length-1].m+.35,X=m=>(30+400*(m-lo)/(hi-lo)).toFixed(1);
+  const a=I.reduce((s,x)=>s+x.m*x.p/100,0),pm=plain(sym),close=I.length===2&&Math.abs(X(pm)-X(a))<110;
+  return`<svg class="linefig" viewBox="0 0 460 112" role="img" aria-label="${E.name} on a mass line: ${I.map((x,i)=>lab(sym,i)+' at '+x.m+' u, '+(x.ps||x.p)+'%').join('; ')}. The weighted average, ${E.avg} u, is pulled toward the most abundant isotope; the plain mean, ${pm.toFixed(2)} u, sits halfway."><g font-family="var(--body)" font-size="13" text-anchor="middle">
+   <line x1="20" y1="48" x2="440" y2="48" stroke="var(--ink)" stroke-width="2"/>
+   ${I.map((x,i)=>`<circle cx="${X(x.m)}" cy="48" r="${5+Math.sqrt(x.p)*0.9}" fill="${['var(--accent)','var(--warm)','var(--ok)'][i%3]}" opacity=".85"/><text x="${X(x.m)}" y="16" font-weight="700" fill="var(--ink)">${lab(sym,i)}</text><text x="${X(x.m)}" y="30" font-size="11.5" fill="var(--muted)">${(x.ps||x.p)}%</text>`).join('')}
+   <path d="M${X(a)} 62 l-8 14 h16 z" fill="var(--ok)"/><text x="${X(a)}" y="92" font-weight="700" fill="var(--ok)">weighted ${E.avg} u</text>
+   ${close?`<line x1="${X(pm)}" y1="31" x2="${X(pm)}" y2="56" stroke="var(--muted)" stroke-width="2" stroke-dasharray="4 4"/><text x="${X(pm)}" y="24" font-size="11.5" fill="var(--muted)">plain mean ${pm.toFixed(2)}</text>`
+    :`<line x1="${X(pm)}" y1="40" x2="${X(pm)}" y2="${I.length>2?100:62}" stroke="var(--muted)" stroke-width="2" stroke-dasharray="4 4"/><text x="${X(pm)}" y="${I.length>2?110:76}" font-size="11.5" fill="var(--muted)" text-anchor="${pm>a?'start':'end'}" dx="${pm>a?6:-6}">plain mean ${pm.toFixed(2)}</text>`}</g></svg>`};
+/* a periodic-table tile */
+U2.tileSVG=function(z,sym,name,mass,cls=''){return`<svg class="tile23 ${cls}" viewBox="0 0 120 140" role="img" aria-label="Periodic table tile: ${name}, atomic number ${z}, average atomic mass ${mass}"><rect x="2" y="2" width="116" height="136" rx="10" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.5"/><g font-family="var(--body)" text-anchor="middle" fill="var(--ink)"><text x="16" y="26" text-anchor="start" font-size="17" font-weight="700">${z}</text><text x="60" y="78" font-size="46" font-weight="700" font-family="var(--display)">${sym}</text><text x="60" y="102" font-size="14">${name}</text><text x="60" y="126" font-size="19" font-weight="700" fill="var(--warm)">${mass}</text></g></svg>`};
+})();
+
+/* Lesson 2.3 missions. Every case carries an objective ID; the worksheet reuses these cases in print form.
+   Isotope data match sims.js (U2.ISO23) and items.js exactly (NIST / IUPAC). */
+(()=>{
+const ic=b=>`<svg viewBox="0 0 42 42" aria-hidden="true">${b}</svg>`;
+const T=(t,s=16,y=21)=>`<text x="21" y="${y+s*.36}" text-anchor="middle" font-family="var(--body)" font-weight="700" font-size="${s}" fill="currentColor">${t}</text>`;
+const PICKS=[
+ ['spec','Read the spectrum',ic(`<line x1="6" y1="35" x2="37" y2="35" stroke="currentColor" stroke-width="2"/><rect x="11" y="9" width="6" height="26" fill="var(--accent)"/><rect x="26" y="25" width="6" height="10" fill="var(--warm)"/>`)],
+ ['weight','Weight by fraction',ic(`<line x1="21" y1="8" x2="21" y2="33" stroke="currentColor" stroke-width="2"/><line x1="8" y1="14" x2="34" y2="14" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="22" r="6" fill="var(--accent)"/><circle cx="32" cy="20" r="3.5" fill="var(--warm)"/><line x1="12" y1="35" x2="30" y2="35" stroke="currentColor" stroke-width="2"/>`)],
+ ['near','Pulled to the common isotope',ic(`<line x1="5" y1="21" x2="37" y2="21" stroke="currentColor" stroke-width="2"/><circle cx="11" cy="21" r="7" fill="var(--accent)"/><circle cx="32" cy="21" r="3.5" fill="var(--warm)"/><path d="M16 33 l-4 -6 h8 z" fill="var(--ok)"/>`)],
+ ['noatom','The average fits the mix',ic(`<circle cx="21" cy="21" r="13" fill="none" stroke="currentColor" stroke-width="2"/><line x1="12" y1="30" x2="30" y2="12" stroke="var(--bad)" stroke-width="3"/>`+T('x̄',14))],
+ ['massno','Mass number is not mass',ic(T('35',13,13)+`<line x1="9" y1="21" x2="33" y2="21" stroke="var(--bad)" stroke-width="2"/>`+T('34.97',11.5,30))],
+ ['reverse','Abundance from the average',ic(`<path d="M8 15 h22 l-5 -5 M30 15 l-5 5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M34 29 h-22 l5 -5 M12 29 l5 5" fill="none" stroke="var(--accent)" stroke-width="2.4"/>`)]];
+const pk=(q,ans,why,no)=>({q,ans,why,no});
+const tb=(rows,head=['Isotope','Isotopic mass','Abundance'])=>`<table class="dt"><tr>${head.map(h=>`<th>${h}</th>`).join('')}</tr>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</table>`;
+const AVG='Multiply each isotopic mass by its fraction (percent ÷ 100), then add the products.';
+window.MISSIONS={order:['lab','world','mix'],
+lab:{title:'Spectrum lab',sub:'Read the data, then calculate',intro:'Each case gives real mass-spectrometer data. Calculate the average atomic mass, name the idea the case depends on, then decide.',
+ next:'Next: Isotopes at work.',pickLabel:'Name the idea',pickTeks:'C.6(D)',picks:PICKS,cases:[
+ {id:'m23-1',obj:'2.3.2',ctx:'Cambridge, 1920',title:'Why chlorine is not 35 or 37',
+  ev:'<p>F. W. Aston\'s mass spectrograph showed that chlorine is a mixture of two isotopes. Modern values:</p>'+tb([['chlorine-35','34.968853 u','75.76%'],['chlorine-37','36.965903 u','24.24%']]),
+  num:{p:'Average atomic mass of chlorine',unit:'u',ans:35.45,tol:0.006,why:'0.7576 × 34.968853 + 0.2424 × 36.965903 = 26.4924 + 8.9605 = 35.45 u.',hint:'Not yet. '+AVG},
+  pick:pk('Why is the answer 35.45 u and not 35.97 u, halfway between the isotopes?','near','Chlorine-35 is about three times as common, so it pulls the weighted average toward its own mass.','Not quite. Ask why the average is not halfway: which isotope has more atoms?'),
+  q:'A student writes: "A typical chlorine atom has a mass of 35.45 u." What is wrong?',
+  opts:[['No chlorine atom has that mass; each is 34.968853 u or 36.965903 u. 35.45 u describes the mixture.',1,'Correct. The average describes a sample of many atoms, not any one atom.'],['Nothing; most chlorine atoms have that mass.',0,'Every chlorine atom is one isotope or the other. None has 35.45 u.'],['A typical atom is 35 u exactly, because its mass number is 35.',0,'Mass number is a count. A chlorine-35 atom has a mass of 34.968853 u, and no atom has 35.45 u.']]},
+ {id:'m23-2',obj:'2.3.1',ctx:'Cambridge, 1913 to 1928',title:'Neon splits in two',
+  ev:'<p>J. J. Thomson saw neon ions land in two places in 1913. Aston\'s better instrument confirmed neon is a mixture in 1919; a third, rare isotope, neon-21, was confirmed in 1928. Modern values:</p>'+tb([['neon-20','19.992440 u','90.48%'],['neon-21','20.993847 u','0.27%'],['neon-22','21.991385 u','9.25%']]),
+  num:{p:'Average atomic mass of neon',unit:'u',ans:20.18,tol:0.006,why:'0.9048 × 19.992440 + 0.0027 × 20.993847 + 0.0925 × 21.991385 = 18.0892 + 0.0567 + 2.0342 = 20.18 u.',hint:'Not yet. Use all three isotopes. '+AVG},
+  pick:pk('Chemists had measured neon\'s atomic mass as 20.2 for years without knowing why. Which idea first explained it?','spec','The spectrum showed separate peaks: neon is a mixture, so its atomic mass is an average.','Not quite. What did the new instrument let scientists see for the first time?'),
+  q:'On neon\'s mass spectrum, the neon-21 bar is barely visible. Why?',
+  opts:[['Only 0.27% of neon atoms are neon-21, and bar height shows the share of atoms.',1,'Correct. Height is abundance, not mass.'],['Neon-21 atoms are too light to detect.',0,'Neon-21 is heavier than neon-20. Its bar is short because it is rare.'],['Neon-21 has fewer protons than the other isotopes.',0,'All neon atoms have 10 protons. Isotopes differ only in neutrons.']]},
+ {id:'m23-3',obj:'2.3.2',ctx:'Teaching lab',title:'Three isotopes of magnesium',
+  ev:tb([['magnesium-24','23.985042 u','78.99%'],['magnesium-25','24.985837 u','10.00%'],['magnesium-26','25.982593 u','11.01%']]),
+  num:{p:'Average atomic mass of magnesium',unit:'u',ans:24.31,tol:0.006,why:'18.9458 + 2.4986 + 2.8607 = 24.3051, so 24.31 u.',hint:'Not yet. Three isotopes means three products. '+AVG},
+  pick:pk('Magnesium-25 and magnesium-26 together are only about 21% of atoms. Which idea explains why the average sits so close to 24?','near','Magnesium-24 is 78.99% of atoms, so it pulls the average toward its own mass.','Not quite. Which isotope has most of the atoms?'),
+  q:'Which set of fractions belongs in the calculation?',
+  opts:[['0.7899, 0.1000 and 0.1101',1,'Correct. Each is a percent divided by 100; they add to 1.'],['78.99, 10.00 and 11.01',0,'These are percents. Using them gives an answer 100 times too large. Divide by 100 first.'],['0.33, 0.33 and 0.33',0,'Equal fractions give the plain mean. The isotopes are not equally common.']]},
+ {id:'m23-4',obj:'2.3.2',ctx:'Teaching lab',title:'A boron mistake',
+  ev:tb([['boron-10','10.012937 u','19.9%'],['boron-11','11.009305 u','80.1%']])+'<p>A student multiplies 11.009305 by 80.1, obtains 881.8, and decides boron\'s average is far too large to be correct.</p>',
+  num:[{p:'Fraction of boron atoms that are boron-11',unit:'',ans:0.801,tol:0.0005,why:'80.1 ÷ 100 = 0.801. The two fractions, 0.199 and 0.801, add to 1.',hint:'Not yet. A fraction is the percent divided by 100.'},
+   {p:'Average atomic mass of boron',unit:'u',ans:10.81,tol:0.006,why:'0.199 × 10.012937 + 0.801 × 11.009305 = 1.9926 + 8.8185 = 10.81 u.',hint:'Not yet. '+AVG}],
+  pick:pk('Which idea did the student miss?','weight','Each mass is weighted by a fraction, and the fractions must add up to 1. Percents must be divided by 100 first.','Not quite. Look at the number the student multiplied by.'),
+  q:'Without calculating, which isotope should boron\'s average be closer to?',
+  opts:[['Boron-11, because 80.1% of boron atoms are boron-11.',1,'Correct. 10.81 u sits near 11.01 u.'],['Boron-10, because lighter isotopes count more.',0,'Lightness does not matter. Abundance pulls the average, and boron-11 is far more common.'],['Exactly halfway, at 10.51 u.',0,'Halfway is the plain mean. It ignores that boron-11 is four times as common.']]},
+ {id:'m23-5',obj:'2.3.1',ctx:'Teaching lab',title:'Copper by mass number',
+  ev:tb([['copper-63','62.929598 u','69.15%'],['copper-65','64.927790 u','30.85%']])+'<p>A student uses mass numbers instead: 63 × 0.6915 + 65 × 0.3085 = <b>63.62 u</b>. The periodic table says 63.55.</p>',
+  num:{p:'Average atomic mass of copper, using isotopic masses',unit:'u',ans:63.55,tol:0.006,why:'0.6915 × 62.929598 + 0.3085 × 64.927790 = 43.5158 + 20.0302 = 63.55 u.',hint:'Not yet. Use the isotopic masses, not 63 and 65. '+AVG},
+  pick:pk('Which idea explains the student\'s error of 0.07 u?','massno','A mass number counts protons and neutrons; the isotopic mass is the measured mass. They are close but not equal.','Not quite. Compare the numbers the student used with the masses in the table.'),
+  q:'Another student takes the plain mean, (62.929598 + 64.927790) ÷ 2 = 63.93 u. Why is that wrong?',
+  opts:[['It treats both isotopes as equally common, but 69.15% of copper atoms are copper-63.',1,'Correct. A plain mean ignores abundance.'],['It should divide by 100, not 2.',0,'The problem is not the divisor. Each mass needs its own weight, its fraction of atoms.'],['It is right; the table value is rounded.',0,'Rounding cannot move 63.93 to 63.55. The plain mean ignores how common each isotope is.']]},
+ {id:'m23-6',obj:'2.3.3',ctx:'Unit 2 case file',title:'Helium in the air',
+  ev:tb([['helium-4','4.002603 u','about 99.99987%'],['helium-3','3.016029 u','about 0.00013%']])+'<p>Helium\'s average atomic mass is <b>4.0026 u</b>.</p>',
+  num:{p:'About how many helium-3 atoms are in ten million helium atoms?',unit:'atoms',ans:13,tol:0.5,why:'0.00013% of 10,000,000 = 0.0000013 × 10,000,000 = 13 atoms.',hint:'Not yet. Change 0.00013% to a fraction (divide by 100), then multiply by 10,000,000.'},
+  pick:pk('Why does helium\'s average, 4.0026 u, almost equal the mass of helium-4?','near','Nearly every atom is helium-4, so it pulls the average almost all the way to its own mass.','Not quite. What share of helium atoms is helium-4?'),
+  q:'A lab collects helium enriched in helium-3. How does that sample\'s average atomic mass compare with 4.0026 u?',
+  opts:[['It is lower, because more of the atoms are the lighter isotope.',1,'Correct. When the mix changes, the weighted average moves toward the isotope that was added.'],['It is the same; an element\'s average never changes.',0,'The average depends on the mix of isotopes. Change the mix and the average changes.'],['It is higher, because helium-3 is rarer.',0,'Rarity in nature does not add mass. Helium-3 atoms are lighter, so they lower the average.']]}
+]},
+world:{title:'Isotopes at work',sub:'Labs, sport and food',intro:'Mass spectrometers and isotope ratios are at work in forensic, sports and food labs. Use the data, then decide what the data show.',
+ next:'Next: Mix lab.',cases:[
+ {id:'m23-7',obj:'2.3.3',ctx:'Anti-doping lab',title:'Where did the testosterone come from?',
+  ev:'<p>Natural carbon is about <b>98.9%</b> carbon-12 and <b>1.1%</b> carbon-13. Synthetic testosterone is made from plant sterols, often from soy, which carry a slightly lower carbon-13 share than the steroids the human body makes. Labs measure the carbon-13 share of steroids in urine with an isotope ratio mass spectrometer.</p>',
+  num:{p:'In a sample of 10,000 carbon atoms with natural abundance, about how many are carbon-13?',unit:'atoms',ans:110,tol:0.5,why:'1.1% of 10,000 = 0.011 × 10,000 = 110 atoms.',hint:'Not yet. Change 1.1% to a fraction, then multiply by 10,000.'},
+  q:'An athlete\'s testosterone has a lower carbon-13 share than the athlete\'s other natural steroids. What does that suggest?',
+  opts:[['The testosterone likely came from outside the body, made from plant materials.',1,'Correct. The isotope ratio works like a fingerprint for the source.'],['The athlete\'s carbon atoms have fewer protons.',0,'All carbon atoms have 6 protons. Carbon-13 differs from carbon-12 only in neutrons.'],['The periodic-table mass of carbon has changed.',0,'One sample\'s tiny shift does not change the standard value. It reveals that sample\'s source.']]},
+ {id:'m23-8',obj:'2.3.3',ctx:'Food safety lab',title:'Is this honey pure?',
+  ev:'<p>Bees make honey mostly from flower nectar. Corn syrup and cane syrup have <b>more carbon-13</b> than that nectar. A lab measures the carbon-13 share of a jar labeled "100% pure honey".</p>'+tb([['Pure honey (reference)','lower carbon-13 share'],['Corn or cane syrup','higher carbon-13 share'],['Jar being tested','higher than the reference']],['Sample','Carbon isotope ratio']),
+  q:'What should the lab conclude about the jar?',
+  opts:[['It probably contains added syrup, because its carbon-13 share is too high for pure honey.',1,'Correct. Isotope ratio analysis detects honey diluted with cheap syrup.'],['The bees made heavier carbon atoms.',0,'Bees cannot make carbon-13. The extra carbon-13 came from the syrup plants.'],['Nothing; all honey has exactly the same carbon-13 share.',0,'Ratios vary slightly with the plant source. That variation is what makes the test work.']]},
+ {id:'m23-9',obj:'2.3.1',ctx:'Forensic lab',title:'Twin peaks',
+  ev:'<p>A mass spectrum of bromine shows two peaks of almost equal height, 2 u apart.</p>'+tb([['bromine-79','78.9183376 u','50.69%'],['bromine-81','80.9162897 u','49.31%']]),
+  num:{p:'Average atomic mass of bromine',unit:'u',ans:79.90,tol:0.006,why:'0.5069 × 78.9183376 + 0.4931 × 80.9162897 = 40.0037 + 39.8998 = 79.90 u.',hint:'Not yet. '+AVG},
+  q:'Why does bromine\'s average sit almost exactly halfway between its isotopes?',
+  opts:[['Its two isotopes are almost equally common, so neither pulls much harder.',1,'Correct. When the weights are nearly equal, the weighted average is close to the plain mean.'],['Bromine atoms each have a mass of 79.90 u.',0,'Every bromine atom is 78.92 u or 80.92 u. No bromine atom has the average mass.'],['Averages always sit halfway.',0,'Only when the abundances are equal. Chlorine\'s average sits far from halfway.']]},
+ {id:'m23-10',obj:'2.3.1',ctx:'Forensic lab',title:'A 3 to 1 pair',
+  ev:'<p>An unknown compound from a crime scene gives a pair of peaks 2 u apart. The lighter peak is about three times as tall as the heavier one. Chlorine is <b>75.76%</b> chlorine-35 and <b>24.24%</b> chlorine-37.</p>',
+  num:{p:'How many times as tall as the chlorine-37 peak is the chlorine-35 peak? (1 decimal place)',unit:'times',ans:3.1,tol:0.06,why:'75.76 ÷ 24.24 = 3.1. A pair 2 u apart in about a 3 : 1 ratio is the signature of one chlorine atom.',hint:'Not yet. Divide the larger abundance by the smaller one.'},
+  q:'What does the 3 : 1 pair tell the analyst?',
+  opts:[['The compound likely contains a chlorine atom.',1,'Correct. Chlorine\'s isotope mix leaves a recognizable pattern in a spectrum.'],['The compound contains bromine.',0,'Bromine gives a pair of nearly equal height, not 3 : 1.'],['The sample is contaminated with heavier atoms.',0,'The pair comes from chlorine\'s two natural isotopes, present in every chlorine sample.']]},
+ {id:'m23-11',obj:'2.3.2',ctx:'IUPAC table',title:'Why the table gives a range',
+  ev:'<p>IUPAC lists magnesium\'s standard atomic weight as an interval, <b>24.304 to 24.307</b>, because magnesium from different sources has slightly different isotope mixes. Your calculation from the representative abundances gave 24.3051.</p>',
+  num:{p:'Round 24.3051 to two decimal places for a classroom table',unit:'u',ans:24.31,tol:0.001,why:'24.3051 rounds to 24.31 u, the value on most classroom periodic tables.',hint:'Not yet. Look at the third decimal place to decide how to round.'},
+  q:'Why does IUPAC not give one exact value for magnesium?',
+  opts:[['The percent abundances vary slightly from one source to another, so the weighted average varies too.',1,'Correct. The average depends on the mix, and natural mixes differ slightly.'],['Magnesium atoms slowly lose mass over time.',0,'Isotopic masses are fixed. What varies is how many atoms of each isotope a sample holds.'],['Scientists disagree about the mass of magnesium-24.',0,'Isotopic masses are known to many decimal places. The mix varies, not the masses.']]},
+ {id:'m23-12',obj:'2.3.2',ctx:'Honors · Research lab',title:'Gallium in reverse',
+  ev:tb([['gallium-69','68.9255735 u','x'],['gallium-71','70.92470258 u','1 − x']],['Isotope','Isotopic mass','Fraction'])+'<p>Gallium\'s average atomic mass is <b>69.723 u</b>. Find the percent of gallium-69.</p>',
+  num:{p:'Percent of gallium atoms that are gallium-69',unit:'%',ans:60.11,tol:0.06,why:'68.9255735x + 70.92470258(1 − x) = 69.723, so x = (70.92470258 − 69.723) ÷ (70.92470258 − 68.9255735) = 1.20170 ÷ 1.99913 = 0.6011, about 60.11%. The measured value is 60.108%.',hint:'Not yet. Let x be the fraction of gallium-69, write the weighted average with 1 − x for gallium-71, and solve for x.'},
+  q:'Before solving, how could you tell gallium-69 is the majority?',
+  opts:[['69.723 u is closer to 68.926 u than to 70.925 u.',1,'Correct. With two isotopes, the average sits closer to the more abundant one.'],['Gallium-69 is lighter, and lighter isotopes are always more common.',0,'Many elements have a heavier majority isotope, boron for one. Use where the average sits.'],['Its mass number is smaller.',0,'Mass number alone says nothing about abundance. Use where the average sits.']]}
+]},
+mix:{title:'Mix lab',sub:'Build the natural mix',intro:'Each jar starts as a 50 : 50 mix. Swap atoms until the jar\'s weighted average matches the periodic-table value. Each match explains why the real mix gives that value.',total:4,
+ mount(el,api){
+  const T=[['B','10.81','Boron-11 must be about four times as common as boron-10: 20 and 80 atoms.',[20,80]],
+   ['Cl','35.45','About three chlorine-35 atoms for every chlorine-37: 76 and 24.',[76,24]],
+   ['Cu','63.55','Roughly 7 copper-63 atoms for every 3 copper-65: 69 and 31.',[69,31]],
+   ['Br','79.90','Bromine is nearly a 50 : 50 mix, so the average sits almost halfway: 51 and 49.',[51,49]]];
+  let done=api.store.get('mix23',[]);let cur=Math.max(0,T.findIndex(t=>!done.includes(t[0])));
+  const wrap=document.createElement('div');wrap.className='mix23';el.append(wrap);
+  function draw(){const[s,avg,why,nat]=T[cur],E=U2.ISO23[s];
+   wrap.innerHTML=`<div class="mixnav">${T.map((t,i)=>`<button type="button" class="btn" data-i="${i}" aria-pressed="${i===cur}">${done.includes(t[0])?'✓ ':''}${U2.ISO23[t[0]].name}</button>`).join('')}</div><div class="card mixcard"><p class="label">Target ${cur+1} of ${T.length}</p><h2>Make ${E.name.toLowerCase()} average <b>${avg} u</b></h2><p class="mixdo">Use + and − to swap one atom at a time. The jar always holds 100 atoms.</p><div class="mixsim"></div><div class="mixafter"></div></div>`;
+   wrap.querySelectorAll('.mixnav .btn').forEach(b=>b.onclick=()=>{cur=+b.dataset.i;draw()});
+   const after=wrap.querySelector('.mixafter');
+   const finish=()=>{if(!done.includes(s)){done.push(s);api.store.set('mix23',done)}api.done(done.length);
+    after.innerHTML='';const p=document.createElement('p');p.className='fbx ok';p.innerHTML='✓ '+why+' A real sample holds billions of billions of atoms in nearly the same proportions.';after.append(p);
+    const nx=T.findIndex(t=>!done.includes(t[0]));const b=U2.btn(nx<0?'All four matched. Go to the case file →':'Next target →','btn primary');
+    b.onclick=()=>{if(nx<0)api.next();else{cur=nx;draw()}};after.append(b);/* bring the result into view, as the kit does for a task's feedback */requestAnimationFrame(()=>api.reveal(after))};
+   U2.isotopeJar(wrap.querySelector('.mixsim'),{target:{el:s,avg,start:done.includes(s)?nat:[50,50],why:'',onDone:finish}})}
+  draw()}}
+};
+})();
+
+(function(){
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const store=U2.store,root=document.documentElement;
+let theme=store.get('theme',null);const tb=$('#theme');
+const applyTheme=()=>{if(theme)root.setAttribute('data-theme',theme);else root.removeAttribute('data-theme');tb.textContent=theme==='dark'?'Dark':theme==='light'?'Light':'Theme'};
+tb.onclick=()=>{theme=theme==='dark'?'light':theme==='light'?null:'dark';store.set('theme',theme);applyTheme();U2.kickAll&&U2.kickAll()};applyTheme();
+/* MISSIONS: {order:[tab keys], <key>:{title,sub,intro,next, cases:[…]} | {…, targets:[…]} (2.1 model builder) | {…, mount(el,api), total} (custom), caseUrl, noCaseTab (the case file itself)}
+   A case has up to three tasks: num (one or an array; numeric with tolerance), pick (name the idea: {q,ans,why,no,opts}) or the 2.1 shorthand model/modelWhy, and the decide item (q, opts). */
+const M=window.MISSIONS,ORDER=M.order||['court','build','work'];
+const kind=k=>M[k].cases?'cases':M[k].targets?'build':M[k].mount?'custom':'none';
+const TABS=ORDER.map(k=>[k,M[k].title,M[k].cases?M[k].cases.length:M[k].targets?M[k].targets.length:M[k].total||null]).concat(M.noCaseTab?[]:[['case','Case file',null]]);
+let tab=store.get('mtab',ORDER[0]);if(!TABS.some(t=>t[0]===tab))tab=ORDER[0];const idx={};
+const prog=()=>store.get('mprog',{});const setProg=(id,k,v)=>{const p=prog();p[id]=p[id]||{};if(p[id][k]===undefined||p[id][k]===0)p[id][k]=v;if(v===1&&p[id]['f_'+k]===undefined)p[id]['f_'+k]=1;if(v===0&&p[id]['f_'+k]===undefined)p[id]['f_'+k]=0;store.set('mprog',p)};
+const nums=c=>c.num?[].concat(c.num):[];
+const tasksOf=c=>(c.pick||c.model?['model']:[]).concat(['mc'],nums(c).map((x,i)=>'num'+(i||'')));
+/* icon buttons for the "name the idea" task: tab picks, global PICKS, or (2.1) the five atomic models */
+const picksFor=m=>m.picks||window.PICKS||(window.MODELS||[]).map(([k,n])=>{const t=U2.TARGETS&&U2.TARGETS[k];return[k,n,t?U2.modelSVG({pos:t.pos,e:t.e,m:t.m},'pk'+k):'']});
+const solved=c=>{const p=prog()[c.id]||{};return tasksOf(c).every(k=>p[k]===1)};
+const partial=c=>{const p=prog()[c.id]||{};return tasksOf(c).some(k=>p[k]!==undefined)};
+const firstScore=cs=>{const p=prog();let a=0,t=0;cs.forEach(c=>tasksOf(c).forEach(k=>{const f=(p[c.id]||{})['f_'+k];if(f!==undefined){t++;if(f===1)a++}}));return[a,t]};
+function tabs(){const n=$('#mtabs');n.innerHTML='';TABS.forEach(([k,t,c])=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-current',String(k===tab));
+  let done='';if(k!=='case'){const kd=kind(k);if(kd==='cases')done=M[k].cases.filter(solved).length+'/'+c;if(kd==='build')done=(store.get('built',[]).length)+'/'+c;if(kd==='custom'&&c)done=(store.get('cdone',{})[k]||0)+'/'+c}
+  b.innerHTML=`${t}${done?` <span class="c">${done}</span>`:''}`;b.onclick=()=>{tab=k;store.set('mtab',k);render()};n.append(b)})}
+function lines(el){const S=el.dataset.lines.split(',').map(t=>t.trim()),L=S.map(Number),W=600,X=l=>10+(W-20)*(l-380)/320;
+  /* labels keep the author's digits (589.0 stays 589.0); a label too close to the previous one drops to a second row */
+  let last=-1e9,row=0;const R=L.map(l=>{row=X(l)-last<44&&row===0?1:0;if(!row)last=X(l);return row});const hh=R.some(r=>r)?74:58;
+  const abs=!!el.dataset.abs,gid='g'+Math.random().toString(36).slice(2,7);const bg=abs?`<defs><linearGradient id="${gid}">${[380,420,460,500,540,580,620,660,700].map(l=>`<stop offset="${(l-380)/320}" stop-color="${U2.wl2rgb(l)}"/>`).join('')}</linearGradient></defs><rect x="10" y="4" width="${W-20}" height="34" rx="4" fill="url(#${gid})"/>`:`<rect x="10" y="4" width="${W-20}" height="34" rx="4" fill="#0b0b12"/>`;
+  el.innerHTML=`<svg viewBox="0 0 ${W} ${hh}" role="img" aria-label="${abs?'Absorption':'Emission'} spectrum: lines at ${S.join(', ')} nm">${bg}${L.map((l,i)=>`<rect x="${X(l)-2}" y="4" width="4" height="34" fill="${abs?'#0b0b12':U2.wl2rgb(l)}"/>${R[i]?`<line x1="${X(l)}" y1="40" x2="${X(l)}" y2="58" stroke="var(--line)"/>`:''}<text x="${X(l)}" y="${R[i]?70:54}" text-anchor="middle" font-family="var(--mono)" font-size="13" fill="var(--muted)">${S[i]}</text>`).join('')}</svg>`}
+function head(m){$('#msub').textContent=m.sub;$('#mtitle').textContent=m.title;$('#mintro').textContent=m.intro}
+/* the mission header docks as the top strip of a view's .case card, so the card starts near the top of the screen; render() undocks it first */
+const MH=$('.mhead');
+/* the dots sit in a .pager row with Previous and Next; a unit's case file has its own page.html without that wrapper, so add it here */
+if(!$('.pager',MH)){const pg=document.createElement('div');pg.className='pager';$('#dots').before(pg);pg.append($('#dots'))}
+/* the frozen parts (missions.css): the docked header is sticky just under the sticky bar, so it needs the bar's height, which
+   changes when its tabs wrap; the evidence column is sticky just under the header, so it needs the header's height too, and a
+   column taller than the space under them sticks by its bottom (--evtop), so its end comes into view as the page scrolls.
+   Each is watched by its outer size (BB), as frz() reads it: fit() trims the columns' bottom padding, which changes the column's
+   height and not its content's */
+const BAR=$('header.bar'),BB={box:'border-box'};let evSeen=null;
+function frz(){const b=BAR.offsetHeight,h=MH.offsetHeight,c=$('#mbody>.case'),ev=c&&$(':scope>.ev',c);root.style.setProperty('--barh',b+'px');root.style.setProperty('--mhh',h+'px');
+  if(ev){const t=innerHeight-ev.offsetHeight;if(t<b+h)c.style.setProperty('--evtop',t+'px');else c.style.removeProperty('--evtop')}}
+const frzRO=new ResizeObserver(frz);frzRO.observe(BAR,BB);frzRO.observe(MH,BB);addEventListener('resize',frz);
+/* stuck: the page has scrolled, so the frozen header gets a shadow over the content passing under it */
+addEventListener('scroll',()=>$('#m').classList.toggle('stuck',scrollY>0),{passive:true});
+/* a case that fits the window once the spare space under its last task is taken away does not scroll the page for that space:
+   up to 12px of the gap under the card, then up to 14px of the columns' 18px bottom padding (missions.css), only as much as it needs.
+   Measured from the untrimmed size, so trimming never feeds back; the observer defers to a frame so it never resizes in its own callback */
+const fitRO=new ResizeObserver(()=>requestAnimationFrame(fit));addEventListener('resize',fit);
+function fit(){const M=$('#m'),c=$('#mbody>.case');let o=0;
+  if(c&&M.classList.contains('docked')){o=Math.ceil(c.getBoundingClientRect().bottom+scrollY+(parseFloat(M.style.getPropertyValue('--padcut'))||0)+12-innerHeight);if(o>26)o=0}
+  o=Math.max(0,o);M.style.setProperty('--gapcut',Math.min(o,12)+'px');M.style.setProperty('--padcut',Math.max(0,o-12)+'px')}
+/* an element whose bottom is below the window's bottom edge scrolls the page up to it, and only that far, so a tall task does not
+   jump to its top; a custom tab calls it as api.reveal(el) for a result outside a task card */
+const reveal=el=>{const d=el.getBoundingClientRect().bottom+16-innerHeight;if(d>0)scrollBy({top:d,behavior:'smooth'})};
+/* feedback that a click changed in a task card is revealed. A click that changes no feedback (the table's Color by buttons) leaves
+   the page where it is: the capture listener notes the task's feedback before the click's own handler runs. composedPath, not
+   target.closest: a check re-renders its buttons on answer, so the clicked one is already detached. On #mbody, which every view renders into */
+{const task=e=>e.composedPath().find(x=>x.classList&&x.classList.contains('task')),fbs=t=>$$('.fbx,.fb,.say',t).map(f=>[f,f.hidden+f.className+f.innerHTML]);let was=[];
+  $('#mbody').addEventListener('click',e=>{const t=task(e);was=t?fbs(t).map(x=>x[1]):[]},true);
+  $('#mbody').addEventListener('click',e=>{const t=task(e);if(t)setTimeout(()=>{const fb=fbs(t).filter(([f,s],i)=>s!==was[i]&&!f.hidden&&f.textContent.trim()).map(x=>x[0]).pop();
+    if(fb)reveal(fb)},60)})}
+/* answer-button rows (.mbtns, missions.css): balanced rows with no empty slot and no button alone on the last row (four make 2+2
+   where four across do not fit, five 3+2, seven 3+2+2), as many across as fit at --mbmin each and never more than --mbmax, and
+   fewer when a label's word would be cut, once each icon above its label (.stk) has not saved that count. The row becomes a
+   grid of L columns, each button spanning L / the buttons in its row. A row a lesson made a flex row is left alone.
+   A Decide row in one line (.check .opts, missions.css) keeps its order and widths, except that a button whose longest word
+   is wider than its share keeps that word's width; if the row then overflows, it wraps.
+   Laid out when a row appears and whenever its size changes, a frame later, so a layout never resizes a row inside its own
+   observer callback */
+const plan=(n,k)=>{for(let r=Math.ceil(n/k);;r++){const c=Math.ceil(n/r),big=n-(c-1)*r;if(big===r||c>2)return Array.from({length:r},(_,i)=>i<big?c:c-1)}};
+const cut=b=>b.scrollWidth>b.clientWidth+1;
+function optRow(o){const bs=[...o.children];o.style.flexWrap='';bs.forEach(b=>b.style.minWidth='');if(getComputedStyle(o).display!=='flex')return;
+  for(let c;(c=bs.filter(b=>!b.style.minWidth&&cut(b))).length;)c.forEach(b=>b.style.minWidth='min-content');
+  if(cut(o))o.style.flexWrap='wrap'}
+function rows(mb){if(mb.matches('.opts'))return optRow(mb);const cs=getComputedStyle(mb),bs=[...mb.children],w=mb.clientWidth;if(cs.display!=='grid'||!bs.length||!w)return;
+  const g=parseFloat(cs.columnGap)||0,ico=bs.some(b=>b.children.length>1);let k=Math.min(bs.length,parseInt(cs.getPropertyValue('--mbmax'))||99,Math.max(1,Math.floor((w+g)/((parseFloat(cs.getPropertyValue('--mbmin'))||0)+g))));
+  for(;;){const R=plan(bs.length,k),c=R[0],L=R[R.length-1]<c?c*(c-1):c;let i=0;mb.style.gridTemplateColumns=`repeat(${L},minmax(0,1fr))`;
+    R.forEach(x=>{for(let j=0;j<x;j++)bs[i++].style.gridColumn=L>x?'span '+L/x:''});
+    mb.classList.remove('stk');if(!bs.some(cut))return;
+    if(ico){mb.classList.add('stk');if(!bs.some(cut))return;mb.classList.remove('stk')}
+    if(c===1)return;k=c-1}}
+{const ro=new ResizeObserver(es=>requestAnimationFrame(()=>es.forEach(e=>rows(e.target)))),seen=new WeakSet(),all=()=>$$('#mbody .mbtns,#mbody .check .opts');
+  new MutationObserver(()=>all().forEach(x=>{if(!seen.has(x)){seen.add(x);ro.observe(x)}})).observe($('#mbody'),{childList:true,subtree:true});
+  document.fonts&&document.fonts.ready.then(()=>all().forEach(rows))}
+/* a view that starts with a .case card takes the header as the card's top strip. Any other view (a case file's briefing or
+   recommendation, a build, the Case file tab) docks flat: the header stays above it as the same compact strip, frozen under the bar */
+function dock(){const c=$('#mbody>.case'),M=$('#m'),ev=c&&$(':scope>.ev',c);if(c)c.prepend(MH);M.classList.add('docked');M.classList.toggle('flat',!c);fitRO.disconnect();if(c)fitRO.observe(c);fit();
+  if(evSeen)frzRO.unobserve(evSeen);evSeen=ev;if(ev)frzRO.observe(ev,BB);frz();
+  /* a custom tab's own .cnav (under its card, or at the top level of a flat view) joins the pager: plain buttons before the dots, the primary one after */
+  const n=c?c.nextElementSibling:$('#mbody>.cnav');if(n&&n.classList.contains('cnav')){$$('button',n).forEach(x=>{x.classList.add('pg');x.classList.contains('primary')?$('.pager',MH).append(x):$('#dots').before(x)});n.remove()}}
+function undock(){$('#m').insertBefore(MH,$('#mbody'));$('#m').classList.remove('docked','flat');$$('.pg',MH).forEach(b=>b.remove())}
+function caseView(key){const m=M[key],cs=m.cases,i=idx[key]=Math.min(idx[key]??0,cs.length-1),c=cs[i];head(m);
+  const dots=$('#dots');dots.innerHTML='';cs.forEach((x,k)=>{const b=document.createElement('button');b.type='button';b.textContent=k+1;b.className=(k===i?'cur ':'')+(solved(x)?'done':partial(x)?'part':'');b.setAttribute('aria-label','Case '+(k+1)+(solved(x)?', solved':partial(x)?', in progress':''));b.onclick=()=>{idx[key]=k;render()};dots.append(b)});
+  const[a,t]=firstScore(cs);$('#mscore').textContent=`${cs.filter(solved).length} of ${cs.length} cases solved · first-try accuracy ${t?Math.round(100*a/t)+'%':'–'}`;
+  const o=window.OBJ[c.obj];const body=$('#mbody');
+  body.innerHTML=`<article class="case"><div class="ev"><p class="ctx">${c.ctx} <span class="oid">· Objective ${c.obj} · ${o.teks}</span></p><h2>${c.title}</h2><div class="evb">${c.ev}</div></div><div class="tasks" id="tasks"></div></article>`;
+  dots.before(Object.assign(document.createElement('button'),{className:'btn pg',id:'cprev',type:'button',textContent:'← Previous'}));
+  dots.after(Object.assign(document.createElement('button'),{className:'btn pg',id:'cnext',type:'button',textContent:'Next case →'}));
+  $$('[data-lines]',body).forEach(lines);
+  const T=$('#tasks',body);let n=0;const P=prog()[c.id]||{};
+  nums(c).forEach((nm,ni)=>{const key='num'+(ni||'');n++;const d=document.createElement('div');d.className='task';d.innerHTML=`<p class="tl"><b>Task ${n} · Calculate</b><span>SEP 2(C)</span></p><div class="qrow"><p class="q">${nm.p}</p><div class="numrow"><input type="number" step="any" inputmode="decimal" aria-label="${nm.p.replace(/<[^>]+>/g,'')}"><span class="u">${nm.unit}</span><button class="btn" type="button">Check</button></div></div><p class="fbx" hidden></p>`;
+    const inp=$('input',d),fb=$('.fbx',d);const show=ok=>{fb.hidden=false;fb.className='fbx '+(ok?'ok':'no');fb.innerHTML=ok?'✓ '+nm.why:(nm.hint||'Not yet. Check which quantities to compare, then try again.');d.classList.toggle('ok',ok)};
+    $('button',d).onclick=()=>{const v=parseFloat(inp.value);if(isNaN(v)){fb.hidden=false;fb.className='fbx no';fb.textContent='Enter a number first.';return}const ok=Math.abs(v-nm.ans)<=nm.tol;setProg(c.id,key,ok?1:0);show(ok);upd()};
+    if(P[key]===1){inp.value=nm.ans;show(true)}T.append(d)});
+  const pk=c.pick||(c.model?{ans:c.model,why:c.modelWhy}:null);
+  if(pk){n++;const dm=document.createElement('div');dm.className='task';dm.innerHTML=`<p class="tl"><b>Task ${n} · ${m.pickLabel||'Model'}</b><span>${m.pickTeks||o.teks}</span></p><p class="q">${pk.q||m.pickQ||'Which model first explained this evidence?'}</p><div class="mbtns"></div><p class="fbx" hidden></p>`;
+    const mb=$('.mbtns',dm),mf=$('.fbx',dm);
+    (pk.opts||picksFor(m)).forEach(([k,name,icon])=>{const b=document.createElement('button');b.type='button';b.className='btn';b.innerHTML=(icon||'')+`<span>${name}</span>`;
+      b.onclick=()=>{$$('.btn',mb).forEach(x=>x.classList.remove('correct','wrong'));const ok=k===pk.ans;b.classList.add(ok?'correct':'wrong');setProg(c.id,'model',ok?1:0);mf.hidden=false;mf.className='fbx '+(ok?'ok':'no');
+        mf.innerHTML=ok?'✓ '+pk.why:(pk.no||m.pickNo||`Not ${name}. Ask which model first had the idea this evidence needs. Earlier models lacked it; later ones inherited it.`);dm.classList.toggle('ok',ok);upd()};mb.append(b);
+      if(P.model===1&&k===pk.ans){b.classList.add('correct');mf.hidden=false;mf.className='fbx ok';mf.innerHTML='✓ '+pk.why;dm.classList.add('ok')}});
+    T.append(dm)}
+  n++;const dq=document.createElement('div');dq.className='task';dq.innerHTML=`<p class="tl"><b>Task ${n} · Decide</b><span>SEP 3(A)</span></p><div class="ck"></div>`;
+  U2.renderCheck($('.ck',dq),{id:c.id,obj:c.obj,q:c.q,opts:c.opts},{label:'',onAnswer:ok=>{setProg(c.id,'mc',ok?1:0);dq.classList.toggle('ok',ok);upd()}});
+  if(P.mc===1)dq.classList.add('ok');T.append(dq);
+  $('#cprev').disabled=i===0;$('#cprev').onclick=()=>{idx[key]=i-1;render()};
+  const nx=$('#cnext');if(i===cs.length-1){nx.textContent='Finish';nx.onclick=()=>summary(key)}else nx.onclick=()=>{idx[key]=i+1;render()};
+  /* Next stays a plain button while the case is open and turns primary once it is solved: the cue to move on */
+  const go=()=>nx.classList.toggle('primary',solved(c));go();
+  function upd(){tabs();go();const d=$$('#dots button')[i];if(d)d.className='cur '+(solved(c)?'done':partial(c)?'part':'');const[a2,t2]=firstScore(cs);$('#mscore').textContent=`${cs.filter(solved).length} of ${cs.length} cases solved · first-try accuracy ${t2?Math.round(100*a2/t2)+'%':'–'}`}
+  window.scrollTo({top:0})}
+/* the summary opens at the top of the tasks column, inside the card, and replaces any earlier one; no accuracy before any attempt */
+function summary(key){const cs=M[key].cases,[a,t]=firstScore(cs),s=cs.filter(solved).length;$$('.summary').forEach(x=>x.remove());const box=document.createElement('div');box.className='summary';box.setAttribute('role','status');
+  box.innerHTML=`<h3>${s===cs.length?'Mission complete':'Almost there'}</h3><p>${s} of ${cs.length} cases solved.${t?` First-try accuracy: ${Math.round(100*a/t)}%.`:''} ${s<cs.length?'Open the dots that are not green to finish the remaining cases.':(M[key].next||'Next: the Unit 2 case file.')}</p>`;
+  const T=$('#tasks');if(T){T.prepend(box);scrollTo({top:0,behavior:'smooth'})}else{$('#mbody').append(box);box.scrollIntoView({behavior:'smooth'})}}
+function buildView(){const m=M.build;head(m);let built=store.get('built',[]);const T=m.targets;let cur=T.find(t=>!built.includes(t))||T[T.length-1];
+  const dots=$('#dots');dots.innerHTML='';T.forEach((t,k)=>{const b=document.createElement('button');b.type='button';b.textContent=k+1;b.className=(t===cur?'cur ':'')+(built.includes(t)?'done':'');b.onclick=()=>{cur=t;draw()};dots.append(b)});
+  $('#mscore').textContent=`${built.length} of ${T.length} models built`;
+  const body=$('#mbody');body.innerHTML=`<div class="build"><div class="card" id="bwork"></div><div class="card"><p class="label">Your model timeline</p><ol class="btrack" id="btrack"></ol></div></div>`;
+  function track(){$('#btrack').innerHTML=T.map(t=>{const x=U2.TARGETS[t];return`<li class="${built.includes(t)?'done':''} ${t===cur?'cur':''}">${built.includes(t)?U2.modelSVG({pos:x.pos,e:x.e,m:x.m},'bt'+t):U2.modelSVG({pos:-1,e:-1,m:-1},'bt'+t)}<span><b>${x.name.replace(/ \(.*/,'')}</b><br><span class="yr">${x.name.match(/\((.*)\)/)[1]}</span></span></li>`}).join('')}
+  function draw(){const w=$('#bwork');w.innerHTML='';const bd=document.createElement('div');w.append(bd);
+    $$('#dots button').forEach((b,k)=>b.className=(T[k]===cur?'cur ':'')+(built.includes(T[k])?'done':''));
+    U2.modelBuilder(bd,{target:cur,onDone:ok=>{if(!ok)return;const wi=m.why[cur];if(wi===undefined){finish();return}
+      const q=document.createElement('div');q.className='evq';q.innerHTML=`<p class="q"><b>Which evidence forced this model?</b></p>`;const s=document.createElement('select');s.append(new Option('Choose the evidence…',''));m.ev.forEach((e,i)=>s.append(new Option(e,i)));
+      const c=U2.btn('Check','btn');const f=document.createElement('p');f.className='fbx';f.hidden=true;const r=document.createElement('div');r.className='numrow';r.append(s,c);q.append(r,f);w.append(q);
+      c.onclick=()=>{const ok=+s.value===wi&&s.value!=='';f.hidden=false;f.className='fbx '+(ok?'ok':'no');f.innerHTML=ok?'✓ Right. '+U2.TARGETS[cur].why.e:'Not that one. Which result could the previous model not explain?';if(ok)finish()}}});
+    track()}
+  function finish(){if(!built.includes(cur)){built.push(cur);store.set('built',built)}tabs();$('#mscore').textContent=`${built.length} of ${T.length} models built`;track();
+    const nxt=T.find(t=>!built.includes(t));const w=$('#bwork');const b=U2.btn(nxt?'Next model →':'All five built. Go to Models at work →','btn primary');b.style.marginTop='12px';b.onclick=()=>{if(nxt){cur=nxt;draw()}else{tab='work';store.set('mtab','work');render()}};w.append(b)}
+  draw()}
+function caseFile(){$('#msub').textContent='Unit 2 capstone';$('#mtitle').textContent='Case file: The Sun\'s element';$('#mintro').textContent='';$('#dots').innerHTML='';$('#mscore').textContent='';
+  $('#mbody').innerHTML=`<div class="locked"><p class="label">Unit 2 case file</p><h2>Found in sunlight in 1868, extracted from Texas natural gas today</h2><p>You are a science adviser to a Texas hospital network. Six evidence files about helium use every Unit 2 standard, C.6(A) to C.6(E) and C.5(B), and end in a written recommendation.${M.caseNote?' '+M.caseNote:''}</p><p><a class="btn primary" href="${M.caseUrl||'casefile.html'}">Open the case file →</a></p></div>`}
+/* custom tab: the lesson mounts its own activity and reports progress through api.done(n) */
+function customView(k){const m=M[k];head(m);$('#dots').innerHTML='';const sc=()=>{const d=store.get('cdone',{});$('#mscore').textContent=m.total?`${d[k]||0} of ${m.total} done`:''};
+  const body=$('#mbody');body.innerHTML='';
+  m.mount(body,{store,reveal,done(n){const d=store.get('cdone',{});d[k]=Math.max(d[k]||0,n);store.set('cdone',d);tabs();sc()},
+    next(){const i=ORDER.indexOf(k);tab=ORDER[i+1]||'case';store.set('mtab',tab);render()}});
+  sc();window.scrollTo({top:0})}
+function render(){tabs();undock();if(tab==='case')caseFile();else{const kd=kind(tab);if(kd==='cases')caseView(tab);else if(kd==='build')buildView();else if(kd==='custom')customView(tab)}dock()}
+U2.glossaryPop&&U2.glossaryPop();render();
+})();
+
+</script>
+</body>
+</html>
