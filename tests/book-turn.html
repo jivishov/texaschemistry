@@ -59,8 +59,9 @@ h1{font-size:22px;margin:0 0 8px}button{font:inherit;padding:6px 12px;margin:0 8
       click('#next');check(firstPage()===3&&!!layer(),'Forward navigation starts an animated two-page turn');
       check(layer().inert&&layer().getAttribute('aria-hidden')==='true','Animation snapshots stay outside keyboard and screen-reader navigation');
       const ids=[...doc().querySelectorAll('[id]')].map(el=>el.id);check(new Set(ids).size===ids.length,'Snapshot IDs do not duplicate live activity or SVG IDs');
-      const leaf=doc().querySelector('.book-turn-leaf');await sleep(220);
-      check(win().getComputedStyle(leaf).transform.startsWith('matrix3d'),'The sheet rotates in 3D during the turn');
+      const leaf=doc().querySelector('.book-turn-leaf');
+      await until(()=>leaf.isConnected&&win().getComputedStyle(leaf).transform.startsWith('matrix3d'));
+      check(true,'The sheet rotates in 3D during the turn');
       await settled();check(!doc().querySelector('#book').classList.contains('is-turning'),'Completed turns remove the overlay and restore interaction');
       const canvas=doc().querySelector('#book .page.on canvas');
       const probe=[...doc().querySelectorAll('#book .page.on button')].find(b=>b.textContent==='Probe from the left');probe.click();

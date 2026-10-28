@@ -191,12 +191,6 @@ main.book .page.pr{grid-column:2;border-radius:0 12px 12px 0;background:linear-g
 main.book.single{grid-template-columns:minmax(0,1fr);width:min(860px,100%)}
 main.book.single .page.on{grid-column:1;border-radius:12px;background:var(--paper);border-left:0;box-shadow:0 8px 24px rgba(40,30,10,.12)}
 main.book .page.measure{display:flex!important;position:fixed;left:-20000px;top:0;visibility:hidden;width:var(--pw);height:var(--ph);grid-row:auto}
-main.book .page.on.fwd.pr,main.book.single .page.on.fwd{animation:turnF .45s cubic-bezier(.2,.7,.2,1)}
-main.book .page.on.bwd.pl,main.book.single .page.on.bwd{animation:turnB .45s cubic-bezier(.2,.7,.2,1)}
-main.book .page.on.fwd.pl,main.book .page.on.bwd.pr{animation:fadeIn .45s ease}
-@keyframes turnF{from{transform:rotateY(-22deg);transform-origin:left center;opacity:.2}to{transform:none;opacity:1}}
-@keyframes turnB{from{transform:rotateY(22deg);transform-origin:right center;opacity:.2}to{transform:none;opacity:1}}
-@keyframes fadeIn{from{opacity:.35}to{opacity:1}}
 .pager{position:fixed;left:0;right:0;bottom:0;height:var(--pgr);display:flex;align-items:center;justify-content:center;gap:14px;background:color-mix(in srgb,var(--bg) 94%,transparent);border-top:1px solid var(--line);z-index:20}
 .pager .btn{min-height:34px;font-size:14.5px}
 .pager #pinfo{font-family:var(--mono);font-size:12.5px;color:var(--muted);min-width:12em;text-align:center}
@@ -383,6 +377,8 @@ main.book .page .u63ba .obs svg{width:4.4em}
 
 a.brand{color:inherit;text-decoration:none}
 </style>
+<link rel="stylesheet" href="../assets/book-turn.css">
+<script src="../assets/book-turn.js"></script>
 </head>
 <body>
 <a class="skip" href="#book">Skip to the reading</a>
@@ -7067,6 +7063,7 @@ const LS=window.LESSON||{};const CH=LS.ch||document.title;
 origPages.forEach(p=>{const b=document.createElement('div');b.className='pbody';while(p.firstChild)b.append(p.firstChild);p.append(b);p._spread=p.closest('.spread')});
 let pages=origPages.slice(),mode=store.get('mode','book'),cur=0;
 const narrow=matchMedia('(max-width:1000px)'),phone=matchMedia('(max-width:700px)');
+const pageTurn=window.BookTurn?BookTurn.create(book):null;
 
 /* theme */
 const root=document.documentElement;let theme=store.get('theme',null);
@@ -7132,7 +7129,7 @@ origPages.forEach(p=>{p._blocks=[...$('.pbody',p).children];p._blocks.forEach(b=
 spreads.forEach(sp=>{const fp=origPages.find(p=>p._spread===sp);sp._first=fp&&fp._blocks[0]});
 $$('[data-item]').forEach(e=>e._sp=e.closest('.spread'));
 const LISTS=$$('ol.laws,ol.post,ul.obs,ul.review,ol.objs,ol.starters,.ag,.vocab',book);LISTS.forEach(l=>l._lis=[...l.children]);
-function unpaginate(){origPages.forEach(p=>{const bd=$('.pbody',p);p._blocks.forEach(b=>bd.append(b))});LISTS.forEach(l=>l._lis.forEach(li=>l.append(li)));
+function unpaginate(){if(pageTurn)pageTurn.cancel();origPages.forEach(p=>{const bd=$('.pbody',p);p._blocks.forEach(b=>bd.append(b))});LISTS.forEach(l=>l._lis.forEach(li=>l.append(li)));
   $$('.page.cont',book).forEach(c=>c.remove());$$('.contp',book).forEach(c=>c.remove());SPLITS.forEach(t=>{t.innerHTML=t._orig;t._orig=null});SPLITS=[];SQZ.forEach(unsqueeze);SQZ=[];$$('.check').forEach(c=>c.style.minHeight='');origPages.forEach(p=>p.classList.remove('merged'));pages=origPages.slice()}
 function newCont(src){const c=document.createElement('div');c.className='page cont '+(src.classList.contains('left')?'left':'right');c._spread=src._spread;const bd=document.createElement('div');bd.className='pbody';c.append(bd);chrome(c);return c}
 function longestFb(ck){const it=U2.item(ck.dataset.item);return it?it.opts.map(o=>o[2]).sort((a,b)=>b.length-a.length)[0]:''}
@@ -7219,17 +7216,21 @@ function guard(){requestAnimationFrame(()=>{if(mode!=='book'||phone.matches)retu
 book.addEventListener('click',guard);book.addEventListener('toggle',guard,true);
 
 /* ---------- navigation ---------- */
-function show(i,dir){stopSpeech();const single=narrow.matches||phone.matches;i=Math.max(0,Math.min(pages.length-1,i||0));if(!single&&mode==='book')i-=i%2;cur=i;store.set('pageAnchor',i);
+function show(i,dir){stopSpeech();const single=narrow.matches||phone.matches;i=Math.max(0,Math.min(pages.length-1,i||0));if(!single&&mode==='book')i-=i%2;
+  const turn=pageTurn&&dir&&i!==cur&&mode==='book'?pageTurn.capture(dir,single):null;if(pageTurn)pageTurn.cancel();
+  cur=i;store.set('pageAnchor',i);
   pages.forEach(p=>p.classList.remove('on','pl','pr','fwd','bwd'));
   if(mode==='book'){const a=pages[i],b=single?null:pages[i+1];a.classList.add('on');if(!single){a.classList.add('pl');if(b)b.classList.add('on','pr')}
-    if(dir){[a,b].forEach(x=>{if(x){void x.offsetWidth;x.classList.add(dir>0?'fwd':'bwd')}})}
     $('#pinfo').textContent=single?`Page ${i+1} of ${pages.length}`:(b?`Pages ${i+1}–${i+2} of ${pages.length}`:`Page ${i+1} of ${pages.length}`);
-    $('#prev').disabled=i===0;$('#next').disabled=(single?i:i+1)>=pages.length-1;if(phone.matches)window.scrollTo(0,0)}
+    $('#prev').disabled=i===0;$('#next').disabled=(single?i:i+1)>=pages.length-1;if(phone.matches)window.scrollTo(0,0);
+    if(turn)pageTurn.play(turn,[a,b].filter(Boolean))}
   buildToc()}
 function step(d){const single=narrow.matches||phone.matches;const n=cur+d*(single?1:2);if(n<0||n>=pages.length)return;show(n,d)}
 $('#prev').onclick=()=>step(-1);$('#next').onclick=()=>step(1);
-document.addEventListener('keydown',e=>{if(mode!=='book'||e.target.closest('input,select,textarea'))return;if(e.key==='ArrowRight'||e.key==='PageDown'){step(1);e.preventDefault()}if(e.key==='ArrowLeft'||e.key==='PageUp'){step(-1);e.preventDefault()}});
-let tx=null;book.addEventListener('touchstart',e=>{if(e.target.closest('canvas,input,.tl,select'))return;tx=e.touches[0].clientX},{passive:true});book.addEventListener('touchend',e=>{if(tx==null||mode!=='book')return;const dx=e.changedTouches[0].clientX-tx;tx=null;if(Math.abs(dx)>70)step(dx<0?1:-1)});
+document.addEventListener('keydown',e=>{if(mode!=='book'||e.defaultPrevented||e.altKey||e.ctrlKey||e.metaKey||e.target.closest('input,select,textarea,canvas,[data-sim],[contenteditable]'))return;if(e.key==='ArrowRight'||e.key==='PageDown'){step(1);e.preventDefault()}if(e.key==='ArrowLeft'||e.key==='PageUp'){step(-1);e.preventDefault()}});
+let swipe=null;book.addEventListener('touchstart',e=>{swipe=null;if(mode!=='book'||e.touches.length!==1||e.target.closest('canvas,input,button,a,.tl,select,textarea,[data-sim],[contenteditable]'))return;swipe={x:e.touches[0].clientX,y:e.touches[0].clientY}},{passive:true});
+book.addEventListener('touchend',e=>{const start=swipe;swipe=null;if(!start||mode!=='book'||e.touches.length)return;const dx=e.changedTouches[0].clientX-start.x,dy=e.changedTouches[0].clientY-start.y;if(Math.abs(dx)>70&&Math.abs(dx)>Math.abs(dy)*1.25)step(dx<0?1:-1)},{passive:true});
+book.addEventListener('touchcancel',()=>{swipe=null},{passive:true});
 function setMode(m){mode=m;store.set('mode',m);book.className=m;$$('#mode button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.m===m)));paginate();
   if(m==='scroll')requestAnimationFrame(()=>{const p=pages[cur];if(p)p._spread.scrollIntoView({block:'start'})})}
 $$('#mode button').forEach(b=>b.onclick=()=>setMode(b.dataset.m));
