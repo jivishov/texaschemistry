@@ -1,290 +1,227 @@
-# Plan: rebuild the Unit 4 slide decks for lessons 4.1 and 4.2
+# Plan: new slide decks for Unit 4 lessons 4.1 and 4.2
 
-Target files: `unit4/slides-4-1.html`, `unit4/slides-4-2.html`, plus slide references in `unit4/blueprint.html`.
-Branch: `claude/unit-4-chemistry-slides-j62190`.
-Implementer: Opus 5.5 in a new thread. Every numbered step in section 11 ends with a confirmation gate.
-
----
-
-## 1. What exists today (evaluation)
-
-### 1.1 Reading material (source of truth for content)
-- `reading-4-1.html`: five sections (three kinds of bonds, forming ions, ionic bonds and the crystal, covalent bonds, polar and nonpolar, metallic bonds, the electronegativity difference, evidence from the periodic table, writing a bonding argument). Objectives 4.1.1 to 4.1.5. Guide: below 0.4 nonpolar, 0.4 to 1.8 polar, above 1.8 ionic, taught as a continuum with exceptions. Pauling values: Na 0.93, Cl 3.16, H 2.20, O 3.44, F 3.98, C 2.55, S 2.58, N 3.04, Mg 1.31, K 0.82, Li 0.98, Ca 1.00, Fe 1.83.
-- `reading-4-2.html`: charges from the group number, transition metals (Fe, Cu two ions; Ag, Zn one ion), balancing charges (tile model), writing the formula (lowest ratio, crisscross as a check), naming binary compounds (-ide), Stock system, six polyatomic ions (ammonium, hydroxide, nitrate, carbonate, sulfate, phosphate), parentheses, name to formula and back, checking errors. Objectives 4.2.1 to 4.2.5.
-- Every slide check item already exists in each deck's item bank (`u41-s1` to `u41-s8`, `u42-s1` to `u42-s8`). Keep them: the blueprint's alignment matrix depends on them.
-
-### 1.2 The existing decks (what to keep)
-- Standalone HTML, everything inline. No build kit in this repo (the blueprint mentions `kit/build.py`, which is not here). Edits are made directly in the built HTML. Both decks carry an identical copy of the engine and of the simulation kit, so engine changes are made once and copied.
-- Canvas 1600 x 900 scaled to the screen, `#deck` base font 32 px. Sections, step rail, `data-step` builds (`.fut` hides future steps), teacher notes panel (N), overview (O), zoom (Z or double click), theme, full screen, auto-fit text, timers, predictions saved in `localStorage`, checkpoint routine with Think/Talk/Write timers, CER exit ticket, self-rating.
-- Simulations (canvas 2D, in the shared `U2` kit): `ionTransfer` (Atoms, Transfer, Ions, Attract, Crystal; Touching/Spread out; pick Center/Face/Edge/Corner), `molView` (molecules and polyatomic ions, ball-and-stick/space-filling/textbook views, drag to turn), `bondExplorer` (pair selector, continuum bar, "Choose from the table"), `metalSea` (Cations, Electrons, Moving, Current; Na/Mg/Al), `ionTiles` (Ions, Balance, Formula, Name; cation and anion selects; +/− tiles; free mode). All good and chemically careful. Keep all five.
-
-### 1.3 Where the decks fail the brief
-1. Clicker. PageDown/PageUp drive deck steps only. Every simulation stage, pair/ion/view selector, "Play", answer check, prediction button, timer restart and zoom needs the mouse. F5 reloads the page. The period key does nothing. Key repeat is not guarded (a held button skips steps). If a `<select>` has focus after a mouse click, the key handler ignores the clicker.
-2. Legibility from the back row. On the 900 px canvas: body 32 px (about 19 pt on a printed slide), `.sm` 27 px (16 pt), simulation messages 21 px (13 pt), source lines 15 px, rail 18 px, readout labels 19 px. Rule of thumb for a classroom projector: nothing student-facing under 24 pt, which is 40 px on this canvas. Roughly half of each slide is below that.
-3. Openers. Driving-question slides are observation tables. No kid-level hook, no physical metaphor, no animation on entry.
-4. Scaffolding and retrieval. Order of concepts is right, but each slide is three dense cards plus a simulation. One multiple-choice check per slide, mouse-driven. No retrieval at the start of period 2, no quick "your turn" after each concept, no one-picture summary.
-5. Animations. The five sims are the only motion. The continuum, the ions periodic table, the crisscross and the Stock breakdown are static SVG.
-6. ELL. Sentence frames and word banks exist. Spanish terms exist only in the reading glossary. No color legend, no icons beside terms.
-7. Teacher mobility. Notes live in a laptop-only panel. Nothing on screen tells the teacher what the next press will do.
+Clean-slate build. The current `unit4/slides-4-1.html` and `unit4/slides-4-2.html` are ignored and replaced at the same paths (the unit index and the readings link to those names). Sources of content: `unit4/reading-4-1.html`, `unit4/reading-4-2.html`, `unit4/blueprint.html`. `unit4/blueprint.html` gets its slide references updated at the end.
+Branch: `claude/unit-4-chemistry-slides-j62190`. Implementer: Opus 5.5 in a new thread. Every step in section 10 ends with a confirmation gate.
 
 ---
 
-## 2. End goal (work backwards from this)
+## 1. End goal (work backwards from this)
 
-Definition of done, checked by the verification scripts in section 10:
-- A teacher runs each lesson, both periods, start to finish with only the four R800 buttons. The laptop is never touched after opening the deck in full screen.
-- Every reveal, simulation stage, zoom, timer start and answer is one Next press. Back restores the previous state exactly.
-- No student-facing text below 30 px on the canvas; body text 40 px; headings 60 px.
-- Each lesson follows: hook (real life, kid level) → concept in one picture → example → your turn → next concept, with a one-picture summary at the end of period 1 and a retrieval warm-up at the start of period 2.
-- Eight item-bank checks per deck kept, so the blueprint's "slide checks: 8" and alignment matrix stay true after the slide numbers are updated.
-- Playwright walk-through of every step of both decks: no overflow, no console errors, every step has a footer cue, screenshots archived.
+A deck is done when:
+- The teacher runs both periods of the lesson with the four buttons of a Logitech R800 and never touches the laptop after opening the deck. Every reveal, animation stage, answer, timer and zoom is one Next press. Back restores the previous state exactly.
+- A student in the back row reads everything: body text 44 px on the 1600 x 900 canvas (about 26 pt on a printed slide), nothing student-facing under 34 px, animations drawn with shapes at least 60 px.
+- Each lesson runs hook → concept in one picture → worked example → your turn → next concept, with a one-picture summary closing period 1 and a retrieval warm-up opening period 2. Two periods per lesson, as the blueprint says.
+- Every concept slide carries one animation or simulation, scripted to the presses.
+- English learners get a word with its icon, its Spanish cognate and a one-line meaning the first time it appears, sentence frames on every writing step, and a fixed color code.
+- A Playwright walk of every press of both decks shows no overflow, no console errors and a footer cue at every press. Blueprint slide numbers match.
 
 ---
 
-## 3. Domain model
+## 2. Domain model
 
-| Entity | Meaning | Where it lives |
+| Entity | Meaning | Representation |
 |---|---|---|
-| Deck | One lesson, 25 to 26 slides, two periods | `section.slide` list |
-| Slide | One screen with a title, eyebrow (section · reading §), beats, notes | `section.slide[data-title][data-sec]` |
-| Beat | A labeled teaching move shown as a rail pill (at most 4 per slide) | `data-rail="Teams|Even match×2|Blowout×3|So what"`; `×n` declares n micro-steps |
-| Step | Flat integer the clicker advances; beats own consecutive steps | existing `step`, `K(i)` |
-| Action | What a step does: reveal (default), sim state, zoom target, timer, sample answer, blank | `TOUR[slide][step]` table in deck JS, plus `data-step` on elements |
-| SimController | Methods a simulation exposes for scripted use | `root.api` set by each `U2.*` sim |
-| Tour | Ordered sim states for one slide, one per step, each a full state (idempotent) | `TOUR` entries, e.g. `{sim:0, state:{stage:2}}` |
-| Cue | Short footer text saying what Next does | `data-cue` per step element, default = next beat label |
-| Clicker map | R800 button → key → deck action | engine key handler |
-| Check | Item-bank question rendered as reveal (question step, answer step) | `data-q` rendered in `reveal` mode |
-| Hook | First content slide of a lesson: real-life scene with animation | new sims `tugOfWar`, `labelRead` |
+| Deck | One lesson, two periods, 25 to 26 slides | one standalone HTML file |
+| Slide | One screen: title, section label, reading reference, frames, notes | `<section class="slide" data-title data-sec data-ref>` |
+| Frame | The state the slide is in after n presses; frame 0 is the slide as entered | `frames: [state, state, ...]` in the slide's script |
+| State | Declarative: which blocks are shown, which animation stage, zoom target, timer, cue text | `{show:[...], stage:{sim:'tug', s:2}, zoom:'#card', timer:60, cue:'...'}` |
+| Block | A card, picture, line or table that a frame shows or hides | element with an `id` |
+| Animation | A canvas or SVG model with a small set of named stages; each stage is a full state, so Back replays it | `sim.set(stage)`, `sim.get()` |
+| Cue | One-line footer text saying what Next will do | `state.cue`, default "Next: <next block's label>" |
+| Check | A question block followed by an answer block (students answer by hand signal or notebook) | two frames |
+| Hook | Opening scene from everyday life, animated, one line of text | first content slide |
+| Routine | Checkpoint (think, talk, write, self-check, compare) and CER exit ticket, timed by frames | fixed templates |
+| Clicker map | R800 button → key → runtime action | runtime key handler |
 
-Rule for tours: a step declares the complete sim state, never a delta, so PageUp re-applies the earlier state and the sim lands where it was.
+Rule: the runtime computes frame n by replaying states 0..n, so Back never needs a reverse action and no animation keeps hidden state between presses.
 
 ---
 
-## 4. Engine changes (identical in both decks)
+## 3. Runtime (new, lean, inline in each deck; written once, copied into both files)
 
-### 4.1 Clicker map (Logitech R800)
-| Button | Key sent | Deck action |
+### 3.1 Clicker map (Logitech R800 sends four keys)
+| Button | Key | Action |
 |---|---|---|
-| Next (▶) | `PageDown` | `next()`: next step, or next slide after the last step |
-| Back (◀) | `PageUp` | `prev()`: previous step with state restored, or previous slide at its last step |
-| Start/stop (slideshow) | `F5` first press, `Escape` second | `F5`: `preventDefault`, request full screen if not in it, else no-op. `Escape`: close in this order: blank screen, zoom, overlay, notes; otherwise leave to the browser (exits full screen) |
-| Blank screen | `.` (map `b`/`B` too) | Single press: zoom toggle on the current step's focus. Second press within 400 ms: undo the zoom and toggle the blank (black) overlay. Any key leaves the blank |
+| Next ▶ | `PageDown` | next frame; after the last frame, next slide at frame 0 |
+| Back ◀ | `PageUp` | previous frame; at frame 0, previous slide at its last frame |
+| Start/stop | `F5` then `Escape` | `F5`: `preventDefault`, enter full screen if not in it, else nothing. `Escape`: close in order blank screen → zoom → notes; otherwise let the browser exit full screen |
+| Blank | `.` (also `b`) | one press: zoom the frame's focus block (or the animation) to fill the slide, press again to unzoom; two presses within 400 ms: blank screen (black), any key clears it |
 
-Rules:
-- Ignore `e.repeat` for PageDown, PageUp, period and F5. Debounce PageDown/PageUp at 180 ms.
-- Handle the keys regardless of focus except inside `textarea`. After any mouse click on a sim control, `blur()` it so the clicker keeps working.
-- Keep laptop keys: arrows, Shift+arrows, N, O, Z, Home, End.
-- Update the cover's "how to" strip to show the four R800 buttons with their actions, plus the laptop keys in smaller type.
+Guards: ignore `e.repeat`; 180 ms debounce on Next/Back; keys work whatever has focus except a `textarea`; any mouse click on a control is followed by `blur()`. Laptop keys kept for desk use: arrows, Home, End, N (notes), O (overview), Z (zoom), T (theme).
 
-### 4.2 Step actions
-- Add `TOUR` (per deck): `TOUR[slideIndex] = {stepNumber: {sim: indexWithinSlide, state: {...}, zoom: 'selector', timer: seconds, sample: true, cue: 'text'}}`.
-- In `setStep()`, after `applySteps`, apply the action for the new step: find `[data-sim]` elements in the slide, call `el.api.set(state)`; apply zoom (`zoomOn(target)`) when `zoom` is set, `zoomOff` otherwise; start the timer; toggle `show-sample`.
-- When entering a slide at step 1 (forward) or at the last step (backward), apply that step's action too, so a slide always opens in a consistent state.
-- Rail: a beat label with `×n` covers n flat steps. The pill shows the beat label plus a dot row for its micro-steps (`●●○`). Pills stay at most 4 per slide.
+### 3.2 Frame engine
+- `go(slide, frame)`: hide all blocks of the slide, replay states 0..frame, apply the last state's `stage`, `zoom`, `timer`, `cue`. Entering a slide forward lands on frame 0; entering backward lands on the last frame.
+- Blocks appear with a 250 ms fade-up; animation stages run their own transitions (300 to 900 ms); reduced-motion jumps to the end state.
+- Timers: a frame with `timer` starts a large countdown (visible from the back: 96 px digits); Back then Next restarts it.
+- Progress: a thin bar across the top, slide counter bottom-right, section name bottom-left. No other chrome on screen.
+- Footer cue: 28 px, bottom center, "Next ▶ …". Teacher reads it from anywhere in the room; students may see it, so cues never give away an answer ("Next ▶ answer" is fine, "Next ▶ MgO" is not).
+- Notes: laptop panel (N) listing the current slide's frames with timing and talk points; `@media print` prints a run-sheet of all slides (number, title, frame list, notes) so the teacher can carry two or three pages.
+- Zoom: CSS transform of the block to fit the slide at up to 3x; canvases re-render at the zoomed resolution.
+- Themes: light by default (bright classrooms), dark available. Colors from tokens so every drawing works in both.
+- Mobile reflow is not a goal for the projector decks; a minimum fallback (scrolling page under 760 px) is enough.
 
-### 4.3 Sim APIs (`root.api`)
-Each sim sets `root.api = {set(state), get()}` and keeps its mouse controls. `set` updates internal state, syncs the visible control buttons (`seg.set`, `steps.set`, selects) and kicks the loop.
-- `ionTransfer`: `{stage: 0..4, spread: bool, pick: null|'center'|'face'|'edge'|'corner'}`.
-- `molView`: `{mol: key, view: 'ball'|'space'|'text', angles: bool}`. Also `spin: bool` for a slow auto-turn while the step is shown (stop on reduced motion).
-- `bondExplorer`: `{pair: 'H-Cl'}` from the configured pairs; `{a: 'Fe', b: 'Cl'}` for any pair (same as "Choose from the table").
-- `metalSea`: `{stage: 0..3, metal: 'Na'|'Mg'|'Al'}`.
-- `ionTiles`: `{stage: 0..3, cation: 'calcium', anion: 'chloride', nCat: n, nAn: n}` (counts only in free mode).
-- New sims in section 6 follow the same pattern.
+### 3.3 Visual system
+- Type: DM Sans for everything on the slides (sans reads better at distance than the serif of the readings), IBM Plex Mono only for numbers in a calculation. Base 44 px, headings 64 px, big statements 56 px, small 34 px floor, cue 28 px, section label 26 px (teacher-facing). Subscripts and charges set as real `<sub>`/`<sup>` at 0.7em.
+- Budget: at most 35 words of student-facing prose per slide outside tables and labels. One idea per block. A block is a picture, a rule, an example or a question, never two.
+- Layout templates, six only: Hook (full-width animation, one line under it), Concept (animation 60% left, one rule card right), Example (steps appear down the right, picture left), Your turn (question top, answer below), Summary (one diagram), Routine (checkpoint, exit ticket, predictions).
+- Color code, fixed for both lessons and printed as a legend on slide 5 of each: cation red, anion blue, electron dot yellow on dark / violet on light, metal gray, nonmetal green, δ+ warm, δ− teal. Shapes carry a symbol as well as a color (+, −, dots) for color-blind students.
+- Icons: flat inline SVG, two fills and one accent, 3 px strokes at canvas scale, `role="img"` with `aria-label`. No raster images unless the user supplies them (then base64 WebP, as `unit4/index.html` already does).
 
-### 4.4 Checks as reveals
-- Render `[data-q]` items in reveal mode: step n shows the question and the three options (students answer by fingers A/B/C, whiteboards or notebooks); step n+1 marks the correct option, dims the others and shows the feedback line of the correct option. Wrong-option feedback goes into the teacher notes for that step ("if students chose B: ...").
-- Mouse clicks on options still grade immediately (laptop use), but the clicker path never needs them.
-- Predictions slide: keep the buttons (optional mouse polling), but the flow is hands-up. The revisit slide shows "Answer: ... because ..." and "Hands up if you predicted this." Remove the "You predicted: no prediction" text when nothing is stored.
-- Exit ticket: "Show the sample answer" becomes a step (`sample: true`) instead of a button.
+---
 
-### 4.5 Footer cue
-- Replace the small footer title with `#cue`: "Next ▶ Transfer the electron" at 26 px, from `data-cue` on the step element or the tour entry, default the next beat's label, "Next slide: <title>" at the last step. Keep the slide counter.
+## 4. Animations and simulations (new, projector-first, scripted)
 
-### 4.6 Type scale (student-facing floor 30 px, body 40 px)
-| Element | Now | New |
+Canvas 2D or SVG with JS. Big shapes, few labels, every label at least 36 px. Each exposes `set(stage)` and `get()`. Mouse controls are optional and never required.
+
+### 4.1 For lesson 4.1
+| Name | Stages | What it shows |
 |---|---|---|
-| `#deck` base | 32 px | 40 px |
-| `h2` | 1.55em (50 px) | 1.5em (60 px) |
-| `.eyebrow`, `.label` | 0.56em (18 px) | 0.65em (26 px), teacher-facing meta only |
-| `.sm` | 0.86em (27 px) | 0.85em (34 px) |
-| `.dq`, key idea | 1.22em (39 px) | 1.2em (48 px) |
-| Check question `h3` / options | 32 / 27 px | 40 / 34 px |
-| Table `table.t` | 0.92em | 0.9em (36 px), fewer columns |
-| Rail pills | 18 px | 22 px, at most 4 pills |
-| `window.U2FONTK` (canvas text) | 1.35 | 1.75 |
-| `.slide .say` (sim message) | 21 px | `max(.75em, 30px)` |
-| `.slide .simnote` (sources) | 15 px | `display:none` on slides; text moved to notes |
-| `.ros` readouts | 19 / 30 px | 26 / 34 px |
-| Sim step/seg buttons | 22 px | 28 px |
-| Footer cue | 13 px | 26 px |
-| Projector floor rule (line ~654) | 18 px | 30 px for student-facing text, 24 px for `.eyebrow/.label` |
-| Auto-fit minimum scale | 0.76 (body), 0.66 (cards) | 0.85 and 0.8; if a slide still overflows, cut words, never shrink further |
+| `tugOfWar` | teams, even, uneven, blowout, labels | Two stick-figure teams, a rope, the knot drawn as two glowing dots (the shared pair). even: same strength, knot stays centered. uneven: right team stronger, knot slides toward it, both still hold. blowout: knot pulled all the way, the rope fades, the teams gain + and − badges and slide together ("the pull between + and − is now the bond"). labels: three mini-frames captioned nonpolar covalent, polar covalent, ionic. Strength numbers shown as electronegativity values in the chemistry stages. |
+| `ionHop` | atoms, hop, ions, attract, grow | Na and Cl atoms drawn with outer-shell dots only. hop: the one Na dot jumps to Cl. ions: badges Na⁺ (smaller) and Cl⁻ (larger), proton and electron counts. attract: the two slide together. grow: a 3 x 3 x 2 isometric block of alternating red and blue spheres builds up, "no molecules, a ratio: NaCl". A center ion lights with its six neighbors on the last press. |
+| `sharedPair` | H2, Cl2, HCl, HO, HF | Two atoms as soft clouds, the pair as two dots. Pair position moves with the difference (0.00, 0.00, 0.96, 1.24, 1.78); δ+ and δ− badges fade in from 0.4 up; tiny tug-of-war icon under the pair repeats the metaphor. |
+| `electronSea` | crowd, cores, sea, drift, Mg, Al | crowd: heads passing beach balls (the hook). cores: heads become + circles in a grid. sea: balls become drifting dots. drift: a battery appears, dots stream one way, cores stay. Mg and Al: two and three dots per core. |
+| `enMeter` | bar, lines, place(bond) | A horizontal bar from 0 to 3.3 with gradient regions, 0.4 and 1.8 lines, a pointer that drops onto the bar for a named bond with its subtraction shown above (3.16 − 0.93 = 2.23). |
+| `ptMap` | outline, metals, nonmetals, pair(a,b) | Periodic table outline, metals tint from the left, nonmetals from the right, staircase. pair lights two cells and draws the line between them. |
+| `cerBuilder` | claim, evidence, reasoning, strength | Four big boxes fill one per press with the argument for the named bond; used for I do (KF) and we do (HCl). |
 
-Content budget: at most 40 words of student-facing prose per slide outside tables and sim labels. One idea per card. A card is either a picture, a rule, an example or a question, never two of those.
-
-### 4.7 Other engine items
-- Blank overlay: full-canvas black `div`, `z-index` above zoom; exits on any key.
-- Zoom: for a sim step the target is the `.cv` canvas; cards stay the default target; cap `k` at 3 (exists).
-- Print run-sheet: `@media print` hides the deck and prints, per slide: number, title, beats, notes list. Two or three pages per lesson for the teacher's hand.
-- Reduced motion: existing `REDUCED` flag applies to every new animation (jump to end state).
-- Color code everywhere: cation red (`#B5523B` family, existing tile red), anion blue (existing tile blue), shared pair / electrons the existing violet dot, δ+ warm, δ− accent. Add a one-line legend strip on slides that use the colors.
+### 4.2 For lesson 4.2
+| Name | Stages | What it shows |
+|---|---|---|
+| `labelRead` | shelf, focus 0..2, code | Toothpaste (sodium fluoride), antacid (calcium carbonate), lawn fertilizer (ammonium sulfate) on a shelf; focus zooms one label with the name at 56 px; code: "a name is a code you will read by the end". |
+| `ionTable` | outline, g1, g2, g13, g17, g16, g15, tm | Periodic table; each group lights in order with its charge badge (1+, 2+, 3+, 1−, 2−, 1−); -ide names appear on the anion groups; tm lights Fe, Cu, Ag, Zn with their ions. |
+| `chargeBlocks` | ions(c,a), add, balance, formula, name | LEGO-style tiles: a cation tile with as many + studs as its charge, anion tiles with − sockets. add drops tiles one at a time, balance snaps rows when studs equal sockets and shows the totals, formula assembles the symbols and subscripts from the counts, name writes the name under it. Supports a `reduce` stage for Mg₂O₂ → MgO (two pairs collapse to one, "2 : 2 → 1 : 1"). Polyatomic ions are one tile with the group drawn inside; parentheses appear when the tile repeats. |
+| `crisscross` | ions, cross, reduce, check | Charge digits travel diagonally into subscript positions; reduce strikes the common factor; check shows 2 × 3+ = 6+ and 3 × 2− = 6−. |
+| `nameBuilder` | parts, numeral, join | Tiles cation name, (numeral), anion root, -ide slide together into one name; numeral tile only for Fe and Cu. |
+| `stockDetective` | anion, total, metal, name | Works backward from a formula: the anion charge appears, the total needed, the metal charge, the Stock name. Used for CuO, Cu₂O, FeCl₂. |
+| `polyIons` | NH4, OH, NO3, CO3, SO4, PO4 | Six big 2D structural drawings (atoms as circles with symbols, bonds as sticks), one at a time, with the charge badge on the whole group and the name; a dashed outline shows "one unit". No 3D needed for the projector. |
+| `parenBus` | one, two, wrong | A squad (OH) in a rounded box; two squads become parentheses with a subscript outside, Ca(OH)₂; wrong draws CaOH₂ with a red strike and "1 O, 2 H". |
 
 ---
 
 ## 5. Lesson 4.1, Predicting bond type: 25 slides
 
-Period 1: slides 1 to 13. Period 2: slides 14 to 25.
-Slide line format: number, title, beats (×micro-steps), what each Next press shows, check item.
+Period 1: slides 1 to 13 (ionic, covalent, metallic). Period 2: slides 14 to 25 (predicting, arguing, checkpoint, exit ticket).
+Format: number, title, template, frames in order (one press each), check.
 
-1. **Cover.** Title, existing Na/Cl/salt illustration, R800 how-to strip. No steps.
-2. **Hook: Tug of war** (new sim `tugOfWar`). Beats: Teams | Even match ×2 | Mismatch ×2 | Blowout ×3 | So what.
-   Teams: two teams of stick figures hold a rope; the knot is a glowing pair of dots. "Who wins the rope?"
-   Even match: same strength → knot stays in the middle (label: "shared equally").
-   Mismatch: right team stronger → knot slides toward them, both still hold ("shared, but unequally").
-   Blowout: right team far stronger → rope yanked all the way over; the rope fades; the teams now carry + and − signs and slide together ("the pull between + and − is the bond").
-   So what: "Atoms do this with electrons. Pulling strength = electronegativity (Lesson 3.3)." Three labels appear under the three outcomes: nonpolar covalent, polar covalent, ionic. Metallic is not on this slide (slide 11 gets its own hook).
-3. **Driving question.** Beats: Observe | Ask | Write (timer 60 s). Observe card is one line each for sodium, chlorine, salt (video cue in notes). The question in 48 px. Sentence starter.
-4. **Predict now.** Beats: Q1 | Q2 | Q3 | Confidence. Same three questions as today (salt particles, HCl pair, copper wire). Hands up per option.
-5. **Targets and words.** Beats: Targets | Words. Five "I can" lines in kid wording. Word strip: ionic bond (enlace iónico), covalent bond (enlace covalente), metallic bond (enlace metálico), electronegativity (electronegatividad), partial charge (carga parcial), crystal lattice (red cristalina), molecule (molécula), electron sea (mar de electrones). Each term gets a 60 px icon that returns later on the summary slide.
-6. **Three kinds at one scale.** Beats: Sodium | Chlorine | Salt | Bond ×2. Existing to-scale SVG, one panel per press, then the definition "a chemical bond is a strong attraction between + and −". Check `u41-s1` (what is a chemical bond): question, then answer.
-7. **Forming ions.** Beats: Two atoms | Transfer ×2 | Ions | Your turn ×2. `ionTransfer` tour: stage 0 → 1 (electron moves) → 2 (charges and sizes) with the energy readout called out in the cue ("the transfer alone costs energy"). Check `u41-s2` (Mg loses two electrons → Mg²⁺).
-8. **The crystal.** Beats: Attract | Crystal ×3 | Key idea | Your turn ×2. Tour: stage 3 → stage 4 → spread out → pick center (six neighbors highlighted) → pick corner (fewer only because the drawing stops). Key idea card: "the bond is the attraction; NaCl is a ratio, not a molecule". Check `u41-s3` (six chloride ions).
-9. **Covalent bonds.** Beats: Even teams | Share ×3 | Molecule. Small `tugOfWar` replay of the even match (one press), then `molView` tour: H₂ textbook drawing (the shared pair) → H₂ ball-and-stick → Cl₂ textbook (eight around each Cl) → Cl₂ space-filling with spin. One card: "covalent bond = a shared pair; a group of atoms joined this way = a molecule." History reduced to one line in notes.
-10. **Polar and nonpolar.** Beats: Equal | Unequal ×3 | δ marks | Your turn ×2. `bondExplorer` tour: H–H → C–H → H–Cl → H–O → H–F, cue before each: "predict: which atom pulls harder?" Card with δ+/δ− rule. Check `u41-s4` (O–H: hydrogen is δ+).
-11. **Metallic bonds.** Beats: Beach ball | Electron sea ×4 | Other metals ×2 | Limits | Your turn ×2. Hook: `crowdBall` mini-animation (a crowd passing beach balls that belong to everyone). `metalSea` tour: Cations → Electrons → Moving → Current, then Mg, then Al (more balls per person). Limits card: "real electrons are waves, real metal is 3D". Check `u41-s5` (why copper conducts).
-12. **One picture for three bonds** (period 1 summary, the memory anchor). Beats: Pictures | Who | What holds | Rule. A three-column diagram built in SVG: ionic (+ − grid), covalent (two atoms with a shared dot pair), metallic (+ cores in a tinted sea), each with its slide-5 icon. Rows appear per press: particles, what holds them, one example. Last press: the one-sentence rule "metal + nonmetal → ionic; nonmetal + nonmetal → covalent; metal alone → metallic".
-13. **Backpack sort** (retrieval). Beats: Items | Sort ×6. Six icons: salt packet, water bottle, phone charger cable (copper), soda can (aluminum), pencil graphite, the O₂ you breathe. Students call the bond type; each press flips one item to its answer with a four-word reason ("metal + nonmetal: ionic"). Timer 2 min optional on the Items beat.
-14. **Warm-up: three quick questions** (period 2 start). Beats: Q1 ×2 | Q2 ×2 | Q3 ×2. "What particles are in solid salt?", "Which atom in HCl is δ−?", "What moves in a copper wire?" Question, then answer.
-15. **The electronegativity difference.** Beats: Continuum | Guide ×3 | Example ×4. Existing continuum SVG made animated: the bar draws first, then the 0.4 and 1.8 marks, then the ten example bonds drop onto it one group per press. Worked NaCl: look up → subtract → place → check (the step cards). Cue: "always larger minus smaller".
-16. **Evidence from the table.** Beats: Map ×2 | Rule | Near the line ×2 | Disagree | Your turn ×4. New `ptMap` SVG: periodic table outline, metals tint from the left, nonmetals from the right, staircase. Rule card (three lines from slide 12). `bondExplorer` tour: H–F (1.78, molecular, boils at 20 °C) then Mg–Cl (1.85, melts at 714 °C): "near 1.8 the number alone is weak evidence". Disagree: Fe–Cl (1.33) still named ionic, names follow composition. Checks `u41-s6` (CaO) and `u41-s7` (FeCl₃).
-17. **Bonding argument: I do, we do.** Beats: Parts | KF ×4 | HCl ×4. Four-part table (claim, evidence, reasoning, strength). KF filled one part per press. HCl: students supply each part before the press (difference 0.96, both nonmetals, strong because far from both lines). Check `u41-s8` folded in as the last press of the HCl column (which evidence best supports the KF claim).
-18. **You do: three bonds.** Beats: Predict (timer 3 min) | Answers ×3. LiF, N–H, C–S cards; answer table reveals one row per press.
-19. **Checkpoint routine.** Beats: Routine | Self-check. Unchanged.
-20. **Question 1** (4.1.1, transfer is not the bond). Think 30 s | Talk 60 s | Write | Self-check | Compare. Unchanged content.
-21. **Question 2** (4.1.2, Cl₂ vs HCl). Unchanged.
-22. **Question 3** (4.1.3, copper wire). Unchanged.
-23. **Check your predictions.** Beats: Salt | Shared pair | Copper | Reflect. Hands-up wording.
-24. **Exit ticket: CER.** Beats: Claim | Evidence | Reasoning | Self-check | Sample. Sample shown by step.
-25. **Rate your learning.** Review buttons jump to slides 6–8, 9–10, 11, 12–16, 17–18.
+1. **Cover.** Title, driving question in one line, R800 button strip (Next, Back, Blank = zoom, Start = full screen).
+2. **Hook: Tug of war.** Hook. `tugOfWar` teams → "Who wins the rope?" (students predict) → even → uneven → blowout → labels. Last line: "Atoms do this with electrons. Pulling strength = electronegativity (Lesson 3.3)."
+3. **Sodium, chlorine, salt.** Concept. Three icons appear (soft metal cut with a knife, yellow-green gas, white crystals that melt at 801 °C) → driving question at 56 px → 60 s timer with the sentence starter "I think sodium and chlorine bond differently from two chlorine atoms because…". Notes: video of sodium in chlorine, never performed.
+4. **Predict now.** Routine. Three questions, hands up per option: solid salt is made of (ions / NaCl molecules / atoms); in HCl the shared pair is (closer to Cl / closer to H / in the middle); a copper wire is held together by (cations in an electron sea / shared pairs / + and − copper ions). Answers return on slide 23.
+5. **Targets and words.** Summary. Five "I can" lines in kid wording → word strip with icon, Spanish, meaning: ionic bond (enlace iónico), covalent bond (enlace covalente), metallic bond (enlace metálico), electronegativity (electronegatividad), partial charge (carga parcial), crystal (cristal), molecule (molécula). Color legend.
+6. **Forming ions.** Concept. `ionHop` atoms → "Which atom lets go?" → hop → ions (counts, sizes) → rule card "metal loses, nonmetal gains; the hop alone costs energy" → check: "Magnesium loses two electrons. Which ion forms?" (Mg²⁻ / Mg⁺ / Mg²⁺) → answer with reason.
+7. **The crystal.** Concept. `ionHop` attract → grow → center ion with six neighbors → rule card "the bond is the attraction between + and −; NaCl is a ratio, not a molecule" → check: "How many Cl⁻ touch each Na⁺ inside the crystal?" (1 / 6 / 8) → answer.
+8. **Covalent bonds.** Concept. `tugOfWar` even (one press, recap) → `sharedPair` H2 → Cl2 ("each Cl now has eight around it") → rule card "a shared pair is a covalent bond; a group of atoms joined this way is a molecule" → check: "Cl₂: how many electrons does each Cl count around itself?" (7 / 8 / 14) → answer.
+9. **Polar and nonpolar.** Concept. `sharedPair` H2 → HCl (predict first: "which pulls harder?") → HO → HF → rule card "unequal sharing: δ− on the stronger puller, δ+ on the other; a partial charge is smaller than an ion's charge" → check: "O–H: O is 3.44, H is 2.20. Which atom is δ+?" (H / O / neither) → answer.
+10. **Metallic bonds.** Concept. `electronSea` crowd ("balls belong to everyone") → cores → sea → drift ("why a wire carries current") → Mg → Al → rule card "cations in a sea of electrons; the model draws dots, real electrons are waves" → check: "Why can a copper wire carry a current?" (electrons move / copper ions move / atoms share pairs) → answer.
+11. **One picture for three bonds.** Summary. Three columns build: ionic (+ − grid), covalent (two atoms, a dot pair), metallic (+ cores in a sea); rows appear: who (ions / atoms / cations + electrons), what holds (attraction + − / shared pair / cations + sea), one example (NaCl / Cl₂ / Cu) → the rule in one line: "metal + nonmetal → ionic; nonmetal + nonmetal → covalent; metal alone → metallic".
+12. **Backpack sort.** Your turn. Six icons: salt packet, water bottle, charger cable (copper), soda can (aluminum), pencil graphite, the O₂ you breathe → students call the bond → each press flips one item to its type with a four-word reason.
+13. **Period 1 exit.** Routine. One sentence in notebooks with frame: "The three bonds differ in what holds the particles: …" 2 min timer. (Period 1 ends here.)
+14. **Warm-up.** Your turn. Three questions, answer each on the next press: what particles are in solid salt; which atom in HCl is δ−; what moves in a copper wire.
+15. **The electronegativity difference.** Concept. `enMeter` bar → lines 0.4 and 1.8 ("a guide, not a wall") → place Cl–Cl 0.00 → place H–Cl 0.96 → place Na–Cl 2.23 → rule card "larger minus smaller; below 0.4 nonpolar, 0.4 to 1.8 polar, above 1.8 ionic" → check: "Ca 1.00 and O 3.44. What does the guide predict?" (nonpolar / polar / ionic) → answer 2.44, ionic.
+16. **Evidence from the table.** Concept. `ptMap` outline → metals → nonmetals → pair(Na, Cl) → pair(H, Cl) → pair(Cu, Cu) → rule card (the three lines from slide 11) → check: "Which pair forms a covalent bond?" (K and Br / N and O / Mg and O) → answer.
+17. **Near the line.** Example. `enMeter` place H–F 1.78 ("molecules, boils at 20 °C") → place Mg–Cl 1.85 ("ionic solid, melts at 714 °C") → "0.07 apart, very different substances: near 1.8 the number alone is weak evidence" → place Fe–Cl 1.33 → "still named as an ionic compound: names follow metal + nonmetal (Lesson 4.2)" → check: "MgCl₂ has a difference of 1.85. How strong is that number alone as evidence that it is ionic?" (strong / weak / against) → answer.
+18. **Bonding argument: I do, we do.** Example. Four-part table claim, evidence, reasoning, strength → `cerBuilder` KF, one part per press → `cerBuilder` HCl, students supply each part before the press (0.96, both nonmetals, strong because far from both lines) → check: "Which evidence best supports 'KF is ionic'?" (K is a metal and F a nonmetal, difference 3.16 / KF is white / F is a gas) → answer.
+19. **You do: three bonds.** Your turn. LiF, N–H in ammonia, C–S in carbon disulfide with values → 3 min timer ("predict each; write a full argument for one") → answers one row per press (3.00 ionic strong; 0.84 polar, N δ−; 0.03 nonpolar).
+20. **Checkpoint routine.** Routine. Think 30 s, talk 60 s, write 2 min, self-check, compare.
+21. **Checkpoint 1** (4.1.1). "A student says the ionic bond in NaCl is the electron that moves from Na to Cl. What is wrong? What holds solid salt together?" Frames: think (timer) → talk (timer) → write (frames + word bank) → success criteria → sample answer.
+22. **Checkpoint 2** (4.1.2). "Cl₂ and HCl each have one shared pair. Why is one nonpolar and the other polar? Which atom in HCl is δ−?"
+23. **Checkpoint 3** (4.1.3). "Use the electron-sea model to explain why a copper wire carries a current, and name one thing the model leaves out."
+24. **Predictions and exit ticket.** Routine. The three slide-4 answers with "hands up if you predicted this" → CER exit ticket on the driving question: claim frame → evidence frame → reasoning frame → self-check criteria → sample answer.
+25. **Rate your learning.** Routine. Five targets with fingers 1 to 3; the review line names the slide to revisit (6–7, 8–9, 10, 15–17, 18–19).
 
-Alignment after the rebuild: 4.1.1 → 6 to 8; 4.1.2 → 9 to 10; 4.1.3 → 11; 4.1.4 → 12, 13, 15, 16; 4.1.5 → 17, 18, 24. Checks: s1 slide 6, s2 slide 7, s3 slide 8, s4 slide 10, s5 slide 11, s6 and s7 slide 16, s8 slide 17.
+Blueprint alignment after the build: 4.1.1 → 6–7; 4.1.2 → 8–9; 4.1.3 → 10; 4.1.4 → 11, 15–17; 4.1.5 → 18–19, 24. Slide checks: 8 (slides 6, 7, 8, 9, 10, 15, 16, 18).
 
 ---
 
 ## 6. Lesson 4.2, Ionic compounds: formulas and names: 26 slides
 
-Period 1: slides 1 to 13. Period 2: slides 14 to 26.
+Period 1: slides 1 to 13 (ion charges, formulas, names, Stock). Period 2: slides 14 to 26 (polyatomic ions, translating, checkpoint, exit ticket).
 
-1. **Cover.** Existing copper oxides illustration, R800 strip.
-2. **Hook: Read the label** (new `labelRead` SVG scene). Beats: Labels ×3 | Code. Three products from a store shelf: toothpaste (sodium fluoride), antacid (calcium carbonate), lawn fertilizer (ammonium sulfate). Each press zooms one label and reads the chemical name aloud. Last press: "Chemical names are a code. By the end of this lesson you can read all three and write their formulas." (The three come back on slide 18 as practice.)
-3. **Driving question: two copper oxides.** Beats: Powders | Ask | Write (timer 60 s). Red powder in boat paint, black powder in pottery glaze; both only copper and oxygen. Question in 48 px.
-4. **Predict now.** MgO formula, the III in iron(III), Ca(OH)₂. Hands up.
-5. **Targets and words.** Terms with Spanish: cation (catión), anion (anión), charge (carga), formula (fórmula), subscript (subíndice), polyatomic ion (ion poliatómico), Roman numeral (número romano), parentheses (paréntesis). Color legend: cation red, anion blue.
-6. **Charges from the group.** Beats: Lose ×3 | Gain ×3 | Your turn ×2. New `ionTable` SVG (existing table redrawn as a stepped reveal): group 1 lights red with 1+, group 2 with 2+, group 13 (Al) with 3+; then group 17 blue 1−, 16 2−, 15 3−, with the -ide names appearing. Check `u42-s1` (Mg²⁺) plus two oral calls (K? S?).
-7. **The four to memorize.** Beats: Two ions ×2 | One ion | Memory. Fe²⁺/Fe³⁺ and Cu⁺/Cu²⁺ ("a version number, not a count"), Ag⁺ and Zn²⁺. Real life: rust and hematite hold Fe³⁺. Memory card: the four symbols with charges, large.
-8. **Balancing the charges.** Beats: Fit ×1 | Calcium chloride ×4 | Aluminum oxide ×3 | Your turn ×2. LEGO framing: "every + stud needs a − socket" (the tiles already draw studs and sockets). `ionTiles` tour: Ca/Cl Ions → Balance → Formula → Name; then Al/O Ions → Balance → Formula. Check `u42-s2` (Na₂O).
-9. **Writing the formula.** Beats: Rules ×3 | Lowest ratio ×2 | Try two ×2. Order, subscripts, no 1. Lowest ratio: `ionTiles` Mg/O shows Mg₂O₂ tiles collapsing to one pair → MgO (new `reduce` state in the sim, or an SVG animation). Try two: K₂S and Ca₃N₂ revealed.
-10. **The crisscross shortcut.** Beats: Cross ×2 | Reduce | Check ×2. New `crisscross` SVG animation: the charge numbers slide diagonally into the subscript positions for Al³⁺/O²⁻, then for Mg²⁺/O²⁻ with the reduce step. Check `u42-s3` (CaO, not Ca₂O₂).
-11. **Naming binary compounds.** Beats: Two parts ×3 | -ide table | Your turn ×3. New `nameBuilder` DOM widget: cation name tile + anion root tile + "-ide" tile snap together (potassium + sulf + ide). Anion table (seven rows, 36 px). Check `u42-s4` (CaBr₂) plus two oral calls (MgO, Na₂S).
-12. **The Stock system.** Beats: Version number | Iron ×3 | No numeral ×2 | Detective ×4 | Your turn ×2. `ionTiles` tour: iron(II) chloride → iron(III) chloride (same anion, different numeral and formula) → silver chloride → zinc oxide (no numeral). Detective: CuO: anion 2− → copper 2+ → copper(II) oxide; Cu₂O: two coppers share 2+ → copper(I) oxide. This answers the driving question. Check `u42-s5` (FeCl₂).
-13. **Formula in 3 steps, name in 2 parts** (period 1 summary). Beats: Formula ×3 | Name ×2 | Retrieval ×4. Diagram: Ions → Balance → Write; Cation (+ numeral if Fe or Cu) → Anion -ide. Retrieval: four fast items revealed one by one (AlCl₃, name of K₂O, formula of calcium sulfide, name of FeO).
-14. **Warm-up: three quick questions.** Charge of a group 16 ion; formula of magnesium chloride; what the (III) means.
-15. **Polyatomic ions.** Beats: A squad | Six ions ×6 | Pattern ×2 | Your turn ×2. "A squad: atoms that travel together with one charge." `molView` tour through NH₄⁺, OH⁻, NO₃⁻, CO₃²⁻, SO₄²⁻, PO₄³⁻ with slow spin; table row appears with each. Pattern: "-ate has oxygen; nitrate is not nitride, sulfate is not sulfide" and the mnemonic "Nick the Camel ate Supper in Phoenix" (consonants = oxygens, vowels = charge: NO₃⁻, CO₃²⁻, SO₄²⁻, PO₄³⁻). Check `u42-s6` (sulfate).
-16. **Parentheses.** Beats: The squad bus ×2 | Build ×3 | Your turn ×2. New `parenBus` SVG: one OH⁻ squad, then two squads each boxed → Ca(OH)₂; the wrong CaOH₂ crossed out with "one O, two H". `ionTiles` tour: Ca/OH → NH₄/SO₄ → Na/NO₃ (no parentheses). Check `u42-s7` (Mg(NO₃)₂).
-17. **The two-way road.** Beats: Name → formula ×3 | Formula → name ×3 | Check both ways | Your turn ×2. Al₂(SO₄)₃ built step by step; Cu₂S named step by step; "name it again, write it again". Check `u42-s8` (Fe₂(SO₄)₃).
-18. **You do: six compounds.** Beats: Work (timer 3 min) | Answers ×6. Three names to formulas including the three label compounds from slide 2 (sodium fluoride, calcium carbonate, ammonium sulfate), three formulas to names (MgBr₂, FeO, Zn(OH)₂). One row per press.
-19. **Spot the error.** Beats: Errors ×6. The reading's six mistakes (NaSO₄, Mg₂O₂, CaOH₂, Cu₂O as copper(II) oxide, FeCl₃ as iron chloride, NaNO₃ as sodium nitride). Students name the fix; each press shows it.
+1. **Cover.** Title, driving question, R800 strip.
+2. **Hook: Read the label.** Hook. `labelRead` shelf → focus toothpaste "sodium fluoride" → antacid "calcium carbonate" → fertilizer "ammonium sulfate" → code. The three return on slide 18.
+3. **Two copper oxides.** Concept. Red powder (boat paint) and black powder (pottery glaze) icons → "both are only copper and oxygen" → driving question at 56 px → 60 s timer, starter "I think the two powders have different formulas because…".
+4. **Predict now.** Routine. Mg²⁺ with O²⁻ gives (MgO / Mg₂O₂ / MgO₂); the III in iron(III) chloride means (charge 3+ / three iron atoms / three electrons gained); calcium hydroxide is (Ca(OH)₂ / CaOH₂ / CaO₂H₂).
+5. **Targets and words.** Summary. Five "I can" lines → words with icon, Spanish, meaning: cation (catión), anion (anión), charge (carga), formula (fórmula), subscript (subíndice), polyatomic ion (ion poliatómico), Roman numeral (número romano), parentheses (paréntesis). Color legend.
+6. **Charges from the group.** Concept. `ionTable` g1 → g2 → g13 → g17 → g16 → g15 (-ide names appear) → rule card "metals lose 1, 2, 3; nonmetals gain to reach 8; anion name ends in -ide" → check: "Which ion does magnesium form?" (Mg⁺ / Mg²⁺ / Mg²⁻) → answer; two oral calls in the cue: K? S?
+7. **The four to memorize.** Concept. `ionTable` tm → Fe²⁺/Fe³⁺ and Cu⁺/Cu²⁺ cards ("a version number, not a count") → Ag⁺ and Zn²⁺ ("one ion, no numeral") → real life: rust and hematite hold Fe³⁺ → memory card with the four, large → check: "Which metal needs a Roman numeral in its compound's name?" (zinc / silver / copper) → answer.
+8. **Balancing the charges.** Concept. "Every + stud needs a − socket" → `chargeBlocks` ions(Ca, Cl) → add → balance (2+ and 2−) → formula CaCl₂ → name calcium chloride → rule card "total charge zero; the formula is the smallest set that balances" → check: "Na⁺ with O²⁻ balances as" (NaO / NaO₂ / Na₂O) → answer.
+9. **Writing the formula.** Example. Rules appear: cation first, subscripts count ions, no 1 written → `chargeBlocks` ions(Al, O) → balance 6+ 6− → formula Al₂O₃ → `chargeBlocks` Mg/O reduce (Mg₂O₂ → MgO, "lowest ratio") → your turn: potassium sulfide → K₂S; calcium nitride → Ca₃N₂.
+10. **The crisscross shortcut.** Example. `crisscross` Al/O ions → cross → check → Mg/O cross → reduce → rule card "cross, reduce, check: it is a shortcut, not the final answer" → check: "Crisscross gives Ca₂O₂. The formula is" (Ca₂O₂ / CaO / CaO₂) → answer.
+11. **Naming binary compounds.** Concept. `nameBuilder` parts (potassium, sulf, -ide) → join "potassium sulfide" → anion table (fluoride, chloride, bromide, iodide, oxide, sulfide, nitride) → rule card "cation name, then anion root + -ide; no prefixes, the charges fix the ratio" → check: "Name CaBr₂" (calcium bromine / calcium bromide / calcium dibromide) → answer (note: dibromide accepted by IUPAC, not the common name); oral: MgO? Na₂S?
+12. **The Stock system.** Concept. "iron(II) and iron(III) are two different ions, like version numbers" → `nameBuilder` numeral: iron(III) chloride FeCl₃ → iron(II) chloride FeCl₂ (same anion, different numeral and formula) → silver chloride, zinc oxide (no numeral) → `stockDetective` CuO → copper(II) oxide → `stockDetective` Cu₂O → copper(I) oxide ("two coppers share 2+, so each is 1+") → "this is the driving question answered" → check: "Name FeCl₂" (iron(I) chloride / iron(II) chloride / iron chloride) → answer.
+13. **Formula in 3 steps, name in 2 parts.** Summary. Diagram builds: Ions → Balance → Write; Cation (+ numeral for Fe, Cu) → Anion -ide → retrieval, four items one per press: AlCl₃ name; K₂O name; calcium sulfide formula; FeO name. (Period 1 ends here.)
+14. **Warm-up.** Your turn. Charge of a group 16 ion; formula of magnesium chloride; what the (III) means. Answer on each next press.
+15. **Polyatomic ions.** Concept. "A squad: atoms that travel together and share one charge" → `polyIons` NH4 → OH → NO3 → CO3 → SO4 → PO4 (table row appears with each) → pattern card: "-ate means it has oxygen; nitrate is not nitride, sulfate is not sulfide" → memory card: "Nick the Camel ate Supper in Phoenix" (consonants = oxygens, vowels = charge) → check: "Sulfate, SO₄²⁻: which statement is right?" (each O is an oxide ion / it is the same as sulfide / the whole group carries 2−) → answer.
+16. **Parentheses.** Concept. `parenBus` one (NaOH, no parentheses) → two → Ca(OH)₂ → wrong CaOH₂ → `chargeBlocks` NH4/SO4 → (NH₄)₂SO₄ → `chargeBlocks` Na/NO3 → NaNO₃ ("one squad, no parentheses") → rule card "never change the numbers inside a squad" → check: "Formula of magnesium nitrate" (MgNO₃ / Mg(NO₃)₂ / MgN₂O₆) → answer.
+17. **The two-way road.** Example. Name → formula: aluminum sulfate: ions Al³⁺, SO₄²⁻ → balance 6 → Al₂(SO₄)₃ → formula → name: Cu₂S: anion 2− → each Cu 1+ → copper(I) sulfide → "check both ways: name it again, write it again" → check: "Name Fe₂(SO₄)₃" (iron(II) sulfate / iron(III) sulfate / iron sulfide) → answer.
+18. **You do: six compounds.** Your turn. Sodium fluoride, calcium carbonate, ammonium sulfate (the shelf labels), MgBr₂, FeO, Zn(OH)₂ → 3 min timer → answers one row per press.
+19. **Spot the error.** Your turn. Six wrong items, students call the fix, one press each: NaSO₄ → Na₂SO₄; Mg₂O₂ → MgO; CaOH₂ → Ca(OH)₂; Cu₂O "copper(II) oxide" → copper(I) oxide; FeCl₃ "iron chloride" → iron(III) chloride; NaNO₃ "sodium nitride" → sodium nitrate.
 20. **Checkpoint routine.**
-21. **Question 1** (4.2.2, Al₂O₃). 22. **Question 2** (4.2.3, FeCl₂ and FeCl₃). 23. **Question 3** (4.2.4, Al(OH)₃). Unchanged content.
-24. **Check your predictions.** 25. **Exit ticket: CER.** 26. **Rate your learning** (review 6–7, 8–10, 11–12, 15–16, 17–19).
+21. **Checkpoint 1** (4.2.2). "Al³⁺ and O²⁻: write the formula of aluminum oxide and explain how you know the ratio is right."
+22. **Checkpoint 2** (4.2.3). "Iron forms FeCl₂ and FeCl₃. Name both and explain how you found each numeral."
+23. **Checkpoint 3** (4.2.4). "Aluminum hydroxide is in some antacids. Write its formula and explain why it needs parentheses but NaOH does not."
+24. **Predictions and exit ticket.** Routine. Slide-4 answers with hands up → CER exit ticket on the driving question, evidence from the two copper oxides.
+25. **Rate your learning.** Review lines: 6–7, 8–10, 11–12, 15–16, 17–19.
+26. **Next.** One line: missions for 4.2 (Name the compound, Build the formula, Find the error) and what Lesson 4.3 adds (prefix names for two nonmetals).
 
-Alignment after the rebuild: 4.2.1 → 6 to 7; 4.2.2 → 8 to 10; 4.2.3 → 11 to 12; 4.2.4 → 15 to 16; 4.2.5 → 17 to 19. Checks: s1 slide 6, s2 slide 8, s3 slide 10, s4 slide 11, s5 slide 12, s6 slide 15, s7 slide 16, s8 slide 17.
-
----
-
-## 7. New animations and simulations (specs)
-
-All canvas 2D or inline SVG in the existing kit style (`shell`, `loop`, `fit`, theme tokens, `REDUCED`). Each exposes `root.api.set(state)`. Text inside them at least 30 px on the canvas (use `F()` with `U2FONTK`).
-
-| Name | Type | States | Notes |
-|---|---|---|---|
-| `tugOfWar` | canvas | `{mode: 'teams'|'even'|'uneven'|'blowout'|'labels', strength: [a,b]}` | Stick-figure teams (4 each), rope, knot = two violet dots. `uneven` eases the knot toward the stronger side in proportion to the difference; `blowout` pulls it fully, fades the rope, paints + and − on the teams and slides them together. `labels` prints the three bond names under three mini-frames. Honest caption: "a model: the knot is the shared pair; in the blowout the rope is gone and the pull between + and − is the bond". |
-| `crowdBall` | canvas | `{mode: 'crowd'|'balls'|'pass'}` | 6 x 4 grid of heads (+ cores) and 6 beach balls drifting between them. Two presses, then the slide switches to `metalSea`. |
-| `continuum` | SVG + JS | `{marks: bool, group: 0..3}` | The existing continuum drawing with staged reveal: bar, 0.4/1.8 lines, then bond markers in four groups. Marker drop animation 300 ms. |
-| `ptMap` | SVG + JS | `{metals: bool, nonmetals: bool, pair: ['Na','Cl']}` | Periodic table outline, tints, staircase; `pair` lights two cells and draws a line between them. |
-| `ionTable` | SVG + JS | `{groups: ['1','2','13','17','16','15'] prefix, tm: bool}` | Existing ions table redrawn so each group lights in order with its charge and -ide name. `tm` shows Fe/Cu/Ag/Zn. |
-| `crisscross` | SVG + JS | `{pair: 'AlO'|'MgO', phase: 'ions'|'cross'|'reduce'|'check'}` | Charge digits travel diagonally (600 ms) to subscript positions; reduce shows ₂₂ → nothing; check shows 2×3+ = 6+, 3×2− = 6−. |
-| `nameBuilder` | DOM | `{cation, anion, numeral, phase: 'parts'|'join'}` | Three tiles slide together into one name; numeral tile only for Fe/Cu. Reverse mode for the detective on slide 12. |
-| `parenBus` | SVG + JS | `{ion: 'OH', n: 1|2, wrong: bool}` | A squad in a rounded box; with n = 2 two boxes become parentheses with a subscript outside; `wrong` draws CaOH₂ with a red strike and "1 O, 2 H". |
-| `labelRead` | SVG + JS | `{focus: 0|1|2|null}` | Three product drawings; `focus` scales one label to full width with the name in 48 px. |
-| `backpackSort` | DOM + SVG icons | `{revealed: n}` | Six item cards; each reveal flips to bond type and reason. |
-
-`ionTiles` additions: a `reduce` state for slide 9 (two Mg²⁺ and two O²⁻ tiles collapse to one pair with the caption "2 : 2 → 1 : 1"), and `set()`.
+Blueprint alignment: 4.2.1 → 6–7; 4.2.2 → 8–10; 4.2.3 → 11–12; 4.2.4 → 15–16; 4.2.5 → 17–19. Slide checks: 8 (slides 6, 7, 8, 10, 11, 12, 15, 16, 17 hold nine; the blueprint line becomes "Slide checks: 9").
 
 ---
 
-## 8. Illustrations
+## 7. Teacher notes (per frame, in the notes panel and the print run-sheet)
 
-- Inline SVG only, flat icon style: two fills plus one accent, 3 px strokes at canvas scale, fills from theme tokens so dark mode works, every label at least 28 px, `role="img"` with `aria-label`.
-- Needed sets: tug-of-war figures, crowd and beach balls, backpack items (salt packet, water bottle, charger cable, soda can, pencil, air), store labels (toothpaste tube, antacid bottle, fertilizer bag), red and black powders (exist), squad and bus, periodic-table outline (exists in the kit data).
-- Raster "generated images" are not possible for the implementer. `unit4/index.html` already embeds photos as base64 WebP, so if the user supplies photos (a real toothpaste label, rust, copper wire), they go in the same way; otherwise the SVG set stands.
+Each frame's note has: time in minutes, what to say or ask in one or two lines, the prediction to collect before the press, the misconception to listen for, and the feedback for each wrong option of a check. Safety and sources go in the cover notes only (sodium in chlorine by video; Pauling values as in Lesson 3.3; NIST energies; OpenStax guide; Shannon ion sizes; IUPAC Red Book 2005 for names).
 
 ---
 
-## 9. ELL and scaffolding rules the implementer follows on every slide
+## 8. Files
 
-- Term introduced = term shown with its icon, Spanish cognate in parentheses once, and a one-line meaning. Same icon on the summary slide.
-- Sentence frames on every writing step (exist). Word bank chips at 34 px.
-- Predict before reveal: every sim stage with a visible outcome gets a cue that asks for a prediction ("Which atom pulls harder?").
-- I do, we do, you do order on slides 17/18 (4.1) and 12/17/18 (4.2).
-- Retrieval: a "Your turn" on every concept slide, a summary diagram at the end of period 1, a warm-up at the start of period 2, a sort or spot-the-error game before the checkpoint.
-- Teacher notes keep the timing per beat, the misconception to listen for, and the feedback for each wrong option of the check.
+- `unit4/slides-4-1.html`, `unit4/slides-4-2.html`: new standalone pages. Head block (title, description, icons, Open Graph) in the same form as the other unit pages so the site stays consistent; fonts from Google Fonts as the rest of the site; everything else inline.
+- `unit4/blueprint.html`: deck sizes (25, 26), period splits (1–13 / 14–25 and 1–13 / 14–26), slide-check counts, slide numbers in the 4.1 and 4.2 sections and in the matrix rows 4.1.1 to 4.2.5.
+- `plans/verify/`: screenshots and audit output from section 9.
+- No change to readings, missions, index, case file or other decks.
 
 ---
 
-## 10. Verification (scripts in the scratchpad, results archived under `plans/verify/`)
+## 9. Verification (Playwright scripts kept in the scratchpad, results in `plans/verify/`)
 
-1. **Walk script** (Playwright, 1920 x 1080, light and dark): open the deck, press `F5` (expect no reload, full screen attempt), then press `PageDown` until the last slide, screenshot after every press. Assert per step: no console error; `#cue` non-empty; no descendant of the visible slide extends past the slide box by more than 1 px (compute from bounding rects, skip `aside`); step counter advanced or slide changed.
-2. **Back script**: from the last slide press `PageUp` to the start; at each landing compare the sim's `api.get()` with the state recorded on the forward pass.
-3. **Font floor audit**: for each slide at its last step, list visible text nodes whose computed font size divided by the deck scale is below 30 px (allow `.eyebrow`, `.label`, `#cue` at 24 px). Expect an empty list.
-4. **Clicker keys**: `.` zooms the current focus and `.` again within 400 ms blanks; `Escape` unwinds; `PageDown` with `repeat` flag is ignored; a focused `<select>` does not swallow `PageDown`.
-5. **Blueprint cross-check**: a grep that every slide number named in `blueprint.html` sections 4.1 and 4.2 and in the matrix rows 4.1.x and 4.2.x matches the new numbering; every in-deck note that says "slide N" is updated (`grep -n "slide [0-9]"`).
-6. Contact sheet of all screenshots viewed by the implementer before each gate.
-
----
-
-## 11. Ordered implementation steps (each ends with a confirmation gate)
-
-Step 0. Setup. Read this plan, the two decks' engine (lines ~2990 to end of `slides-4-1.html`) and the five sims. Run the baseline screenshot script. Create `plans/verify/`. Gate: report what was read and any contradiction found.
-
-Step 1. Engine in `slides-4-1.html`: clicker map (4.1), step actions and `TOUR` (4.2), rail beats with `×n`, footer cue (4.5), blank overlay, zoom focus per step, print run-sheet, type scale (4.6), reveal-mode checks (4.4). No slide content changes yet. Run the walk script on the existing 22 slides. Gate: screenshots plus the audit lists.
-
-Step 2. Sim APIs in `slides-4-1.html`: `ionTransfer`, `molView`, `bondExplorer`, `metalSea` get `root.api` (4.3) and blur-on-click. Wire a temporary tour on slide 6 to prove it. Gate.
-
-Step 3. New sims for 4.1: `tugOfWar`, `crowdBall`, `continuum`, `ptMap`, `backpackSort` (section 7), with reduced-motion fallbacks and dark theme. Each tested on a scratch slide. Gate: screenshots of every state.
-
-Step 4. Rebuild the 4.1 slide markup to section 5: 25 slides, beats, tours, cues, notes, Spanish terms, icons, summary diagram. Keep the item bank, glossary and kit untouched. Gate: full walk, back script, font audit, contact sheet.
-
-Step 5. References for 4.1: `blueprint.html` section 4.1 (deck size 25, period split 1–13 / 14–25, slide numbers in the text), matrix rows 4.1.1 to 4.1.5, in-deck "slide N" mentions, `rateTargets` review numbers. Commit "Rebuild 4.1 deck for clicker-driven, scaffolded teaching". Gate.
-
-Step 6. Port to `slides-4-2.html`: copy the engine block and the `molView` API from 4.1, add the `ionTiles` API with `reduce`. Walk the existing 23 slides. Gate.
-
-Step 7. New sims for 4.2: `labelRead`, `ionTable`, `crisscross`, `nameBuilder`, `parenBus`. Gate: screenshots of every state.
-
-Step 8. Rebuild the 4.2 slide markup to section 6: 26 slides. Gate: full walk, back script, font audit, contact sheet.
-
-Step 9. References for 4.2 in `blueprint.html` and in-deck; final run of all five verification scripts on both decks in both themes; commit "Rebuild 4.2 deck for clicker-driven, scaffolded teaching"; push to `claude/unit-4-chemistry-slides-j62190`. Gate: final report with the contact sheets.
-
-Sizing: steps 1, 4 and 8 are the large ones (engine ~250 lines; each deck's markup ~900 lines plus ~400 lines of tours and notes). Steps 3 and 7 are ~150 to 250 lines per sim.
+1. Walk: open the deck at 1920 x 1080, press `F5` (no reload), then `PageDown` until the end, screenshot each press. Assert per press: no console error, cue present, no block extends past the slide by more than 1 px, frame or slide advanced.
+2. Back: from the end press `PageUp` to the start; at each landing compare each animation's `get()` with the forward record.
+3. Font floor: per slide at its last frame, list visible text below 34 px on the canvas (allow cue and section label at 26 px). Expect an empty list.
+4. Clicker keys: `.` zooms, `.` `.` blanks, `Escape` unwinds, `PageDown` with `repeat` is ignored, a focused `<select>` does not swallow keys.
+5. Blueprint: every slide number in the 4.1 and 4.2 sections and matrix rows matches the new decks.
+6. Both themes for steps 1 and 3; contact sheets viewed before each gate.
 
 ---
 
-## 12. Decisions needed before step 1
+## 10. Ordered implementation steps (confirmation gate after each)
 
-1. **Built files versus kit.** The decks are built output and the kit is not in this repo. Hand edits here are lost if the decks are ever rebuilt from the kit. Options: accept hand-edited builds for 4.1 and 4.2 (assumed), or add the kit to the repo first.
-2. **Blank button meaning.** Single press = zoom, double press = blank screen (assumed). Alternative: single press = blank (PowerPoint habit), zoom moves to a tour step only.
-3. **Checks as reveals.** Mouse multiple choice becomes question-then-answer with hands-up (assumed). Alternative: keep mouse grading and add a reveal fallback.
-4. **Slide counts.** 4.1 grows from 22 to 25, 4.2 from 23 to 26; period 1 ends at slide 13 in both. Blueprint text changes accordingly.
-5. **Photos.** None available to the implementer; SVG illustrations throughout unless the user supplies WebP/JPEG files for the store labels and the hook slides.
-6. **Other decks.** 4.3 to 4.5 are untouched in this pass; the engine block can be ported to them later in one step each.
+Step 0. Setup. Read this plan, both readings and the blueprint sections for 4.1 and 4.2. Copy the head block pattern from `unit4/index.html`. Gate: list any content question.
+
+Step 1. Runtime and visual system (section 3) as a demo deck of six slides, one per template, with a stub animation, timers, zoom, blank, notes, print run-sheet, both themes. Run the walk, keys and font scripts. Gate: screenshots.
+
+Step 2. Animations for 4.1 (section 4.1), each shown on a scratch slide through all stages, both themes, reduced motion. Gate: one screenshot per stage.
+
+Step 3. Deck 4.1 (section 5): 25 slides, frames, cues, checks, notes, Spanish terms, icons. Gate: walk, back, font audit, contact sheet.
+
+Step 4. Blueprint references for 4.1; commit "New 4.1 deck: clicker-driven, scaffolded, projector-scale". Gate.
+
+Step 5. Animations for 4.2 (section 4.2). Gate.
+
+Step 6. Deck 4.2 (section 6): 26 slides. Gate: walk, back, font audit, contact sheet.
+
+Step 7. Blueprint references for 4.2; all scripts on both decks in both themes; commit "New 4.2 deck: clicker-driven, scaffolded, projector-scale"; push. Gate: final report with contact sheets.
+
+Sizing: runtime about 350 lines; each animation 120 to 250 lines; each deck about 900 lines of markup plus frames and notes.
+
+---
+
+## 11. Assumptions (say so if any is wrong)
+
+1. The new files replace the old ones at the same paths; the old decks are not kept.
+2. Blank button: one press zoom, two presses blank screen.
+3. Checks are hands-up reveals, not mouse multiple choice.
+4. Sans-serif type on the slides, serif stays in the readings.
+5. 2D drawings for molecules and polyatomic ions; no 3D on the projector.
+6. Illustrations are SVG; photos only if the user supplies files.
+7. Decks 4.3 to 4.5 are out of scope; the runtime is written so they can be rebuilt on it later.
