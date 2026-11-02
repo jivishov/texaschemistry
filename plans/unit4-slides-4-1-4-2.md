@@ -1,7 +1,7 @@
 # Plan: new slide decks for Unit 4 lessons 4.1 and 4.2
 
 Clean-slate build. The current `unit4/slides-4-1.html` and `unit4/slides-4-2.html` are ignored and replaced at the same paths (the unit index and the readings link to those names). Sources of content: `unit4/reading-4-1.html`, `unit4/reading-4-2.html`, `unit4/blueprint.html`. `unit4/blueprint.html` gets its slide references updated at the end.
-Branch: `claude/unit-4-chemistry-slides-j62190`. Implementer: Opus 5.5 in a new thread. Every step in section 10 ends with a confirmation gate.
+Branch: `claude/unit-4-chemistry-slides-j62190`. Implementer: Opus 5.5 in a new thread. Every step in section 11 ends with a confirmation gate.
 
 ---
 
@@ -12,6 +12,7 @@ A deck is done when:
 - A student in the back row reads everything: body text 44 px on the 1600 x 900 canvas (about 26 pt on a printed slide), nothing student-facing under 34 px, animations drawn with shapes at least 60 px.
 - Each lesson runs hook → concept in one picture → worked example → your turn → next concept, with a one-picture summary closing period 1 and a retrieval warm-up opening period 2. Two periods per lesson, as the blueprint says.
 - Every concept slide carries one animation or simulation, scripted to the presses.
+- Every student-facing line reads as simplified textbook language: short declarative sentences, the real chemistry terms, no thesis-style sentences (section 7). Readability audit passes.
 - English learners get a word with its icon, its Spanish cognate and a one-line meaning the first time it appears, sentence frames on every writing step, and a fixed color code.
 - A Playwright walk of every press of both decks shows no overflow, no console errors and a footer cue at every press. Blueprint slide numbers match.
 
@@ -168,22 +169,52 @@ Blueprint alignment: 4.2.1 → 6–7; 4.2.2 → 8–10; 4.2.3 → 11–12; 4.2.4
 
 ---
 
-## 7. Teacher notes (per frame, in the notes panel and the print run-sheet)
+## 7. Language and narrative (every student-facing line)
+
+Register: academic textbook language, simplified for 10th graders who are often English learners. The real terms stay (cation, anion, electronegativity, formula unit, polyatomic ion). Each term is introduced with a plain phrase once, then used in its academic form every time after. Teacher notes may use full academic register.
+
+Sentence rules:
+- One idea per sentence, 6 to 14 words, subject, verb, object, present tense, active voice.
+- No thesis-style sentences: no "This lesson explores…", "It is important to note that…", "In order to…", no sentence that chains three claims with "because… which… so that…".
+- No stacked nouns or passives ("the formation of ions is followed by the attraction of…"). Say what happens in order: "The atoms become ions. Then the ions attract."
+- Symbols get words the first time: δ− "a small negative charge", ΔEN "the difference, larger minus smaller", subscript "the small number".
+- Rule cards are complete sentences a student can copy into a notebook. Questions and cues are short imperatives: "Predict: which atom pulls harder?"
+- Plain word first, academic word after, once: "pull (attraction)", "lets go of an electron (loses an electron)", "group of atoms with one charge (polyatomic ion)".
+- Spanish cognates in parentheses once per term; never translate whole sentences.
+- Each rule card restates the reading's Key idea in this register with the same glossary terms, so the slide and the reading agree.
+
+Narrative thread, one per lesson, carried by the hook and returned to on every concept slide:
+- 4.1, the rope. Tug of war → atoms pull on electrons the same way → even pull, shared pair → uneven pull, the pair leans → a blowout, the electron changes sides and the rope is gone, the pull between + and − remains → the meter (ΔEN) measures how uneven the pull is → the argument says how sure we are.
+- 4.2, the code. Store labels are a code → the letters are ions and their charges → the rule is zero total charge → the name is the code read aloud → version numbers (Stock) → squads (polyatomic ions) and buses (parentheses) → read the code both ways.
+
+Examples of the register:
+| Not this | This |
+|---|---|
+| An ionic bond is the electrostatic attraction between oppositely charged ions that results from the transfer of valence electrons from a metal to a nonmetal. | A metal atom gives one electron to a nonmetal atom. Now both are ions. The + ion and the − ion pull on each other. That pull is the ionic bond. |
+| The crisscross method, while expedient, necessitates subsequent reduction to the lowest whole-number ratio. | Crisscross is a shortcut. It can give Mg₂O₂. Reduce it to MgO. |
+| Polyatomic ions retain their structural integrity across compounds. | A polyatomic ion stays together. Its atoms move as one group with one charge. |
+| Electronegativity differences near the boundary values provide weak evidence for bond classification. | MgCl₂ scores 1.85, just above 1.8. The number alone is weak evidence. Look at the table too: a metal with a nonmetal. |
+
+Readability target: Flesch-Kincaid grade 6 to 7 for the student-facing text of each slide, never above 8 (checked by the audit in section 10).
+
+---
+
+## 8. Teacher notes (per frame, in the notes panel and the print run-sheet)
 
 Each frame's note has: time in minutes, what to say or ask in one or two lines, the prediction to collect before the press, the misconception to listen for, and the feedback for each wrong option of a check. Safety and sources go in the cover notes only (sodium in chlorine by video; Pauling values as in Lesson 3.3; NIST energies; OpenStax guide; Shannon ion sizes; IUPAC Red Book 2005 for names).
 
 ---
 
-## 8. Files
+## 9. Files
 
 - `unit4/slides-4-1.html`, `unit4/slides-4-2.html`: new standalone pages. Head block (title, description, icons, Open Graph) in the same form as the other unit pages so the site stays consistent; fonts from Google Fonts as the rest of the site; everything else inline.
 - `unit4/blueprint.html`: deck sizes (25, 26), period splits (1–13 / 14–25 and 1–13 / 14–26), slide-check counts, slide numbers in the 4.1 and 4.2 sections and in the matrix rows 4.1.1 to 4.2.5.
-- `plans/verify/`: screenshots and audit output from section 9.
+- `plans/verify/`: screenshots and audit output from section 10.
 - No change to readings, missions, index, case file or other decks.
 
 ---
 
-## 9. Verification (Playwright scripts kept in the scratchpad, results in `plans/verify/`)
+## 10. Verification (Playwright scripts kept in the scratchpad, results in `plans/verify/`)
 
 1. Walk: open the deck at 1920 x 1080, press `F5` (no reload), then `PageDown` until the end, screenshot each press. Assert per press: no console error, cue present, no block extends past the slide by more than 1 px, frame or slide advanced.
 2. Back: from the end press `PageUp` to the start; at each landing compare each animation's `get()` with the forward record.
@@ -191,10 +222,11 @@ Each frame's note has: time in minutes, what to say or ask in one or two lines, 
 4. Clicker keys: `.` zooms, `.` `.` blanks, `Escape` unwinds, `PageDown` with `repeat` is ignored, a focused `<select>` does not swallow keys.
 5. Blueprint: every slide number in the 4.1 and 4.2 sections and matrix rows matches the new decks.
 6. Both themes for steps 1 and 3; contact sheets viewed before each gate.
+7. Readability: a script collects the student-facing text of each slide (all blocks, excluding notes, cue and section label), computes Flesch-Kincaid grade and average sentence length, and flags any slide above grade 8 or above 14 words per sentence, plus any sentence that starts with "This lesson", "It is important", "In order to".
 
 ---
 
-## 10. Ordered implementation steps (confirmation gate after each)
+## 11. Ordered implementation steps (confirmation gate after each)
 
 Step 0. Setup. Read this plan, both readings and the blueprint sections for 4.1 and 4.2. Copy the head block pattern from `unit4/index.html`. Gate: list any content question.
 
@@ -202,13 +234,13 @@ Step 1. Runtime and visual system (section 3) as a demo deck of six slides, one 
 
 Step 2. Animations for 4.1 (section 4.1), each shown on a scratch slide through all stages, both themes, reduced motion. Gate: one screenshot per stage.
 
-Step 3. Deck 4.1 (section 5): 25 slides, frames, cues, checks, notes, Spanish terms, icons. Gate: walk, back, font audit, contact sheet.
+Step 3. Deck 4.1 (section 5): 25 slides, frames, cues, checks, notes, Spanish terms, icons. Gate: walk, back, font audit, readability audit, contact sheet.
 
 Step 4. Blueprint references for 4.1; commit "New 4.1 deck: clicker-driven, scaffolded, projector-scale". Gate.
 
 Step 5. Animations for 4.2 (section 4.2). Gate.
 
-Step 6. Deck 4.2 (section 6): 26 slides. Gate: walk, back, font audit, contact sheet.
+Step 6. Deck 4.2 (section 6): 26 slides. Gate: walk, back, font audit, readability audit, contact sheet.
 
 Step 7. Blueprint references for 4.2; all scripts on both decks in both themes; commit "New 4.2 deck: clicker-driven, scaffolded, projector-scale"; push. Gate: final report with contact sheets.
 
@@ -216,7 +248,7 @@ Sizing: runtime about 350 lines; each animation 120 to 250 lines; each deck abou
 
 ---
 
-## 11. Assumptions (say so if any is wrong)
+## 12. Assumptions (say so if any is wrong)
 
 1. The new files replace the old ones at the same paths; the old decks are not kept.
 2. Blank button: one press zoom, two presses blank screen.
