@@ -1,6 +1,6 @@
 # Running a deck workshop (teacher's notes)
 
-This folder is a reusable workshop for building projector slide decks for any lesson of the Chemistry Case Files site, with Claude Fable 5.1 as orchestrator in your account (A) and Claude Opus 5.5 as implementer in a school account (B). The reference implementation is the newest accepted Unit 4 decks on `main` (or the branch that carries the reference decks, the kit and this folder; today that is claude/unit-4-chemistry-slides-j62190 until it is merged) (at least `unit4/slides-4-1.html` and `unit4/slides-4-2.html`); every new deck copies their engine, templates, chrome, register and audits.
+This folder is a reusable workshop for building projector slide decks for any lesson of the Chemistry Case Files site, with Claude Fable 5.1 as orchestrator in your account (A) and Claude Opus 5.5 as implementer in a school account (B). The reference implementation is the newest accepted Unit 4 decks on `main` (or the branch that carries the reference decks, the kit and this folder; today that is claude/unit-4-chemistry-slides-j62190 until it is merged) (at least `unit4/slides-4-1.html` and `unit4/slides-4-2.html`); older decks are archived under `unit4/old-slides/` and are not used; every new deck copies their engine, templates, chrome, register and audits.
 
 ## Once
 1. The reference decks, the kit `tools/slides-kit/` and this `workshop/` folder are on the branch `claude/unit-4-chemistry-slides-j62190`; merge it into `main` or name that branch as the base in the start message.
