@@ -14,11 +14,12 @@ One PASS or FAIL line per audit with its duration, then a summary; exit 1 if any
                     Default: $SLIDES_KIT_OUT, else <system temp folder>/slides-kit-out. Never a folder inside the repo.
   --only a,b        run only these audits (names as in the order above; units and cycle only where the registry lists them)
   --deck <path>     audit this deck instead of the registry's file (a deck built with build.py --out). xcheck is skipped (it
-                    cross-checks the repo deck against the blueprint). A scratch deck (build.py --scratch) also runs without the
-                    lesson's explicit zoom checks.
+                    cross-checks the repo deck against the blueprint). A scratch deck (build.py --scratch) runs without the
+                    lesson's own zoom checks (the generic ones still run), and walk and layout get EMPTY_MAX=1 unless the
+                    environment sets EMPTY_MAX (scratch slides hold one animation and a label); every other gate stays.
 
-Environment each audit receives: DECK, OUT, DECKNAME, LESSON, BUDGET, KEYS_CFG, EXTRAS_CFG, MATRIX, SLIDES (extra audits),
-XCHECK (xcheck). The registry is the only source of deck-specific configuration; no path in the kit is absolute.
+Environment each audit receives: DECK, OUT, DECKNAME, BUDGET, KEYS_CFG, EXTRAS_CFG, MATRIX, ZOOM_CHECKS (zoom),
+SLIDES (extra audits), XCHECK (xcheck), EMPTY_MAX (walk and layout on a scratch deck). The registry is the only source of deck-specific configuration; no path in the kit is absolute.
 """
 import argparse, json, os, subprocess, sys, tempfile, time
 
@@ -67,11 +68,17 @@ def run_deck(d, o, out_root):
     themes = ['light', 'dark'] if o.theme == 'both' else [o.theme]
     matrix = o.matrix or os.environ.get('MATRIX') == '1'
     env = dict(os.environ,
-               DECK=deck, OUT=out, DECKNAME=os.path.basename(deck), LESSON='' if scratch else lesson,
+               DECK=deck, OUT=out, DECKNAME=os.path.basename(deck),
                BUDGET=os.path.join(KIT, d['budget']), KEYS_CFG=json.dumps(d['keys_cfg']), EXTRAS_CFG=json.dumps(d['extras_cfg']),
                MATRIX='1' if matrix else '0')
     if d.get('extra_slides'):
         env['SLIDES'] = '%d,%d' % tuple(d['extra_slides'])
+    if d.get('zoom_checks') and not scratch:
+        env['ZOOM_CHECKS'] = os.path.join(KIT, d['zoom_checks'])
+    else:
+        env.pop('ZOOM_CHECKS', None)
+    # a scratch deck: the emptiness gate of walk and layout is off (EMPTY_MAX=1) unless the environment sets it
+    gate = {'EMPTY_MAX': '1'} if scratch and 'EMPTY_MAX' not in os.environ else {}
     env['XCHECK'] = json.dumps([{
         'lesson': lesson, 'deck': deck, 'blueprint': os.path.join(REPO, f"unit{d['unit']}", 'blueprint.html'),
         'section': d['blueprint']['section'], 'next': d['blueprint']['next'], 'objectives': d['matrix'],
@@ -100,10 +107,14 @@ def run_deck(d, o, out_root):
 
     print(f"== {lesson}{' (scratch deck)' if scratch else ''}: {os.path.relpath(deck, REPO) if inside_repo(deck) else deck}")
     print(f"   out {out}, theme {o.theme}, matrix {'on' if matrix else 'off'}")
+    if gate:
+        print('   scratch deck: EMPTY_MAX=1 for walk and layout (emptiness gate off); every other gate unchanged')
+    elif scratch:
+        print(f"   scratch deck: EMPTY_MAX={os.environ['EMPTY_MAX']} from the environment for walk and layout")
     results, t0 = [], time.time()
     for name, theme, cmd in jobs:
         t = time.time()
-        r = subprocess.run(cmd, env=env, cwd=KIT, capture_output=True, text=True)
+        r = subprocess.run(cmd, env=dict(env, **gate) if name in ('walk', 'layout') else env, cwd=KIT, capture_output=True, text=True)
         sec = round(time.time() - t, 1)
         label = name + (' ' + theme if theme else '')
         log = os.path.join(logs, label.replace(' ', '-') + '.log')

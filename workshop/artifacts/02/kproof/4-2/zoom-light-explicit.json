@@ -1,0 +1,63 @@
+{
+ "theme": "light",
+ "units": 707,
+ "fails": [],
+ "explicit": [
+  {
+   "n": "every zoomed check shows its options",
+   "ok": true
+  },
+  {
+   "n": "every prompt on a routine slide is a unit (routine slides with a prompt: 4, 20, 21, 22, 23, 24)",
+   "ok": true
+  },
+  {
+   "n": "slide 2: each product of labelRead is a unit (shelf), and the open label card (focus)",
+   "ok": true
+  },
+  {
+   "n": "slides 6 and 7: the whole ionTable and the lit group of each stage are units",
+   "ok": true
+  },
+  {
+   "n": "slides 8, 9, 16, 17: chargeBlocks at its current stage is a unit on every frame that shows it",
+   "ok": true
+  },
+  {
+   "n": "slide 10: crisscross is a unit",
+   "ok": true
+  },
+  {
+   "n": "slides 11 and 12: nameBuilder formula and the tiles or the joined name are units",
+   "ok": true
+  },
+  {
+   "n": "slides 12 and 17: each step line of stockDetective is a unit",
+   "ok": true
+  },
+  {
+   "n": "slide 15: polyIons (the current ion) is a unit on every frame",
+   "ok": true
+  },
+  {
+   "n": "slide 16: parenBus is a unit",
+   "ok": true
+  },
+  {
+   "n": "every check card with its options",
+   "ok": true
+  },
+  {
+   "n": "each answer-table row (slides 13, 14, 18) and each spot-the-error row (slide 19) is a unit",
+   "ok": true
+  },
+  {
+   "n": "each word card on slide 5 is a unit",
+   "ok": true
+  },
+  {
+   "n": "the memory cards (slides 7 and 15) and the pattern card (slide 15) are units",
+   "ok": true
+  }
+ ]
+}

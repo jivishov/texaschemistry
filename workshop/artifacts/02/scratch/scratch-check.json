@@ -1,0 +1,367 @@
+[
+  {
+    "n": "brickBag: four stages driven (models, shake, pour, words)",
+    "pass": true,
+    "i": "[\"models\",\"shake\",\"pour\",\"words\"]"
+  },
+  {
+    "n": "brickBag models: 3 models, 11 bricks, all snapped",
+    "pass": true,
+    "i": "{\"stage\":\"models\",\"models\":3,\"bricks\":11,\"snapped\":11,\"counter\":\"Bricks snapped: 11 of 11\",\"labels\":[],\"inBag\":true,\"onTable\":false}"
+  },
+  {
+    "n": "brickBag shake: 3 models, 11 bricks, all snapped",
+    "pass": true,
+    "i": "{\"stage\":\"shake\",\"models\":3,\"bricks\":11,\"snapped\":11,\"counter\":\"Bricks snapped: 11 of 11\",\"labels\":[],\"inBag\":true,\"onTable\":false}"
+  },
+  {
+    "n": "brickBag pour: 3 models, 11 bricks, all snapped",
+    "pass": true,
+    "i": "{\"stage\":\"pour\",\"models\":3,\"bricks\":11,\"snapped\":11,\"counter\":\"Bricks snapped: 11 of 11\",\"labels\":[],\"inBag\":false,\"onTable\":true}"
+  },
+  {
+    "n": "brickBag words: 3 models, 11 bricks, all snapped",
+    "pass": true,
+    "i": "{\"stage\":\"words\",\"models\":3,\"bricks\":11,\"snapped\":11,\"counter\":\"Bricks snapped: 11 of 11\",\"labels\":[\"a snap between bricks = a bond within\",\"models side by side = an attraction between\"],\"inBag\":false,\"onTable\":true}"
+  },
+  {
+    "n": "brickBag: the counter reads \"Bricks snapped: 11 of 11\"",
+    "pass": true,
+    "i": "\"Bricks snapped: 11 of 11\""
+  },
+  {
+    "n": "brickBag words: the two labels",
+    "pass": true,
+    "i": "[\"a snap between bricks = a bond within\",\"models side by side = an attraction between\"]"
+  },
+  {
+    "n": "brickBag pour: the models are on the table, out of the bag",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "meltScale melt: values snow 0.0, salt 801, sand near 1700",
+    "pass": true,
+    "i": "{\"snow\":0,\"salt\":801,\"sand\":\"near 1700\"}"
+  },
+  {
+    "n": "meltScale melt: snow molecules intact, salt and sand not moved",
+    "pass": true,
+    "i": "{\"stage\":\"melt\",\"values\":{\"snow\":0,\"salt\":801,\"sand\":\"near 1700\"},\"chips\":[],\"label\":null,\"snowMolecules\":6,\"snowMoleculesIntact\":true,\"snowMoved\":true,\"saltMoved\":false,\"sandMoved\":false,\"scale\":[-200,1800]}"
+  },
+  {
+    "n": "meltScale numbers: label line \"Melting point\" and chips \"snow 0.0 °C\", \"salt 801 °C\", \"sand near 1700 °C\"",
+    "pass": true,
+    "i": "{\"stage\":\"numbers\",\"values\":{\"snow\":0,\"salt\":801,\"sand\":\"near 1700\"},\"chips\":[\"snow 0.0 °C\",\"salt 801 °C\",\"sand near 1700 °C\"],\"label\":\"Melting point\",\"snowMolecules\":6,\"snowMoleculesIntact\":true,\"snowMoved\":true,\"saltMoved\":false,\"sandMoved\":false,\"scale\":[-200,1800]}"
+  },
+  {
+    "n": "meltScale three: no chips before the numbers stage",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "meltScale: scale −200 to 1800 °C",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "threeSolids chlorine: molecules drawn, one stick within each, no dashed line yet",
+    "pass": true,
+    "i": "{\"stage\":\"chlorine\",\"panels\":1,\"molecules\":6,\"sticksWithin\":6,\"dashedBetween\":0,\"withinGlow\":false,\"naclRadii\":[102,181],\"naclSpacing\":282,\"saltIons\":0,\"copper\":null,\"labels\":[]}"
+  },
+  {
+    "n": "threeSolids within: the sticks glow, label \"bond within\"",
+    "pass": true,
+    "i": "{\"stage\":\"within\",\"panels\":1,\"molecules\":6,\"sticksWithin\":6,\"dashedBetween\":0,\"withinGlow\":true,\"naclRadii\":[102,181],\"naclSpacing\":282,\"saltIons\":0,\"copper\":null,\"labels\":[\"bond within\"]}"
+  },
+  {
+    "n": "threeSolids between: dashed lines between molecules, label \"attraction between (much weaker)\"",
+    "pass": true,
+    "i": "{\"stage\":\"between\",\"panels\":1,\"molecules\":6,\"sticksWithin\":6,\"dashedBetween\":11,\"withinGlow\":true,\"naclRadii\":[102,181],\"naclSpacing\":282,\"saltIons\":0,\"copper\":null,\"labels\":[\"bond within\",\"attraction between (much weaker)\"]}"
+  },
+  {
+    "n": "threeSolids salt: NaCl radii 102 and 181 pm, spacing 282 pm, label",
+    "pass": true,
+    "i": "{\"stage\":\"salt\",\"panels\":2,\"molecules\":2,\"sticksWithin\":2,\"dashedBetween\":2,\"withinGlow\":true,\"naclRadii\":[102,181],\"naclSpacing\":282,\"saltIons\":27,\"copper\":null,\"labels\":[\"bond within\",\"attraction between (much weaker)\",\"ionic bonds through the whole crystal, no molecules\"]}"
+  },
+  {
+    "n": "threeSolids copper: delocalized electrons, three panels, label",
+    "pass": true,
+    "i": "{\"stage\":\"copper\",\"panels\":3,\"molecules\":2,\"sticksWithin\":2,\"dashedBetween\":2,\"withinGlow\":true,\"naclRadii\":[102,181],\"naclSpacing\":282,\"saltIons\":12,\"copper\":\"delocalized electrons\",\"labels\":[\"bond within\",\"attraction between (much weaker)\",\"ionic bonds through the whole crystal, no molecules\",\"metallic bonds through the whole metal\"]}"
+  },
+  {
+    "n": "threeSolids: sticks within equal molecules at every stage",
+    "pass": true,
+    "i": "[[6,6],[6,6],[6,6],[2,2],[2,2]]"
+  },
+  {
+    "n": "attractions flicker: nonpolar, δ labels only for an instant",
+    "pass": true,
+    "i": "{\"stage\":\"flicker\",\"family\":\"dispersion\",\"polar\":false,\"deltaLabels\":\"instant\",\"neighborShift\":false,\"line\":false,\"label\":null}"
+  },
+  {
+    "n": "attractions neighbor: nonpolar, δ labels only for an instant",
+    "pass": true,
+    "i": "{\"stage\":\"neighbor\",\"family\":\"dispersion\",\"polar\":false,\"deltaLabels\":\"instant\",\"neighborShift\":true,\"line\":false,\"label\":null}"
+  },
+  {
+    "n": "attractions attract: nonpolar, δ labels only for an instant",
+    "pass": true,
+    "i": "{\"stage\":\"attract\",\"family\":\"dispersion\",\"polar\":false,\"deltaLabels\":\"instant\",\"neighborShift\":true,\"line\":true,\"label\":\"dispersion forces\"}"
+  },
+  {
+    "n": "attractions cloud: no δ labels yet",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "attractions neighbor: the neighbor shifts the same way",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "attractions attract: the dashed line and the label \"dispersion forces\"",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "attractions F2: no δ labels, dashed gray only",
+    "pass": true,
+    "i": "{\"stage\":\"F2\",\"family\":\"dipole\",\"HCl\":null,\"F2\":{\"dplus\":null,\"dminus\":null,\"line\":\"dashed gray\"},\"headToTail\":false,\"line\":null,\"label\":null,\"electrons\":null,\"bp\":null}"
+  },
+  {
+    "n": "attractions HCl: δ+ on H, δ− on Cl",
+    "pass": true,
+    "i": "{\"dplus\":\"H\",\"dminus\":\"Cl\"}"
+  },
+  {
+    "n": "attractions turn: head to tail",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "attractions face: δ+ to δ− line, label \"dipole-dipole forces\"",
+    "pass": true,
+    "i": "{\"stage\":\"face\",\"family\":\"dipole\",\"HCl\":{\"dplus\":\"H\",\"dminus\":\"Cl\"},\"F2\":null,\"headToTail\":true,\"line\":\"δ+ to δ−\",\"label\":\"dipole-dipole forces\",\"electrons\":null,\"bp\":null}"
+  },
+  {
+    "n": "attractions compare: electrons F2 18, HCl 18; boiling points F2 −188.1, HCl −85.1",
+    "pass": true,
+    "i": "{\"stage\":\"compare\",\"family\":\"dipole\",\"HCl\":{\"dplus\":\"H\",\"dminus\":\"Cl\"},\"F2\":{\"dplus\":null,\"dminus\":null,\"line\":\"dashed gray\"},\"headToTail\":true,\"line\":\"δ+ to δ−\",\"label\":\"dipole-dipole forces\",\"electrons\":{\"F2\":18,\"HCl\":18},\"bp\":{\"F2\":-188.1,\"HCl\":-85.1}}"
+  },
+  {
+    "n": "attractions water: two water molecules, no hydrogen bond drawn yet",
+    "pass": true,
+    "i": "{\"stage\":\"water\",\"family\":\"hydrogen\",\"water\":{\"donor\":\"H on O\",\"acceptor\":\"lone pair on O\"},\"hbond\":false,\"hbondPx\":240,\"ohPx\":96,\"hbondLonger\":true,\"label\":null,\"strength\":null}"
+  },
+  {
+    "n": "attractions hbond: donor H on O, acceptor lone pair on O; drawn longer than the O–H bond",
+    "pass": true,
+    "i": "{\"stage\":\"hbond\",\"family\":\"hydrogen\",\"water\":{\"donor\":\"H on O\",\"acceptor\":\"lone pair on O\"},\"hbond\":true,\"hbondPx\":240,\"ohPx\":96,\"hbondLonger\":true,\"label\":\"hydrogen bond: about 5 to 10% of a covalent bond\",\"strength\":\"about 5 to 10% of a covalent bond\"}"
+  },
+  {
+    "n": "attractions ammonia: donor H on N, acceptor lone pair on N",
+    "pass": true,
+    "i": "{\"stage\":\"ammonia\",\"family\":\"hydrogen\",\"ammonia\":{\"donor\":\"H on N\",\"acceptor\":\"lone pair on N\"},\"label\":\"hydrogen bond: H on N to a lone pair on N\"}"
+  },
+  {
+    "n": "attractions methane: no hydrogen bond, label \"H on C: no hydrogen bond\"",
+    "pass": true,
+    "i": "{\"stage\":\"methane\",\"family\":\"hydrogen\",\"methane\":\"none\",\"label\":\"H on C: no hydrogen bond\"}"
+  },
+  {
+    "n": "attractions four: up to four hydrogen bonds, four neighbors",
+    "pass": true,
+    "i": "{\"stage\":\"four\",\"family\":\"hydrogen\",\"waterMax\":4,\"hbonds\":4,\"neighbors\":4,\"label\":\"up to four hydrogen bonds\"}"
+  },
+  {
+    "n": "bpPlot axes: points none",
+    "pass": true,
+    "i": "[]"
+  },
+  {
+    "n": "bpPlot axes: each point's electrons, boiling point and strongest attraction",
+    "pass": true,
+    "i": "[]"
+  },
+  {
+    "n": "bpPlot F2: points F₂",
+    "pass": true,
+    "i": "[\"F₂\"]"
+  },
+  {
+    "n": "bpPlot F2: each point's electrons, boiling point and strongest attraction",
+    "pass": true,
+    "i": "[{\"f\":\"F₂\",\"e\":18,\"bp\":-188.1,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true}]"
+  },
+  {
+    "n": "bpPlot Cl2: points F₂, Cl₂",
+    "pass": true,
+    "i": "[\"F₂\",\"Cl₂\"]"
+  },
+  {
+    "n": "bpPlot Cl2: each point's electrons, boiling point and strongest attraction",
+    "pass": true,
+    "i": "[{\"f\":\"F₂\",\"e\":18,\"bp\":-188.1,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true},{\"f\":\"Cl₂\",\"e\":34,\"bp\":-34,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true}]"
+  },
+  {
+    "n": "bpPlot Br2: points F₂, Cl₂, Br₂",
+    "pass": true,
+    "i": "[\"F₂\",\"Cl₂\",\"Br₂\"]"
+  },
+  {
+    "n": "bpPlot Br2: each point's electrons, boiling point and strongest attraction",
+    "pass": true,
+    "i": "[{\"f\":\"F₂\",\"e\":18,\"bp\":-188.1,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true},{\"f\":\"Cl₂\",\"e\":34,\"bp\":-34,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true},{\"f\":\"Br₂\",\"e\":70,\"bp\":58.8,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true}]"
+  },
+  {
+    "n": "bpPlot I2: points F₂, Cl₂, Br₂, I₂",
+    "pass": true,
+    "i": "[\"F₂\",\"Cl₂\",\"Br₂\",\"I₂\"]"
+  },
+  {
+    "n": "bpPlot I2: each point's electrons, boiling point and strongest attraction",
+    "pass": true,
+    "i": "[{\"f\":\"F₂\",\"e\":18,\"bp\":-188.1,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true},{\"f\":\"Cl₂\",\"e\":34,\"bp\":-34,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true},{\"f\":\"Br₂\",\"e\":70,\"bp\":58.8,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true},{\"f\":\"I₂\",\"e\":106,\"bp\":184.4,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true}]"
+  },
+  {
+    "n": "bpPlot trend: points F₂, Cl₂, Br₂, I₂",
+    "pass": true,
+    "i": "[\"F₂\",\"Cl₂\",\"Br₂\",\"I₂\"]"
+  },
+  {
+    "n": "bpPlot trend: each point's electrons, boiling point and strongest attraction",
+    "pass": true,
+    "i": "[{\"f\":\"F₂\",\"e\":18,\"bp\":-188.1,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true},{\"f\":\"Cl₂\",\"e\":34,\"bp\":-34,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true},{\"f\":\"Br₂\",\"e\":70,\"bp\":58.8,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true},{\"f\":\"I₂\",\"e\":106,\"bp\":184.4,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true}]"
+  },
+  {
+    "n": "bpPlot trio: points CH₄, NH₃, H₂O",
+    "pass": true,
+    "i": "[\"CH₄\",\"NH₃\",\"H₂O\"]"
+  },
+  {
+    "n": "bpPlot trio: each point's electrons, boiling point and strongest attraction",
+    "pass": true,
+    "i": "[{\"f\":\"CH₄\",\"e\":10,\"bp\":-161.5,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":false},{\"f\":\"NH₃\",\"e\":10,\"bp\":-33.3,\"force\":\"hydrogen bonding\",\"faint\":false,\"labelled\":false},{\"f\":\"H₂O\",\"e\":10,\"bp\":100,\"force\":\"hydrogen bonding\",\"faint\":false,\"labelled\":false}]"
+  },
+  {
+    "n": "bpPlot reveal: points CH₄, NH₃, H₂O",
+    "pass": true,
+    "i": "[\"CH₄\",\"NH₃\",\"H₂O\"]"
+  },
+  {
+    "n": "bpPlot reveal: each point's electrons, boiling point and strongest attraction",
+    "pass": true,
+    "i": "[{\"f\":\"CH₄\",\"e\":10,\"bp\":-161.5,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true},{\"f\":\"NH₃\",\"e\":10,\"bp\":-33.3,\"force\":\"hydrogen bonding\",\"faint\":false,\"labelled\":true},{\"f\":\"H₂O\",\"e\":10,\"bp\":100,\"force\":\"hydrogen bonding\",\"faint\":false,\"labelled\":true}]"
+  },
+  {
+    "n": "bpPlot HCl: points F₂, HCl",
+    "pass": true,
+    "i": "[\"F₂\",\"HCl\"]"
+  },
+  {
+    "n": "bpPlot HCl: each point's electrons, boiling point and strongest attraction",
+    "pass": true,
+    "i": "[{\"f\":\"F₂\",\"e\":18,\"bp\":-188.1,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true},{\"f\":\"HCl\",\"e\":18,\"bp\":-85.1,\"force\":\"dipole-dipole forces\",\"faint\":false,\"labelled\":true}]"
+  },
+  {
+    "n": "bpPlot trio: the 10-electron points have no labels yet; reveal adds them",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "bpPlot trio: the halogens stay faint behind",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "bpPlot trend: the dashed trend line only at trend",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "bpPlot: no \"all eight\" stage",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "bpPlot: axes 0 to 110 electrons, −200 to 200 °C",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "forceDecider NH3/polar: NH3, answers yes",
+    "pass": true,
+    "i": "{\"stage\":\"NH3/polar\",\"molecule\":\"NH3\",\"answers\":{\"polar\":\"yes\",\"H\":null,\"lone\":null,\"strongest\":null},\"en\":null,\"boxes\":[\"Polar?\",\"H on N, O or F?\",\"Lone pair on N, O or F?\",\"Strongest attraction\"]}"
+  },
+  {
+    "n": "forceDecider NH3/H: NH3, answers yes · yes",
+    "pass": true,
+    "i": "{\"stage\":\"NH3/H\",\"molecule\":\"NH3\",\"answers\":{\"polar\":\"yes\",\"H\":\"yes\",\"lone\":null,\"strongest\":null},\"en\":null,\"boxes\":[\"Polar?\",\"H on N, O or F?\",\"Lone pair on N, O or F?\",\"Strongest attraction\"]}"
+  },
+  {
+    "n": "forceDecider NH3/lone: NH3, answers yes · yes · yes",
+    "pass": true,
+    "i": "{\"stage\":\"NH3/lone\",\"molecule\":\"NH3\",\"answers\":{\"polar\":\"yes\",\"H\":\"yes\",\"lone\":\"yes\",\"strongest\":null},\"en\":null,\"boxes\":[\"Polar?\",\"H on N, O or F?\",\"Lone pair on N, O or F?\",\"Strongest attraction\"]}"
+  },
+  {
+    "n": "forceDecider NH3/strongest: NH3, answers yes · yes · yes · hydrogen bonding",
+    "pass": true,
+    "i": "{\"stage\":\"NH3/strongest\",\"molecule\":\"NH3\",\"answers\":{\"polar\":\"yes\",\"H\":\"yes\",\"lone\":\"yes\",\"strongest\":\"hydrogen bonding\"},\"en\":null,\"boxes\":[\"Polar?\",\"H on N, O or F?\",\"Lone pair on N, O or F?\",\"Strongest attraction\"]}"
+  },
+  {
+    "n": "forceDecider CO2/polar: CO2, answers no",
+    "pass": true,
+    "i": "{\"stage\":\"CO2/polar\",\"molecule\":\"CO2\",\"answers\":{\"polar\":\"no\",\"H\":null,\"lone\":null,\"strongest\":null},\"en\":null,\"boxes\":[\"Polar?\",\"H on N, O or F?\",\"Lone pair on N, O or F?\",\"Strongest attraction\"]}"
+  },
+  {
+    "n": "forceDecider CO2/H: CO2, answers no · no · not needed",
+    "pass": true,
+    "i": "{\"stage\":\"CO2/H\",\"molecule\":\"CO2\",\"answers\":{\"polar\":\"no\",\"H\":\"no\",\"lone\":\"not needed\",\"strongest\":null},\"en\":null,\"boxes\":[\"Polar?\",\"H on N, O or F?\",\"Lone pair on N, O or F?\",\"Strongest attraction\"]}"
+  },
+  {
+    "n": "forceDecider CO2/strongest: CO2, answers no · no · not needed · dispersion forces",
+    "pass": true,
+    "i": "{\"stage\":\"CO2/strongest\",\"molecule\":\"CO2\",\"answers\":{\"polar\":\"no\",\"H\":\"no\",\"lone\":\"not needed\",\"strongest\":\"dispersion forces\"},\"en\":null,\"boxes\":[\"Polar?\",\"H on N, O or F?\",\"Lone pair on N, O or F?\",\"Strongest attraction\"]}"
+  },
+  {
+    "n": "forceDecider HBr/EN: HBr, answers none yet",
+    "pass": true,
+    "i": "{\"stage\":\"HBr/EN\",\"molecule\":\"HBr\",\"answers\":{\"polar\":null,\"H\":null,\"lone\":null,\"strongest\":null},\"en\":{\"label\":\"Electronegativity (pull on electrons)\",\"Br\":2.96,\"H\":2.2,\"difference\":0.76},\"boxes\":[\"Polar?\",\"H on N, O or F?\",\"Lone pair on N, O or F?\",\"Strongest attraction\"]}"
+  },
+  {
+    "n": "forceDecider HBr/polar: HBr, answers yes",
+    "pass": true,
+    "i": "{\"stage\":\"HBr/polar\",\"molecule\":\"HBr\",\"answers\":{\"polar\":\"yes\",\"H\":null,\"lone\":null,\"strongest\":null},\"en\":{\"label\":\"Electronegativity (pull on electrons)\",\"Br\":2.96,\"H\":2.2,\"difference\":0.76},\"boxes\":[\"Polar?\",\"H on N, O or F?\",\"Lone pair on N, O or F?\",\"Strongest attraction\"]}"
+  },
+  {
+    "n": "forceDecider HBr/H: HBr, answers yes · no · not needed",
+    "pass": true,
+    "i": "{\"stage\":\"HBr/H\",\"molecule\":\"HBr\",\"answers\":{\"polar\":\"yes\",\"H\":\"no\",\"lone\":\"not needed\",\"strongest\":null},\"en\":{\"label\":\"Electronegativity (pull on electrons)\",\"Br\":2.96,\"H\":2.2,\"difference\":0.76},\"boxes\":[\"Polar?\",\"H on N, O or F?\",\"Lone pair on N, O or F?\",\"Strongest attraction\"]}"
+  },
+  {
+    "n": "forceDecider HBr/strongest: HBr, answers yes · no · not needed · dipole-dipole forces",
+    "pass": true,
+    "i": "{\"stage\":\"HBr/strongest\",\"molecule\":\"HBr\",\"answers\":{\"polar\":\"yes\",\"H\":\"no\",\"lone\":\"not needed\",\"strongest\":\"dipole-dipole forces\"},\"en\":{\"label\":\"Electronegativity (pull on electrons)\",\"Br\":2.96,\"H\":2.2,\"difference\":0.76},\"boxes\":[\"Polar?\",\"H on N, O or F?\",\"Lone pair on N, O or F?\",\"Strongest attraction\"]}"
+  },
+  {
+    "n": "forceDecider HBr/EN: \"Electronegativity (pull on electrons)\", Br 2.96, H 2.20, difference 0.76",
+    "pass": true,
+    "i": "{\"label\":\"Electronegativity (pull on electrons)\",\"Br\":2.96,\"H\":2.2,\"difference\":0.76}"
+  },
+  {
+    "n": "forceDecider: box titles",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "forceDecider: 2.96 − 2.20 = 0.76 from the shared electronegativity table",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "no console errors",
+    "pass": true,
+    "i": "[]"
+  }
+]

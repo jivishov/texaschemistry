@@ -1,0 +1,13 @@
+== 4.1: unit4/slides-4-1.html
+   out <scratchpad>/k02f/4-1, theme both, matrix off
+  PASS  keys                 35.3 s  keys: PASS 48 checks
+  PASS  zoom light          223.4 s  zoom light: 571 zoomed states over 156 frames (re-flow 432, transform 139), prompt 45, r800 1, animation 75, card 137, part 42, frames 1, check 24, wcard 14, legend 1, rule 22, table 1, column 21, item 42, row 30, caprow 3, p 5, hdr 9, rail 29, li 60, handsup 3, scale 6; min fill 64%; Back tests 24; PASS
+  PASS  zoom dark           223.5 s  zoom dark: 571 zoomed states over 156 frames (re-flow 432, transform 139), prompt 45, r800 1, animation 75, card 137, part 42, frames 1, check 24, wcard 14, legend 1, rule 22, table 1, column 21, item 42, row 30, caprow 3, p 5, hdr 9, rail 29, li 60, handsup 3, scale 6; min fill 64%; Back tests 24; PASS
+== 4.1: 3 of 3 pass, 0 fail, 482.2 s
+== 4.2: unit4/slides-4-2.html
+   out <scratchpad>/k02f/4-2, theme both, matrix off
+  PASS  keys                 35.4 s  keys: PASS 48 checks
+  PASS  zoom light          262.5 s  zoom light: 707 zoomed states over 173 frames (re-flow 503, transform 204), prompt 35, r800 1, animation 96, part 108, card 159, frames 1, check 24, wcard 16, legend 1, caprow 10, p 5, memory card 1, rule 12, anion names 1, row 129, six ions 10, rail 29, li 60, handsup 3, scale 6; min fill 67%; Back tests 26; PASS
+  PASS  zoom dark           263.1 s  zoom dark: 707 zoomed states over 173 frames (re-flow 503, transform 204), prompt 35, r800 1, animation 96, part 108, card 159, frames 1, check 24, wcard 16, legend 1, caprow 10, p 5, memory card 1, rule 12, anion names 1, row 129, six ions 10, rail 29, li 60, handsup 3, scale 6; min fill 67%; Back tests 26; PASS
+== 4.2: 3 of 3 pass, 0 fail, 560.9 s
+exit=0

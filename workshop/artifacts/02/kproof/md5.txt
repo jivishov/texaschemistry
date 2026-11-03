@@ -1,0 +1,12 @@
+# md5 and size of the reference decks after python3 build.py --all (step 02)
+4.1: unit4/slides-4-1.html  194646 bytes, 2077 lines, md5 ebd342f1ee0e11c47157141cf3b2a59b
+4.2: unit4/slides-4-2.html  203769 bytes, 2153 lines, md5 c3fa219a806963f9a66c3baf643153f4
+ebd342f1ee0e11c47157141cf3b2a59b  unit4/slides-4-1.html
+c3fa219a806963f9a66c3baf643153f4  unit4/slides-4-2.html
+ed3bf8e23e1616d95014f0614c74e8d1  unit4/blueprint.html
+194646 unit4/slides-4-1.html
+203769 unit4/slides-4-2.html
+ 44978 unit4/blueprint.html
+443393 total
+
+# note: the same build.py --all also wrote a placeholder unit4/slides-4-5.html (the 4.5 registry entry now exists); the file was untracked and was deleted at once; nothing under unit4/ is committed (report 02, Deviation 9)

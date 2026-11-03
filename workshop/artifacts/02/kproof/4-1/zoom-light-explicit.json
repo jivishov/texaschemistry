@@ -1,0 +1,51 @@
+{
+ "theme": "light",
+ "units": 571,
+ "fails": [],
+ "explicit": [
+  {
+   "n": "every zoomed check shows its options",
+   "ok": true
+  },
+  {
+   "n": "every prompt on a routine slide is a unit (routine slides with a prompt: 4, 13, 20, 21, 22, 23, 24)",
+   "ok": true
+  },
+  {
+   "n": "B5 slide 6: the animation is a unit on the electron transfer stages (f0 to f3)",
+   "ok": true
+  },
+  {
+   "n": "B5 slide 7: the lattice is a unit on the grow and turn frames (f1, f2)",
+   "ok": true
+  },
+  {
+   "n": "B5 slide 8: the H–H pair and the pairs after it are units (f1 to f5)",
+   "ok": true
+  },
+  {
+   "n": "B6 slide 18: each of the four argument boxes is its own unit",
+   "ok": true
+  },
+  {
+   "n": "A1 slide 2: the three mini-frames of the labels stage are units",
+   "ok": true
+  },
+  {
+   "n": "A1 slide 16: the lit pair and the whole table are units",
+   "ok": true
+  },
+  {
+   "n": "A1 slide 16: the three rule cards are units, each one",
+   "ok": true
+  },
+  {
+   "n": "A1 slide 11: each column of the summary table is a unit",
+   "ok": true
+  },
+  {
+   "n": "A1 slides 14 and 19: each row of an answer table is a unit",
+   "ok": true
+  }
+ ]
+}

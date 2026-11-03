@@ -99,11 +99,14 @@ const L=require('./lib');
   await page.click('#overview button >> nth=4');await L.wait(page,400);a=await st();ok('a click on a slide jumps to it',!a.overview&&a.s===4&&a.f===0,`s${a.s+1}f${a.f}`);
   await page.click('#sec');await L.wait(page,300);a=await st();ok('a click on the section label opens the slide list',a.overview);await key('Escape',300);
 
-  // timer: starts on its frame, Back then Next restarts it
+  // timer: starts on its frame, Back then Next restarts it. The length is the tm slide's own frame-1 timer (registry keys_cfg tm).
+  const TSEC=await page.evaluate(i=>i>=0&&Deck.slides[i].frames[1]&&Deck.slides[i].frames[1].timer||0,TM);
+  const tfmt=sec=>{sec=Math.max(0,Math.ceil(sec));return Math.floor(sec/60)+':'+String(sec%60).padStart(2,'0')},tsec=t=>{const m=/^(\d+):(\d\d)$/.exec(t||'');return m?+m[1]*60+ +m[2]:NaN};
+  const noT=TSEC?'':`keys_cfg tm ${C.tm}: frame 1 of that slide has no timer`;
   await go(TM,1);await L.wait(page,2300);a=await st();
-  ok('timer runs on its frame',a.timer&&a.timer.sec===180&&/^2:5\d$/.test(a.timer.text),a.timer&&a.timer.text);
-  await key('PageUp',300);b=await st();ok('timer stops when leaving its frame',!b.timer);
-  await key('PageDown',400);b=await st();ok('Back then Next restarts the timer',b.timer&&b.timer.text==='3:00',b.timer&&b.timer.text);
+  ok('timer runs on its frame',TSEC>0&&a.timer&&a.timer.sec===TSEC&&tsec(a.timer.text)>=TSEC-3&&tsec(a.timer.text)<=TSEC-1,noT||(a.timer&&`${a.timer.text}, expected ${tfmt(TSEC-3)} to ${tfmt(TSEC-1)}`));
+  await key('PageUp',300);b=await st();ok('timer stops when leaving its frame',TSEC>0&&!b.timer,noT||undefined);
+  await key('PageDown',400);b=await st();ok('Back then Next restarts the timer',TSEC>0&&b.timer&&b.timer.text===tfmt(TSEC),noT||(b.timer&&b.timer.text));
   await page.screenshot({path:dir+'/timer.png'});
 
   // a timed frame on a slide without a .timer slot is an authoring error the runtime reports (the walk fails on it)

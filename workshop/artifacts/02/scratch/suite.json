@@ -1,0 +1,108 @@
+{
+ "lesson": "4.5",
+ "deck": "<scratchpad>/scratch45.html",
+ "scratch": true,
+ "theme": "both",
+ "matrix": false,
+ "audits": 12,
+ "failed": 0,
+ "seconds": 372.7,
+ "results": [
+  {
+   "audit": "walk",
+   "theme": "light",
+   "pass": true,
+   "seconds": 60.3,
+   "summary": "walk light: 47 states, max empty 75% (s6f0), PASS",
+   "log": "logs/walk-light.log"
+  },
+  {
+   "audit": "walk",
+   "theme": "dark",
+   "pass": true,
+   "seconds": 60.3,
+   "summary": "walk dark: 47 states, max empty 75% (s6f0), PASS",
+   "log": "logs/walk-dark.log"
+  },
+  {
+   "audit": "back",
+   "theme": "light",
+   "pass": true,
+   "seconds": 24.6,
+   "summary": "back: 47 forward, 47 back, PASS",
+   "log": "logs/back-light.log"
+  },
+  {
+   "audit": "back",
+   "theme": "dark",
+   "pass": true,
+   "seconds": 24.8,
+   "summary": "back: 47 forward, 47 back, PASS",
+   "log": "logs/back-dark.log"
+  },
+  {
+   "audit": "fonts",
+   "theme": "light",
+   "pass": true,
+   "seconds": 16.1,
+   "summary": "fonts: PASS",
+   "log": "logs/fonts-light.log"
+  },
+  {
+   "audit": "render3d",
+   "theme": "",
+   "pass": true,
+   "seconds": 2.8,
+   "summary": "render3d: PASS",
+   "log": "logs/render3d.log"
+  },
+  {
+   "audit": "extras",
+   "theme": "",
+   "pass": true,
+   "seconds": 5.6,
+   "summary": "extras: PASS",
+   "log": "logs/extras.log"
+  },
+  {
+   "audit": "zoom",
+   "theme": "light",
+   "pass": true,
+   "seconds": 83.4,
+   "summary": "zoom light: 224 zoomed states over 47 frames (re-flow 1, transform 223), animation 47, part 176, prompt 1; min fill 65%; Back tests 8; PASS",
+   "log": "logs/zoom-light.log"
+  },
+  {
+   "audit": "zoom",
+   "theme": "dark",
+   "pass": true,
+   "seconds": 84.0,
+   "summary": "zoom dark: 224 zoomed states over 47 frames (re-flow 1, transform 223), animation 47, part 176, prompt 1; min fill 65%; Back tests 8; PASS",
+   "log": "logs/zoom-dark.log"
+  },
+  {
+   "audit": "layout",
+   "theme": "",
+   "pass": true,
+   "seconds": 7.1,
+   "summary": "layout: 47 frames, 0 visible option lists (), max empty 75% (s6f0), gate 100%, clipped or ellipsized text: 0, PASS",
+   "log": "logs/layout.log"
+  },
+  {
+   "audit": "contact",
+   "theme": "light",
+   "pass": true,
+   "seconds": 1.8,
+   "summary": "contact sheets light: contact-light-1.png (47 shots, 1775 px tall)",
+   "log": "logs/contact-light.log"
+  },
+  {
+   "audit": "contact",
+   "theme": "dark",
+   "pass": true,
+   "seconds": 1.7,
+   "summary": "contact sheets dark: contact-dark-1.png (47 shots, 1775 px tall)",
+   "log": "logs/contact-dark.log"
+  }
+ ]
+}

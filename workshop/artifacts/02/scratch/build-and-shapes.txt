@@ -1,0 +1,14 @@
+4.5 scratch: <scratchpad>/scratch45.html  139735 bytes, 1636 lines, md5 e1aa2f76cb31d597a2e3b7709ff4a4ae
+
+# smallest circle (atoms, ions, cores, badges, icons; radius >= 17 px) and smallest canvas label per animation, all frames, 1600 x 900 canvas
+x-bb brickBag                smallest circle diameter (DOM/SVG) · smallest canvas label 40 px
+x-ms meltScale               smallest circle diameter 36 px · smallest canvas label 36 px
+x-ts threeSolids             smallest circle diameter 46 px · smallest canvas label 36 px
+x-ad attractions             smallest circle diameter 55 px · smallest canvas label 36 px
+x-aq attractions             smallest circle diameter 60 px · smallest canvas label 36 px
+x-ah attractions             smallest circle diameter 60 px · smallest canvas label 36 px
+x-bp bpPlot                  smallest circle diameter (DOM/SVG) · smallest canvas label 36 px
+x-fd forceDecider            smallest circle diameter (DOM/SVG) · smallest canvas label (DOM/SVG)
+
+rm sheet light x-bb:words x-ms:numbers x-ts:copper x-ad:attract x-aq:compare x-ah:four x-bp:HCl x-fd:HBr/strongest
+rm sheet dark x-bb:words x-ms:numbers x-ts:copper x-ad:attract x-aq:compare x-ah:four x-bp:HCl x-fd:HBr/strongest

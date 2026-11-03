@@ -99,35 +99,13 @@ async function matrixRun(browser,theme,vw,vh,dsf,pre,dir){
       if(st.zoom!==null||st.s!==s||st.f!==f)fails.push(`s${s+1}f${f}: Back did not exit the zoom at once (zoom ${st.zoom}, s${st.s+1}f${st.f})`)}
     if(errors.length)fails.push(`s${s+1}f${f}: console errors: `+errors.splice(0).join(' | '));
   }
-  // explicit checks asked by the teacher (B5, B6)
-  const has=(s,f,pred)=>rec.some(r=>r.s===s&&r.f===f&&pred(r));
-  // LESSON (suite.py sets it from the registry; empty for a scratch deck) picks the deck's explicit checks; a deck without a list has none
-  const lesson=process.env.LESSON||'',cnt=(s,f,pred)=>rec.filter(r=>r.s===s&&r.f===f&&pred(r)).length;
-  const B=lesson==='4.2'?[
-    ['slide 2: each product of labelRead is a unit (shelf), and the open label card (focus)',cnt(2,0,r=>r.kind==='part')===3&&has(2,1,r=>r.kind==='part'&&/^label/.test(r.label))],
-    ['slides 6 and 7: the whole ionTable and the lit group of each stage are units',[1,2,3,4,5,6].every(f=>has(6,f,r=>r.kind==='animation')&&has(6,f,r=>r.kind==='part'&&/^group/.test(r.label)))&&has(7,0,r=>r.label==='four metals')],
-    ['slides 8, 9, 16, 17: chargeBlocks at its current stage is a unit on every frame that shows it',[0,1,2,3,4,5,6,7,8,9,10].every(f=>has(8,f,r=>r.kind==='animation'&&r.id==='s08-sim'))&&[3,4,5,6,7,8].every(f=>has(16,f,r=>r.id==='s16-cb'))],
-    ['slide 10: crisscross is a unit',[0,1,2,3,4,5,6,7].every(f=>has(10,f,r=>r.id==='s10-sim'))],
-    ['slides 11 and 12: nameBuilder formula and the tiles or the joined name are units',has(11,0,r=>r.label==='name tiles')&&has(11,1,r=>r.label==='the joined name')&&has(11,0,r=>r.label==='formula')&&has(12,2,r=>r.label==='the joined name')],
-    ['slides 12 and 17: each step line of stockDetective is a unit',has(12,9,r=>r.label==='step 1')&&has(12,9,r=>r.label==='step 3')&&has(17,5,r=>r.label==='step 3')],
-    ['slide 15: polyIons (the current ion) is a unit on every frame',[0,1,2,3,4,5,6,7,8,9].every(f=>has(15,f,r=>r.id==='s15-sim'))],
-    ['slide 16: parenBus is a unit',[0,1,2].every(f=>has(16,f,r=>r.id==='s16-pb'))],
-    ['every check card with its options, and every zoomed check shows its options',rec.filter(r=>r.kind==='check').length>=9&&rec.filter(r=>r.kind==='check').every(r=>r.check&&r.check.ok)],
-    ['every prompt on slides 20 to 24 is a unit',[20,21,22,23,24].every(s=>rec.some(r=>r.s===s&&r.kind==='prompt'))],
-    ['each answer-table row (slides 13, 14, 18) and each spot-the-error row (slide 19) is a unit',cnt(13,5,r=>r.kind==='row')===4&&cnt(14,4,r=>r.kind==='row')===3&&cnt(18,7,r=>r.kind==='row')===6&&cnt(19,6,r=>r.kind==='row')===6],
-    ['each word card on slide 5 is a unit',cnt(5,1,r=>r.kind==='wcard')===8],
-    ['the memory cards (slides 7 and 15) and the pattern card (slide 15) are units',has(7,4,r=>r.kind==='memory card')&&has(15,7,r=>r.label==='memory card')&&has(15,6,r=>r.label==='pattern')]
-  ]:lesson==='4.1'?[['B5 slide 6: the animation is a unit on the electron transfer stages (f0 to f3)',[0,1,2,3].every(f=>has(6,f,r=>r.kind==='animation'&&r.fill>=.6))],
-    ['B5 slide 7: the lattice is a unit on the grow and turn frames (f1, f2)',[1,2].every(f=>has(7,f,r=>r.kind==='animation'&&r.fill>=.6))],
-    ['B5 slide 8: the H–H pair and the pairs after it are units (f1 to f5)',[1,2,3,4,5].every(f=>has(8,f,r=>r.kind==='animation'&&r.id==='s08-sim'&&r.fill>=.6))],
-    ['B6 slide 18: each of the four argument boxes is its own unit',[1,2,3,4,5,6,7,8].every(f=>['Claim','Evidence','Reasoning','Strength'].every(t=>has(18,f,r=>r.kind==='part'&&r.label===t&&r.fill>=.6)))],
-    ['B6 slides 20 to 24: the prompts are units',[20,21,22,23,24].every(s=>rec.some(r=>r.s===s&&r.kind==='prompt'&&r.fill>=.6))],
-    ['A1 slide 2: the three mini-frames of the labels stage are units',has(2,5,r=>r.label==='nonpolar covalent')&&has(2,5,r=>r.label==='polar covalent')&&has(2,5,r=>r.label==='ionic')],
-    ['A1 slide 16: the lit pair and the whole table are units',[3,4,5].every(f=>has(16,f,r=>r.kind==='part'&&/^pair/.test(r.label))&&has(16,f,r=>r.kind==='animation'))],
-    ['A1 slide 16: the three rule cards are units, each one',rec.filter(r=>r.s===16&&r.f===6&&r.kind==='p').length===3],
-    ['A1 slide 11: each column of the summary table is a unit',rec.filter(r=>r.s===11&&r.f===8&&r.kind==='column').length===3],
-    ['A1 slides 14 and 19: each row of an answer table is a unit',rec.filter(r=>r.s===14&&r.f===4&&r.kind==='row').length===3&&rec.filter(r=>r.s===19&&r.f===4&&r.kind==='row').length===3],
-    ['A1 checks: every zoomed check shows its options',rec.filter(r=>r.kind==='check').every(r=>r.check&&r.check.ok)]]:[];
+  // explicit checks: two generic ones for every deck (scratch decks too), then the lesson's own list asked by the teacher
+  // (ZOOM_CHECKS: the lesson's zoomchecks.js, set by suite.py from the registry's zoom_checks; absent for a scratch deck)
+  const has=(s,f,pred)=>rec.some(r=>r.s===s&&r.f===f&&pred(r)),cnt=(s,f,pred)=>rec.filter(r=>r.s===s&&r.f===f&&pred(r)).length;
+  const routine=await page.evaluate(()=>Deck.slides.map((S,i)=>S.el.classList.contains('t-routine')&&[...S.el.querySelectorAll('.prompt,.dq')].some(e=>!e.closest('.notes'))?i+1:0).filter(Boolean));
+  const B=[['every zoomed check shows its options',rec.filter(r=>r.kind==='check').every(r=>r.check&&r.check.ok)],
+    [`every prompt on a routine slide is a unit (routine slides with a prompt: ${routine.join(', ')||'none'})`,routine.every(s=>rec.some(r=>r.s===s&&r.kind==='prompt'))]]
+    .concat(process.env.ZOOM_CHECKS?require(require('path').resolve(process.env.ZOOM_CHECKS))(rec,{has,cnt}):[]);
   B.forEach(([n,ok])=>{if(!ok)fails.push('FAIL '+n)});
   // matrix pass: viewports x device scale factors, motion on, each loaded at another size and changed before zooming
   const matrix=[];

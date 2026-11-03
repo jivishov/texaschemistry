@@ -21,6 +21,7 @@ still quotes the old build session's absolute paths as history; its first line s
 | `parts/lessons/<U>-<L>/slides.html` | generated, committed (so a deck can be rebuilt and diffed without running Python) |
 | `parts/lessons/<U>-<L>/budget.json` | per-slide minutes, read by the timing audit |
 | `parts/lessons/<U>-<L>/chem.js` | the lesson's chemistry audit (`meta()` of each placed animation, checked against the reading's data) |
+| `parts/lessons/<U>-<L>/zoomchecks.js` | optional: the teacher's explicit zoom checks for this deck (`module.exports=(rec,{has,cnt})=>[[name, ok], …]`), run by the zoom audit after its two generic checks |
 | `parts/lessons/<U>-<L>/scratch.html` | animation test bench: scratch slides of every stage (never in a repo deck) |
 | `parts/lessons/<U>-<L>/gen_scratch.py` | optional: writes `scratch.html` (4.2 has one; 4.1's `scratch.html` is hand-written) |
 | `registry.json` | every built deck: file, head strings, periods, checks, markers, audit settings (fields below) |
@@ -80,9 +81,10 @@ audit's JSON, the walk screenshots (`shots-<theme>/`), zoom screenshots, the run
 logs and the sheets a step needs into `workshop/artifacts/NN/` (text logs; JPEG sheets at most 800 KB each; no per-press folders).
 
 - `--deck <path>` audits a deck outside the repo with the lesson's settings; xcheck is skipped (it cross-checks the repo deck and its
-  blueprint). A scratch build (it carries a `scratch-<U><L>` part) also runs without the lesson's explicit zoom checks. Scratch
-  slides hold one animation and a label, so the emptiness gate of walk and layout (at most one third of the body empty) fails on
-  them by design; `EMPTY_MAX` in the environment sets that gate for a run, and a brief has to say when a scratch run may use it.
+  blueprint). A scratch build (it carries a `scratch-<U><L>` part) runs without the lesson's `zoomchecks.js` (the two generic zoom
+  checks still run), and its walk and layout run with `EMPTY_MAX=1`: scratch slides hold one animation and a label, so the
+  emptiness gate (at most one third of the body empty) is off for them (review 01). The suite prints that it did; an
+  `EMPTY_MAX` already set in the environment wins. Every other gate stays, and a repo deck always runs with the default gate.
 - `xcheck` reads `walk-light.json` from the same output folder: run walk in light theme first (the full suite does).
 - The chemistry audit, the budget and the keys and extras settings refer to the lesson's real slides; on a scratch deck pick audits
   with `--only`.
@@ -91,13 +93,13 @@ logs and the sheets a step needs into `workshop/artifacts/NN/` (text logs; JPEG 
 | Variable | From | Used by |
 |---|---|---|
 | `DECK`, `OUT`, `DECKNAME` | the registry `file` (or `--deck`), the output folder, the deck's file name | every audit (`lib.js`), contact, zoomsheet |
-| `LESSON` | `<U>.<L>`; empty for a scratch deck | zoom (selects the teacher's explicit checks for 4.1 and 4.2; other lessons have none yet) |
+| `ZOOM_CHECKS` | registry `zoom_checks` (absent for a scratch deck) | zoom (the lesson's explicit checks, after the two generic ones: every zoomed check shows its options; every prompt on a routine slide is a unit) |
 | `BUDGET` | registry `budget` | timing |
 | `KEYS_CFG`, `EXTRAS_CFG` | registry `keys_cfg`, `extras_cfg` | keys, extras |
 | `MATRIX` | `0`, or `1` with `--matrix` (or `MATRIX=1`) | zoom |
 | `SLIDES` | registry `extra_slides` (`first,last`) | units, cycle |
 | `XCHECK` | registry `matrix`, `blueprint`, `mentions`, `file`; `unit<U>/blueprint.html`; `<out>/walk-light.json` | xcheck |
-| `EMPTY_MAX` | passed through from your environment if set (default one third) | walk, layout |
+| `EMPTY_MAX` | your environment if set; else `1` for walk and layout on a scratch deck; else the default (one third) | walk, layout |
 
 Run one audit by hand with the same variables, for example
 `DECK=$PWD/../../unit4/slides-4-2.html OUT=/tmp/o DECKNAME=slides-4-2.html node audits/walk.js light`.
@@ -116,6 +118,7 @@ One entry per deck in `decks`:
 | `keys_cfg` | slide and element ids the keys audit drives: `cr` (a slide whose frames drive an animation), `sim` (that animation's id), `card` (a card the zoom cycle reaches on frame 3), `tm` (the timer slide, 180 s timer on frame 1), `ex` (a slide used for the blank-screen tests), `hk` (a slide with a frame 1 and no `.timer` slot), `notes` (slide id and frame for the notes screenshot) |
 | `extras_cfg` | `hash` (a frame with the turning 3D model), `canvas` (its canvas selector), `block` (a block revealed on the next press), `slides` (the slide count) |
 | `budget`, `chem` | paths relative to the kit |
+| `zoom_checks` | optional: path of the lesson's `zoomchecks.js`, relative to the kit |
 | `blueprint` | `section`: the deck's section id in `unit<U>/blueprint.html`; `next`: the id of the section after it |
 | `matrix` | the lesson's objectives, as the blueprint's matrix rows name them |
 | `mentions` | every "slide N" mention in the deck's notes and text: `"<slide id>:<N>"` → the title of the slide meant |
@@ -124,7 +127,7 @@ One entry per deck in `decks`:
 ## Add a lesson
 1. Folder `parts/lessons/<U>-<L>/` with `sims.html`, `gen_slides.py` (writing `slides.html` next to itself; copy the pattern of
    `parts/lessons/4-2/gen_slides.py`), `budget.json`, `chem.js` (requires `../../../audits/lib`, as the 4.1 and 4.2 ones do), and
-   `css.css` only if the lesson needs CSS of its own. Lesson parts never redefine shared behavior; an engine feature goes into the
+   `css.css` only if the lesson needs CSS of its own; `zoomchecks.js` if the teacher asks for zoom checks of this deck. Lesson parts never redefine shared behavior; an engine feature goes into the
    shared runtime behind a per-lesson option, and every registered deck is then rebuilt and re-audited.
 2. A registry entry with every field above; markers per the convention (`01-head-<U><L>`, `02-runtime`, `02b-shared`,
    `sims-<U><L>`, `slides-<U><L>`, `css-<U><L>`). For 4.5: `blueprint` `{"section": "45", "next": "case"}`, `matrix` `4.5.1` to `4.5.5`.
