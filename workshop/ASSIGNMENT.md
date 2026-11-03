@@ -5,7 +5,7 @@ lessons: 4.5, 4.6            # in priority order, as the start message names the
 mode: cross-account
 base: claude/unit-4-chemistry-slides-j62190   # holds the reference decks, the kit and workshop/ (not yet merged into main)
 branch: workshop/unit4-5-6
-pull request: #<set in the plan commit>, draft, to the base
+pull request: #1 (https://github.com/jivishov/texaschemistry/pull/1), draft, to the base
 reference decks: unit4/slides-4-1.html, unit4/slides-4-2.html (baseline; old decks are under unit4/old-slides/, including the rejected unit4/old-slides/slides-4-5.html)
 effort: build extra-high, fix high
 periods per lesson: 4.5 → 2 (blueprint lesson map)
