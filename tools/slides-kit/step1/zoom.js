@@ -1,0 +1,145 @@
+// Zoom cycle audit (teacher round, A1): every frame of every slide, the Blank key steps through every visible unit.
+// Per unit: the cue reads "Zoom i of n · Blank ▶ next|exit · Back ▶ exit", the unit fills at least 60% of the slide width or height,
+// a zoomed check shows all its options; the press after the last unit unzooms; Back unzooms at once without moving.
+// Screenshots of every zoomed state, and a zoom sheet: one zoomed state per unit type per slide.  node zoom.js [light|dark]
+// Geometry (step 10): every zoomed unit is measured live on screen (Deck.state().zoomLive, from getBoundingClientRect): centred in the
+// slide, wholly inside it (so above the footer), filling at least 60% of its width or height. The main pass loads at 1366 x 768
+// and changes to 1920 x 1080 before zooming (F5 full screen). The matrix pass (motion on, as in the teacher's Chrome) runs every
+// viewport 1366 x 768, 1536 x 864, 1920 x 1080, 1024 x 768 at device scale factors 1, 1.25 and 1.5, each loaded at another size
+// and changed before zooming; per slide the last frame's whole cycle with a resize while zoomed (and back), and on every slide
+// with an animation: the cycle on frame 0, Next while zoomed through every frame, a zoom during the zoom-out, a zoom right
+// after Back, and a zoom after the slide list opened and closed.  MATRIX=0 skips the matrix pass.
+const L=require('./lib'),fs=require('fs');
+const TOL=6; // slide px: centring tolerance
+function geoFails(where,st){
+  const r=st.zoomLive;if(!r)return [`${where}: not zoomed`];const out=[];
+  const dx=r.x+r.w/2-r.sw/2,dy=r.y+r.h/2-r.sh/2,fill=Math.max(r.w/r.sw,r.h/r.sh);
+  if(Math.abs(dx)>TOL||Math.abs(dy)>TOL)out.push(`${where}: off centre by (${dx.toFixed(0)}, ${dy.toFixed(0)}) slide px`);
+  if(r.x<-1||r.y<-1||r.x+r.w>r.sw+1||r.y+r.h>r.sh+1)out.push(`${where}: leaves the slide (x ${r.x.toFixed(0)}..${(r.x+r.w).toFixed(0)} of ${r.sw.toFixed(0)}, y ${r.y.toFixed(0)}..${(r.y+r.h).toFixed(0)} of ${r.sh.toFixed(0)}, footer below)`);
+  if(fill<.6)out.push(`${where}: fills ${Math.round(fill*100)}% (< 60%)`);
+  return out}
+const checkOpts=page=>page.evaluate(()=>{const z=document.querySelector('.zoomed')||document.querySelector('.zflow');const sr=document.querySelector('.slide.current').getBoundingClientRect();
+  const o=[...z.querySelectorAll('.opt')];return {n:o.length,ok:o.length>0&&o.every(e=>{const q=e.getBoundingClientRect();return getComputedStyle(e).visibility==='visible'&&q.left>=sr.left-1&&q.right<=sr.right+1&&q.top>=sr.top-1&&q.bottom<=sr.bottom+1})}});
+async function matrixRun(browser,theme,vw,vh,dsf,pre,dir){
+  const {page,errors}=await L.open({browser,theme,viewport:{width:pre[0],height:pre[1]},dsf});
+  const fails=[],tag=`${vw}x${vh}@${dsf}`;let n=0,shots=0;
+  await page.setViewportSize({width:vw,height:vh});await L.wait(page,350);
+  const info=await page.evaluate(()=>Deck.slides.map(S=>({nf:S.frames.length,sims:S.sims.length})));
+  const Z=420;
+  // measure at rest: a loaded machine can run the .35 s zoom transition late, which is not a geometry fault (it is reported past 3 s)
+  const rest=()=>page.waitForFunction(()=>!document.getAnimations().some(a=>a.transitionProperty==='transform'&&a.playState==='running'),null,{timeout:3000}).then(()=>true,()=>false);
+  const look=async(where,kind)=>{const still=!(await rest());const st=await L.state(page);n++;const f=geoFails(where,st);if(still)f.push(`${where}: the zoom transition still runs after 3 s`);
+    if(kind==='check'){const c=await checkOpts(page);if(!c.ok)f.push(`${where}: zoomed check does not show its ${c.n} options`)}
+    if(f.length){fails.push(...f.map(x=>tag+' '+x));if(shots++<12)await page.screenshot({path:`${dir}/${tag}-${where.replace(/[^\w.-]+/g,'_')}.png`})}return st};
+  const cycle=async(s,f,resizeAt)=>{const units=await page.evaluate(()=>Deck.zoomUnits());if(!units.length)return;
+    for(let i=0;i<units.length;i++){await page.keyboard.press('.');await L.wait(page,Z);const st=await look(`s${s+1}f${f} u${i+1}/${units.length} ${units[i].kind}`,units[i].kind);
+      if(st.zoomIndex!==i)fails.push(`${tag} s${s+1}f${f} u${i+1}: cycle at ${st.zoomIndex+1}`);
+      if(i===resizeAt){const o=vw===1920?[1366,768]:[1920,1080];await page.setViewportSize({width:o[0],height:o[1]});await L.wait(page,Z);
+        let q=await look(`s${s+1}f${f} u${i+1} after a resize to ${o[0]}x${o[1]} while zoomed`,units[i].kind);if(q.zoomIndex!==i)fails.push(`${tag} s${s+1}f${f}: the resize while zoomed moved the cycle to ${q.zoomIndex+1}`);
+        await page.setViewportSize({width:vw,height:vh});await L.wait(page,Z);q=await look(`s${s+1}f${f} u${i+1} after the resize back`,units[i].kind)}}
+    await page.keyboard.press('.');await L.wait(page,Z);const st=await L.state(page);if(st.zoom)fails.push(`${tag} s${s+1}f${f}: the press after the last unit did not unzoom`)};
+  for(let s=0;s<info.length;s++){const {nf,sims}=info[s];
+    await page.evaluate(([s,f])=>Deck.go(s,f),[s,nf-1]);await L.wait(page,300);await cycle(s,nf-1,0);
+    if(!sims)continue;
+    await page.evaluate(s=>Deck.go(s,0),s);await L.wait(page,300);await cycle(s,0,-1);
+    // a press right after the exit (the zoom-out still in flight)
+    const nu=(await page.evaluate(()=>Deck.zoomUnits())).length;await page.keyboard.press('.');await L.wait(page,Z);
+    for(let i=1;i<nu;i++){await page.keyboard.press('.');await L.wait(page,140)}
+    await page.keyboard.press('.');await L.wait(page,90);await page.keyboard.press('.');await L.wait(page,Z);await look(`s${s+1}f0 zoom pressed during the zoom-out`);
+    await page.keyboard.press('PageUp');await L.wait(page,250);
+    // Next while zoomed on the animation: the zoom stays on it, laid out afresh on each frame
+    await page.keyboard.press('.');await L.wait(page,Z);
+    for(let f=1;f<nf;f++){await page.keyboard.press('PageDown');await L.wait(page,650);const st=await L.state(page);if(st.s!==s)break;if(st.zoom&&st.zoomMode==='transform')await look(`s${s+1}f${f} Next while zoomed`);else if(st.zoom)await look(`s${s+1}f${f} Next while zoomed (frame zoom)`);else break}
+    await page.keyboard.press('Escape');await L.wait(page,250);
+    // a zoom right after Back, and after the slide list
+    await page.evaluate(([s,f])=>Deck.go(s,f),[s,Math.min(1,nf-1)]);await L.wait(page,250);await page.keyboard.press('PageDown');await L.wait(page,250);
+    await page.keyboard.press('PageUp');await L.wait(page,60);await page.keyboard.press('.');await L.wait(page,Z);await look(`s${s+1} zoom right after Back`);
+    await page.keyboard.press('Escape');await L.wait(page,250);
+    await page.keyboard.press('o');await L.wait(page,250);await page.keyboard.press('Escape');await L.wait(page,250);await page.keyboard.press('.');await L.wait(page,Z);await look(`s${s+1} zoom after the slide list`);
+    await page.keyboard.press('Escape');await L.wait(page,250);
+  }
+  if(errors.length)fails.push(`${tag}: console errors: `+errors.splice(0).join(' | '));
+  await page.context().close();
+  return {view:`${vw}x${vh}`,dsf,loaded:`${pre[0]}x${pre[1]}`,states:n,fails};
+}
+(async()=>{
+  const theme=process.argv[2]||'light',dir=L.ensure(L.OUT+'/zoom-'+theme);fs.readdirSync(dir).forEach(f=>fs.unlinkSync(dir+'/'+f));
+  const {browser,page,errors}=await L.open({theme,reduced:true,viewport:{width:1366,height:768}});
+  await page.setViewportSize({width:1920,height:1080});await L.wait(page,350); // F5 full screen after the deck loaded
+  const nf=await page.evaluate(()=>Deck.slides.map(S=>S.frames.length));
+  const rec=[],fails=[];let shot=0,backTests=0;
+  for(let s=0;s<nf.length;s++)for(let f=0;f<nf[s];f++){
+    await page.evaluate(([s,f])=>Deck.go(s,f),[s,f]);await L.wait(page,140);
+    const units=await page.evaluate(()=>Deck.zoomUnits());
+    if(!units.length){fails.push(`s${s+1}f${f}: no zoom unit`);continue}
+    await page.keyboard.press('.');await L.wait(page,460);
+    for(let i=0;i<units.length;i++){
+      if(i>0){await page.keyboard.press('.');await L.wait(page,120)}
+      const st=await L.state(page),u=units[i];
+      const r=st.zoomLive,fill=r?Math.max(r.w/r.sw,r.h/r.sh):0;
+      const chk=u.kind==='check'?await checkOpts(page):null;
+      geoFails(`s${s+1}f${f} unit ${i+1} (${u.kind} ${u.id} ${u.label})`,st).filter(x=>!/fills/.test(x)).forEach(x=>fails.push(x));
+      const file=`${String(shot++).padStart(4,'0')}-s${s+1}f${f}-u${i+1}-${u.kind}.png`;await page.screenshot({path:dir+'/'+file});
+      const row={s:s+1,f,i:i+1,n:units.length,kind:u.kind,label:u.label,id:u.id,mode:st.zoomMode,fill:+fill.toFixed(3),scale:+st.zoomScale.toFixed(2),cue:st.cue,check:chk,file};rec.push(row);
+      if(st.zoomIndex!==i||st.zoomCount!==units.length)fails.push(`s${s+1}f${f} unit ${i+1}: cycle at ${st.zoomIndex+1} of ${st.zoomCount}, expected ${i+1} of ${units.length}`);
+      if(!/^Zoom \d+ of \d+ · Blank ▶ (next|exit) · Back ▶ exit$/.test(st.cue))fails.push(`s${s+1}f${f} unit ${i+1}: cue "${st.cue}"`);
+      if(fill<.6)fails.push(`s${s+1}f${f} unit ${i+1} (${u.kind} ${u.id} ${u.label}): fills ${Math.round(fill*100)}% (< 60%) at x${st.zoomScale.toFixed(2)}`);
+      if(chk&&!chk.ok)fails.push(`s${s+1}f${f} unit ${i+1}: zoomed check does not show its ${chk.n} options`);
+      const wantRe=!['animation','part','column','table'].includes(u.kind); // text units re-flow; animations, their parts and the summary table (columns of icons and cells) transform
+      if(st.zoomMode!==(wantRe?'reflow':'transform'))fails.push(`s${s+1}f${f} unit ${i+1} (${u.kind}): zoom mode ${st.zoomMode}, expected ${wantRe?'reflow':'transform'}`);
+      if(st.zoomMode==='reflow'&&(st.zoomScale>2.2001||r.x<59||r.y<59||r.x+r.w>r.sw-59||r.y+r.h>r.sh-59))fails.push(`s${s+1}f${f} unit ${i+1}: re-flowed text at x${st.zoomScale.toFixed(2)} outside the 60 px margins`);
+      const cl=st.zoomMode==='reflow'?await page.evaluate(()=>{const z=document.querySelector('.zflow');return [...z.querySelectorAll('*')].filter(e=>{const c=getComputedStyle(e);return (/hidden|clip/.test(c.overflowX+c.overflowY)||c.textOverflow==='ellipsis')&&(e.scrollWidth>e.clientWidth+1||e.scrollHeight>e.clientHeight+1)}).length}):0;
+      if(cl)fails.push(`s${s+1}f${f} unit ${i+1}: clipped text in the re-flowed clone`);
+      if(st.blank)fails.push(`s${s+1}f${f} unit ${i+1}: the screen blanked while zoomed`);
+    }
+    await page.keyboard.press('.');await L.wait(page,120);let st=await L.state(page);
+    if(st.zoom!==null||st.s!==s||st.f!==f)fails.push(`s${s+1}f${f}: the press after the last unit did not unzoom (zoom ${st.zoom}, s${st.s+1}f${st.f})`);
+    if(units.length>1&&f===nf[s]-1){backTests++; // Back exits the zoom at once and stays on the frame
+      await page.keyboard.press('.');await L.wait(page,460);await page.keyboard.press('.');await L.wait(page,120);await page.keyboard.press('PageUp');await L.wait(page,200);st=await L.state(page);
+      if(st.zoom!==null||st.s!==s||st.f!==f)fails.push(`s${s+1}f${f}: Back did not exit the zoom at once (zoom ${st.zoom}, s${st.s+1}f${st.f})`)}
+    if(errors.length)fails.push(`s${s+1}f${f}: console errors: `+errors.splice(0).join(' | '));
+  }
+  // explicit checks asked by the teacher (B5, B6)
+  const has=(s,f,pred)=>rec.some(r=>r.s===s&&r.f===f&&pred(r));
+  const is42=/4-2/.test(L.DECK),cnt=(s,f,pred)=>rec.filter(r=>r.s===s&&r.f===f&&pred(r)).length;
+  const B=is42?[
+    ['slide 2: each product of labelRead is a unit (shelf), and the open label card (focus)',cnt(2,0,r=>r.kind==='part')===3&&has(2,1,r=>r.kind==='part'&&/^label/.test(r.label))],
+    ['slides 6 and 7: the whole ionTable and the lit group of each stage are units',[1,2,3,4,5,6].every(f=>has(6,f,r=>r.kind==='animation')&&has(6,f,r=>r.kind==='part'&&/^group/.test(r.label)))&&has(7,0,r=>r.label==='four metals')],
+    ['slides 8, 9, 16, 17: chargeBlocks at its current stage is a unit on every frame that shows it',[0,1,2,3,4,5,6,7,8,9,10].every(f=>has(8,f,r=>r.kind==='animation'&&r.id==='s08-sim'))&&[3,4,5,6,7,8].every(f=>has(16,f,r=>r.id==='s16-cb'))],
+    ['slide 10: crisscross is a unit',[0,1,2,3,4,5,6,7].every(f=>has(10,f,r=>r.id==='s10-sim'))],
+    ['slides 11 and 12: nameBuilder formula and the tiles or the joined name are units',has(11,0,r=>r.label==='name tiles')&&has(11,1,r=>r.label==='the joined name')&&has(11,0,r=>r.label==='formula')&&has(12,2,r=>r.label==='the joined name')],
+    ['slides 12 and 17: each step line of stockDetective is a unit',has(12,9,r=>r.label==='step 1')&&has(12,9,r=>r.label==='step 3')&&has(17,5,r=>r.label==='step 3')],
+    ['slide 15: polyIons (the current ion) is a unit on every frame',[0,1,2,3,4,5,6,7,8,9].every(f=>has(15,f,r=>r.id==='s15-sim'))],
+    ['slide 16: parenBus is a unit',[0,1,2].every(f=>has(16,f,r=>r.id==='s16-pb'))],
+    ['every check card with its options, and every zoomed check shows its options',rec.filter(r=>r.kind==='check').length>=9&&rec.filter(r=>r.kind==='check').every(r=>r.check&&r.check.ok)],
+    ['every prompt on slides 20 to 24 is a unit',[20,21,22,23,24].every(s=>rec.some(r=>r.s===s&&r.kind==='prompt'))],
+    ['each answer-table row (slides 13, 14, 18) and each spot-the-error row (slide 19) is a unit',cnt(13,5,r=>r.kind==='row')===4&&cnt(14,4,r=>r.kind==='row')===3&&cnt(18,7,r=>r.kind==='row')===6&&cnt(19,6,r=>r.kind==='row')===6],
+    ['each word card on slide 5 is a unit',cnt(5,1,r=>r.kind==='wcard')===8],
+    ['the memory cards (slides 7 and 15) and the pattern card (slide 15) are units',has(7,4,r=>r.kind==='memory card')&&has(15,7,r=>r.label==='memory card')&&has(15,6,r=>r.label==='pattern')]
+  ]:[['B5 slide 6: the animation is a unit on the electron transfer stages (f0 to f3)',[0,1,2,3].every(f=>has(6,f,r=>r.kind==='animation'&&r.fill>=.6))],
+    ['B5 slide 7: the lattice is a unit on the grow and turn frames (f1, f2)',[1,2].every(f=>has(7,f,r=>r.kind==='animation'&&r.fill>=.6))],
+    ['B5 slide 8: the H–H pair and the pairs after it are units (f1 to f5)',[1,2,3,4,5].every(f=>has(8,f,r=>r.kind==='animation'&&r.id==='s08-sim'&&r.fill>=.6))],
+    ['B6 slide 18: each of the four argument boxes is its own unit',[1,2,3,4,5,6,7,8].every(f=>['Claim','Evidence','Reasoning','Strength'].every(t=>has(18,f,r=>r.kind==='part'&&r.label===t&&r.fill>=.6)))],
+    ['B6 slides 20 to 24: the prompts are units',[20,21,22,23,24].every(s=>rec.some(r=>r.s===s&&r.kind==='prompt'&&r.fill>=.6))],
+    ['A1 slide 2: the three mini-frames of the labels stage are units',has(2,5,r=>r.label==='nonpolar covalent')&&has(2,5,r=>r.label==='polar covalent')&&has(2,5,r=>r.label==='ionic')],
+    ['A1 slide 16: the lit pair and the whole table are units',[3,4,5].every(f=>has(16,f,r=>r.kind==='part'&&/^pair/.test(r.label))&&has(16,f,r=>r.kind==='animation'))],
+    ['A1 slide 16: the three rule cards are units, each one',rec.filter(r=>r.s===16&&r.f===6&&r.kind==='p').length===3],
+    ['A1 slide 11: each column of the summary table is a unit',rec.filter(r=>r.s===11&&r.f===8&&r.kind==='column').length===3],
+    ['A1 slides 14 and 19: each row of an answer table is a unit',rec.filter(r=>r.s===14&&r.f===4&&r.kind==='row').length===3&&rec.filter(r=>r.s===19&&r.f===4&&r.kind==='row').length===3],
+    ['A1 checks: every zoomed check shows its options',rec.filter(r=>r.kind==='check').every(r=>r.check&&r.check.ok)]];
+  B.forEach(([n,ok])=>{if(!ok)fails.push('FAIL '+n)});
+  // matrix pass: viewports x device scale factors, motion on, each loaded at another size and changed before zooming
+  const matrix=[];
+  if(process.env.MATRIX!=='0'){const {chromium}=require('playwright'),mb=await chromium.launch(),mdir=L.ensure(L.OUT+'/zoom-'+theme+'-matrix');fs.readdirSync(mdir).forEach(f=>fs.unlinkSync(mdir+'/'+f));
+    const V=[[1366,768],[1536,864],[1920,1080],[1024,768]],jobs=[];V.forEach((v,i)=>[1,1.25,1.5].forEach(d=>jobs.push([v,d,V[(i+1)%V.length]])));
+    const q=jobs.slice();await Promise.all([0,1,2,3].map(async()=>{while(q.length){const [v,d,pre]=q.shift();matrix.push(await matrixRun(mb,theme,v[0],v[1],d,pre,mdir))}}));await mb.close();
+    matrix.sort((a,b)=>a.view.localeCompare(b.view)||a.dsf-b.dsf);matrix.forEach(m=>fails.push(...m.fails))}
+  // zoom sheet: one zoomed state per unit type per slide
+  const pick=[],seen=new Set();rec.forEach(r=>{const k=r.s+':'+r.kind;if(!seen.has(k)){seen.add(k);pick.push(r)}});
+  L.save('zoom-'+theme+'.json',{theme,units:rec.length,fails,matrix,explicit:B.map(([n,ok])=>({n,ok})),sheet:pick.map(r=>r.file),rec});
+  const kinds={};rec.forEach(r=>{kinds[r.kind]=(kinds[r.kind]||0)+1});
+  console.log(`zoom ${theme}: ${rec.length} zoomed states over ${nf.reduce((a,b)=>a+b,0)} frames (re-flow ${rec.filter(r=>r.mode==='reflow').length}, transform ${rec.filter(r=>r.mode==='transform').length}), ${Object.entries(kinds).map(([k,v])=>k+' '+v).join(', ')}; min fill ${Math.round(Math.min(...rec.map(r=>r.fill))*100)}%; Back tests ${backTests}; ${fails.length?'FAIL':'PASS'}`);
+  B.forEach(([n,ok])=>console.log(`  ${ok?'PASS':'FAIL'}  ${n}`));
+  matrix.forEach(m=>console.log(`  ${m.fails.length?'FAIL':'PASS'}  matrix ${m.view} at x${m.dsf} (loaded at ${m.loaded}): ${m.states} zoomed states measured, ${m.fails.length} fails`));fails.filter(f=>!f.startsWith('FAIL ')).slice(0,40).forEach(f=>console.log('  - '+f));
+  await browser.close();process.exitCode=fails.length?1:0;
+})();

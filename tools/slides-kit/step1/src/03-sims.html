@@ -1,0 +1,310 @@
+<script>
+/* ===== Animations for Lesson 4.1 (plan section 4.1). Each is a Deck.sim with named stages; every stage is a full state. =====
+   Shared data: Pauling electronegativity values as in Lesson 3.3. */
+(function(){
+const D=window.Deck;
+const {EN,METALS,NONMETALS,METALLOIDS,kind,dEN,subtr,bondName,CELLS,STAIR}=D.chem,{clamp,lerp,f2,hash,rgba}=D.util;
+
+/* ---------- 1. tugOfWar (hook): two teams of four, a rope, the knot is the shared pair ----------
+   stages: teams, even, uneven, blowout, labels.  data-pairs="Cl-Cl,H-Cl,Na-Cl" (even, uneven, blowout) */
+function figure(g,x,G,dir,th,arms,col,Ry,u){
+  const ctx=g.ctx,lw=9*u+1,hr=30*u+2,hipY=G-95*u,body=105*u,slide=D.tok('slide');
+  const sx=x-dir*Math.sin(th)*body,sy=hipY-Math.cos(th)*body,hx=sx-dir*Math.sin(th)*(hr+6),hy=sy-Math.cos(th)*(hr+6);
+  const hxR=lerp(sx+dir*18*u,sx+dir*58*u,arms),hyR=lerp(sy+82*u,Ry,arms);
+  [[x,hipY,x+dir*40*u,G],[x,hipY,x-dir*34*u,G],[x,hipY,sx,sy],[sx,sy,hxR,hyR],[sx,sy,hxR+dir*14*u,hyR+4*u]].forEach(l=>g.line(l[0],l[1],l[2],l[3],col,lw));
+  g.circle(hx,hy,hr,D.mix(col,slide,.6),col,lw*.7);
+}
+D.sim('tugOfWar',function(host){
+  const pr=(host.dataset.pairs||'Cl-Cl,H-Cl,Na-Cl').split(',').map(x=>x.split('-'));
+  const team=([a,b])=>({a,b,ea:EN[a],eb:EN[b],sg:Math.sign(EN[b]-EN[a])||0,d:dEN(a,b),val:1,mL:METALS.has(a)?1:0,nL:METALS.has(a)?0:1,mR:METALS.has(b)?1:0,nR:METALS.has(b)?0:1});
+  const base={knot:0,rope:1,val:0,ion:0,gap:1,lab:0,thL:.3,thR:.3,arms:1,mL:0,nL:0,mR:0,nR:0,a:'',b:'',ea:0,eb:0,sg:1,d:0};
+  const E=team(pr[0]),U=team(pr[1]),B=team(pr[2]);
+  const blow={...base,...B,knot:B.sg,rope:0,ion:1,gap:.42,thL:-.05,thR:.06,arms:0};
+  const params={teams:{...base},even:{...base,...E},
+    uneven:{...base,...U,knot:U.sg*Math.min(U.d,1.8)/1.8*.8,thL:U.sg>0?.12:.44,thR:U.sg>0?.44:.12},
+    blowout:blow,labels:{...blow,lab:1}};
+  function scene(g,p,w,h,u){
+    const ctx=g.ctx,G=h*.9,Ry=G-150*u,sp=104*u,nT=w<1100?2:4,gapPx=Math.max(w*.27,190)*p.gap,mid=w/2+p.knot*w*.05*(1-p.ion),sg=p.sg||1,ink=g.c('ink');
+    g.line(w*.05,G,w*.95,G,g.c('line'),4);
+    g.line(w/2,G-232*u,w/2,G+8,g.c('muted'),4,[10,9]);
+    const col=(n,m,ionCol)=>D.mix(D.mix(D.mix(ink,g.c('nonmetal'),n),g.c('metal'),m),ionCol,p.ion);
+    const weakL=sg>0,cL=col(p.nL,p.mL,weakL?g.c('cat'):g.c('an')),cR=col(p.nR,p.mR,weakL?g.c('an'):g.c('cat'));
+    const fl=mid-gapPx/2,fr=mid+gapPx/2;
+    if(p.rope>.01){ctx.save();ctx.globalAlpha*=p.rope;g.line(fl-(nT-1)*sp-62*u,Ry,fr+(nT-1)*sp+62*u,Ry,g.c('rope'),13*u+1);ctx.restore()}
+    for(let i=nT-1;i>=0;i--){figure(g,fl-i*sp,G,1,p.thL,p.arms,cL,Ry,u);figure(g,fr+i*sp,G,-1,p.thR,p.arms,cR,Ry,u)}
+    const kx=mid+p.knot*(gapPx/2-(12+44*p.ion)*u);g.electron(kx,Ry-19*u,15);g.electron(kx,Ry+19*u,15);
+    if(p.val>.01){ctx.save();ctx.globalAlpha*=p.val;const ly=G-322*u;
+      g.text('Pull on electrons (electronegativity)',w/2,Math.max(24,ly-62),36,{wt:700,color:g.c('muted')});
+      [[fl-(nT-1)/2*sp,p.a,p.ea,-1],[fr+(nT-1)/2*sp,p.b,p.eb,1]].forEach(([x,sym,v,side])=>{
+        const ws=g.chem(sym,x-10,ly,64,{align:'right'});g.text(f2(v),x+10,ly+2,44,{mono:true,wt:600,align:'left',color:g.c('muted')});const wv=ctx.measureText(f2(v)).width;
+        if(p.ion>.01){ctx.save();ctx.globalAlpha*=p.ion;const weak=(side<0)===weakL;g.badge(side<0?x-10-ws-56:x+10+wv+56,ly,weak?'+':'−',weak?g.c('cat'):g.c('an'));ctx.restore()}});
+      ctx.restore()}
+  }
+  function minis(g,w,h,u){
+    const ctx=g.ctx,m=24,pw=(w-2*m-2*24)/3,top=h*.03,ph=h*.94,ink=g.c('ink');
+    ['nonpolar covalent','polar covalent','ionic'].forEach((cap,i)=>{
+      const px=m+i*(pw+24),cx=px+pw/2,G=top+ph-96,Ry=G-150,gap=i<2?200:150,fl=cx-gap/2,fr=cx+gap/2,kn=[0,.45,1][i];
+      g.rrect(px,top,pw,ph,22,g.c('card'),g.c('line'),3);
+      const cL=i<2?g.c('nonmetal'):g.c('cat'),cR=i<2?g.c('nonmetal'):g.c('an');
+      if(i<2)g.line(fl-40,Ry,fr+40,Ry,g.c('rope'),12);
+      figure(g,fl-20,G,1,i===2?-.05:(i===1?.14:.3),i<2?1:0,cL,Ry,1);figure(g,fr+20,G,-1,i===2?.06:(i===1?.44:.3),i<2?1:0,cR,Ry,1);
+      const kx=cx+kn*(gap/2-(i===2?44:12));g.electron(kx,Ry-19,15);g.electron(kx,Ry+19,15);
+      if(i===2){g.badge(fl-20,Ry-150,'+',g.c('cat'));g.badge(fr+20,Ry-150,'−',g.c('an'))}
+      g.text(cap,cx,top+ph-44,40,{color:ink});
+    });
+  }
+  return D.canvasSim(host,{stages:['teams','even','uneven','blowout','labels'],params,dur:{teams:500,even:700,uneven:900,blowout:900,labels:800},
+    draw(g,p,I){const u=Math.min(1.25,I.h/440,I.w<1100?1:I.w/1160),ctx=g.ctx;
+      if(p.lab<.99){ctx.save();ctx.globalAlpha=1-p.lab;scene(g,p,I.w,I.h,u);ctx.restore()}
+      if(p.lab>.01){ctx.save();ctx.globalAlpha=p.lab;minis(g,I.w,I.h,u);ctx.restore()}},
+    units:(p,I)=>{if(p.lab<.5)return [];const m=24,pw=(I.w-2*m-48)/3,top=I.h*.03,ph=I.h*.94;return ['nonpolar covalent','polar covalent','ionic'].map((t,i)=>({x:m+i*(pw+24),y:top,w:pw,h:ph,label:t}))},
+    meta:(p,s)=>({stage:s,a:p.a,b:p.b,ea:p.ea,eb:p.eb,knot:+p.knot.toFixed(3),winner:p.a?(p.sg>0?p.b:p.a):null,ion:p.ion,minis:p.lab,valueLabel:p.val>.5?'Pull on electrons (electronegativity)':null})});
+});
+
+/* ---------- 2. ionHop: Na and Cl atoms (outer-shell dots), the hop, the ions, attraction, the 3D crystal ----------
+   stages: atoms, hop, ions, attract, grow, turn.  Radii: Na 186 pm (atom), Cl 99 pm (atom), Na+ 102 pm, Cl- 181 pm (Shannon). */
+const R_NA=186,R_CL=99,R_NAP=102,R_CLM=181;
+D.sim('ionHop',function(host){
+  const atoms=[];
+  for(let x=-1;x<=1;x++)for(let y=-1;y<=1;y++)for(let z=-1;z<=1;z++){const d=Math.abs(x)+Math.abs(y)+Math.abs(z);
+    atoms.push({p:[x,y,z],cat:((x+y+z)%2+2)%2===0,d,nb:d===1,center:d===0,pair:d===0||(x===1&&y===0&&z===0)})}
+  const rest=atoms.filter(a=>!a.pair).sort((a,b)=>a.d-b.d||a.p[1]-b.p[1]||a.p[0]-b.p[0]);rest.forEach((a,i)=>{a.u=i/rest.length*.8});
+  const lines=[];atoms.forEach((a,i)=>atoms.forEach((b,j)=>{if(j>i&&Math.abs(a.p[0]-b.p[0])+Math.abs(a.p[1]-b.p[1])+Math.abs(a.p[2]-b.p[2])===1)lines.push({a:i,b:j,w:.045})}));
+  const S=o=>Object.assign({hop:0,ion:0,near:0,flat:1,grow:0,hi:0},o);
+  const params={atoms:S({}),hop:S({hop:1}),ions:S({hop:1,ion:1}),attract:S({hop:1,ion:1,near:1}),grow:S({hop:1,ion:1,near:1,flat:0,grow:1}),turn:S({hop:1,ion:1,near:1,flat:0,grow:1,hi:1})};
+  const geo=(w,h,p)=>{const R=Math.min(w*.2,h*.25),cx=w/2,cy=h*.46,rNa=R*lerp(1,R_NAP/R_NA,p.ion),rCl=R*lerp(R_CL/R_NA,R_CLM/R_NA,p.ion),dT=R*(R_NAP+R_CLM)/R_NA,dS=lerp(w*.46,dT,p.near);
+    return {R,cx,cy,rNa,rCl,dT,nx:cx-dS/2,clx:cx+dS/2}};
+  function flat(g,p,w,h){
+    const ctx=g.ctx,q=geo(w,h,p),slide=g.c('slide'),cNa=D.mix(g.c('metal'),g.c('cat'),p.ion),cCl=D.mix(g.c('nonmetal'),g.c('an'),p.ion);
+    g.circle(q.nx,q.cy,q.rNa,D.mix(cNa,slide,.8),cNa,6);g.circle(q.clx,q.cy,q.rCl,D.mix(cCl,slide,.8),cCl,6);
+    g.chem(p.ion<.5?'Na':'Na^+',q.nx,q.cy,68);g.chem(p.ion<.5?'Cl':'Cl^−',q.clx,q.cy,68);
+    /* chlorine's seven outer electrons: pairs top, right, bottom; one on the side that faces sodium */
+    const at=(a,off)=>{const r=q.rCl,c=Math.cos(a),s=Math.sin(a);return [q.clx+c*r-s*off,q.cy+s*r+c*off]};
+    [-Math.PI/2,0,Math.PI/2].forEach(a=>{g.electron(...at(a,-15),12);g.electron(...at(a,15),12)});
+    g.electron(q.clx-q.rCl,q.cy-15,12);
+    /* sodium's one outer electron hops to the open place on chlorine */
+    const t=p.hop,ex=lerp(q.nx+q.rNa,q.clx-q.rCl,t),ey=lerp(q.cy,q.cy+15,t)-Math.sin(Math.PI*t)*h*.2;g.electron(ex,ey,12);
+    if(p.ion>.01){ctx.save();ctx.globalAlpha*=p.ion;const k=Math.SQRT1_2;
+      g.badge(q.nx-q.rNa*k-30,q.cy-q.rNa*k-30,'+',g.c('cat'),34);g.badge(q.clx+q.rCl*k+30,q.cy-q.rCl*k-30,'−',g.c('an'),34);ctx.restore()}
+    const ty=q.cy+Math.max(q.rNa,q.rCl)+56;
+    g.text(p.hop<.5?'11 p · 11 e':'11 p · 10 e',q.nx-p.near*110,ty,40,{mono:true,wt:600});
+    g.text(p.hop<.5?'17 p · 17 e':'17 p · 18 e',q.clx+p.near*110,ty,40,{mono:true,wt:600});
+  }
+  function lattice(g,p,w,h,I){
+    const q=geo(w,h,{ion:1,near:1}),gr=p.grow,small=Math.min(w,h)/3.3,sc=lerp(q.dT,small,gr);
+    const yaw=-.62*gr+(I.live?I.t*.32:0),pitch=.42*gr,ox=-.5*(1-gr),rc=lerp(R_NAP/(R_NAP+R_CLM),.17,gr),ra=lerp(R_CLM/(R_NAP+R_CLM),.3,gr);
+    const cat=g.c('cat'),an=g.c('an');
+    const scene=atoms.map(a=>{const s=a.pair?1:clamp((gr-a.u)/.2,0,1),key=a.center||a.nb;
+      return {p:[a.p[0]+ox,a.p[1],a.p[2]],r:a.cat?rc:ra,s:s*(key?1:1-.3*p.hi),color:a.cat?cat:an,alpha:key?1:1-.86*p.hi,ring:a.center&&p.hi>.5,
+        label:gr<.5?(a.cat?'Na^+':'Cl^−'):(a.cat?'+':'−'),labelPx:gr<.5?52:54}});
+    D.spheres(g,{atoms:scene,lines:lines.map(l=>({...l,alpha:.7*clamp(gr*1.5-.5,0,1)}))},{cx:w/2,cy:lerp(q.cy,h/2,gr),scale:sc,yaw,pitch,dist:7});
+  }
+  return D.canvasSim(host,{stages:['atoms','hop','ions','attract','grow','turn'],params,dur:{atoms:600,hop:900,ions:800,attract:800,grow:900,turn:800},live:s=>s==='turn',
+    draw(g,p,I){const ctx=g.ctx,fa=clamp((p.flat-.5)*2,0,1),ta=clamp((1-p.flat)*2,0,1);
+      if(fa>.01){ctx.save();ctx.globalAlpha=fa;flat(g,p,I.w,I.h);ctx.restore()}
+      if(ta>.01){ctx.save();ctx.globalAlpha=ta;lattice(g,p,I.w,I.h,I);ctx.restore()}},
+    meta:(p,s,I)=>{const q0=geo(I.w,I.h,{ion:0,near:0}),q1=geo(I.w,I.h,{ion:1,near:0}),nb=atoms.filter(a=>a.nb);
+      return {stage:s,naAtom:q0.rNa,naIon:q1.rNa,clAtom:q0.rCl,clIon:q1.rCl,counts:p.hop<.5?['11 p · 11 e','17 p · 17 e']:['11 p · 10 e','17 p · 18 e'],
+        neighbors:nb.length,neighborsAreAnions:nb.every(a=>!a.cat),centerIsCation:atoms.find(a=>a.center).cat,latticeIons:p.flat<.5?atoms.length:0}}});
+});
+
+/* ---------- 3. sharedPair: two atoms as soft clouds, the pair as two dots; the pair leans with the difference ----------
+   stages: H2, Cl2, HCl, HO, HF. */
+D.sim('sharedPair',function(host){
+  const LIST=(host.dataset.bonds||'H-H,Cl-Cl,H-Cl,H-O,H-F').split(','),NAME={'H-H':'H2','Cl-Cl':'Cl2','H-Cl':'HCl','H-O':'HO','H-F':'HF'};
+  const RF={H:.62,Cl:1,O:.82,F:.76,N:.85,C:.88,S:1,Br:1.08,I:1.2};
+  const stages=LIST.map(b=>NAME[b]||b.replace('-','')),params={};
+  LIST.forEach((b,i)=>{const [x,y]=b.split('-'),d=dEN(x,y),sg=Math.sign(EN[y]-EN[x])||0;
+    params[stages[i]]={a:x,b:y,ea:EN[x],eb:EN[y],ra:RF[x]||1,rb:RF[y]||1,off:sg*Math.min(1,d/1.78)*.55,dq:clamp((d-.4)/.4,0,1),sg,d}});
+  return D.canvasSim(host,{stages,params,dur:800,
+    draw(g,p,I){
+      const ctx=g.ctx,w=I.w,h=I.h,R=Math.min(w*.19,h*.22),cx=w/2,cy=h*.38,ra=p.ra*R,rb=p.rb*R,D0=(ra+rb)*.74,xa=cx-D0/2,xb=cx+D0/2;
+      const xm=((xa+ra)+(xb-rb))/2,px=xm+(p.off>0?p.off*(xb-xm):p.off*(xm-xa))*.9,nm=g.c('nonmetal');
+      const tA=D.mix(nm,p.sg>0?g.c('dplus'):g.c('dminus'),.5*p.dq),tB=D.mix(nm,p.sg>0?g.c('dminus'):g.c('dplus'),.5*p.dq);
+      [[xa,ra,tA],[xb,rb,tB]].forEach(([x,r,c])=>{const gr=ctx.createRadialGradient(x,cy,r*.1,x,cy,r);gr.addColorStop(0,rgba(c,.55));gr.addColorStop(.7,rgba(c,.28));gr.addColorStop(1,rgba(c,.06));
+        g.circle(x,cy,r,gr,rgba(c,.75),3)});
+      g.chem(p.a,xa-ra*.3,cy,64);g.chem(p.b,xb+rb*.3,cy,64);
+      g.electron(px,cy-19,15);g.electron(px,cy+19,15);
+      if(p.dq>.01){ctx.save();ctx.globalAlpha*=p.dq;const big=p.sg>0;
+        g.badge(xa,cy-ra-46,big?'δ+':'δ−',big?g.c('dplus'):g.c('dminus'));g.badge(xb,cy-rb-46,big?'δ−':'δ+',big?g.c('dminus'):g.c('dplus'));ctx.restore()}
+      const yv=cy+Math.max(ra,rb)+44;g.text(f2(p.ea),xa,yv,40,{mono:true,wt:600,color:g.c('muted')});g.text(f2(p.eb),xb,yv,40,{mono:true,wt:600,color:g.c('muted')});
+      /* the tug-of-war icon under the pair repeats the metaphor */
+      const iy=yv+82,ic=xm,kx=ic+p.off*120,mu=g.c('muted'),mf=(x,dir)=>{g.line(x,iy+34,x+dir*10,iy+58,mu,5);g.line(x,iy+34,x-dir*12,iy+58,mu,5);g.line(x,iy+34,x-dir*6,iy+4,mu,5);g.line(x-dir*6,iy+4,x+dir*24,iy,mu,5);g.circle(x-dir*9,iy-12,11,null,mu,5)};
+      g.line(ic-130,iy,ic+130,iy,g.c('rope'),6);mf(ic-150,1);mf(ic+150,-1);g.electron(kx,iy-7,6);g.electron(kx,iy+7,6);
+      const t1=bondName(p.a,p.b),t2=subtr(p.a,p.b);g.font(44,700);const w1=ctx.measureText(t1).width;g.font(40,600,true);const w2=ctx.measureText(t2).width;
+      const x0=cx-(w1+36+w2)/2,yb=h-40;g.chem(t1,x0,yb,44,{align:'left'});g.text(t2,x0+w1+36,yb+2,40,{mono:true,wt:600,align:'left'});
+    },
+    meta:(p,s)=>({stage:s,a:p.a,b:p.b,diff:f2(Math.abs(p.eb-p.ea)),deltaMinus:p.sg>0?p.b:p.sg<0?p.a:null,deltaShown:p.dq>.5,lean:+p.off.toFixed(3)})});
+});
+
+/* ---------- 4. electronSea: a crowd passing beach balls becomes metal cations in a sea of electrons ----------
+   stages: crowd, cores, sea, drift, Mg, Al. */
+D.sim('electronSea',function(host){
+  const COLS=5,ROWS=3,N=COLS*ROWS,NAMES=['sodium','magnesium','aluminum'],CH=['+','2+','3+'];
+  const b={head:0,ball:0,free:1,drift:0,n:1,name:1,cu:0};
+  const params={crowd:{...b,head:1,ball:1,free:0,name:0},cores:{...b,ball:1,free:0},sea:{...b},drift:{...b,drift:1},Mg:{...b,n:2},Al:{...b,n:3},Cu:{...b,cu:1}};
+  const lay=(w,h)=>{const mx=w*.07,top=h*.12,rw=w*.86,rh=h*.64,sx=rw/COLS,sy=rh/ROWS;return {mx,top,rw,rh,sx,sy,r:Math.min(44,sx*.27,sy*.32)}};
+  return D.canvasSim(host,{stages:['crowd','cores','sea','drift','Mg','Al','Cu'],params,dur:800,live:()=>true,
+    draw(g,p,I){
+      const ctx=g.ctx,w=I.w,h=I.h,L=lay(w,h),clk=I.live?I.clock:1.2,ink=g.c('ink'),slide=g.c('slide'),metal=g.c('metal'),cores=[];
+      for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++)cores.push([L.mx+L.sx*(c+.5),L.top+L.sy*(r+.5)]);
+      const sea=1-p.head;
+      if(sea>.01){ctx.save();ctx.globalAlpha*=sea;g.rrect(L.mx,L.top,L.rw,L.rh,26,D.mix(g.c('e'),g.c('card'),.84),null);ctx.restore()}
+      if(p.name>.01){ctx.save();ctx.globalAlpha*=p.name;g.text(p.cu>.5?'copper: one electron per core':NAMES[clamp(Math.round(p.n),1,3)-1],L.mx,L.top-36,40,{align:'left'});ctx.restore()}
+      const drawCores=()=>cores.forEach(([x,y])=>{
+        if(p.head>.01){ctx.save();ctx.globalAlpha*=p.head;ctx.beginPath();ctx.ellipse(x,y+L.r*1.55,L.r*1.25,L.r*.75,0,Math.PI,0);ctx.lineWidth=7;ctx.strokeStyle=ink;ctx.stroke();ctx.restore()}
+        const mt=D.mix(metal,'#b8682e',.75*p.cu),fill=D.mix(D.mix(g.c('card2'),slide,.2),mt,sea),stroke=D.mix(ink,D.mix(mt,'#000000',.35),sea);
+        g.circle(x,y,L.r,fill,stroke,5);
+        if(sea>.01){ctx.save();ctx.globalAlpha*=sea;g.text(CH[clamp(Math.round(p.n),1,3)-1],x,y+2,Math.round(p.n)>1?36:44,{color:g.c('on-ion')});ctx.restore()}
+      });
+      if(p.ball>.5)drawCores();
+      /* electrons: beach balls passed between heads -> drifting dots -> a stream toward the + terminal */
+      for(let j=0;j<3*N;j++){
+        const al=j<N?1:j<2*N?clamp(p.n-1,0,1):clamp(p.n-2,0,1);if(al<.01)continue;
+        const bx=L.mx+28+hash(j*3+1)*(L.rw-56),by=L.top+24+hash(j*3+2)*(L.rh-48);
+        const fx=bx+26*Math.sin(clk*(.7+hash(j*5)*.6)+6.28*hash(j*7)),fy=by+20*Math.sin(clk*(.8+hash(j*11)*.6)+6.28*hash(j*13));
+        const span=L.rw-56,dx=L.mx+28+(((bx-L.mx-28+clk*62)%span)+span)%span,dy=by+8*Math.sin(clk*1.3+j);
+        let x=fx,y=fy;
+        if(j<N&&p.free<.99){const [hx,hy]=cores[j],k=(j%COLS)<COLS-1?j+1:j-1,[kx,ky]=cores[k],s=(1-Math.cos(clk*1.7+hash(j)*6.28))/2;
+          const ax=lerp(hx,kx,s),ay=lerp(hy,ky,s)-L.r-22-Math.sin(Math.PI*s)*44;x=lerp(ax,x,p.free);y=lerp(ay,y,p.free)}
+        x=lerp(x,dx,p.drift);y=lerp(y,dy,p.drift);
+        const edge=p.drift>.01?lerp(1,clamp(Math.min(x-L.mx-28,L.mx+L.rw-28-x)/30,0,1),p.drift):1;
+        ctx.save();ctx.globalAlpha*=al*edge;
+        if(j<N&&p.ball>.01){const r=lerp(11,22,p.ball);g.circle(x,y,r,g.c('e'),D.mix(g.c('e'),'#000000',.4),3);
+          ctx.globalAlpha*=p.ball;ctx.beginPath();ctx.arc(x-r*.9,y,r*1.05,-.9,.9);ctx.lineWidth=4;ctx.strokeStyle='#ffffff';ctx.stroke();ctx.beginPath();ctx.arc(x+r*.9,y,r*1.05,Math.PI-.9,Math.PI+.9);ctx.stroke()}
+        else{g.electron(x,y,14);if(sea>.01){ctx.save();ctx.globalAlpha*=sea;g.line(x-7,y,x+7,y,g.c('on-ion'),4);ctx.restore()}}
+        ctx.restore();
+      }
+      if(p.ball<=.5)drawCores();
+      if(p.drift>.01){ctx.save();ctx.globalAlpha*=p.drift;const by=h*.9,bw=176,bh=70,cx=w/2,midY=L.top+L.rh/2,wire=g.c('ink');
+        g.line(cx-bw/2,by,L.mx-26,by,wire,6);g.line(L.mx-26,by,L.mx-26,midY,wire,6);g.line(L.mx-26,midY,L.mx,midY,wire,6);
+        g.line(cx+bw/2+16,by,L.mx+L.rw+26,by,wire,6);g.line(L.mx+L.rw+26,by,L.mx+L.rw+26,midY,wire,6);g.line(L.mx+L.rw+26,midY,L.mx+L.rw,midY,wire,6);
+        g.rrect(cx-bw/2,by-bh/2,bw,bh,12,g.c('card'),wire,5);g.rrect(cx+bw/2,by-14,16,28,4,wire,null);
+        g.text('−',cx-bw/2+38,by+2,48,{wt:700});g.text('+',cx+bw/2-38,by+2,48,{wt:700});
+        const ay=L.top+L.rh+34;g.line(cx-150,ay,cx+150,ay,g.c('accent'),7);ctx.beginPath();ctx.moveTo(cx+168,ay);ctx.lineTo(cx+140,ay-16);ctx.lineTo(cx+140,ay+16);ctx.closePath();ctx.fillStyle=g.c('accent');ctx.fill();
+        ctx.restore()}
+    },
+    meta:(p,s)=>({stage:s,electronsPerCore:Math.round(p.n),cores:N,electrons:N*Math.round(p.n),coreCharge:CH[clamp(Math.round(p.n),1,3)-1],stream:p.drift>.5,crowd:p.head>.5,
+      metal:p.cu>.5?'copper':p.head>.5?null:NAMES[clamp(Math.round(p.n),1,3)-1],caption:p.cu>.5?'copper: one electron per core':null,electronMinus:p.head<.5})});
+});
+
+/* ---------- 5. enMeter: the difference on a bar from 0 to 3.3; place(bond) drops a pointer with the subtraction ----------
+   stages: bar, lines, one per bond in data-bonds (default Cl-Cl,H-Cl,Na-Cl,H-F,Mg-Cl,Fe-Cl,Ca-O), all (every bond placed).
+   data-trail="0" hides the markers of bonds placed before. */
+D.sim('enMeter',function(host){
+  const LIST=(host.dataset.bonds||'Cl-Cl,H-Cl,Na-Cl,H-F,Mg-Cl,Fe-Cl,Ca-O').split(','),trail=host.dataset.trail!=='0';
+  const B=LIST.map(s=>{const [x,y]=s.split('-');return {s,d:dEN(x,y),label:bondName(x,y),sub:subtr(x,y)}});
+  const stages=['bar','lines',...LIST,'all'],params={bar:{lines:0,pa:0,d:B[0].d,k:0,all:0,bond:'',sub:''},lines:{lines:1,pa:0,d:B[0].d,k:0,all:0,bond:'',sub:''},all:{lines:1,pa:0,d:B[B.length-1].d,k:B.length,all:1,bond:'',sub:''}};
+  B.forEach((b,i)=>{params[b.s]={lines:1,pa:1,d:b.d,k:trail?i:0,all:0,bond:b.label,sub:b.sub}});
+  return D.canvasSim(host,{stages,params,dur:800,
+    draw(g,p,I){
+      const ctx=g.ctx,w=I.w,h=I.h,x0=64,x1=w-96,X=d=>x0+d/3.3*(x1-x0),yBar=176,bh=92,ink=g.c('ink'),mu=g.c('muted');
+      const gr=ctx.createLinearGradient(x0,0,x1,0),st=(v,c)=>gr.addColorStop(clamp(v/3.3,0,1),c);
+      st(0,g.c('np'));st(.33,g.c('np'));st(.47,g.c('pol'));st(1.73,g.c('pol'));st(1.87,g.c('ion'));st(3.3,g.c('ion'));
+      g.rrect(x0,yBar,x1-x0,bh,14,gr,ink,3);
+      if(p.pa<.99&&p.all<.5){ctx.save();ctx.globalAlpha*=1-p.pa;g.text('ΔEN = larger − smaller',w/2,64,52,{wt:700});ctx.restore()}
+      g.text('0',x0-14,yBar+bh/2+2,36,{align:'right',color:mu});g.text('3.3',x1+12,yBar+bh/2+2,36,{align:'left',color:mu});
+      /* region names: on the bar (lower half) when they fit their region, else just under it */
+      g.font(36,700);let under=false;const unders=[];
+      [['nonpolar',0,.4],['polar',.4,1.8],['ionic',1.8,3.3]].forEach(([t,a,b])=>{const tw=ctx.measureText(t).width,L=X(a),R=X(b);
+        if(tw+28<=R-L)g.text(t,(L+R)/2,yBar+bh-26,36,{wt:700});else{under=true;unders.push([t,clamp((L+R)/2,tw/2+6,w-tw/2-6)])}});
+      let capOK=true;
+      if(p.lines>.01){ctx.save();ctx.globalAlpha*=p.lines;
+        [.4,1.8].forEach(v=>{g.line(X(v),yBar-12,X(v),yBar+bh+12,ink,4,[10,7]);g.text(v.toFixed(1),X(v)+10,yBar+28,36,{align:'left',wt:700})});
+        ctx.restore()}
+      /* markers of bonds placed earlier. Few markers: text labels in rows, no leader crosses a label.
+         Many (or no clean fit, and always on the review stage): numbered markers, stacked, with a numbered list sorted by difference. */
+      const shown=B.map((b,i)=>({b,a:p.all>.5?1:clamp(p.k-i,0,1)})).filter(o=>o.a>.01),y0r=yBar+bh+(under?100:54),rowH=48,maxRow=Math.max(1,Math.floor((h-96-y0r)/rowH));
+      let placed=[],ok=p.all<=.5;
+      if(ok)for(const o of shown){const x=X(o.b.d),t=o.b.label+' '+f2(o.b.d);g.font(36,600);const tw=ctx.measureText(t).width;let best=null;
+        for(let r=0;r<=maxRow&&!best;r++)for(const lo of [x-tw/2,x-16,x+16-tw]){const L=clamp(lo,6,w-6-tw),R=L+tw;if(x<L-2||x>R+2)continue;
+          if(!placed.some(q=>(q.r===r&&L<q.R+20&&R>q.L-20)||(q.r<r&&x>q.L-10&&x<q.R+10)||(q.r>r&&q.x>L-10&&q.x<R+10))){best={r,L,R,x,t,tw,a:o.a};break}}
+        if(!best){ok=false;break}placed.push(best)}
+      const tri=(x,a)=>{ctx.save();ctx.globalAlpha*=a;ctx.beginPath();ctx.moveTo(x,yBar+bh+2);ctx.lineTo(x-11,yBar+bh+20);ctx.lineTo(x+11,yBar+bh+20);ctx.closePath();ctx.fillStyle=ink;ctx.fill();ctx.restore()};
+      if(ok)placed.forEach(q=>{const ty=y0r+q.r*rowH;tri(q.x,q.a);ctx.save();ctx.globalAlpha*=q.a;if(q.r>0)g.line(q.x,yBar+bh+22,q.x,ty-22,mu,3);g.text(q.t,q.L+q.tw/2,ty,36,{wt:600});ctx.restore()});
+      else{const sorted=shown.slice().sort((u,v)=>u.b.d-v.b.d),lv=[];
+        sorted.forEach((o,n)=>{const x=X(o.b.d);let L=0;while((lv[L]||[]).some(q=>Math.abs(q-x)<52))L++;(lv[L]=lv[L]||[]).push(x);const cy=yBar+bh+(under?96:32)+L*52;
+          ctx.save();ctx.globalAlpha*=o.a;if(L>0)g.line(x,yBar+bh+4,x,cy-24,mu,3);else g.line(x,yBar+bh+2,x,cy-24,mu,3);g.circle(x,cy,24,g.c('card'),ink,3);g.text(String(n+1),x,cy+1,36,{wt:700});ctx.restore()});
+        const ly=yBar+bh+(under?96:32)+Math.max(1,lv.length)*52+10,cols=2,cw=(w-60)/cols,rows=Math.ceil(sorted.length/cols);
+        sorted.forEach((o,n)=>{const c=Math.floor(n/rows),r=n%rows,x=30+c*cw,y=ly+r*46;ctx.save();ctx.globalAlpha*=o.a;
+          g.circle(x+20,y,20,null,ink,3);g.text(String(n+1),x+20,y+1,36,{wt:700});g.text(o.b.label+'  '+f2(o.b.d),x+52,y+1,36,{align:'left',wt:600});ctx.restore()});
+        if(ly+(rows-1)*46+24>h-66)capOK=false}
+      /* names under the bar go on top, with a halo, so leaders break around them */
+      unders.forEach(([t,x])=>g.text(t,x,yBar+bh+46,36,{wt:700,halo:12}));
+      if(p.lines>.01&&capOK){ctx.save();ctx.globalAlpha*=p.lines;g.text('The lines are a guide, not a wall.',w/2,h-40,36,{color:mu,wt:600});ctx.restore()}
+      if(p.pa>.01){ctx.save();ctx.globalAlpha*=p.pa;const x=X(p.d),drop=(1-p.pa)*-40;
+        ctx.beginPath();ctx.moveTo(x,yBar-2+drop);ctx.lineTo(x-24,yBar-46+drop);ctx.lineTo(x+24,yBar-46+drop);ctx.closePath();ctx.fillStyle=ink;ctx.fill();
+        g.font(40,600,true);const tw=Math.max(ctx.measureText(p.sub).width,120),tx=clamp(x,tw/2+8,w-tw/2-8);
+        g.chem(p.bond,tx,42+drop,44);g.text(p.sub,tx,96+drop,40,{mono:true,wt:600});ctx.restore()}
+    },
+    meta:(p,s)=>({stage:s,bond:p.bond,sub:p.sub,placed:B.filter((b,i)=>p.all>.5||p.k-i>.5).map(b=>b.label),guideLines:[.4,1.8],guideLabel:p.lines>.5}),
+  });
+});
+
+/* ---------- 6. ptMap: the periodic table, metals from the left, nonmetals from the right, the staircase; pair(a,b) ----------
+   stages: outline, metals, nonmetals, then one per pair in data-pairs (default Na-Cl,H-Cl,Cu-Cu). Symbols 34 px; a symbol that
+   cannot fit its cell (narrow host) is left out, except in the lit pair. */
+D.sim('ptMap',function(host){
+  const PAIRS=(host.dataset.pairs||'Na-Cl,H-Cl,Cu-Cu').split(','),find=s=>CELLS.find(c=>c.s===s),capOn=host.dataset.caption!=='0',band=+(host.dataset.band||0);let omitted=0,cellPx=0;
+  /* geometry: data-band keeps the main table (rows 1 to 7) above a band of that height at the bottom of the host */
+  const geom=(w,h)=>{const rs=capOn?64:0,c=Math.min((w-16)/18,(h-12-rs)/9.7,band?(h-12-band)/7.2:1e9);return {rs,c,X0:(w-18*c)/2,Y0:band?Math.max(6,(h-band-7.2*c)/2):(h-rs-9.6*c)/2}};
+  const params={outline:{met:0,non:0,pk:0,ax:0,ay:2,bx:16,by:2,a:'',b:''},metals:{met:1,non:0,pk:0,ax:0,ay:2,bx:16,by:2,a:'',b:''},nonmetals:{met:1,non:1,pk:0,ax:0,ay:2,bx:16,by:2,a:'',b:''}};
+  PAIRS.forEach(s=>{const [a,b]=s.split('-'),A=find(a),B=find(b);params[s]={met:1,non:1,pk:1,ax:A.x,ay:A.y,bx:B.x,by:B.y,a,b}});
+  const caption=(a,b)=>{const ka=kind(a),kb=kind(b);if(a===b)return [a+' alone','one metal'];
+    return [a+' and '+b,ka!==kb&&(ka==='metal'||kb==='metal')?'metal + nonmetal':ka==='nonmetal'&&kb==='nonmetal'?'two nonmetals':ka+' + '+kb]};
+  return D.canvasSim(host,{stages:['outline','metals','nonmetals',...PAIRS],params,dur:{outline:500,metals:900,nonmetals:900},
+    draw(g,p,I){
+      const ctx=g.ctx,w=I.w,h=I.h,{rs,c,X0,Y0}=geom(w,h),ink=g.c('ink'),card=g.c('card');omitted=0;cellPx=c;
+      const at=(x,y)=>[X0+x*c,Y0+y*c];
+      const lit=p.pk>.01,[pax,pay]=at(p.ax+.5,p.ay+.5),[pbx,pby]=at(p.bx+.5,p.by+.5),same=Math.hypot(pax-pbx,pay-pby)<1;
+      if(lit&&!same){ctx.save();ctx.globalAlpha*=p.pk;g.line(pax,pay,pbx,pby,g.c('warm'),9);ctx.restore()}
+      CELLS.forEach(e=>{const [x,y]=at(e.x,e.y),k=kind(e.s);
+        if(e.s==='*'){g.rrect(x+3,y+3,c-6,c-6,6,null,g.c('line'),2);return}
+        const mt=k==='metal'?clamp((p.met-e.x/18*.6)/.4,0,1):0,nm=k==='nonmetal'?clamp((p.non-(17-e.x)/18*.6)/.4,0,1):0;
+        let fill=D.mix(card,g.c('metal'),.42*mt);fill=D.mix(fill,g.c('nonmetal'),.4*nm);
+        g.rrect(x+2,y+2,c-4,c-4,6,fill,g.c('line'),2);
+        if(!g.fit(e.s,x+c/2,y+c/2+1,34,c-6,{wt:700,min:1}))omitted++;
+      });
+      if(Math.max(p.met,p.non)>.01){ctx.save();ctx.globalAlpha*=Math.max(p.met,p.non);ctx.beginPath();STAIR.forEach(([x,y],i)=>{const [px,py]=at(x,y);i?ctx.lineTo(px,py):ctx.moveTo(px,py)});
+        ctx.lineWidth=7;ctx.lineJoin='round';ctx.strokeStyle=ink;ctx.stroke();ctx.restore()}
+      /* legend and caption live in the empty space above the transition metals */
+      g.font(34,700);const lgW=32+12+ctx.measureText('metals').width+30+32+12+ctx.measureText('nonmetals').width,[rx,ly]=at(16.85,0),lx=rx-lgW;
+      if(p.met>.01){ctx.save();ctx.globalAlpha*=p.met;g.rrect(lx,ly+c*.5-16,32,32,8,D.mix(card,g.c('metal'),.42),ink,2);g.text('metals',lx+44,ly+c*.5+1,34,{align:'left'});ctx.restore()}
+      if(p.non>.01){ctx.save();ctx.globalAlpha*=p.non;const ox=lx+44+ctx.measureText('metals').width+30;g.rrect(ox,ly+c*.5-16,32,32,8,D.mix(card,g.c('nonmetal'),.4),ink,2);g.text('nonmetals',ox+44,ly+c*.5+1,34,{align:'left'});ctx.restore()}
+      if(p.pk>.01){ctx.save();ctx.globalAlpha*=p.pk;
+        const r=Math.max(c*.78,34),big=(x,y,s)=>{x=clamp(x,r+4,w-r-4);y=clamp(y,r+4,h-r-4);g.rrect(x-r,y-r,2*r,2*r,10,card,g.c('accent'),6);g.text(s,x,y+2,Math.max(44,r*.9))};
+        if(same)big(pax+12,pay+12,p.b);big(pax,pay,p.a);if(!same)big(pbx,pby,p.b);
+        if(capOn){const cap=caption(p.a,p.b),t1=cap[0]+': ',cy=h-34;g.font(40,700);const w1=ctx.measureText(t1).width,w2=ctx.measureText(cap[1]).width,x0=w/2-(w1+w2)/2;
+        g.text(t1,x0,cy,40,{align:'left'});g.text(cap[1],x0+w1,cy,40,{align:'left',color:g.c('accent')})}
+        ctx.restore()}
+    },
+    units:(p,I)=>{if(p.pk<.5)return [];const w=I.w,h=I.h,{c,X0,Y0}=geom(w,h),r=Math.max(c*.78,34);
+      const at=(x,y)=>[clamp(X0+(x+.5)*c,r+4,w-r-4),clamp(Y0+(y+.5)*c,r+4,h-r-4)],[ax,ay]=at(p.ax,p.ay),[bx,by]=at(p.bx,p.by),same=p.a===p.b;
+      const L=Math.min(ax,bx)-r-10,T=Math.min(ay,by)-r-10,R=Math.max(ax,bx)+r+10+(same?12:0),B=Math.max(ay,by)+r+10+(same?12:0);return [{x:L,y:T,w:R-L,h:B-T,label:'pair '+p.a+'–'+p.b}]},
+    meta:(p,s)=>({stage:s,pair:p.a?[p.a,p.b]:null,kinds:p.a?[kind(p.a),kind(p.b)]:null,caption:p.a?caption(p.a,p.b):null,cells:CELLS.filter(c=>c.s!=='*').length,omittedSymbols:omitted,cellPx:Math.round(cellPx)})});
+});
+
+/* ---------- 7. cerBuilder (DOM): claim, evidence, reasoning, strength fill one per stage ----------
+   markup: <div class="sim" data-sim="cerBuilder"><div data-set="KF"><p data-part="claim">…</p>…</div><div data-set="HCl">…</div></div>
+   stages: empty, then <set>-claim, <set>-evidence, <set>-reasoning, <set>-strength for each set. */
+D.sim('cerBuilder',function(host){
+  const PARTS=['claim','evidence','reasoning','strength'],TITLE={claim:'Claim',evidence:'Evidence',reasoning:'Reasoning',strength:'Strength'};
+  const sets=[...host.querySelectorAll(':scope>[data-set]')],grid=document.createElement('div'),boxes={},items=[];grid.className='cer-grid';
+  PARTS.forEach(k=>{const b=document.createElement('div');b.className='cer-box';b.innerHTML='<h3>'+TITLE[k]+'</h3><div class="cer-body"></div>';grid.appendChild(b);boxes[k]=b});
+  sets.forEach(s=>{PARTS.forEach(k=>{const el=s.querySelector('[data-part="'+k+'"]');if(el){boxes[k].lastChild.appendChild(el);items.push({set:s.dataset.set,k,el})}});s.remove()});
+  host.appendChild(grid);host.classList.add('cer');
+  const stages=['empty'];sets.forEach(s=>PARTS.forEach(k=>stages.push(s.dataset.set+'-'+k)));
+  let stage='empty';
+  const split=s=>{if(s==='empty')return [null,-1];const i=s.lastIndexOf('-');return [s.slice(0,i),PARTS.indexOf(s.slice(i+1))]};
+  return {stages,
+    set(s,instant){if(!stages.includes(s)){console.error('Deck: '+host.id+' has no stage "'+s+'"');return}stage=s;const [set,pi]=split(s);
+      if(instant||D.reduced())host.classList.add('instant');
+      items.forEach(it=>it.el.classList.toggle('on',it.set===set&&PARTS.indexOf(it.k)<=pi));
+      PARTS.forEach((k,i)=>{boxes[k].classList.toggle('now',i===pi);boxes[k].classList.toggle('full',set!==null&&i<=pi)});
+      if(host.classList.contains('instant')){void host.offsetWidth;requestAnimationFrame(()=>requestAnimationFrame(()=>host.classList.remove('instant')))}},
+    get:()=>stage,bounds:()=>({x:0,y:0,w:host.clientWidth,h:host.clientHeight}),resize(){},redraw(){},active(){},minFont:Infinity,
+    units:()=>PARTS.map(k=>({el:boxes[k],label:TITLE[k]})),
+    meta(){const [set,pi]=split(stage);return {stage,set,filled:PARTS.slice(0,pi+1)}}};
+});
+})();
+</script>

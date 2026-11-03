@@ -1,0 +1,751 @@
+<main id="stage">
+<div id="prog"><i></i></div>
+<svg class="sprite" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"><defs>
+<symbol id="ic-ionic" viewBox="0 0 100 100"><circle cx="30" cy="30" r="18" class="f-cat"/><circle cx="70" cy="30" r="22" class="f-an"/><circle cx="30" cy="70" r="22" class="f-an"/><circle cx="70" cy="70" r="18" class="f-cat"/><path d="M22 30h16M30 22v16M62 30h16M22 70h16M62 70h16M70 62v16" class="k-on" stroke-width="5" stroke-linecap="round"/></symbol>
+<symbol id="ic-covalent" viewBox="0 0 100 100"><circle cx="34" cy="50" r="28" class="f-nm k-nm" fill-opacity=".28" stroke-width="3"/><circle cx="66" cy="50" r="28" class="f-nm k-nm" fill-opacity=".28" stroke-width="3"/><circle cx="50" cy="40" r="7" class="f-e"/><circle cx="50" cy="60" r="7" class="f-e"/></symbol>
+<symbol id="ic-metallic" viewBox="0 0 100 100"><rect x="4" y="12" width="92" height="76" rx="14" class="f-sea"/><circle cx="30" cy="34" r="14" class="f-metal"/><circle cx="70" cy="34" r="14" class="f-metal"/><circle cx="30" cy="68" r="14" class="f-metal"/><circle cx="70" cy="68" r="14" class="f-metal"/><path d="M24 34h12M30 28v12M64 34h12M70 28v12M24 68h12M30 62v12M64 68h12M70 62v12" class="k-on" stroke-width="4" stroke-linecap="round"/><g class="f-e"><circle cx="50" cy="51" r="8"/><circle cx="12" cy="51" r="8"/><circle cx="88" cy="51" r="8"/><circle cx="50" cy="16" r="8"/><circle cx="50" cy="86" r="8"/></g><path d="M46 51h8M8 51h8M84 51h8M46 16h8M46 86h8" class="k-on" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="ic-wire" viewBox="0 0 200 100"><path d="M6 70C40 70 52 50 92 50" fill="none" stroke="#3a3f44" stroke-width="26" stroke-linecap="round"/><path d="M6 70C40 70 52 50 92 50" fill="none" stroke="#6b737a" stroke-width="8" stroke-linecap="round" opacity=".6"/><rect x="86" y="36" width="14" height="28" rx="4" fill="#2b2f33"/><g fill="none" stroke-linecap="round"><path d="M98 44c30-2 52-14 90-26M98 48c34 0 58-6 92-8M98 52c34 2 58 8 92 12M98 56c30 4 52 14 90 28" stroke="#9a4f1f" stroke-width="7"/><path d="M98 44c30-2 52-14 90-26M98 48c34 0 58-6 92-8M98 52c34 2 58 8 92 12M98 56c30 4 52 14 90 28" stroke="#e8955a" stroke-width="3"/></g><circle cx="150" cy="40" r="3" fill="#fff2d8"/><circle cx="168" cy="60" r="2.5" fill="#fff2d8"/></symbol>
+<symbol id="ic-en" viewBox="0 0 100 100"><path d="M8 56h84" class="k-rope" stroke-width="7" stroke-linecap="round"/><circle cx="66" cy="49" r="6" class="f-e"/><circle cx="66" cy="63" r="6" class="f-e"/><path d="M40 26h44m-12-10 12 10-12 10" fill="none" class="k-acc" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ic-partial" viewBox="0 0 100 100"><circle cx="34" cy="58" r="24" class="f-dp"/><circle cx="66" cy="58" r="28" class="f-dm"/><path d="M22 18h16M30 10v16M62 18h16" class="k-ink" stroke-width="5" stroke-linecap="round"/></symbol>
+<symbol id="ic-crystal" viewBox="0 0 100 100"><rect x="6" y="6" width="88" height="88" rx="14" class="f-card2 k-acc" stroke-width="3"/><circle cx="30" cy="30" r="12" class="f-cat"/><circle cx="70" cy="30" r="15" class="f-an"/><circle cx="30" cy="70" r="15" class="f-an"/><circle cx="70" cy="70" r="12" class="f-cat"/></symbol>
+<symbol id="ic-molecule" viewBox="0 0 100 100"><path d="M50 46 22 70M50 46l28 24" class="k-ink" stroke-width="7" stroke-linecap="round"/><circle cx="50" cy="44" r="24" class="f-nm"/><circle cx="20" cy="72" r="14" class="f-nms k-nm" stroke-width="3"/><circle cx="80" cy="72" r="14" class="f-nms k-nm" stroke-width="3"/></symbol>
+<symbol id="ic-sodium" viewBox="0 0 100 100"><path d="M10 52 46 40l44 12v26L54 90 10 78Z" class="f-metal k-ink" stroke-width="3" stroke-linejoin="round"/><path d="M10 52l36 12 44-12" fill="none" class="k-ink" stroke-width="3"/><path d="M46 64v26" class="k-ink" stroke-width="3"/><path d="M60 14 34 50l6 4 26-36Z" class="f-white k-ink" stroke-width="3" stroke-linejoin="round"/><path d="M62 12l12-10 6 5-12 10Z" class="f-ink"/></symbol>
+<symbol id="ic-chlorine" viewBox="0 0 100 100"><path d="M36 8h28v22l20 52a8 8 0 0 1-8 10H24a8 8 0 0 1-8-10l20-52Z" class="f-card k-ink" stroke-width="3" stroke-linejoin="round"/><path d="M28 50h44l12 32a8 8 0 0 1-8 10H24a8 8 0 0 1-8-10Z" class="f-gas"/><circle cx="40" cy="44" r="8" class="f-gas"/><circle cx="58" cy="38" r="7" class="f-gas"/><path d="M36 8h28v22l20 52a8 8 0 0 1-8 10H24a8 8 0 0 1-8-10l20-52Z" fill="none" class="k-ink" stroke-width="3" stroke-linejoin="round"/></symbol>
+<symbol id="ic-salt" viewBox="0 0 100 100"><rect x="8" y="56" width="30" height="30" class="f-white k-ink" stroke-width="3"/><rect x="40" y="50" width="34" height="34" class="f-white k-ink" stroke-width="3"/><rect x="20" y="24" width="26" height="26" class="f-white k-ink" stroke-width="3"/><path d="M86 14v52" class="k-ink" stroke-width="10" stroke-linecap="round"/><path d="M86 30v36" class="k-cat" stroke-width="5" stroke-linecap="round"/><circle cx="86" cy="76" r="10" class="f-cat k-ink" stroke-width="3"/></symbol>
+<symbol id="ic-saltpack" viewBox="0 0 100 100"><path d="M22 18h56l-4 8 4 8v52H22V34l4-8Z" class="f-white k-ink" stroke-width="3" stroke-linejoin="round"/><path d="M22 34h56" class="k-ink" stroke-width="3"/><rect x="36" y="52" width="8" height="8" class="f-ink"/><rect x="52" y="60" width="8" height="8" class="f-ink"/><rect x="42" y="70" width="8" height="8" class="f-ink"/></symbol>
+<symbol id="ic-bottle" viewBox="0 0 100 100"><rect x="40" y="6" width="20" height="10" rx="3" class="f-an"/><path d="M38 16h24v10l8 12v50a6 6 0 0 1-6 6H36a6 6 0 0 1-6-6V38l8-12Z" class="f-water k-ink" stroke-width="3" stroke-linejoin="round"/><path d="M30 52h40" class="k-ink" stroke-width="3"/></symbol>
+<symbol id="ic-cable" viewBox="0 0 100 100"><rect x="56" y="8" width="28" height="30" rx="5" class="f-card2 k-ink" stroke-width="3"/><path d="M62 8V0m16 8V0" class="k-ink" stroke-width="4"/><path d="M70 38c0 24-52 8-52 34 0 10 8 16 18 16" fill="none" class="k-ink" stroke-width="10" stroke-linecap="round"/><path d="M36 88h14" class="k-copper" stroke-width="10" stroke-linecap="round" style="stroke:#c8763a"/></symbol>
+<symbol id="ic-can" viewBox="0 0 100 100"><path d="M26 18h48v68a6 6 0 0 1-6 6H32a6 6 0 0 1-6-6Z" class="f-red2 k-ink" stroke-width="3"/><ellipse cx="50" cy="18" rx="24" ry="8" class="f-metal k-ink" stroke-width="3"/><path d="M26 40h48M26 72h48" class="k-on" stroke-width="4"/></symbol>
+<symbol id="ic-pencil" viewBox="0 0 100 100"><path d="M18 70 66 22l14 14-48 48Z" class="f-wood k-ink" stroke-width="3" stroke-linejoin="round"/><path d="M18 70 10 92l22-8Z" class="f-card k-ink" stroke-width="3" stroke-linejoin="round"/><path d="M10 92l4-12 8 8Z" class="f-lead"/><path d="M66 22l8-8a6 6 0 0 1 8 0l6 6a6 6 0 0 1 0 8l-8 8Z" class="f-pink k-ink" stroke-width="3"/></symbol>
+<symbol id="ic-air" viewBox="0 0 100 100"><path d="M6 24h50a10 10 0 1 0-10-10M6 42h70a10 10 0 1 1-10 10" fill="none" class="k-muted" stroke-width="5" stroke-linecap="round"/><path d="M40 74h20" class="k-ink" stroke-width="6"/><circle cx="34" cy="74" r="16" class="f-nm"/><circle cx="66" cy="74" r="16" class="f-nm"/></symbol>
+<symbol id="ic-next" viewBox="0 0 120 100"><rect x="6" y="10" width="108" height="80" rx="22" class="f-card2 k-ink" stroke-width="3"/><path d="M48 30v40l32-20Z" class="f-acc"/></symbol>
+<symbol id="ic-back" viewBox="0 0 120 100"><rect x="6" y="10" width="108" height="80" rx="22" class="f-card2 k-ink" stroke-width="3"/><path d="M72 30v40L40 50Z" class="f-acc"/></symbol>
+<symbol id="ic-blank" viewBox="0 0 120 100"><rect x="6" y="10" width="108" height="80" rx="22" class="f-card2 k-ink" stroke-width="3"/><rect x="34" y="30" width="52" height="34" rx="4" class="f-ink"/><path d="M52 74h16" class="k-ink" stroke-width="5" stroke-linecap="round"/></symbol>
+<symbol id="ic-start" viewBox="0 0 120 100"><rect x="6" y="10" width="108" height="80" rx="22" class="f-card2 k-ink" stroke-width="3"/><path d="M30 34v-8h10M90 34v-8H80M30 66v8h10M90 66v8H80" fill="none" class="k-acc" stroke-width="5" stroke-linecap="round"/><path d="M52 38v24l20-12Z" class="f-acc"/></symbol>
+</defs></svg>
+<section class="slide t-cover" id="s01" data-period="1" data-title="Predicting bond type" data-sec="Lesson 4.1" data-ref="Reading §4.1">
+  <h2>Predicting bond type</h2>
+  <div class="body">
+    <div class="card dq reg"><p class="tag">Driving question</p><p>How can the periodic table predict the kind of bond two elements form?</p></div>
+    <div class="r800">
+      <div class="key"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Next button"><use href="#ic-next"/></svg><b>Next</b><span>next step</span></div>
+      <div class="key"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Back button"><use href="#ic-back"/></svg><b>Back</b><span>one step back</span></div>
+      <div class="key"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Blank button"><use href="#ic-blank"/></svg><b>Blank</b><span>zoom part by part<br>twice fast: blank</span></div>
+      <div class="key"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Start button"><use href="#ic-start"/></svg><b>Start</b><span>full screen</span></div>
+    </div>
+  </div>
+  <aside class="notes"><b>Safety.</b> Sodium reacting with chlorine is shown by video only and never performed: sodium reacts violently with water and chlorine is a toxic gas. <b>Data and sources.</b> Electronegativity: Pauling values as in Lesson 3.3 (Na 0.93, Cl 3.16, H 2.20, F 3.98, O 3.44, Mg 1.31, Ca 1.00, Fe 1.83, K 0.82, Li 0.98, N 3.04, C 2.55, S 2.58). Energies: NIST (Na first ionization energy 496 kJ/mol; Cl electron affinity 349 kJ/mol); lattice energy of NaCl about 787 kJ/mol (CRC). Guide lines 0.4 and 1.8: OpenStax Chemistry 2e, "a general guide, with many exceptions". Ion sizes: Shannon 1976 (Na⁺ 102 pm, Cl⁻ 181 pm). Melting and boiling points: PubChem (NaCl 801 °C, MgCl₂ 714 °C), NIST WebBook (HF boils at 19.5 °C). Names in Lesson 4.2 follow IUPAC Red Book 2005. <b>Clicker.</b> Logitech R800: Next = PageDown, Back = PageUp (while zoomed: exit the zoom), Start/stop = F5 then Escape, Blank = period. Blank zooms one part of the slide per press, animation first; the press after the last part exits; two fast presses on an unzoomed slide blank the screen. Mouse: click an option to mark it right or wrong; click the slide number or the section label for the slide list. Laptop: N notes, O overview, T theme, Ctrl+P run-sheet.</aside>
+  <script>Deck.frames('s01',[
+    {t:0.5,note:"Two periods. Read the driving question aloud; students copy it. Show the four clicker buttons once so students know a zoom or a blank screen is on purpose."}
+  ]);</script>
+</section>
+
+<section class="slide t-hook" id="s02" data-period="1" data-title="Tug of war" data-sec="Hook" data-ref="Reading §4.1.2">
+  <h2>Tug of war</h2>
+  <div class="body">
+    <div class="sim" id="s02-sim" data-sim="tugOfWar" data-pairs="Cl-Cl,H-Cl,Na-Cl" aria-label="Two teams pull on a rope. The knot is a pair of electrons."></div>
+    <div class="stack card band">
+      <p class="line" id="s02-l0">Two teams pull on one rope.</p>
+      <p class="line" id="s02-l1" data-label="predict">Predict: who wins the rope?</p>
+      <p class="line" id="s02-l2" data-label="even pull">Same strength: the knot stays in the middle.</p>
+      <p class="line" id="s02-l3" data-label="uneven pull">Cl pulls harder than H. The knot moves to Cl.</p>
+      <p class="line" id="s02-l4" data-label="blowout">Na lets go. The electrons go to Cl.</p>
+      <p class="line" id="s02-l5" data-label="three bonds">Atoms pull on electrons like this. That pull is electronegativity <span class="es">(electronegatividad)</span>.</p>
+    </div>
+  </div>
+  <aside class="notes">Narrative thread for 4.1: the rope. Team strength is the Pauling electronegativity from Lesson 3.3. Keep it light; the chemistry words come on slides 5 to 10.</aside>
+  <script>Deck.frames('s02',[
+    {show:"s02-l0",stage:"s02-sim:teams",t:0.5,note:"Everyday scene. Ask who has played tug of war. No chemistry yet."},
+    {show:"s02-l1",hide:"s02-l0",t:0.75,note:"Prediction: take one answer per table. Most say \"the stronger team\". Ask: what if both teams are equal?"},
+    {show:"s02-l2",hide:"s02-l1",stage:"s02-sim:even",t:0.5,note:"Two chlorine atoms, 3.16 and 3.16. The label above the teams says what the numbers are: the pull on electrons (electronegativity). The knot is the shared pair of electrons; it stays centered."},
+    {show:"s02-l3",hide:"s02-l2",stage:"s02-sim:uneven",t:0.75,note:"H 2.20, Cl 3.16. The knot slides toward Cl in proportion to the difference; both teams still hold. Misconception to listen for: \"Cl takes the electrons\" (not yet: still shared)."},
+    {show:"s02-l4",hide:"s02-l3",stage:"s02-sim:blowout",t:0.75,note:"Na 0.93, Cl 3.16. The knot is pulled all the way; the rope fades; the teams gain + and − and slide together. Say: the pull between + and − is now the bond."},
+    {show:"s02-l5",hide:"s02-l4",stage:"s02-sim:labels",t:0.75,note:"Three mini-frames: nonpolar covalent, polar covalent, ionic. Students write the word and the Spanish cognate."}
+  ]);</script>
+</section>
+
+<section class="slide t-launch" id="s03" data-period="1" data-title="Sodium, chlorine, salt" data-sec="Launch" data-ref="Reading §4.1 opener">
+  <h2>Sodium, chlorine, salt</h2>
+  <div class="body">
+    <div class="trio" id="s03-trio">
+      <div class="card pcard slot"><div data-b="s03-na" data-label="sodium"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: a block of sodium metal cut with a knife"><use href="#ic-sodium"/></svg><p class="nm">sodium</p><p class="cap">soft metal, cut with a knife</p></div></div>
+      <div class="card pcard slot"><div data-b="s03-cl" data-label="chlorine"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: a jar of yellow-green chlorine gas"><use href="#ic-chlorine"/></svg><p class="nm">chlorine</p><p class="cap">yellow-green, poisonous gas</p></div></div>
+      <div class="card pcard slot"><div data-b="s03-salt" data-label="salt"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: white salt crystals and a thermometer"><use href="#ic-salt"/></svg><p class="nm">sodium chloride</p><p class="cap">white crystals, melts at <span class="nw">801 °C</span></p></div></div>
+    </div>
+    <div class="card dq reg" id="s03-dq" data-label="driving question"><p>How can the periodic table predict the kind of bond two elements form?</p></div>
+    <div class="qrow" id="s03-st" data-label="write 60 s"><ol class="frames"><li>I think sodium and chlorine bond differently from two chlorine atoms because <span class="gap"></span>.</li></ol><div class="timer"></div></div>
+  </div>
+  <aside class="notes">The video of sodium burning in chlorine is the hook here; show it from a trusted source. Never perform it.</aside>
+  <script>Deck.frames('s03',[
+    {show:"s03-na",t:0.75,note:"Show the sodium clip or photo. Ask: what kind of element is this? (a metal)."},
+    {show:"s03-cl",t:0.5,note:"Chlorine is a toxic gas, a nonmetal. Ask: what do you predict when they meet?"},
+    {show:"s03-salt",t:0.75,note:"Two dangerous elements make table salt, which melts at 801 °C. Ask: why is it so different?"},
+    {show:"s03-dq",cls:{"s03-trio": "small"},t:0.5,note:"Read the driving question. Students copy it at the top of the notebook page."},
+    {show:"s03-st",timer:60,t:1.5,note:"Sixty seconds of writing with the starter. Collect two answers; do not correct yet. Listen for \"they share\" or \"they trade\"."}
+  ]);</script>
+</section>
+
+<section class="slide t-routine" id="s04" data-period="1" data-title="Predict now" data-sec="Predict" data-ref="Reading §4.1 Before you read">
+  <h2>Predict now</h2>
+  <div class="body">
+    <div class="card prompt"><p>Hands up: one finger for A, two for B, three for C. Write your letter.</p></div>
+    <div class="stack top">
+      <div class="card check" id="s04-q1" data-label="question 1" data-mode="pick"><p class="tag">Question 1</p><p class="q">Solid salt is made of…</p><ol class="opts col1" data-lay="col"><li class="opt"><b>A</b><span>ions</span></li><li class="opt"><b>B</b><span>NaCl molecules</span></li><li class="opt"><b>C</b><span>atoms</span></li></ol></div>
+      <div class="card check" id="s04-q2" data-label="question 2" data-mode="pick"><p class="tag">Question 2</p><p class="q">In HCl, the shared pair sits…</p><ol class="opts col1" data-lay="col"><li class="opt"><b>A</b><span>closer to Cl</span></li><li class="opt"><b>B</b><span>closer to H</span></li><li class="opt"><b>C</b><span>in the middle</span></li></ol></div>
+      <div class="card check" id="s04-q3" data-label="question 3" data-mode="pick"><p class="tag">Question 3</p><p class="q">A copper wire is held together by…</p><ol class="opts col1" data-lay="col"><li class="opt"><b>A</b><span>cations in a sea of electrons</span></li><li class="opt"><b>B</b><span>shared pairs</span></li><li class="opt"><b>C</b><span>+ and − copper ions</span></li></ol></div>
+    </div>
+  </div>
+  <aside class="notes">No answers on this slide. Students keep their letters; slide 24 returns all three answers.</aside>
+  <script>Deck.frames('s04',[
+    {show:"s04-q1",t:0.75,note:"Count hands for A, B, C and write the counts on the board. Do not react to the choices. A mouse click on an option only highlights it; there is no grading on this slide."},
+    {show:"s04-q2",hide:"s04-q1",t:0.75,note:"Count hands again. Many choose \"in the middle\" because a pair is \"shared\"."},
+    {show:"s04-q3",hide:"s04-q2",t:1,note:"Count hands. Option C is a common idea: metals made of + and − ions. Keep the counts for slide 24."}
+  ]);</script>
+</section>
+
+<section class="slide t-words" id="s05" data-period="1" data-title="Targets and words" data-sec="Targets" data-ref="Reading §4.1 Vocabulary">
+  <h2>Targets and words</h2>
+  <div class="body">
+    <div class="stack">
+      <div class="card" id="s05-ican" data-label="targets"><p class="tag">I can…</p><ul class="ican">
+        <li><b>4.1.1</b>explain how ions form and attract.</li>
+        <li><b>4.1.2</b>tell polar from nonpolar bonds.</li>
+        <li><b>4.1.3</b>describe the electron sea in metals.</li>
+        <li><b>4.1.4</b>predict a bond type from the table.</li>
+        <li><b>4.1.5</b>argue for a bond type with evidence.</li></ul></div>
+      <div class="words" id="s05-words" data-label="words">
+        <div class="wcard"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: ionic bond"><use href="#ic-ionic"/></svg><p class="t">ionic bond <span class="es">(enlace iónico)</span></p><p class="m">the pull between + and − ions</p></div>
+        <div class="wcard"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: covalent bond"><use href="#ic-covalent"/></svg><p class="t">covalent bond <span class="es">(enlace covalente)</span></p><p class="m">a pair of electrons two atoms share</p></div>
+        <div class="wcard"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: metallic bond"><use href="#ic-metallic"/></svg><p class="t">metallic bond <span class="es">(enlace metálico)</span></p><p class="m">cations held in a sea of electrons</p></div>
+        <div class="wcard"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: electronegativity"><use href="#ic-en"/></svg><p class="t">electronegativity <span class="es">(electronegatividad)</span></p><p class="m">how hard an atom pulls on electrons</p></div>
+        <div class="wcard"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: partial charge"><use href="#ic-partial"/></svg><p class="t">partial charge <span class="es">(carga parcial)</span></p><p class="m">δ (delta) means a little: δ+ or δ−</p></div>
+        <div class="wcard"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: crystal"><use href="#ic-crystal"/></svg><p class="t">crystal <span class="es">(cristal)</span></p><p class="m">ions in a pattern that repeats</p></div>
+        <div class="wcard"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: molecule"><use href="#ic-molecule"/></svg><p class="t">molecule <span class="es">(molécula)</span></p><p class="m">atoms joined by shared pairs</p></div>
+      </div>
+    </div>
+    <div class="legend" id="s05-leg" data-label="color code"><span><i class="i-cat">+</i>cation</span><span><i class="i-an">−</i>anion</span><span><i class="e"></i>electron</span><span><i class="i-metal"> </i>metal</span><span><i class="i-nm"> </i>nonmetal</span><span><i class="i-dp">δ+</i>small +</span><span><i class="i-dm">δ−</i>small −</span></div>
+  </div>
+  <aside class="notes">The color code stays fixed in both lessons. Shapes also carry a sign (+, −, dots), so color-blind students can read every drawing.</aside>
+  <script>Deck.frames('s05',[
+    {show:"s05-ican",t:1,note:"Read the five targets. Students copy the numbers 4.1.1 to 4.1.5; they rate themselves on slide 25."},
+    {show:"s05-words",hide:"s05-ican",t:1.5,note:"Choral reading: English term, then the Spanish cognate. Students add the words to the glossary with the icon. The same icons return on slide 11."},
+    {show:"s05-leg",t:0.5,note:"Color code: cation red with +, anion blue with −, electron dots, metal gray, nonmetal green, δ+ warm, δ− teal."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept cw" id="s06" data-period="1" data-title="Forming ions" data-sec="Ionic bonds" data-ref="Reading §4.1.1">
+  <h2>Forming ions</h2>
+  <div class="body">
+    <div class="sim" id="s06-sim" data-sim="ionHop" aria-label="A sodium atom and a chlorine atom; one electron moves from sodium to chlorine."></div>
+    <div class="col acc">
+      <div class="card" id="s06-pred" data-label="predict"><p class="tag">Predict</p><p>Which atom lets go of its outer electron, Na or Cl?</p></div>
+      <div class="card" id="s06-what" data-label="what happened"><p class="tag">What happened</p><p>Na lost one electron. It is now Na<sup>+</sup>. Cl gained it. It is now Cl<sup>−</sup>.</p></div>
+      <div class="card rule reg" id="s06-rule" data-label="rule"><p class="tag">Rule</p><p>A metal atom loses its valence electrons and becomes a + ion (cation). A nonmetal atom gains them and becomes a − ion (anion). The transfer alone costs energy.</p></div>
+      <div class="card check" id="s06-check" data-label="check">
+        <p class="tag">Check</p>
+        <p class="q">Magnesium loses two electrons. Which ion forms?</p>
+        <ol class="opts" data-lay="row"><li class="opt" id="s06-a" data-ok="0" data-fb="A minus charge means extra electrons. A metal loses electrons."><b>A</b><span>Mg<sup>2−</sup></span></li><li class="opt" id="s06-b" data-ok="0" data-fb="Mg&lt;sup&gt;+&lt;/sup&gt; lost only one electron. Magnesium loses two."><b>B</b><span>Mg<sup>+</sup></span></li><li class="opt" id="s06-c" data-ok="1" data-fb="Mg keeps 12 protons and has 10 electrons: Mg&lt;sup&gt;2+&lt;/sup&gt;."><b>C</b><span>Mg<sup>2+</sup></span></li></ol>
+        <div class="af"><p class="ans" id="s06-ans" data-label="answer">C. Mg keeps 12 protons and has 10 electrons: Mg<sup>2+</sup>.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Energy (Honors box, not assessed): removing Na’s electron costs 496 kJ/mol; Cl releases 349 kJ/mol; the transfer alone costs 147 kJ/mol. The attraction in the crystal (slide 7) pays it back.</aside>
+  <script>Deck.frames('s06',[
+    {show:"s06-pred",stage:"s06-sim:atoms",focus:"s06-sim",t:1,note:"Na has one outer electron, Cl has seven. Collect predictions: Na or Cl? Listen for \"Cl takes it because it needs one\" (the reason is the pull, electronegativity)."},
+    {stage:"s06-sim:hop",t:0.75,note:"The Na electron hops to Cl. The counts change: Na 11 p, 10 e; Cl 17 p, 18 e."},
+    {show:"s06-what",stage:"s06-sim:ions",t:1.25,note:"Sizes: Na⁺ is smaller than the Na atom (its outer level is gone); Cl⁻ is larger than the Cl atom. Ask: which one has more protons than electrons?"},
+    {show:"s06-rule",hide:"s06-what",t:1,note:"Students copy the rule. Stress: the transfer costs energy on its own; the bond is not the transfer (slide 7)."},
+    {show:"s06-check",t:0.5,note:"Hands up: one finger for A, two for B, three for C. Count before the press. To tease, click a wrong option: it turns red and shows why it is wrong."},
+    {show:"s06-ans",cls:{"s06-c": "right", "s06-check": "done"},t:0.5,note:"C is right. A (Mg²⁻): a minus charge means extra electrons; a metal loses electrons. B (Mg⁺): that is one electron lost; magnesium loses two."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept cw" id="s07" data-period="1" data-title="The crystal" data-sec="Ionic bonds" data-ref="Reading §4.1.1">
+  <h2>The crystal</h2>
+  <div class="body">
+    <div class="sim" id="cr-sim" data-sim="ionHop" aria-label="Sodium ions and chloride ions packed in a crystal."></div>
+    <div class="col acc">
+      <div class="card" id="cr-pred" data-label="predict"><p class="tag">Predict</p><p>Do the ions stay in pairs? Show thumbs up or down.</p></div>
+      <div class="card word" id="cr-word" data-label="new word"><svg class="ic" viewBox="0 0 100 100" role="img" aria-label="Icon: a crystal, ions in a repeating pattern"><use href="#ic-crystal"/></svg><p class="term">crystal <span class="es">(cristal)</span></p><p class="mean">ions in a pattern that repeats in every direction</p></div>
+      <div class="card rule reg" id="cr-rule" data-label="rule"><p class="tag">Rule</p><p>The pull (attraction) between <span class="nw">+ ions</span> and <span class="nw">− ions</span> is the ionic bond. The formula NaCl gives a ratio, not a molecule.</p></div>
+      <div class="card check" id="cr-check" data-label="check">
+        <p class="tag">Check</p>
+        <p class="q">How many Cl<sup>−</sup> ions touch each Na<sup>+</sup> ion?</p>
+        <ol class="opts" data-lay="row"><li class="opt" id="cr-a" data-ok="0" data-fb="One is the pair picture. Count the lit neighbors."><b>A</b><span>1</span></li><li class="opt" id="cr-b" data-ok="1" data-fb="Each Na&lt;sup&gt;+&lt;/sup&gt; touches six Cl&lt;sup&gt;−&lt;/sup&gt; ions."><b>B</b><span>6</span></li><li class="opt" id="cr-c" data-ok="0" data-fb="Eight fits a different crystal (CsCl), not salt."><b>C</b><span>8</span></li></ol>
+        <div class="af"><p class="ans" id="cr-ans" data-label="answer">B. Each Na<sup>+</sup> touches six Cl<sup>−</sup>.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Misconception: "the transfer is the ionic bond". The transfer makes the ions; the attraction in the lattice is the bond. Building the crystal releases about 787 kJ/mol (lattice energy), far more than the transfer costs. Shannon radii: Na⁺ 102 pm, Cl⁻ 181 pm; the lattice model shrinks both so the center ion stays visible.</aside>
+  <script>Deck.frames('s07',[
+    {show:"cr-pred",stage:"cr-sim:attract",focus:"cr-sim",t:0.5,note:"The + and − ions attract and touch. Thumbs: do they stay in pairs?"},
+    {show:"cr-word",stage:"cr-sim:grow",label:"build the crystal",t:0.5,note:"The lattice builds from the center out. Read the word card; students repeat \"crystal, cristal\"."},
+    {stage:"cr-sim:turn",label:"six neighbors",t:1,note:"The center Na⁺ lights with its six Cl⁻ neighbors while the crystal turns. Count them aloud together."},
+    {show:"cr-rule",hide:"cr-word",t:1,note:"Students copy the rule. NaCl is a formula unit: one Na⁺ for every Cl⁻, no NaCl molecules."},
+    {show:"cr-check",t:0.5,note:"Hands up: one finger for A, two for B, three for C."},
+    {show:"cr-ans",cls:{"cr-b": "right", "cr-check": "done"},t:0.5,note:"B is right. A (1): the \"pair\" picture; point at the six lit neighbors. C (8): eight is the count in a different lattice (CsCl), not in salt."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept cw" id="s08" data-period="1" data-title="Covalent bonds" data-sec="Covalent bonds" data-ref="Reading §4.1.2">
+  <h2>Covalent bonds</h2>
+  <div class="body">
+    <div class="stack">
+      <div class="sim" id="s08-tug" data-sim="tugOfWar" data-pairs="Cl-Cl,H-Cl,Na-Cl" aria-label="Two equal teams hold the knot in the middle."></div>
+      <div class="sim" id="s08-sim" data-sim="sharedPair" data-bonds="H-H,Cl-Cl" aria-label="Two atoms share one pair of electrons."></div>
+    </div>
+    <div class="col acc">
+      <div class="card" id="s08-recap" data-label="recap"><p class="tag">Recap</p><p>An even pull keeps the knot in the middle. Atoms can share electrons this way.</p></div>
+      <div class="card" id="s08-h2" data-label="H2"><p class="tag">H–H</p><p>Two H atoms share one pair. Each H now has two electrons, like helium.</p></div>
+      <div class="card" id="s08-cl2" data-label="Cl2"><p class="tag">Cl–Cl</p><p>Each Cl has seven outer electrons. With the shared pair, each Cl has eight around it.</p></div>
+      <div class="card rule reg" id="s08-rule" data-label="rule"><p class="tag">Rule</p><p>A pair of electrons shared by two atoms is a covalent bond. Atoms joined this way form a molecule (molécula).</p></div>
+      <div class="card check" id="s08-check" data-label="check">
+        <p class="tag">Check</p>
+        <p class="q">In Cl<sub>2</sub>, how many electrons does each Cl count around itself?</p>
+        <ol class="opts" data-lay="row"><li class="opt" id="s08-a" data-ok="0" data-fb="Seven forgets the shared pair. It counts for both atoms."><b>A</b><span>7</span></li><li class="opt" id="s08-b" data-ok="1" data-fb="Six unshared electrons plus the shared pair make 8."><b>B</b><span>8</span></li><li class="opt" id="s08-c" data-ok="0" data-fb="Fourteen counts the electrons of both atoms together."><b>C</b><span>14</span></li></ol>
+        <div class="af"><p class="ans" id="s08-ans" data-label="answer">B. Six unshared electrons plus the shared pair make 8.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Lewis (1916) proposed the shared pair; Langmuir (1919) named covalence. Lesson 4.3 draws Lewis structures for larger molecules.</aside>
+  <script>Deck.frames('s08',[
+    {show:"s08-recap",stage:"s08-tug:even",focus:"s08-tug",t:0.25,note:"Recap of the hook: equal teams, knot in the middle. Ask: what is the knot? (the shared pair)."},
+    {show:["s08-sim", "s08-h2"],hide:["s08-tug", "s08-recap"],stage:"s08-sim:H2",t:0.75,note:"H₂: two hydrogen atoms share one pair. Ask: why does neither atom take the pair? (same pull)."},
+    {show:"s08-cl2",hide:"s08-h2",stage:"s08-sim:Cl2",t:1,note:"Cl₂: each Cl has seven of its own; sharing one pair gives each eight around it. Misconception: \"each Cl gets 14\" (counting both atoms)."},
+    {show:"s08-rule",t:1,note:"Students copy the rule card. A molecule is a neutral group of atoms joined by covalent bonds."},
+    {show:"s08-check",hide:"s08-cl2",t:0.5,note:"Hands up for A, B or C."},
+    {show:"s08-ans",cls:{"s08-b": "right", "s08-check": "done"},t:0.5,note:"B is right. A (7): forgot that the shared pair counts for both atoms. C (14): counted the electrons of both atoms together."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept cw" id="s09" data-period="1" data-title="Polar and nonpolar" data-sec="Polar and nonpolar" data-ref="Reading §4.1.2">
+  <h2>Polar and nonpolar</h2>
+  <div class="body">
+    <div class="sim" id="s09-sim" data-sim="sharedPair" data-bonds="H-H,H-Cl,H-O,H-F" aria-label="A shared pair moves toward the atom that pulls harder."></div>
+    <div class="col acc">
+      <div class="card" id="s09-eq" data-label="equal pull"><p class="tag">H–H</p><p>Equal pull: the pair stays in the middle. The bond is nonpolar.</p></div>
+      <div class="card rule reg" id="s09-rule" data-label="rule"><p class="tag">Rule</p><p>The electrons spend more time near one atom. It is the atom with the higher electronegativity. That atom gets a small negative charge, written δ− (delta minus). The other atom gets a small positive charge, δ+.</p></div>
+      <div class="card" id="s09-pred" data-label="predict"><p class="tag">Predict</p><span class="enrow"><span class="enl lbl">Electronegativity (pull on electrons)</span><span class="chips"><span class="chip"><b>H</b><span class="mono">2.20</span></span><span class="chip"><b>Cl</b><span class="mono">3.16</span></span></span></span><p>Which atom gets δ−?</p></div>
+      <div class="card" id="s09-hcl" data-label="H–Cl"><p class="tag">H–Cl</p><p>Cl pulls harder, so the pair leans to Cl. Cl gets δ−, and H gets δ+. This bond is polar.</p></div>
+      <div class="card" id="s09-more" data-label="bigger differences"><p class="tag">O–H and H–F</p><p>A bigger difference makes the pair lean more.</p></div>
+      <div class="card check" id="s09-check" data-label="check">
+        <p class="tag">Check</p><span class="enrow"><span class="enl lbl">Electronegativity (pull on electrons)</span><span class="chips"><span class="chip"><b>O</b><span class="mono">3.44</span></span><span class="chip"><b>H</b><span class="mono">2.20</span></span></span></span>
+        <p class="q">In O–H, which atom is δ+?</p>
+        <ol class="opts" data-lay="row"><li class="opt" id="s09-a" data-ok="1" data-fb="H pulls less, so H is δ+. O is δ−."><b>A</b><span>H</span></li><li class="opt" id="s09-b" data-ok="0" data-fb="O pulls harder, so O is δ−, not δ+."><b>B</b><span>O</span></li><li class="opt" id="s09-c" data-ok="0" data-fb="The values differ by 1.24, so the bond is polar."><b>C</b><span>neither</span></li></ol>
+        <div class="af"><p class="ans" id="s09-ans" data-label="answer">A. H pulls less, so H is δ+. O is δ−.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Differences: H–H 0.00, H–Cl 0.96, O–H 1.24, H–F 1.78 (Pauling values). C–H is only 0.35: almost equal sharing. The rule comes before the first δ drawing, so students meet the words before the badges.</aside>
+  <script>Deck.frames('s09',[
+    {show:"s09-eq",stage:"s09-sim:H2",t:0.5,note:"H–H: same atom, same pull, pair centered: nonpolar."},
+    {show:"s09-rule",t:1,note:"Rule first: the pair spends more time near the atom that pulls harder. Say the symbols in words: \"delta minus, a small negative charge\". Students copy the rule."},
+    {show:"s09-pred",hide:"s09-eq",t:0.5,note:"Prediction: the chips show each atom's electronegativity. Which atom gets δ−? Collect a show of hands."},
+    {show:"s09-hcl",hide:"s09-pred",stage:"s09-sim:HCl",t:0.75,note:"The pair leans to Cl; δ− appears on Cl, δ+ on H, as the rule said."},
+    {show:"s09-more",hide:"s09-hcl",stage:"s09-sim:HO",t:0.5,note:"O–H: difference 1.24, the pair leans more. This is the bond in water."},
+    {stage:"s09-sim:HF",t:0.75,note:"H–F: 1.78, the pair leans the most of the three, still shared. Misconception: \"H–F is ionic\" (1.78 is just under the 1.8 guide line)."},
+    {show:"s09-check",t:0.5,note:"Hands up for A, B or C."},
+    {show:"s09-ans",cls:{"s09-a": "right", "s09-check": "done"},t:0.5,note:"A is right. B (O): O pulls harder, so O is δ−, not δ+. C (neither): the values differ by 1.24, so the bond is polar."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept cw" id="s10" data-period="1" data-title="Metallic bonds" data-sec="Metallic bonds" data-ref="Reading §4.1.3">
+  <h2>Metallic bonds</h2>
+  <div class="body">
+    <div class="sim" id="s10-sim" data-sim="electronSea" aria-label="A concert crowd shares beach balls; then metal cations sit in a sea of electrons."></div>
+    <div class="col acc">
+      <div class="card" id="s10-c0" data-label="crowd"><p class="tag">A concert crowd</p><p>Beach balls bounce over everyone. No one owns a ball; the crowd shares them all.</p></div>
+      <div class="card" id="s10-c1" data-label="cores"><p class="tag">Cations</p><p>Each head is now a + ion: a metal cation.</p></div>
+      <div class="card" id="s10-c2" data-label="sea"><p class="tag">Electron sea</p><p>In a metal, the outer electrons are the balls. They belong to the whole metal.</p></div>
+      <div class="card" id="s10-c3" data-label="current"><p class="tag">Current</p><p>A battery pushes the electrons one way. That flow is a current.</p></div>
+      <div class="card" id="s10-c4" data-label="Mg"><p class="tag">Magnesium</p><p>Each Mg atom gives two electrons to the sea.</p></div>
+      <div class="card" id="s10-c5" data-label="Al"><p class="tag">Aluminum</p><p>Each Al atom gives three electrons to the sea.</p></div>
+      <div class="card wirecard" id="s10-c6" data-label="copper"><p class="tag">Copper</p><p>Each Cu atom gives one electron to the sea.</p><figure class="wire"><svg class="wsvg" viewBox="0 0 100 100" role="img" aria-label="Drawing: a copper wire with the insulation stripped back and shiny orange-brown strands"><use href="#ic-wire"/></svg><figcaption>copper wire</figcaption></figure></div>
+      <div class="card rule reg" id="s10-rule" data-label="rule"><p class="tag">Rule</p><p>Metal cations sit in a sea of delocalized electrons. Their attraction is the metallic bond. Real electrons behave as waves, not dots.</p></div>
+      <div class="card check" id="s10-check" data-label="check">
+        <p class="tag">Check</p>
+        <p class="q">Why can a copper wire carry a current?</p>
+        <ol class="opts col1" data-lay="col"><li class="opt" id="s10-a" data-ok="1" data-fb="The electrons in the sea move. The cations stay in place."><b>A</b><span>Its electrons can move.</span></li><li class="opt" id="s10-b" data-ok="0" data-fb="In a solid metal, the cations stay in place."><b>B</b><span>Its copper ions move.</span></li><li class="opt" id="s10-c" data-ok="0" data-fb="Shared pairs describe covalent bonds, not metals."><b>C</b><span>Its atoms share pairs.</span></li></ol>
+        <div class="af"><p class="ans" id="s10-ans" data-label="answer">A. The electrons in the sea move. The cations stay in place.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Model limits (objective 4.1.3): electrons are drawn as dots but behave as waves; the model shows one flat layer of a 3D crystal. Each electron dot carries a − wherever the cores carry a +. Copper gives one electron per core in this model. Lesson 4.5 uses the model for other metal properties.</aside>
+  <script>Deck.frames('s10',[
+    {show:"s10-c0",stage:"s10-sim:crowd",t:0.75,note:"Background story: a concert crowd passing beach balls. Ask: who owns the balls? (No one; the crowd shares them.)"},
+    {show:"s10-c1",stage:"s10-sim:cores",t:0.25,note:"The heads become + cores: sodium cations."},
+    {show:"s10-c2",stage:"s10-sim:sea",t:0.5,note:"The balls become drifting electrons, each with a − sign: delocalized, they belong to the whole metal."},
+    {show:"s10-c3",stage:"s10-sim:drift",t:0.75,note:"Battery on: electrons stream toward +, cations stay. Ask: what moves in a wire?"},
+    {show:"s10-c4",hide:"s10-c3",stage:"s10-sim:Mg",t:0.25,note:"Magnesium is in group 2: two valence electrons per atom, cores 2+."},
+    {show:"s10-c5",hide:"s10-c4",stage:"s10-sim:Al",t:0.25,note:"Aluminum, group 13: three per atom, cores 3+."},
+    {show:"s10-c6",hide:"s10-c5",stage:"s10-sim:Cu",t:0.5,note:"Copper: one electron per core in this model. Show the drawing of a stripped copper wire: this is the metal in a charger cable."},
+    {show:"s10-rule",hide:["s10-c0", "s10-c1", "s10-c2"],t:0.75,note:"Students copy the rule. Ask for one thing the model leaves out (electrons are waves; real metals are 3D)."},
+    {show:"s10-check",t:0.5,note:"Hands up for A, B or C. The copper picture stays on screen, so the question matches it."},
+    {show:"s10-ans",cls:{"s10-a": "right", "s10-check": "done"},t:0.5,note:"A is right. B (ions move): in a solid metal the cations stay in the lattice; ions move in solutions, not here. C (shared pairs): that describes covalent bonds, not metals."}
+  ]);</script>
+</section>
+
+<section class="slide t-summary" id="s11" data-period="1" data-title="One picture for three bonds" data-sec="Three bonds" data-ref="Reading §4.1.1 to §4.1.4">
+  <h2>One picture for three bonds</h2>
+  <div class="body">
+    <div class="g3">
+      <span></span>
+      <div class="colh slot"><div class="colin" data-b="s11-c1" data-label="ionic"><svg class="big" viewBox="0 0 100 100" role="img" aria-label="Icon: ionic bond"><use href="#ic-ionic"/></svg><p>ionic</p></div></div>
+      <div class="colh slot"><div class="colin" data-b="s11-c2" data-label="covalent"><svg class="big" viewBox="0 0 100 100" role="img" aria-label="Icon: covalent bond"><use href="#ic-covalent"/></svg><p>covalent</p></div></div>
+      <div class="colh slot"><div class="colin" data-b="s11-c3" data-label="metallic"><svg class="big" viewBox="0 0 100 100" role="img" aria-label="Icon: metallic bond"><use href="#ic-metallic"/></svg><p>metallic</p></div></div>
+      <p class="rh">Particles</p>
+      <p class="cell slot"><span data-b="s11-r1" data-label="particles">+ and − ions</span></p>
+      <p class="cell slot"><span data-b="s11-r1">atoms</span></p>
+      <p class="cell slot"><span data-b="s11-r1">+ ions and electrons</span></p>
+      <p class="rh">Electrons</p>
+      <p class="cell slot"><span data-b="s11-r5" data-label="electrons">transferred</span></p>
+      <p class="cell slot"><span data-b="s11-r5">shared</span></p>
+      <p class="cell slot"><span data-b="s11-r5">delocalized, a sea</span></p>
+      <p class="rh">Held by</p>
+      <p class="cell slot"><span data-b="s11-r2" data-label="what holds them">pull of + and −</span></p>
+      <p class="cell slot"><span data-b="s11-r2">a shared pair</span></p>
+      <p class="cell slot"><span data-b="s11-r2">a sea of electrons</span></p>
+      <p class="rh">Example</p>
+      <p class="cell slot formula"><span data-b="s11-r3" data-label="examples">NaCl</span></p>
+      <p class="cell slot formula"><span data-b="s11-r3">Cl<sub>2</sub></span></p>
+      <p class="cell slot formula"><span data-b="s11-r3">Cu</span></p>
+      <p class="rh">Made of</p>
+      <p class="cell slot hl"><span data-b="s11-r4" data-label="the rule">metal + nonmetal</span></p>
+      <p class="cell slot hl"><span data-b="s11-r4">two nonmetals</span></p>
+      <p class="cell slot hl"><span data-b="s11-r4">one metal</span></p>
+    </div>
+  </div>
+  <aside class="notes">This picture closes the teaching of period 1. Students copy it as one diagram with three columns; the icons match the word strip on slide 5.</aside>
+  <script>Deck.frames('s11',[
+    {t:0.5,note:"The empty table is on screen. Ask: what are the three kinds of bonds? Build the columns as students name them."},
+    {show:"s11-c1",t:0.25,note:"Ionic: + and − ions in a grid; no shared pairs, no molecules."},
+    {show:"s11-c2",t:0.25,note:"Covalent: two atoms overlap; the shared pair sits in the overlap."},
+    {show:"s11-c3",t:0.25,note:"Metallic: + cores in a sea of electrons; each electron dot carries a −."},
+    {show:"s11-r1",t:0.25,note:"Who: ions / atoms / cations and delocalized electrons."},
+    {show:"s11-r5",t:0.25,note:"What the electrons do: transferred (ionic), shared (covalent), delocalized in a sea (metallic)."},
+    {show:"s11-r2",t:0.5,note:"What holds: every bond is an attraction between + and − charges."},
+    {show:"s11-r3",t:0.25,note:"One example each."},
+    {show:"s11-r4",t:0.5,note:"The rule in one line: metal + nonmetal → ionic; nonmetal + nonmetal → covalent; metal alone → metallic."}
+  ]);</script>
+</section>
+
+<section class="slide t-turn" id="s12" data-period="1" data-title="Backpack sort" data-sec="Practice" data-ref="Reading §4.1 Review">
+  <h2>Backpack sort</h2>
+  <div class="body">
+    <div class="card prompt"><p>Call out each bond. Use the table.</p></div>
+    <div class="bag">
+      <div class="item"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: salt packet"><use href="#ic-saltpack"/></svg><p class="nm lbl">salt packet</p><p class="fm lbl">NaCl</p><div class="back"><div data-b="s12-i0" data-label="card 1"><p class="bt ionic lbl">ionic</p><p class="why">Na metal, Cl nonmetal</p></div></div></div>
+      <div class="item"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: water bottle"><use href="#ic-bottle"/></svg><p class="nm lbl">water bottle</p><p class="fm lbl">H<sub>2</sub>O</p><div class="back"><div data-b="s12-i1" data-label="card 2"><p class="bt polar lbl">polar covalent</p><p class="why">O pulls the pair</p></div></div></div>
+      <div class="item"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: charger cable"><use href="#ic-wire"/></svg><p class="nm lbl">charger cable</p><p class="fm lbl">Cu</p><div class="back"><div data-b="s12-i2" data-label="card 3"><p class="bt metallic lbl">metallic</p><p class="why">copper atoms, electron sea</p></div></div></div>
+      <div class="item"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: soda can"><use href="#ic-can"/></svg><p class="nm lbl">soda can</p><p class="fm lbl">Al</p><div class="back"><div data-b="s12-i3" data-label="card 4"><p class="bt metallic lbl">metallic</p><p class="why">aluminum alone, electron sea</p></div></div></div>
+      <div class="item"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: pencil"><use href="#ic-pencil"/></svg><p class="nm lbl">pencil</p><p class="fm lbl">C</p><div class="back"><div data-b="s12-i4" data-label="card 5"><p class="bt nonpolar lbl">covalent</p><p class="why">carbon atoms share pairs</p></div></div></div>
+      <div class="item"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: air you breathe"><use href="#ic-air"/></svg><p class="nm lbl">air you breathe</p><p class="fm lbl">O<sub>2</sub></p><div class="back"><div data-b="s12-i5" data-label="card 6"><p class="bt nonpolar lbl">nonpolar covalent</p><p class="why">two O, equal pull</p></div></div></div>
+    </div>
+  </div>
+  <aside class="notes">Pencil "lead" is graphite: carbon atoms joined by covalent bonds in layers. Water: O 3.44, H 2.20, difference 1.24, polar covalent. O₂: same atoms, nonpolar.</aside>
+  <script>Deck.frames('s12',[
+    {t:1,note:"Students call the bond for each item before you flip it. Allow 30 seconds of table talk."},
+    {show:"s12-i0",t:0.5,note:"Salt: sodium (metal) with chlorine (nonmetal), ionic."},
+    {show:"s12-i1",t:0.5,note:"Water: two nonmetals, difference 1.24, polar covalent. Misconception: \"water is ionic because it dissolves salt\"."},
+    {show:"s12-i2",t:0.5,note:"Copper wire: one metal, metallic bonding."},
+    {show:"s12-i3",t:0.5,note:"Aluminum can: one metal, metallic."},
+    {show:"s12-i4",t:0.5,note:"Pencil graphite: carbon atoms share pairs, covalent."},
+    {show:"s12-i5",t:0.5,note:"Oxygen gas O₂: two identical atoms, nonpolar covalent."}
+  ]);</script>
+</section>
+
+<section class="slide t-routine two" id="s13" data-period="1" data-title="Period 1 exit" data-sec="Exit, period 1" data-ref="Reading §4.1 Review">
+  <h2>Period 1 exit</h2>
+  <div class="body">
+    <div class="card prompt reg"><p>Write one sentence that compares the particles and attractions in three kinds of bonds.</p></div>
+    <div class="rt-main">
+      <div class="acc">
+        <div class="card phase" id="s13-w" data-label="write">
+          <p class="tag">Write</p>
+          <ol class="frames"><li>The three bonds differ in what holds the particles: <span class="gap"></span>.</li></ol>
+          <p class="bank"><b>Word bank:</b> <span>attraction</span> <span>ions</span> <span>shared pair</span> <span>electron sea</span></p>
+        </div>
+        <div class="card phase reg" id="s13-s" data-label="sample answer"><p class="tag">Sample answer</p><p>Ionic bonds hold oppositely charged ions. Covalent bonds share pairs of electrons. Metallic bonds hold cations in an electron sea.</p></div>
+      </div>
+      <div class="timer"></div>
+    </div>
+  </div>
+  <aside class="notes">Period 1 ends here. Collect the notebooks of three students as a quick check before period 2.</aside>
+  <script>Deck.frames('s13',[
+    {show:"s13-w",t:0.5,note:"Read the prompt. Point at the sentence frame and the word bank."},
+    {timer:120,label:"write 2 min",t:2,note:"Two minutes of silent writing in notebooks."},
+    {show:"s13-s",t:0.5,note:"Students compare with the sample and fix one word. End of period 1."}
+  ]);</script>
+</section>
+
+<section class="slide t-turn two" id="s14" data-period="2" data-title="Warm-up" data-sec="Warm-up, period 2" data-ref="Reading §4.1.1 to §4.1.3">
+  <h2>Warm-up</h2>
+  <div class="body">
+    <div class="qrow">
+      <div class="card"><p>Answer in your notebook. Then check each answer.</p></div>
+      <div class="timer"></div>
+    </div>
+    <table class="tbl fill">
+      <thead><tr><th>Question</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>What particles make up solid salt?</td><td class="slot"><span data-b="s14-a1" data-label="answer 1">Na<sup>+</sup> and Cl<sup>−</sup> ions in a crystal</span></td></tr>
+        <tr><td>In HCl, which atom is δ−?</td><td class="slot"><span data-b="s14-a2" data-label="answer 2">Cl, because it pulls harder</span></td></tr>
+        <tr><td>What moves in a copper wire?</td><td class="slot"><span data-b="s14-a3" data-label="answer 3">electrons in the electron sea</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes">Period 2 starts here. The three questions retrieve 4.1.1, 4.1.2 and 4.1.3.</aside>
+  <script>Deck.frames('s14',[
+    {t:0.5,note:"Students write while you take attendance."},
+    {timer:90,label:"timer 90 s",t:1.5,note:"Ninety seconds."},
+    {show:"s14-a1",t:0.25,note:"Ions, not molecules: NaCl is a ratio."},
+    {show:"s14-a2",t:0.25,note:"Cl (3.16) pulls harder than H (2.20)."},
+    {show:"s14-a3",t:0.5,note:"Electrons move; the cations stay."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept cw" id="s15" data-period="2" data-title="The electronegativity difference" data-sec="Predicting bonds" data-ref="Reading §4.1.4">
+  <h2>The electronegativity difference</h2>
+  <div class="body">
+    <div class="sim" id="s15-sim" data-sim="enMeter" data-bonds="Cl-Cl,H-Cl,Na-Cl" aria-label="A bar from 0 to 3.3 with the difference of each bond."></div>
+    <div class="col acc">
+      <div class="card" id="s15-def" data-label="the difference"><p class="tag">The difference</p><p>ΔEN means the difference: the larger value minus the smaller value.</p></div>
+      <div class="card" id="s15-guide" data-label="guide lines"><p class="tag">Guide</p><p>The lines at 0.4 and 1.8 are a guide, not a wall. Bonds change slowly along the bar.</p></div>
+      <div class="card rule reg" id="s15-rule" data-label="rule"><p class="tag">Rule</p><p>Subtract the smaller value from the larger one. Below 0.4, the bond is nonpolar covalent. From 0.4 to 1.8, it is polar covalent. Above 1.8, it is ionic.</p></div>
+      <div class="card check" id="s15-check" data-label="check">
+        <p class="tag">Check</p><span class="enrow"><span class="enl lbl">Electronegativity (pull on electrons)</span><span class="chips"><span class="chip"><b>Ca</b><span class="mono">1.00</span></span><span class="chip"><b>O</b><span class="mono">3.44</span></span></span></span>
+        <p class="q">What does the guide predict for Ca–O?</p>
+        <ol class="opts" data-lay="row"><li class="opt" id="s15-a" data-ok="0" data-fb="Nonpolar needs a difference below 0.4. Here it is 2.44."><b>A</b><span>nonpolar</span></li><li class="opt" id="s15-b" data-ok="0" data-fb="Polar covers 0.4 to 1.8. The difference 2.44 is above 1.8."><b>B</b><span>polar</span></li><li class="opt" id="s15-c" data-ok="1" data-fb="3.44 − 1.00 = 2.44, above 1.8: ionic."><b>C</b><span>ionic</span></li></ol>
+        <div class="af"><p class="ans" id="s15-ans" data-label="answer">C. 3.44 − 1.00 = 2.44, above 1.8: ionic.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Guide from OpenStax Chemistry 2e: "just a general guide, however, with many exceptions". The bar colors blend at 0.4 and 1.8 on purpose.</aside>
+  <script>Deck.frames('s15',[
+    {show:"s15-def",stage:"s15-sim:bar",t:0.25,note:"Δ (delta) means \"difference\". Always larger minus smaller, so ΔEN is never negative."},
+    {show:"s15-guide",stage:"s15-sim:lines",t:0.5,note:"The lines are a guide, not a wall: bond character changes gradually."},
+    {stage:"s15-sim:Cl-Cl",t:0.25,note:"Ask for the subtraction first: 3.16 − 3.16 = 0.00, nonpolar."},
+    {stage:"s15-sim:H-Cl",t:0.5,note:"3.16 − 2.20 = 0.96, polar covalent."},
+    {stage:"s15-sim:Na-Cl",t:0.5,note:"3.16 − 0.93 = 2.23, ionic. Misconception: \"a cutoff proves the bond type\" (it does not; slide 17)."},
+    {show:"s15-rule",hide:"s15-def",t:1,note:"Students copy the rule card."},
+    {show:"s15-check",hide:"s15-guide",t:0.5,note:"Students subtract on whiteboards first, then hands up."},
+    {show:"s15-ans",cls:{"s15-c": "right", "s15-check": "done"},t:0.5,note:"C is right (2.44). A (nonpolar): only below 0.4. B (polar): 0.4 to 1.8; 2.44 is well above. Also calcium is a metal and oxygen a nonmetal."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept wide" id="s16" data-period="2" data-title="Evidence from the table" data-sec="Predicting bonds" data-ref="Reading §4.1.4">
+  <h2>Evidence from the table</h2>
+  <div class="body">
+    <div class="sim" id="s16-sim" data-sim="ptMap" data-pairs="Na-Cl,H-Cl,Cu-Cu" data-caption="0" data-band="214" aria-label="The periodic table with metals, nonmetals and a pair of elements."></div>
+    <div class="ptrow blk" id="s16-row" data-label="pairs" style="height:214px"><div class="stack">
+      <p class="caprow" id="s16-p1" data-label="Na and Cl">Na and Cl: a metal and a nonmetal. The bond is ionic.</p>
+      <p class="caprow" id="s16-p2" data-label="H and Cl">H and Cl: two nonmetals. They share a pair: covalent.</p>
+      <p class="caprow" id="s16-p3" data-label="Cu and Cu">Cu alone: one metal. The bond is metallic.</p>
+      <div class="rulerow reg" id="s16-rule" data-label="rule"><p>A metal and a nonmetal: electrons transfer. <b class="bn lbl">Ionic bond.</b></p><p>Two nonmetals: electrons are shared. <b class="bn lbl">Covalent bond.</b></p><p>A metal alone: electrons are delocalized, a sea. <b class="bn lbl">Metallic bond.</b></p></div>
+      <div class="checkrow" id="s16-check" data-label="check">
+        <p class="q" id="s16-q"><span class="tag">Check:</span> Which pair forms a covalent bond?</p>
+        <ol class="opts" data-lay="row"><li class="opt" id="s16-a" data-ok="0" data-fb="K is a metal, so K–Br is ionic."><b>A</b><span>K–Br</span></li><li class="opt" id="s16-b" data-ok="1" data-fb="N and O are both nonmetals. They share pairs."><b>B</b><span>N–O</span></li><li class="opt" id="s16-c" data-ok="0" data-fb="Mg is a metal, so Mg–O is ionic."><b>C</b><span>Mg–O</span></li></ol>
+        <div class="af"><p class="ans" id="s16-ans" data-label="answer">B. N and O are both nonmetals. They share pairs.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div></div>
+  </div>
+  <aside class="notes">Second line of evidence. Metals (left and middle) have low ionization energies and electronegativities; nonmetals (upper right) have high ones. Metalloids along the staircase are left untinted.</aside>
+  <script>Deck.frames('s16',[
+    {stage:"s16-sim:outline",focus:"s16-sim",t:0.25,note:"Ask: where are the metals? where are the nonmetals? Students point on their own tables."},
+    {stage:"s16-sim:metals",t:0.25,note:"Metals tint from the left: groups 1 and 2, the transition metals, and the lower p-block."},
+    {stage:"s16-sim:nonmetals",t:0.25,note:"Nonmetals tint from the right; the staircase divides them. Hydrogen is a nonmetal."},
+    {show:["s16-row", "s16-p1"],stage:"s16-sim:Na-Cl",t:0.5,note:"Na and Cl: metal with nonmetal, ionic. Same answer as the difference (2.23)."},
+    {show:"s16-p2",hide:"s16-p1",stage:"s16-sim:H-Cl",t:0.5,note:"H and Cl: two nonmetals, covalent (polar, 0.96)."},
+    {show:"s16-p3",hide:"s16-p2",stage:"s16-sim:Cu-Cu",t:0.25,note:"Copper alone: metallic."},
+    {show:"s16-rule",hide:"s16-p3",stage:"s16-sim:nonmetals",t:1,note:"Students copy the three lines. They match slide 11."},
+    {show:"s16-check",hide:"s16-rule",t:0.5,note:"Hands up for A, B or C."},
+    {show:"s16-ans",cls:{"s16-b": "right", "s16-check": "done"},t:0.5,note:"B is right. A (K and Br): potassium is a metal, so the bond is ionic. C (Mg and O): magnesium is a metal, ionic."}
+  ]);</script>
+</section>
+
+<section class="slide t-example" id="s17" data-period="2" data-title="Near the line" data-sec="Predicting bonds" data-ref="Reading §4.1.4">
+  <h2>Near the line</h2>
+  <div class="body">
+    <div class="sim" id="s17-sim" data-sim="enMeter" data-bonds="H-F,Mg-Cl,Fe-Cl" aria-label="Three bonds placed near the 1.8 line."></div>
+    <div class="acc">
+      <div class="card" id="s17-pred" data-label="predict"><p class="tag">Predict</p><p>Is a difference close to 1.8 strong evidence for ionic?</p></div>
+      <div class="card stepscard" id="s17-steps" data-label="H–F"><p class="tag">Close to 1.8</p><ol class="steps">
+        <li id="s17-1"><span class="k">H–F</span><span>Difference 1.78: molecules. HF boils at 20 °C.</span></li>
+        <li id="s17-2" data-label="Mg–Cl"><span class="k">Mg–Cl</span><span>Difference 1.85: an ionic solid. It melts at 714 °C.</span></li>
+        <li id="s17-3" data-label="so what"><span class="k">So</span><span>Close numbers, very different substances. Near 1.8 the number alone is weak evidence.</span></li>
+        <li id="s17-4" data-label="Fe–Cl"><span class="k">Fe–Cl</span><span>Difference 1.33, yet named like an ionic compound (Lesson 4.2).</span></li>
+      </ol></div>
+      <div class="card check" id="s17-check" data-label="check">
+        <p class="tag">Check</p>
+        <p class="q">MgCl<sub>2</sub> has a difference of 1.85. How strong is that number alone as evidence for ionic?</p>
+        <ol class="opts" data-lay="row"><li class="opt" id="s17-a" data-ok="0" data-fb="1.85 is too close to the line to be strong alone."><b>A</b><span>strong</span></li><li class="opt" id="s17-b" data-ok="1" data-fb="1.85 is only 0.05 above 1.8. Use the table too."><b>B</b><span>weak</span></li><li class="opt" id="s17-c" data-ok="0" data-fb="1.85 is above 1.8, so it supports ionic, weakly."><b>C</b><span>against</span></li></ol>
+        <div class="af"><p class="ans" id="s17-ans" data-label="answer">B. 1.85 is only 0.05 above 1.8. Use the table too.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">HF boils at 19.5 °C (NIST); MgCl₂ melts at 714 °C (PubChem). FeCl₃ (1.33) and CuO (1.54) are partly covalent but are named as ionic compounds because names follow composition, metal + nonmetal.</aside>
+  <script>Deck.frames('s17',[
+    {show:"s17-pred",stage:"s17-sim:lines",t:0.5,note:"Prediction: hands up for \"strong\" or \"weak\"."},
+    {show:["s17-steps", "s17-1"],hide:"s17-pred",stage:"s17-sim:H-F",t:0.25,note:"H–F: 3.98 − 2.20 = 1.78, just below 1.8. HF is made of molecules and boils at 20 °C."},
+    {show:"s17-2",stage:"s17-sim:Mg-Cl",t:0.25,note:"Mg–Cl: 3.16 − 1.31 = 1.85, just above. MgCl₂ is an ionic solid that melts at 714 °C."},
+    {show:"s17-3",t:0.5,note:"0.07 apart, very different substances. The number near 1.8 is weak evidence; add the table (metal + nonmetal) and properties."},
+    {show:"s17-4",stage:"s17-sim:Fe-Cl",t:0.5,note:"Fe–Cl: 3.16 − 1.83 = 1.33. Partly covalent, still named as an ionic compound (Lesson 4.2)."},
+    {show:"s17-check",t:0.5,note:"Hands up for A, B or C."},
+    {show:"s17-ans",cls:{"s17-b": "right", "s17-check": "done"},t:0.5,note:"B is right. A (strong): 1.85 is too close to the line to be strong alone. C (against): 1.85 is above 1.8 and Mg is a metal, so the evidence supports ionic, weakly."}
+  ]);</script>
+</section>
+
+<section class="slide t-cer" id="s18" data-period="2" data-title="Bonding argument: I do, we do" data-sec="Bonding arguments" data-ref="Reading §4.1.5">
+  <h2>Bonding argument: I do, we do</h2>
+  <div class="body">
+    <div class="stack">
+      <p class="hdr" id="s18-h1" data-label="I do">I do: potassium fluoride, KF.</p>
+      <p class="hdr" id="s18-h2" data-label="we do">We do: hydrogen chloride, HCl. Say each part first.</p>
+    </div>
+    <div class="stack">
+      <div class="sim" id="s18-sim" data-sim="cerBuilder" aria-label="Four boxes: claim, evidence, reasoning, strength.">
+        <div data-set="KF"><p data-part="claim">Potassium fluoride (KF) is ionic.</p>
+          <p data-part="evidence"><span class="enrow"><span class="enl lbl">Electronegativity (pull on electrons)</span><span class="chips"><span class="chip"><b>K</b><span class="mono">0.82</span></span><span class="chip"><b>F</b><span class="mono">3.98</span></span></span></span>The difference is 3.16. K is a metal; F is a nonmetal.</p>
+          <p data-part="reasoning">A difference above 1.8 predicts ionic. A metal gives electrons to a nonmetal.</p>
+          <p data-part="strength">Strong. 3.16 is far above 1.8, and both kinds of evidence agree.</p></div>
+        <div data-set="HCl"><p data-part="claim">The bond in HCl is polar covalent.</p>
+          <p data-part="evidence"><span class="enrow"><span class="enl lbl">Electronegativity (pull on electrons)</span><span class="chips"><span class="chip"><b>H</b><span class="mono">2.20</span></span><span class="chip"><b>Cl</b><span class="mono">3.16</span></span></span></span>The difference is 0.96. Both are nonmetals.</p>
+          <p data-part="reasoning">0.96 is between 0.4 and 1.8. Two nonmetals share the pair unequally. Cl is δ−.</p>
+          <p data-part="strength">Strong. 0.96 is far from both lines, and both kinds of evidence agree.</p></div>
+      </div>
+      <div class="card check" id="s18-check" data-label="check">
+        <p class="tag">Check</p>
+        <p class="q">Which evidence best supports “KF is ionic”?</p>
+        <ol class="opts col1" data-lay="col"><li class="opt" id="s18-a" data-ok="1" data-fb="Values and positions are evidence. Color and state are not."><b>A</b><span>metal + nonmetal, difference 3.16</span></li><li class="opt" id="s18-b" data-ok="0" data-fb="Color does not show the type of bond."><b>B</b><span>KF is a white solid.</span></li><li class="opt" id="s18-c" data-ok="0" data-fb="The state of fluorine says nothing about the compound KF."><b>C</b><span>F is a gas.</span></li></ol>
+        <div class="af"><p class="ans" id="s18-ans" data-label="answer">A. Values and positions are evidence. Color and state are not.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Four parts: claim, evidence (both values, the difference, positions on the table), reasoning (the guide and what metals and nonmetals do), strength (distance from 0.4 and 1.8, and whether both kinds of evidence agree).</aside>
+  <script>Deck.frames('s18',[
+    {show:"s18-h1",stage:"s18-sim:empty",t:0.25,note:"Show the four empty boxes. Name each part."},
+    {stage:"s18-sim:KF-claim",t:0.25,note:"I do: think aloud. The claim names the bond type."},
+    {stage:"s18-sim:KF-evidence",t:0.5,note:"Both values, the difference, and the positions on the table."},
+    {stage:"s18-sim:KF-reasoning",t:0.5,note:"The rule that links evidence to claim."},
+    {stage:"s18-sim:KF-strength",t:0.25,note:"Strong: far from both lines and both kinds of evidence agree."},
+    {show:"s18-h2",hide:"s18-h1",stage:"s18-sim:HCl-claim",t:0.5,note:"We do: students say the claim before the press."},
+    {stage:"s18-sim:HCl-evidence",t:0.5,note:"Students supply 2.20, 3.16 and 0.96 before the press."},
+    {stage:"s18-sim:HCl-reasoning",t:0.75,note:"Students supply the rule: between 0.4 and 1.8, two nonmetals share unequally."},
+    {stage:"s18-sim:HCl-strength",t:0.5,note:"Strong because 0.96 is far from both lines."},
+    {show:"s18-check",hide:["s18-h2", "s18-sim"],label:"check",t:0.5,note:"Hands up for A, B or C."},
+    {show:"s18-ans",cls:{"s18-a": "right", "s18-check": "done"},t:0.5,note:"A is right. B (white solid): color is not evidence for a bond type. C (F is a gas): the element’s state says nothing about the compound KF."}
+  ]);</script>
+</section>
+
+<section class="slide t-turn tblmid" id="s19" data-period="2" data-title="You do: three bonds" data-sec="Bonding arguments" data-ref="Reading §4.1.5">
+  <h2>You do: three bonds</h2>
+  <div class="body">
+    <div class="qrow">
+      <div class="card"><p>Find each difference. Predict the bond type.</p><p class="small">Then write a full argument for one bond.</p></div>
+      <div class="timer"></div>
+    </div>
+    <table class="tbl fill">
+      <thead><tr><th>Bond</th><th>Electronegativity (pull on electrons)</th><th>Difference</th><th>Bond type</th></tr></thead>
+      <tbody>
+        <tr><td>Li–F</td><td><span class="chips"><span class="chip"><b>Li</b><span class="mono">0.98</span></span><span class="chip"><b>F</b><span class="mono">3.98</span></span></span></td><td class="slot"><span class="mono" data-b="yt-1" data-label="answer 1">3.00</span></td><td class="slot"><span data-b="yt-1">ionic, strong</span></td></tr>
+        <tr><td>N–H</td><td><span class="chips"><span class="chip"><b>N</b><span class="mono">3.04</span></span><span class="chip"><b>H</b><span class="mono">2.20</span></span></span></td><td class="slot"><span class="mono" data-b="yt-2" data-label="answer 2">0.84</span></td><td class="slot"><span data-b="yt-2">polar, N is <span class="dm">δ−</span></span></td></tr>
+        <tr><td>C–S</td><td><span class="chips"><span class="chip"><b>C</b><span class="mono">2.55</span></span><span class="chip"><b>S</b><span class="mono">2.58</span></span></span></td><td class="slot"><span class="mono" data-b="yt-3" data-label="answer 3">0.03</span></td><td class="slot"><span data-b="yt-3">nonpolar</span></td></tr>
+      </tbody>
+    </table>
+    <p data-b="yt-2">N–H is a bond in ammonia, NH<sub>3</sub>. C–S is a bond in carbon disulfide, CS<sub>2</sub>.</p>
+  </div>
+  <aside class="notes">You do. Circulate during the timer. Look for "smaller minus larger" (negative differences) and for arguments without a strength part.</aside>
+  <script>Deck.frames('s19',[
+    {t:0.5,note:"Read the task. Students work alone in notebooks."},
+    {timer:180,label:"timer 3 min",t:3,note:"Three minutes. Early finishers write the full argument for one bond: claim, evidence, reasoning, strength."},
+    {show:"yt-1",t:0.5,note:"3.98 − 0.98 = 3.00. Far above 1.8 and metal with nonmetal: strong."},
+    {show:"yt-2",t:0.5,note:"3.04 − 2.20 = 0.84. N pulls harder, so N is δ− and H is δ+."},
+    {show:"yt-3",t:0.5,note:"2.58 − 2.55 = 0.03. Two nonmetals sharing almost equally."}
+  ]);</script>
+</section>
+
+<section class="slide t-routine" id="s20" data-period="2" data-title="Checkpoint routine" data-sec="Checkpoint" data-ref="Objectives 4.1.1 to 4.1.3">
+  <h2>Checkpoint routine</h2>
+  <div class="body">
+    <div class="card prompt"><p>Each checkpoint uses the same five steps.</p></div>
+    <ol class="rail"><li id="s20-r1">Think</li><li id="s20-r2">Talk</li><li id="s20-r3">Write</li><li id="s20-r4">Self-check</li><li id="s20-r5">Compare</li></ol>
+    <ol class="steprows">
+        <li id="s20-s1"><b class="lbl">Think · 30 s</b><span>alone, no talking</span></li>
+        <li id="s20-s2"><b class="lbl">Talk · 60 s</b><span>tell your partner, then listen</span></li>
+        <li id="s20-s3"><b class="lbl">Write · 90 s</b><span>use the sentence frames</span></li>
+        <li id="s20-s4"><b class="lbl">Self-check</b><span>tick each success criterion</span></li>
+        <li id="s20-s5"><b class="lbl">Compare</b><span>read the sample and fix one line</span></li>
+    </ol>
+  </div>
+  <aside class="notes">Routine for slides 21 to 23: think 30 s, talk 60 s, write 90 s, self-check 30 s, compare 60 s.</aside>
+  <script>Deck.frames('s20',[
+    {t:0.5,note:"Explain that the routine repeats for each question."},
+    {cls:{"s20-r1": "now", "s20-s1": "now"},label:"think",t:0.1,note:"Think: silent, no pencils."},
+    {cls:{"s20-r1": "done", "s20-s1": "", "s20-r2": "now", "s20-s2": "now"},label:"talk",t:0.1,note:"Talk: partner A first, then partner B."},
+    {cls:{"s20-r1": "done", "s20-r2": "done", "s20-s1": "", "s20-s2": "", "s20-r3": "now", "s20-s3": "now"},label:"write",t:0.1,note:"Write: the sentence frames and word bank stay on screen."},
+    {cls:{"s20-r1": "done", "s20-r2": "done", "s20-r3": "done", "s20-s1": "", "s20-s2": "", "s20-s3": "", "s20-r4": "now", "s20-s4": "now"},label:"self-check",t:0.1,note:"Self-check: tick each criterion you met."},
+    {cls:{"s20-r1": "done", "s20-r2": "done", "s20-r3": "done", "s20-r4": "done", "s20-s1": "", "s20-s2": "", "s20-s3": "", "s20-s4": "", "s20-r5": "now", "s20-s5": "now"},label:"compare",t:0.1,note:"Compare: read the sample answer and fix one line."}
+  ]);</script>
+</section>
+
+<section class="slide t-routine" id="s21" data-period="2" data-title="Checkpoint 1" data-sec="Checkpoint 1" data-ref="Objective 4.1.1">
+  <h2>Checkpoint 1</h2>
+  <div class="body">
+    <div class="card prompt reg"><p>A student calls the transferred electron the ionic bond. Explain the error. What holds solid salt together?</p></div>
+    <ol class="rail"><li id="s21-r1">Think</li><li id="s21-r2">Talk</li><li id="s21-r3">Write</li><li id="s21-r4">Self-check</li><li id="s21-r5">Compare</li></ol>
+    <div class="rt-main">
+      <div class="acc">
+        <div class="card phase" id="s21-read" data-label="read"><p class="big">Read the question. What does the student claim?</p></div>
+        <div class="card phase" id="s21-think" data-label="think 30 s"><p class="big">Think alone. Do not talk yet.</p></div>
+        <div class="card phase" id="s21-talk" data-label="talk 60 s"><p class="big">Tell your partner your answer. Then listen.</p></div>
+        <div class="card phase" id="s21-write" data-label="write 90 s"><p class="tag">Write</p><ol class="frames"><li>The transfer only <span class="gap"></span>.</li><li>The ionic bond is <span class="gap"></span>.</li></ol><p class="bank"><b>Word bank:</b> <span>forms the ions</span> <span>attraction</span> <span>oppositely charged</span> <span>crystal</span></p></div>
+        <div class="card phase" id="s21-check" data-label="self-check"><p class="tag">Self-check: did you write that…</p><ul class="crit"><li>the transfer only forms ions?</li><li>the bond is the attraction between ions?</li><li>salt is a crystal of ions?</li></ul></div>
+        <div class="card phase reg" id="s21-sample" data-label="sample answer"><p class="tag">Sample answer</p><p>The transfer only forms the ions. The attraction between oppositely charged ions is the ionic bond.</p></div>
+      </div>
+      <div class="timer"></div>
+    </div>
+  </div>
+  <aside class="notes">Routine: think 30 s, talk 60 s, write 90 s, self-check 30 s, compare 60 s. The question stays on screen on every frame.</aside>
+  <script>Deck.frames('s21',[
+    {show:"s21-read",t:0.25,note:"Read the prompt aloud. Ask: what does the student claim? (The transferred electron is the bond.)"},
+    {show:"s21-think",hide:"s21-read",cls:{"s21-r1": "now"},timer:30,t:0.5,note:"Silent thinking. No pencils yet."},
+    {show:"s21-talk",hide:"s21-think",cls:{"s21-r1": "done", "s21-r2": "now"},timer:60,t:1,note:"Partner A speaks first, then B. Listen for: \"the electron is the bond\"."},
+    {show:"s21-write",hide:"s21-talk",cls:{"s21-r2": "done", "s21-r3": "now"},timer:90,t:1.5,note:"Students write in notebooks with the frames; the word bank stays up."},
+    {show:"s21-check",cls:{"s21-r3": "done", "s21-r4": "now"},t:0.5,note:"Students tick each criterion they met and fix one line."},
+    {show:"s21-sample",cls:{"s21-r4": "done", "s21-r5": "now"},t:0.75,note:"Compare with the sample. Reading §4.1.1 Key idea: an ionic bond is the attraction between oppositely charged ions."}
+  ]);</script>
+</section>
+
+<section class="slide t-routine" id="s22" data-period="2" data-title="Checkpoint 2" data-sec="Checkpoint 2" data-ref="Objective 4.1.2">
+  <h2>Checkpoint 2</h2>
+  <div class="body">
+    <div class="card prompt reg"><p>Cl<sub>2</sub> and HCl each contain one shared electron pair. Explain why Cl<sub>2</sub> is nonpolar, but HCl is polar. Identify the δ− atom.</p></div>
+    <ol class="rail"><li id="s22-r1">Think</li><li id="s22-r2">Talk</li><li id="s22-r3">Write</li><li id="s22-r4">Self-check</li><li id="s22-r5">Compare</li></ol>
+    <div class="rt-main">
+      <div class="acc">
+        <div class="card phase" id="s22-read" data-label="read"><p class="big">Read the question. What is the same in both?</p></div>
+        <div class="card phase" id="s22-think" data-label="think 30 s"><p class="big">Think alone. Do not talk yet.</p></div>
+        <div class="card phase" id="s22-talk" data-label="talk 60 s"><p class="big">Tell your partner your answer. Then listen.</p></div>
+        <div class="card phase" id="s22-write" data-label="write 90 s"><p class="tag">Write</p><ol class="frames"><li>Cl<sub>2</sub> is nonpolar because <span class="gap"></span>.</li><li>HCl is polar because <span class="gap"></span>.</li><li>The δ− atom is <span class="gap"></span>.</li></ol><p class="bank"><b>Word bank:</b> <span>electronegativity</span> <span>equal pull</span> <span>unequal sharing</span> <span>pulls harder</span></p></div>
+        <div class="card phase" id="s22-check" data-label="self-check"><p class="tag">Self-check: did you write that…</p><ul class="crit"><li>equal pull in Cl<sub>2</sub>?</li><li>Cl pulls harder in HCl?</li><li>Cl is δ−?</li></ul></div>
+        <div class="card phase reg" id="s22-sample" data-label="sample answer"><p class="tag">Sample answer</p><p>Both Cl atoms have the same electronegativity. In HCl, Cl pulls harder and is δ−.</p></div>
+      </div>
+      <div class="timer"></div>
+    </div>
+  </div>
+  <aside class="notes">Routine: think 30 s, talk 60 s, write 90 s, self-check 30 s, compare 60 s. The question stays on screen on every frame.</aside>
+  <script>Deck.frames('s22',[
+    {show:"s22-read",t:0.25,note:"Read the prompt aloud. Both molecules have one shared pair; the difference is the pull."},
+    {show:"s22-think",hide:"s22-read",cls:{"s22-r1": "now"},timer:30,t:0.5,note:"Silent thinking. No pencils yet."},
+    {show:"s22-talk",hide:"s22-think",cls:{"s22-r1": "done", "s22-r2": "now"},timer:60,t:1,note:"Partner A speaks first, then B. Listen for: \"HCl is ionic\" or \"H is δ−\"."},
+    {show:"s22-write",hide:"s22-talk",cls:{"s22-r2": "done", "s22-r3": "now"},timer:90,t:1.5,note:"Students write in notebooks with the frames; the word bank stays up."},
+    {show:"s22-check",cls:{"s22-r3": "done", "s22-r4": "now"},t:0.5,note:"Students tick each criterion they met and fix one line."},
+    {show:"s22-sample",cls:{"s22-r4": "done", "s22-r5": "now"},t:0.75,note:"Compare with the sample. Reading §4.1.2 Key idea: unequal sharing gives partial charges and a polar bond."}
+  ]);</script>
+</section>
+
+<section class="slide t-routine" id="s23" data-period="2" data-title="Checkpoint 3" data-sec="Checkpoint 3" data-ref="Objective 4.1.3">
+  <h2>Checkpoint 3</h2>
+  <div class="body">
+    <div class="card prompt reg"><p>A copper wire carries an electric current. Use the electron-sea model to explain why. Name one limitation of the model.</p></div>
+    <ol class="rail"><li id="s23-r1">Think</li><li id="s23-r2">Talk</li><li id="s23-r3">Write</li><li id="s23-r4">Self-check</li><li id="s23-r5">Compare</li></ol>
+    <div class="rt-main">
+      <div class="acc">
+        <div class="card phase" id="s23-read" data-label="read"><p class="big">Read the question. It has two parts.</p></div>
+        <div class="card phase" id="s23-think" data-label="think 30 s"><p class="big">Think alone. Do not talk yet.</p></div>
+        <div class="card phase" id="s23-talk" data-label="talk 60 s"><p class="big">Tell your partner your answer. Then listen.</p></div>
+        <div class="card phase" id="s23-write" data-label="write 90 s"><p class="tag">Write</p><ol class="frames"><li>The electrons in copper <span class="gap"></span>.</li><li>A current flows because <span class="gap"></span>.</li><li>The model leaves out <span class="gap"></span>.</li></ol><p class="bank"><b>Word bank:</b> <span>cations</span> <span>electron sea</span> <span>move freely</span> <span>waves</span></p></div>
+        <div class="card phase" id="s23-check" data-label="self-check"><p class="tag">Self-check: did you write that…</p><ul class="crit"><li>electrons in the sea move?</li><li>cations stay in place?</li><li>one model limit?</li></ul></div>
+        <div class="card phase reg" id="s23-sample" data-label="sample answer"><p class="tag">Sample answer</p><p>Delocalized electrons flow through the metal, so copper conducts. Real electrons are waves.</p></div>
+      </div>
+      <div class="timer"></div>
+    </div>
+  </div>
+  <aside class="notes">Routine: think 30 s, talk 60 s, write 90 s, self-check 30 s, compare 60 s. The question stays on screen on every frame.</aside>
+  <script>Deck.frames('s23',[
+    {show:"s23-read",t:0.25,note:"Read the prompt aloud. Two parts: why copper conducts, and one limit of the model."},
+    {show:"s23-think",hide:"s23-read",cls:{"s23-r1": "now"},timer:30,t:0.5,note:"Silent thinking. No pencils yet."},
+    {show:"s23-talk",hide:"s23-think",cls:{"s23-r1": "done", "s23-r2": "now"},timer:60,t:1,note:"Partner A speaks first, then B. Listen for: \"copper ions move\" (they stay in the lattice)."},
+    {show:"s23-write",hide:"s23-talk",cls:{"s23-r2": "done", "s23-r3": "now"},timer:90,t:1.5,note:"Students write in notebooks with the frames; the word bank stays up."},
+    {show:"s23-check",cls:{"s23-r3": "done", "s23-r4": "now"},t:0.5,note:"Students tick each criterion they met and fix one line."},
+    {show:"s23-sample",cls:{"s23-r4": "done", "s23-r5": "now"},t:0.75,note:"Compare with the sample. Other limits: one flat layer shown, a real metal is a 3D crystal."}
+  ]);</script>
+</section>
+
+<section class="slide t-routine t-exit" id="s24" data-period="2" data-title="Predictions and exit ticket" data-sec="Exit ticket" data-ref="Objectives 4.1.4 and 4.1.5">
+  <h2>Predictions and exit ticket</h2>
+  <div class="body">
+    <div class="stack">
+      <div class="phaseA" id="s24-A" data-label="answers">
+        <div class="stack">
+      <div class="card check done" id="s24-p1" data-label="answer 1" data-mode="none"><p class="tag">Question 1</p><p class="q">Solid salt is made of…</p><ol class="opts" data-lay="row"><li class="opt right"><b>A</b><span>ions</span></li></ol><p class="reason">Salt is a crystal of Na<sup>+</sup> and Cl<sup>−</sup> ions. It has no molecules.</p></div>
+      <div class="card check done" id="s24-p2" data-label="answer 2" data-mode="none"><p class="tag">Question 2</p><p class="q">In HCl, the shared pair sits…</p><ol class="opts" data-lay="row"><li class="opt right"><b>A</b><span>closer to Cl</span></li></ol><p class="reason"><span class="enrow"><span class="enl lbl">Electronegativity (pull on electrons)</span><span class="chips"><span class="chip"><b>Cl</b><span class="mono">3.16</span></span><span class="chip"><b>H</b><span class="mono">2.20</span></span></span></span>Cl pulls harder.</p></div>
+      <div class="card check done" id="s24-p3" data-label="answer 3" data-mode="none"><p class="tag">Question 3</p><p class="q">A copper wire is held together by…</p><ol class="opts" data-lay="row"><li class="opt right"><b>A</b><span>cations in a sea of electrons</span></li></ol><p class="reason">Copper alone is a metal: a metallic bond.</p></div>
+        </div>
+        <p class="handsup">Hands up if you predicted this.</p>
+      </div>
+      <div class="phaseB" id="s24-B" data-label="exit ticket">
+        <div class="card prompt reg"><p>How can the periodic table predict the kind of bond two elements form?</p></div>
+        <ol class="rail"><li id="s24-r1">Claim</li><li id="s24-r2">Evidence</li><li id="s24-r3">Reasoning</li><li id="s24-r4">Self-check</li><li id="s24-r5">Sample</li></ol>
+        <div class="rt-main">
+          <div class="acc">
+            <div class="card phase" id="s24-fr" data-label="claim"><p class="tag">Write</p><ol class="frames">
+              <li id="s24-f1">Claim: The periodic table predicts a bond from <span class="gap"></span>.</li>
+              <li id="s24-f2" data-label="evidence">Evidence: For example, <span class="gap"></span> and <span class="gap"></span> differ by <span class="gap"></span>.</li>
+              <li id="s24-f3" data-label="reasoning">Reasoning: This works because <span class="gap"></span>.</li>
+            </ol>
+            <p class="bank" id="s24-bank"><b>Word bank:</b> <span>electronegativity</span> <span>difference</span> <span>metal</span> <span>nonmetal</span> <span>guide</span></p></div>
+            <div class="card" id="s24-check" data-label="self-check"><p class="tag">Self-check: did you write…</p><ul class="crit"><li>a claim that answers the question?</li><li>two values and their difference?</li><li>reasoning from the guide and the table positions?</li></ul></div>
+            <div class="card reg" id="s24-sample" data-label="sample answer"><p class="tag">Sample answer</p><p>Look up both values on the table and subtract. A metal and a nonmetal above 1.8 form ions. Two nonmetals share electrons.</p></div>
+          </div>
+          <div class="timer"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Predictions from slide 4 come back first; students check their letters. Then the CER exit ticket on the driving question; the question stays on screen while the sample shows. Collect the exit tickets.</aside>
+  <script>Deck.frames('s24',[
+    {show:["s24-A", "s24-p1"],t:0.5,note:"Answer 1: ions. Hands up if you predicted A. Compare with the counts from slide 4."},
+    {show:"s24-p2",hide:"s24-p1",t:0.5,note:"Answer 2: closer to Cl. Ask a student who changed their mind to say why."},
+    {show:"s24-p3",hide:"s24-p2",t:1,note:"Answer 3: cations in a sea of electrons. Option C (+ and − copper ions) was the common wrong idea."},
+    {show:["s24-B", "s24-fr", "s24-f1"],hide:"s24-A",cls:{"s24-r1": "now"},t:0.5,note:"Exit ticket. Claim first: what does the table give you? (electronegativity values and positions)."},
+    {show:"s24-f2",cls:{"s24-r1": "done", "s24-r2": "now"},t:0.5,note:"Evidence: two values and the difference, plus positions."},
+    {show:"s24-f3",cls:{"s24-r2": "done", "s24-r3": "now"},timer:180,label:"write 3 min",t:3,note:"Reasoning: the guide and what metals and nonmetals do. Three minutes of writing."},
+    {show:"s24-check",cls:{"s24-r3": "done", "s24-r4": "now"},t:0.5,note:"Self-check with the three criteria."},
+    {show:"s24-sample",cls:{"s24-r4": "done", "s24-r5": "now"},t:0.5,note:"Compare with the sample. Collect the tickets."}
+  ]);</script>
+</section>
+
+<section class="slide t-routine" id="s25" data-period="2" data-title="Rate your learning" data-sec="Reflect" data-ref="All objectives">
+  <h2>Rate your learning</h2>
+  <div class="body">
+    <div class="scale lbl"><span>1 finger: not yet</span><span>2 fingers: almost</span><span>3 fingers: I can teach it</span></div>
+    <p class="tag">I can…</p>
+    <ol class="rate">
+        <li id="s25-t1"><span><b class="mono lbl">4.1.1</b> explain how ions form and attract.</span><span class="rev">Review: slides 6 and 7</span></li>
+        <li id="s25-t2"><span><b class="mono lbl">4.1.2</b> tell polar from nonpolar bonds.</span><span class="rev">Review: slides 8 and 9</span></li>
+        <li id="s25-t3"><span><b class="mono lbl">4.1.3</b> describe the electron sea in metals.</span><span class="rev">Review: slide 10</span></li>
+        <li id="s25-t4"><span><b class="mono lbl">4.1.4</b> predict a bond type from the table.</span><span class="rev">Review: slides 11, 15 to 17</span></li>
+        <li id="s25-t5"><span><b class="mono lbl">4.1.5</b> argue for a bond type with evidence.</span><span class="rev">Review: slides 18 and 19</span></li>
+    </ol>
+  </div>
+  <aside class="notes">Fingers 1 to 3 for each target. Students below 3 revisit the slides named on the right, then the missions: Predict the bond, Find a partner, Build the argument. Lesson 4.2 uses ion charges to write formulas and names.</aside>
+  <script>Deck.frames('s25',[
+    {t:0.25,note:"Explain the scale: 1 not yet, 2 almost, 3 I can teach it."},
+    {cls:{"s25-t1": "now"},label:"target 1",t:0.25,note:"Fingers for target 4.1.1. Note who shows 1 and point to the review slides."},
+    {cls:{"s25-t1": "", "s25-t2": "now"},label:"target 2",t:0.25,note:"Fingers for target 4.1.2. Note who shows 1 and point to the review slides."},
+    {cls:{"s25-t1": "", "s25-t2": "", "s25-t3": "now"},label:"target 3",t:0.25,note:"Fingers for target 4.1.3. Note who shows 1 and point to the review slides."},
+    {cls:{"s25-t1": "", "s25-t2": "", "s25-t3": "", "s25-t4": "now"},label:"target 4",t:0.25,note:"Fingers for target 4.1.4. Note who shows 1 and point to the review slides."},
+    {cls:{"s25-t1": "", "s25-t2": "", "s25-t3": "", "s25-t4": "", "s25-t5": "now"},label:"target 5",t:0.25,note:"Fingers for target 4.1.5. Note who shows 1 and point to the review slides."}
+  ]);</script>
+</section>
+
+<footer id="foot"><span id="sec"></span><span id="cue"></span><span id="count"></span></footer>
+</main>
+<div id="notes" hidden></div>
+<div id="overview" hidden></div>
+<div id="blank" hidden></div>
+<div id="runsheet"></div>
+<script>Deck.start()</script>
+</body>
+</html>
