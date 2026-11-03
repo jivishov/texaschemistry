@@ -1,7 +1,7 @@
 # Assignment (written by the orchestrator in step 00 from the teacher's start message; the teacher may edit it)
 
 unit: 4
-lessons: 4.5, 4.6            # in priority order, as the start message names them; see the note on 4.6 below
+lessons: 4.5                 # the start message also named 4.6; the teacher confirmed on 2026-11-03 that it does not exist (see below)
 mode: cross-account
 base: claude/unit-4-chemistry-slides-j62190   # holds the reference decks, the kit and workshop/ (not yet merged into main)
 branch: workshop/unit4-5-6
@@ -13,5 +13,4 @@ kit state: deck-specific, generalize in step 01 (tools/slides-kit/ has step1/ste
 teacher wishes: "Priority: 4.5 first." (no other wishes in the start message)
 
 ## Note on lesson 4.6
-`unit4/blueprint.html` lists five lessons (4.1 to 4.5) and the Texas freeze case file; there is no lesson 4.6, no `unit4/reading-4-6.html` and no matrix rows 4.6.x on the base or on main.
-The workshop runs 4.5 first as asked. What "4.6" means is the teacher's call (recorded in the plan under "Open question for the teacher"); until then only 4.5 is planned.
+`unit4/blueprint.html` lists five lessons (4.1 to 4.5) and the Texas freeze case file; there is no lesson 4.6. The teacher confirmed on 2026-11-03 that naming it was a slip. The workshop builds the 4.5 deck only; the branch and the pull request keep their names.
