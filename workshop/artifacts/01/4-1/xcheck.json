@@ -1,0 +1,212 @@
+[
+ {
+  "n": "matrix: 5 rows 4.1.1 to 4.1.5 found",
+  "pass": true,
+  "i": "{\"4.1.1\":\"6 to 7\",\"4.1.2\":\"8 to 9\",\"4.1.3\":\"10\",\"4.1.4\":\"11, 15 to 17\",\"4.1.5\":\"18 to 19, 24\"}"
+ },
+ {
+  "n": "4.1 blueprint sentence found",
+  "pass": true,
+  "i": "Slide checks: 9, then a three-question checkpoint and a CER exit ticket. The deck has 25 slides: period 1 uses slides 1 to 13, period 2 slides 14 to 25."
+ },
+ {
+  "n": "4.1 \"The deck has 25 slides\": deck has 25",
+  "pass": true,
+  "i": ""
+ },
+ {
+  "n": "4.1 \"period 1 uses slides 1 to 13\": last period-1 slide is 13, all of 1..13 are period 1",
+  "pass": true,
+  "i": ""
+ },
+ {
+  "n": "4.1 \"period 2 slides 14 to 25\": first period-2 slide is 14, all of 14..25 are period 2",
+  "pass": true,
+  "i": ""
+ },
+ {
+  "n": "4.1 \"Slide checks: 9\": slides with a check are 6, 7, 8, 9, 10, 15, 16, 17, 18",
+  "pass": true,
+  "i": ""
+ },
+ {
+  "n": "4.1.1 → slide 6 (Forming ions): exists and carries 4.1.1",
+  "pass": true,
+  "i": "footer \"Reading §4.1.1\""
+ },
+ {
+  "n": "4.1.1 → slide 7 (The crystal): exists and carries 4.1.1",
+  "pass": true,
+  "i": "footer \"Reading §4.1.1\""
+ },
+ {
+  "n": "4.1.2 → slide 8 (Covalent bonds): exists and carries 4.1.2",
+  "pass": true,
+  "i": "footer \"Reading §4.1.2\""
+ },
+ {
+  "n": "4.1.2 → slide 9 (Polar and nonpolar): exists and carries 4.1.2",
+  "pass": true,
+  "i": "footer \"Reading §4.1.2\""
+ },
+ {
+  "n": "4.1.3 → slide 10 (Metallic bonds): exists and carries 4.1.3",
+  "pass": true,
+  "i": "footer \"Reading §4.1.3\""
+ },
+ {
+  "n": "4.1.4 → slide 11 (One picture for three bonds): exists and carries 4.1.4",
+  "pass": true,
+  "i": "footer \"Reading §4.1.1 to §4.1.4\""
+ },
+ {
+  "n": "4.1.4 → slide 15 (The electronegativity difference): exists and carries 4.1.4",
+  "pass": true,
+  "i": "footer \"Reading §4.1.4\""
+ },
+ {
+  "n": "4.1.4 → slide 16 (Evidence from the table): exists and carries 4.1.4",
+  "pass": true,
+  "i": "footer \"Reading §4.1.4\""
+ },
+ {
+  "n": "4.1.4 → slide 17 (Near the line): exists and carries 4.1.4",
+  "pass": true,
+  "i": "footer \"Reading §4.1.4\""
+ },
+ {
+  "n": "4.1.5 → slide 18 (Bonding argument: I do, we do): exists and carries 4.1.5",
+  "pass": true,
+  "i": "footer \"Reading §4.1.5\""
+ },
+ {
+  "n": "4.1.5 → slide 19 (You do: three bonds): exists and carries 4.1.5",
+  "pass": true,
+  "i": "footer \"Reading §4.1.5\""
+ },
+ {
+  "n": "4.1.5 → slide 24 (Predictions and exit ticket): exists and carries 4.1.5",
+  "pass": true,
+  "i": "footer \"Objectives 4.1.4 and 4.1.5\""
+ },
+ {
+  "n": "4.1 rate slide 25: 4.1.1 \"Review: 6 and 7\" are slides that carry 4.1.1 and are in the matrix row (6 to 7)",
+  "pass": true,
+  "i": "same set"
+ },
+ {
+  "n": "4.1 rate slide 25: 4.1.2 \"Review: 8 and 9\" are slides that carry 4.1.2 and are in the matrix row (8 to 9)",
+  "pass": true,
+  "i": "same set"
+ },
+ {
+  "n": "4.1 rate slide 25: 4.1.3 \"Review: 10\" are slides that carry 4.1.3 and are in the matrix row (10)",
+  "pass": true,
+  "i": "same set"
+ },
+ {
+  "n": "4.1 rate slide 25: 4.1.4 \"Review: 11, 15 to 17\" are slides that carry 4.1.4 and are in the matrix row (11, 15 to 17)",
+  "pass": true,
+  "i": "same set"
+ },
+ {
+  "n": "4.1 rate slide 25: 4.1.5 \"Review: 18 and 19\" are slides that carry 4.1.5 and are in the matrix row (18 to 19, 24)",
+  "pass": true,
+  "i": "matrix also lists 24"
+ },
+ {
+  "n": "4.1 s02 mentions slide 5 (\"…p it light; the chemistry words come on slides 5 to 10\")",
+  "pass": true,
+  "i": "target: Targets and words"
+ },
+ {
+  "n": "4.1 s02 mentions slide 6 (\"…p it light; the chemistry words come on slides 5 to 10\")",
+  "pass": true,
+  "i": "target: Forming ions"
+ },
+ {
+  "n": "4.1 s02 mentions slide 7 (\"…p it light; the chemistry words come on slides 5 to 10\")",
+  "pass": true,
+  "i": "target: The crystal"
+ },
+ {
+  "n": "4.1 s02 mentions slide 8 (\"…p it light; the chemistry words come on slides 5 to 10\")",
+  "pass": true,
+  "i": "target: Covalent bonds"
+ },
+ {
+  "n": "4.1 s02 mentions slide 9 (\"…p it light; the chemistry words come on slides 5 to 10\")",
+  "pass": true,
+  "i": "target: Polar and nonpolar"
+ },
+ {
+  "n": "4.1 s02 mentions slide 10 (\"…p it light; the chemistry words come on slides 5 to 10\")",
+  "pass": true,
+  "i": "target: Metallic bonds"
+ },
+ {
+  "n": "4.1 s04 mentions slide 24 (\"…de of + and − ions. Keep the counts for slide 24\")",
+  "pass": true,
+  "i": "target: Predictions and exit ticket"
+ },
+ {
+  "n": "4.1 s05 mentions slide 25 (\"…4.1.1 to 4.1.5; they rate themselves on slide 25\")",
+  "pass": true,
+  "i": "target: Rate your learning"
+ },
+ {
+  "n": "4.1 s05 mentions slide 11 (\"…with the icon. The same icons return on slide 11\")",
+  "pass": true,
+  "i": "target: One picture for three bonds"
+ },
+ {
+  "n": "4.1 s06 mentions slide 7 (\"…its own; the bond is not the transfer (slide 7\")",
+  "pass": true,
+  "i": "target: The crystal"
+ },
+ {
+  "n": "4.1 s11 mentions slide 5 (\"…umns; the icons match the word strip on slide 5\")",
+  "pass": true,
+  "i": "target: Targets and words"
+ },
+ {
+  "n": "4.1 s15 mentions slide 17 (\"…off proves the bond type\" (it does not; slide 17\")",
+  "pass": true,
+  "i": "target: Near the line"
+ },
+ {
+  "n": "4.1 s16 mentions slide 11 (\"…udents copy the three lines. They match slide 11\")",
+  "pass": true,
+  "i": "target: One picture for three bonds"
+ },
+ {
+  "n": "4.1 s20 mentions slide 21 (\"…Routine for slides 21 to 23\")",
+  "pass": true,
+  "i": "target: Checkpoint 1"
+ },
+ {
+  "n": "4.1 s20 mentions slide 22 (\"…Routine for slides 21 to 23\")",
+  "pass": true,
+  "i": "target: Checkpoint 2"
+ },
+ {
+  "n": "4.1 s20 mentions slide 23 (\"…Routine for slides 21 to 23\")",
+  "pass": true,
+  "i": "target: Checkpoint 3"
+ },
+ {
+  "n": "4.1 s24 mentions slide 4 (\"…edicted A. Compare with the counts from slide 4\")",
+  "pass": true,
+  "i": "target: Predict now"
+ },
+ {
+  "n": "4.1 every listed mention was found",
+  "pass": true,
+  "i": "17 mentions"
+ },
+ {
+  "n": "4.1 footer cues \"slide N: title\": 24 cues, each names the next slide by its number and title",
+  "pass": true,
+  "i": ""
+ }
+]

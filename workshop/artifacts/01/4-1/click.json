@@ -1,0 +1,242 @@
+{
+  "checks": 9,
+  "picks": 3,
+  "res": [
+    {
+      "n": "s4f0 s04-q1 option A: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[0],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f0 s04-q1 option B: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[1],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f0 s04-q1 option C: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[2],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f1 s04-q2 option A: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[0],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f1 s04-q2 option B: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[1],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f1 s04-q2 option C: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[2],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f2 s04-q3 option A: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[0],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f2 s04-q3 option B: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[1],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f2 s04-q3 option C: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[2],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s6f4 s06-check click A (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"A minus charge means extra electrons. A metal loses electrons.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s6f4 s06-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Mg+ lost only one electron. Magnesium loses two.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s6f4 s06-check click C (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"Mg keeps 12 protons and has 10 electrons: Mg2+.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s6 s06-check Next: the answer shows, s06-c is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s06-c\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s7f4 cr-check click A (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"One is the pair picture. Count the lit neighbors.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s7f4 cr-check click B (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"Each Na+ touches six Cl− ions.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s7f4 cr-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Eight fits a different crystal (CsCl), not salt.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s7 cr-check Next: the answer shows, cr-b is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"cr-b\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s8f4 s08-check click A (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Seven forgets the shared pair. It counts for both atoms.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s8f4 s08-check click B (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"Six unshared electrons plus the shared pair make 8.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s8f4 s08-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Fourteen counts the electrons of both atoms together.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s8 s08-check Next: the answer shows, s08-b is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s08-b\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s9f6 s09-check click A (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"H pulls less, so H is δ+. O is δ−.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s9f6 s09-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"O pulls harder, so O is δ−, not δ+.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s9f6 s09-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"The values differ by 1.24, so the bond is polar.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s9 s09-check Next: the answer shows, s09-a is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s09-a\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s10f8 s10-check click A (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"The electrons in the sea move. The cations stay in place.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s10f8 s10-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"In a solid metal, the cations stay in place.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s10f8 s10-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Shared pairs describe covalent bonds, not metals.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s10 s10-check Next: the answer shows, s10-a is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s10-a\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s15f6 s15-check click A (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Nonpolar needs a difference below 0.4. Here it is 2.44.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s15f6 s15-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Polar covers 0.4 to 1.8. The difference 2.44 is above 1.8.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s15f6 s15-check click C (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"3.44 − 1.00 = 2.44, above 1.8: ionic.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s15 s15-check Next: the answer shows, s15-c is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s15-c\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s16f7 s16-check click A (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"K is a metal, so K–Br is ionic.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s16f7 s16-check click B (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"N and O are both nonmetals. They share pairs.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s16f7 s16-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Mg is a metal, so Mg–O is ionic.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s16 s16-check Next: the answer shows, s16-b is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s16-b\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s17f5 s17-check click A (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"1.85 is too close to the line to be strong alone.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s17f5 s17-check click B (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"1.85 is only 0.05 above 1.8. Use the table too.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s17f5 s17-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"1.85 is above 1.8, so it supports ionic, weakly.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s17 s17-check Next: the answer shows, s17-b is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s17-b\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s18f9 s18-check click A (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"Values and positions are evidence. Color and state are not.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s18f9 s18-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Color does not show the type of bond.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s18f9 s18-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"The state of fluorine says nothing about the compound KF.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s18 s18-check Next: the answer shows, s18-a is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s18-a\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "every graded option has a feedback line and exactly one right option per check",
+      "pass": true,
+      "i": ""
+    },
+    {
+      "n": "no console errors",
+      "pass": true,
+      "i": "[]"
+    }
+  ],
+  "fails": []
+}

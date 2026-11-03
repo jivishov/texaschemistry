@@ -1,0 +1,33 @@
+  PASS  slide 2 tugOfWar: Cl 3.16 vs Cl 3.16, knot centered
+  PASS  slide 2 tugOfWar: H 2.20 vs Cl 3.16, knot toward Cl
+  PASS  slide 2 tugOfWar: Na 0.93 vs Cl 3.16, all the way, ions
+  PASS  slide 6 ionHop: 11 p 11 e, 17 p 17 e
+  PASS  slide 6 ionHop: Na+ smaller than Na, Cl- larger than Cl
+  PASS  slide 6 ionHop: 11 p 10 e, 17 p 18 e
+  PASS  slide 7 ionHop: center Na+ with six Cl- neighbors
+  PASS  slide 8 tugOfWar recap: even pull
+  PASS  slide 8 sharedPair H2: 0.00, no δ
+  PASS  slide 8 sharedPair Cl2: 0.00, no δ
+  PASS  slide 9 sharedPair H2: 0.00, δ− on neither
+  PASS  slide 9 sharedPair HCl: 0.96, δ− on Cl
+  PASS  slide 9 sharedPair HO: 1.24, δ− on O
+  PASS  slide 9 sharedPair HF: 1.78, δ− on F
+  PASS  slide 10 electronSea sea: 1 per core, +
+  PASS  slide 10 electronSea Mg: 2 per core, 2+
+  PASS  slide 10 electronSea Al: 3 per core, 3+
+  PASS  slide 10 electronSea drift: electrons stream
+  PASS  slide 15 enMeter Cl-Cl: 3.16 − 3.16 = 0.00
+  PASS  slide 15 enMeter H-Cl: 3.16 − 2.20 = 0.96
+  PASS  slide 15 enMeter Na-Cl: 3.16 − 0.93 = 2.23
+  PASS  slide 15 enMeter: guide lines 0.4 and 1.8
+  PASS  slide 16 ptMap Na-Cl: metal + nonmetal
+  PASS  slide 16 ptMap H-Cl: two nonmetals
+  PASS  slide 16 ptMap Cu-Cu: one metal
+  PASS  slide 16 ptMap: 118 cells, no symbol squeezed or left out
+  PASS  slide 17 enMeter H-F: 3.98 − 2.20 = 1.78
+  PASS  slide 17 enMeter Mg-Cl: 3.16 − 1.31 = 1.85
+  PASS  slide 17 enMeter Fe-Cl: 3.16 − 1.83 = 1.33
+  PASS  slide 18 cerBuilder KF: four parts
+  PASS  slide 18 cerBuilder HCl: starts fresh
+  PASS  no console errors
+chem (deck): PASS 32 checks

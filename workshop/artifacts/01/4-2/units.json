@@ -1,0 +1,1870 @@
+[
+ {
+  "s": 6,
+  "f": 0,
+  "units": [
+   {
+    "id": "s06-sim",
+    "kind": "animation",
+    "label": "ionTable"
+   },
+   {
+    "id": "s06-p0",
+    "kind": "caprow",
+    "label": ""
+   }
+  ],
+  "cards": [
+   "s06-p0"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 6,
+  "f": 1,
+  "units": [
+   {
+    "id": "s06-sim",
+    "kind": "animation",
+    "label": "ionTable"
+   },
+   {
+    "id": "s06-sim",
+    "kind": "part",
+    "label": "group 1"
+   },
+   {
+    "id": "s06-p1",
+    "kind": "caprow",
+    "label": "group 1"
+   }
+  ],
+  "cards": [
+   "s06-p1"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 6,
+  "f": 2,
+  "units": [
+   {
+    "id": "s06-sim",
+    "kind": "animation",
+    "label": "ionTable"
+   },
+   {
+    "id": "s06-sim",
+    "kind": "part",
+    "label": "group 2"
+   },
+   {
+    "id": "s06-p2",
+    "kind": "caprow",
+    "label": "group 2"
+   }
+  ],
+  "cards": [
+   "s06-p2"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 6,
+  "f": 3,
+  "units": [
+   {
+    "id": "s06-sim",
+    "kind": "animation",
+    "label": "ionTable"
+   },
+   {
+    "id": "s06-sim",
+    "kind": "part",
+    "label": "group 13"
+   },
+   {
+    "id": "s06-p3",
+    "kind": "caprow",
+    "label": "aluminum"
+   }
+  ],
+  "cards": [
+   "s06-p3"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 6,
+  "f": 4,
+  "units": [
+   {
+    "id": "s06-sim",
+    "kind": "animation",
+    "label": "ionTable"
+   },
+   {
+    "id": "s06-sim",
+    "kind": "part",
+    "label": "group 17"
+   },
+   {
+    "id": "s06-sim",
+    "kind": "part",
+    "label": "anion names"
+   },
+   {
+    "id": "s06-p4",
+    "kind": "caprow",
+    "label": "group 17"
+   }
+  ],
+  "cards": [
+   "s06-p4"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 6,
+  "f": 5,
+  "units": [
+   {
+    "id": "s06-sim",
+    "kind": "animation",
+    "label": "ionTable"
+   },
+   {
+    "id": "s06-sim",
+    "kind": "part",
+    "label": "group 16"
+   },
+   {
+    "id": "s06-sim",
+    "kind": "part",
+    "label": "anion names"
+   },
+   {
+    "id": "s06-p5",
+    "kind": "caprow",
+    "label": "group 16"
+   }
+  ],
+  "cards": [
+   "s06-p5"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 6,
+  "f": 6,
+  "units": [
+   {
+    "id": "s06-sim",
+    "kind": "animation",
+    "label": "ionTable"
+   },
+   {
+    "id": "s06-sim",
+    "kind": "part",
+    "label": "group 15"
+   },
+   {
+    "id": "s06-sim",
+    "kind": "part",
+    "label": "anion names"
+   },
+   {
+    "id": "s06-p6",
+    "kind": "caprow",
+    "label": "group 15"
+   }
+  ],
+  "cards": [
+   "s06-p6"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 6,
+  "f": 7,
+  "units": [
+   {
+    "id": "s06-sim",
+    "kind": "animation",
+    "label": "ionTable"
+   },
+   {
+    "id": "s06-sim",
+    "kind": "part",
+    "label": "group 15"
+   },
+   {
+    "id": "s06-sim",
+    "kind": "part",
+    "label": "anion names"
+   },
+   {
+    "id": "",
+    "kind": "p",
+    "label": ""
+   },
+   {
+    "id": "",
+    "kind": "p",
+    "label": ""
+   },
+   {
+    "id": "",
+    "kind": "p",
+    "label": ""
+   }
+  ],
+  "cards": [
+   "Metal atoms lose 1, ",
+   "Nonmetal atoms gain ",
+   "A monatomic anion na"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 6,
+  "f": 8,
+  "units": [
+   {
+    "id": "s06-sim",
+    "kind": "animation",
+    "label": "ionTable"
+   },
+   {
+    "id": "s06-sim",
+    "kind": "part",
+    "label": "group 15"
+   },
+   {
+    "id": "s06-sim",
+    "kind": "part",
+    "label": "anion names"
+   },
+   {
+    "id": "s06-check",
+    "kind": "check",
+    "label": "check"
+   }
+  ],
+  "cards": [
+   "s06-check"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 6,
+  "f": 9,
+  "units": [
+   {
+    "id": "s06-sim",
+    "kind": "animation",
+    "label": "ionTable"
+   },
+   {
+    "id": "s06-sim",
+    "kind": "part",
+    "label": "group 15"
+   },
+   {
+    "id": "s06-sim",
+    "kind": "part",
+    "label": "anion names"
+   },
+   {
+    "id": "s06-check",
+    "kind": "check",
+    "label": "check"
+   }
+  ],
+  "cards": [
+   "s06-check"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 7,
+  "f": 0,
+  "units": [
+   {
+    "id": "s07-sim",
+    "kind": "animation",
+    "label": "ionTable"
+   },
+   {
+    "id": "s07-sim",
+    "kind": "part",
+    "label": "four metals"
+   },
+   {
+    "id": "s07-sim",
+    "kind": "part",
+    "label": "learn these four"
+   },
+   {
+    "id": "s07-p0",
+    "kind": "caprow",
+    "label": ""
+   }
+  ],
+  "cards": [
+   "s07-p0"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 7,
+  "f": 1,
+  "units": [
+   {
+    "id": "s07-sim",
+    "kind": "animation",
+    "label": "ionTable"
+   },
+   {
+    "id": "s07-sim",
+    "kind": "part",
+    "label": "four metals"
+   },
+   {
+    "id": "s07-sim",
+    "kind": "part",
+    "label": "learn these four"
+   },
+   {
+    "id": "",
+    "kind": "p",
+    "label": ""
+   },
+   {
+    "id": "",
+    "kind": "p",
+    "label": ""
+   }
+  ],
+  "cards": [
+   "Fe2+ and Fe3+, Cu+ a",
+   "The numeral is a ver"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 7,
+  "f": 2,
+  "units": [
+   {
+    "id": "s07-sim",
+    "kind": "animation",
+    "label": "ionTable"
+   },
+   {
+    "id": "s07-sim",
+    "kind": "part",
+    "label": "four metals"
+   },
+   {
+    "id": "s07-sim",
+    "kind": "part",
+    "label": "learn these four"
+   },
+   {
+    "id": "s07-p2",
+    "kind": "caprow",
+    "label": "silver and zinc"
+   }
+  ],
+  "cards": [
+   "s07-p2"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 7,
+  "f": 3,
+  "units": [
+   {
+    "id": "s07-sim",
+    "kind": "animation",
+    "label": "ionTable"
+   },
+   {
+    "id": "s07-sim",
+    "kind": "part",
+    "label": "four metals"
+   },
+   {
+    "id": "s07-sim",
+    "kind": "part",
+    "label": "learn these four"
+   },
+   {
+    "id": "s07-p3",
+    "kind": "caprow",
+    "label": "real life"
+   }
+  ],
+  "cards": [
+   "s07-p3"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 7,
+  "f": 4,
+  "units": [
+   {
+    "id": "s07-sim",
+    "kind": "animation",
+    "label": "ionTable"
+   },
+   {
+    "id": "s07-sim",
+    "kind": "part",
+    "label": "four metals"
+   },
+   {
+    "id": "s07-sim",
+    "kind": "part",
+    "label": "learn these four"
+   },
+   {
+    "id": "s07-mem",
+    "kind": "memory card",
+    "label": "memory card"
+   }
+  ],
+  "cards": [
+   "s07-mem"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 7,
+  "f": 5,
+  "units": [
+   {
+    "id": "s07-sim",
+    "kind": "animation",
+    "label": "ionTable"
+   },
+   {
+    "id": "s07-sim",
+    "kind": "part",
+    "label": "four metals"
+   },
+   {
+    "id": "s07-sim",
+    "kind": "part",
+    "label": "learn these four"
+   },
+   {
+    "id": "s07-check",
+    "kind": "check",
+    "label": "check"
+   }
+  ],
+  "cards": [
+   "s07-check"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 7,
+  "f": 6,
+  "units": [
+   {
+    "id": "s07-sim",
+    "kind": "animation",
+    "label": "ionTable"
+   },
+   {
+    "id": "s07-sim",
+    "kind": "part",
+    "label": "four metals"
+   },
+   {
+    "id": "s07-sim",
+    "kind": "part",
+    "label": "learn these four"
+   },
+   {
+    "id": "s07-check",
+    "kind": "check",
+    "label": "check"
+   }
+  ],
+  "cards": [
+   "s07-check"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 8,
+  "f": 0,
+  "units": [
+   {
+    "id": "s08-sim",
+    "kind": "animation",
+    "label": "chargeBlocks"
+   },
+   {
+    "id": "s08-c0",
+    "kind": "card",
+    "label": "studs"
+   }
+  ],
+  "cards": [
+   "s08-c0"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 8,
+  "f": 1,
+  "units": [
+   {
+    "id": "s08-sim",
+    "kind": "animation",
+    "label": "chargeBlocks"
+   },
+   {
+    "id": "s08-c0",
+    "kind": "card",
+    "label": "studs"
+   }
+  ],
+  "cards": [
+   "s08-c0"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 8,
+  "f": 2,
+  "units": [
+   {
+    "id": "s08-sim",
+    "kind": "animation",
+    "label": "chargeBlocks"
+   },
+   {
+    "id": "s08-c0",
+    "kind": "card",
+    "label": "studs"
+   },
+   {
+    "id": "s08-c1",
+    "kind": "card",
+    "label": "calcium chloride"
+   }
+  ],
+  "cards": [
+   "s08-c0",
+   "s08-c1"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 8,
+  "f": 3,
+  "units": [
+   {
+    "id": "s08-sim",
+    "kind": "animation",
+    "label": "chargeBlocks"
+   },
+   {
+    "id": "s08-c0",
+    "kind": "card",
+    "label": "studs"
+   },
+   {
+    "id": "s08-c1",
+    "kind": "card",
+    "label": "calcium chloride"
+   }
+  ],
+  "cards": [
+   "s08-c0",
+   "s08-c1"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 8,
+  "f": 4,
+  "units": [
+   {
+    "id": "s08-sim",
+    "kind": "animation",
+    "label": "chargeBlocks"
+   },
+   {
+    "id": "s08-c0",
+    "kind": "card",
+    "label": "studs"
+   },
+   {
+    "id": "s08-c1",
+    "kind": "card",
+    "label": "calcium chloride"
+   }
+  ],
+  "cards": [
+   "s08-c0",
+   "s08-c1"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 8,
+  "f": 5,
+  "units": [
+   {
+    "id": "s08-sim",
+    "kind": "animation",
+    "label": "chargeBlocks"
+   },
+   {
+    "id": "s08-c0",
+    "kind": "card",
+    "label": "studs"
+   },
+   {
+    "id": "s08-q2",
+    "kind": "card",
+    "label": "aluminum oxide"
+   }
+  ],
+  "cards": [
+   "s08-c0",
+   "s08-q2"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 8,
+  "f": 6,
+  "units": [
+   {
+    "id": "s08-sim",
+    "kind": "animation",
+    "label": "chargeBlocks"
+   },
+   {
+    "id": "s08-c0",
+    "kind": "card",
+    "label": "studs"
+   },
+   {
+    "id": "s08-c2",
+    "kind": "card",
+    "label": "balance"
+   }
+  ],
+  "cards": [
+   "s08-c0",
+   "s08-c2"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 8,
+  "f": 7,
+  "units": [
+   {
+    "id": "s08-sim",
+    "kind": "animation",
+    "label": "chargeBlocks"
+   },
+   {
+    "id": "s08-c0",
+    "kind": "card",
+    "label": "studs"
+   },
+   {
+    "id": "s08-c2",
+    "kind": "card",
+    "label": "balance"
+   }
+  ],
+  "cards": [
+   "s08-c0",
+   "s08-c2"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 8,
+  "f": 8,
+  "units": [
+   {
+    "id": "s08-sim",
+    "kind": "animation",
+    "label": "chargeBlocks"
+   },
+   {
+    "id": "s08-c0",
+    "kind": "card",
+    "label": "studs"
+   },
+   {
+    "id": "s08-c2",
+    "kind": "card",
+    "label": "balance"
+   },
+   {
+    "id": "s08-rule",
+    "kind": "rule",
+    "label": "rule"
+   }
+  ],
+  "cards": [
+   "s08-c0",
+   "s08-c2",
+   "s08-rule"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 8,
+  "f": 9,
+  "units": [
+   {
+    "id": "s08-sim",
+    "kind": "animation",
+    "label": "chargeBlocks"
+   },
+   {
+    "id": "s08-c0",
+    "kind": "card",
+    "label": "studs"
+   },
+   {
+    "id": "s08-rule",
+    "kind": "rule",
+    "label": "rule"
+   },
+   {
+    "id": "s08-check",
+    "kind": "check",
+    "label": "check"
+   }
+  ],
+  "cards": [
+   "s08-c0",
+   "s08-rule",
+   "s08-check"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 8,
+  "f": 10,
+  "units": [
+   {
+    "id": "s08-sim",
+    "kind": "animation",
+    "label": "chargeBlocks"
+   },
+   {
+    "id": "s08-c0",
+    "kind": "card",
+    "label": "studs"
+   },
+   {
+    "id": "s08-rule",
+    "kind": "rule",
+    "label": "rule"
+   },
+   {
+    "id": "s08-check",
+    "kind": "check",
+    "label": "check"
+   }
+  ],
+  "cards": [
+   "s08-c0",
+   "s08-rule",
+   "s08-check"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 9,
+  "f": 0,
+  "units": [
+   {
+    "id": "s09-sim",
+    "kind": "animation",
+    "label": "chargeBlocks"
+   },
+   {
+    "id": "s09-steps",
+    "kind": "card",
+    "label": ""
+   }
+  ],
+  "cards": [
+   "s09-steps"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 9,
+  "f": 1,
+  "units": [
+   {
+    "id": "s09-sim",
+    "kind": "animation",
+    "label": "chargeBlocks"
+   },
+   {
+    "id": "s09-steps",
+    "kind": "card",
+    "label": ""
+   }
+  ],
+  "cards": [
+   "s09-steps"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 9,
+  "f": 2,
+  "units": [
+   {
+    "id": "s09-sim",
+    "kind": "animation",
+    "label": "chargeBlocks"
+   },
+   {
+    "id": "s09-steps",
+    "kind": "card",
+    "label": ""
+   }
+  ],
+  "cards": [
+   "s09-steps"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 9,
+  "f": 3,
+  "units": [
+   {
+    "id": "s09-sim",
+    "kind": "animation",
+    "label": "chargeBlocks"
+   },
+   {
+    "id": "s09-steps",
+    "kind": "card",
+    "label": ""
+   }
+  ],
+  "cards": [
+   "s09-steps"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 9,
+  "f": 4,
+  "units": [
+   {
+    "id": "s09-sim",
+    "kind": "animation",
+    "label": "chargeBlocks"
+   },
+   {
+    "id": "s09-steps",
+    "kind": "card",
+    "label": ""
+   }
+  ],
+  "cards": [
+   "s09-steps"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 9,
+  "f": 5,
+  "units": [
+   {
+    "id": "s09-sim",
+    "kind": "animation",
+    "label": "chargeBlocks"
+   },
+   {
+    "id": "s09-steps",
+    "kind": "card",
+    "label": ""
+   },
+   {
+    "id": "s09-try",
+    "kind": "card",
+    "label": "your turn"
+   }
+  ],
+  "cards": [
+   "s09-steps",
+   "s09-try"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 9,
+  "f": 6,
+  "units": [
+   {
+    "id": "s09-sim",
+    "kind": "animation",
+    "label": "chargeBlocks"
+   },
+   {
+    "id": "s09-steps",
+    "kind": "card",
+    "label": ""
+   },
+   {
+    "id": "s09-try",
+    "kind": "card",
+    "label": "your turn"
+   }
+  ],
+  "cards": [
+   "s09-steps",
+   "s09-try"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 9,
+  "f": 7,
+  "units": [
+   {
+    "id": "s09-sim",
+    "kind": "animation",
+    "label": "chargeBlocks"
+   },
+   {
+    "id": "s09-steps",
+    "kind": "card",
+    "label": ""
+   },
+   {
+    "id": "s09-try",
+    "kind": "card",
+    "label": "your turn"
+   }
+  ],
+  "cards": [
+   "s09-steps",
+   "s09-try"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 10,
+  "f": 0,
+  "units": [
+   {
+    "id": "s10-sim",
+    "kind": "animation",
+    "label": "crisscross"
+   },
+   {
+    "id": "s10-cA",
+    "kind": "card",
+    "label": "start"
+   }
+  ],
+  "cards": [
+   "s10-cA"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 10,
+  "f": 1,
+  "units": [
+   {
+    "id": "s10-sim",
+    "kind": "animation",
+    "label": "crisscross"
+   },
+   {
+    "id": "s10-c0",
+    "kind": "card",
+    "label": "cross"
+   }
+  ],
+  "cards": [
+   "s10-c0"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 10,
+  "f": 2,
+  "units": [
+   {
+    "id": "s10-sim",
+    "kind": "animation",
+    "label": "crisscross"
+   },
+   {
+    "id": "s10-c0",
+    "kind": "card",
+    "label": "cross"
+   },
+   {
+    "id": "s10-c1",
+    "kind": "card",
+    "label": "check"
+   }
+  ],
+  "cards": [
+   "s10-c0",
+   "s10-c1"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 10,
+  "f": 3,
+  "units": [
+   {
+    "id": "s10-sim",
+    "kind": "animation",
+    "label": "crisscross"
+   },
+   {
+    "id": "s10-cB",
+    "kind": "card",
+    "label": "magnesium oxide"
+   }
+  ],
+  "cards": [
+   "s10-cB"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 10,
+  "f": 4,
+  "units": [
+   {
+    "id": "s10-sim",
+    "kind": "animation",
+    "label": "crisscross"
+   },
+   {
+    "id": "s10-cB",
+    "kind": "card",
+    "label": "magnesium oxide"
+   },
+   {
+    "id": "s10-c2",
+    "kind": "card",
+    "label": "reduce"
+   }
+  ],
+  "cards": [
+   "s10-cB",
+   "s10-c2"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 10,
+  "f": 5,
+  "units": [
+   {
+    "id": "s10-sim",
+    "kind": "animation",
+    "label": "crisscross"
+   },
+   {
+    "id": "s10-c2",
+    "kind": "card",
+    "label": "reduce"
+   },
+   {
+    "id": "s10-rule",
+    "kind": "rule",
+    "label": "rule"
+   }
+  ],
+  "cards": [
+   "s10-c2",
+   "s10-rule"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 10,
+  "f": 6,
+  "units": [
+   {
+    "id": "s10-sim",
+    "kind": "animation",
+    "label": "crisscross"
+   },
+   {
+    "id": "s10-rule",
+    "kind": "rule",
+    "label": "rule"
+   },
+   {
+    "id": "s10-check",
+    "kind": "check",
+    "label": "check"
+   }
+  ],
+  "cards": [
+   "s10-rule",
+   "s10-check"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 10,
+  "f": 7,
+  "units": [
+   {
+    "id": "s10-sim",
+    "kind": "animation",
+    "label": "crisscross"
+   },
+   {
+    "id": "s10-rule",
+    "kind": "rule",
+    "label": "rule"
+   },
+   {
+    "id": "s10-check",
+    "kind": "check",
+    "label": "check"
+   }
+  ],
+  "cards": [
+   "s10-rule",
+   "s10-check"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 11,
+  "f": 0,
+  "units": [
+   {
+    "id": "s11-sim",
+    "kind": "animation",
+    "label": "nameBuilder"
+   },
+   {
+    "id": "s11-sim",
+    "kind": "part",
+    "label": "formula"
+   },
+   {
+    "id": "s11-sim",
+    "kind": "part",
+    "label": "name tiles"
+   },
+   {
+    "id": "s11-c0",
+    "kind": "card",
+    "label": "two parts"
+   }
+  ],
+  "cards": [
+   "s11-c0"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 11,
+  "f": 1,
+  "units": [
+   {
+    "id": "s11-sim",
+    "kind": "animation",
+    "label": "nameBuilder"
+   },
+   {
+    "id": "s11-sim",
+    "kind": "part",
+    "label": "formula"
+   },
+   {
+    "id": "s11-sim",
+    "kind": "part",
+    "label": "the joined name"
+   },
+   {
+    "id": "s11-c0",
+    "kind": "card",
+    "label": "two parts"
+   }
+  ],
+  "cards": [
+   "s11-c0"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 11,
+  "f": 2,
+  "units": [
+   {
+    "id": "s11-sim",
+    "kind": "animation",
+    "label": "nameBuilder"
+   },
+   {
+    "id": "s11-sim",
+    "kind": "part",
+    "label": "formula"
+   },
+   {
+    "id": "s11-sim",
+    "kind": "part",
+    "label": "the joined name"
+   },
+   {
+    "id": "s11-tbl",
+    "kind": "anion names",
+    "label": "anion names"
+   }
+  ],
+  "cards": [],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 11,
+  "f": 3,
+  "units": [
+   {
+    "id": "s11-sim",
+    "kind": "animation",
+    "label": "nameBuilder"
+   },
+   {
+    "id": "s11-sim",
+    "kind": "part",
+    "label": "formula"
+   },
+   {
+    "id": "s11-sim",
+    "kind": "part",
+    "label": "the joined name"
+   },
+   {
+    "id": "s11-rule",
+    "kind": "rule",
+    "label": "rule"
+   }
+  ],
+  "cards": [
+   "s11-rule"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 11,
+  "f": 4,
+  "units": [
+   {
+    "id": "s11-sim",
+    "kind": "animation",
+    "label": "nameBuilder"
+   },
+   {
+    "id": "s11-sim",
+    "kind": "part",
+    "label": "formula"
+   },
+   {
+    "id": "s11-sim",
+    "kind": "part",
+    "label": "name slots"
+   },
+   {
+    "id": "s11-rule",
+    "kind": "rule",
+    "label": "rule"
+   },
+   {
+    "id": "s11-check",
+    "kind": "check",
+    "label": "check"
+   }
+  ],
+  "cards": [
+   "s11-rule",
+   "s11-check"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 11,
+  "f": 5,
+  "units": [
+   {
+    "id": "s11-sim",
+    "kind": "animation",
+    "label": "nameBuilder"
+   },
+   {
+    "id": "s11-sim",
+    "kind": "part",
+    "label": "formula"
+   },
+   {
+    "id": "s11-sim",
+    "kind": "part",
+    "label": "the joined name"
+   },
+   {
+    "id": "s11-rule",
+    "kind": "rule",
+    "label": "rule"
+   },
+   {
+    "id": "s11-check",
+    "kind": "check",
+    "label": "check"
+   }
+  ],
+  "cards": [
+   "s11-rule",
+   "s11-check"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 12,
+  "f": 0,
+  "units": [
+   {
+    "id": "s12-nb",
+    "kind": "animation",
+    "label": "nameBuilder"
+   },
+   {
+    "id": "s12-nb",
+    "kind": "part",
+    "label": "formula"
+   },
+   {
+    "id": "s12-nb",
+    "kind": "part",
+    "label": "name tiles"
+   },
+   {
+    "id": "s12-c0",
+    "kind": "card",
+    "label": "version numbers"
+   }
+  ],
+  "cards": [
+   "s12-c0"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 12,
+  "f": 1,
+  "units": [
+   {
+    "id": "s12-nb",
+    "kind": "animation",
+    "label": "nameBuilder"
+   },
+   {
+    "id": "s12-nb",
+    "kind": "part",
+    "label": "formula"
+   },
+   {
+    "id": "s12-nb",
+    "kind": "part",
+    "label": "name tiles"
+   },
+   {
+    "id": "s12-c0",
+    "kind": "card",
+    "label": "version numbers"
+   }
+  ],
+  "cards": [
+   "s12-c0"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 12,
+  "f": 2,
+  "units": [
+   {
+    "id": "s12-nb",
+    "kind": "animation",
+    "label": "nameBuilder"
+   },
+   {
+    "id": "s12-nb",
+    "kind": "part",
+    "label": "formula"
+   },
+   {
+    "id": "s12-nb",
+    "kind": "part",
+    "label": "the joined name"
+   },
+   {
+    "id": "s12-c0",
+    "kind": "card",
+    "label": "version numbers"
+   }
+  ],
+  "cards": [
+   "s12-c0"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 12,
+  "f": 3,
+  "units": [
+   {
+    "id": "s12-nb",
+    "kind": "animation",
+    "label": "nameBuilder"
+   },
+   {
+    "id": "s12-nb",
+    "kind": "part",
+    "label": "formula"
+   },
+   {
+    "id": "s12-nb",
+    "kind": "part",
+    "label": "the joined name"
+   },
+   {
+    "id": "s12-c1",
+    "kind": "card",
+    "label": "iron(II)"
+   }
+  ],
+  "cards": [
+   "s12-c1"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 12,
+  "f": 4,
+  "units": [
+   {
+    "id": "s12-nb",
+    "kind": "animation",
+    "label": "nameBuilder"
+   },
+   {
+    "id": "s12-nb",
+    "kind": "part",
+    "label": "formula"
+   },
+   {
+    "id": "s12-nb",
+    "kind": "part",
+    "label": "the joined name"
+   },
+   {
+    "id": "s12-c2",
+    "kind": "card",
+    "label": "silver and zinc"
+   }
+  ],
+  "cards": [
+   "s12-c2"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 12,
+  "f": 5,
+  "units": [
+   {
+    "id": "s12-nb",
+    "kind": "animation",
+    "label": "nameBuilder"
+   },
+   {
+    "id": "s12-nb",
+    "kind": "part",
+    "label": "formula"
+   },
+   {
+    "id": "s12-nb",
+    "kind": "part",
+    "label": "the joined name"
+   },
+   {
+    "id": "s12-c2",
+    "kind": "card",
+    "label": "silver and zinc"
+   }
+  ],
+  "cards": [
+   "s12-c2"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 12,
+  "f": 6,
+  "units": [
+   {
+    "id": "s12-sd",
+    "kind": "animation",
+    "label": "stockDetective"
+   },
+   {
+    "id": "s12-sd",
+    "kind": "part",
+    "label": "formula"
+   },
+   {
+    "id": "s12-sd",
+    "kind": "part",
+    "label": "step 1"
+   },
+   {
+    "id": "s12-c3",
+    "kind": "card",
+    "label": "copper oxides"
+   }
+  ],
+  "cards": [
+   "s12-c3"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 12,
+  "f": 7,
+  "units": [
+   {
+    "id": "s12-sd",
+    "kind": "animation",
+    "label": "stockDetective"
+   },
+   {
+    "id": "s12-sd",
+    "kind": "part",
+    "label": "formula"
+   },
+   {
+    "id": "s12-sd",
+    "kind": "part",
+    "label": "step 1"
+   },
+   {
+    "id": "s12-sd",
+    "kind": "part",
+    "label": "step 2"
+   },
+   {
+    "id": "s12-sd",
+    "kind": "part",
+    "label": "step 3"
+   },
+   {
+    "id": "s12-sd",
+    "kind": "part",
+    "label": "name"
+   },
+   {
+    "id": "s12-c3",
+    "kind": "card",
+    "label": "copper oxides"
+   }
+  ],
+  "cards": [
+   "s12-c3"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 12,
+  "f": 8,
+  "units": [
+   {
+    "id": "s12-sd",
+    "kind": "animation",
+    "label": "stockDetective"
+   },
+   {
+    "id": "s12-sd",
+    "kind": "part",
+    "label": "formula"
+   },
+   {
+    "id": "s12-sd",
+    "kind": "part",
+    "label": "step 1"
+   },
+   {
+    "id": "s12-c3",
+    "kind": "card",
+    "label": "copper oxides"
+   }
+  ],
+  "cards": [
+   "s12-c3"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 12,
+  "f": 9,
+  "units": [
+   {
+    "id": "s12-sd",
+    "kind": "animation",
+    "label": "stockDetective"
+   },
+   {
+    "id": "s12-sd",
+    "kind": "part",
+    "label": "formula"
+   },
+   {
+    "id": "s12-sd",
+    "kind": "part",
+    "label": "step 1"
+   },
+   {
+    "id": "s12-sd",
+    "kind": "part",
+    "label": "step 2"
+   },
+   {
+    "id": "s12-sd",
+    "kind": "part",
+    "label": "step 3"
+   },
+   {
+    "id": "s12-c3",
+    "kind": "card",
+    "label": "copper oxides"
+   }
+  ],
+  "cards": [
+   "s12-c3"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 12,
+  "f": 10,
+  "units": [
+   {
+    "id": "s12-sd",
+    "kind": "animation",
+    "label": "stockDetective"
+   },
+   {
+    "id": "s12-sd",
+    "kind": "part",
+    "label": "formula"
+   },
+   {
+    "id": "s12-sd",
+    "kind": "part",
+    "label": "step 1"
+   },
+   {
+    "id": "s12-sd",
+    "kind": "part",
+    "label": "step 2"
+   },
+   {
+    "id": "s12-sd",
+    "kind": "part",
+    "label": "step 3"
+   },
+   {
+    "id": "s12-sd",
+    "kind": "part",
+    "label": "name"
+   },
+   {
+    "id": "s12-c4",
+    "kind": "card",
+    "label": "the driving question"
+   }
+  ],
+  "cards": [
+   "s12-c4"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 12,
+  "f": 11,
+  "units": [
+   {
+    "id": "s12-sd",
+    "kind": "animation",
+    "label": "stockDetective"
+   },
+   {
+    "id": "s12-sd",
+    "kind": "part",
+    "label": "formula"
+   },
+   {
+    "id": "s12-c4",
+    "kind": "card",
+    "label": "the driving question"
+   },
+   {
+    "id": "s12-check",
+    "kind": "check",
+    "label": "check"
+   }
+  ],
+  "cards": [
+   "s12-c4",
+   "s12-check"
+  ],
+  "miss": [],
+  "dup": []
+ },
+ {
+  "s": 12,
+  "f": 12,
+  "units": [
+   {
+    "id": "s12-sd",
+    "kind": "animation",
+    "label": "stockDetective"
+   },
+   {
+    "id": "s12-sd",
+    "kind": "part",
+    "label": "formula"
+   },
+   {
+    "id": "s12-sd",
+    "kind": "part",
+    "label": "step 1"
+   },
+   {
+    "id": "s12-sd",
+    "kind": "part",
+    "label": "step 2"
+   },
+   {
+    "id": "s12-sd",
+    "kind": "part",
+    "label": "step 3"
+   },
+   {
+    "id": "s12-sd",
+    "kind": "part",
+    "label": "name"
+   },
+   {
+    "id": "s12-c4",
+    "kind": "card",
+    "label": "the driving question"
+   },
+   {
+    "id": "s12-check",
+    "kind": "check",
+    "label": "check"
+   }
+  ],
+  "cards": [
+   "s12-c4",
+   "s12-check"
+  ],
+  "miss": [],
+  "dup": []
+ }
+]

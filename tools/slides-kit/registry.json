@@ -1,0 +1,52 @@
+{
+  "decks": [
+    {
+      "unit": 4,
+      "lesson": 1,
+      "file": "unit4/slides-4-1.html",
+      "title": "Predicting Bond Type Slides",
+      "description": "Unit 4, Lesson 4.1 projector slides: Predicting bond type (TEKS C.7(A)).",
+      "periods": [[1, 13], [14, 25]],
+      "checks": 9,
+      "markers": ["01-head", "02-runtime", "02b-shared", "03-sims", "04-slides"],
+      "css": null,
+      "keys_cfg": {"cr": "s07", "sim": "cr-sim", "card": "cr-rule", "tm": "s19", "ex": "s03", "hk": "s02", "notes": ["s09", 6]},
+      "extras_cfg": {"hash": "#7.2", "canvas": "#cr-sim canvas", "block": "cr-rule", "slides": 25},
+      "budget": "parts/lessons/4-1/budget.json",
+      "chem": "parts/lessons/4-1/chem.js",
+      "blueprint": {"section": "41", "next": "42"},
+      "matrix": ["4.1.1", "4.1.2", "4.1.3", "4.1.4", "4.1.5"],
+      "mentions": {
+        "s02:5": "Targets and words", "s02:6": "Forming ions", "s02:7": "The crystal", "s02:8": "Covalent bonds", "s02:9": "Polar and nonpolar", "s02:10": "Metallic bonds",
+        "s04:24": "Predictions and exit ticket", "s05:25": "Rate your learning", "s05:11": "One picture for three bonds", "s06:7": "The crystal", "s11:5": "Targets and words",
+        "s15:17": "Near the line", "s16:11": "One picture for three bonds", "s20:21": "Checkpoint 1", "s20:22": "Checkpoint 2", "s20:23": "Checkpoint 3", "s24:4": "Predict now"
+      },
+      "extra_audits": [],
+      "extra_slides": null
+    },
+    {
+      "unit": 4,
+      "lesson": 2,
+      "file": "unit4/slides-4-2.html",
+      "title": "Ionic Formulas and Names Slides",
+      "description": "Unit 4, Lesson 4.2 projector slides: Ionic compounds: formulas and names (TEKS C.7(B)).",
+      "periods": [[1, 13], [14, 26]],
+      "checks": 9,
+      "markers": ["01-head-42", "02-runtime", "02b-shared", "06-sims-42", "08-slides-42"],
+      "css": "01c-css-42",
+      "keys_cfg": {"cr": "s12", "sim": "s12-nb", "card": "s12-c1", "tm": "s18", "ex": "s09", "hk": "s02", "notes": ["s15", 0]},
+      "extras_cfg": {"hash": "#15.1", "canvas": "#s15-sim canvas", "block": "s15-r3", "slides": 26},
+      "budget": "parts/lessons/4-2/budget.json",
+      "chem": "parts/lessons/4-2/chem.js",
+      "blueprint": {"section": "42", "next": "43"},
+      "matrix": ["4.2.1", "4.2.2", "4.2.3", "4.2.4", "4.2.5"],
+      "mentions": {
+        "s02:18": "You do: six compounds", "s03:12": "The Stock system", "s04:24": "Predictions and exit ticket", "s05:25": "Rate your learning", "s08:9": "Writing the formula",
+        "s10:8": "Balancing the charges", "s11:15": "Polyatomic ions", "s12:3": "Two copper oxides", "s16:2": "Read the label", "s18:2": "Read the label",
+        "s20:21": "Checkpoint 1", "s20:22": "Checkpoint 2", "s20:23": "Checkpoint 3", "s24:4": "Predict now", "s24:3": "Two copper oxides"
+      },
+      "extra_audits": ["units", "cycle"],
+      "extra_slides": [6, 12]
+    }
+  ]
+}

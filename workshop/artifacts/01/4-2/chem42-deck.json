@@ -1,0 +1,197 @@
+[
+  {
+    "n": "slide 2 labelRead: toothpaste, sodium fluoride",
+    "pass": true,
+    "i": "{\"stage\":\"focus0\",\"focus\":0,\"product\":\"toothpaste\",\"name\":\"sodium fluoride\",\"code\":false,\"names\":[\"sodium fluoride\",\"calcium carbonate\",\"ammonium sulfate\"]}"
+  },
+  {
+    "n": "slide 2 labelRead: lawn food, ammonium sulfate",
+    "pass": true,
+    "i": "{\"stage\":\"focus2\",\"focus\":2,\"product\":\"lawn food\",\"name\":\"ammonium sulfate\",\"code\":false,\"names\":[\"sodium fluoride\",\"calcium carbonate\",\"ammonium sulfate\"]}"
+  },
+  {
+    "n": "slide 6 ionTable: group charges",
+    "pass": true,
+    "i": "{\"group 1\":\"1+\",\"group 2\":\"2+\",\"group 13\":\"3+\",\"group 17\":\"1−\",\"group 16\":\"2−\",\"group 15\":\"3−\"}"
+  },
+  {
+    "n": "slide 6 ionTable: -ide names and no squeezed symbols",
+    "pass": true,
+    "i": "{\"names\":[\"F⁻ fluoride\",\"Cl⁻ chloride\",\"Br⁻ bromide\",\"I⁻ iodide\",\"O²⁻ oxide\",\"S²⁻ sulfide\",\"N³⁻ nitride\"],\"cell\":58}"
+  },
+  {
+    "n": "slide 7 ionTable: the four transition metals",
+    "pass": true,
+    "i": "[\"Fe²⁺  Fe³⁺\",\"Cu⁺  Cu²⁺\",\"Ag⁺\",\"Zn²⁺\"]"
+  },
+  {
+    "n": "slide 8 chargeBlocks: CaCl₂, calcium chloride, balanced",
+    "pass": true,
+    "i": "{\"stage\":\"Ca-Cl/name\",\"pair\":\"Ca-Cl\",\"cation\":\"Ca²⁺\",\"anion\":\"Cl⁻\",\"tiles\":[1,2],\"totals\":[2,2],\"balanced\":true,\"formula\":\"CaCl₂\",\"name\":\"calcium chloride\",\"polyatomic\":false}"
+  },
+  {
+    "n": "slide 8 chargeBlocks: one Ca²⁺ and one Cl⁻ do not balance",
+    "pass": true,
+    "i": "{\"stage\":\"Ca-Cl/ions\",\"pair\":\"Ca-Cl\",\"cation\":\"Ca²⁺\",\"anion\":\"Cl⁻\",\"tiles\":[1,1],\"totals\":[2,1],\"balanced\":false,\"formula\":null,\"name\":null,\"polyatomic\":false}"
+  },
+  {
+    "n": "slide 8 chargeBlocks: Al₂O₃ with 6+ and 6−",
+    "pass": true,
+    "i": "{\"stage\":\"Al-O/formula\",\"pair\":\"Al-O\",\"cation\":\"Al³⁺\",\"anion\":\"O²⁻\",\"tiles\":[2,3],\"totals\":[6,6],\"balanced\":true,\"formula\":\"Al₂O₃\",\"name\":null,\"polyatomic\":false}"
+  },
+  {
+    "n": "slide 9 chargeBlocks: Mg₂O₂ reduces to MgO",
+    "pass": true,
+    "i": "{\"stage\":\"Mg-O/reduce\",\"pair\":\"Mg-O\",\"cation\":\"Mg²⁺\",\"anion\":\"O²⁻\",\"tiles\":[1,1],\"totals\":[2,2],\"balanced\":true,\"formula\":\"MgO\",\"name\":null,\"polyatomic\":false}"
+  },
+  {
+    "n": "slide 9: K₂S",
+    "pass": true,
+    "i": "{\"stage\":\"K-S/formula\",\"pair\":\"K-S\",\"cation\":\"K⁺\",\"anion\":\"S²⁻\",\"tiles\":[2,1],\"totals\":[2,2],\"balanced\":true,\"formula\":\"K₂S\",\"name\":null,\"polyatomic\":false}"
+  },
+  {
+    "n": "slide 9: Ca₃N₂",
+    "pass": true,
+    "i": "{\"stage\":\"Ca-N/formula\",\"pair\":\"Ca-N\",\"cation\":\"Ca²⁺\",\"anion\":\"N³⁻\",\"tiles\":[3,2],\"totals\":[6,6],\"balanced\":true,\"formula\":\"Ca₃N₂\",\"name\":null,\"polyatomic\":false}"
+  },
+  {
+    "n": "slide 10 crisscross Al₂O₃ check",
+    "pass": true,
+    "i": "{\"stage\":\"Al-O/check\",\"pair\":\"Al-O\",\"crossed\":\"Al₂O₃\",\"reduced\":\"Al₂O₃\",\"factor\":1,\"check\":[\"2 × 3+ = 6+\",\"3 × 2− = 6−\"]}"
+  },
+  {
+    "n": "slide 10 crisscross Mg₂O₂ → MgO",
+    "pass": true,
+    "i": "{\"stage\":\"Mg-O/reduce\",\"pair\":\"Mg-O\",\"crossed\":\"Mg₂O₂\",\"reduced\":\"MgO\",\"factor\":2,\"check\":null}"
+  },
+  {
+    "n": "slide 11 nameBuilder: potassium sulfide",
+    "pass": true,
+    "i": "{\"stage\":\"K2S/join\",\"cs\":\"K2S\",\"formula\":\"K₂S\",\"tiles\":[\"potassium\",\"sulf\",\"ide\"],\"numeral\":null,\"name\":\"potassium sulfide\",\"ask\":false}"
+  },
+  {
+    "n": "slide 11 answer frame: calcium bromide",
+    "pass": true,
+    "i": "{\"stage\":\"CaBr2/join\",\"cs\":\"CaBr2\",\"formula\":\"CaBr₂\",\"tiles\":[\"calcium\",\"brom\",\"ide\"],\"numeral\":null,\"name\":\"calcium bromide\",\"ask\":false}"
+  },
+  {
+    "n": "slide 12 nameBuilder FeCl3: iron(III) chloride",
+    "pass": true,
+    "i": "{\"stage\":\"FeCl3/join\",\"cs\":\"FeCl3\",\"formula\":\"FeCl₃\",\"tiles\":[\"iron\",\"(III)\",\"chlor\",\"ide\"],\"numeral\":\"(III)\",\"name\":\"iron(III) chloride\",\"ask\":false}"
+  },
+  {
+    "n": "slide 12 nameBuilder FeCl2: iron(II) chloride",
+    "pass": true,
+    "i": "{\"stage\":\"FeCl2/join\",\"cs\":\"FeCl2\",\"formula\":\"FeCl₂\",\"tiles\":[\"iron\",\"(II)\",\"chlor\",\"ide\"],\"numeral\":\"(II)\",\"name\":\"iron(II) chloride\",\"ask\":false}"
+  },
+  {
+    "n": "slide 12 nameBuilder AgCl: silver chloride",
+    "pass": true,
+    "i": "{\"stage\":\"AgCl/join\",\"cs\":\"AgCl\",\"formula\":\"AgCl\",\"tiles\":[\"silver\",\"chlor\",\"ide\"],\"numeral\":null,\"name\":\"silver chloride\",\"ask\":false}"
+  },
+  {
+    "n": "slide 12 nameBuilder ZnO: zinc oxide",
+    "pass": true,
+    "i": "{\"stage\":\"ZnO/join\",\"cs\":\"ZnO\",\"formula\":\"ZnO\",\"tiles\":[\"zinc\",\"ox\",\"ide\"],\"numeral\":null,\"name\":\"zinc oxide\",\"ask\":false}"
+  },
+  {
+    "n": "slide 12 stockDetective CuO: copper(II) oxide",
+    "pass": true,
+    "i": "{\"stage\":\"CuO/name\",\"cs\":\"CuO\",\"formula\":\"CuO\",\"anionCharge\":-2,\"total\":2,\"metalCharge\":2,\"rows\":[\"O is oxide, O²⁻.\",\"The metal must supply 2+.\",\"One Cu supplies 2+. Cu is 2+.\"],\"name\":\"copper(II) oxide\"}"
+  },
+  {
+    "n": "slide 12 stockDetective Cu₂O: copper(I) oxide",
+    "pass": true,
+    "i": "{\"stage\":\"Cu2O/name\",\"cs\":\"Cu2O\",\"formula\":\"Cu₂O\",\"anionCharge\":-2,\"total\":2,\"metalCharge\":1,\"rows\":[\"O is oxide, O²⁻.\",\"The metal must supply 2+.\",\"Two Cu share 2+. Each Cu is 1+.\"],\"name\":\"copper(I) oxide\"}"
+  },
+  {
+    "n": "slide 15 polyIons NH4: NH₄⁺",
+    "pass": true,
+    "i": "\"NH₄⁺\""
+  },
+  {
+    "n": "slide 15 polyIons OH: OH⁻",
+    "pass": true,
+    "i": "\"OH⁻\""
+  },
+  {
+    "n": "slide 15 polyIons NO3: NO₃⁻",
+    "pass": true,
+    "i": "\"NO₃⁻\""
+  },
+  {
+    "n": "slide 15 polyIons CO3: CO₃²⁻",
+    "pass": true,
+    "i": "\"CO₃²⁻\""
+  },
+  {
+    "n": "slide 15 polyIons SO4: SO₄²⁻",
+    "pass": true,
+    "i": "\"SO₄²⁻\""
+  },
+  {
+    "n": "slide 15 polyIons PO4: PO₄³⁻",
+    "pass": true,
+    "i": "\"PO₄³⁻\""
+  },
+  {
+    "n": "slide 16 parenBus: Ca(OH)₂",
+    "pass": true,
+    "i": "{\"stage\":\"two\",\"formula\":\"Ca(OH)₂\",\"parentheses\":true,\"squads\":2,\"note\":null}"
+  },
+  {
+    "n": "slide 16 chargeBlocks: (NH₄)₂SO₄",
+    "pass": true,
+    "i": "{\"stage\":\"NH4-SO4/formula\",\"pair\":\"NH4-SO4\",\"cation\":\"NH₄⁺\",\"anion\":\"SO₄²⁻\",\"tiles\":[2,1],\"totals\":[2,2],\"balanced\":true,\"formula\":\"(NH₄)₂SO₄\",\"name\":null,\"polyatomic\":true}"
+  },
+  {
+    "n": "slide 16 chargeBlocks: NaNO₃, no parentheses",
+    "pass": true,
+    "i": "{\"stage\":\"Na-NO3/formula\",\"pair\":\"Na-NO3\",\"cation\":\"Na⁺\",\"anion\":\"NO₃⁻\",\"tiles\":[1,1],\"totals\":[1,1],\"balanced\":true,\"formula\":\"NaNO₃\",\"name\":null,\"polyatomic\":true}"
+  },
+  {
+    "n": "slide 17 chargeBlocks: Al₂(SO₄)₃",
+    "pass": true,
+    "i": "{\"stage\":\"Al-SO4/formula\",\"pair\":\"Al-SO4\",\"cation\":\"Al³⁺\",\"anion\":\"SO₄²⁻\",\"tiles\":[2,3],\"totals\":[6,6],\"balanced\":true,\"formula\":\"Al₂(SO₄)₃\",\"name\":null,\"polyatomic\":true}"
+  },
+  {
+    "n": "slide 17 stockDetective: Cu₂S is copper(I) sulfide",
+    "pass": true,
+    "i": "{\"stage\":\"Cu2S/name\",\"cs\":\"Cu2S\",\"formula\":\"Cu₂S\",\"anionCharge\":-2,\"total\":2,\"metalCharge\":1,\"rows\":[\"S is sulfide, S²⁻.\",\"The metal must supply 2+.\",\"Two Cu share 2+. Each Cu is 1+.\"],\"name\":\"copper(I) sulfide\"}"
+  },
+  {
+    "n": "slide 18 answers",
+    "pass": true,
+    "i": "[\"NaF\",\"CaCO3\",\"(NH4)2SO4\",\"magnesium bromide\",\"iron(II) oxide\",\"zinc hydroxide\"]"
+  },
+  {
+    "n": "slide 19 fixes",
+    "pass": true,
+    "i": "[\"Na2SO4\",\"MgO\",\"Ca(OH)2\",\"copper(I) oxide\",\"iron(III) chloride\",\"sodium nitrate\"]"
+  },
+  {
+    "n": "slide 9 try two: K₂S and Ca₃N₂",
+    "pass": true,
+    "i": "[\"K2S\",\"Ca3N2\"]"
+  },
+  {
+    "n": "slide 13 retrieval answers",
+    "pass": true,
+    "i": "[\"aluminum chloride\",\"potassium oxide\",\"CaS\",\"iron(II) oxide\"]"
+  },
+  {
+    "n": "slide 15 memory card sentence and CPK caption",
+    "pass": true,
+    "i": "{\"a18\":[\"NaF\",\"CaCO3\",\"(NH4)2SO4\",\"magnesium bromide\",\"iron(II) oxide\",\"zinc hydroxide\"],\"a19\":[\"Na2SO4\",\"MgO\",\"Ca(OH)2\",\"copper(I) oxide\",\"iron(III) chloride\",\"sodium nitrate\"],\"mem\":\"Nick the Camel ate Supper in Phoenix.\",\"s9\":[\"K2S\",\"Ca3N2\"],\"a13\":[\"aluminum chloride\",\"potassium oxide\",\"CaS\",\"iron(II) oxide\"],\"cap\":\"Atom colors show the element, not the charge.\",\"checks\":[6,7,8,10,11,12,15,16,17]}"
+  },
+  {
+    "n": "nine checks on slides 6, 7, 8, 10, 11, 12, 15, 16, 17",
+    "pass": true,
+    "i": "[6,7,8,10,11,12,15,16,17]"
+  },
+  {
+    "n": "no console errors",
+    "pass": true,
+    "i": "[]"
+  }
+]

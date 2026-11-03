@@ -1,0 +1,162 @@
+[
+  {
+    "n": "slide 2 tugOfWar: Cl 3.16 vs Cl 3.16, knot centered",
+    "pass": true,
+    "i": "{\"stage\":\"even\",\"a\":\"Cl\",\"b\":\"Cl\",\"ea\":3.16,\"eb\":3.16,\"knot\":0,\"winner\":\"Cl\",\"ion\":0,\"minis\":0,\"valueLabel\":\"Pull on electrons (electronegativity)\"}"
+  },
+  {
+    "n": "slide 2 tugOfWar: H 2.20 vs Cl 3.16, knot toward Cl",
+    "pass": true,
+    "i": "{\"stage\":\"uneven\",\"a\":\"H\",\"b\":\"Cl\",\"ea\":2.2,\"eb\":3.16,\"knot\":0.427,\"winner\":\"Cl\",\"ion\":0,\"minis\":0,\"valueLabel\":\"Pull on electrons (electronegativity)\"}"
+  },
+  {
+    "n": "slide 2 tugOfWar: Na 0.93 vs Cl 3.16, all the way, ions",
+    "pass": true,
+    "i": "{\"stage\":\"blowout\",\"a\":\"Na\",\"b\":\"Cl\",\"ea\":0.93,\"eb\":3.16,\"knot\":1,\"winner\":\"Cl\",\"ion\":1,\"minis\":0,\"valueLabel\":\"Pull on electrons (electronegativity)\"}"
+  },
+  {
+    "n": "slide 6 ionHop: 11 p 11 e, 17 p 17 e",
+    "pass": true,
+    "i": "[\"11 p · 11 e\",\"17 p · 17 e\"]"
+  },
+  {
+    "n": "slide 6 ionHop: Na+ smaller than Na, Cl- larger than Cl",
+    "pass": true,
+    "i": "{\"stage\":\"atoms\",\"naAtom\":149.8,\"naIon\":82.14838709677419,\"clAtom\":79.73225806451613,\"clIon\":145.7731182795699,\"counts\":[\"11 p · 11 e\",\"17 p · 17 e\"],\"neighbors\":6,\"neighborsAreAnions\":true,\"centerIsCation\":true,\"latticeIons\":0}"
+  },
+  {
+    "n": "slide 6 ionHop: 11 p 10 e, 17 p 18 e",
+    "pass": true,
+    "i": "[\"11 p · 10 e\",\"17 p · 18 e\"]"
+  },
+  {
+    "n": "slide 7 ionHop: center Na+ with six Cl- neighbors",
+    "pass": true,
+    "i": "{\"stage\":\"turn\",\"naAtom\":149.8,\"naIon\":82.14838709677419,\"clAtom\":79.73225806451613,\"clIon\":145.7731182795699,\"counts\":[\"11 p · 10 e\",\"17 p · 18 e\"],\"neighbors\":6,\"neighborsAreAnions\":true,\"centerIsCation\":true,\"latticeIons\":27}"
+  },
+  {
+    "n": "slide 8 tugOfWar recap: even pull",
+    "pass": true,
+    "i": "{\"stage\":\"even\",\"a\":\"Cl\",\"b\":\"Cl\",\"ea\":3.16,\"eb\":3.16,\"knot\":0,\"winner\":\"Cl\",\"ion\":0,\"minis\":0,\"valueLabel\":\"Pull on electrons (electronegativity)\"}"
+  },
+  {
+    "n": "slide 8 sharedPair H2: 0.00, no δ",
+    "pass": true,
+    "i": "{\"stage\":\"H2\",\"a\":\"H\",\"b\":\"H\",\"diff\":\"0.00\",\"deltaMinus\":null,\"deltaShown\":false,\"lean\":0}"
+  },
+  {
+    "n": "slide 8 sharedPair Cl2: 0.00, no δ",
+    "pass": true,
+    "i": "{\"stage\":\"Cl2\",\"a\":\"Cl\",\"b\":\"Cl\",\"diff\":\"0.00\",\"deltaMinus\":null,\"deltaShown\":false,\"lean\":0}"
+  },
+  {
+    "n": "slide 9 sharedPair H2: 0.00, δ− on neither",
+    "pass": true,
+    "i": "{\"stage\":\"H2\",\"a\":\"H\",\"b\":\"H\",\"diff\":\"0.00\",\"deltaMinus\":null,\"deltaShown\":false,\"lean\":0}"
+  },
+  {
+    "n": "slide 9 sharedPair HCl: 0.96, δ− on Cl",
+    "pass": true,
+    "i": "{\"stage\":\"HCl\",\"a\":\"H\",\"b\":\"Cl\",\"diff\":\"0.96\",\"deltaMinus\":\"Cl\",\"deltaShown\":true,\"lean\":0.297}"
+  },
+  {
+    "n": "slide 9 sharedPair HO: 1.24, δ− on O",
+    "pass": true,
+    "i": "{\"stage\":\"HO\",\"a\":\"H\",\"b\":\"O\",\"diff\":\"1.24\",\"deltaMinus\":\"O\",\"deltaShown\":true,\"lean\":0.383}"
+  },
+  {
+    "n": "slide 9 sharedPair HF: 1.78, δ− on F",
+    "pass": true,
+    "i": "{\"stage\":\"HF\",\"a\":\"H\",\"b\":\"F\",\"diff\":\"1.78\",\"deltaMinus\":\"F\",\"deltaShown\":true,\"lean\":0.55}"
+  },
+  {
+    "n": "slide 10 electronSea sea: 1 per core, +",
+    "pass": true,
+    "i": "{\"stage\":\"sea\",\"electronsPerCore\":1,\"cores\":15,\"electrons\":15,\"coreCharge\":\"+\",\"stream\":false,\"crowd\":false,\"metal\":\"sodium\",\"caption\":null,\"electronMinus\":true}"
+  },
+  {
+    "n": "slide 10 electronSea Mg: 2 per core, 2+",
+    "pass": true,
+    "i": "{\"stage\":\"Mg\",\"electronsPerCore\":2,\"cores\":15,\"electrons\":30,\"coreCharge\":\"2+\",\"stream\":false,\"crowd\":false,\"metal\":\"magnesium\",\"caption\":null,\"electronMinus\":true}"
+  },
+  {
+    "n": "slide 10 electronSea Al: 3 per core, 3+",
+    "pass": true,
+    "i": "{\"stage\":\"Al\",\"electronsPerCore\":3,\"cores\":15,\"electrons\":45,\"coreCharge\":\"3+\",\"stream\":false,\"crowd\":false,\"metal\":\"aluminum\",\"caption\":null,\"electronMinus\":true}"
+  },
+  {
+    "n": "slide 10 electronSea drift: electrons stream",
+    "pass": true,
+    "i": "{\"stage\":\"drift\",\"electronsPerCore\":1,\"cores\":15,\"electrons\":15,\"coreCharge\":\"+\",\"stream\":true,\"crowd\":false,\"metal\":\"sodium\",\"caption\":null,\"electronMinus\":true}"
+  },
+  {
+    "n": "slide 15 enMeter Cl-Cl: 3.16 − 3.16 = 0.00",
+    "pass": true,
+    "i": "\"3.16 − 3.16 = 0.00\""
+  },
+  {
+    "n": "slide 15 enMeter H-Cl: 3.16 − 2.20 = 0.96",
+    "pass": true,
+    "i": "\"3.16 − 2.20 = 0.96\""
+  },
+  {
+    "n": "slide 15 enMeter Na-Cl: 3.16 − 0.93 = 2.23",
+    "pass": true,
+    "i": "\"3.16 − 0.93 = 2.23\""
+  },
+  {
+    "n": "slide 15 enMeter: guide lines 0.4 and 1.8",
+    "pass": true,
+    "i": "{\"stage\":\"lines\",\"bond\":\"\",\"sub\":\"\",\"placed\":[],\"guideLines\":[0.4,1.8],\"guideLabel\":true}"
+  },
+  {
+    "n": "slide 16 ptMap Na-Cl: metal + nonmetal",
+    "pass": true,
+    "i": "{\"stage\":\"Na-Cl\",\"pair\":[\"Na\",\"Cl\"],\"kinds\":[\"metal\",\"nonmetal\"],\"caption\":[\"Na and Cl\",\"metal + nonmetal\"],\"cells\":118,\"omittedSymbols\":0,\"cellPx\":64}"
+  },
+  {
+    "n": "slide 16 ptMap H-Cl: two nonmetals",
+    "pass": true,
+    "i": "{\"stage\":\"H-Cl\",\"pair\":[\"H\",\"Cl\"],\"kinds\":[\"nonmetal\",\"nonmetal\"],\"caption\":[\"H and Cl\",\"two nonmetals\"],\"cells\":118,\"omittedSymbols\":0,\"cellPx\":64}"
+  },
+  {
+    "n": "slide 16 ptMap Cu-Cu: one metal",
+    "pass": true,
+    "i": "{\"stage\":\"Cu-Cu\",\"pair\":[\"Cu\",\"Cu\"],\"kinds\":[\"metal\",\"metal\"],\"caption\":[\"Cu alone\",\"one metal\"],\"cells\":118,\"omittedSymbols\":0,\"cellPx\":64}"
+  },
+  {
+    "n": "slide 16 ptMap: 118 cells, no symbol squeezed or left out",
+    "pass": true,
+    "i": "{\"cellPx\":64,\"omitted\":0}"
+  },
+  {
+    "n": "slide 17 enMeter H-F: 3.98 − 2.20 = 1.78",
+    "pass": true,
+    "i": "\"3.98 − 2.20 = 1.78\""
+  },
+  {
+    "n": "slide 17 enMeter Mg-Cl: 3.16 − 1.31 = 1.85",
+    "pass": true,
+    "i": "\"3.16 − 1.31 = 1.85\""
+  },
+  {
+    "n": "slide 17 enMeter Fe-Cl: 3.16 − 1.83 = 1.33",
+    "pass": true,
+    "i": "\"3.16 − 1.83 = 1.33\""
+  },
+  {
+    "n": "slide 18 cerBuilder KF: four parts",
+    "pass": true,
+    "i": "{\"stage\":\"KF-strength\",\"set\":\"KF\",\"filled\":[\"claim\",\"evidence\",\"reasoning\",\"strength\"]}"
+  },
+  {
+    "n": "slide 18 cerBuilder HCl: starts fresh",
+    "pass": true,
+    "i": "{\"stage\":\"HCl-claim\",\"set\":\"HCl\",\"filled\":[\"claim\"]}"
+  },
+  {
+    "n": "no console errors",
+    "pass": true,
+    "i": "[]"
+  }
+]

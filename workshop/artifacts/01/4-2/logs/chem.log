@@ -1,0 +1,40 @@
+  PASS  slide 2 labelRead: toothpaste, sodium fluoride
+  PASS  slide 2 labelRead: lawn food, ammonium sulfate
+  PASS  slide 6 ionTable: group charges
+  PASS  slide 6 ionTable: -ide names and no squeezed symbols
+  PASS  slide 7 ionTable: the four transition metals
+  PASS  slide 8 chargeBlocks: CaCl₂, calcium chloride, balanced
+  PASS  slide 8 chargeBlocks: one Ca²⁺ and one Cl⁻ do not balance
+  PASS  slide 8 chargeBlocks: Al₂O₃ with 6+ and 6−
+  PASS  slide 9 chargeBlocks: Mg₂O₂ reduces to MgO
+  PASS  slide 9: K₂S
+  PASS  slide 9: Ca₃N₂
+  PASS  slide 10 crisscross Al₂O₃ check
+  PASS  slide 10 crisscross Mg₂O₂ → MgO
+  PASS  slide 11 nameBuilder: potassium sulfide
+  PASS  slide 11 answer frame: calcium bromide
+  PASS  slide 12 nameBuilder FeCl3: iron(III) chloride
+  PASS  slide 12 nameBuilder FeCl2: iron(II) chloride
+  PASS  slide 12 nameBuilder AgCl: silver chloride
+  PASS  slide 12 nameBuilder ZnO: zinc oxide
+  PASS  slide 12 stockDetective CuO: copper(II) oxide
+  PASS  slide 12 stockDetective Cu₂O: copper(I) oxide
+  PASS  slide 15 polyIons NH4: NH₄⁺
+  PASS  slide 15 polyIons OH: OH⁻
+  PASS  slide 15 polyIons NO3: NO₃⁻
+  PASS  slide 15 polyIons CO3: CO₃²⁻
+  PASS  slide 15 polyIons SO4: SO₄²⁻
+  PASS  slide 15 polyIons PO4: PO₄³⁻
+  PASS  slide 16 parenBus: Ca(OH)₂
+  PASS  slide 16 chargeBlocks: (NH₄)₂SO₄
+  PASS  slide 16 chargeBlocks: NaNO₃, no parentheses
+  PASS  slide 17 chargeBlocks: Al₂(SO₄)₃
+  PASS  slide 17 stockDetective: Cu₂S is copper(I) sulfide
+  PASS  slide 18 answers
+  PASS  slide 19 fixes
+  PASS  slide 9 try two: K₂S and Ca₃N₂
+  PASS  slide 13 retrieval answers
+  PASS  slide 15 memory card sentence and CPK caption
+  PASS  nine checks on slides 6, 7, 8, 10, 11, 12, 15, 16, 17
+  PASS  no console errors
+chem42 (deck): PASS 39 checks

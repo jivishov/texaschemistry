@@ -1,0 +1,12 @@
+zoom light: 571 zoomed states over 156 frames (re-flow 432, transform 139), prompt 45, r800 1, animation 75, card 137, part 42, frames 1, check 24, wcard 14, legend 1, rule 22, table 1, column 21, item 42, row 30, caprow 3, p 5, hdr 9, rail 29, li 60, handsup 3, scale 6; min fill 64%; Back tests 24; PASS
+  PASS  B5 slide 6: the animation is a unit on the electron transfer stages (f0 to f3)
+  PASS  B5 slide 7: the lattice is a unit on the grow and turn frames (f1, f2)
+  PASS  B5 slide 8: the H–H pair and the pairs after it are units (f1 to f5)
+  PASS  B6 slide 18: each of the four argument boxes is its own unit
+  PASS  B6 slides 20 to 24: the prompts are units
+  PASS  A1 slide 2: the three mini-frames of the labels stage are units
+  PASS  A1 slide 16: the lit pair and the whole table are units
+  PASS  A1 slide 16: the three rule cards are units, each one
+  PASS  A1 slide 11: each column of the summary table is a unit
+  PASS  A1 slides 14 and 19: each row of an answer table is a unit
+  PASS  A1 checks: every zoomed check shows its options

@@ -1,0 +1,204 @@
+{
+ "lesson": "4.2",
+ "deck": "unit4/slides-4-2.html",
+ "scratch": false,
+ "theme": "both",
+ "matrix": false,
+ "audits": 24,
+ "failed": 0,
+ "seconds": 1454.4,
+ "results": [
+  {
+   "audit": "walk",
+   "theme": "light",
+   "pass": true,
+   "seconds": 210.3,
+   "summary": "walk light: 173 states, max empty 32% (s10f1), PASS",
+   "log": "logs/walk-light.log"
+  },
+  {
+   "audit": "walk",
+   "theme": "dark",
+   "pass": true,
+   "seconds": 210.5,
+   "summary": "walk dark: 173 states, max empty 32% (s10f1), PASS",
+   "log": "logs/walk-dark.log"
+  },
+  {
+   "audit": "back",
+   "theme": "light",
+   "pass": true,
+   "seconds": 84.5,
+   "summary": "back: 173 forward, 173 back, PASS",
+   "log": "logs/back-light.log"
+  },
+  {
+   "audit": "back",
+   "theme": "dark",
+   "pass": true,
+   "seconds": 84.6,
+   "summary": "back: 173 forward, 173 back, PASS",
+   "log": "logs/back-dark.log"
+  },
+  {
+   "audit": "fonts",
+   "theme": "light",
+   "pass": true,
+   "seconds": 51.1,
+   "summary": "fonts: PASS",
+   "log": "logs/fonts-light.log"
+  },
+  {
+   "audit": "keys",
+   "theme": "",
+   "pass": true,
+   "seconds": 35.2,
+   "summary": "keys: PASS 48 checks",
+   "log": "logs/keys.log"
+  },
+  {
+   "audit": "readability",
+   "theme": "",
+   "pass": true,
+   "seconds": 3.0,
+   "summary": "readability: PASS",
+   "log": "logs/readability.log"
+  },
+  {
+   "audit": "print",
+   "theme": "",
+   "pass": true,
+   "seconds": 2.0,
+   "summary": "print: PASS stage hidden=true, 26 slides, 173 frame lines, 8 PDF page(s)",
+   "log": "logs/print.log"
+  },
+  {
+   "audit": "render3d",
+   "theme": "",
+   "pass": true,
+   "seconds": 2.4,
+   "summary": "render3d: PASS",
+   "log": "logs/render3d.log"
+  },
+  {
+   "audit": "extras",
+   "theme": "",
+   "pass": true,
+   "seconds": 5.3,
+   "summary": "extras: PASS",
+   "log": "logs/extras.log"
+  },
+  {
+   "audit": "chem",
+   "theme": "",
+   "pass": true,
+   "seconds": 1.5,
+   "summary": "chem42 (deck): PASS 39 checks",
+   "log": "logs/chem.log"
+  },
+  {
+   "audit": "timing",
+   "theme": "",
+   "pass": true,
+   "seconds": 1.3,
+   "summary": "timing: period 1 47 min, period 2 46.5 min, PASS",
+   "log": "logs/timing.log"
+  },
+  {
+   "audit": "supgap",
+   "theme": "",
+   "pass": true,
+   "seconds": 4.6,
+   "summary": "supgap: 139 symbol+charge pairs checked, PASS",
+   "log": "logs/supgap.log"
+  },
+  {
+   "audit": "zoom",
+   "theme": "light",
+   "pass": true,
+   "seconds": 261.0,
+   "summary": "zoom light: 707 zoomed states over 173 frames (re-flow 503, transform 204), prompt 35, r800 1, animation 96, part 108, card 159, frames 1, check 24, wcard 16, legend 1, caprow 10, p 5, memory card 1, rule 12, anion names 1, row 129, six ions 10, rail 29, li 60, handsup 3, scale 6; min fill 67%; Back tests 26; PASS",
+   "log": "logs/zoom-light.log"
+  },
+  {
+   "audit": "zoom",
+   "theme": "dark",
+   "pass": true,
+   "seconds": 262.8,
+   "summary": "zoom dark: 707 zoomed states over 173 frames (re-flow 503, transform 204), prompt 35, r800 1, animation 96, part 108, card 159, frames 1, check 24, wcard 16, legend 1, caprow 10, p 5, memory card 1, rule 12, anion names 1, row 129, six ions 10, rail 29, li 60, handsup 3, scale 6; min fill 67%; Back tests 26; PASS",
+   "log": "logs/zoom-dark.log"
+  },
+  {
+   "audit": "click",
+   "theme": "",
+   "pass": true,
+   "seconds": 30.1,
+   "summary": "click: 9 graded checks, 3 Predict-now questions, 47 assertions, PASS",
+   "log": "logs/click.log"
+  },
+  {
+   "audit": "layout",
+   "theme": "",
+   "pass": true,
+   "seconds": 21.8,
+   "summary": "layout: 173 frames, 24 visible option lists (stacked 15, row 9), max empty 32% (s10f1), gate 33%, clipped or ellipsized text: 0, PASS",
+   "log": "logs/layout.log"
+  },
+  {
+   "audit": "units",
+   "theme": "",
+   "pass": true,
+   "seconds": 10.2,
+   "summary": "63 frames, 89 visible cards and captions, 0 frames with a card missing or twice: PASS",
+   "log": "logs/units.log"
+  },
+  {
+   "audit": "cycle",
+   "theme": "",
+   "pass": true,
+   "seconds": 157.6,
+   "summary": "112 checks, 0 short cycles",
+   "log": "logs/cycle.log"
+  },
+  {
+   "audit": "xcheck",
+   "theme": "",
+   "pass": true,
+   "seconds": 1.6,
+   "summary": "xcheck: 40 of 40 pass",
+   "log": "logs/xcheck.log"
+  },
+  {
+   "audit": "contact",
+   "theme": "light",
+   "pass": true,
+   "seconds": 4.5,
+   "summary": "contact sheets light: contact-light-1.png (101 shots, 3710 px tall), contact-light-2.png (72 shots, 2635 px tall)",
+   "log": "logs/contact-light.log"
+  },
+  {
+   "audit": "contact",
+   "theme": "dark",
+   "pass": true,
+   "seconds": 4.1,
+   "summary": "contact sheets dark: contact-dark-1.png (101 shots, 3710 px tall), contact-dark-2.png (72 shots, 2635 px tall)",
+   "log": "logs/contact-dark.log"
+  },
+  {
+   "audit": "zoomsheet",
+   "theme": "light",
+   "pass": true,
+   "seconds": 2.3,
+   "summary": "zoom sheet light: zoomsheet-light-1.png (83 shots, 3065 px tall)",
+   "log": "logs/zoomsheet-light.log"
+  },
+  {
+   "audit": "zoomsheet",
+   "theme": "dark",
+   "pass": true,
+   "seconds": 2.1,
+   "summary": "zoom sheet dark: zoomsheet-dark-1.png (83 shots, 3065 px tall)",
+   "log": "logs/zoomsheet-dark.log"
+  }
+ ]
+}

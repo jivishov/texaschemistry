@@ -1,0 +1,281 @@
+{
+  "rows": [
+    {
+      "id": "s01",
+      "title": "Ionic formulas and names",
+      "period": "1",
+      "mins": 0.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s02",
+      "title": "Read the label",
+      "period": "1",
+      "mins": 3.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s03",
+      "title": "Two copper oxides",
+      "period": "1",
+      "mins": 3.5,
+      "timers": [
+        {
+          "timer": 60,
+          "t": 1.5
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s04",
+      "title": "Predict now",
+      "period": "1",
+      "mins": 2.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s05",
+      "title": "Targets and words",
+      "period": "1",
+      "mins": 3,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s06",
+      "title": "Charges from the group",
+      "period": "1",
+      "mins": 5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s07",
+      "title": "The four to memorize",
+      "period": "1",
+      "mins": 4,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s08",
+      "title": "Balancing the charges",
+      "period": "1",
+      "mins": 5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s09",
+      "title": "Writing the formula",
+      "period": "1",
+      "mins": 5,
+      "timers": [
+        {
+          "timer": 60,
+          "t": 1.5
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s10",
+      "title": "The crisscross shortcut",
+      "period": "1",
+      "mins": 4,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s11",
+      "title": "Naming binary compounds",
+      "period": "1",
+      "mins": 3.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s12",
+      "title": "The Stock system",
+      "period": "1",
+      "mins": 5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s13",
+      "title": "Formula in 3 steps, name in 2 parts",
+      "period": "1",
+      "mins": 2.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s14",
+      "title": "Warm-up",
+      "period": "2",
+      "mins": 3,
+      "timers": [
+        {
+          "timer": 90,
+          "t": 1.5
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s15",
+      "title": "Polyatomic ions",
+      "period": "2",
+      "mins": 4.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s16",
+      "title": "Parentheses",
+      "period": "2",
+      "mins": 4.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s17",
+      "title": "The two-way road",
+      "period": "2",
+      "mins": 4.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s18",
+      "title": "You do: six compounds",
+      "period": "2",
+      "mins": 4,
+      "timers": [
+        {
+          "timer": 180,
+          "t": 3
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s19",
+      "title": "Spot the error",
+      "period": "2",
+      "mins": 3,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s20",
+      "title": "Checkpoint routine",
+      "period": "2",
+      "mins": 1,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s21",
+      "title": "Checkpoint 1",
+      "period": "2",
+      "mins": 4.5,
+      "timers": [
+        {
+          "timer": 30,
+          "t": 0.5
+        },
+        {
+          "timer": 60,
+          "t": 1
+        },
+        {
+          "timer": 90,
+          "t": 1.5
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s22",
+      "title": "Checkpoint 2",
+      "period": "2",
+      "mins": 4.5,
+      "timers": [
+        {
+          "timer": 30,
+          "t": 0.5
+        },
+        {
+          "timer": 60,
+          "t": 1
+        },
+        {
+          "timer": 90,
+          "t": 1.5
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s23",
+      "title": "Checkpoint 3",
+      "period": "2",
+      "mins": 4.5,
+      "timers": [
+        {
+          "timer": 30,
+          "t": 0.5
+        },
+        {
+          "timer": 60,
+          "t": 1
+        },
+        {
+          "timer": 90,
+          "t": 1.5
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s24",
+      "title": "Predictions and exit ticket",
+      "period": "2",
+      "mins": 6.5,
+      "timers": [
+        {
+          "timer": 180,
+          "t": 3
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s25",
+      "title": "Rate your learning",
+      "period": "2",
+      "mins": 1.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s26",
+      "title": "Next",
+      "period": "2",
+      "mins": 0.5,
+      "timers": [],
+      "noT": 0
+    }
+  ],
+  "per": {
+    "1": 47,
+    "2": 46.5
+  },
+  "fails": []
+}

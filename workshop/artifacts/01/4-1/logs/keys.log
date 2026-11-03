@@ -1,0 +1,49 @@
+  PASS  F5 does not reload
+  PASS  PageDown on last frame enters next slide at frame 0  (s2f0)
+  PASS  PageUp at frame 0 enters previous slide at its last frame  (s1f0)
+  PASS  held PageDown (repeat) advances once  (f0 -> f1)
+  PASS  synthetic keydown with repeat:true is ignored
+  PASS  two presses within 180 ms advance once (debounce)  (f1 -> f2)
+  PASS  focused <select>: PageDown still advances  (f0 -> f1, select value 1)
+  PASS  focused <select>: ArrowDown still advances
+  PASS  a click on a control is followed by blur()
+  PASS  focused <textarea> keeps its keys
+  PASS  '.' zooms unit 1, the animation on a stage frame  (zoom cr-sim x1.16, unit 1 of 3)
+  PASS  zoom fits the drawn content (bounds of the current stage), not the whole box  (zoom x1.16 vs bounds fit x1.16)
+  PASS  zoomed canvas re-renders at the zoomed resolution  (canvas width 899 -> 1042, ratio 1.159 vs zoom 1.159)
+  PASS  the cue while zoomed reads "Zoom 1 of n · Blank ▶ next · Back ▶ exit"  (Zoom 1 of 3 · Blank ▶ next · Back ▶ exit)
+  PASS  while zoomed, two fast presses step the cycle twice and never blank  (unit 3 of 3, blank false)
+  PASS  the last unit cue says Blank ▶ exit  (Zoom 3 of 3 · Blank ▶ exit · Back ▶ exit)
+  PASS  the press after the last unit unzooms  (Next ▶ rule)
+  PASS  the cycle at this frame reaches the card it shows  (cr-sim cr-pred cr-rule)
+  PASS  '.' steps to that card  (cr-rule)
+  PASS  Back while zoomed exits the zoom at once and stays on the frame  (zoom null f3)
+  PASS  Next restarts the cycle: a zoom on a card is cleared
+  PASS  zoom on the animation stays while the next frame drives it  (zoom cr-sim f1)
+  PASS  zoom on the animation stays through a stage-only frame  (zoom cr-sim f2)
+  PASS  '.' '.' within 400 ms blanks the screen (and undoes the first zoom)
+  PASS  any key clears the blank screen without advancing
+  PASS  'b' acts like '.'
+  PASS  setup: notes + blank  ({"n":true,"b":true})
+  PASS  Escape 1 closes the blank screen only
+  PASS  setup: notes + zoom
+  PASS  Escape 2 closes the zoom only
+  PASS  Escape 3 closes the notes
+  PASS  a click on the slide counter opens the slide list
+  PASS  the slide list shows every slide number and title  (25 entries)
+  PASS  a click on a slide jumps to it  (s5f0)
+  PASS  a click on the section label opens the slide list
+  PASS  timer runs on its frame  (2:58)
+  PASS  timer stops when leaving its frame
+  PASS  Back then Next restarts the timer  (3:00)
+  PASS  a timed frame without a .timer slot is reported
+  PASS  End goes to the last frame of the last slide
+  PASS  Home goes to slide 1 frame 0
+  PASS  O opens the overview
+  PASS  overview: PageDown moves, Enter goes  (s3)
+  PASS  Z toggles zoom
+  PASS  T switches to dark
+  PASS  T switches back to light
+  PASS  overflow detector catches an injected oversize block  (3 findings)
+  PASS  no console errors
+keys: PASS 48 checks
