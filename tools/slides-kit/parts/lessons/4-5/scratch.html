@@ -1,7 +1,7 @@
 <main id="stage">
 <div id="prog"><i></i></div>
 
-<section class="slide t-hook" id="x-bb" data-title="Scratch: brickBag" data-sec="Step 02 scratch" data-ref="brickBag">
+<section class="slide t-hook" id="x-bb" data-title="Scratch: brickBag" data-sec="Steps 02 and 03 scratch" data-ref="brickBag">
   <h2>Scratch: brickBag</h2>
   <div class="body">
     <div class="sim" id="bb-sim" data-sim="brickBag" aria-label="brickBag animation"></div>
@@ -15,22 +15,23 @@
   ]);</script>
 </section>
 
-<section class="slide t-launch" id="x-ms" data-title="Scratch: meltScale" data-sec="Step 02 scratch" data-ref="meltScale">
+<section class="slide t-launch" id="x-ms" data-title="Scratch: meltScale" data-sec="Steps 02 and 03 scratch" data-ref="meltScale">
   <h2>Scratch: meltScale</h2>
   <div class="body">
     <div class="sim" id="ms-sim" data-sim="meltScale" style="flex:1 1 auto;min-height:0" aria-label="meltScale animation"></div>
-    <p class="line small" data-zoom="none">meltScale · 3 stages</p>
     <div class="card dq reg" id="ms-dq" data-label="driving question"><p>How do the forces within and between particles explain the melting point, conductivity and hardness of a substance?</p></div>
   </div>
   <script>Deck.frames('x-ms',[
-    {stage:'ms-sim:three',label:'three'},
+    {stage:'ms-sim:snow',label:'snow'},
+    {stage:'ms-sim:salt',label:'salt'},
+    {stage:'ms-sim:sand',label:'sand'},
     {stage:'ms-sim:melt',label:'melt'},
     {stage:'ms-sim:numbers',label:'numbers'},
     {show:'ms-dq',label:'numbers, with the driving question below'}
   ]);</script>
 </section>
 
-<section class="slide t-concept cw" id="x-ts" data-title="Scratch: threeSolids" data-sec="Step 02 scratch" data-ref="threeSolids">
+<section class="slide t-concept cw" id="x-ts" data-title="Scratch: threeSolids" data-sec="Steps 02 and 03 scratch" data-ref="threeSolids">
   <h2>Scratch: threeSolids</h2>
   <div class="body">
     <div class="sim" id="ts-sim" data-sim="threeSolids" aria-label="threeSolids animation"></div>
@@ -45,7 +46,7 @@
   ]);</script>
 </section>
 
-<section class="slide t-concept cw" id="x-ad" data-title="Scratch: attractions (dispersion family)" data-sec="Step 02 scratch" data-ref="attractions">
+<section class="slide t-concept cw" id="x-ad" data-title="Scratch: attractions (dispersion family)" data-sec="Steps 02 and 03 scratch" data-ref="attractions">
   <h2>Scratch: attractions (dispersion family)</h2>
   <div class="body">
     <div class="sim" id="ad-sim" data-sim="attractions" aria-label="attractions animation"></div>
@@ -59,7 +60,7 @@
   ]);</script>
 </section>
 
-<section class="slide t-concept cw" id="x-aq" data-title="Scratch: attractions (dipole family)" data-sec="Step 02 scratch" data-ref="attractions">
+<section class="slide t-concept cw" id="x-aq" data-title="Scratch: attractions (dipole family)" data-sec="Steps 02 and 03 scratch" data-ref="attractions">
   <h2>Scratch: attractions (dipole family)</h2>
   <div class="body">
     <div class="sim" id="aq-sim" data-sim="attractions" aria-label="attractions animation"></div>
@@ -74,7 +75,7 @@
   ]);</script>
 </section>
 
-<section class="slide t-concept cw" id="x-ah" data-title="Scratch: attractions (hydrogen family)" data-sec="Step 02 scratch" data-ref="attractions">
+<section class="slide t-concept cw" id="x-ah" data-title="Scratch: attractions (hydrogen family)" data-sec="Steps 02 and 03 scratch" data-ref="attractions">
   <h2>Scratch: attractions (hydrogen family)</h2>
   <div class="body">
     <div class="sim" id="ah-sim" data-sim="attractions" aria-label="attractions animation"></div>
@@ -89,7 +90,7 @@
   ]);</script>
 </section>
 
-<section class="slide t-concept cw" id="x-bp" data-title="Scratch: bpPlot" data-sec="Step 02 scratch" data-ref="bpPlot">
+<section class="slide t-concept cw" id="x-bp" data-title="Scratch: bpPlot" data-sec="Steps 02 and 03 scratch" data-ref="bpPlot">
   <h2>Scratch: bpPlot</h2>
   <div class="body">
     <div class="sim" id="bp-sim" data-sim="bpPlot" aria-label="bpPlot animation"></div>
@@ -108,13 +109,14 @@
   ]);</script>
 </section>
 
-<section class="slide t-cer" id="x-fd" data-title="Scratch: forceDecider" data-sec="Step 02 scratch" data-ref="forceDecider">
+<section class="slide t-cer" id="x-fd" data-title="Scratch: forceDecider" data-sec="Steps 02 and 03 scratch" data-ref="forceDecider">
   <h2>Scratch: forceDecider</h2>
   <div class="body">
-    <div class="stack"><p class="hdr" data-zoom="none">forceDecider · 11 stages</p></div>
+    <div class="stack"><p class="hdr" data-zoom="none">forceDecider · 12 stages</p></div>
     <div class="stack"><div class="sim" id="fd-sim" data-sim="forceDecider" aria-label="forceDecider animation"></div></div>
   </div>
   <script>Deck.frames('x-fd',[
+    {stage:'fd-sim:empty',label:'empty'},
     {stage:'fd-sim:NH3/polar',label:'NH3/polar'},
     {stage:'fd-sim:NH3/H',label:'NH3/H'},
     {stage:'fd-sim:NH3/lone',label:'NH3/lone'},
@@ -126,6 +128,130 @@
     {stage:'fd-sim:HBr/polar',label:'HBr/polar'},
     {stage:'fd-sim:HBr/H',label:'HBr/H'},
     {stage:'fd-sim:HBr/strongest',label:'HBr/strongest'}
+  ]);</script>
+</section>
+
+<section class="slide t-concept cw" id="x-he" data-title="Scratch: heating" data-sec="Steps 02 and 03 scratch" data-ref="heating">
+  <h2>Scratch: heating</h2>
+  <div class="body">
+    <div class="sim" id="he-sim" data-sim="heating" aria-label="heating animation"></div>
+    <div class="col"><div class="card" id="x-he-card" data-zoom="none"><p class="tag">heating</p><p class="small">heating · 9 stages</p></div></div>
+  </div>
+  <script>Deck.frames('x-he',[
+    {stage:'he-sim:CH4/solid',label:'CH4/solid'},
+    {stage:'he-sim:CH4/melt',label:'CH4/melt'},
+    {stage:'he-sim:CH4/liquid',label:'CH4/liquid'},
+    {stage:'he-sim:CH4/boil',label:'CH4/boil'},
+    {stage:'he-sim:CH4/gas',label:'CH4/gas'},
+    {stage:'he-sim:H2O/solid',label:'H2O/solid'},
+    {stage:'he-sim:H2O/boil',label:'H2O/boil'},
+    {stage:'he-sim:H2O/gas',label:'H2O/gas'},
+    {stage:'he-sim:energy',label:'energy'}
+  ]);</script>
+</section>
+
+<section class="slide t-concept cw" id="x-il" data-title="Scratch: iceLattice" data-sec="Steps 02 and 03 scratch" data-ref="iceLattice">
+  <h2>Scratch: iceLattice</h2>
+  <div class="body">
+    <div class="sim" id="il-sim" data-sim="iceLattice" aria-label="iceLattice animation"></div>
+    <div class="col"><div class="card" id="x-il-card" data-zoom="none"><p class="tag">iceLattice</p><p class="small">iceLattice · 5 stages</p><p class="small" id="il-note" data-zoom="none">The lattice turns slowly while the slide shows.</p></div></div>
+  </div>
+  <script>Deck.frames('x-il',[
+    {stage:'il-sim:molecules',label:'molecules'},
+    {stage:'il-sim:hbonds',label:'hbonds',show:'il-note'},
+    {stage:'il-sim:neighbors',label:'neighbors'},
+    {stage:'il-sim:rings',label:'rings'},
+    {stage:'il-sim:float',label:'float'}
+  ]);</script>
+</section>
+
+<section class="slide t-concept wide" id="x-ct" data-title="Scratch: conductTester (slide 15 samples)" data-sec="Steps 02 and 03 scratch" data-ref="conductTester">
+  <h2>Scratch: conductTester (slide 15 samples)</h2>
+  <div class="body">
+    <div class="sim" id="ct-sim" data-sim="conductTester" data-reserve="236" aria-label="conductTester animation"></div>
+    <div class="ptrow"><div class="stack"><p class="caprow" data-zoom="none">conductTester (slide 15 samples) · 19 stages</p></div></div>
+  </div>
+  <script>Deck.frames('x-ct',[
+    {stage:'ct-sim:tester',label:'tester'},
+    {stage:'ct-sim:NaCl-s/predict',label:'NaCl-s/predict'},
+    {stage:'ct-sim:NaCl-s/close',label:'NaCl-s/close'},
+    {stage:'ct-sim:NaCl-s/zoom',label:'NaCl-s/zoom'},
+    {stage:'ct-sim:NaCl-l/predict',label:'NaCl-l/predict'},
+    {stage:'ct-sim:NaCl-l/close',label:'NaCl-l/close'},
+    {stage:'ct-sim:NaCl-l/zoom',label:'NaCl-l/zoom'},
+    {stage:'ct-sim:NaCl-aq/predict',label:'NaCl-aq/predict'},
+    {stage:'ct-sim:NaCl-aq/close',label:'NaCl-aq/close'},
+    {stage:'ct-sim:NaCl-aq/zoom',label:'NaCl-aq/zoom'},
+    {stage:'ct-sim:Cu/predict',label:'Cu/predict'},
+    {stage:'ct-sim:Cu/close',label:'Cu/close'},
+    {stage:'ct-sim:Cu/zoom',label:'Cu/zoom'},
+    {stage:'ct-sim:sugar/predict',label:'sugar/predict'},
+    {stage:'ct-sim:sugar/close',label:'sugar/close'},
+    {stage:'ct-sim:sugar/zoom',label:'sugar/zoom'},
+    {stage:'ct-sim:water/predict',label:'water/predict'},
+    {stage:'ct-sim:water/close',label:'water/close'},
+    {stage:'ct-sim:water/zoom',label:'water/zoom'}
+  ]);</script>
+</section>
+
+<section class="slide t-example cb" id="x-cu" data-title="Scratch: conductTester (slide 16 samples)" data-sec="Steps 02 and 03 scratch" data-ref="conductTester">
+  <h2>Scratch: conductTester (slide 16 samples)</h2>
+  <div class="body" style="grid-template-columns:minmax(0,58fr) minmax(0,42fr)">
+    <div class="sim" id="cu-sim" data-sim="conductTester" aria-label="conductTester animation"></div>
+    <div class="col"><div class="card" id="x-cu-card" data-zoom="none"><p class="tag">conductTester</p><p class="small">conductTester (slide 16 samples) · 6 stages</p></div></div>
+  </div>
+  <script>Deck.frames('x-cu',[
+    {stage:'cu-sim:KCl-l/predict',label:'KCl-l/predict'},
+    {stage:'cu-sim:KCl-l/close',label:'KCl-l/close'},
+    {stage:'cu-sim:KCl-l/zoom',label:'KCl-l/zoom'},
+    {stage:'cu-sim:CaCl2-s/predict',label:'CaCl2-s/predict'},
+    {stage:'cu-sim:CaCl2-s/close',label:'CaCl2-s/close'},
+    {stage:'cu-sim:CaCl2-s/zoom',label:'CaCl2-s/zoom'}
+  ]);</script>
+</section>
+
+<section class="slide t-concept cw" id="x-cd" data-title="Scratch: conductTester (dissolve family)" data-sec="Steps 02 and 03 scratch" data-ref="conductTester">
+  <h2>Scratch: conductTester (dissolve family)</h2>
+  <div class="body">
+    <div class="sim" id="cd-sim" data-sim="conductTester" aria-label="conductTester animation"></div>
+    <div class="col"><div class="card" id="x-cd-card" data-zoom="none"><p class="tag">conductTester</p><p class="small">conductTester (dissolve family) · 6 stages</p></div></div>
+  </div>
+  <script>Deck.frames('x-cd',[
+    {stage:'cd-sim:dis/NaCl',label:'dis/NaCl'},
+    {stage:'cd-sim:dis/sucrose',label:'dis/sucrose'},
+    {stage:'cd-sim:dis/CaCO3',label:'dis/CaCO3'},
+    {stage:'cd-sim:dis/I2',label:'dis/I2'},
+    {stage:'cd-sim:dis/SiO2',label:'dis/SiO2'},
+    {stage:'cd-sim:dis/Cu',label:'dis/Cu'}
+  ]);</script>
+</section>
+
+<section class="slide t-concept wide" id="x-hb" data-title="Scratch: hammerBlow" data-sec="Steps 02 and 03 scratch" data-ref="hammerBlow">
+  <h2>Scratch: hammerBlow</h2>
+  <div class="body">
+    <div class="sim" id="hb-sim" data-sim="hammerBlow" data-reserve="236" aria-label="hammerBlow animation"></div>
+    <div class="ptrow"><div class="stack"><p class="caprow" data-zoom="none">hammerBlow · 4 stages</p></div></div>
+  </div>
+  <script>Deck.frames('x-hb',[
+    {stage:'hb-sim:before',label:'before'},
+    {stage:'hb-sim:blow',label:'blow'},
+    {stage:'hb-sim:shift',label:'shift'},
+    {stage:'hb-sim:result',label:'result'}
+  ]);</script>
+</section>
+
+<section class="slide t-concept cw" id="x-nv" data-title="Scratch: networkVsMolecules" data-sec="Steps 02 and 03 scratch" data-ref="networkVsMolecules">
+  <h2>Scratch: networkVsMolecules</h2>
+  <div class="body">
+    <div class="sim" id="nv-sim" data-sim="networkVsMolecules" aria-label="networkVsMolecules animation"></div>
+    <div class="col"><div class="card" id="x-nv-card" data-zoom="none"><p class="tag">networkVsMolecules</p><p class="small">networkVsMolecules · 5 stages</p></div></div>
+  </div>
+  <script>Deck.frames('x-nv',[
+    {stage:'nv-sim:co2',label:'co2'},
+    {stage:'nv-sim:sublime',label:'sublime'},
+    {stage:'nv-sim:quartz',label:'quartz'},
+    {stage:'nv-sim:heat',label:'heat'},
+    {stage:'nv-sim:diamond',label:'diamond'}
   ]);</script>
 </section>
 

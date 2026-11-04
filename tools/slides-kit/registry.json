@@ -53,6 +53,7 @@
     {
       "unit": 4,
       "lesson": 5,
+      "built": false,
       "file": "unit4/slides-4-5.html",
       "title": "Bonds, Forces and Properties Slides",
       "description": "Unit 4, Lesson 4.5 projector slides: Bonds, forces and properties (TEKS C.7(D)).",
@@ -61,7 +62,7 @@
       "markers": ["01-head-45", "02-runtime", "02b-shared", "sims-45", "slides-45"],
       "css": null,
       "keys_cfg": {"cr": "x-ts", "sim": "ts-sim", "card": "x-ts-card", "tm": "x-ms", "ex": "x-bp", "hk": "x-bb", "notes": ["x-ts", 0]},
-      "extras_cfg": {"hash": "#2.2", "canvas": "#ms-sim canvas", "block": "ms-dq", "slides": 8},
+      "extras_cfg": {"hash": "#10.0", "canvas": "#il-sim canvas", "block": "il-note", "slides": 15},
       "budget": "parts/lessons/4-5/budget.json",
       "chem": "parts/lessons/4-5/chem.js",
       "blueprint": {"section": "45", "next": "case"},

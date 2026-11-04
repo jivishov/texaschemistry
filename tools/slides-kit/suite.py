@@ -2,7 +2,7 @@
 """Run a deck's audits (RULES.md section 11) and write logs, JSON and sheets to an output folder outside the repo.
 
   python3 suite.py <U> <L> [--matrix] [--theme light|dark|both] [--out <folder>] [--only walk,zoom,...] [--deck <path>]
-  python3 suite.py --all [--matrix] [--theme light|dark|both] [--out <folder>] [--only ...]
+  python3 suite.py --all [--matrix] [--theme light|dark|both] [--out <folder>] [--only ...]   (skips entries with "built": false)
 
 Order (as the 4.1 and 4.2 run-all scripts ran them): walk, back, fonts, keys, readability, print, render3d, extras, chem, timing,
 supgap, zoom, click, layout, the deck's extra audits (registry "extra_audits"), xcheck, then the contact and zoom sheets.
@@ -157,7 +157,12 @@ def main():
     if o.all:
         if o.unit is not None or o.deck:
             a.error('--all takes no lesson and no --deck')
-        decks = registry()
+        decks = []
+        for d in registry():
+            if d.get('built', True) is False:
+                print(f"{d['unit']}.{d['lesson']}: not built yet (registry built: false); skipped")
+            else:
+                decks.append(d)
     else:
         if o.unit is None or o.lesson is None:
             a.error('give <U> <L>, or --all')

@@ -1,0 +1,144 @@
+  PASS  brickBag: four stages driven (models, shake, pour, words)
+  PASS  brickBag models: 3 models, 11 bricks, all snapped
+  PASS  brickBag shake: 3 models, 11 bricks, all snapped
+  PASS  brickBag pour: 3 models, 11 bricks, all snapped
+  PASS  brickBag words: 3 models, 11 bricks, all snapped
+  PASS  brickBag: the counter reads "Bricks snapped: 11 of 11"
+  PASS  brickBag words: the two labels
+  PASS  brickBag pour: the models are on the table, out of the bag
+  PASS  meltScale: stages snow, salt, sand, melt, numbers
+  PASS  meltScale: the solids appear one per press (cumulative)
+  PASS  meltScale snow (frame 0, tall layout): smallest atom or ion sphere 60 px
+  PASS  meltScale salt (frame 1, tall layout): smallest atom or ion sphere 60 px
+  PASS  meltScale sand (frame 2, tall layout): smallest atom or ion sphere 60 px
+  PASS  meltScale melt (frame 3, tall layout): smallest atom or ion sphere 60 px
+  PASS  meltScale numbers (frame 4, tall layout): smallest atom or ion sphere 60 px
+  PASS  meltScale numbers (frame 5, short layout): smallest atom or ion sphere none drawn
+  PASS  meltScale melt: values snow 0.0, salt 801, sand near 1700
+  PASS  meltScale melt: snow molecules intact, salt and sand not moved
+  PASS  meltScale numbers: label line "Melting point" and chips "snow 0.0 °C", "salt 801 °C", "sand near 1700 °C"
+  PASS  meltScale sand: no chips before the numbers stage
+  PASS  meltScale: scale −200 to 1800 °C
+  PASS  threeSolids chlorine: molecules drawn, one stick within each, no dashed line yet
+  PASS  threeSolids within: the sticks glow, label "bond within"
+  PASS  threeSolids between: dashed lines between molecules, label "attraction between (much weaker)"
+  PASS  threeSolids salt: NaCl radii 102 and 181 pm, spacing 282 pm, label
+  PASS  threeSolids copper: delocalized electrons, three panels, label
+  PASS  threeSolids: sticks within equal molecules at every stage
+  PASS  attractions flicker: nonpolar, δ labels only for an instant
+  PASS  attractions neighbor: nonpolar, δ labels only for an instant
+  PASS  attractions attract: nonpolar, δ labels only for an instant
+  PASS  attractions cloud: no δ labels yet
+  PASS  attractions neighbor: the neighbor shifts the same way
+  PASS  attractions attract: the dashed line and the label "dispersion forces"
+  PASS  attractions F2: no δ labels, dashed gray only
+  PASS  attractions HCl: δ+ on H, δ− on Cl
+  PASS  attractions turn: head to tail
+  PASS  attractions face: δ+ to δ− line, label "dipole-dipole forces"
+  PASS  attractions compare: electrons F2 18, HCl 18; boiling points F2 −188.1, HCl −85.1
+  PASS  attractions water: two water molecules, no hydrogen bond drawn yet
+  PASS  attractions hbond: donor H on O, acceptor lone pair on O; drawn longer than the O–H bond
+  PASS  attractions ammonia: donor H on N, acceptor lone pair on N
+  PASS  attractions methane: no hydrogen bond, label "H on C: no hydrogen bond"
+  PASS  attractions four: up to four hydrogen bonds, four neighbors
+  PASS  bpPlot axes: points none
+  PASS  bpPlot axes: each point's electrons, boiling point and strongest attraction
+  PASS  bpPlot F2: points F₂
+  PASS  bpPlot F2: each point's electrons, boiling point and strongest attraction
+  PASS  bpPlot Cl2: points F₂, Cl₂
+  PASS  bpPlot Cl2: each point's electrons, boiling point and strongest attraction
+  PASS  bpPlot Br2: points F₂, Cl₂, Br₂
+  PASS  bpPlot Br2: each point's electrons, boiling point and strongest attraction
+  PASS  bpPlot I2: points F₂, Cl₂, Br₂, I₂
+  PASS  bpPlot I2: each point's electrons, boiling point and strongest attraction
+  PASS  bpPlot trend: points F₂, Cl₂, Br₂, I₂
+  PASS  bpPlot trend: each point's electrons, boiling point and strongest attraction
+  PASS  bpPlot trio: points CH₄, NH₃, H₂O
+  PASS  bpPlot trio: each point's electrons, boiling point and strongest attraction
+  PASS  bpPlot reveal: points CH₄, NH₃, H₂O
+  PASS  bpPlot reveal: each point's electrons, boiling point and strongest attraction
+  PASS  bpPlot HCl: points F₂, HCl
+  PASS  bpPlot HCl: each point's electrons, boiling point and strongest attraction
+  PASS  bpPlot trio: the 10-electron points have no labels yet; reveal adds them
+  PASS  bpPlot trio: the halogens stay faint behind
+  PASS  bpPlot trend: the dashed trend line only at trend
+  PASS  bpPlot: no "all eight" stage
+  PASS  bpPlot: axes 0 to 110 electrons, −200 to 200 °C
+  PASS  forceDecider empty (M2): no molecule, no drawing, nothing filled
+  PASS  forceDecider NH3/polar: NH3, answers yes
+  PASS  forceDecider NH3/H: NH3, answers yes · yes
+  PASS  forceDecider NH3/lone: NH3, answers yes · yes · yes
+  PASS  forceDecider NH3/strongest: NH3, answers yes · yes · yes · hydrogen bonding
+  PASS  forceDecider CO2/polar: CO2, answers no
+  PASS  forceDecider CO2/H: CO2, answers no · no · not needed
+  PASS  forceDecider CO2/strongest: CO2, answers no · no · not needed · dispersion forces
+  PASS  forceDecider HBr/EN: HBr, answers none yet
+  PASS  forceDecider HBr/polar: HBr, answers yes
+  PASS  forceDecider HBr/H: HBr, answers yes · no · not needed
+  PASS  forceDecider HBr/strongest: HBr, answers yes · no · not needed · dipole-dipole forces
+  PASS  forceDecider HBr/EN: "Electronegativity (pull on electrons)", Br 2.96, H 2.20, difference 0.76
+  PASS  forceDecider: box titles
+  PASS  forceDecider: 2.96 − 2.20 = 0.76 from the shared electronegativity table
+  PASS  heating CH4/solid: 36 of 36 covalent bonds intact, 9 molecules
+  PASS  heating CH4/melt: 36 of 36 covalent bonds intact, 9 molecules
+  PASS  heating CH4/liquid: 36 of 36 covalent bonds intact, 9 molecules
+  PASS  heating CH4/boil: 36 of 36 covalent bonds intact, 9 molecules
+  PASS  heating CH4/gas: 36 of 36 covalent bonds intact, 9 molecules
+  PASS  heating H2O/solid: 18 of 18 covalent bonds intact, 9 molecules
+  PASS  heating H2O/boil: 18 of 18 covalent bonds intact, 9 molecules
+  PASS  heating H2O/gas: 18 of 18 covalent bonds intact, 9 molecules
+  PASS  heating energy: 18 of 18 covalent bonds intact, 9 molecules
+  PASS  heating CH4/solid: temperature "−182.5 °C (melting point)"
+  PASS  heating CH4/melt: temperature "−182.5 °C, melting"
+  PASS  heating CH4/liquid: temperature "liquid"
+  PASS  heating CH4/boil: temperature "−161.5 °C, boiling"
+  PASS  heating CH4/gas: temperature "−161.5 °C (boiling point)"
+  PASS  heating H2O/solid: temperature "0.0 °C (melting point)"
+  PASS  heating H2O/boil: temperature "100.0 °C, boiling"
+  PASS  heating H2O/gas: temperature "100.0 °C (boiling point)"
+  PASS  heating: attractions fall as they let go (12, 7, 6, 2, 0 for CH4; 12, 2, 0 for H2O)
+  PASS  heating energy: bars 40.7 kJ and 928 kJ, caption "more than 20 times as much"
+  PASS  iceLattice: 13 molecules, 26 O–H bonds, 16 hydrogen bonds (one H on each O···O link)
+  PASS  iceLattice molecules: no hydrogen bonds drawn yet; hbonds: drawn
+  PASS  iceLattice neighbors: the chosen oxygen has four neighbors, 276 pm; label
+  PASS  iceLattice rings: the view looks down the axis; label "open six-sided rings"
+  PASS  iceLattice float: densities 0.9167 and 0.99984 g/cm³, 100.0 → 109.1 cm³, 8.3% above the surface
+  PASS  iceLattice: 109.1 / 100.0 is about 9% more; 1 − 0.9167/0.99984 is the 8.3% above water
+  PASS  iceLattice: the reduced-motion view is fixed
+  PASS  conductTester tester: no sample yet, bulb dark
+  PASS  conductTester NaCl-s: "solid NaCl"; charged particles Na⁺ and Cl⁻; free to move no; stays dark
+  PASS  conductTester NaCl-s: predict = switch open, bulb dark; close = switch closed; zoom = magnified view
+  PASS  conductTester NaCl-l: "molten NaCl, 801 °C"; charged particles Na⁺ and Cl⁻; free to move yes; lights
+  PASS  conductTester NaCl-l: predict = switch open, bulb dark; close = switch closed; zoom = magnified view
+  PASS  conductTester NaCl-aq: "salt water"; charged particles Na⁺ and Cl⁻; free to move yes; lights
+  PASS  conductTester NaCl-aq: predict = switch open, bulb dark; close = switch closed; zoom = magnified view
+  PASS  conductTester Cu: "copper"; charged particles delocalized electrons; free to move yes; lights
+  PASS  conductTester Cu: predict = switch open, bulb dark; close = switch closed; zoom = magnified view
+  PASS  conductTester sugar: "sugar water"; charged particles none; free to move null; stays dark
+  PASS  conductTester sugar: predict = switch open, bulb dark; close = switch closed; zoom = magnified view
+  PASS  conductTester water: "distilled water"; charged particles very few ions; free to move null; stays dark
+  PASS  conductTester water: predict = switch open, bulb dark; close = switch closed; zoom = magnified view
+  PASS  conductTester KCl-l: "molten KCl"; charged particles K⁺ and Cl⁻; free to move yes; lights
+  PASS  conductTester KCl-l: predict = switch open, bulb dark; close = switch closed; zoom = magnified view
+  PASS  conductTester CaCl2-s: "solid CaCl₂"; charged particles Ca²⁺ and Cl⁻; free to move no; stays dark
+  PASS  conductTester CaCl2-s: predict = switch open, bulb dark; close = switch closed; zoom = magnified view
+  PASS  conductTester dis/NaCl: ionic, dissolves yes
+  PASS  conductTester dis/sucrose: molecular, dissolves yes
+  PASS  conductTester dis/CaCO3: ionic, dissolves barely
+  PASS  conductTester dis/I2: molecular, dissolves slightly
+  PASS  conductTester dis/SiO2: covalent network, dissolves no
+  PASS  conductTester dis/Cu: metallic, dissolves no
+  PASS  conductTester dis/NaCl: "ions spread out: an electrolyte"; dis/sucrose: "whole molecules spread out"
+  PASS  hammerBlow before: no shift, no like-charge pairs, one piece
+  PASS  hammerBlow blow: the hammer strikes
+  PASS  hammerBlow shift: both top layers move one spacing; like charges side by side in NaCl
+  PASS  hammerBlow result: copper bends in one piece ("malleable"); NaCl splits ("brittle")
+  PASS  hammerBlow: radii Na⁺ 102, Cl⁻ 181, Cu 128 pm; spacing 282 pm
+  PASS  networkVsMolecules co2: six CO₂ molecules, dispersion lines drawn, −78.5 °C
+  PASS  networkVsMolecules sublime: the molecules fly off whole, no lines; "sublimes at −78.5 °C: no liquid"
+  PASS  networkVsMolecules quartz: a network, no molecules; every Si bonded to four O; label
+  PASS  networkVsMolecules heat: above 1000 °C; "to melt it, covalent bonds must break: near 1700 °C"
+  PASS  networkVsMolecules diamond: a carbon network; "diamond: the hardest natural substance"
+  PASS  no console errors
+scratch-check 4.5: PASS 142 checks
+exit=0

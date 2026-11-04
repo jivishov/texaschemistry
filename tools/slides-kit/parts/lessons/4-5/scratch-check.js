@@ -1,4 +1,4 @@
-// Lesson 4.5, period-1 animations on the scratch deck (workshop step 02): drives every stage of every instance with Deck.go and
+// Lesson 4.5 animations on the scratch deck (workshop steps 02 and 03): drives every stage of every instance with Deck.go and
 // asserts the meta() values of brief 02 against lessons/4-5.md. A lesson script, not an audit; step 04 turns it into chem.js.
 //   DECK=<scratch deck> OUT=<folder> node parts/lessons/4-5/scratch-check.js
 const L=require('../../../audits/lib');
@@ -18,12 +18,17 @@ const L=require('../../../audits/lib');
   ok('brickBag words: the two labels',eq(at(R,'words').labels,['a snap between bricks = a bond within','models side by side = an attraction between']),at(R,'words').labels);
   ok('brickBag pour: the models are on the table, out of the bag',at(R,'pour').onTable&&!at(R,'pour').inBag);
 
-  /* 2. meltScale: the three melting points; after melt the snow's molecules are whole and salt and sand did not move */
+  /* 2. meltScale (M1): snow, salt, sand appear one per press; every atom or ion sphere 60 px or more; after melt the snow's molecules are
+     whole and salt and sand did not move */
   R=await run('x-ms');let m=at(R,'melt');
+  ok('meltScale: stages snow, salt, sand, melt, numbers',eq([...new Set(R.map(x=>x.stage))],['snow','salt','sand','melt','numbers']),R.map(x=>x.stage));
+  ok('meltScale: the solids appear one per press (cumulative)',eq(at(R,'snow').shown,['snow'])&&eq(at(R,'salt').shown,['snow','salt'])&&eq(at(R,'sand').shown,['snow','salt','sand']));
+  R.forEach(x=>ok(`meltScale ${x.stage} (frame ${x.f}, ${x.meta.layout} layout): smallest atom or ion sphere ${x.meta.minSphere===null?'none drawn':x.meta.minSphere+' px'}`,
+    x.meta.layout==='tall'?x.meta.minSphere>=60&&x.meta.drawn.atom>=60:x.meta.minSphere===null,{minSphere:x.meta.minSphere,drawn:x.meta.drawn}));
   ok('meltScale melt: values snow 0.0, salt 801, sand near 1700',eq(m.values,{snow:0.0,salt:801,sand:'near 1700'}),m.values);
   ok('meltScale melt: snow molecules intact, salt and sand not moved',m.snowMoleculesIntact===true&&m.snowMoved===true&&m.saltMoved===false&&m.sandMoved===false,m);
-  m=at(R,'numbers');ok('meltScale numbers: label line "Melting point" and chips "snow 0.0 °C", "salt 801 °C", "sand near 1700 °C"',m.label==='Melting point'&&eq(m.chips,['snow 0.0 °C','salt 801 °C','sand near 1700 °C']),m);
-  ok('meltScale three: no chips before the numbers stage',at(R,'three').chips.length===0);
+  m=R.filter(x=>x.stage==='numbers')[0].meta;ok('meltScale numbers: label line "Melting point" and chips "snow 0.0 °C", "salt 801 °C", "sand near 1700 °C"',m.label==='Melting point'&&eq(m.chips,['snow 0.0 °C','salt 801 °C','sand near 1700 °C']),m);
+  ok('meltScale sand: no chips before the numbers stage',at(R,'sand').chips.length===0);
   ok('meltScale: scale −200 to 1800 °C',eq(m.scale,[-200,1800]));
 
   /* 3. threeSolids */
@@ -70,6 +75,7 @@ const L=require('../../../audits/lib');
 
   /* 6. forceDecider: the answers of triplet 1 */
   R=await run('x-fd');
+  m=at(R,'empty');ok('forceDecider empty (M2): no molecule, no drawing, nothing filled',m.molecule===null&&m.drawing===false&&Object.values(m.answers).every(v=>v===null)&&m.en===null,m);
   const FD={'NH3/polar':['NH3',{polar:'yes',H:null,lone:null,strongest:null}],'NH3/H':['NH3',{polar:'yes',H:'yes',lone:null,strongest:null}],'NH3/lone':['NH3',{polar:'yes',H:'yes',lone:'yes',strongest:null}],
     'NH3/strongest':['NH3',{polar:'yes',H:'yes',lone:'yes',strongest:'hydrogen bonding'}],'CO2/polar':['CO2',{polar:'no',H:null,lone:null,strongest:null}],
     'CO2/H':['CO2',{polar:'no',H:'no',lone:'not needed',strongest:null}],'CO2/strongest':['CO2',{polar:'no',H:'no',lone:'not needed',strongest:'dispersion forces'}],
@@ -80,6 +86,51 @@ const L=require('../../../audits/lib');
   ok('forceDecider: box titles',eq(at(R,'NH3/polar').boxes,['Polar?','H on N, O or F?','Lone pair on N, O or F?','Strongest attraction']));
   /* the difference shown is the shared Pauling data */
   ok('forceDecider: 2.96 − 2.20 = 0.76 from the shared electronegativity table',await page.evaluate(()=>Deck.EN.Br===2.96&&Deck.EN.H===2.20&&(Deck.EN.Br-Deck.EN.H).toFixed(2)==='0.76'));
+
+
+  /* ======== period 2 (step 03) ======== */
+  /* 7. heating */
+  R=await run('x-he');
+  R.forEach(x=>ok(`heating ${x.stage}: ${x.meta.bondsIntact} of ${x.meta.bondsTotal} covalent bonds intact, 9 molecules`,x.meta.molecules===9&&x.meta.bondsIntact===x.meta.bondsTotal&&x.meta.bondsTotal===(x.meta.substance==='CH4'?36:18),x.meta));
+  const HT={'CH4/solid':'−182.5 °C (melting point)','CH4/melt':'−182.5 °C, melting','CH4/liquid':'liquid','CH4/boil':'−161.5 °C, boiling','CH4/gas':'−161.5 °C (boiling point)','H2O/solid':'0.0 °C (melting point)','H2O/boil':'100.0 °C, boiling','H2O/gas':'100.0 °C (boiling point)'};
+  Object.entries(HT).forEach(([s,v])=>{m=at(R,s);ok(`heating ${s}: temperature "${v}"`,m.temperature===v,m.temperature)});
+  ok('heating: attractions fall as they let go (12, 7, 6, 2, 0 for CH4; 12, 2, 0 for H2O)',['CH4/solid','CH4/melt','CH4/liquid','CH4/boil','CH4/gas'].map(s=>at(R,s).attractionsDrawn).join()==='12,7,6,2,0'&&['H2O/solid','H2O/boil','H2O/gas'].map(s=>at(R,s).attractionsDrawn).join()==='12,2,0');
+  m=at(R,'energy');ok('heating energy: bars 40.7 kJ and 928 kJ, caption "more than 20 times as much"',eq(m.energies,{boil:40.7,bonds:928})&&m.energyBars&&m.caption==='more than 20 times as much'&&928/40.7>20,m);
+  /* 8. iceLattice */
+  R=await run('x-il');
+  m=at(R,'molecules');ok('iceLattice: 13 molecules, 26 O–H bonds, 16 hydrogen bonds (one H on each O···O link)',m.molecules===13&&m.bondsOH===26&&m.hbonds===16,m);
+  ok('iceLattice molecules: no hydrogen bonds drawn yet; hbonds: drawn',!at(R,'molecules').hbondsDrawn&&at(R,'hbonds').hbondsDrawn);
+  m=at(R,'neighbors');ok('iceLattice neighbors: the chosen oxygen has four neighbors, 276 pm; label',m.neighborsOfChosen===4&&m.distancePm===276&&m.label==='four neighbors, 276 pm away',m);
+  m=at(R,'rings');ok('iceLattice rings: the view looks down the axis; label "open six-sided rings"',m.view==='down the axis'&&m.label==='open six-sided rings',m);
+  m=at(R,'float');ok('iceLattice float: densities 0.9167 and 0.99984 g/cm³, 100.0 → 109.1 cm³, 8.3% above the surface',eq(m.densities,{ice:0.9167,water:0.99984})&&eq(m.volumes,{water:100.0,ice:109.1})&&m.aboveSurfacePct===8.3,m);
+  ok('iceLattice: 109.1 / 100.0 is about 9% more; 1 − 0.9167/0.99984 is the 8.3% above water',Math.round((109.1/100-1)*100)===9&&Math.abs((1-0.9167/0.99984)*100-8.3)<.1);
+  ok('iceLattice: the reduced-motion view is fixed',R.every(x=>x.meta.reducedView==='fixed'));
+  /* 9. conductTester */
+  const CTW={'NaCl-s':['solid NaCl','Na⁺ and Cl⁻','no',false],'NaCl-l':['molten NaCl, 801 °C','Na⁺ and Cl⁻','yes',true],'NaCl-aq':['salt water','Na⁺ and Cl⁻','yes',true],Cu:['copper','delocalized electrons','yes',true],
+    sugar:['sugar water','none',null,false],water:['distilled water','very few ions',null,false],'KCl-l':['molten KCl','K⁺ and Cl⁻','yes',true],'CaCl2-s':['solid CaCl₂','Ca²⁺ and Cl⁻','no',false]};
+  R=(await run('x-ct')).concat(await run('x-cu'));
+  ok('conductTester tester: no sample yet, bulb dark',at(R,'tester').sample===null&&!at(R,'tester').lit);
+  Object.entries(CTW).forEach(([k,[name,ch,free,lit]])=>{const pr=at(R,k+'/predict'),cl=at(R,k+'/close'),zm=at(R,k+'/zoom');
+    ok(`conductTester ${k}: "${name}"; charged particles ${ch}; free to move ${free}; ${lit?'lights':'stays dark'}`,pr.name===name&&cl.chargedParticles===ch&&cl.freeToMove===free&&cl.lit===lit&&zm.lit===lit,{name:cl.name,ch:cl.chargedParticles,free:cl.freeToMove,lit:cl.lit});
+    ok(`conductTester ${k}: predict = switch open, bulb dark; close = switch closed; zoom = magnified view`,!pr.switchClosed&&!pr.lit&&cl.switchClosed&&!cl.zoom&&zm.zoom)});
+  R=await run('x-cd');
+  const DSW={NaCl:['ionic','yes'],sucrose:['molecular','yes'],CaCO3:['ionic','barely'],I2:['molecular','slightly'],SiO2:['covalent network','no'],Cu:['metallic','no']};
+  Object.entries(DSW).forEach(([k,[ty,ds]])=>{m=at(R,'dis/'+k);ok(`conductTester dis/${k}: ${ty}, dissolves ${ds}`,m.sample===k&&m.type===ty&&m.dissolves===ds,m)});
+  ok('conductTester dis/NaCl: "ions spread out: an electrolyte"; dis/sucrose: "whole molecules spread out"',at(R,'dis/NaCl').label==='ions spread out: an electrolyte'&&at(R,'dis/sucrose').label==='whole molecules spread out');
+  /* 10. hammerBlow */
+  R=await run('x-hb');
+  m=at(R,'before');ok('hammerBlow before: no shift, no like-charge pairs, one piece',m.copper.offsetSpacings===0&&m.nacl.offsetSpacings===0&&m.nacl.likeChargePairs===0&&!m.nacl.split,m);
+  ok('hammerBlow blow: the hammer strikes',at(R,'blow').hammer===true);
+  m=at(R,'shift');ok('hammerBlow shift: both top layers move one spacing; like charges side by side in NaCl',m.copper.offsetSpacings===1&&m.nacl.offsetSpacings===1&&m.nacl.likeChargePairs>0&&!m.nacl.split,m);
+  m=at(R,'result');ok('hammerBlow result: copper bends in one piece ("malleable"); NaCl splits ("brittle")',m.copper.onePiece&&m.copper.label==='malleable'&&m.nacl.split&&m.nacl.label==='brittle'&&m.nacl.likeChargePairs>0,m);
+  ok('hammerBlow: radii Na⁺ 102, Cl⁻ 181, Cu 128 pm; spacing 282 pm',eq(m.radii,{Na:102,Cl:181,Cu:128})&&m.spacingPm===282);
+  /* 11. networkVsMolecules */
+  R=await run('x-nv');
+  m=at(R,'co2');ok('networkVsMolecules co2: six CO₂ molecules, dispersion lines drawn, −78.5 °C',m.co2.molecules===6&&m.co2.attractionsDrawn>0&&m.thermometer==='−78.5 °C',m);
+  m=at(R,'sublime');ok('networkVsMolecules sublime: the molecules fly off whole, no lines; "sublimes at −78.5 °C: no liquid"',m.co2.flown&&m.co2.intactAfterSublime&&m.co2.attractionsDrawn===0&&m.co2.sublimesAt===-78.5&&m.label==='sublimes at −78.5 °C: no liquid',m);
+  m=at(R,'quartz');ok('networkVsMolecules quartz: a network, no molecules; every Si bonded to four O; label',m.sio2.network&&m.sio2.molecules===0&&m.sio2.siFourO&&m.sio2.oBridging===4&&m.label==='quartz, SiO₂: one network, no molecules',m.sio2);
+  m=at(R,'heat');ok('networkVsMolecules heat: above 1000 °C; "to melt it, covalent bonds must break: near 1700 °C"',m.thermometer==='above 1000 °C'&&m.sio2.meltsNear===1700&&m.label==='to melt it, covalent bonds must break: near 1700 °C',m);
+  m=at(R,'diamond');ok('networkVsMolecules diamond: a carbon network; "diamond: the hardest natural substance"',m.diamond.element==='C'&&m.diamond.network&&m.label==='diamond: the hardest natural substance',m);
 
   ok('no console errors',!errors.length,errors);
   L.save('scratch-check.json',res);res.forEach(r=>console.log(`  ${r.pass?'PASS':'FAIL'}  ${r.n}${r.pass?'':'  '+r.i}`));

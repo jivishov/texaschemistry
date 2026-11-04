@@ -109,6 +109,7 @@ One entry per deck in `decks`:
 | Field | Meaning |
 |---|---|
 | `unit`, `lesson` | numbers; the lesson parts are in `parts/lessons/<unit>-<lesson>/` |
+| `built` | optional; `false` while the lesson's deck step has not run: `build.py --all` and `suite.py --all` skip the entry with one line, and `build.py <U> <L>` without `--out` refuses (`--out` and `--scratch --out` still work). The deck step sets it to `true`. Absent means built. |
 | `file` | the built deck, relative to the repo root (`unit4/slides-4-2.html`) |
 | `title`, `description` | the head strings (`<title>` and `og:title`; `meta description` and `og:description`) |
 | `periods` | slide ranges per period, `[[1, 13], [14, 26]]` |

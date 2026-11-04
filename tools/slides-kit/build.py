@@ -16,7 +16,8 @@ from the registry's "markers" in the same order:
   4. sims     parts/lessons/<U>-<L>/sims.html
   5. slides   parts/lessons/<U>-<L>/slides.html, written first by the lesson's gen_slides.py
               (scratch build: scratch.html, with the marker "scratch-<U><L>")
-The repo root is two folders above this file; no path in the kit is absolute.
+A registry entry with "built": false (a lesson whose deck step has not run yet) is skipped by --all, and building it without --out
+is refused; --out and --scratch --out still work. The repo root is two folders above this file; no path in the kit is absolute.
 """
 import argparse, hashlib, html, json, os, subprocess, sys
 
@@ -111,6 +112,9 @@ def main():
         if o.unit is not None or o.out or o.scratch:
             a.error('--all takes no lesson, --out or --scratch')
         for d in registry():
+            if d.get('built', True) is False:
+                print(f"{d['unit']}.{d['lesson']}: not built yet (registry built: false); skipped")
+                continue
             build(d)
         return
     if o.unit is None or o.lesson is None:
@@ -119,7 +123,11 @@ def main():
         a.error('--scratch needs --out <path>: a scratch build never enters the repo')
     if o.scratch and os.path.abspath(o.out).startswith(REPO + os.sep):
         a.error('--scratch --out: write scratch builds outside the repo (for example the session scratchpad)')
-    build(entry(o.unit, o.lesson), o.out, o.scratch)
+    d = entry(o.unit, o.lesson)
+    if d.get('built', True) is False and not o.out:
+        a.error(f"{d['unit']}.{d['lesson']} is not built yet (registry built: false): build it with --out <path> or --scratch --out <path>; "
+                "the deck step sets built to true")
+    build(d, o.out, o.scratch)
 
 
 if __name__ == '__main__':

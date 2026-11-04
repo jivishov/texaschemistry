@@ -1,3 +1,3 @@
-turn: implementer
+turn: orchestrator
 step: 03
-waiting_for: workshop/reports/03-animations-period-2.md
+waiting_for: workshop/reviews/03-animations-period-2.md

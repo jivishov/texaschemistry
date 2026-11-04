@@ -1,0 +1,38 @@
+[
+  {
+    "theme": "light",
+    "nearCloser": true,
+    "pixel": [
+      102,
+      132,
+      204
+    ],
+    "minFont": 44,
+    "projected": [
+      75,
+      79,
+      60,
+      72,
+      81
+    ],
+    "errors": []
+  },
+  {
+    "theme": "dark",
+    "nearCloser": true,
+    "pixel": [
+      174,
+      200,
+      255
+    ],
+    "minFont": 44,
+    "projected": [
+      75,
+      79,
+      60,
+      72,
+      81
+    ],
+    "errors": []
+  }
+]
