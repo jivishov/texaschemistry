@@ -1,3 +1,3 @@
-turn: teacher
-step: 04a
-waiting_for: the teacher's review of unit4/slides-4-5.html (screenshots and remarks become fix brief 04b, or "no remarks" releases brief 05)
+turn: orchestrator
+step: 04b
+waiting_for: workshop/reviews/04b-teacher-review.md (the review of reports/04b-teacher-review.md: the teacher's 14 remarks, fixed in this session on the teacher's instruction; then brief 05)

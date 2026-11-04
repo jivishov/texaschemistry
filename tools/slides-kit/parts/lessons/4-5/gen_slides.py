@@ -71,7 +71,7 @@ def checkrow(p, q, opts, ans, right=None, fb=None):
     # the check of a wide slide, in the text band under the animation: the question stays; the answer or a mouse feedback line shows
     # under the options; stacked options get the compact band layout (lesson css .checkrow.stk)
     L = lay(opts)
-    return f'''      <div class="checkrow{' stk' if L == 'col' else ''}" id="{p}-check" data-label="check">
+    return f'''      <div class="checkrow{' stk two' if L == 'col' else ''}" id="{p}-check" data-label="check">
         <p class="q" id="{p}-q"><span class="tag">Check:</span> {q}</p>
         <ol class="opts{' col1' if L == 'col' else ''}" data-lay="{L}">{optli(p, opts, right, fb)}</ol>
         <div class="af"><p class="ans" id="{p}-ans" data-label="answer">{ans}</p><p class="fb" aria-live="polite"></p></div>
@@ -173,7 +173,7 @@ S.append(slide('s03','t-launch','Snow day','Launch','Reading §4.5 opener',f''' 
   dict(hide='s03-c2',show='s03-c3',stage='s03-sim:sand',note='Sand in the sandbox: silicon and oxygen atoms in one network. It never melts in any weather.'),
   dict(hide='s03-c3',show='s03-c4',note='Bonds hold every one of the three solids together. Yet they melt at very different temperatures.'),
   dict(hide='s03-c4',show='s03-c5',note='Prediction: what comes apart when snow melts? Collect two answers. Listen for "the water molecules break" (they do not).'),
-  dict(stage='s03-sim:melt',label='melt the snow',note='The water molecules let go of each other and drift, each one whole. Salt and sand do not move.'),
+  dict(stage='s03-sim:melt',label='melt the snow',note='The water molecules let go of each other and drift, each one whole. Salt and sand do not move: at 0 °C only the snow melts, and the names now say "salt: stays solid", "sand: stays solid" (their melting points come next).'),
   dict(stage='s03-sim:numbers',label='the numbers',note='Melting points: snow 0.0 °C, salt 801 °C, sand near 1700 °C. Ask: which forces must come apart in each?'),
   dict(hide=['s03-row'],show='s03-dq',note='Read the driving question; students copy it at the top of the notebook page.'),
   dict(show='s03-st',timer=60,note='Sixty seconds with the starter. Collect two answers; do not correct yet. Listen for "salt and sand have stronger bonds" and for "nothing breaks when snow melts".')]))
@@ -242,7 +242,7 @@ S.append(slide('s06','t-concept cw','Bonds within, attractions between','Bonds a
   dict(show='s06-c2',stage='s06-sim:between',note='Dashed gray lines between neighbors flicker: attractions between, much weaker. Thread: in liquid chlorine these let go; the bonds stay.'),
   dict(show='s06-c3',stage='s06-sim:salt',note='Salt: Na⁺ 102 pm and Cl⁻ 181 pm at 282 pm. No molecules: ionic bonds run through the whole crystal.'),
   dict(show='s06-c4',stage='s06-sim:copper',note='Copper: gray + cations in a sea of violet − electrons (Lesson 4.1). Metallic bonds through the whole metal.'),
-  dict(show='s06-rule',note='Students copy the rule. Misconception to listen for: "molecules are held to each other by bonds" (only by much weaker attractions).'),
+  dict(hide=['s06-c0','s06-c1','s06-c2','s06-c3','s06-c4'],show='s06-rule',note='Students copy the rule. Misconception to listen for: "molecules are held to each other by bonds" (only by much weaker attractions).'),
   dict(clear=True,hide=['s06-cap','s06-rule'],show='s06-check',stage='s06-sim:between',note='Hands up for A, B or C. The chlorine picture with the dashed attractions is back on screen: the check\'s subject.'),
   dict(show='s06-ans',cls={'s06-a':'right','s06-check':'done'},note='A is right. B (covalent bonds between the molecules): a covalent bond joins the two atoms inside one molecule. C (ionic bonds): chlorine is neutral molecules, not ions.')]))
 
@@ -424,7 +424,7 @@ S.append(slide('s13','t-summary tfill lad','One picture: the ladder of attractio
   dict(show='s13-r2',note='Middle rung: dipole-dipole forces, between polar molecules. HCl boils at −85.1 °C.'),
   dict(show='s13-r3',note='Top rung: hydrogen bonding, H on N, O or F pulled to a lone pair. Water boils at 100.0 °C.'),
   dict(show='s13-line',note='The thread of period 1: what comes apart is the attractions; what stays is the bonds.'),
-  dict(show='s13-w',timer=90,note='Ninety seconds of writing with the frame and the word bank. End of period 1: collect three notebooks as a quick check.')]))
+  dict(hide='s13-line',show='s13-w',timer=90,note='The thread line gives way to the writing frame, which asks for the same idea. Ninety seconds of writing with the frame and the word bank. End of period 1: collect three notebooks as a quick check.')]))
 
 # ---------- 14 warm-up
 S.append(slide('s14','t-turn two','Warm-up','Warm-up, period 2','Reading §4.5.1 to §4.5.3','''    <div class="qrow">
@@ -503,7 +503,7 @@ S.append(slide('s16','t-example cb','Predict the bulb: I do, we do, you do','Con
   dict(show='s16-c3',note='Free to move? No: locked in the crystal.'),
   dict(show='s16-c4',note='Prediction: does not conduct. Melted or dissolved, it would.'),
   dict(stage='s16-sim:CaCl2-s/close',label='close the switch',note='The bulb stays dark. Misconception to listen for: "it is ionic, so it conducts".'),
-  dict(show='s16-you',note='You do: four samples. Students write how many light the bulb and what carries the current.'),
+  dict(show='s16-you',stage='s16-sim:tester',note='You do: four samples. The tester is reset (empty beaker, switch open), so its last state is not a clue. Students write how many light the bulb and what carries the current.'),
   dict(timer=90,label='timer 90 s',note='Ninety seconds, alone. Circulate; look for "3 samples" (solid KCl counted) and for "electrons carry it".'),
   dict(show='s16-a1',note='Two samples: KCl in water and molten KCl. Solid KCl and sugar water stay dark.'),
   dict(show='s16-a2',stage='s16-sim:KCl-l/zoom',note='The magnified view: K⁺ and Cl⁻ free to move carry the current.')]))
@@ -540,14 +540,14 @@ S.append(slide('s17','t-concept cw','Does it dissolve?','Dissolving','Reading §
   dict(show='s17-ans',cls={'s17-a':'right','s17-check':'done'},note='A is right. B (every ionic compound dissolves): calcium carbonate is ionic, yet it barely dissolves. C (no molecular substance dissolves): sugar is molecular and dissolves easily.')]))
 
 # ---------- 18 malleable or brittle (wide)
-S.append(slide('s18','t-concept wide','Malleable or brittle','Hardness','Reading §4.5.5',f'''    <div class="sim" id="s18-sim" data-sim="hammerBlow" data-reserve="236" aria-label="A copper block and a salt block side by side; a hammer strikes the top layers of both."></div>
+S.append(slide('s18','t-concept wide','Malleable or brittle','Hardness','Reading §4.5.5',f'''    <div class="sim" id="s18-sim" data-sim="hammerBlow" data-reserve="236" aria-label="A copper block and a salt block side by side; a hammer swung from the left strikes the top layer of each."></div>
     <div class="ptrow" style="height:236px"><div class="band2">
       <div class="stack">
         <div class="lines" id="s18-l">
           <div class="stack">
             <p class="caprow" id="s18-p0" data-label="copper and salt">Copper and salt: both are hard.</p>
             <p class="caprow" id="s18-p1" data-label="predict">Which one breaks under a sharp blow?</p>
-            <p class="caprow" id="s18-pb" data-label="the blow">The hammer strikes the top layers of both.</p>
+            <p class="caprow" id="s18-pb" data-label="the blow">A hammer hits the top layer of each from the side.</p>
             <div id="s18-p2" data-label="the layers shift"><p class="caprow">Copper: the layers slide, the electrons move with them.</p><p class="caprow">Salt: shifted layers put like charges side by side.</p></div>
             <p class="caprow" id="s18-p3" data-label="result">Copper bends: malleable. Salt splits: brittle.</p>
             <p class="caprow" id="s18-p4" data-label="molecular solids">Molecular solids, like iodine, are soft. Only weak attractions hold them.</p>
@@ -555,7 +555,7 @@ S.append(slide('s18','t-concept wide','Malleable or brittle','Hardness','Reading
           {chips('Ion and atom sizes',['Na<sup>+</sup> 102 pm','Cl<sup>−</sup> 181 pm','Cu 128 pm'],' id="s18-sz" data-label="sizes" data-zoom="sizes"')}
         </div>
         <div class="rulerow two reg" id="s18-rule" data-label="rule"><p>A metal bends because its electrons move with the shifting cations.</p><p>An ionic crystal splits because shifted layers put like charges side by side.</p></div>
-{checkrow('s18','A sharp blow splits a salt crystal. Why?',['Shifted layers put like charges together; they repel.','Ionic bonds are weak.','Electrons flow out of the crystal.'],'A. Like charges repel and push the layers apart.',right='A',
+{checkrow('s18','A sharp blow splits a salt crystal. Why?',['Shifted layers put like charges together.','Ionic bonds are weak.','Electrons flow out of the crystal.'],'A. Like charges repel and push the layers apart.',right='A',
   fb=['Like charges side by side repel, and the layers push apart.','Ionic bonds are strong, so salt is hard. Like charges repel when layers shift.','Salt has no electron sea. Its ions stay charged, and like charges repel.'])}
       </div>
       <p class="simcap" id="s18-cap" data-label="colors" data-zoom="caption">{CAP}</p>
@@ -563,7 +563,7 @@ S.append(slide('s18','t-concept wide','Malleable or brittle','Hardness','Reading
  'The reading\'s hammer model (§4.5.5): both blocks to one scale, Na⁺ 102 pm, Cl⁻ 181 pm at 282 pm, Cu 128 pm. A metal bends because its electrons move with the shifting cations; an ionic crystal splits because shifted layers put like charges side by side. Molecular solids (iodine, dry ice) are usually soft: only weak attractions hold them. Nothing is demonstrated.',
  [dict(show=['s18-p0','s18-sz','s18-cap'],stage='s18-sim:before',focus='s18-sim',note='Copper and salt, drawn to one scale. Both are hard: you cannot scratch either with a fingernail.'),
   dict(hide='s18-sz',show='s18-p1',note='Prediction: which one breaks under a sharp blow? Hands up for copper or salt; ask for a reason.'),
-  dict(show='s18-pb',stage='s18-sim:blow',note='The hammer strikes the top layers of both blocks.'),
+  dict(show='s18-pb',stage='s18-sim:blow',note='The hammer swings in from the left and hits the top layer of each block from the side: the push points along the layers, the way they will slide.'),
   dict(hide=['s18-p0','s18-p1','s18-pb'],show='s18-p2',stage='s18-sim:shift',note='The top layers move one spacing. Copper: the electrons flow along. Salt: each shifted ion now sits beside an ion of the same charge; three pairs flash red.'),
   dict(hide='s18-p2',show='s18-p3',stage='s18-sim:result',note='Copper bends and stays one piece: malleable. Salt\'s layers push apart along a flat face: brittle, with a red crack.'),
   dict(hide='s18-p3',show='s18-p4',note='Molecular solids such as iodine and dry ice are usually soft: only weak attractions hold their molecules.'),
@@ -596,9 +596,9 @@ S.append(slide('s19','t-concept cw','Covalent network solids','Network solids','
   dict(show='s19-ans',cls={'s19-a':'right','s19-check':'done'},note='A is right. B (dry ice): separate CO₂ molecules held by dispersion forces. C (iodine): separate I₂ molecules held by dispersion forces.')]))
 
 # ---------- 20 four kinds of solids
-KS = [('Molecular, I<sub>2</sub>','attractions between molecules; low melting point','no','soft'),
-      ('Ionic, NaCl','ionic bonds; high melting point','when molten or dissolved','hard, brittle'),
-      ('Metallic, Cu','metallic bonds;<br>melting point usually high','yes, solid and liquid','malleable'),
+KS = [('Molecular, I<sub>2</sub>','attractions between molecules;<br>low melting point','no','soft'),
+      ('Ionic, NaCl','ionic bonds;<br>high melting point','when molten<br>or dissolved','hard, brittle'),
+      ('Metallic, Cu','metallic bonds;<br>melting point usually high','yes, solid<br>and liquid','malleable'),
       ('Covalent network,<br>SiO<sub>2</sub>','covalent bonds;<br>very high melting point','no<br>(except graphite)','very hard<br>(except graphite)')]
 krows = ''.join(f'<tr><td class="slot"><span data-b="s20-r{k+1}" data-label="{re.sub("<[^>]+>","",a).split(",")[0].lower()} solids">{a}</span></td><td class="slot"><span data-b="s20-r{k+1}">{b}</span></td><td class="slot"><span data-b="s20-r{k+1}">{c}</span></td><td class="slot"><span data-b="s20-r{k+1}">{d}</span></td></tr>' for k, (a, b, c, d) in enumerate(KS))
 S.append(slide('s20','t-summary tfill tab','Four kinds of solids','Summary','Reading §4.5 Review',f'''    <table class="tbl compact kinds" id="s20-tbl">
@@ -650,19 +650,19 @@ def checkpoint(sid, title, ref, prompt, read, fr_lines, bank, crit, sample, note
           dict(show=f'{p}-sample',cls={f'{p}-r4':'done',f'{p}-r5':'now'},note=notes[1])]
     return slide(sid,'t-routine',title,title,ref,body,'Routine: think 30 s, talk 60 s, write 90 s, self-check, compare. The question stays on screen on every frame.',fr)
 S.append(checkpoint('s22','Checkpoint 1','Objective 4.5.2',
-  'Methane and water both have 10 electrons. Methane boils at −161.5 °C and water at 100.0 °C. Explain the difference.',
+  'Methane and water both have 10 electrons. Methane boils at −161.5 °C, water at 100.0 °C. Explain the difference.',
   'Read the question. What do the two molecules share?',
-  [f'Water boils far above methane because {GAP}.', f'Hydrogen bonding needs {GAP} and {GAP}.'],
+  [f'Water boils far above methane because of {GAP}.', f'Hydrogen bonding needs {GAP} and {GAP}.'],
   ['hydrogen bonding','H on O','a lone pair','H on C','dispersion forces only','stronger attraction'],
   ['hydrogen bonding named?','H on O and a lone pair?','methane has none?'],
-  'Water forms hydrogen bonds: H on O, lone pairs. Methane has only dispersion forces, so it boils lower.',
+  'Water forms hydrogen bonds: H on O to lone pairs. Methane has dispersion forces only, so it boils lower.',
   ['Read the prompt aloud. Same electrons, so the same dispersion forces: the difference must be another attraction.','Compare with the sample. Reading §4.5.2: hydrogen bonding needs an H on N, O or F and a lone pair on N, O or F.'],
   '"water\'s bonds are stronger" (the covalent bonds do not break on boiling).'))
 S.append(checkpoint('s23','Checkpoint 2','Objective 4.5.4',
   'Solid salt leaves the bulb dark. Salt water lights it. Explain both with the particles.',
   'Read the question. Which particles does salt contain?',
   [f'Solid salt does not conduct because its ions {GAP}.', f'Salt water conducts because {GAP}.'],
-  ['Na<sup>+</sup> and Cl<sup>−</sup> ions','locked in the crystal','free to move','carry the current','no electrons move'],
+  ['Na<sup>+</sup> and Cl<sup>−</sup> ions','locked in the crystal','free to move','carry the current','ions, not electrons'],
   ['the ions named?','locked in the solid?','moving in the water?'],
   'Solid salt has Na<sup>+</sup> and Cl<sup>−</sup> ions, locked in the crystal. In salt water, ions move and carry the current.',
   ['Read the prompt aloud. The same ions are in both; what changes?','Compare with the sample. Reading §4.5.4: a substance conducts when it has charged particles that can move.'],
@@ -685,7 +685,7 @@ S.append(slide('s25','t-routine t-exit','Predictions and exit ticket','Exit tick
         <div class="stack">
 {pa('s25-p1',1,PQ[0][0],('A','H<sub>2</sub>O molecules'),'Boiling separates whole molecules. Each keeps its O–H bonds.','answer 1')}
 {pa('s25-p2',2,PQ[1][0],('B','does not conduct'),'Its ions are locked in the crystal. Molten or dissolved salt conducts.','answer 2')}
-{pa('s25-p3',3,PQ[2][0],('B','an attraction between molecules'),'A hydrogen bond is about 5 to 10% of a covalent bond.','answer 3')}
+{pa('s25-p3',3,PQ[2][0],('B','an attraction between molecules'),'It pulls an H on one molecule to a lone pair on the next. About 5 to 10% of a covalent bond.','answer 3')}
         </div>
         <p class="handsup">Hands up if you predicted this.</p>
       </div>
@@ -694,14 +694,14 @@ S.append(slide('s25','t-routine t-exit','Predictions and exit ticket','Exit tick
         <ol class="rail"><li id="s25-r1">Claim</li><li id="s25-r2">Evidence</li><li id="s25-r3">Reasoning</li><li id="s25-r4">Self-check</li><li id="s25-r5">Sample</li></ol>
         <div class="rt-main">
           <div class="acc">
-            <div class="card phase" id="s25-fr" data-label="claim"><p class="tag">Write</p><ol class="frames">
+            <div class="card phase" id="s25-fr" data-label="claim"><p class="tag">Write: the melting point</p><ol class="frames">
               <li id="s25-f1">The forces that must come apart decide {GAP}.</li>
               <li id="s25-f2" data-label="evidence">Snow melts at {GAP} °C because only {GAP} let go. Salt needs 801 °C because {GAP} must come apart. Sand needs near 1700 °C because {GAP}.</li>
               <li id="s25-f3" data-label="reasoning">Attractions between molecules are much weaker than bonds within, so {GAP}.</li>
             </ol>
             <div class="bank"><b>Word bank:</b> <span>attractions between molecules</span> <span>bonds within</span> <span>ionic bonds</span> <span>covalent bonds</span> <span>a network</span> <span>weaker</span> <span>higher melting point</span></div></div>
             <div class="card" id="s25-check" data-label="self-check"><p class="tag">Self-check: did you write</p><ul class="crit"><li>a claim about the forces that come apart?</li><li>snow, salt and sand with their melting points?</li><li>attractions weaker than bonds in the reasoning?</li></ul></div>
-            <div class="card reg" id="s25-sample" data-label="sample answer"><p class="tag">Sample answer</p><p>The forces that come apart set the melting point. Snow melts at 0 °C: only attractions between molecules let go. Salt needs 801 °C: ionic bonds. Sand needs near 1700 °C: covalent bonds. Attractions are weaker than bonds.</p></div>
+            <div class="card reg" id="s25-sample" data-label="sample answer"><p class="tag">Sample answer</p><p>The forces that come apart decide the melting point. Snow, 0 °C: only attractions between molecules let go. Salt, 801 °C: ionic bonds break. Sand, near 1700 °C: covalent bonds break. Attractions are weaker, so snow melts lowest.</p></div>
           </div>
           <div class="timer"></div>
         </div>
@@ -711,7 +711,7 @@ S.append(slide('s25','t-routine t-exit','Predictions and exit ticket','Exit tick
  [dict(show=['s25-A','s25-p1'],note='Answer 1: H₂O molecules. Hands up if you predicted A. Compare with the counts from slide 4.'),
   dict(hide='s25-p1',show='s25-p2',note='Answer 2: does not conduct; the ions are locked. Ask a student who changed their mind to say why.'),
   dict(hide='s25-p2',show='s25-p3',note='Answer 3: an attraction between molecules, about 5 to 10% of a covalent bond.'),
-  dict(hide='s25-A',show=['s25-B','s25-fr','s25-f1'],cls={'s25-r1':'now'},note='Exit ticket. Claim first: what decides the melting point?'),
+  dict(hide='s25-A',show=['s25-B','s25-fr','s25-f1'],cls={'s25-r1':'now'},note='Exit ticket. It takes the melting-point part of the driving question; checkpoints 2 and 3 answered conductivity and hardness. Claim first: what decides the melting point?'),
   dict(show='s25-f2',cls={'s25-r1':'done','s25-r2':'now'},note='Evidence: the snow day, with the three melting points of slide 3.'),
   dict(show='s25-f3',cls={'s25-r2':'done','s25-r3':'now'},timer=180,label='write 3 min',note='Reasoning: attractions are much weaker than bonds. Three minutes of writing.'),
   dict(show='s25-check',cls={'s25-r3':'done','s25-r4':'now'},note='Self-check with the three criteria.'),
@@ -751,5 +751,19 @@ html = '<main id="stage">\n<div id="prog"><i></i></div>\n' + SPRITE + '\n' + '\n
 </html>
 '''
 assert '…' not in html, 'no ellipsis character'
+# step 04b (the teacher's review: "O–" at a line end, "H bonds" on the next): a bond written with an en dash between two element
+# symbols (O–H, C–H, Cl–Cl, Br–Br, Si–O) never breaks across lines; text only, never inside a tag or a script
+def nowrap_bonds(h):
+    out, in_script = [], False
+    for part in re.split(r'(<[^>]+>)', h):
+        if part.startswith('<'):
+            low = part.lower()
+            if low.startswith('<script'): in_script = True
+            elif low.startswith('</script'): in_script = False
+            out.append(part)
+        elif in_script: out.append(part)
+        else: out.append(re.sub(r'(?<![A-Za-z])([A-Z][a-z]?–[A-Z][a-z]?)(?![a-z])', r'<span class="nw">\1</span>', part))
+    return ''.join(out)
+html = nowrap_bonds(html)
 open(OUT, 'w', encoding='utf-8', newline='').write(html)
 print('slides:', len(S))

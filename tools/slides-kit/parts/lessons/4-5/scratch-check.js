@@ -29,6 +29,8 @@ const L=require('../../../audits/lib');
   ok('meltScale melt: snow molecules intact, salt and sand not moved',m.snowMoleculesIntact===true&&m.snowMoved===true&&m.saltMoved===false&&m.sandMoved===false,m);
   m=R.filter(x=>x.stage==='numbers')[0].meta;ok('meltScale numbers: label line "Melting point" and chips "snow 0.0 °C", "salt 801 °C", "sand near 1700 °C"',m.label==='Melting point'&&eq(m.chips,['snow 0.0 °C','salt 801 °C','sand near 1700 °C']),m);
   ok('meltScale sand: no chips before the numbers stage',at(R,'sand').chips.length===0);
+  R.filter(x=>x.meta.layout==='tall').forEach(x=>ok(`meltScale ${x.stage} (frame ${x.f}, step 04b): every drawing inside its panel`,Object.values(x.meta.clearance).every(v=>v>=4),x.meta.clearance));
+  ok('meltScale (step 04b): two water molecules, one hydrogen bond; salt 2 x 4, four Na⁺ and four Cl⁻; melt names the solids that stay',at(R,'snow').snowMolecules===2&&at(R,'snow').snowHbonds===1&&eq(at(R,'salt').saltIons,{rows:2,cols:4,cations:4,anions:4})&&eq(at(R,'melt').states,['snow: melts','salt: stays solid','sand: stays solid']));
   ok('meltScale: scale −200 to 1800 °C',eq(m.scale,[-200,1800]));
 
   /* 3. threeSolids */
@@ -128,6 +130,7 @@ const L=require('../../../audits/lib');
   R=await run('x-hb');
   m=at(R,'before');ok('hammerBlow before: no shift, no like-charge pairs, one piece',m.copper.offsetSpacings===0&&m.nacl.offsetSpacings===0&&m.nacl.likeChargePairs===0&&!m.nacl.split,m);
   ok('hammerBlow blow: the hammer strikes',at(R,'blow').hammer===true);
+  ok('hammerBlow (step 04b): struck from the left at the top layer; the layer moves right',at(R,'blow').hammerFrom==='left'&&at(R,'shift').topLayerMoves==='right');
   m=at(R,'shift');ok('hammerBlow shift: both top layers move one spacing; like charges side by side in NaCl',m.copper.offsetSpacings===1&&m.nacl.offsetSpacings===1&&m.nacl.likeChargePairs>0&&!m.nacl.split,m);
   m=at(R,'result');ok('hammerBlow result: copper bends in one piece ("malleable"); NaCl splits ("brittle")',m.copper.onePiece&&m.copper.label==='malleable'&&m.nacl.split&&m.nacl.label==='brittle'&&m.nacl.likeChargePairs>0,m);
   ok('hammerBlow: radii Na⁺ 102, Cl⁻ 181, Cu 128 pm; spacing 282 pm',eq(m.radii,{Na:102,Cl:181,Cu:128})&&m.spacingPm===282);

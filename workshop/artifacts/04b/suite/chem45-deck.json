@@ -1,0 +1,862 @@
+[
+  {
+    "n": "slide 2 brickBag: stages models, shake, pour, words",
+    "pass": true,
+    "i": "[\"models\",\"models\",\"shake\",\"pour\",\"words\"]"
+  },
+  {
+    "n": "slide 2 brickBag f0 models: 3 models, 11 bricks, all snapped",
+    "pass": true,
+    "i": "{\"stage\":\"models\",\"models\":3,\"bricks\":11,\"snapped\":11,\"counter\":\"Bricks snapped: 11 of 11\",\"labels\":[],\"inBag\":true,\"onTable\":false,\"drawn\":{\"atom\":null,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 2 brickBag f1 models: 3 models, 11 bricks, all snapped",
+    "pass": true,
+    "i": "{\"stage\":\"models\",\"models\":3,\"bricks\":11,\"snapped\":11,\"counter\":\"Bricks snapped: 11 of 11\",\"labels\":[],\"inBag\":true,\"onTable\":false,\"drawn\":{\"atom\":null,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 2 brickBag f2 shake: 3 models, 11 bricks, all snapped",
+    "pass": true,
+    "i": "{\"stage\":\"shake\",\"models\":3,\"bricks\":11,\"snapped\":11,\"counter\":\"Bricks snapped: 11 of 11\",\"labels\":[],\"inBag\":true,\"onTable\":false,\"drawn\":{\"atom\":null,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 2 brickBag f3 pour: 3 models, 11 bricks, all snapped",
+    "pass": true,
+    "i": "{\"stage\":\"pour\",\"models\":3,\"bricks\":11,\"snapped\":11,\"counter\":\"Bricks snapped: 11 of 11\",\"labels\":[],\"inBag\":false,\"onTable\":true,\"drawn\":{\"atom\":null,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 2 brickBag f4 words: 3 models, 11 bricks, all snapped",
+    "pass": true,
+    "i": "{\"stage\":\"words\",\"models\":3,\"bricks\":11,\"snapped\":11,\"counter\":\"Bricks snapped: 11 of 11\",\"labels\":[\"a snap between bricks = a bond within\",\"models side by side = an attraction between\"],\"inBag\":false,\"onTable\":true,\"drawn\":{\"atom\":null,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 2 brickBag words: the two labels",
+    "pass": true,
+    "i": "[\"a snap between bricks = a bond within\",\"models side by side = an attraction between\"]"
+  },
+  {
+    "n": "slide 2 brickBag pour: on the table, out of the bag",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "slide 3 meltScale: stages snow, salt, sand, melt, numbers",
+    "pass": true,
+    "i": "[\"snow\",\"salt\",\"sand\",\"sand\",\"sand\",\"melt\",\"numbers\",\"numbers\",\"numbers\"]"
+  },
+  {
+    "n": "slide 3 meltScale: the solids appear one per press",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "slide 3 meltScale f0 snow (tall layout): smallest atom or ion sphere 60 px",
+    "pass": true,
+    "i": "{\"layout\":\"tall\",\"minSphere\":60}"
+  },
+  {
+    "n": "slide 3 meltScale f1 salt (tall layout): smallest atom or ion sphere 60 px",
+    "pass": true,
+    "i": "{\"layout\":\"tall\",\"minSphere\":60}"
+  },
+  {
+    "n": "slide 3 meltScale f2 sand (tall layout): smallest atom or ion sphere 60 px",
+    "pass": true,
+    "i": "{\"layout\":\"tall\",\"minSphere\":60}"
+  },
+  {
+    "n": "slide 3 meltScale f3 sand (tall layout): smallest atom or ion sphere 60 px",
+    "pass": true,
+    "i": "{\"layout\":\"tall\",\"minSphere\":60}"
+  },
+  {
+    "n": "slide 3 meltScale f4 sand (tall layout): smallest atom or ion sphere 60 px",
+    "pass": true,
+    "i": "{\"layout\":\"tall\",\"minSphere\":60}"
+  },
+  {
+    "n": "slide 3 meltScale f5 melt (tall layout): smallest atom or ion sphere 60 px",
+    "pass": true,
+    "i": "{\"layout\":\"tall\",\"minSphere\":60}"
+  },
+  {
+    "n": "slide 3 meltScale f6 numbers (tall layout): smallest atom or ion sphere 60 px",
+    "pass": true,
+    "i": "{\"layout\":\"tall\",\"minSphere\":60}"
+  },
+  {
+    "n": "slide 3 meltScale f7 numbers (short layout): smallest atom or ion sphere none drawn",
+    "pass": true,
+    "i": "{\"layout\":\"short\",\"minSphere\":null}"
+  },
+  {
+    "n": "slide 3 meltScale f8 numbers (tiny layout): smallest atom or ion sphere none drawn",
+    "pass": true,
+    "i": "{\"layout\":\"tiny\",\"minSphere\":null}"
+  },
+  {
+    "n": "slide 3 meltScale: the particle panels show while the lines are on screen (tall layout on frames 0 to 6)",
+    "pass": true,
+    "i": "[\"tall\",\"tall\",\"tall\",\"tall\",\"tall\",\"tall\",\"tall\",\"short\",\"tiny\"]"
+  },
+  {
+    "n": "slide 3 meltScale melt: snow 0.0, salt 801, sand near 1700; snow molecules whole; salt and sand stay",
+    "pass": true,
+    "i": "{\"stage\":\"melt\",\"shown\":[\"snow\",\"salt\",\"sand\"],\"layout\":\"tall\",\"minSphere\":60,\"values\":{\"snow\":0,\"salt\":801,\"sand\":\"near 1700\"},\"chips\":[],\"label\":null,\"snowMolecules\":2,\"snowHbonds\":0,\"hbondRatio\":1.94,\"snowMoleculesIntact\":true,\"snowMoved\":true,\"saltMoved\":false,\"sandMoved\":false,\"saltIons\":{\"rows\":2,\"cols\":4,\"cations\":4,\"anions\":4},\"states\":[\"snow: melts\",\"salt: stays solid\",\"sand: stays solid\"],\"clearance\":{\"snow\":24,\"salt\":26,\"sand\":12},\"scale\":[-200,1800],\"drawn\":{\"atom\":60,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 3 meltScale f0 snow: every drawing inside its panel (clearance {\"snow\":17,\"salt\":26,\"sand\":12})",
+    "pass": true,
+    "i": "{\"snow\":17,\"salt\":26,\"sand\":12}"
+  },
+  {
+    "n": "slide 3 meltScale f1 salt: every drawing inside its panel (clearance {\"snow\":17,\"salt\":26,\"sand\":12})",
+    "pass": true,
+    "i": "{\"snow\":17,\"salt\":26,\"sand\":12}"
+  },
+  {
+    "n": "slide 3 meltScale f2 sand: every drawing inside its panel (clearance {\"snow\":17,\"salt\":26,\"sand\":12})",
+    "pass": true,
+    "i": "{\"snow\":17,\"salt\":26,\"sand\":12}"
+  },
+  {
+    "n": "slide 3 meltScale f3 sand: every drawing inside its panel (clearance {\"snow\":17,\"salt\":26,\"sand\":12})",
+    "pass": true,
+    "i": "{\"snow\":17,\"salt\":26,\"sand\":12}"
+  },
+  {
+    "n": "slide 3 meltScale f4 sand: every drawing inside its panel (clearance {\"snow\":17,\"salt\":26,\"sand\":12})",
+    "pass": true,
+    "i": "{\"snow\":17,\"salt\":26,\"sand\":12}"
+  },
+  {
+    "n": "slide 3 meltScale f5 melt: every drawing inside its panel (clearance {\"snow\":24,\"salt\":26,\"sand\":12})",
+    "pass": true,
+    "i": "{\"snow\":24,\"salt\":26,\"sand\":12}"
+  },
+  {
+    "n": "slide 3 meltScale f6 numbers: every drawing inside its panel (clearance {\"snow\":24,\"salt\":26,\"sand\":12})",
+    "pass": true,
+    "i": "{\"snow\":24,\"salt\":26,\"sand\":12}"
+  },
+  {
+    "n": "slide 3 meltScale snow: two water molecules joined by one hydrogen bond, H···O 1.94 times O–H",
+    "pass": true,
+    "i": "{\"stage\":\"snow\",\"shown\":[\"snow\"],\"layout\":\"tall\",\"minSphere\":60,\"values\":{\"snow\":0,\"salt\":801,\"sand\":\"near 1700\"},\"chips\":[],\"label\":null,\"snowMolecules\":2,\"snowHbonds\":1,\"hbondRatio\":1.94,\"snowMoleculesIntact\":true,\"snowMoved\":false,\"saltMoved\":false,\"sandMoved\":false,\"saltIons\":{\"rows\":2,\"cols\":4,\"cations\":4,\"anions\":4},\"states\":null,\"clearance\":{\"snow\":17,\"salt\":26,\"sand\":12},\"scale\":[-200,1800],\"drawn\":{\"atom\":60,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 3 meltScale salt: 2 x 4 grid, four Na⁺ and four Cl⁻",
+    "pass": true,
+    "i": "{\"rows\":2,\"cols\":4,\"cations\":4,\"anions\":4}"
+  },
+  {
+    "n": "slide 3 meltScale melt: \"snow: melts\", \"salt: stays solid\", \"sand: stays solid\"; the hydrogen bond let go",
+    "pass": true,
+    "i": "[\"snow: melts\",\"salt: stays solid\",\"sand: stays solid\"]"
+  },
+  {
+    "n": "slide 3 meltScale numbers: \"Melting point\" and chips \"snow 0.0 °C\", \"salt 801 °C\", \"sand near 1700 °C\"",
+    "pass": true,
+    "i": "[\"snow 0.0 °C\",\"salt 801 °C\",\"sand near 1700 °C\"]"
+  },
+  {
+    "n": "slide 6 threeSolids chlorine: Cl₂ molecules, one stick within each, no dashed line yet",
+    "pass": true,
+    "i": "{\"stage\":\"chlorine\",\"panels\":1,\"molecules\":6,\"sticksWithin\":6,\"dashedBetween\":0,\"withinGlow\":false,\"naclRadii\":[102,181],\"naclSpacing\":282,\"saltIons\":0,\"copper\":null,\"labels\":[],\"drawn\":{\"atom\":92,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 6 threeSolids within: \"bond within\"",
+    "pass": true,
+    "i": "[\"bond within\"]"
+  },
+  {
+    "n": "slide 6 threeSolids between: dashed lines, \"attraction between (much weaker)\"",
+    "pass": true,
+    "i": "{\"stage\":\"between\",\"panels\":1,\"molecules\":6,\"sticksWithin\":6,\"dashedBetween\":11,\"withinGlow\":true,\"naclRadii\":[102,181],\"naclSpacing\":282,\"saltIons\":0,\"copper\":null,\"labels\":[\"bond within\",\"attraction between (much weaker)\"],\"drawn\":{\"atom\":92,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 6 threeSolids salt: Na⁺ 102 and Cl⁻ 181 pm at 282 pm, \"ionic bonds through the whole crystal, no molecules\"",
+    "pass": true,
+    "i": "{\"stage\":\"salt\",\"panels\":2,\"molecules\":2,\"sticksWithin\":2,\"dashedBetween\":2,\"withinGlow\":true,\"naclRadii\":[102,181],\"naclSpacing\":282,\"saltIons\":27,\"copper\":null,\"labels\":[\"bond within\",\"attraction between (much weaker)\",\"ionic bonds through the whole crystal, no molecules\"],\"drawn\":{\"atom\":60,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 6 threeSolids copper: delocalized electrons, \"metallic bonds through the whole metal\"",
+    "pass": true,
+    "i": "{\"stage\":\"copper\",\"panels\":3,\"molecules\":2,\"sticksWithin\":2,\"dashedBetween\":2,\"withinGlow\":true,\"naclRadii\":[102,181],\"naclSpacing\":282,\"saltIons\":12,\"copper\":\"delocalized electrons\",\"labels\":[\"bond within\",\"attraction between (much weaker)\",\"ionic bonds through the whole crystal, no molecules\",\"metallic bonds through the whole metal\"],\"drawn\":{\"atom\":60,\"dot\":22,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 6 threeSolids: every atom or ion sphere 60 px or more on every frame that shows it (smallest 60 px)",
+    "pass": true,
+    "i": "[]"
+  },
+  {
+    "n": "slide 6 check frame shows s06-sim at \"between\" (Cl₂ molecules with the attractions between)",
+    "pass": true,
+    "i": "{\"f\":7,\"stage\":\"between\",\"visible\":true}"
+  },
+  {
+    "n": "slide 7 attractions: the dispersion family (cloud, flicker, neighbor, attract)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "slide 7 attractions flicker: nonpolar, δ signs for an instant only",
+    "pass": true,
+    "i": "{\"stage\":\"flicker\",\"family\":\"dispersion\",\"key\":[\"nucleus\",\"electron\"],\"polar\":false,\"deltaLabels\":\"instant\",\"neighborShift\":false,\"line\":false,\"label\":null,\"drawn\":{\"atom\":null,\"dot\":26,\"badge\":64,\"marker\":null}}"
+  },
+  {
+    "n": "slide 7 attractions neighbor: nonpolar, δ signs for an instant only",
+    "pass": true,
+    "i": "{\"stage\":\"neighbor\",\"family\":\"dispersion\",\"key\":[\"nucleus\",\"electron\"],\"polar\":false,\"deltaLabels\":\"instant\",\"neighborShift\":true,\"line\":false,\"label\":null,\"drawn\":{\"atom\":null,\"dot\":26,\"badge\":64,\"marker\":null}}"
+  },
+  {
+    "n": "slide 7 attractions attract: nonpolar, δ signs for an instant only",
+    "pass": true,
+    "i": "{\"stage\":\"attract\",\"family\":\"dispersion\",\"key\":[\"nucleus\",\"electron\"],\"polar\":false,\"deltaLabels\":\"instant\",\"neighborShift\":true,\"line\":true,\"label\":\"dispersion forces\",\"drawn\":{\"atom\":null,\"dot\":26,\"badge\":64,\"marker\":null}}"
+  },
+  {
+    "n": "slide 7 attractions cloud: no δ signs yet",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "slide 7 attractions (step 04b): a key names the gray + circles \"nucleus\" and the − dots \"electron\" on every dispersion frame",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "slide 7 attractions attract: the dashed line, \"dispersion forces\"",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "slide 7 bpPlot axes: points none, each with its electrons, boiling point and strongest attraction",
+    "pass": true,
+    "i": "[]"
+  },
+  {
+    "n": "slide 7 bpPlot F2: points F₂, each with its electrons, boiling point and strongest attraction",
+    "pass": true,
+    "i": "[{\"f\":\"F₂\",\"e\":18,\"bp\":-188.1,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true}]"
+  },
+  {
+    "n": "slide 7 bpPlot Cl2: points F₂, Cl₂, each with its electrons, boiling point and strongest attraction",
+    "pass": true,
+    "i": "[{\"f\":\"F₂\",\"e\":18,\"bp\":-188.1,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true},{\"f\":\"Cl₂\",\"e\":34,\"bp\":-34,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true}]"
+  },
+  {
+    "n": "slide 7 bpPlot Br2: points F₂, Cl₂, Br₂, each with its electrons, boiling point and strongest attraction",
+    "pass": true,
+    "i": "[{\"f\":\"F₂\",\"e\":18,\"bp\":-188.1,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true},{\"f\":\"Cl₂\",\"e\":34,\"bp\":-34,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true},{\"f\":\"Br₂\",\"e\":70,\"bp\":58.8,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true}]"
+  },
+  {
+    "n": "slide 7 bpPlot I2: points F₂, Cl₂, Br₂, I₂, each with its electrons, boiling point and strongest attraction",
+    "pass": true,
+    "i": "[{\"f\":\"F₂\",\"e\":18,\"bp\":-188.1,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true},{\"f\":\"Cl₂\",\"e\":34,\"bp\":-34,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true},{\"f\":\"Br₂\",\"e\":70,\"bp\":58.8,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true},{\"f\":\"I₂\",\"e\":106,\"bp\":184.4,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true}]"
+  },
+  {
+    "n": "slide 7 bpPlot trend: points F₂, Cl₂, Br₂, I₂, each with its electrons, boiling point and strongest attraction",
+    "pass": true,
+    "i": "[{\"f\":\"F₂\",\"e\":18,\"bp\":-188.1,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true},{\"f\":\"Cl₂\",\"e\":34,\"bp\":-34,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true},{\"f\":\"Br₂\",\"e\":70,\"bp\":58.8,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true},{\"f\":\"I₂\",\"e\":106,\"bp\":184.4,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true}]"
+  },
+  {
+    "n": "slide 7 bpPlot: axes 0 to 110 electrons, −200 to 200 °C; the trend line at trend",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "slide 7 check frame shows s07-plot at \"trend\" (Cl₂ and Br₂ on the halogen trend)",
+    "pass": true,
+    "i": "{\"f\":12,\"stage\":\"trend\",\"visible\":true}"
+  },
+  {
+    "n": "slide 8 attractions: the dipole family (F2, HCl, turn, face, compare)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "slide 8 attractions F2: no δ signs, dashed gray only",
+    "pass": true,
+    "i": "{\"stage\":\"F2\",\"family\":\"dipole\",\"HCl\":null,\"F2\":{\"dplus\":null,\"dminus\":null,\"line\":\"dashed gray\"},\"headToTail\":false,\"line\":null,\"label\":null,\"electrons\":null,\"bp\":null,\"drawn\":{\"atom\":82,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 8 attractions HCl: δ+ on H, δ− on Cl",
+    "pass": true,
+    "i": "{\"dplus\":\"H\",\"dminus\":\"Cl\"}"
+  },
+  {
+    "n": "slide 8 attractions turn: head to tail",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "slide 8 attractions face: δ+ to δ− line, \"dipole-dipole forces\"",
+    "pass": true,
+    "i": "{\"stage\":\"face\",\"family\":\"dipole\",\"HCl\":{\"dplus\":\"H\",\"dminus\":\"Cl\"},\"F2\":null,\"headToTail\":true,\"line\":\"δ+ to δ−\",\"label\":\"dipole-dipole forces\",\"electrons\":null,\"bp\":null,\"drawn\":{\"atom\":60,\"dot\":null,\"badge\":60,\"marker\":null}}"
+  },
+  {
+    "n": "slide 8 attractions compare: 18 and 18 electrons; F₂ −188.1, HCl −85.1 °C",
+    "pass": true,
+    "i": "{\"stage\":\"compare\",\"family\":\"dipole\",\"HCl\":{\"dplus\":\"H\",\"dminus\":\"Cl\"},\"F2\":{\"dplus\":null,\"dminus\":null,\"line\":\"dashed gray\"},\"headToTail\":true,\"line\":\"δ+ to δ−\",\"label\":\"dipole-dipole forces\",\"electrons\":{\"F2\":18,\"HCl\":18},\"bp\":{\"F2\":-188.1,\"HCl\":-85.1},\"drawn\":{\"atom\":60,\"dot\":null,\"badge\":60,\"marker\":null}}"
+  },
+  {
+    "n": "slide 8 attractions: every atom or ion sphere 60 px or more on every frame that shows it (smallest 60 px)",
+    "pass": true,
+    "i": "[]"
+  },
+  {
+    "n": "slide 8 check frame shows s08-sim at \"compare\" (HCl with its δ signs)",
+    "pass": true,
+    "i": "{\"f\":7,\"stage\":\"compare\",\"visible\":true}"
+  },
+  {
+    "n": "slide 9 bpPlot trio: points CH₄, NH₃, H₂O, each with its electrons, boiling point and strongest attraction",
+    "pass": true,
+    "i": "[{\"f\":\"CH₄\",\"e\":10,\"bp\":-161.5,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":false},{\"f\":\"NH₃\",\"e\":10,\"bp\":-33.3,\"force\":\"hydrogen bonding\",\"faint\":false,\"labelled\":false},{\"f\":\"H₂O\",\"e\":10,\"bp\":100,\"force\":\"hydrogen bonding\",\"faint\":false,\"labelled\":false}]"
+  },
+  {
+    "n": "slide 9 bpPlot reveal: points CH₄, NH₃, H₂O, each with its electrons, boiling point and strongest attraction",
+    "pass": true,
+    "i": "[{\"f\":\"CH₄\",\"e\":10,\"bp\":-161.5,\"force\":\"dispersion forces\",\"faint\":false,\"labelled\":true},{\"f\":\"NH₃\",\"e\":10,\"bp\":-33.3,\"force\":\"hydrogen bonding\",\"faint\":false,\"labelled\":true},{\"f\":\"H₂O\",\"e\":10,\"bp\":100,\"force\":\"hydrogen bonding\",\"faint\":false,\"labelled\":true}]"
+  },
+  {
+    "n": "slide 9 bpPlot trio: no labels yet; reveal: labelled",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "slide 9 attractions: the hydrogen family (hbond, ammonia, methane, four)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "slide 9 attractions hbond: H on O to a lone pair on O, longer than the O–H bond, the label",
+    "pass": true,
+    "i": "{\"stage\":\"hbond\",\"family\":\"hydrogen\",\"water\":{\"donor\":\"H on O\",\"acceptor\":\"lone pair on O\"},\"hbond\":true,\"hbondPx\":240,\"ohPx\":96,\"hbondLonger\":true,\"label\":\"hydrogen bond: about 5 to 10% of a covalent bond\",\"strength\":\"about 5 to 10% of a covalent bond\",\"drawn\":{\"atom\":60,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 9 attractions ammonia: H on N to a lone pair on N",
+    "pass": true,
+    "i": "{\"stage\":\"ammonia\",\"family\":\"hydrogen\",\"ammonia\":{\"donor\":\"H on N\",\"acceptor\":\"lone pair on N\"},\"label\":\"hydrogen bond: H on N to a lone pair on N\",\"drawn\":{\"atom\":60,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 9 attractions methane: none, \"H on C: no hydrogen bond\"",
+    "pass": true,
+    "i": "{\"stage\":\"methane\",\"family\":\"hydrogen\",\"methane\":\"none\",\"label\":\"H on C: no hydrogen bond\",\"drawn\":{\"atom\":60,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 9 attractions four: four hydrogen bonds, four neighbors",
+    "pass": true,
+    "i": "{\"stage\":\"four\",\"family\":\"hydrogen\",\"waterMax\":4,\"hbonds\":4,\"neighbors\":4,\"label\":\"up to four hydrogen bonds\",\"drawn\":{\"atom\":60,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 9 attractions: every atom or ion sphere 60 px or more on every frame that shows it (smallest 60 px)",
+    "pass": true,
+    "i": "[]"
+  },
+  {
+    "n": "slide 9 check frame shows s09-sim at \"four\" (water with its four hydrogen bonds)",
+    "pass": true,
+    "i": "{\"f\":9,\"stage\":\"four\",\"visible\":true}"
+  },
+  {
+    "n": "slide 10 forceDecider empty: nothing filled, no drawing",
+    "pass": true,
+    "i": "{\"stage\":\"empty\",\"molecule\":null,\"drawing\":false,\"answers\":{\"polar\":null,\"H\":null,\"lone\":null,\"strongest\":null},\"en\":null,\"boxes\":[\"Polar?\",\"H on N, O or F?\",\"Lone pair on N, O or F?\",\"Strongest attraction\"]}"
+  },
+  {
+    "n": "slide 10 forceDecider NH3/strongest: NH3, yes · yes · yes · hydrogen bonding",
+    "pass": true,
+    "i": "{\"stage\":\"NH3/strongest\",\"molecule\":\"NH3\",\"drawing\":true,\"answers\":{\"polar\":\"yes\",\"H\":\"yes\",\"lone\":\"yes\",\"strongest\":\"hydrogen bonding\"},\"en\":null,\"boxes\":[\"Polar?\",\"H on N, O or F?\",\"Lone pair on N, O or F?\",\"Strongest attraction\"]}"
+  },
+  {
+    "n": "slide 10 forceDecider CO2/strongest: CO2, no · no · not needed · dispersion forces",
+    "pass": true,
+    "i": "{\"stage\":\"CO2/strongest\",\"molecule\":\"CO2\",\"drawing\":true,\"answers\":{\"polar\":\"no\",\"H\":\"no\",\"lone\":\"not needed\",\"strongest\":\"dispersion forces\"},\"en\":null,\"boxes\":[\"Polar?\",\"H on N, O or F?\",\"Lone pair on N, O or F?\",\"Strongest attraction\"]}"
+  },
+  {
+    "n": "slide 10 forceDecider HBr/polar: HBr, yes",
+    "pass": true,
+    "i": "{\"stage\":\"HBr/polar\",\"molecule\":\"HBr\",\"drawing\":true,\"answers\":{\"polar\":\"yes\",\"H\":null,\"lone\":null,\"strongest\":null},\"en\":{\"label\":\"Electronegativity (pull on electrons)\",\"Br\":2.96,\"H\":2.2,\"difference\":0.76},\"boxes\":[\"Polar?\",\"H on N, O or F?\",\"Lone pair on N, O or F?\",\"Strongest attraction\"]}"
+  },
+  {
+    "n": "slide 10 forceDecider HBr/H: HBr, yes · no · not needed",
+    "pass": true,
+    "i": "{\"stage\":\"HBr/H\",\"molecule\":\"HBr\",\"drawing\":true,\"answers\":{\"polar\":\"yes\",\"H\":\"no\",\"lone\":\"not needed\",\"strongest\":null},\"en\":{\"label\":\"Electronegativity (pull on electrons)\",\"Br\":2.96,\"H\":2.2,\"difference\":0.76},\"boxes\":[\"Polar?\",\"H on N, O or F?\",\"Lone pair on N, O or F?\",\"Strongest attraction\"]}"
+  },
+  {
+    "n": "slide 10 forceDecider HBr/strongest: HBr, yes · no · not needed · dipole-dipole forces",
+    "pass": true,
+    "i": "{\"stage\":\"HBr/strongest\",\"molecule\":\"HBr\",\"drawing\":true,\"answers\":{\"polar\":\"yes\",\"H\":\"no\",\"lone\":\"not needed\",\"strongest\":\"dipole-dipole forces\"},\"en\":{\"label\":\"Electronegativity (pull on electrons)\",\"Br\":2.96,\"H\":2.2,\"difference\":0.76},\"boxes\":[\"Polar?\",\"H on N, O or F?\",\"Lone pair on N, O or F?\",\"Strongest attraction\"]}"
+  },
+  {
+    "n": "slide 10 forceDecider: every stage from empty to HBr/strongest in order",
+    "pass": true,
+    "i": "[\"empty\",\"NH3/polar\",\"NH3/H\",\"NH3/lone\",\"NH3/strongest\",\"CO2/polar\",\"CO2/H\",\"CO2/strongest\",\"HBr/EN\",\"HBr/EN\",\"HBr/polar\",\"HBr/H\",\"HBr/strongest\"]"
+  },
+  {
+    "n": "slide 10 you do: \"Electronegativity (pull on electrons)\", Br 2.96, H 2.20, difference 0.76 (Pauling, shared data)",
+    "pass": true,
+    "i": "{\"label\":\"Electronegativity (pull on electrons)\",\"Br\":2.96,\"H\":2.2,\"difference\":0.76}"
+  },
+  {
+    "n": "slide 10 you do answers: polar; H on Br, not N, O or F; dipole-dipole forces",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "slide 11 heating: stages CH4/solid, melt, liquid, boil, gas, H2O/boil, energy, H2O/gas",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "slide 11 heating f0 CH4/solid: 16 of 16 covalent bonds intact, 4 molecules",
+    "pass": true,
+    "i": "{\"substance\":\"CH4\",\"stage\":\"CH4/solid\",\"phase\":\"solid\",\"molecules\":4,\"bondsTotal\":16,\"bondsIntact\":16,\"attractionsDrawn\":4,\"temperature\":\"−182.5 °C (melting point)\",\"energies\":{\"boil\":40.7,\"bonds\":928},\"energyBars\":false,\"moleculesShown\":true,\"containerShown\":true,\"caption\":null,\"spread\":{\"container\":[733,519],\"solidBlockShare\":0.4,\"gasBoxShare\":0.91,\"areaPerMolecule\":{\"solid\":34196,\"gas\":95107},\"areaRatio\":2.78,\"nearest\":{\"solid\":166,\"gas\":256},\"spacingRatio\":2.38},\"drawn\":{\"atom\":60,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 11 heating f1 CH4/solid: 16 of 16 covalent bonds intact, 4 molecules",
+    "pass": true,
+    "i": "{\"substance\":\"CH4\",\"stage\":\"CH4/solid\",\"phase\":\"solid\",\"molecules\":4,\"bondsTotal\":16,\"bondsIntact\":16,\"attractionsDrawn\":4,\"temperature\":\"−182.5 °C (melting point)\",\"energies\":{\"boil\":40.7,\"bonds\":928},\"energyBars\":false,\"moleculesShown\":true,\"containerShown\":true,\"caption\":null,\"spread\":{\"container\":[733,519],\"solidBlockShare\":0.4,\"gasBoxShare\":0.91,\"areaPerMolecule\":{\"solid\":34196,\"gas\":95107},\"areaRatio\":2.78,\"nearest\":{\"solid\":166,\"gas\":256},\"spacingRatio\":2.38},\"drawn\":{\"atom\":60,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 11 heating f2 CH4/melt: 16 of 16 covalent bonds intact, 4 molecules",
+    "pass": true,
+    "i": "{\"substance\":\"CH4\",\"stage\":\"CH4/melt\",\"phase\":\"melt\",\"molecules\":4,\"bondsTotal\":16,\"bondsIntact\":16,\"attractionsDrawn\":2,\"temperature\":\"−182.5 °C, melting\",\"energies\":{\"boil\":40.7,\"bonds\":928},\"energyBars\":false,\"moleculesShown\":true,\"containerShown\":true,\"caption\":null,\"spread\":{\"container\":[733,519],\"solidBlockShare\":0.4,\"gasBoxShare\":0.91,\"areaPerMolecule\":{\"solid\":34196,\"gas\":95107},\"areaRatio\":2.78,\"nearest\":{\"solid\":166,\"gas\":256},\"spacingRatio\":2.38},\"drawn\":{\"atom\":60,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 11 heating f3 CH4/liquid: 16 of 16 covalent bonds intact, 4 molecules",
+    "pass": true,
+    "i": "{\"substance\":\"CH4\",\"stage\":\"CH4/liquid\",\"phase\":\"liquid\",\"molecules\":4,\"bondsTotal\":16,\"bondsIntact\":16,\"attractionsDrawn\":2,\"temperature\":\"liquid\",\"energies\":{\"boil\":40.7,\"bonds\":928},\"energyBars\":false,\"moleculesShown\":true,\"containerShown\":true,\"caption\":null,\"spread\":{\"container\":[733,519],\"solidBlockShare\":0.4,\"gasBoxShare\":0.91,\"areaPerMolecule\":{\"solid\":34196,\"gas\":95107},\"areaRatio\":2.78,\"nearest\":{\"solid\":166,\"gas\":256},\"spacingRatio\":2.38},\"drawn\":{\"atom\":60,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 11 heating f4 CH4/boil: 16 of 16 covalent bonds intact, 4 molecules",
+    "pass": true,
+    "i": "{\"substance\":\"CH4\",\"stage\":\"CH4/boil\",\"phase\":\"boil\",\"molecules\":4,\"bondsTotal\":16,\"bondsIntact\":16,\"attractionsDrawn\":1,\"temperature\":\"−161.5 °C, boiling\",\"energies\":{\"boil\":40.7,\"bonds\":928},\"energyBars\":false,\"moleculesShown\":true,\"containerShown\":true,\"caption\":null,\"spread\":{\"container\":[733,519],\"solidBlockShare\":0.4,\"gasBoxShare\":0.91,\"areaPerMolecule\":{\"solid\":34196,\"gas\":95107},\"areaRatio\":2.78,\"nearest\":{\"solid\":166,\"gas\":256},\"spacingRatio\":2.38},\"drawn\":{\"atom\":60,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 11 heating f5 CH4/gas: 16 of 16 covalent bonds intact, 4 molecules",
+    "pass": true,
+    "i": "{\"substance\":\"CH4\",\"stage\":\"CH4/gas\",\"phase\":\"gas\",\"molecules\":4,\"bondsTotal\":16,\"bondsIntact\":16,\"attractionsDrawn\":0,\"temperature\":\"−161.5 °C (boiling point)\",\"energies\":{\"boil\":40.7,\"bonds\":928},\"energyBars\":false,\"moleculesShown\":true,\"containerShown\":true,\"caption\":null,\"spread\":{\"container\":[733,519],\"solidBlockShare\":0.4,\"gasBoxShare\":0.91,\"areaPerMolecule\":{\"solid\":34196,\"gas\":95107},\"areaRatio\":2.78,\"nearest\":{\"solid\":166,\"gas\":256},\"spacingRatio\":2.38},\"drawn\":{\"atom\":60,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 11 heating f6 H2O/boil: 12 of 12 covalent bonds intact, 6 molecules",
+    "pass": true,
+    "i": "{\"substance\":\"H2O\",\"stage\":\"H2O/boil\",\"phase\":\"boil\",\"molecules\":6,\"bondsTotal\":12,\"bondsIntact\":12,\"attractionsDrawn\":1,\"temperature\":\"100.0 °C, boiling\",\"energies\":{\"boil\":40.7,\"bonds\":928},\"energyBars\":false,\"moleculesShown\":true,\"containerShown\":true,\"caption\":null,\"spread\":{\"container\":[733,519],\"solidBlockShare\":0.32,\"gasBoxShare\":0.83,\"areaPerMolecule\":{\"solid\":18228,\"gas\":63405},\"areaRatio\":3.48,\"nearest\":{\"solid\":98,\"gas\":248},\"spacingRatio\":6.39},\"drawn\":{\"atom\":60,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 11 heating f7 energy: 12 of 12 covalent bonds intact, 6 molecules",
+    "pass": true,
+    "i": "{\"substance\":\"H2O\",\"stage\":\"energy\",\"phase\":\"gas\",\"molecules\":6,\"bondsTotal\":12,\"bondsIntact\":12,\"attractionsDrawn\":0,\"temperature\":\"100.0 °C (boiling point)\",\"energies\":{\"boil\":40.7,\"bonds\":928},\"energyBars\":true,\"moleculesShown\":false,\"containerShown\":false,\"caption\":\"more than 20 times as much\",\"spread\":{\"container\":[733,519],\"solidBlockShare\":0.32,\"gasBoxShare\":0.83,\"areaPerMolecule\":{\"solid\":18228,\"gas\":63405},\"areaRatio\":3.48,\"nearest\":{\"solid\":98,\"gas\":248},\"spacingRatio\":6.39},\"drawn\":{\"atom\":null,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 11 heating f8 energy: 12 of 12 covalent bonds intact, 6 molecules",
+    "pass": true,
+    "i": "{\"substance\":\"H2O\",\"stage\":\"energy\",\"phase\":\"gas\",\"molecules\":6,\"bondsTotal\":12,\"bondsIntact\":12,\"attractionsDrawn\":0,\"temperature\":\"100.0 °C (boiling point)\",\"energies\":{\"boil\":40.7,\"bonds\":928},\"energyBars\":true,\"moleculesShown\":false,\"containerShown\":false,\"caption\":\"more than 20 times as much\",\"spread\":{\"container\":[733,519],\"solidBlockShare\":0.32,\"gasBoxShare\":0.83,\"areaPerMolecule\":{\"solid\":18228,\"gas\":63405},\"areaRatio\":3.48,\"nearest\":{\"solid\":98,\"gas\":248},\"spacingRatio\":6.39},\"drawn\":{\"atom\":null,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 11 heating f9 H2O/gas: 12 of 12 covalent bonds intact, 6 molecules",
+    "pass": true,
+    "i": "{\"substance\":\"H2O\",\"stage\":\"H2O/gas\",\"phase\":\"gas\",\"molecules\":6,\"bondsTotal\":12,\"bondsIntact\":12,\"attractionsDrawn\":0,\"temperature\":\"100.0 °C (boiling point)\",\"energies\":{\"boil\":40.7,\"bonds\":928},\"energyBars\":false,\"moleculesShown\":true,\"containerShown\":true,\"caption\":null,\"spread\":{\"container\":[733,519],\"solidBlockShare\":0.32,\"gasBoxShare\":0.83,\"areaPerMolecule\":{\"solid\":18228,\"gas\":63405},\"areaRatio\":3.48,\"nearest\":{\"solid\":98,\"gas\":248},\"spacingRatio\":6.39},\"drawn\":{\"atom\":60,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 11 heating f10 H2O/gas: 12 of 12 covalent bonds intact, 6 molecules",
+    "pass": true,
+    "i": "{\"substance\":\"H2O\",\"stage\":\"H2O/gas\",\"phase\":\"gas\",\"molecules\":6,\"bondsTotal\":12,\"bondsIntact\":12,\"attractionsDrawn\":0,\"temperature\":\"100.0 °C (boiling point)\",\"energies\":{\"boil\":40.7,\"bonds\":928},\"energyBars\":false,\"moleculesShown\":true,\"containerShown\":true,\"caption\":null,\"spread\":{\"container\":[733,519],\"solidBlockShare\":0.32,\"gasBoxShare\":0.83,\"areaPerMolecule\":{\"solid\":18228,\"gas\":63405},\"areaRatio\":3.48,\"nearest\":{\"solid\":98,\"gas\":248},\"spacingRatio\":6.39},\"drawn\":{\"atom\":60,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 11 heating CH4/solid: \"−182.5 °C (melting point)\"",
+    "pass": true,
+    "i": "\"−182.5 °C (melting point)\""
+  },
+  {
+    "n": "slide 11 heating CH4/melt: \"−182.5 °C, melting\"",
+    "pass": true,
+    "i": "\"−182.5 °C, melting\""
+  },
+  {
+    "n": "slide 11 heating CH4/liquid: \"liquid\"",
+    "pass": true,
+    "i": "\"liquid\""
+  },
+  {
+    "n": "slide 11 heating CH4/boil: \"−161.5 °C, boiling\"",
+    "pass": true,
+    "i": "\"−161.5 °C, boiling\""
+  },
+  {
+    "n": "slide 11 heating CH4/gas: \"−161.5 °C (boiling point)\"",
+    "pass": true,
+    "i": "\"−161.5 °C (boiling point)\""
+  },
+  {
+    "n": "slide 11 heating H2O/boil: \"100.0 °C, boiling\"",
+    "pass": true,
+    "i": "\"100.0 °C, boiling\""
+  },
+  {
+    "n": "slide 11 heating H2O/gas: \"100.0 °C (boiling point)\"",
+    "pass": true,
+    "i": "\"100.0 °C (boiling point)\""
+  },
+  {
+    "n": "slide 11 heating: attractions drawn 4, 2, 2, 1, 0 for CH₄; 1 and 0 for water boiling and gas",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "slide 11 heating energy: 40.7 kJ and about 928 kJ, \"more than 20 times as much\"",
+    "pass": true,
+    "i": "{\"substance\":\"H2O\",\"stage\":\"energy\",\"phase\":\"gas\",\"molecules\":6,\"bondsTotal\":12,\"bondsIntact\":12,\"attractionsDrawn\":0,\"temperature\":\"100.0 °C (boiling point)\",\"energies\":{\"boil\":40.7,\"bonds\":928},\"energyBars\":true,\"moleculesShown\":false,\"containerShown\":false,\"caption\":\"more than 20 times as much\",\"spread\":{\"container\":[733,519],\"solidBlockShare\":0.32,\"gasBoxShare\":0.83,\"areaPerMolecule\":{\"solid\":18228,\"gas\":63405},\"areaRatio\":3.48,\"nearest\":{\"solid\":98,\"gas\":248},\"spacingRatio\":6.39},\"drawn\":{\"atom\":null,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 11 heating energy (step 04b): the bars alone, no molecules or container under them; both back on the check frame",
+    "pass": true,
+    "i": "{\"substance\":\"H2O\",\"stage\":\"energy\",\"phase\":\"gas\",\"molecules\":6,\"bondsTotal\":12,\"bondsIntact\":12,\"attractionsDrawn\":0,\"temperature\":\"100.0 °C (boiling point)\",\"energies\":{\"boil\":40.7,\"bonds\":928},\"energyBars\":true,\"moleculesShown\":false,\"containerShown\":false,\"caption\":\"more than 20 times as much\",\"spread\":{\"container\":[733,519],\"solidBlockShare\":0.32,\"gasBoxShare\":0.83,\"areaPerMolecule\":{\"solid\":18228,\"gas\":63405},\"areaRatio\":3.48,\"nearest\":{\"solid\":98,\"gas\":248},\"spacingRatio\":6.39},\"drawn\":{\"atom\":null,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 11 heating CH4: the gas spreads over the container (91% of it)",
+    "pass": true,
+    "i": "{\"container\":[733,519],\"solidBlockShare\":0.4,\"gasBoxShare\":0.91,\"areaPerMolecule\":{\"solid\":34196,\"gas\":95107},\"areaRatio\":2.78,\"nearest\":{\"solid\":166,\"gas\":256},\"spacingRatio\":2.38}"
+  },
+  {
+    "n": "slide 11 heating CH4 (brief D1): solid block 40% of the container (target 40% or less)",
+    "pass": true,
+    "i": "{\"container\":[733,519],\"solidBlockShare\":0.4,\"gasBoxShare\":0.91,\"areaPerMolecule\":{\"solid\":34196,\"gas\":95107},\"areaRatio\":2.78,\"nearest\":{\"solid\":166,\"gas\":256},\"spacingRatio\":2.38}"
+  },
+  {
+    "n": "slide 11 heating CH4 (brief D1): area per molecule grows 2.78 times (target 2.5 or more)",
+    "pass": true,
+    "i": "{\"container\":[733,519],\"solidBlockShare\":0.4,\"gasBoxShare\":0.91,\"areaPerMolecule\":{\"solid\":34196,\"gas\":95107},\"areaRatio\":2.78,\"nearest\":{\"solid\":166,\"gas\":256},\"spacingRatio\":2.38}"
+  },
+  {
+    "n": "slide 11 heating H2O: the gas spreads over the container (83% of it)",
+    "pass": true,
+    "i": "{\"container\":[733,519],\"solidBlockShare\":0.32,\"gasBoxShare\":0.83,\"areaPerMolecule\":{\"solid\":18228,\"gas\":63405},\"areaRatio\":3.48,\"nearest\":{\"solid\":98,\"gas\":248},\"spacingRatio\":6.39}"
+  },
+  {
+    "n": "slide 11 heating H2O (brief D1): solid block 32% of the container (target 40% or less)",
+    "pass": true,
+    "i": "{\"container\":[733,519],\"solidBlockShare\":0.32,\"gasBoxShare\":0.83,\"areaPerMolecule\":{\"solid\":18228,\"gas\":63405},\"areaRatio\":3.48,\"nearest\":{\"solid\":98,\"gas\":248},\"spacingRatio\":6.39}"
+  },
+  {
+    "n": "slide 11 heating H2O (brief D1): area per molecule grows 3.48 times (target 2.5 or more)",
+    "pass": true,
+    "i": "{\"container\":[733,519],\"solidBlockShare\":0.32,\"gasBoxShare\":0.83,\"areaPerMolecule\":{\"solid\":18228,\"gas\":63405},\"areaRatio\":3.48,\"nearest\":{\"solid\":98,\"gas\":248},\"spacingRatio\":6.39}"
+  },
+  {
+    "n": "slide 11 heating: every atom or ion sphere 60 px or more on every frame that shows it (smallest 60 px)",
+    "pass": true,
+    "i": "[]"
+  },
+  {
+    "n": "slide 11 check frame shows s11-sim at \"H2O/gas\" (steam: water molecules far apart, bonds intact)",
+    "pass": true,
+    "i": "{\"f\":9,\"stage\":\"H2O/gas\",\"visible\":true}"
+  },
+  {
+    "n": "slide 12 iceLattice: 13 molecules, 26 O–H bonds, 16 hydrogen bonds",
+    "pass": true,
+    "i": "{\"stage\":\"molecules\",\"molecules\":13,\"bondsOH\":26,\"hbonds\":16,\"hbondsDrawn\":false,\"neighborsOfChosen\":4,\"distancePm\":276,\"view\":\"three-quarter\",\"lattice\":true,\"densities\":{\"ice\":0.9167,\"water\":0.99984},\"volumes\":{\"water\":100,\"ice\":109.1},\"aboveSurfacePct\":8.3,\"reducedView\":\"fixed\",\"label\":null,\"drawn\":{\"atom\":60,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 12 iceLattice: hydrogen bonds drawn from hbonds on",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "slide 12 iceLattice neighbors: 4 at 276 pm, \"four neighbors, 276 pm away\"",
+    "pass": true,
+    "i": "{\"stage\":\"neighbors\",\"molecules\":13,\"bondsOH\":26,\"hbonds\":16,\"hbondsDrawn\":true,\"neighborsOfChosen\":4,\"distancePm\":276,\"view\":\"three-quarter\",\"lattice\":true,\"densities\":{\"ice\":0.9167,\"water\":0.99984},\"volumes\":{\"water\":100,\"ice\":109.1},\"aboveSurfacePct\":8.3,\"reducedView\":\"fixed\",\"label\":\"four neighbors, 276 pm away\",\"drawn\":{\"atom\":60,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 12 iceLattice rings: down the axis, \"open six-sided rings\"",
+    "pass": true,
+    "i": "{\"stage\":\"rings\",\"molecules\":13,\"bondsOH\":26,\"hbonds\":16,\"hbondsDrawn\":true,\"neighborsOfChosen\":4,\"distancePm\":276,\"view\":\"down the axis\",\"lattice\":true,\"densities\":{\"ice\":0.9167,\"water\":0.99984},\"volumes\":{\"water\":100,\"ice\":109.1},\"aboveSurfacePct\":8.3,\"reducedView\":\"fixed\",\"label\":\"open six-sided rings\",\"drawn\":{\"atom\":60,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 12 iceLattice float: 0.9167 and 0.99984 g/cm³, 100.0 → 109.1 cm³, 8.3% above",
+    "pass": true,
+    "i": "{\"stage\":\"float\",\"molecules\":13,\"bondsOH\":26,\"hbonds\":16,\"hbondsDrawn\":false,\"neighborsOfChosen\":4,\"distancePm\":276,\"view\":\"down the axis\",\"lattice\":false,\"densities\":{\"ice\":0.9167,\"water\":0.99984},\"volumes\":{\"water\":100,\"ice\":109.1},\"aboveSurfacePct\":8.3,\"reducedView\":\"fixed\",\"label\":null,\"drawn\":{\"atom\":null,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 12 iceLattice: every atom or ion sphere 60 px or more on every frame that shows it (smallest 60 px)",
+    "pass": true,
+    "i": "[]"
+  },
+  {
+    "n": "slide 12 check frame shows s12-sim at \"float\" (the ice block and the two volume bars)",
+    "pass": true,
+    "i": "{\"f\":8,\"stage\":\"float\",\"visible\":true}"
+  },
+  {
+    "n": "slide 15 conductTester: tester, then solid and molten NaCl (predict, close, zoom), salt water, copper, sugar water, distilled water",
+    "pass": true,
+    "i": "[\"tester\",\"NaCl-s/predict\",\"NaCl-s/close\",\"NaCl-s/zoom\",\"NaCl-l/predict\",\"NaCl-l/close\",\"NaCl-l/zoom\",\"NaCl-aq/zoom\",\"Cu/zoom\",\"sugar/close\",\"water/close\"]"
+  },
+  {
+    "n": "slide 15 conductTester tester: no sample, bulb dark; the \"?\" circle where the magnified view will be",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "slide 15 conductTester (step 04b): the readout shows results only, never the question \"Lights or stays dark?\"",
+    "pass": true,
+    "i": "[[\"tester\",null],[\"NaCl-s/predict\",null],[\"NaCl-s/close\",\"The bulb stays dark.\"],[\"NaCl-s/zoom\",\"Na⁺ and Cl⁻ locked in place\"],[\"NaCl-l/predict\",null],[\"NaCl-l/close\",\"The bulb lights.\"],[\"NaCl-l/zoom\",\"Na⁺ and Cl⁻ free to move\"],[\"NaCl-aq/zoom\",\"ions move among water molecules\"],[\"Cu/zoom\",\"delocalized electrons move\"],[\"sugar/close\",\"The bulb stays dark.\"],[\"water/close\",\"The bulb stays dark.\"],[\"water/close\",\"The bulb stays dark.\"],[\"NaCl-l/zoom\",\"Na⁺ and Cl⁻ free to move\"],[\"NaCl-l/zoom\",\"Na⁺ and Cl⁻ free to move\"]]"
+  },
+  {
+    "n": "slide 15 conductTester NaCl-s: \"solid NaCl\", Na⁺ and Cl⁻, free to move no, stays dark once the switch closes",
+    "pass": true,
+    "i": "{\"stage\":\"NaCl-s/zoom\",\"family\":\"tester\",\"sample\":\"NaCl-s\",\"readout\":\"Na⁺ and Cl⁻ locked in place\",\"placeholder\":false,\"name\":\"solid NaCl\",\"state\":\"solid\",\"chargedParticles\":\"Na⁺ and Cl⁻\",\"freeToMove\":\"no\",\"lit\":false,\"litWhenClosed\":false,\"switchClosed\":true,\"zoom\":true,\"carriers\":null,\"drawn\":{\"atom\":61,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 15 conductTester NaCl-l: \"molten NaCl, 801 °C\", Na⁺ and Cl⁻, free to move yes, lights once the switch closes",
+    "pass": true,
+    "i": "{\"stage\":\"NaCl-l/zoom\",\"family\":\"tester\",\"sample\":\"NaCl-l\",\"readout\":\"Na⁺ and Cl⁻ free to move\",\"placeholder\":false,\"name\":\"molten NaCl, 801 °C\",\"state\":\"molten\",\"chargedParticles\":\"Na⁺ and Cl⁻\",\"freeToMove\":\"yes\",\"lit\":true,\"litWhenClosed\":true,\"switchClosed\":true,\"zoom\":true,\"carriers\":\"ions\",\"drawn\":{\"atom\":61,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 15 conductTester NaCl-aq: \"salt water\", Na⁺ and Cl⁻, free to move yes, lights once the switch closes",
+    "pass": true,
+    "i": "{\"stage\":\"NaCl-aq/zoom\",\"family\":\"tester\",\"sample\":\"NaCl-aq\",\"readout\":\"ions move among water molecules\",\"placeholder\":false,\"name\":\"salt water\",\"state\":\"dissolved\",\"chargedParticles\":\"Na⁺ and Cl⁻\",\"freeToMove\":\"yes\",\"lit\":true,\"litWhenClosed\":true,\"switchClosed\":true,\"zoom\":true,\"carriers\":\"ions\",\"drawn\":{\"atom\":60,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 15 conductTester Cu: \"copper\", delocalized electrons, free to move yes, lights once the switch closes",
+    "pass": true,
+    "i": "{\"stage\":\"Cu/zoom\",\"family\":\"tester\",\"sample\":\"Cu\",\"readout\":\"delocalized electrons move\",\"placeholder\":false,\"name\":\"copper\",\"state\":\"solid\",\"chargedParticles\":\"delocalized electrons\",\"freeToMove\":\"yes\",\"lit\":true,\"litWhenClosed\":true,\"switchClosed\":true,\"zoom\":true,\"carriers\":\"electrons\",\"drawn\":{\"atom\":77,\"dot\":24,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 15 conductTester sugar: \"sugar water\", none, free to move null, stays dark once the switch closes",
+    "pass": true,
+    "i": "{\"stage\":\"sugar/close\",\"family\":\"tester\",\"sample\":\"sugar\",\"readout\":\"The bulb stays dark.\",\"placeholder\":false,\"name\":\"sugar water\",\"state\":\"dissolved\",\"chargedParticles\":\"none\",\"freeToMove\":null,\"lit\":false,\"litWhenClosed\":false,\"switchClosed\":true,\"zoom\":false,\"carriers\":null,\"drawn\":{\"atom\":null,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 15 conductTester water: \"distilled water\", very few ions, free to move null, stays dark once the switch closes",
+    "pass": true,
+    "i": "{\"stage\":\"water/close\",\"family\":\"tester\",\"sample\":\"water\",\"readout\":\"The bulb stays dark.\",\"placeholder\":false,\"name\":\"distilled water\",\"state\":\"liquid\",\"chargedParticles\":\"very few ions\",\"freeToMove\":null,\"lit\":false,\"litWhenClosed\":false,\"switchClosed\":true,\"zoom\":false,\"carriers\":null,\"drawn\":{\"atom\":null,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 15 conductTester: every atom or ion sphere 60 px or more on every frame that shows it (smallest 60 px)",
+    "pass": true,
+    "i": "[]"
+  },
+  {
+    "n": "slide 15 check frame shows s15-sim at \"NaCl-l/zoom\" (molten NaCl with its moving ions)",
+    "pass": true,
+    "i": "{\"f\":12,\"stage\":\"NaCl-l/zoom\",\"visible\":true}"
+  },
+  {
+    "n": "slide 16 conductTester KCl-l: \"molten KCl\", K⁺ and Cl⁻, free to move yes, lights once the switch closes",
+    "pass": true,
+    "i": "{\"stage\":\"KCl-l/zoom\",\"family\":\"tester\",\"sample\":\"KCl-l\",\"readout\":\"K⁺ and Cl⁻ free to move\",\"placeholder\":false,\"name\":\"molten KCl\",\"state\":\"molten\",\"chargedParticles\":\"K⁺ and Cl⁻\",\"freeToMove\":\"yes\",\"lit\":true,\"litWhenClosed\":true,\"switchClosed\":true,\"zoom\":true,\"carriers\":\"ions\",\"drawn\":{\"atom\":83,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 16 conductTester CaCl2-s: \"solid CaCl₂\", Ca²⁺ and Cl⁻, free to move no, stays dark once the switch closes",
+    "pass": true,
+    "i": "{\"stage\":\"CaCl2-s/close\",\"family\":\"tester\",\"sample\":\"CaCl2-s\",\"readout\":\"The bulb stays dark.\",\"placeholder\":false,\"name\":\"solid CaCl₂\",\"state\":\"solid\",\"chargedParticles\":\"Ca²⁺ and Cl⁻\",\"freeToMove\":\"no\",\"lit\":false,\"litWhenClosed\":false,\"switchClosed\":true,\"zoom\":false,\"carriers\":null,\"drawn\":{\"atom\":null,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 16 conductTester: every atom or ion sphere 60 px or more on every frame that shows it (smallest 83 px)",
+    "pass": true,
+    "i": "[]"
+  },
+  {
+    "n": "slide 16 conductTester: KCl-l predict, close; CaCl₂ predict, close; the you-do answer frame back at KCl-l/zoom",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "slide 16 conductTester you do (step 04b): the tester reset (no sample, switch open, no result) after the we-do result, until the answer",
+    "pass": true,
+    "i": "[\"KCl-l/predict\",\"KCl-l/predict\",\"KCl-l/predict\",\"KCl-l/predict\",\"KCl-l/predict\",\"KCl-l/close\",\"CaCl2-s/predict\",\"CaCl2-s/predict\",\"CaCl2-s/predict\",\"CaCl2-s/predict\",\"CaCl2-s/close\",\"tester\",\"tester\",\"tester\",\"KCl-l/zoom\"]"
+  },
+  {
+    "n": "slide 16 conductTester (step 04b): while the class predicts, the \"?\" circle holds the magnified view's place; no readout",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "slide 17 dissolve NaCl: ionic, dissolves yes",
+    "pass": true,
+    "i": "{\"stage\":\"dis/NaCl\",\"family\":\"dissolve\",\"sample\":\"NaCl\",\"name\":\"sodium chloride, NaCl\",\"type\":\"ionic\",\"dissolves\":\"yes\",\"label\":\"ions spread out: an electrolyte\",\"drawn\":{\"atom\":61,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 17 dissolve sucrose: molecular, dissolves yes",
+    "pass": true,
+    "i": "{\"stage\":\"dis/sucrose\",\"family\":\"dissolve\",\"sample\":\"sucrose\",\"name\":\"sucrose (table sugar)\",\"type\":\"molecular\",\"dissolves\":\"yes\",\"label\":\"whole molecules spread out\",\"drawn\":{\"atom\":80,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 17 dissolve CaCO3: ionic, dissolves barely",
+    "pass": true,
+    "i": "{\"stage\":\"dis/CaCO3\",\"family\":\"dissolve\",\"sample\":\"CaCO3\",\"name\":\"calcium carbonate, CaCO₃\",\"type\":\"ionic\",\"dissolves\":\"barely\",\"label\":\"barely\",\"drawn\":{\"atom\":null,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 17 dissolve I2: molecular, dissolves slightly",
+    "pass": true,
+    "i": "{\"stage\":\"dis/I2\",\"family\":\"dissolve\",\"sample\":\"I2\",\"name\":\"iodine, I₂\",\"type\":\"molecular\",\"dissolves\":\"slightly\",\"label\":\"slightly\",\"drawn\":{\"atom\":null,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 17 dissolve SiO2: covalent network, dissolves no",
+    "pass": true,
+    "i": "{\"stage\":\"dis/SiO2\",\"family\":\"dissolve\",\"sample\":\"SiO2\",\"name\":\"quartz, SiO₂\",\"type\":\"covalent network\",\"dissolves\":\"no\",\"label\":\"no\",\"drawn\":{\"atom\":null,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 17 dissolve Cu: metallic, dissolves no",
+    "pass": true,
+    "i": "{\"stage\":\"dis/Cu\",\"family\":\"dissolve\",\"sample\":\"Cu\",\"name\":\"copper, Cu\",\"type\":\"metallic\",\"dissolves\":\"no\",\"label\":\"no\",\"drawn\":{\"atom\":null,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 17 dissolve NaCl: \"ions spread out: an electrolyte\"; sucrose: \"whole molecules spread out\"",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "slide 17 dissolve: every atom or ion sphere 60 px or more on every frame that shows it (smallest 61 px)",
+    "pass": true,
+    "i": "[]"
+  },
+  {
+    "n": "slide 17 check frame shows s17-sim at \"dis/CaCO3\" (calcium carbonate, ionic, barely dissolves)",
+    "pass": true,
+    "i": "{\"f\":9,\"stage\":\"dis/CaCO3\",\"visible\":true}"
+  },
+  {
+    "n": "slide 18 hammerBlow before: no shift, no like-charge pairs",
+    "pass": true,
+    "i": "{\"stage\":\"before\",\"copper\":{\"offsetSpacings\":0,\"onePiece\":true,\"label\":null},\"nacl\":{\"offsetSpacings\":0,\"likeChargePairs\":0,\"split\":false,\"label\":null},\"hammer\":false,\"hammerFrom\":\"left\",\"hammerMoves\":\"right\",\"struck\":\"top layer\",\"topLayerMoves\":null,\"radii\":{\"Na\":102,\"Cl\":181,\"Cu\":128},\"spacingPm\":282,\"drawn\":{\"atom\":61,\"dot\":22,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 18 hammerBlow blow: the hammer strikes",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "slide 18 hammerBlow (step 04b): the hammer swings in from the left at the top layer, and that layer moves right, the way the blow points",
+    "pass": true,
+    "i": "{\"stage\":\"shift\",\"copper\":{\"offsetSpacings\":1,\"onePiece\":true,\"label\":null},\"nacl\":{\"offsetSpacings\":1,\"likeChargePairs\":3,\"split\":false,\"label\":null},\"hammer\":true,\"hammerFrom\":\"left\",\"hammerMoves\":\"right\",\"struck\":\"top layer\",\"topLayerMoves\":\"right\",\"radii\":{\"Na\":102,\"Cl\":181,\"Cu\":128},\"spacingPm\":282,\"drawn\":{\"atom\":61,\"dot\":22,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 18 hammerBlow shift: one spacing; like charges side by side in NaCl",
+    "pass": true,
+    "i": "{\"stage\":\"shift\",\"copper\":{\"offsetSpacings\":1,\"onePiece\":true,\"label\":null},\"nacl\":{\"offsetSpacings\":1,\"likeChargePairs\":3,\"split\":false,\"label\":null},\"hammer\":true,\"hammerFrom\":\"left\",\"hammerMoves\":\"right\",\"struck\":\"top layer\",\"topLayerMoves\":\"right\",\"radii\":{\"Na\":102,\"Cl\":181,\"Cu\":128},\"spacingPm\":282,\"drawn\":{\"atom\":61,\"dot\":22,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 18 hammerBlow result: copper one piece \"malleable\"; NaCl split \"brittle\"",
+    "pass": true,
+    "i": "{\"stage\":\"result\",\"copper\":{\"offsetSpacings\":1,\"onePiece\":true,\"label\":\"malleable\"},\"nacl\":{\"offsetSpacings\":1,\"likeChargePairs\":3,\"split\":true,\"label\":\"brittle\"},\"hammer\":false,\"hammerFrom\":\"left\",\"hammerMoves\":\"right\",\"struck\":\"top layer\",\"topLayerMoves\":\"right\",\"radii\":{\"Na\":102,\"Cl\":181,\"Cu\":128},\"spacingPm\":282,\"drawn\":{\"atom\":61,\"dot\":22,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 18 hammerBlow: Na⁺ 102, Cl⁻ 181, Cu 128 pm; 282 pm",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "slide 18 hammerBlow: every atom or ion sphere 60 px or more on every frame that shows it (smallest 61 px)",
+    "pass": true,
+    "i": "[]"
+  },
+  {
+    "n": "slide 18 check frame shows s18-sim at \"result\" (the split salt block beside the bent copper)",
+    "pass": true,
+    "i": "{\"f\":7,\"stage\":\"result\",\"visible\":true}"
+  },
+  {
+    "n": "slide 19 co2: six CO₂ molecules, dispersion lines, −78.5 °C",
+    "pass": true,
+    "i": "{\"stage\":\"co2\",\"co2\":{\"molecules\":6,\"intactAfterSublime\":true,\"sublimesAt\":-78.5,\"flown\":false,\"attractionsDrawn\":7},\"sio2\":{\"network\":true,\"molecules\":0,\"meltsNear\":1700,\"si\":5,\"o\":16,\"siFourO\":true,\"oBridging\":4},\"diamond\":{\"element\":\"C\",\"network\":true,\"atoms\":17},\"label\":null,\"thermometer\":\"−78.5 °C\",\"drawn\":{\"atom\":90,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 19 sublime: whole molecules fly off, no lines, \"sublimes at −78.5 °C: no liquid\"",
+    "pass": true,
+    "i": "{\"stage\":\"sublime\",\"co2\":{\"molecules\":6,\"intactAfterSublime\":true,\"sublimesAt\":-78.5,\"flown\":true,\"attractionsDrawn\":0},\"sio2\":{\"network\":true,\"molecules\":0,\"meltsNear\":1700,\"si\":5,\"o\":16,\"siFourO\":true,\"oBridging\":4},\"diamond\":{\"element\":\"C\",\"network\":true,\"atoms\":17},\"label\":\"sublimes at −78.5 °C: no liquid\",\"thermometer\":\"−78.5 °C\",\"drawn\":{\"atom\":90,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 19 quartz: one network, no molecules, every Si bonded to four O",
+    "pass": true,
+    "i": "{\"network\":true,\"molecules\":0,\"meltsNear\":1700,\"si\":5,\"o\":16,\"siFourO\":true,\"oBridging\":4}"
+  },
+  {
+    "n": "slide 19 heat: above 1000 °C, \"to melt it, covalent bonds must break: near 1700 °C\"",
+    "pass": true,
+    "i": "{\"stage\":\"heat\",\"co2\":{\"molecules\":6,\"intactAfterSublime\":true,\"sublimesAt\":-78.5,\"flown\":false,\"attractionsDrawn\":7},\"sio2\":{\"network\":true,\"molecules\":0,\"meltsNear\":1700,\"si\":5,\"o\":16,\"siFourO\":true,\"oBridging\":4},\"diamond\":{\"element\":\"C\",\"network\":true,\"atoms\":17},\"label\":\"to melt it, covalent bonds must break: near 1700 °C\",\"thermometer\":\"above 1000 °C\",\"drawn\":{\"atom\":61,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 19 diamond: a carbon network, \"diamond: the hardest natural substance\"",
+    "pass": true,
+    "i": "{\"stage\":\"diamond\",\"co2\":{\"molecules\":6,\"intactAfterSublime\":true,\"sublimesAt\":-78.5,\"flown\":false,\"attractionsDrawn\":7},\"sio2\":{\"network\":true,\"molecules\":0,\"meltsNear\":1700,\"si\":5,\"o\":16,\"siFourO\":true,\"oBridging\":4},\"diamond\":{\"element\":\"C\",\"network\":true,\"atoms\":17},\"label\":\"diamond: the hardest natural substance\",\"thermometer\":null,\"drawn\":{\"atom\":84,\"dot\":null,\"badge\":null,\"marker\":null}}"
+  },
+  {
+    "n": "slide 19 networkVsMolecules: every atom or ion sphere 60 px or more on every frame that shows it (smallest 61 px)",
+    "pass": true,
+    "i": "[]"
+  },
+  {
+    "n": "slide 19 check frame shows s19-sim at \"quartz\" (the quartz network)",
+    "pass": true,
+    "i": "{\"f\":7,\"stage\":\"quartz\",\"visible\":true}"
+  },
+  {
+    "n": "slide 14 warm-up answers: dispersion forces; N, O or F; each H₂O molecule, with its two O–H bonds",
+    "pass": true,
+    "i": "[\"dispersion forces\",\"N, O or F\",\"each H2O molecule, with its two O–H bonds\"]"
+  },
+  {
+    "n": "slide 16 you-do answers: 2 samples (KCl in water, molten KCl); K⁺ and Cl⁻ ions that can move",
+    "pass": true,
+    "i": "[\"2 samples: KCl in water and molten KCl.\",\"K+ and Cl− ions that can move.\"]"
+  },
+  {
+    "n": "slide 20 the four rows of the Review table",
+    "pass": true,
+    "i": "[[\"Molecular, I2\",\"attractions between molecules; low melting point\",\"no\",\"soft\"],[\"Ionic, NaCl\",\"ionic bonds; high melting point\",\"when molten or dissolved\",\"hard, brittle\"],[\"Metallic, Cu\",\"metallic bonds; melting point usually high\",\"yes, solid and liquid\",\"malleable\"],[\"Covalent network, SiO2\",\"covalent bonds; very high melting point\",\"no (except graphite)\",\"very hard (except graphite)\"]]"
+  },
+  {
+    "n": "slide 26 review lines: slides 6 and 7; 8 to 10; 11 and 12; 15 to 17; 18 and 19",
+    "pass": true,
+    "i": "[\"Review: slides 6 and 7\",\"Review: slides 8 to 10\",\"Review: slides 11 and 12\",\"Review: slides 15 to 17\",\"Review: slides 18 and 19\"]"
+  },
+  {
+    "n": "slide 25 the three answers: A H₂O molecules; B does not conduct; B an attraction between molecules, with their reasons",
+    "pass": true,
+    "i": "[{\"ans\":\"AH2O molecules\",\"reason\":\"Boiling separates whole molecules. Each keeps its O–H bonds.\"},{\"ans\":\"Bdoes not conduct\",\"reason\":\"Its ions are locked in the crystal. Molten or dissolved salt conducts.\"},{\"ans\":\"Ban attraction between molecules\",\"reason\":\"It pulls an H on one molecule to a lone pair on the next. About 5 to 10% of a covalent bond.\"}]"
+  },
+  {
+    "n": "slide 25 repeats the three questions of slide 4",
+    "pass": true,
+    "i": "[\"When water boils, the bubbles hold .\",\"Solid table salt .\",\"A hydrogen bond is .\"]"
+  },
+  {
+    "n": "slide 5 the eight terms with their Spanish cognates (reading glossary)",
+    "pass": true,
+    "i": "[\"intermolecular force (fuerza intermolecular)\",\"dispersion forces (fuerzas de dispersión)\",\"dipole-dipole forces (fuerzas dipolo-dipolo)\",\"hydrogen bonding (enlace de hidrógeno)\",\"electrolyte (electrolito)\",\"malleable (maleable)\",\"brittle (frágil)\",\"covalent network solid (sólido de red covalente)\"]"
+  },
+  {
+    "n": "caption \"Atom colors show the element, not the charge.\" on slides 3, 6, 15, 17, 18, 19",
+    "pass": true,
+    "i": "{\"s03\":\"Atom colors show the element, not the charge.\",\"s06\":\"Atom colors show the element, not the charge.\",\"s15\":\"Atom colors show the element, not the charge.\",\"s17\":\"Atom colors show the element, not the charge.\",\"s18\":\"Atom colors show the element, not the charge.\",\"s19\":\"Atom colors show the element, not the charge.\"}"
+  },
+  {
+    "n": "ten checks on slides 6, 7, 8, 9, 11, 12, 15, 17, 18, 19 (registry: 10)",
+    "pass": true,
+    "i": "[6,7,8,9,11,12,15,17,18,19]"
+  },
+  {
+    "n": "every check: three options with a feedback line each, one right option (A), the reason starts with \"A.\"",
+    "pass": true,
+    "i": "[{\"id\":\"s06-check\",\"n\":3,\"right\":[\"A\"],\"ans\":\"A.\"},{\"id\":\"s07-check\",\"n\":3,\"right\":[\"A\"],\"ans\":\"A.\"},{\"id\":\"s08-check\",\"n\":3,\"right\":[\"A\"],\"ans\":\"A.\"},{\"id\":\"s09-check\",\"n\":3,\"right\":[\"A\"],\"ans\":\"A.\"},{\"id\":\"s11-check\",\"n\":3,\"right\":[\"A\"],\"ans\":\"A.\"},{\"id\":\"s12-check\",\"n\":3,\"right\":[\"A\"],\"ans\":\"A.\"},{\"id\":\"s15-check\",\"n\":3,\"right\":[\"A\"],\"ans\":\"A.\"},{\"id\":\"s17-check\",\"n\":3,\"right\":[\"A\"],\"ans\":\"A.\"},{\"id\":\"s18-check\",\"n\":3,\"right\":[\"A\"],\"ans\":\"A.\"},{\"id\":\"s19-check\",\"n\":3,\"right\":[\"A\"],\"ans\":\"A.\"}]"
+  },
+  {
+    "n": "periods: slides 1 to 13 and 14 to 27 (registry [[1,13],[14,27]])",
+    "pass": true,
+    "i": "{\"p1\":[1,2,3,4,5,6,7,8,9,10,11,12,13],\"p2\":[14,15,16,17,18,19,20,21,22,23,24,25,26,27]}"
+  },
+  {
+    "n": "no ellipsis character in slides or notes",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "no console errors",
+    "pass": true,
+    "i": "[]"
+  }
+]

@@ -59,7 +59,7 @@
 /* slide 10: the three questions on one line */
 .t-cer .qline{font-size:40px;font-weight:700}
 /* slide 13: the ladder; slide 20: the four kinds of solids (the table fills; the line and the write row below) */
-.t-summary.tfill.lad>.body,.t-summary.tfill.tab>.body{grid-template-rows:minmax(0,1fr) auto auto}
+.t-summary.tfill.lad>.body,.t-summary.tfill.tab>.body{grid-template-rows:minmax(min-content,1fr) auto auto}
 .t-summary.lad>.body>.blk:not(.on),.t-summary.tab>.body>.blk:not(.on){display:none}
 .t-summary.lad .tbl,.t-summary.tab .tbl{height:100%;align-self:stretch}
 .t-summary.lad #s13-line p{font-size:44px;font-weight:700}
@@ -91,7 +91,8 @@
 /* slide 25: the timer sits at the right end of the rail row, so the writing card keeps the full width */
 .t-exit .phaseB{position:relative}
 .t-exit .phaseB .rail{margin-right:240px}
-.t-exit .rt-main>.timer{font-size:60px;position:absolute;right:0;top:165px}
+/* step 04b: the timer centred on the rail row, clear of the driving question above and of the writing card below */
+.t-exit .rt-main>.timer{font-size:54px;padding:6px 24px 10px;gap:6px;position:absolute;right:0;top:150px}
 /* slide 3: the starter row keeps the timer's height, so the animation does not shrink when the timer starts */
 .t-launch .qrow{min-height:156px}
 /* slide 5: eight word cards and the legend in the body */
@@ -122,3 +123,24 @@
 /* slide 26 zoomed (review 04, F6): a target line re-flows with its sentence across the width and "Review: slides ..." under it */
 .zflow .rate li{grid-template-columns:minmax(0,1fr);row-gap:6px}
 .zflow .rate li>.rev{justify-self:start}
+/* step 04b (the teacher's review) */
+/* a bond written with an en dash (O–H, C–H, Cl–Cl) stays on one line */
+.nw{white-space:nowrap}
+/* slides 15 and 18: one line at a time, centred in the band, clear of the animation's own labels and of the caption */
+.ptrow .band2>.stack{align-items:center}
+.ptrow .band2{gap:10px}
+/* slides 15 and 18: the check in two columns: the question across the top, the options on the left with room between them,
+   the answer or the mouse feedback in a box on the right (the box shows only when it holds a line) */
+.ptrow .checkrow.stk.two{display:grid;grid-template-columns:minmax(0,58fr) minmax(0,42fr);grid-template-rows:auto minmax(0,1fr);gap:10px 28px;padding:0 8px;
+  justify-items:stretch;align-items:stretch;align-self:stretch;height:100%}
+.ptrow .checkrow.stk.two .q{grid-column:1/-1;font-size:38px;line-height:1.15;text-align:left}
+.ptrow .checkrow.stk.two .opts.col1{display:grid;align-content:start;gap:12px;justify-self:stretch}
+.ptrow .checkrow.stk.two .opt{font-size:36px;line-height:1.15;min-height:50px;padding-top:2px;padding-bottom:2px}
+.ptrow .checkrow.stk.two .opt>b{width:40px;height:40px;font-size:34px}
+.ptrow .checkrow.stk.two .opt::after{top:-12px;right:-14px;width:32px;height:32px;font-size:24px}
+.ptrow .checkrow.stk.two .af{margin:0;align-self:stretch;align-items:center;justify-items:start;padding:8px 22px;border:3px solid transparent;border-radius:18px}
+.ptrow .checkrow.stk.two .af:has(.ans.on),.ptrow .checkrow.stk.two .af:has(.fb.on){border-color:var(--line);background:var(--card)}
+.ptrow .checkrow.stk.two .ans,.ptrow .checkrow.stk.two .fb{font-size:36px;line-height:1.2;text-align:left}
+/* slide 20 (step 04b): every row on two lines at most, so the table and the closing card both fit (34 px, the floor) */
+.tbl.kinds td{font-size:34px}
+.tbl.kinds td:first-child{width:23%}.tbl.kinds td:nth-child(2){width:35%}.tbl.kinds td:nth-child(3),.tbl.kinds td:nth-child(4){width:21%}
