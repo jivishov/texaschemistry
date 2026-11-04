@@ -1,0 +1,26 @@
+== 4.5: unit4/slides-4-5.html
+   out <scratchpad>/final/4-5, theme both, matrix off
+  PASS  walk light          269.4 s  walk light: 210 states, max empty 33% (s18f1), PASS
+  PASS  walk dark           269.3 s  walk dark: 210 states, max empty 33% (s18f1), PASS
+  PASS  back light          104.8 s  back: 210 forward, 210 back, PASS
+  PASS  back dark           104.6 s  back: 210 forward, 210 back, PASS
+  PASS  fonts light          58.7 s  fonts: PASS
+  PASS  keys                 40.9 s  keys: PASS 48 checks
+  FAIL  readability           4.9 s  readability: FAIL
+  PASS  print                 2.9 s  print: PASS stage hidden=true, 27 slides, 210 frame lines, 12 PDF page(s)
+  PASS  render3d              2.9 s  render3d: PASS
+  PASS  extras                6.1 s  extras: PASS
+  FAIL  chem                  3.2 s  chem45 (deck): FAIL (2) 156 checks
+  PASS  timing                1.5 s  timing: period 1 45.5 min, period 2 47 min, PASS
+  PASS  supgap                5.2 s  supgap: 56 symbol+charge pairs checked, PASS
+  PASS  zoom light          443.4 s  zoom light: 1224 zoomed states over 210 frames (re-flow 562, transform 662), prompt 35, r800 1, animation 147, part 515, card 219, caprow 28, caption 49, frames 1, check 26, wcard 16, legend 1, rule 22, hdr 13, row 41, p 5, dissolving table 6, sizes 1, rail 29, li 60, handsup 3, scale 6; min fill 65%; Back tests 27; PASS
+  PASS  zoom dark           458.1 s  zoom dark: 1224 zoomed states over 210 frames (re-flow 562, transform 662), prompt 35, r800 1, animation 147, part 515, card 219, caprow 28, caption 49, frames 1, check 26, wcard 16, legend 1, rule 22, hdr 13, row 41, p 5, dissolving table 6, sizes 1, rail 29, li 60, handsup 3, scale 6; min fill 65%; Back tests 27; PASS
+  PASS  click                37.7 s  click: 10 graded checks, 3 Predict-now questions, 51 assertions, PASS
+  PASS  layout               29.0 s  layout: 210 frames, 26 visible option lists (stacked 23, row 3), max empty 33% (s18f1), gate 33%, clipped or ellipsized text: 0, PASS
+  FAIL  xcheck                2.0 s  xcheck: 27 of 43 pass, 16 FAIL
+  PASS  contact light         8.2 s  contact sheets light: contact-light-1.png (98 shots, 3710 px tall), contact-light-2.png (97 shots, 3710 px tall), contact-light-3.png (15 shots, 1000 px tall)
+  PASS  contact dark          7.9 s  contact sheets dark: contact-dark-1.png (98 shots, 3710 px tall), contact-dark-2.png (97 shots, 3710 px tall), contact-dark-3.png (15 shots, 1000 px tall)
+  PASS  zoomsheet light       5.3 s  zoom sheet light: zoomsheet-light-1.png (102 shots, 3710 px tall), zoomsheet-light-2.png (3 shots, 1000 px tall)
+  PASS  zoomsheet dark        5.0 s  zoom sheet dark: zoomsheet-dark-1.png (102 shots, 3710 px tall), zoomsheet-dark-2.png (3 shots, 1000 px tall)
+== 4.5: 19 of 22 pass, 3 fail, 1870.8 s
+exit=1

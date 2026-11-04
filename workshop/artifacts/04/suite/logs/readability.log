@@ -1,0 +1,53 @@
+  register (rule/prompt/sample) slide 6 s06-rule: grade 7.8: "Bonds hold atoms or ions together in a substance. Much weaker attractions act between molecules."
+  register (rule/prompt/sample) slide 7 s07-rule: grade 7.4: "Dispersion forces act between all molecules. More electrons make stronger dispersion forces. Stronger forces mean a higher boiling point."
+  register (rule/prompt/sample) slide 8 s08-rule: grade 7.6: "Polar molecules pull each other. These pulls are dipole-dipole forces. They keep dispersion forces too."
+  register (rule/prompt/sample) slide 9 s09-rule: grade 4.3 (outside 5 to 8): "Hydrogen bonding needs an H atom bonded to N, O or F. The next molecule needs a lone pair on N, O or F."
+  register (rule/prompt/sample) slide 11 s11-rule: grade 7.4: "Melting and boiling separate molecules. They do not break the covalent bonds inside them."
+  register (rule/prompt/sample) slide 12 s12-rule: grade 3 (outside 5 to 8): "Hydrogen bonds hold ice in open rings. So ice is less dense than liquid water, and it floats."
+  register (rule/prompt/sample) slide 15 s15-rule: grade 5.9: "A substance conducts when it has charged particles that can move. Ions in a liquid or a solution. Delocalized electrons in a metal."
+  register (rule/prompt/sample) slide 17 s17-rule: grade 4 (outside 5 to 8): "Some ionic and some molecular substances dissolve in water. Some do not. The type of bond alone does not predict it."
+  register (rule/prompt/sample) slide 18 s18-rule: grade 5.8: "A metal bends because its electrons move with the shifting cations. An ionic crystal splits because shifted layers put like charges side by side."
+  register (rule/prompt/sample) slide 19 s19-rule: grade 5.8: "In a covalent network solid, covalent bonds join every atom to its neighbors. To melt it, covalent bonds must break. So it melts only when very hot."
+  register (rule/prompt/sample) slide 22 card prompt reg: grade 4.7 (outside 5 to 8): "Methane and water both have 10 electrons. Methane boils at −161.5 °C and water at 100.0 °C. Explain the difference."
+  register (rule/prompt/sample) slide 22 s22-sample: grade 5 (outside 5 to 8): "Water forms hydrogen bonds: H on O, lone pairs. Methane has only dispersion forces, so it boils lower."
+  register (rule/prompt/sample) slide 23 card prompt reg: grade 2.1 (outside 5 to 8): "Solid salt leaves the bulb dark. Salt water lights it. Explain both with the particles."
+  register (rule/prompt/sample) slide 23 s23-sample: grade 3.1 (outside 5 to 8): "Solid salt has Na + and Cl − ions, locked in the crystal. In salt water, ions move and carry the current."
+  register (rule/prompt/sample) slide 24 card prompt reg: grade 2.4 (outside 5 to 8): "A hammer bends a copper sheet but splits a salt crystal. Explain both."
+  register (rule/prompt/sample) slide 24 s24-sample: grade 4.3 (outside 5 to 8): "Copper's electrons move with the sliding cations, so it bends. In salt, shifted layers put like charges side by side; they repel."
+  register (rule/prompt/sample) slide 25 s25-sample: grade 6.8: "The forces that come apart decide the melting point. Snow melts at 0 °C because only attractions between molecules let go. Salt needs 801 °C because ionic bonds must come apart. Sand needs near 1700 °C because covalent bonds must break. Attractions between molecules are much weaker than bonds within, so molecular solids melt low."
+  slide 1 Bonds, forces and properties: FK 2.2 (3.8 words/unit, 11 units, 42 words); prose only: FK 11.1, 18 words/sentence, 1 sentences; max 18 prose words visible (frame 0)
+  slide 2 Shake the bag: FK 3.3 (6.2 words/unit, 9 units, 56 words); prose only: FK 4.5, 7.8 words/sentence, 6 sentences; max 21 prose words visible (frame 4)
+  slide 3 Snow day: FK 3.3 (7.8 words/unit, 9 units, 70 words); prose only: FK 3.7, 8.5 words/sentence, 8 sentences; max 18 prose words visible (frame 7)
+  slide 4 Predict now: FK 3.1 (4.2 words/unit, 18 units, 76 words); prose only: FK 1.8, 7.3 words/sentence, 3 sentences; max 33 prose words visible (frame 0)
+  slide 5 Targets and words: FK 7 (4.1 words/unit, 32 units, 131 words); prose only: FK 6.4, 7 words/sentence, 5 sentences; max 35 prose words visible (frame 0)
+  slide 6 Bonds within, attractions between: FK 6.2 (5 words/unit, 28 units, 139 words); prose only: FK 6.6, 7.3 words/sentence, 15 sentences; max 38 prose words visible (frame 8)
+  slide 7 Dispersion forces: FK 4.2 (4.3 words/unit, 27 units, 115 words); prose only: FK 4.3, 5.9 words/sentence, 17 sentences; max 40 prose words visible (frame 13)
+  slide 8 Dipole-dipole forces: FK 5.9 (4.1 words/unit, 24 units, 99 words); prose only: FK 6.5, 7.1 words/sentence, 10 sentences; max 28 prose words visible (frame 8)
+  slide 9 Hydrogen bonding: FK 2.7 (4.8 words/unit, 26 units, 125 words); prose only: FK 3.1, 8.5 words/sentence, 11 sentences; max 29 prose words visible (frame 10)
+  slide 10 Name the attraction: I do, we do, you do: FK 1.8 (3 words/unit, 49 units, 145 words); prose only: FK 0.6, 5.4 words/sentence, 16 sentences; max 16 prose words visible (frame 0)
+  slide 11 Molecules stay whole: FK 4.3 (4.4 words/unit, 28 units, 124 words); prose only: FK 4, 6.1 words/sentence, 17 sentences; max 39 prose words visible (frame 10)
+  slide 12 Why ice floats: FK 1.1 (4.6 words/unit, 28 units, 130 words); prose only: FK 2.3, 7.4 words/sentence, 14 sentences; max 29 prose words visible (frame 9)
+  slide 13 One picture: the ladder of attractions: FK 4.7 (3.7 words/unit, 21 units, 77 words); prose only: FK 7.2, 8.5 words/sentence, 2 sentences; max 10 prose words visible (frame 3)
+  slide 14 Warm-up: FK 4 (4.2 words/unit, 11 units, 46 words); prose only: FK 5.1, 5.6 words/sentence, 5 sentences; max 8 prose words visible (frame 0)
+  slide 15 Does it conduct?: FK 3.3 (4.9 words/unit, 30 units, 147 words); prose only: FK 3.9, 6.2 words/sentence, 21 sentences; max 41 prose words visible (frame 13)
+  slide 16 Predict the bulb: I do, we do, you do: FK 1.8 (5 words/unit, 16 units, 80 words); prose only: FK 3, 6.8 words/sentence, 5 sentences; max 34 prose words visible (frame 14)
+  slide 17 Does it dissolve?: FK 5.2 (2.9 words/unit, 47 units, 137 words); prose only: FK 5.8, 7.1 words/sentence, 10 sentences; max 36 prose words visible (frame 10)
+  slide 18 Malleable or brittle: FK 2.9 (6.1 words/unit, 24 units, 147 words); prose only: FK 3.7, 8.4 words/sentence, 15 sentences; max 42 prose words visible (frame 8)
+  slide 19 Covalent network solids: FK 4.2 (4.3 words/unit, 31 units, 133 words); prose only: FK 5.6, 6.9 words/sentence, 15 sentences; max 35 prose words visible (frame 6)
+  slide 20 Four kinds of solids: FK 4.7 (3.4 words/unit, 24 units, 82 words); prose only: FK 2, 5.3 words/sentence, 3 sentences; max 16 prose words visible (frame 4)
+  slide 21 Checkpoint routine: FK 1.9 (3.8 words/unit, 12 units, 45 words); prose only: FK 0.6, 7 words/sentence, 1 sentences; max 30 prose words visible (frame 0)
+  slide 22 Checkpoint 1: FK 3 (3.5 words/unit, 32 units, 111 words); prose only: FK 3.5, 6.4 words/sentence, 10 sentences; max 35 prose words visible (frame 5)
+  slide 23 Checkpoint 2: FK 1.6 (3.6 words/unit, 31 units, 111 words); prose only: FK 2.6, 5.8 words/sentence, 12 sentences; max 35 prose words visible (frame 5)
+  slide 24 Checkpoint 3: FK 1.6 (3.5 words/unit, 30 units, 104 words); prose only: FK 2.5, 7.4 words/sentence, 8 sentences; max 35 prose words visible (frame 5)
+  slide 25 Predictions and exit ticket: FK 4.7 (5 words/unit, 46 units, 229 words); prose only: FK 5, 8 words/sentence, 22 sentences; max 70 prose words visible (frame 7)
+  slide 26 Rate your learning: FK 3.7 (4.3 words/unit, 15 units, 65 words); prose only: FK 6.4, 7 words/sentence, 5 sentences; max 35 prose words visible (frame 0)
+  slide 27 Next: FK 3.2 (3.8 words/unit, 9 units, 34 words); prose only: FK 4.5, 8 words/sentence, 2 sentences; max 33 prose words visible (frame 0)
+readability: FAIL
+  - slide 1: prose FK grade 11.1 > 8
+  - slide 6: 38 words of prose visible at frame 8 (budget 35)
+  - slide 7: 40 words of prose visible at frame 13 (budget 35)
+  - slide 11: 39 words of prose visible at frame 10 (budget 35)
+  - slide 15: 41 words of prose visible at frame 13 (budget 35)
+  - slide 17: 36 words of prose visible at frame 10 (budget 35)
+  - slide 18: 42 words of prose visible at frame 8 (budget 35)
+  - slide 25: 70 words of prose visible at frame 7 (budget 35)

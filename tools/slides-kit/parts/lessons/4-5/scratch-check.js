@@ -91,10 +91,17 @@ const L=require('../../../audits/lib');
   /* ======== period 2 (step 03) ======== */
   /* 7. heating */
   R=await run('x-he');
-  R.forEach(x=>ok(`heating ${x.stage}: ${x.meta.bondsIntact} of ${x.meta.bondsTotal} covalent bonds intact, 9 molecules`,x.meta.molecules===9&&x.meta.bondsIntact===x.meta.bondsTotal&&x.meta.bondsTotal===(x.meta.substance==='CH4'?36:18),x.meta));
+  R.forEach(x=>ok(`heating ${x.stage}: ${x.meta.bondsIntact} of ${x.meta.bondsTotal} covalent bonds intact, 6 molecules`,x.meta.molecules===6&&x.meta.bondsIntact===x.meta.bondsTotal&&x.meta.bondsTotal===(x.meta.substance==='CH4'?24:12),x.meta));
   const HT={'CH4/solid':'−182.5 °C (melting point)','CH4/melt':'−182.5 °C, melting','CH4/liquid':'liquid','CH4/boil':'−161.5 °C, boiling','CH4/gas':'−161.5 °C (boiling point)','H2O/solid':'0.0 °C (melting point)','H2O/boil':'100.0 °C, boiling','H2O/gas':'100.0 °C (boiling point)'};
   Object.entries(HT).forEach(([s,v])=>{m=at(R,s);ok(`heating ${s}: temperature "${v}"`,m.temperature===v,m.temperature)});
-  ok('heating: attractions fall as they let go (12, 7, 6, 2, 0 for CH4; 12, 2, 0 for H2O)',['CH4/solid','CH4/melt','CH4/liquid','CH4/boil','CH4/gas'].map(s=>at(R,s).attractionsDrawn).join()==='12,7,6,2,0'&&['H2O/solid','H2O/boil','H2O/gas'].map(s=>at(R,s).attractionsDrawn).join()==='12,2,0');
+  ok('heating: attractions fall as they let go (7, 4, 3, 1, 0 for CH4; 7, 1, 0 for H2O), 0 in the gas',['CH4/solid','CH4/melt','CH4/liquid','CH4/boil','CH4/gas'].map(s=>at(R,s).attractionsDrawn).join()==='7,4,3,1,0'&&['H2O/solid','H2O/boil','H2O/gas'].map(s=>at(R,s).attractionsDrawn).join()==='7,1,0');
+  /* D1 (step 04): the spread, measured; the brief's targets are a solid block at most 40% of the container and an area per molecule
+     2.5 times or more from solid to gas. Each check prints the measured value; report 04 discusses the CH4 numbers. */
+  for(const sub of ['CH4','H2O']){const S=at(R,sub+'/gas').spread;
+    ok(`heating ${sub}: gas spreads over the container (the six reach ${Math.round(S.gasBoxShare*100)}% of its area)`,S.gasBoxShare>=.8,S);
+    ok(`heating ${sub}: solid block ${Math.round(S.solidBlockShare*100)}% of the container (target 40% or less)`,S.solidBlockShare<=.4,S);
+    ok(`heating ${sub}: area per molecule grows ${S.areaRatio} times (lattice cell ${S.areaPerMolecule.solid} px² to container/6 ${S.areaPerMolecule.gas} px²; target 2.5)`,S.areaRatio>=2.5,S);
+    ok(`heating ${sub}: nearest neighbours ${S.nearest.solid} px apart in the solid, ${S.nearest.gas} px in the gas (spacing² ratio ${S.spacingRatio})`,S.nearest.gas>S.nearest.solid,S)}
   m=at(R,'energy');ok('heating energy: bars 40.7 kJ and 928 kJ, caption "more than 20 times as much"',eq(m.energies,{boil:40.7,bonds:928})&&m.energyBars&&m.caption==='more than 20 times as much'&&928/40.7>20,m);
   /* 8. iceLattice */
   R=await run('x-il');

@@ -1,0 +1,294 @@
+{
+  "rows": [
+    {
+      "id": "s01",
+      "title": "Bonds, forces and properties",
+      "period": "1",
+      "mins": 0.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s02",
+      "title": "Shake the bag",
+      "period": "1",
+      "mins": 3,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s03",
+      "title": "Snow day",
+      "period": "1",
+      "mins": 3.5,
+      "timers": [
+        {
+          "timer": 60,
+          "t": 1
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s04",
+      "title": "Predict now",
+      "period": "1",
+      "mins": 2,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s05",
+      "title": "Targets and words",
+      "period": "1",
+      "mins": 2.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s06",
+      "title": "Bonds within, attractions between",
+      "period": "1",
+      "mins": 4.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s07",
+      "title": "Dispersion forces",
+      "period": "1",
+      "mins": 5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s08",
+      "title": "Dipole-dipole forces",
+      "period": "1",
+      "mins": 4.25,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s09",
+      "title": "Hydrogen bonding",
+      "period": "1",
+      "mins": 4.25,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s10",
+      "title": "Name the attraction: I do, we do, you do",
+      "period": "1",
+      "mins": 4.5,
+      "timers": [
+        {
+          "timer": 90,
+          "t": 1.5
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s11",
+      "title": "Molecules stay whole",
+      "period": "1",
+      "mins": 4.25,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s12",
+      "title": "Why ice floats",
+      "period": "1",
+      "mins": 4,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s13",
+      "title": "One picture: the ladder of attractions",
+      "period": "1",
+      "mins": 3.25,
+      "timers": [
+        {
+          "timer": 90,
+          "t": 1.5
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s14",
+      "title": "Warm-up",
+      "period": "2",
+      "mins": 2.5,
+      "timers": [
+        {
+          "timer": 90,
+          "t": 1.5
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s15",
+      "title": "Does it conduct?",
+      "period": "2",
+      "mins": 5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s16",
+      "title": "Predict the bulb: I do, we do, you do",
+      "period": "2",
+      "mins": 5,
+      "timers": [
+        {
+          "timer": 90,
+          "t": 1.5
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s17",
+      "title": "Does it dissolve?",
+      "period": "2",
+      "mins": 4,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s18",
+      "title": "Malleable or brittle",
+      "period": "2",
+      "mins": 4.25,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s19",
+      "title": "Covalent network solids",
+      "period": "2",
+      "mins": 3.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s20",
+      "title": "Four kinds of solids",
+      "period": "2",
+      "mins": 2.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s21",
+      "title": "Checkpoint routine",
+      "period": "2",
+      "mins": 1,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s22",
+      "title": "Checkpoint 1",
+      "period": "2",
+      "mins": 3.75,
+      "timers": [
+        {
+          "timer": 30,
+          "t": 0.5
+        },
+        {
+          "timer": 60,
+          "t": 1
+        },
+        {
+          "timer": 90,
+          "t": 1.5
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s23",
+      "title": "Checkpoint 2",
+      "period": "2",
+      "mins": 3.75,
+      "timers": [
+        {
+          "timer": 30,
+          "t": 0.5
+        },
+        {
+          "timer": 60,
+          "t": 1
+        },
+        {
+          "timer": 90,
+          "t": 1.5
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s24",
+      "title": "Checkpoint 3",
+      "period": "2",
+      "mins": 3.75,
+      "timers": [
+        {
+          "timer": 30,
+          "t": 0.5
+        },
+        {
+          "timer": 60,
+          "t": 1
+        },
+        {
+          "timer": 90,
+          "t": 1.5
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s25",
+      "title": "Predictions and exit ticket",
+      "period": "2",
+      "mins": 6,
+      "timers": [
+        {
+          "timer": 180,
+          "t": 3
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s26",
+      "title": "Rate your learning",
+      "period": "2",
+      "mins": 1.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s27",
+      "title": "Next",
+      "period": "2",
+      "mins": 0.5,
+      "timers": [],
+      "noT": 0
+    }
+  ],
+  "per": {
+    "1": 45.5,
+    "2": 47
+  },
+  "fails": []
+}

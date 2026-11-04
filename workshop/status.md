@@ -1,3 +1,3 @@
-turn: implementer
+turn: orchestrator
 step: 04
-waiting_for: workshop/reports/04-deck.md
+waiting_for: workshop/reviews/04-deck.md

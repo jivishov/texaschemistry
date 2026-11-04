@@ -1,0 +1,157 @@
+  PASS  slide 2 brickBag: stages models, shake, pour, words
+  PASS  slide 2 brickBag f0 models: 3 models, 11 bricks, all snapped
+  PASS  slide 2 brickBag f1 models: 3 models, 11 bricks, all snapped
+  PASS  slide 2 brickBag f2 shake: 3 models, 11 bricks, all snapped
+  PASS  slide 2 brickBag f3 pour: 3 models, 11 bricks, all snapped
+  PASS  slide 2 brickBag f4 words: 3 models, 11 bricks, all snapped
+  PASS  slide 2 brickBag words: the two labels
+  PASS  slide 2 brickBag pour: on the table, out of the bag
+  PASS  slide 3 meltScale: stages snow, salt, sand, melt, numbers
+  PASS  slide 3 meltScale: the solids appear one per press
+  PASS  slide 3 meltScale f0 snow (tall layout): smallest atom or ion sphere 60 px
+  PASS  slide 3 meltScale f1 salt (tall layout): smallest atom or ion sphere 60 px
+  PASS  slide 3 meltScale f2 sand (tall layout): smallest atom or ion sphere 60 px
+  PASS  slide 3 meltScale f3 sand (tall layout): smallest atom or ion sphere 60 px
+  PASS  slide 3 meltScale f4 sand (tall layout): smallest atom or ion sphere 60 px
+  PASS  slide 3 meltScale f5 melt (tall layout): smallest atom or ion sphere 60 px
+  PASS  slide 3 meltScale f6 numbers (tall layout): smallest atom or ion sphere 60 px
+  PASS  slide 3 meltScale f7 numbers (short layout): smallest atom or ion sphere none drawn
+  PASS  slide 3 meltScale f8 numbers (tiny layout): smallest atom or ion sphere none drawn
+  PASS  slide 3 meltScale: the particle panels show while the lines are on screen (tall layout on frames 0 to 6)
+  PASS  slide 3 meltScale melt: snow 0.0, salt 801, sand near 1700; snow molecules whole; salt and sand stay
+  PASS  slide 3 meltScale numbers: "Melting point" and chips "snow 0.0 °C", "salt 801 °C", "sand near 1700 °C"
+  PASS  slide 6 threeSolids chlorine: Cl₂ molecules, one stick within each, no dashed line yet
+  PASS  slide 6 threeSolids within: "bond within"
+  PASS  slide 6 threeSolids between: dashed lines, "attraction between (much weaker)"
+  PASS  slide 6 threeSolids salt: Na⁺ 102 and Cl⁻ 181 pm at 282 pm, "ionic bonds through the whole crystal, no molecules"
+  PASS  slide 6 threeSolids copper: delocalized electrons, "metallic bonds through the whole metal"
+  PASS  slide 6 threeSolids: every atom or ion sphere 60 px or more on every frame that shows it (smallest 60 px)
+  PASS  slide 6 check frame shows s06-sim at "between" (Cl₂ molecules with the attractions between)
+  PASS  slide 7 attractions: the dispersion family (cloud, flicker, neighbor, attract)
+  PASS  slide 7 attractions flicker: nonpolar, δ signs for an instant only
+  PASS  slide 7 attractions neighbor: nonpolar, δ signs for an instant only
+  PASS  slide 7 attractions attract: nonpolar, δ signs for an instant only
+  PASS  slide 7 attractions cloud: no δ signs yet
+  PASS  slide 7 attractions attract: the dashed line, "dispersion forces"
+  PASS  slide 7 bpPlot axes: points none, each with its electrons, boiling point and strongest attraction
+  PASS  slide 7 bpPlot F2: points F₂, each with its electrons, boiling point and strongest attraction
+  PASS  slide 7 bpPlot Cl2: points F₂, Cl₂, each with its electrons, boiling point and strongest attraction
+  PASS  slide 7 bpPlot Br2: points F₂, Cl₂, Br₂, each with its electrons, boiling point and strongest attraction
+  PASS  slide 7 bpPlot I2: points F₂, Cl₂, Br₂, I₂, each with its electrons, boiling point and strongest attraction
+  PASS  slide 7 bpPlot trend: points F₂, Cl₂, Br₂, I₂, each with its electrons, boiling point and strongest attraction
+  PASS  slide 7 bpPlot: axes 0 to 110 electrons, −200 to 200 °C; the trend line at trend
+  PASS  slide 7 check frame shows s07-plot at "trend" (Cl₂ and Br₂ on the halogen trend)
+  PASS  slide 8 attractions: the dipole family (F2, HCl, turn, face, compare)
+  PASS  slide 8 attractions F2: no δ signs, dashed gray only
+  PASS  slide 8 attractions HCl: δ+ on H, δ− on Cl
+  PASS  slide 8 attractions turn: head to tail
+  PASS  slide 8 attractions face: δ+ to δ− line, "dipole-dipole forces"
+  PASS  slide 8 attractions compare: 18 and 18 electrons; F₂ −188.1, HCl −85.1 °C
+  PASS  slide 8 attractions: every atom or ion sphere 60 px or more on every frame that shows it (smallest 60 px)
+  PASS  slide 8 check frame shows s08-sim at "compare" (HCl with its δ signs)
+  PASS  slide 9 bpPlot trio: points CH₄, NH₃, H₂O, each with its electrons, boiling point and strongest attraction
+  PASS  slide 9 bpPlot reveal: points CH₄, NH₃, H₂O, each with its electrons, boiling point and strongest attraction
+  PASS  slide 9 bpPlot trio: no labels yet; reveal: labelled
+  PASS  slide 9 attractions: the hydrogen family (hbond, ammonia, methane, four)
+  PASS  slide 9 attractions hbond: H on O to a lone pair on O, longer than the O–H bond, the label
+  PASS  slide 9 attractions ammonia: H on N to a lone pair on N
+  PASS  slide 9 attractions methane: none, "H on C: no hydrogen bond"
+  PASS  slide 9 attractions four: four hydrogen bonds, four neighbors
+  PASS  slide 9 attractions: every atom or ion sphere 60 px or more on every frame that shows it (smallest 60 px)
+  PASS  slide 9 check frame shows s09-sim at "four" (water with its four hydrogen bonds)
+  PASS  slide 10 forceDecider empty: nothing filled, no drawing
+  PASS  slide 10 forceDecider NH3/strongest: NH3, yes · yes · yes · hydrogen bonding
+  PASS  slide 10 forceDecider CO2/strongest: CO2, no · no · not needed · dispersion forces
+  PASS  slide 10 forceDecider HBr/polar: HBr, yes
+  PASS  slide 10 forceDecider HBr/H: HBr, yes · no · not needed
+  PASS  slide 10 forceDecider HBr/strongest: HBr, yes · no · not needed · dipole-dipole forces
+  PASS  slide 10 forceDecider: every stage from empty to HBr/strongest in order
+  PASS  slide 10 you do: "Electronegativity (pull on electrons)", Br 2.96, H 2.20, difference 0.76 (Pauling, shared data)
+  PASS  slide 10 you do answers: polar; H on Br, not N, O or F; dipole-dipole forces
+  PASS  slide 11 heating: stages CH4/solid, melt, liquid, boil, gas, H2O/boil, energy, H2O/gas
+  PASS  slide 11 heating f0 CH4/solid: 24 of 24 covalent bonds intact, 6 molecules
+  PASS  slide 11 heating f1 CH4/solid: 24 of 24 covalent bonds intact, 6 molecules
+  PASS  slide 11 heating f2 CH4/melt: 24 of 24 covalent bonds intact, 6 molecules
+  PASS  slide 11 heating f3 CH4/liquid: 24 of 24 covalent bonds intact, 6 molecules
+  PASS  slide 11 heating f4 CH4/boil: 24 of 24 covalent bonds intact, 6 molecules
+  PASS  slide 11 heating f5 CH4/gas: 24 of 24 covalent bonds intact, 6 molecules
+  PASS  slide 11 heating f6 H2O/boil: 12 of 12 covalent bonds intact, 6 molecules
+  PASS  slide 11 heating f7 energy: 12 of 12 covalent bonds intact, 6 molecules
+  PASS  slide 11 heating f8 energy: 12 of 12 covalent bonds intact, 6 molecules
+  PASS  slide 11 heating f9 H2O/gas: 12 of 12 covalent bonds intact, 6 molecules
+  PASS  slide 11 heating f10 H2O/gas: 12 of 12 covalent bonds intact, 6 molecules
+  PASS  slide 11 heating CH4/solid: "−182.5 °C (melting point)"
+  PASS  slide 11 heating CH4/melt: "−182.5 °C, melting"
+  PASS  slide 11 heating CH4/liquid: "liquid"
+  PASS  slide 11 heating CH4/boil: "−161.5 °C, boiling"
+  PASS  slide 11 heating CH4/gas: "−161.5 °C (boiling point)"
+  PASS  slide 11 heating H2O/boil: "100.0 °C, boiling"
+  PASS  slide 11 heating H2O/gas: "100.0 °C (boiling point)"
+  PASS  slide 11 heating: attractions drawn 7, 4, 3, 1, 0 for CH₄; 1 and 0 for water boiling and gas
+  PASS  slide 11 heating energy: 40.7 kJ and about 928 kJ, "more than 20 times as much"
+  PASS  slide 11 heating CH4: the gas spreads over the container (90% of it)
+  FAIL  slide 11 heating CH4 (brief D1): solid block 58% of the container (target 40% or less)  {"container":[733,519],"solidBlockShare":0.58,"gasBoxShare":0.9,"areaPerMolecule":{"solid":34944,"gas":63405},"areaRatio":1.81,"nearest":{"solid":168,"gas":235},"spacingRatio":1.96}
+  FAIL  slide 11 heating CH4 (brief D1): area per molecule grows 1.81 times (target 2.5 or more)  {"container":[733,519],"solidBlockShare":0.58,"gasBoxShare":0.9,"areaPerMolecule":{"solid":34944,"gas":63405},"areaRatio":1.81,"nearest":{"solid":168,"gas":235},"spacingRatio":1.96}
+  PASS  slide 11 heating H2O: the gas spreads over the container (83% of it)
+  PASS  slide 11 heating H2O (brief D1): solid block 32% of the container (target 40% or less)
+  PASS  slide 11 heating H2O (brief D1): area per molecule grows 3.48 times (target 2.5 or more)
+  PASS  slide 11 heating: every atom or ion sphere 60 px or more on every frame that shows it (smallest 60 px)
+  PASS  slide 11 check frame shows s11-sim at "H2O/gas" (steam: water molecules far apart, bonds intact)
+  PASS  slide 12 iceLattice: 13 molecules, 26 O–H bonds, 16 hydrogen bonds
+  PASS  slide 12 iceLattice: hydrogen bonds drawn from hbonds on
+  PASS  slide 12 iceLattice neighbors: 4 at 276 pm, "four neighbors, 276 pm away"
+  PASS  slide 12 iceLattice rings: down the axis, "open six-sided rings"
+  PASS  slide 12 iceLattice float: 0.9167 and 0.99984 g/cm³, 100.0 → 109.1 cm³, 8.3% above
+  PASS  slide 12 iceLattice: every atom or ion sphere 60 px or more on every frame that shows it (smallest 60 px)
+  PASS  slide 12 check frame shows s12-sim at "float" (the ice block and the two volume bars)
+  PASS  slide 15 conductTester: tester, then solid and molten NaCl (predict, close, zoom), salt water, copper, sugar water, distilled water
+  PASS  slide 15 conductTester tester: no sample, bulb dark
+  PASS  slide 15 conductTester NaCl-s: "solid NaCl", Na⁺ and Cl⁻, free to move no, stays dark once the switch closes
+  PASS  slide 15 conductTester NaCl-l: "molten NaCl, 801 °C", Na⁺ and Cl⁻, free to move yes, lights once the switch closes
+  PASS  slide 15 conductTester NaCl-aq: "salt water", Na⁺ and Cl⁻, free to move yes, lights once the switch closes
+  PASS  slide 15 conductTester Cu: "copper", delocalized electrons, free to move yes, lights once the switch closes
+  PASS  slide 15 conductTester sugar: "sugar water", none, free to move null, stays dark once the switch closes
+  PASS  slide 15 conductTester water: "distilled water", very few ions, free to move null, stays dark once the switch closes
+  PASS  slide 15 conductTester: every atom or ion sphere 60 px or more on every frame that shows it (smallest 60 px)
+  PASS  slide 15 check frame shows s15-sim at "NaCl-l/zoom" (molten NaCl with its moving ions)
+  PASS  slide 16 conductTester KCl-l: "molten KCl", K⁺ and Cl⁻, free to move yes, lights once the switch closes
+  PASS  slide 16 conductTester CaCl2-s: "solid CaCl₂", Ca²⁺ and Cl⁻, free to move no, stays dark once the switch closes
+  PASS  slide 16 conductTester: every atom or ion sphere 60 px or more on every frame that shows it (smallest 83 px)
+  PASS  slide 16 conductTester: KCl-l predict, close; CaCl₂ predict, close; the you-do answer frame back at KCl-l/zoom
+  PASS  slide 17 dissolve NaCl: ionic, dissolves yes
+  PASS  slide 17 dissolve sucrose: molecular, dissolves yes
+  PASS  slide 17 dissolve CaCO3: ionic, dissolves barely
+  PASS  slide 17 dissolve I2: molecular, dissolves slightly
+  PASS  slide 17 dissolve SiO2: covalent network, dissolves no
+  PASS  slide 17 dissolve Cu: metallic, dissolves no
+  PASS  slide 17 dissolve NaCl: "ions spread out: an electrolyte"; sucrose: "whole molecules spread out"
+  PASS  slide 17 dissolve: every atom or ion sphere 60 px or more on every frame that shows it (smallest 61 px)
+  PASS  slide 17 check frame shows s17-sim at "dis/CaCO3" (calcium carbonate, ionic, barely dissolves)
+  PASS  slide 18 hammerBlow before: no shift, no like-charge pairs
+  PASS  slide 18 hammerBlow blow: the hammer strikes
+  PASS  slide 18 hammerBlow shift: one spacing; like charges side by side in NaCl
+  PASS  slide 18 hammerBlow result: copper one piece "malleable"; NaCl split "brittle"
+  PASS  slide 18 hammerBlow: Na⁺ 102, Cl⁻ 181, Cu 128 pm; 282 pm
+  PASS  slide 18 hammerBlow: every atom or ion sphere 60 px or more on every frame that shows it (smallest 61 px)
+  PASS  slide 18 check frame shows s18-sim at "result" (the split salt block beside the bent copper)
+  PASS  slide 19 co2: six CO₂ molecules, dispersion lines, −78.5 °C
+  PASS  slide 19 sublime: whole molecules fly off, no lines, "sublimes at −78.5 °C: no liquid"
+  PASS  slide 19 quartz: one network, no molecules, every Si bonded to four O
+  PASS  slide 19 heat: above 1000 °C, "to melt it, covalent bonds must break: near 1700 °C"
+  PASS  slide 19 diamond: a carbon network, "diamond: the hardest natural substance"
+  PASS  slide 19 networkVsMolecules: every atom or ion sphere 60 px or more on every frame that shows it (smallest 61 px)
+  PASS  slide 19 check frame shows s19-sim at "quartz" (the quartz network)
+  PASS  slide 14 warm-up answers: dispersion forces; N, O or F; each H₂O molecule, with its two O–H bonds
+  PASS  slide 16 you-do answers: 2 samples (KCl in water, molten KCl); K⁺ and Cl⁻ ions that can move
+  PASS  slide 20 the four rows of the Review table
+  PASS  slide 26 review lines: slides 6 and 7; 8 to 10; 11 and 12; 15 to 17; 18 and 19
+  PASS  slide 25 the three answers: A H₂O molecules; B does not conduct; B an attraction between molecules, with their reasons
+  PASS  slide 25 repeats the three questions of slide 4
+  PASS  slide 5 the eight terms with their Spanish cognates (reading glossary)
+  PASS  caption "Atom colors show the element, not the charge." on slides 3, 6, 15, 17, 18, 19
+  PASS  ten checks on slides 6, 7, 8, 9, 11, 12, 15, 17, 18, 19 (registry: 10)
+  PASS  every check: three options with a feedback line each, one right option (A), the reason starts with "A."
+  PASS  periods: slides 1 to 13 and 14 to 27 (registry [[1,13],[14,27]])
+  PASS  no ellipsis character in slides or notes
+  PASS  no console errors
+chem45 (deck): FAIL (2) 156 checks

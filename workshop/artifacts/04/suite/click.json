@@ -1,0 +1,262 @@
+{
+  "checks": 10,
+  "picks": 3,
+  "res": [
+    {
+      "n": "s4f0 s04-q1 option A: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[0],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f0 s04-q1 option B: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[1],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f0 s04-q1 option C: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[2],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f1 s04-q2 option A: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[0],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f1 s04-q2 option B: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[1],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f1 s04-q2 option C: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[2],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f2 s04-q3 option A: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[0],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f2 s04-q3 option B: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[1],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f2 s04-q3 option C: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[2],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s6f7 s06-check click A (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"Between molecules there are only weak attractions.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s6f7 s06-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"A covalent bond joins the two atoms inside one molecule, not two molecules.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s6f7 s06-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Chlorine is neutral molecules, not ions. It has no ionic bonds.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s6 s06-check Next: the answer shows, s06-a is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s06-a\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s7f12 s07-check click A (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"More electrons give stronger dispersion forces.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s7f12 s07-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Both atoms in Br2 are the same, so it is nonpolar.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s7f12 s07-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Boiling separates whole Br2 molecules. The Br–Br bond stays.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s7 s07-check Next: the answer shows, s07-a is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s07-a\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s8f7 s08-check click A (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"HCl is polar. The δ+ end of one pulls the δ− end of the next.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s8f7 s08-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"CO2 is linear. Its two polar bonds cancel, so it is nonpolar.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s8f7 s08-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Methane is nonpolar. It has dispersion forces only.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s8 s08-check Next: the answer shows, s08-a is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s08-a\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s9f9 s09-check click A (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"Each H is on O, and O has lone pairs for the next molecule's H.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s9f9 s09-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Methane's H atoms are bonded to carbon, not to N, O or F.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s9f9 s09-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"HCl is polar, but its H is on Cl. It forms no hydrogen bonds.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s9 s09-check Next: the answer shows, s09-a is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s09-a\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s11f9 s11-check click A (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"Only the attractions between molecules let go.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s11f9 s11-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Boiling does not break covalent bonds. Steam is still H2O.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s11f9 s11-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Boiling is a change of state, not a reaction. The molecules stay whole.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s11 s11-check Next: the answer shows, s11-a is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s11-a\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s12f8 s12-check click A (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"Ice is less dense, so the same mass takes more space.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s12f8 s12-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"The mass stays the same, but ice is less dense, so the volume grows.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s12f8 s12-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Most solids shrink when they freeze. Ice expands instead.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s12 s12-check Next: the answer shows, s12-a is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s12-a\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s15f12 s15-check click A (right): green mark and reason, visible at 34 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"Moving ions carry the current.\",\"fbVis\":true,\"px\":34,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s15f12 s15-check click B (wrong): red mark and its feedback, visible at 34 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Solid NaCl is already Na+ and Cl−. In the solid they are locked in place.\",\"fbVis\":true,\"px\":34,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s15f12 s15-check click C (wrong): red mark and its feedback, visible at 34 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"NaCl has no electron sea. Moving ions carry its current.\",\"fbVis\":true,\"px\":34,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s15 s15-check Next: the answer shows, s15-a is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s15-a\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s17f9 s17-check click A (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"The type of bond alone does not predict it.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s17f9 s17-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Calcium carbonate is ionic, yet it barely dissolves.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s17f9 s17-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Sugar is molecular, and it dissolves easily.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s17 s17-check Next: the answer shows, s17-a is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s17-a\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s18f7 s18-check click A (right): green mark and reason, visible at 34 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"Like charges side by side repel, and the layers push apart.\",\"fbVis\":true,\"px\":34,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s18f7 s18-check click B (wrong): red mark and its feedback, visible at 34 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Ionic bonds are strong, so salt is hard. Like charges repel when layers shift.\",\"fbVis\":true,\"px\":34,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s18f7 s18-check click C (wrong): red mark and its feedback, visible at 34 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Salt has no electron sea. Its ions stay charged, and like charges repel.\",\"fbVis\":true,\"px\":34,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s18 s18-check Next: the answer shows, s18-a is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s18-a\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s19f7 s19-check click A (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"Covalent bonds join every atom in quartz. No molecules.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s19f7 s19-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Dry ice is separate CO2 molecules held by dispersion forces.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s19f7 s19-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Solid iodine is separate I2 molecules held by dispersion forces.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s19 s19-check Next: the answer shows, s19-a is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s19-a\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "every graded option has a feedback line and exactly one right option per check",
+      "pass": true,
+      "i": ""
+    },
+    {
+      "n": "no console errors",
+      "pass": true,
+      "i": "[]"
+    }
+  ],
+  "fails": []
+}

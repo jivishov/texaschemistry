@@ -64,7 +64,7 @@ for sid, typ, tpl, stages, extra in SIMS:
         body = f'{host}\n    <div class="col"><div class="card" id="x-{sid}-card" data-zoom="none"><p class="tag">{typ}</p><p class="small">{cap}</p>{note}</div></div>'
     if sid == 'il':
         more = ()
-    style = ' style="grid-template-columns:minmax(0,58fr) minmax(0,42fr)"' if tpl == 't-example cb' else ''
+    style = ''
     out.append(f'''<section class="slide {tpl}" id="x-{sid}" data-title="Scratch: {name}" data-sec="Steps 02 and 03 scratch" data-ref="{typ}">
   <h2>Scratch: {name}</h2>
   <div class="body"{style}>

@@ -497,32 +497,53 @@ D.sim('forceDecider',function(host){
 
 /* ======================= Period 2 (workshop step 03) ======================= */
 
-/* ---------- 7. heating (slide 11): nine molecules warm from solid to gas; the covalent bonds stay intact ----------
+/* ---------- 7. heating (slide 11): six molecules (2 x 3) warm from solid to gas; the covalent bonds stay intact ----------
    stages: CH4/solid, CH4/melt, CH4/liquid, CH4/boil, CH4/gas, H2O/solid, H2O/boil, H2O/gas, energy. Temperatures from the reading:
    CH4 melts at −182.5 °C and boils at −161.5 °C; water melts at 0.0 °C and boils at 100.0 °C. energy: boiling 18 g of water takes
-   40.7 kJ; breaking all its O–H bonds about 928 kJ (OpenStax), two bars to one scale. */
+   40.7 kJ; breaking all its O–H bonds about 928 kJ (OpenStax), two bars to one scale.
+   Step 04 (review 03, F2): six molecules instead of nine. The solid is the tightest 2 x 3 block (4 px between atoms of neighbours) on
+   the container floor; the gas puts the six at the container's limits, each turned its own way. meta() measures the block and the spread. */
 const HT_T={'CH4/solid':'−182.5 °C (melting point)','CH4/melt':'−182.5 °C, melting','CH4/liquid':'liquid','CH4/boil':'−161.5 °C, boiling','CH4/gas':'−161.5 °C (boiling point)',
   'H2O/solid':'0.0 °C (melting point)','H2O/boil':'100.0 °C, boiling','H2O/gas':'100.0 °C (boiling point)',energy:'100.0 °C (boiling point)'};
-/* attractions drawn per stage: neighbour pairs of the 3 x 3 block (index r*3+c); the melt lets the top row go first */
-const HT_PAIRS=(()=>{const P=[];for(let r=0;r<3;r++)for(let c=0;c<3;c++){if(c<2)P.push([r*3+c,r*3+c+1]);if(r<2)P.push([r*3+c,(r+1)*3+c])}return P})();
-const HT_KEEP={solid:HT_PAIRS,melt:HT_PAIRS.filter(([a,b])=>a>2&&b>2),liquid:HT_PAIRS.filter(([a,b])=>a>2&&b>2&&!(a===3&&b===6)),boil:[[3,4],[7,8]],gas:[]};
+/* attractions drawn per stage: neighbour pairs of the 2 x 3 block (index r*3+c, row 0 on top); the melt lets the top row go first */
+const HT_PAIRS=[[0,1],[1,2],[3,4],[4,5],[0,3],[1,4],[2,5]];
+const HT_KEEP={solid:HT_PAIRS,melt:[[0,1],[1,2],[3,4],[4,5]],liquid:[[0,1],[3,4],[1,4]],boil:[[3,4]],gas:[]};
 D.sim('heating',function(host){
   const ST=Object.keys(HT_T),SPREAD={solid:0,melt:.25,liquid:.4,boil:.85,gas:1},params={};
   ST.forEach(s=>{const [sub,ph]=s==='energy'?['H2O','gas']:s.split('/');params[s]={sub,ph:ph||'gas',spread:SPREAD[ph||'gas'],top:ph==='melt'?1:0,en:s==='energy'?1:0}});
   const lay=(w,h)=>({box:{x:8,y:160,w:w-16,h:h-168},rows:[40,92,140]});
-  /* molecule centres and turns for a phase: the solid is a packed 3 x 3 block on the container floor (neighbours turned 45° to
-     interlock); the liquid opens a little; the gas spreads to the container's limits, each molecule turned its own way */
-  const SP={CH4:{solid:[190,128],gas:[248,150],up:119,down:83},H2O:{solid:[172,118],gas:[248,160],up:96,down:77}};
-  const GROT=[0,1.1,2.3,.6,1.8,2.9,1.4,.3,2.0];
-  function places(p,I){const L=lay(I.w,I.h),B=L.box,cx=B.x+B.w/2,Q=SP[p.sub],t=I.live?I.clock:0,s=clamp(p.spread,0,1),out=[];
-    const dx=lerp(Q.solid[0],Q.gas[0],s),dy=lerp(Q.solid[1],Q.gas[1],s),yFloor=B.y+B.h-8-Q.down-2*dy,yMid=B.y+Q.up+(B.h-Q.up-Q.down)/2-dy,y0=lerp(yFloor,yMid,s);
-    for(let i=0;i<9;i++){const r=Math.floor(i/3),c=i%3,base=p.sub==='CH4'?((r+c)%2?deg(45):0):deg(37.75)+((r+c)%2?.25:-.15);
-      let x=cx+(c-1)*dx,y=y0+r*dy,rot=lerp(base,base+GROT[i],s);
+  /* solid: centre spacing [dx, dy] and turn of the tightest 2 x 3 block with 4 px between neighbours' atoms (searched offline);
+     gas: the six centres on a 2 x 3 grid as far apart as the container allows, each molecule clear of the walls by its reach + 12 px
+     (the jiggle) */
+  const SP={CH4:{solid:[168,208],rot:deg(-30),sb:.82},H2O:{solid:[186,98],rot:deg(37.5),sb:.8}};
+  const GROT=[1.1,2.3,.6,1.8,2.9,1.4];
+  const molAt=(sub,x,y,rot)=>sub==='CH4'?methane(x,y,rot,SP.CH4.sb):water(x,y,rot,SP.H2O.sb);
+  const reach=sub=>{const M=molAt(sub,0,0,0);let r=0;M.atoms.forEach(A=>{r=Math.max(r,Math.hypot(A.x,A.y)+A.r)});
+    (M.lobes||[]).forEach((L,k)=>{const [x,y]=lobeTip(M,k);r=Math.max(r,Math.hypot(x,y))});return r};
+  const bbox=Ms=>{let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;Ms.forEach(M=>M.atoms.forEach(A=>{x0=Math.min(x0,A.x-A.r);x1=Math.max(x1,A.x+A.r);y0=Math.min(y0,A.y-A.r);y1=Math.max(y1,A.y+A.r)}));return {x:x0,y:y0,w:x1-x0,h:y1-y0}};
+  /* the two end arrangements in host px: solid centred on the floor, gas at the limits */
+  function ends(sub,I){const L=lay(I.w,I.h),B=L.box,Q=SP[sub],sol=[],gas=[];
+    for(let i=0;i<6;i++){const r=Math.floor(i/3),c=i%3;sol.push([(c-1)*Q.solid[0],r*Q.solid[1],Q.rot])}
+    const bb=bbox(sol.map(([x,y,t])=>molAt(sub,x,y,t))),ox=B.x+B.w/2-(bb.x+bb.w/2),oy=B.y+B.h-8-(bb.y+bb.h);
+    sol.forEach(q=>{q[0]+=ox;q[1]+=oy});
+    const m=reach(sub)+12,gx=(B.w-2*m)/2,gy=B.h-2*m;
+    for(let i=0;i<6;i++){const r=Math.floor(i/3),c=i%3;gas.push([B.x+m+c*gx,B.y+m+r*gy,Q.rot+GROT[i]])}
+    return {sol,gas,B}}
+  function places(p,I){const E=ends(p.sub,I),t=I.live?I.clock:0,s=clamp(p.spread,0,1),out=[];
+    for(let i=0;i<6;i++){const r=Math.floor(i/3),c=i%3,[x0,y0,r0]=E.sol[i],[x1,y1,r1]=E.gas[i];
+      let x=lerp(x0,x1,s),y=lerp(y0,y1,s),rot=lerp(r0,r1,s);
       if(p.top>.01&&r===0){x+=p.top*(c-1)*18;y-=p.top*30;rot+=p.top*(c%2?.45:-.35)}
       const jig=I.live?(3+9*s):0;x+=jig*Math.sin(t*(1.1+i*.17)+i);y+=jig*Math.cos(t*(1.3+i*.11)+i*2);rot+=I.live?(.04+.12*s)*Math.sin(t*.9+i):0;
       out.push([x,y,rot])}return out}
-  const molAt=(sub,x,y,rot)=>sub==='CH4'?methane(x,y,rot,.82):water(x,y,rot,.8);
-  function readouts(g,p,I,stage,draw){const L=lay(I.w,I.h),tot=p.sub==='CH4'?36:18,att=(HT_KEEP[p.ph]||[]).length,u=[];
+  /* the measured spread: the solid block's share of the container, and the area per molecule (solid: its lattice cell dx x dy;
+     gas: the container shared by six), with the nearest-neighbour distances of both ends */
+  function spread(sub,I){const E=ends(sub,I),B=E.B,A=B.w*B.h,Q=SP[sub],sb=bbox(E.sol.map(([x,y,t])=>molAt(sub,x,y,t))),gb=bbox(E.gas.map(([x,y,t])=>molAt(sub,x,y,t)));
+    const nn=P=>{let d=1e9;P.forEach((a,i)=>P.forEach((b,j)=>{if(j>i)d=Math.min(d,Math.hypot(a[0]-b[0],a[1]-b[1]))}));return d};
+    const r2=v=>Math.round(v*100)/100;
+    return {container:[Math.round(B.w),Math.round(B.h)],solidBlockShare:r2(sb.w*sb.h/A),gasBoxShare:r2(gb.w*gb.h/A),
+      areaPerMolecule:{solid:Math.round(Q.solid[0]*Q.solid[1]),gas:Math.round(A/6)},areaRatio:r2(A/6/(Q.solid[0]*Q.solid[1])),
+      nearest:{solid:Math.round(nn(E.sol)),gas:Math.round(nn(E.gas))},spacingRatio:r2(Math.pow(nn(E.gas)/nn(E.sol),2))}}
+  function readouts(g,p,I,stage,draw){const L=lay(I.w,I.h),tot=p.sub==='CH4'?24:12,att=(HT_KEEP[p.ph]||[]).length,u=[];
     const lines3=[['Temperature',HT_T[stage]||''],['Covalent bonds: '+tot+' of '+tot+' intact'],['Attractions drawn: '+(p.en>.5?0:att)]];
     lines3.forEach((ln,i)=>{const y=L.rows[i];let w=0;
       if(ln.length===2){if(draw)g.text(ln[0],20,y,36,{align:'left',color:g.c('muted')});g.font(36,700);const lw=g.ctx.measureText(ln[0]).width;const cw=chip(g,0,0,ln[1],{measure:true,px:36});if(draw)chip(g,40+lw,y,ln[1],{px:36});w=lw+40+cw}
@@ -545,8 +566,8 @@ D.sim('heating',function(host){
       readouts(g,p,I,I.stage,true);fade(g,p.en,()=>energy(g,I,true))},
     units:(p,I)=>{const L=lay(I.w,I.h),g=D.painter(document.createElement('canvas').getContext('2d')),u=readouts(g,p,I,I.stage,false);
       if(p.en>.5)u.push(...energy(g,I,false));else u.push(uRect(L.box.x,L.box.y,L.box.w,L.box.h,'the molecules'));return u},
-    meta:(p,s)=>{const tot=p.sub==='CH4'?36:18;return {substance:p.sub,stage:s,phase:p.ph,molecules:9,bondsTotal:tot,bondsIntact:tot,attractionsDrawn:p.en>.5?0:(HT_KEEP[p.ph]||[]).length,
-      temperature:HT_T[s],energies:{boil:40.7,bonds:928},energyBars:p.en>.5,caption:p.en>.5?'more than 20 times as much':null}}});
+    meta:(p,s,I)=>{const tot=p.sub==='CH4'?24:12;return {substance:p.sub,stage:s,phase:p.ph,molecules:6,bondsTotal:tot,bondsIntact:tot,attractionsDrawn:p.en>.5?0:(HT_KEEP[p.ph]||[]).length,
+      temperature:HT_T[s],energies:{boil:40.7,bonds:928},energyBars:p.en>.5,caption:p.en>.5?'more than 20 times as much':null,spread:I&&I.w?spread(p.sub,I):null}}});
 });
 
 /* ---------- 8. iceLattice (slide 12): a fragment of hexagonal ice in 3D; hydrogen bonds; four neighbours; open rings; floating ice ----------

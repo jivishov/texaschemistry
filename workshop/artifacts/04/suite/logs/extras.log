@@ -1,0 +1,8 @@
+  PASS  reduced motion: the turning 3D model holds a fixed view
+  PASS  reduced motion: a revealed block has no fade animation
+  PASS  reduced motion: no console errors
+  PASS  under 760 px: scrolling page of all slides  ({"flow":true,"scroll":5953,"shown":27,"wide":false})
+  PASS  under 760 px: no horizontal scroll
+  PASS  back to projector mode at 1920 px: one slide shown  ({"flow":false,"shown":1})
+  PASS  fallback: no console errors
+extras: PASS
