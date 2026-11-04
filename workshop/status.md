@@ -1,3 +1,3 @@
-turn: orchestrator
-step: 04
-waiting_for: workshop/reviews/04-deck.md
+turn: implementer
+step: 04a
+waiting_for: workshop/reports/04a-deck-fixes.md
