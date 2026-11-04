@@ -1,0 +1,217 @@
+[
+ {
+  "n": "matrix: 5 rows 4.5.1 to 4.5.5 found",
+  "pass": true,
+  "i": "{\"4.5.1\":\"5 to 8\",\"4.5.2\":\"9 to 12\",\"4.5.3\":\"13 to 16\",\"4.5.4\":\"17 to 18\",\"4.5.5\":\"19 to 21\"}"
+ },
+ {
+  "n": "4.5 blueprint sentence found",
+  "pass": true,
+  "i": "Slide checks: 9, then a three-question checkpoint and a CER exit ticket. The deck has 28 slides: period 1 uses slides 1 to 12, period 2 slides 13 to 28."
+ },
+ {
+  "n": "4.5 \"The deck has 28 slides\": deck has 27",
+  "pass": false,
+  "i": ""
+ },
+ {
+  "n": "4.5 \"period 1 uses slides 1 to 12\": last period-1 slide is 13, all of 1..12 are period 1",
+  "pass": false,
+  "i": ""
+ },
+ {
+  "n": "4.5 \"period 2 slides 13 to 28\": first period-2 slide is 14, all of 13..28 are period 2",
+  "pass": false,
+  "i": ""
+ },
+ {
+  "n": "4.5 \"Slide checks: 9\": slides with a check are 6, 7, 8, 9, 11, 12, 15, 17, 18, 19",
+  "pass": false,
+  "i": ""
+ },
+ {
+  "n": "4.5.1 → slide 5 (Targets and words): exists and carries 4.5.1",
+  "pass": false,
+  "i": "footer \"Reading §4.5 Vocabulary\", no check"
+ },
+ {
+  "n": "4.5.1 → slide 6 (Bonds within, attractions between): exists and carries 4.5.1",
+  "pass": true,
+  "i": "footer \"Reading §4.5.1\""
+ },
+ {
+  "n": "4.5.1 → slide 7 (Dispersion forces): exists and carries 4.5.1",
+  "pass": true,
+  "i": "footer \"Reading §4.5.1\""
+ },
+ {
+  "n": "4.5.1 → slide 8 (Dipole-dipole forces): exists and carries 4.5.1",
+  "pass": false,
+  "i": "footer \"Reading §4.5.2\", a check on the slide but its footer does not name 4.5.1"
+ },
+ {
+  "n": "4.5.2 → slide 9 (Hydrogen bonding): exists and carries 4.5.2",
+  "pass": true,
+  "i": "footer \"Reading §4.5.2\""
+ },
+ {
+  "n": "4.5.2 → slide 10 (Name the attraction: I do, we do, you do): exists and carries 4.5.2",
+  "pass": true,
+  "i": "footer \"Reading §4.5.2\""
+ },
+ {
+  "n": "4.5.2 → slide 11 (Molecules stay whole): exists and carries 4.5.2",
+  "pass": false,
+  "i": "footer \"Reading §4.5.3\", a check on the slide but its footer does not name 4.5.2"
+ },
+ {
+  "n": "4.5.2 → slide 12 (Why ice floats): exists and carries 4.5.2",
+  "pass": false,
+  "i": "footer \"Reading §4.5.3\", a check on the slide but its footer does not name 4.5.2"
+ },
+ {
+  "n": "4.5.3 → slide 13 (One picture: the ladder of attractions): exists and carries 4.5.3",
+  "pass": true,
+  "i": "footer \"Reading §4.5.1 to §4.5.3\""
+ },
+ {
+  "n": "4.5.3 → slide 14 (Warm-up): exists and carries 4.5.3",
+  "pass": true,
+  "i": "footer \"Reading §4.5.1 to §4.5.3\""
+ },
+ {
+  "n": "4.5.3 → slide 15 (Does it conduct?): exists and carries 4.5.3",
+  "pass": false,
+  "i": "footer \"Reading §4.5.4\", a check on the slide but its footer does not name 4.5.3"
+ },
+ {
+  "n": "4.5.3 → slide 16 (Predict the bulb: I do, we do, you do): exists and carries 4.5.3",
+  "pass": false,
+  "i": "footer \"Reading §4.5.4\", no check"
+ },
+ {
+  "n": "4.5.4 → slide 17 (Does it dissolve?): exists and carries 4.5.4",
+  "pass": true,
+  "i": "footer \"Reading §4.5.4\""
+ },
+ {
+  "n": "4.5.4 → slide 18 (Malleable or brittle): exists and carries 4.5.4",
+  "pass": false,
+  "i": "footer \"Reading §4.5.5\", a check on the slide but its footer does not name 4.5.4"
+ },
+ {
+  "n": "4.5.5 → slide 19 (Covalent network solids): exists and carries 4.5.5",
+  "pass": true,
+  "i": "footer \"Reading §4.5.5\""
+ },
+ {
+  "n": "4.5.5 → slide 20 (Four kinds of solids): exists and carries 4.5.5",
+  "pass": false,
+  "i": "footer \"Reading §4.5 Review\", no check"
+ },
+ {
+  "n": "4.5.5 → slide 21 (Checkpoint routine): exists and carries 4.5.5",
+  "pass": true,
+  "i": "footer \"Objectives 4.5.2, 4.5.4 and 4.5.5\""
+ },
+ {
+  "n": "4.5 rate slide 26: 4.5.1 \"Review: 6 and 7\" are slides that carry 4.5.1 and are in the matrix row (5 to 8)",
+  "pass": true,
+  "i": "matrix also lists 5, 8"
+ },
+ {
+  "n": "4.5 rate slide 26: 4.5.2 \"Review: 8 to 10\" are slides that carry 4.5.2 and are in the matrix row (9 to 12)",
+  "pass": false,
+  "i": "matrix also lists 11, 12"
+ },
+ {
+  "n": "4.5 rate slide 26: 4.5.3 \"Review: 11 and 12\" are slides that carry 4.5.3 and are in the matrix row (13 to 16)",
+  "pass": false,
+  "i": "matrix also lists 13, 14, 15, 16"
+ },
+ {
+  "n": "4.5 rate slide 26: 4.5.4 \"Review: 15 to 17\" are slides that carry 4.5.4 and are in the matrix row (17 to 18)",
+  "pass": false,
+  "i": "same set"
+ },
+ {
+  "n": "4.5 rate slide 26: 4.5.5 \"Review: 18 and 19\" are slides that carry 4.5.5 and are in the matrix row (19 to 21)",
+  "pass": false,
+  "i": "matrix also lists 20, 21"
+ },
+ {
+  "n": "4.5 s02 mentions slide 6 (\"…side only touch, an attraction between. Slide 6\")",
+  "pass": true,
+  "i": "target: Bonds within, attractions between"
+ },
+ {
+  "n": "4.5 s04 mentions slide 25 (\"…\"bond\" in the name. Keep the counts for slide 25\")",
+  "pass": true,
+  "i": "target: Predictions and exit ticket"
+ },
+ {
+  "n": "4.5 s05 mentions slide 26 (\"…4.5.1 to 4.5.5; they rate themselves on slide 26\")",
+  "pass": true,
+  "i": "target: Rate your learning"
+ },
+ {
+  "n": "4.5 s06 mentions slide 5 (\"…ules are the \"intermolecular forces\" of slide 5\")",
+  "pass": true,
+  "i": "target: Targets and words"
+ },
+ {
+  "n": "4.5 s07 mentions slide 8 (\"…ke the lasting δ signs of a polar bond (slide 8\")",
+  "pass": true,
+  "i": "target: Dipole-dipole forces"
+ },
+ {
+  "n": "4.5 s10 mentions slide 13 (\"…boils at 58.8 °C, far above polar HCl. Slide 13\")",
+  "pass": true,
+  "i": "target: One picture: the ladder of attractions"
+ },
+ {
+  "n": "4.5 s21 mentions slide 22 (\"…Routine for slides 22 to 24\")",
+  "pass": true,
+  "i": "target: Checkpoint 1"
+ },
+ {
+  "n": "4.5 s21 mentions slide 23 (\"…Routine for slides 22 to 24\")",
+  "pass": true,
+  "i": "target: Checkpoint 2"
+ },
+ {
+  "n": "4.5 s21 mentions slide 24 (\"…Routine for slides 22 to 24\")",
+  "pass": true,
+  "i": "target: Checkpoint 3"
+ },
+ {
+  "n": "4.5 s24 mentions slide 18 (\"…ompt aloud. Picture the hammer model of slide 18\")",
+  "pass": true,
+  "i": "target: Malleable or brittle"
+ },
+ {
+  "n": "4.5 s25 mentions slide 4 (\"…edicted A. Compare with the counts from slide 4\")",
+  "pass": true,
+  "i": "target: Predict now"
+ },
+ {
+  "n": "4.5 s25 mentions slide 3 (\"…w day, with the three melting points of slide 3\")",
+  "pass": true,
+  "i": "target: Snow day"
+ },
+ {
+  "n": "4.5 s27 mentions slide 12 (\"…y 2021 freeze; it uses the ice model of slide 12\")",
+  "pass": true,
+  "i": "target: Why ice floats"
+ },
+ {
+  "n": "4.5 every listed mention was found",
+  "pass": true,
+  "i": "13 mentions"
+ },
+ {
+  "n": "4.5 footer cues \"slide N: title\": 26 cues, each names the next slide by its number and title",
+  "pass": true,
+  "i": ""
+ }
+]

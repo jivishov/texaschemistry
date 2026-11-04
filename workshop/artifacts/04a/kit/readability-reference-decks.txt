@@ -1,0 +1,10 @@
+$ python3 suite.py 4 1 --only readability
+== 4.1: unit4/slides-4-1.html
+   out <scratchpad>/rr/4-1, theme both, matrix off
+  PASS  readability           5.1 s  readability: PASS
+== 4.1: 1 of 1 pass, 0 fail, 5.1 s
+$ python3 suite.py 4 2 --only readability
+== 4.2: unit4/slides-4-2.html
+   out <scratchpad>/rr/4-2, theme both, matrix off
+  PASS  readability           4.5 s  readability: PASS
+== 4.2: 1 of 1 pass, 0 fail, 4.5 s

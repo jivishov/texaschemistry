@@ -119,3 +119,6 @@
 .rcol>.simcap{letter-spacing:-.015em;white-space:nowrap}
 .band2 .lines>.blk:not(.on),.band2 .lines .stack>.blk:not(.on){display:none}
 .band2 .lines>.stack{display:flex;flex-direction:column;align-items:center;gap:0}
+/* slide 26 zoomed (review 04, F6): a target line re-flows with its sentence across the width and "Review: slides ..." under it */
+.zflow .rate li{grid-template-columns:minmax(0,1fr);row-gap:6px}
+.zflow .rate li>.rev{justify-self:start}

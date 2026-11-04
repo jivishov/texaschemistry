@@ -94,10 +94,10 @@ const REG=require('../../../registry.json').decks.find(d=>d.unit===4&&d.lesson==
   /* 6. heating (slide 11) */
   R=await run('s11','s11-sim');
   ok('slide 11 heating: stages CH4/solid, melt, liquid, boil, gas, H2O/boil, energy, H2O/gas',staged(R,['CH4/solid','CH4/melt','CH4/liquid','CH4/boil','CH4/gas','H2O/boil','energy','H2O/gas']));
-  R.forEach(x=>ok(`slide 11 heating f${x.f} ${x.stage}: ${x.meta.bondsIntact} of ${x.meta.bondsTotal} covalent bonds intact, 6 molecules`,x.meta.molecules===6&&x.meta.bondsIntact===x.meta.bondsTotal&&x.meta.bondsTotal===(x.meta.substance==='CH4'?24:12),x.meta));
+  R.forEach(x=>ok(`slide 11 heating f${x.f} ${x.stage}: ${x.meta.bondsIntact} of ${x.meta.bondsTotal} covalent bonds intact, ${x.meta.molecules} molecules`,x.meta.molecules===(x.meta.substance==='CH4'?4:6)&&x.meta.bondsIntact===x.meta.bondsTotal&&x.meta.bondsTotal===(x.meta.substance==='CH4'?16:12),x.meta));
   const HT={'CH4/solid':'−182.5 °C (melting point)','CH4/melt':'−182.5 °C, melting','CH4/liquid':'liquid','CH4/boil':'−161.5 °C, boiling','CH4/gas':'−161.5 °C (boiling point)','H2O/boil':'100.0 °C, boiling','H2O/gas':'100.0 °C (boiling point)'};
   Object.entries(HT).forEach(([s,v])=>{m=at(R,s);ok(`slide 11 heating ${s}: "${v}"`,m.temperature===v,m.temperature)});
-  ok('slide 11 heating: attractions drawn 7, 4, 3, 1, 0 for CH₄; 1 and 0 for water boiling and gas',['CH4/solid','CH4/melt','CH4/liquid','CH4/boil','CH4/gas','H2O/boil','H2O/gas'].map(s=>at(R,s).attractionsDrawn).join()==='7,4,3,1,0,1,0');
+  ok('slide 11 heating: attractions drawn 4, 2, 2, 1, 0 for CH₄; 1 and 0 for water boiling and gas',['CH4/solid','CH4/melt','CH4/liquid','CH4/boil','CH4/gas','H2O/boil','H2O/gas'].map(s=>at(R,s).attractionsDrawn).join()==='4,2,2,1,0,1,0');
   m=at(R,'energy');ok('slide 11 heating energy: 40.7 kJ and about 928 kJ, "more than 20 times as much"',eq(m.energies,{boil:40.7,bonds:928})&&m.energyBars&&m.caption==='more than 20 times as much',m);
   for(const sub of ['CH4','H2O']){const S=at(R,sub+'/gas').spread;
     ok(`slide 11 heating ${sub}: the gas spreads over the container (${Math.round(S.gasBoxShare*100)}% of it)`,S.gasBoxShare>=.8,S);

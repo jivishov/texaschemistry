@@ -109,7 +109,8 @@ SPRITE = '''<svg class="sprite" aria-hidden="true" style="position:absolute;widt
 </defs></svg>'''
 
 S = []
-DQ = 'How do the forces within and between particles explain the melting point, conductivity and hardness of a substance?'
+# the driving question on the slides (review 04, F3): two sentences with the blueprint's terms; the reading and the blueprint keep the original
+DQ = 'Forces act within and between particles. How do they explain melting point, conductivity and hardness?'
 SAFETY = ('<b>Safety.</b> Nothing is demonstrated in this lesson. Dry ice and molten salt are only described: dry ice (−78.5 °C) burns skin and its gas can '
           'build up in a closed space; molten salt is above 801 °C. If a real conductivity tester is used, it is a low-voltage battery tester, '
           'and the salt water stays away from wall outlets. ')
@@ -126,7 +127,7 @@ CLICKER = ('<b>Clicker.</b> Logitech R800: Next = PageDown, Back = PageUp (while
            'Laptop: N notes, O overview, T theme, Ctrl+P run-sheet.')
 
 # ---------- 1 cover
-S.append(slide('s01','t-cover','Bonds, forces and properties','Lesson 4.5','Reading §4.5',f'''    <div class="card dq"><p class="tag">Driving question</p><p>{DQ}</p></div>
+S.append(slide('s01','t-cover','Bonds, forces and properties','Lesson 4.5','Reading §4.5',f'''    <div class="card dq reg"><p class="tag">Driving question</p><p>{DQ}</p></div>
     <div class="r800">
       <div class="key"><svg viewBox="0 0 120 100" role="img" aria-label="Next button"><use href="#ic-next"/></svg><b>Next</b><span>next step</span></div>
       <div class="key"><svg viewBox="0 0 120 100" role="img" aria-label="Back button"><use href="#ic-back"/></svg><b>Back</b><span>one step back</span></div>
@@ -164,7 +165,7 @@ S.append(slide('s03','t-launch','Snow day','Launch','Reading §4.5 opener',f''' 
       </div>
       <p class="simcap" id="s03-cap" data-zoom="caption">{CAP}</p>
     </div>
-    <div class="card dq" id="s03-dq" data-label="driving question"><p>{DQ}</p></div>
+    <div class="card dq reg" id="s03-dq" data-label="driving question"><p>{DQ}</p></div>
     <div class="qrow" id="s03-st" data-label="write 60 s"><ol class="frames"><li>I think snow melts by noon but sand never melts because {GAP}.</li></ol><div class="timer"></div></div>''',
  'The reading opener: methane melts at −182.5 °C, salt stays solid until 801 °C, quartz (the main mineral in sand) melts near 1700 °C. "The difference lies in what must come apart when each solid melts." Snow is water molecules; salt is Na⁺ and Cl⁻ ions (red and blue); sand is a network of Si and O atoms (CPK colors), hence the caption.',
  [dict(show=['s03-row','s03-c1','s03-cap'],stage='s03-sim:snow',note='A snowman: water molecules. Ask: where does a snowman go on a sunny day?'),
@@ -231,7 +232,7 @@ S.append(slide('s06','t-concept cw','Bonds within, attractions between','Bonds a
       <div class="card" id="s06-c3" data-label="salt"><p class="tag">Salt</p><p>Salt has no molecules. Ionic bonds run through the whole crystal.</p></div>
       <div class="card" id="s06-c4" data-label="copper"><p class="tag">Copper</p><p>Copper has no molecules. Metallic bonds run through the whole metal.</p></div>
       <div class="card rule reg" id="s06-rule" data-label="rule"><p class="tag">Rule</p><p>Bonds hold atoms or ions together in a substance. Much weaker attractions act between molecules.</p></div>
-{check('s06','In liquid chlorine, what holds neighboring Cl<sub>2</sub> molecules near each other?',['weak attractions between the molecules','covalent bonds between the molecules','ionic bonds'],ans='A. The Cl–Cl bond is inside each molecule. Between molecules there are only weak attractions.',right='A',
+{check('s06','In liquid chlorine, what holds neighboring Cl<sub>2</sub> molecules near each other?',['weak attractions between molecules','covalent bonds between molecules','ionic bonds'],ans='A. The Cl–Cl bond is inside each molecule. Only weak attractions act between molecules.',right='A',
   fb=['Between molecules there are only weak attractions.','A covalent bond joins the two atoms inside one molecule, not two molecules.','Chlorine is neutral molecules, not ions. It has no ionic bonds.'])}
     </div><p class="simcap" id="s06-cap" data-label="colors" data-zoom="caption">{CAP}</p></div>''',
  'The TEKS call bonds "intramolecular forces", even though ionic and metallic crystals contain no molecules; the reading says "bonds within a substance" for that reason. Attractions between molecules are the "intermolecular forces" of slide 5. Atom colors are CPK (Cl green); the salt ions keep the unit code (Na⁺ red, Cl⁻ blue), hence the caption.',
@@ -257,7 +258,7 @@ S.append(slide('s07','t-concept cw','Dispersion forces','Dispersion forces','Rea
       <div class="card" id="s07-c2" data-label="attract"><p class="tag">Attraction</p><p>The brief charges pull a neighbor. New ones keep forming: dispersion forces.</p></div>
       <div class="card" id="s07-c3" data-label="the plot"><p class="tag">Evidence</p><p>Boiling point against electrons per molecule.</p></div>
       <div class="card rule reg" id="s07-rule" data-label="rule"><p class="tag">Rule</p><p>Dispersion forces act between all molecules. More electrons make stronger dispersion forces. Stronger forces mean a higher boiling point.</p></div>
-{check('s07','Chlorine boils at −34.0 °C. Bromine boils at 58.8 °C. Why does bromine boil higher?',['Br<sub>2</sub> has more electrons, so stronger dispersion forces.','Br<sub>2</sub> is polar.','Boiling must break the Br–Br bond.'],ans='A. Br<sub>2</sub> has 70 electrons and Cl<sub>2</sub> has 34. Both are nonpolar.',right='A',col=True,
+{check('s07','Why does bromine boil higher than chlorine?',['Br<sub>2</sub> has more electrons, so stronger dispersion forces.','Br<sub>2</sub> is polar.','Boiling must break the Br–Br bond.'],ans='A. Br<sub>2</sub> has 70 electrons and Cl<sub>2</sub> has 34. Both are nonpolar.',right='A',col=True,
   fb=['More electrons give stronger dispersion forces.','Both atoms in Br<sub>2</sub> are the same, so it is nonpolar.','Boiling separates whole Br<sub>2</sub> molecules. The Br–Br bond stays.'])}
     </div>''',
  'Fritz London explained these forces in 1930, so they are also called London dispersion forces. Halogens at 25 °C: F₂ and Cl₂ are gases, Br₂ is a liquid, I₂ is a solid; the plot shows why. The δ signs here last only an instant, unlike the lasting δ signs of a polar bond (slide 8).',
@@ -356,7 +357,7 @@ S.append(slide('s10','t-cer','Name the attraction: I do, we do, you do','Stronge
   dict(stage='s10-sim:HBr/strongest',label='strongest',note='Dipole-dipole forces. Students fix their notebook answer.')],pre='<div class="timer tr"></div>'))
 
 # ---------- 11 molecules stay whole
-S.append(slide('s11','t-concept cw','Molecules stay whole','Melting and boiling','Reading §4.5.3',f'''    <div class="sim" id="s11-sim" data-sim="heating" aria-label="Six methane molecules warm from solid to gas; a readout counts the covalent bonds, all intact."></div>
+S.append(slide('s11','t-concept cw','Molecules stay whole','Melting and boiling','Reading §4.5.3',f'''    <div class="sim" id="s11-sim" data-sim="heating" aria-label="Four methane molecules warm from solid to gas; a readout counts the covalent bonds, all intact."></div>
     <div class="col acc">
       <div class="card" id="s11-c0" data-label="solid methane"><p class="tag">Solid methane</p><p>Solid methane at −182.5 °C. Count the C–H bonds: all intact.</p></div>
       <div class="card" id="s11-pred" data-label="predict"><p class="tag">Predict</p><p>What comes apart when it melts?</p></div>
@@ -365,16 +366,16 @@ S.append(slide('s11','t-concept cw','Molecules stay whole','Melting and boiling'
       <div class="card" id="s11-c3" data-label="water"><p class="tag">Water</p><p>Water boils at 100.0 °C. Steam is still H<sub>2</sub>O.</p></div>
       <div class="card" id="s11-c4" data-label="energy"><p class="tag">Energy for 18 g of water</p><p>Boiling 18 g of water: 40.7 kJ. Breaking all its O–H bonds: about 928 kJ.</p></div>
       <div class="card rule reg" id="s11-rule" data-label="rule"><p class="tag">Rule</p><p>Melting and boiling separate molecules. They do not break the covalent bonds inside them.</p></div>
-{check('s11','What happens to the water molecules when water boils?',['The attractions let go, and the molecules move far apart.','Their O–H bonds break.','They split into hydrogen and oxygen.'],ans='A. The molecules separate. Each keeps its two O–H bonds.',right='A',col=True,
+{check('s11','What happens to the water molecules when water boils?',['The molecules move far apart, still whole.','Their O–H bonds break.','They split into hydrogen and oxygen.'],ans='A. Each molecule keeps its two O–H bonds.',right='A',col=True,
   fb=['Only the attractions between molecules let go.','Boiling does not break covalent bonds. Steam is still H<sub>2</sub>O.','Boiling is a change of state, not a reaction. The molecules stay whole.'])}
     </div>''',
- 'The reading\'s heating model: six molecules from solid to gas; the readout "Covalent bonds: 24 of 24 intact" (water: 12 of 12) never changes, while "Attractions drawn" falls to 0 in the gas. Energy (OpenStax): boiling 18 g of water at 100 °C takes 40.7 kJ; breaking every O–H bond in it would take about 928 kJ, more than 20 times as much. Shown as the reading\'s comparison only; no bond-energy calculation.',
- [dict(show='s11-c0',stage='s11-sim:CH4/solid',focus='s11-sim',note='Solid methane at its melting point. Count the C–H bonds with the class: 24 of 24 intact.'),
+ 'The reading\'s heating model: four methane molecules (six water molecules) from solid to gas; the readout "Covalent bonds: 16 of 16 intact" (water: 12 of 12) never changes, while "Attractions drawn" falls to 0 in the gas. Energy (OpenStax): boiling 18 g of water at 100 °C takes 40.7 kJ; breaking every O–H bond in it would take about 928 kJ, more than 20 times as much. Shown as the reading\'s comparison only; no bond-energy calculation.',
+ [dict(show='s11-c0',stage='s11-sim:CH4/solid',focus='s11-sim',note='Solid methane at its melting point. Count the C–H bonds with the class: 16 of 16 intact.'),
   dict(show='s11-pred',note='Prediction: what comes apart when methane melts? Collect answers. Listen for "the C–H bonds break".'),
-  dict(hide='s11-pred',show='s11-c1',stage='s11-sim:CH4/melt',note='The top row leaves its places first. The bond readout stays 24 of 24; only "Attractions drawn" falls.'),
+  dict(hide='s11-pred',show='s11-c1',stage='s11-sim:CH4/melt',note='The top row leaves its places first. The bond readout stays 16 of 16; only "Attractions drawn" falls.'),
   dict(stage='s11-sim:CH4/liquid',label='liquid',note='Liquid: the molecules move past each other; attractions still form and break.'),
   dict(show='s11-c2',stage='s11-sim:CH4/boil',note='Boiling at −161.5 °C: the molecules spread far apart.'),
-  dict(stage='s11-sim:CH4/gas',label='gas',note='The gas: attractions drawn 0, covalent bonds still 24 of 24. Misconception: "methane melts low because its C–H bonds are weak" (melting leaves them intact).'),
+  dict(stage='s11-sim:CH4/gas',label='gas',note='The gas: attractions drawn 0, covalent bonds still 16 of 16. Misconception: "methane melts low because its C–H bonds are weak" (melting leaves them intact).'),
   dict(hide=['s11-c0','s11-c1','s11-c2'],show='s11-c3',stage='s11-sim:H2O/boil',note='Water at 100.0 °C: steam is still H₂O molecules, each with its two O–H bonds, 12 of 12.'),
   dict(show='s11-c4',stage='s11-sim:energy',note='Two bars to one scale: 40.7 kJ to boil, about 928 kJ to break the bonds. More than 20 times as much.'),
   dict(show='s11-rule',note='Students copy the rule.'),
@@ -459,7 +460,7 @@ S.append(slide('s15','t-concept wide','Does it conduct?','Conductivity','Reading
       <p class="caprow" id="s15-p7" data-label="sugar water">Sugar water: whole molecules, no charge. Dark.</p>
       <p class="caprow" id="s15-p8" data-label="distilled water">Distilled water: very few ions. Dark.</p>
       <div class="rulerow reg" id="s15-rule" data-label="rule"><p>A substance conducts when it has charged particles that can move.</p><p>Ions in a liquid or a solution.</p><p>Delocalized electrons in a metal.</p></div>
-{checkrow('s15','Why does molten NaCl conduct, while solid NaCl does not?',['In the liquid, the ions are free to move.','Melting turns the atoms into ions.','Melting frees electrons from sodium.'],'A. The ions were there all along. Melting lets them move.',right='A',
+{checkrow('s15','Why does molten NaCl conduct, but solid NaCl not?',['In the liquid, the ions can move.','Melting turns atoms into ions.','Melting frees sodium\'s electrons.'],'A. The ions were always there. Now they can move.',right='A',
   fb=['Moving ions carry the current.','Solid NaCl is already Na<sup>+</sup> and Cl<sup>−</sup>. In the solid they are locked in place.','NaCl has no electron sea. Moving ions carry its current.'])}
       </div>
       <p class="simcap" id="s15-cap" data-label="colors" data-zoom="caption">{CAP}</p>
@@ -522,7 +523,7 @@ S.append(slide('s17','t-concept cw','Does it dissolve?','Dissolving','Reading §
       <div class="card" id="s17-pred" data-label="predict"><p class="tag">Predict</p><p>Which of these six dissolve?</p></div>
       <table class="tbl compact dis" id="s17-tab" data-label="the table" data-zoom="dissolving table"><thead><tr><th>Substance</th><th>Type</th><th>Dissolves in water?</th></tr></thead><tbody>{drows}</tbody></table>
       <div class="card rule reg" id="s17-rule" data-label="rule"><p class="tag">Rule</p><p>Some ionic and some molecular substances dissolve in water. Some do not. The type of bond alone does not predict it.</p></div>
-{check('s17','Which statement fits the data?',['Some ionic compounds, such as CaCO<sub>3</sub>, barely dissolve.','Every ionic compound dissolves in water.','No molecular substance dissolves in water.'],ans='A. Being ionic does not mean it dissolves. Check the data.',right='A',col=True,
+{check('s17','Which statement fits the data?',['Some ionic compounds, such as CaCO<sub>3</sub>, barely dissolve.','Every ionic compound dissolves in water.','No molecular substance dissolves in water.'],ans='A. Ionic does not mean it dissolves. Check the data.',right='A',col=True,
   fb=['The type of bond alone does not predict it.','Calcium carbonate is ionic, yet it barely dissolves.','Sugar is molecular, and it dissolves easily.'])}
     </div>''',
  'The reading describes which substances dissolve and does not explain why; neither does this slide. Calcium carbonate is sparingly soluble (data notes): limestone, marble and seashells. Iodine dissolves slightly and tints the water pale yellow-brown. About 360 g of NaCl dissolves in 1 L of water (case file, only if asked). The beaker shows ions (unit code) and I₂ molecules (CPK), hence the caption.',
@@ -554,7 +555,7 @@ S.append(slide('s18','t-concept wide','Malleable or brittle','Hardness','Reading
           {chips('Ion and atom sizes',['Na<sup>+</sup> 102 pm','Cl<sup>−</sup> 181 pm','Cu 128 pm'],' id="s18-sz" data-label="sizes" data-zoom="sizes"')}
         </div>
         <div class="rulerow two reg" id="s18-rule" data-label="rule"><p>A metal bends because its electrons move with the shifting cations.</p><p>An ionic crystal splits because shifted layers put like charges side by side.</p></div>
-{checkrow('s18','Why does a salt crystal split when it is struck hard?',['Shifted layers put like charges together, and they repel.','Ionic bonds are weak.','The electrons flow out of the crystal.'],'A. The repulsion pushes the layers apart along a flat face.',right='A',
+{checkrow('s18','A sharp blow splits a salt crystal. Why?',['Shifted layers put like charges together; they repel.','Ionic bonds are weak.','Electrons flow out of the crystal.'],'A. Like charges repel and push the layers apart.',right='A',
   fb=['Like charges side by side repel, and the layers push apart.','Ionic bonds are strong, so salt is hard. Like charges repel when layers shift.','Salt has no electron sea. Its ions stay charged, and like charges repel.'])}
       </div>
       <p class="simcap" id="s18-cap" data-label="colors" data-zoom="caption">{CAP}</p>
@@ -689,7 +690,7 @@ S.append(slide('s25','t-routine t-exit','Predictions and exit ticket','Exit tick
         <p class="handsup">Hands up if you predicted this.</p>
       </div>
       <div class="phaseB" id="s25-B" data-label="exit ticket">
-        <div class="card prompt dq"><p>{DQ}</p></div>
+        <div class="card prompt dq reg"><p>{DQ}</p></div>
         <ol class="rail"><li id="s25-r1">Claim</li><li id="s25-r2">Evidence</li><li id="s25-r3">Reasoning</li><li id="s25-r4">Self-check</li><li id="s25-r5">Sample</li></ol>
         <div class="rt-main">
           <div class="acc">
@@ -700,7 +701,7 @@ S.append(slide('s25','t-routine t-exit','Predictions and exit ticket','Exit tick
             </ol>
             <div class="bank"><b>Word bank:</b> <span>attractions between molecules</span> <span>bonds within</span> <span>ionic bonds</span> <span>covalent bonds</span> <span>a network</span> <span>weaker</span> <span>higher melting point</span></div></div>
             <div class="card" id="s25-check" data-label="self-check"><p class="tag">Self-check: did you write</p><ul class="crit"><li>a claim about the forces that come apart?</li><li>snow, salt and sand with their melting points?</li><li>attractions weaker than bonds in the reasoning?</li></ul></div>
-            <div class="card reg" id="s25-sample" data-label="sample answer"><p class="tag">Sample answer</p><p>The forces that come apart decide the melting point. Snow melts at 0 °C because only attractions between molecules let go. Salt needs 801 °C because ionic bonds must come apart. Sand needs near 1700 °C because covalent bonds must break. Attractions between molecules are much weaker than bonds within, so molecular solids melt low.</p></div>
+            <div class="card reg" id="s25-sample" data-label="sample answer"><p class="tag">Sample answer</p><p>The forces that come apart set the melting point. Snow melts at 0 °C: only attractions between molecules let go. Salt needs 801 °C: ionic bonds. Sand needs near 1700 °C: covalent bonds. Attractions are weaker than bonds.</p></div>
           </div>
           <div class="timer"></div>
         </div>

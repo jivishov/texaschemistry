@@ -1,0 +1,9 @@
+$ python3 build.py --all
+4.1: unit4/slides-4-1.html  194646 bytes, 2077 lines, md5 ebd342f1ee0e11c47157141cf3b2a59b
+4.2: unit4/slides-4-2.html  203769 bytes, 2153 lines, md5 c3fa219a806963f9a66c3baf643153f4
+4.5: unit4/slides-4-5.html  295204 bytes, 2830 lines, md5 c3886bd78f9f546e5690a4e2e08fef1a
+ebd342f1ee0e11c47157141cf3b2a59b  unit4/slides-4-1.html
+c3fa219a806963f9a66c3baf643153f4  unit4/slides-4-2.html
+c3886bd78f9f546e5690a4e2e08fef1a  unit4/slides-4-5.html
+git status --short unit4:
+ M unit4/slides-4-5.html

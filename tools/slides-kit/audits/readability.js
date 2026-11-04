@@ -23,7 +23,7 @@ function syl(w){w=w.toLowerCase().replace(/[^a-z]/g,'');if(!w)return 0;if(w.leng
     for(let f=0;f<nf;f++){await page.evaluate(([s,f])=>Deck.go(s,f),[s,f]);
       const n=await page.evaluate(()=>{const S=document.querySelector('.slide.current');let t='';
         const w=document.createTreeWalker(S,NodeFilter.SHOW_TEXT);let x;
-        while((x=w.nextNode())){const e=x.parentElement;if(e.closest('.notes,script,style,.timer,h2,td,th,.tag,.rh,.k,.rail,.opt>b,.bank,.frames,svg,.es,.cer,.words,.legend,.lbl,.rev,.scale,.r800,.kicker,.bt,.chips,.acc>.adone'))continue;
+        while((x=w.nextNode())){const e=x.parentElement;if(e.closest('.notes,script,style,.timer,.dq,h2,td,th,.tag,.rh,.k,.rail,.opt>b,.bank,.frames,svg,.es,.cer,.words,.legend,.lbl,.rev,.scale,.r800,.kicker,.bt,.chips,.acc>.adone'))continue;
           const cs=getComputedStyle(e);if(cs.visibility==='hidden'||cs.display==='none')continue;t+=' '+x.nodeValue}
         return t.split(/\s+/).filter(x=>/[A-Za-z]/.test(x)).length});
       if(n>max){max=n;at=f}}

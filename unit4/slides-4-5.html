@@ -491,6 +491,9 @@ html.flow #foot,html.flow #prog{display:none}
 .rcol>.simcap{letter-spacing:-.015em;white-space:nowrap}
 .band2 .lines>.blk:not(.on),.band2 .lines .stack>.blk:not(.on){display:none}
 .band2 .lines>.stack{display:flex;flex-direction:column;align-items:center;gap:0}
+/* slide 26 zoomed (review 04, F6): a target line re-flows with its sentence across the width and "Review: slides ..." under it */
+.zflow .rate li{grid-template-columns:minmax(0,1fr);row-gap:6px}
+.zflow .rate li>.rev{justify-self:start}
 /* part: css-45 end */
 </style>
 </head>
@@ -1638,12 +1641,17 @@ D.sim('forceDecider',function(host){
    CH4 melts at −182.5 °C and boils at −161.5 °C; water melts at 0.0 °C and boils at 100.0 °C. energy: boiling 18 g of water takes
    40.7 kJ; breaking all its O–H bonds about 928 kJ (OpenStax), two bars to one scale.
    Step 04 (review 03, F2): six molecules instead of nine. The solid is the tightest 2 x 3 block (4 px between atoms of neighbours) on
-   the container floor; the gas puts the six at the container's limits, each turned its own way. meta() measures the block and the spread. */
+   the container floor; the gas puts the six at the container's limits, each turned its own way. meta() measures the block and the spread.
+   Step 04a (review 04, F1): methane as four molecules (2 x 2, 166 x 206 px, 2 px between neighbours' atoms), water as six. */
 const HT_T={'CH4/solid':'−182.5 °C (melting point)','CH4/melt':'−182.5 °C, melting','CH4/liquid':'liquid','CH4/boil':'−161.5 °C, boiling','CH4/gas':'−161.5 °C (boiling point)',
   'H2O/solid':'0.0 °C (melting point)','H2O/boil':'100.0 °C, boiling','H2O/gas':'100.0 °C (boiling point)',energy:'100.0 °C (boiling point)'};
 /* attractions drawn per stage: neighbour pairs of the 2 x 3 block (index r*3+c, row 0 on top); the melt lets the top row go first */
-const HT_PAIRS=[[0,1],[1,2],[3,4],[4,5],[0,3],[1,4],[2,5]];
-const HT_KEEP={solid:HT_PAIRS,melt:[[0,1],[1,2],[3,4],[4,5]],liquid:[[0,1],[3,4],[1,4]],boil:[[3,4]],gas:[]};
+/* step 04a (review 04, F1): methane as four molecules (2 x 2), water as six (2 x 3) */
+const HT_N={CH4:[2,2],H2O:[2,3]};
+const HT_KEEPS={CH4:{solid:[[0,1],[2,3],[0,2],[1,3]],melt:[[0,1],[2,3]],liquid:[[2,3],[1,3]],boil:[[2,3]],gas:[]},
+  H2O:{solid:[[0,1],[1,2],[3,4],[4,5],[0,3],[1,4],[2,5]],melt:[[0,1],[1,2],[3,4],[4,5]],liquid:[[0,1],[3,4],[1,4]],boil:[[3,4]],gas:[]}};
+const HT_KEEP=(sub,ph)=>HT_KEEPS[sub][ph]||[];
+const htN=sub=>HT_N[sub][0]*HT_N[sub][1];
 D.sim('heating',function(host){
   const ST=Object.keys(HT_T),SPREAD={solid:0,melt:.25,liquid:.4,boil:.85,gas:1},params={};
   ST.forEach(s=>{const [sub,ph]=s==='energy'?['H2O','gas']:s.split('/');params[s]={sub,ph:ph||'gas',spread:SPREAD[ph||'gas'],top:ph==='melt'?1:0,en:s==='energy'?1:0}});
@@ -1651,7 +1659,7 @@ D.sim('heating',function(host){
   /* solid: centre spacing [dx, dy] and turn of the tightest 2 x 3 block with 4 px between neighbours' atoms (searched offline);
      gas: the six centres on a 2 x 3 grid as far apart as the container allows, each molecule clear of the walls by its reach + 12 px
      (the jiggle) */
-  const SP={CH4:{solid:[168,208],rot:deg(-30),sb:.82},H2O:{solid:[186,98],rot:deg(37.5),sb:.8}};
+  const SP={CH4:{solid:[166,206],rot:deg(-30),sb:.82},H2O:{solid:[186,98],rot:deg(37.5),sb:.8}};
   const GROT=[1.1,2.3,.6,1.8,2.9,1.4];
   const molAt=(sub,x,y,rot)=>sub==='CH4'?methane(x,y,rot,SP.CH4.sb):water(x,y,rot,SP.H2O.sb);
   const reach=sub=>{const M=molAt(sub,0,0,0);let r=0;M.atoms.forEach(A=>{r=Math.max(r,Math.hypot(A.x,A.y)+A.r)});
@@ -1659,16 +1667,18 @@ D.sim('heating',function(host){
   const bbox=Ms=>{let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;Ms.forEach(M=>M.atoms.forEach(A=>{x0=Math.min(x0,A.x-A.r);x1=Math.max(x1,A.x+A.r);y0=Math.min(y0,A.y-A.r);y1=Math.max(y1,A.y+A.r)}));return {x:x0,y:y0,w:x1-x0,h:y1-y0}};
   /* the two end arrangements in host px: solid centred on the floor, gas at the limits */
   function ends(sub,I){const L=lay(I.w,I.h),B=L.box,Q=SP[sub],sol=[],gas=[];
-    for(let i=0;i<6;i++){const r=Math.floor(i/3),c=i%3;sol.push([(c-1)*Q.solid[0],r*Q.solid[1],Q.rot])}
+    const [NR,NC]=HT_N[sub],N=NR*NC;
+    for(let i=0;i<N;i++){const r=Math.floor(i/NC),c=i%NC;sol.push([(c-(NC-1)/2)*Q.solid[0],r*Q.solid[1],Q.rot])}
     const bb=bbox(sol.map(([x,y,t])=>molAt(sub,x,y,t))),ox=B.x+B.w/2-(bb.x+bb.w/2),oy=B.y+B.h-8-(bb.y+bb.h);
     sol.forEach(q=>{q[0]+=ox;q[1]+=oy});
-    const m=reach(sub)+12,gx=(B.w-2*m)/2,gy=B.h-2*m;
-    for(let i=0;i<6;i++){const r=Math.floor(i/3),c=i%3;gas.push([B.x+m+c*gx,B.y+m+r*gy,Q.rot+GROT[i]])}
+    const m=reach(sub)+12,gx=(B.w-2*m)/(NC-1),gy=(B.h-2*m)/(NR-1);
+    for(let i=0;i<N;i++){const r=Math.floor(i/NC),c=i%NC;gas.push([B.x+m+c*gx,B.y+m+r*gy,Q.rot+GROT[i]])}
     return {sol,gas,B}}
   function places(p,I){const E=ends(p.sub,I),t=I.live?I.clock:0,s=clamp(p.spread,0,1),out=[];
-    for(let i=0;i<6;i++){const r=Math.floor(i/3),c=i%3,[x0,y0,r0]=E.sol[i],[x1,y1,r1]=E.gas[i];
+    const NC=HT_N[p.sub][1];
+    for(let i=0;i<E.sol.length;i++){const r=Math.floor(i/NC),c=i%NC,[x0,y0,r0]=E.sol[i],[x1,y1,r1]=E.gas[i];
       let x=lerp(x0,x1,s),y=lerp(y0,y1,s),rot=lerp(r0,r1,s);
-      if(p.top>.01&&r===0){x+=p.top*(c-1)*18;y-=p.top*30;rot+=p.top*(c%2?.45:-.35)}
+      if(p.top>.01&&r===0){x+=p.top*(c-(NC-1)/2)*18;y-=p.top*30;rot+=p.top*(c%2?.45:-.35)}
       const jig=I.live?(3+9*s):0;x+=jig*Math.sin(t*(1.1+i*.17)+i);y+=jig*Math.cos(t*(1.3+i*.11)+i*2);rot+=I.live?(.04+.12*s)*Math.sin(t*.9+i):0;
       out.push([x,y,rot])}return out}
   /* the measured spread: the solid block's share of the container, and the area per molecule (solid: its lattice cell dx x dy;
@@ -1677,9 +1687,9 @@ D.sim('heating',function(host){
     const nn=P=>{let d=1e9;P.forEach((a,i)=>P.forEach((b,j)=>{if(j>i)d=Math.min(d,Math.hypot(a[0]-b[0],a[1]-b[1]))}));return d};
     const r2=v=>Math.round(v*100)/100;
     return {container:[Math.round(B.w),Math.round(B.h)],solidBlockShare:r2(sb.w*sb.h/A),gasBoxShare:r2(gb.w*gb.h/A),
-      areaPerMolecule:{solid:Math.round(Q.solid[0]*Q.solid[1]),gas:Math.round(A/6)},areaRatio:r2(A/6/(Q.solid[0]*Q.solid[1])),
+      areaPerMolecule:{solid:Math.round(Q.solid[0]*Q.solid[1]),gas:Math.round(A/htN(sub))},areaRatio:r2(A/htN(sub)/(Q.solid[0]*Q.solid[1])),
       nearest:{solid:Math.round(nn(E.sol)),gas:Math.round(nn(E.gas))},spacingRatio:r2(Math.pow(nn(E.gas)/nn(E.sol),2))}}
-  function readouts(g,p,I,stage,draw){const L=lay(I.w,I.h),tot=p.sub==='CH4'?24:12,att=(HT_KEEP[p.ph]||[]).length,u=[];
+  function readouts(g,p,I,stage,draw){const L=lay(I.w,I.h),tot=p.sub==='CH4'?16:12,att=HT_KEEP(p.sub,p.ph).length,u=[];
     const lines3=[['Temperature',HT_T[stage]||''],['Covalent bonds: '+tot+' of '+tot+' intact'],['Attractions drawn: '+(p.en>.5?0:att)]];
     lines3.forEach((ln,i)=>{const y=L.rows[i];let w=0;
       if(ln.length===2){if(draw)g.text(ln[0],20,y,36,{align:'left',color:g.c('muted')});g.font(36,700);const lw=g.ctx.measureText(ln[0]).width;const cw=chip(g,0,0,ln[1],{measure:true,px:36});if(draw)chip(g,40+lw,y,ln[1],{px:36});w=lw+40+cw}
@@ -1697,12 +1707,12 @@ D.sim('heating',function(host){
     draw(g,p,I){const L=lay(I.w,I.h),B=L.box,sw=I.from&&I.from!==I.stage&&fam(I.from)!==fam(I.stage)&&fam(I.stage)!=='energy'&&I.k<1?Math.abs(1-2*I.k):1;
       g.rrect(B.x,B.y,B.w,B.h,18,D.mix(g.c('card'),g.c('accent'),.04),g.c('line'),4);
       fade(g,sw*(1-.85*p.en),()=>{const P=places(p,I),M=P.map(([x,y,r])=>molAt(p.sub,x,y,r));
-        if(p.en<.5)(HT_KEEP[p.ph]||[]).forEach(([a,b])=>{const A=M[a].atoms[0],C=M[b].atoms[0];dashGray(g,A.x,A.y,C.x,C.y,1)});
+        if(p.en<.5)HT_KEEP(p.sub,p.ph).forEach(([a,b])=>{const A=M[a].atoms[0],C=M[b].atoms[0];dashGray(g,A.x,A.y,C.x,C.y,1)});
         M.forEach(m=>mol2d(g,m))});
       readouts(g,p,I,I.stage,true);fade(g,p.en,()=>energy(g,I,true))},
     units:(p,I)=>{const L=lay(I.w,I.h),g=D.painter(document.createElement('canvas').getContext('2d')),u=readouts(g,p,I,I.stage,false);
       if(p.en>.5)u.push(...energy(g,I,false));else u.push(uRect(L.box.x,L.box.y,L.box.w,L.box.h,'the molecules'));return u},
-    meta:(p,s,I)=>{const tot=p.sub==='CH4'?24:12;return {substance:p.sub,stage:s,phase:p.ph,molecules:6,bondsTotal:tot,bondsIntact:tot,attractionsDrawn:p.en>.5?0:(HT_KEEP[p.ph]||[]).length,
+    meta:(p,s,I)=>{const tot=p.sub==='CH4'?16:12;return {substance:p.sub,stage:s,phase:p.ph,molecules:htN(p.sub),bondsTotal:tot,bondsIntact:tot,attractionsDrawn:p.en>.5?0:HT_KEEP(p.sub,p.ph).length,
       temperature:HT_T[s],energies:{boil:40.7,bonds:928},energyBars:p.en>.5,caption:p.en>.5?'more than 20 times as much':null,spread:I&&I.w?spread(p.sub,I):null}}});
 });
 
@@ -1998,7 +2008,7 @@ D.sim('networkVsMolecules',function(host){
 <section class="slide t-cover" id="s01" data-period="1" data-title="Bonds, forces and properties" data-sec="Lesson 4.5" data-ref="Reading §4.5">
   <h2>Bonds, forces and properties</h2>
   <div class="body">
-    <div class="card dq"><p class="tag">Driving question</p><p>How do the forces within and between particles explain the melting point, conductivity and hardness of a substance?</p></div>
+    <div class="card dq reg"><p class="tag">Driving question</p><p>Forces act within and between particles. How do they explain melting point, conductivity and hardness?</p></div>
     <div class="r800">
       <div class="key"><svg viewBox="0 0 120 100" role="img" aria-label="Next button"><use href="#ic-next"/></svg><b>Next</b><span>next step</span></div>
       <div class="key"><svg viewBox="0 0 120 100" role="img" aria-label="Back button"><use href="#ic-back"/></svg><b>Back</b><span>one step back</span></div>
@@ -2048,7 +2058,7 @@ D.sim('networkVsMolecules',function(host){
       </div>
       <p class="simcap" id="s03-cap" data-zoom="caption">Atom colors show the element, not the charge.</p>
     </div>
-    <div class="card dq" id="s03-dq" data-label="driving question"><p>How do the forces within and between particles explain the melting point, conductivity and hardness of a substance?</p></div>
+    <div class="card dq reg" id="s03-dq" data-label="driving question"><p>Forces act within and between particles. How do they explain melting point, conductivity and hardness?</p></div>
     <div class="qrow" id="s03-st" data-label="write 60 s"><ol class="frames"><li>I think snow melts by noon but sand never melts because <span class="gap"></span>.</li></ol><div class="timer"></div></div>
   </div>
   <aside class="notes">The reading opener: methane melts at −182.5 °C, salt stays solid until 801 °C, quartz (the main mineral in sand) melts near 1700 °C. "The difference lies in what must come apart when each solid melts." Snow is water molecules; salt is Na⁺ and Cl⁻ ions (red and blue); sand is a network of Si and O atoms (CPK colors), hence the caption.</aside>
@@ -2129,8 +2139,8 @@ D.sim('networkVsMolecules',function(host){
       <div class="card check" id="s06-check" data-label="check">
         <p class="tag">Check</p>
         <p class="q">In liquid chlorine, what holds neighboring Cl<sub>2</sub> molecules near each other?</p>
-        <ol class="opts col1" data-lay="col"><li class="opt" id="s06-a" data-ok="1" data-fb="Between molecules there are only weak attractions."><b>A</b><span>weak attractions between the molecules</span></li><li class="opt" id="s06-b" data-ok="0" data-fb="A covalent bond joins the two atoms inside one molecule, not two molecules."><b>B</b><span>covalent bonds between the molecules</span></li><li class="opt" id="s06-c" data-ok="0" data-fb="Chlorine is neutral molecules, not ions. It has no ionic bonds."><b>C</b><span>ionic bonds</span></li></ol>
-        <div class="af"><p class="ans" id="s06-ans" data-label="answer">A. The Cl–Cl bond is inside each molecule. Between molecules there are only weak attractions.</p><p class="fb" aria-live="polite"></p></div>
+        <ol class="opts col1" data-lay="col"><li class="opt" id="s06-a" data-ok="1" data-fb="Between molecules there are only weak attractions."><b>A</b><span>weak attractions between molecules</span></li><li class="opt" id="s06-b" data-ok="0" data-fb="A covalent bond joins the two atoms inside one molecule, not two molecules."><b>B</b><span>covalent bonds between molecules</span></li><li class="opt" id="s06-c" data-ok="0" data-fb="Chlorine is neutral molecules, not ions. It has no ionic bonds."><b>C</b><span>ionic bonds</span></li></ol>
+        <div class="af"><p class="ans" id="s06-ans" data-label="answer">A. The Cl–Cl bond is inside each molecule. Only weak attractions act between molecules.</p><p class="fb" aria-live="polite"></p></div>
       </div>
     </div><p class="simcap" id="s06-cap" data-label="colors" data-zoom="caption">Atom colors show the element, not the charge.</p></div>
   </div>
@@ -2164,7 +2174,7 @@ D.sim('networkVsMolecules',function(host){
       <div class="card rule reg" id="s07-rule" data-label="rule"><p class="tag">Rule</p><p>Dispersion forces act between all molecules. More electrons make stronger dispersion forces. Stronger forces mean a higher boiling point.</p></div>
       <div class="card check" id="s07-check" data-label="check">
         <p class="tag">Check</p>
-        <p class="q">Chlorine boils at −34.0 °C. Bromine boils at 58.8 °C. Why does bromine boil higher?</p>
+        <p class="q">Why does bromine boil higher than chlorine?</p>
         <ol class="opts col1" data-lay="col"><li class="opt" id="s07-a" data-ok="1" data-fb="More electrons give stronger dispersion forces."><b>A</b><span>Br<sub>2</sub> has more electrons, so stronger dispersion forces.</span></li><li class="opt" id="s07-b" data-ok="0" data-fb="Both atoms in Br&lt;sub&gt;2&lt;/sub&gt; are the same, so it is nonpolar."><b>B</b><span>Br<sub>2</sub> is polar.</span></li><li class="opt" id="s07-c" data-ok="0" data-fb="Boiling separates whole Br&lt;sub&gt;2&lt;/sub&gt; molecules. The Br–Br bond stays."><b>C</b><span>Boiling must break the Br–Br bond.</span></li></ol>
         <div class="af"><p class="ans" id="s07-ans" data-label="answer">A. Br<sub>2</sub> has 70 electrons and Cl<sub>2</sub> has 34. Both are nonpolar.</p><p class="fb" aria-live="polite"></p></div>
       </div>
@@ -2297,7 +2307,7 @@ D.sim('networkVsMolecules',function(host){
 <section class="slide t-concept cw" id="s11" data-period="1" data-title="Molecules stay whole" data-sec="Melting and boiling" data-ref="Reading §4.5.3">
   <h2>Molecules stay whole</h2>
   <div class="body">
-    <div class="sim" id="s11-sim" data-sim="heating" aria-label="Six methane molecules warm from solid to gas; a readout counts the covalent bonds, all intact."></div>
+    <div class="sim" id="s11-sim" data-sim="heating" aria-label="Four methane molecules warm from solid to gas; a readout counts the covalent bonds, all intact."></div>
     <div class="col acc">
       <div class="card" id="s11-c0" data-label="solid methane"><p class="tag">Solid methane</p><p>Solid methane at −182.5 °C. Count the C–H bonds: all intact.</p></div>
       <div class="card" id="s11-pred" data-label="predict"><p class="tag">Predict</p><p>What comes apart when it melts?</p></div>
@@ -2309,19 +2319,19 @@ D.sim('networkVsMolecules',function(host){
       <div class="card check" id="s11-check" data-label="check">
         <p class="tag">Check</p>
         <p class="q">What happens to the water molecules when water boils?</p>
-        <ol class="opts col1" data-lay="col"><li class="opt" id="s11-a" data-ok="1" data-fb="Only the attractions between molecules let go."><b>A</b><span>The attractions let go, and the molecules move far apart.</span></li><li class="opt" id="s11-b" data-ok="0" data-fb="Boiling does not break covalent bonds. Steam is still H&lt;sub&gt;2&lt;/sub&gt;O."><b>B</b><span>Their O–H bonds break.</span></li><li class="opt" id="s11-c" data-ok="0" data-fb="Boiling is a change of state, not a reaction. The molecules stay whole."><b>C</b><span>They split into hydrogen and oxygen.</span></li></ol>
-        <div class="af"><p class="ans" id="s11-ans" data-label="answer">A. The molecules separate. Each keeps its two O–H bonds.</p><p class="fb" aria-live="polite"></p></div>
+        <ol class="opts col1" data-lay="col"><li class="opt" id="s11-a" data-ok="1" data-fb="Only the attractions between molecules let go."><b>A</b><span>The molecules move far apart, still whole.</span></li><li class="opt" id="s11-b" data-ok="0" data-fb="Boiling does not break covalent bonds. Steam is still H&lt;sub&gt;2&lt;/sub&gt;O."><b>B</b><span>Their O–H bonds break.</span></li><li class="opt" id="s11-c" data-ok="0" data-fb="Boiling is a change of state, not a reaction. The molecules stay whole."><b>C</b><span>They split into hydrogen and oxygen.</span></li></ol>
+        <div class="af"><p class="ans" id="s11-ans" data-label="answer">A. Each molecule keeps its two O–H bonds.</p><p class="fb" aria-live="polite"></p></div>
       </div>
     </div>
   </div>
-  <aside class="notes">The reading's heating model: six molecules from solid to gas; the readout "Covalent bonds: 24 of 24 intact" (water: 12 of 12) never changes, while "Attractions drawn" falls to 0 in the gas. Energy (OpenStax): boiling 18 g of water at 100 °C takes 40.7 kJ; breaking every O–H bond in it would take about 928 kJ, more than 20 times as much. Shown as the reading's comparison only; no bond-energy calculation.</aside>
+  <aside class="notes">The reading's heating model: four methane molecules (six water molecules) from solid to gas; the readout "Covalent bonds: 16 of 16 intact" (water: 12 of 12) never changes, while "Attractions drawn" falls to 0 in the gas. Energy (OpenStax): boiling 18 g of water at 100 °C takes 40.7 kJ; breaking every O–H bond in it would take about 928 kJ, more than 20 times as much. Shown as the reading's comparison only; no bond-energy calculation.</aside>
   <script>Deck.frames('s11',[
-    {show:"s11-c0",stage:"s11-sim:CH4/solid",focus:"s11-sim",t:0.25,note:"Solid methane at its melting point. Count the C–H bonds with the class: 24 of 24 intact."},
+    {show:"s11-c0",stage:"s11-sim:CH4/solid",focus:"s11-sim",t:0.25,note:"Solid methane at its melting point. Count the C–H bonds with the class: 16 of 16 intact."},
     {show:"s11-pred",t:0.5,note:"Prediction: what comes apart when methane melts? Collect answers. Listen for \"the C–H bonds break\"."},
-    {show:"s11-c1",hide:"s11-pred",stage:"s11-sim:CH4/melt",t:0.25,note:"The top row leaves its places first. The bond readout stays 24 of 24; only \"Attractions drawn\" falls."},
+    {show:"s11-c1",hide:"s11-pred",stage:"s11-sim:CH4/melt",t:0.25,note:"The top row leaves its places first. The bond readout stays 16 of 16; only \"Attractions drawn\" falls."},
     {stage:"s11-sim:CH4/liquid",label:"liquid",t:0.25,note:"Liquid: the molecules move past each other; attractions still form and break."},
     {show:"s11-c2",stage:"s11-sim:CH4/boil",t:0.25,note:"Boiling at −161.5 °C: the molecules spread far apart."},
-    {stage:"s11-sim:CH4/gas",label:"gas",t:0.25,note:"The gas: attractions drawn 0, covalent bonds still 24 of 24. Misconception: \"methane melts low because its C–H bonds are weak\" (melting leaves them intact)."},
+    {stage:"s11-sim:CH4/gas",label:"gas",t:0.25,note:"The gas: attractions drawn 0, covalent bonds still 16 of 16. Misconception: \"methane melts low because its C–H bonds are weak\" (melting leaves them intact)."},
     {show:"s11-c3",hide:["s11-c0", "s11-c1", "s11-c2"],stage:"s11-sim:H2O/boil",t:0.25,note:"Water at 100.0 °C: steam is still H₂O molecules, each with its two O–H bonds, 12 of 12."},
     {show:"s11-c4",stage:"s11-sim:energy",t:0.25,note:"Two bars to one scale: 40.7 kJ to boil, about 928 kJ to break the bonds. More than 20 times as much."},
     {show:"s11-rule",t:1,note:"Students copy the rule."},
@@ -2429,9 +2439,9 @@ D.sim('networkVsMolecules',function(host){
       <p class="caprow" id="s15-p8" data-label="distilled water">Distilled water: very few ions. Dark.</p>
       <div class="rulerow reg" id="s15-rule" data-label="rule"><p>A substance conducts when it has charged particles that can move.</p><p>Ions in a liquid or a solution.</p><p>Delocalized electrons in a metal.</p></div>
       <div class="checkrow stk" id="s15-check" data-label="check">
-        <p class="q" id="s15-q"><span class="tag">Check:</span> Why does molten NaCl conduct, while solid NaCl does not?</p>
-        <ol class="opts col1" data-lay="col"><li class="opt" id="s15-a" data-ok="1" data-fb="Moving ions carry the current."><b>A</b><span>In the liquid, the ions are free to move.</span></li><li class="opt" id="s15-b" data-ok="0" data-fb="Solid NaCl is already Na&lt;sup&gt;+&lt;/sup&gt; and Cl&lt;sup&gt;−&lt;/sup&gt;. In the solid they are locked in place."><b>B</b><span>Melting turns the atoms into ions.</span></li><li class="opt" id="s15-c" data-ok="0" data-fb="NaCl has no electron sea. Moving ions carry its current."><b>C</b><span>Melting frees electrons from sodium.</span></li></ol>
-        <div class="af"><p class="ans" id="s15-ans" data-label="answer">A. The ions were there all along. Melting lets them move.</p><p class="fb" aria-live="polite"></p></div>
+        <p class="q" id="s15-q"><span class="tag">Check:</span> Why does molten NaCl conduct, but solid NaCl not?</p>
+        <ol class="opts col1" data-lay="col"><li class="opt" id="s15-a" data-ok="1" data-fb="Moving ions carry the current."><b>A</b><span>In the liquid, the ions can move.</span></li><li class="opt" id="s15-b" data-ok="0" data-fb="Solid NaCl is already Na&lt;sup&gt;+&lt;/sup&gt; and Cl&lt;sup&gt;−&lt;/sup&gt;. In the solid they are locked in place."><b>B</b><span>Melting turns atoms into ions.</span></li><li class="opt" id="s15-c" data-ok="0" data-fb="NaCl has no electron sea. Moving ions carry its current."><b>C</b><span>Melting frees sodium's electrons.</span></li></ol>
+        <div class="af"><p class="ans" id="s15-ans" data-label="answer">A. The ions were always there. Now they can move.</p><p class="fb" aria-live="polite"></p></div>
       </div>
       </div>
       <p class="simcap" id="s15-cap" data-label="colors" data-zoom="caption">Atom colors show the element, not the charge.</p>
@@ -2502,7 +2512,7 @@ D.sim('networkVsMolecules',function(host){
         <p class="tag">Check</p>
         <p class="q">Which statement fits the data?</p>
         <ol class="opts col1" data-lay="col"><li class="opt" id="s17-a" data-ok="1" data-fb="The type of bond alone does not predict it."><b>A</b><span>Some ionic compounds, such as CaCO<sub>3</sub>, barely dissolve.</span></li><li class="opt" id="s17-b" data-ok="0" data-fb="Calcium carbonate is ionic, yet it barely dissolves."><b>B</b><span>Every ionic compound dissolves in water.</span></li><li class="opt" id="s17-c" data-ok="0" data-fb="Sugar is molecular, and it dissolves easily."><b>C</b><span>No molecular substance dissolves in water.</span></li></ol>
-        <div class="af"><p class="ans" id="s17-ans" data-label="answer">A. Being ionic does not mean it dissolves. Check the data.</p><p class="fb" aria-live="polite"></p></div>
+        <div class="af"><p class="ans" id="s17-ans" data-label="answer">A. Ionic does not mean it dissolves. Check the data.</p><p class="fb" aria-live="polite"></p></div>
       </div>
     </div>
   </div>
@@ -2541,9 +2551,9 @@ D.sim('networkVsMolecules',function(host){
         </div>
         <div class="rulerow two reg" id="s18-rule" data-label="rule"><p>A metal bends because its electrons move with the shifting cations.</p><p>An ionic crystal splits because shifted layers put like charges side by side.</p></div>
       <div class="checkrow stk" id="s18-check" data-label="check">
-        <p class="q" id="s18-q"><span class="tag">Check:</span> Why does a salt crystal split when it is struck hard?</p>
-        <ol class="opts col1" data-lay="col"><li class="opt" id="s18-a" data-ok="1" data-fb="Like charges side by side repel, and the layers push apart."><b>A</b><span>Shifted layers put like charges together, and they repel.</span></li><li class="opt" id="s18-b" data-ok="0" data-fb="Ionic bonds are strong, so salt is hard. Like charges repel when layers shift."><b>B</b><span>Ionic bonds are weak.</span></li><li class="opt" id="s18-c" data-ok="0" data-fb="Salt has no electron sea. Its ions stay charged, and like charges repel."><b>C</b><span>The electrons flow out of the crystal.</span></li></ol>
-        <div class="af"><p class="ans" id="s18-ans" data-label="answer">A. The repulsion pushes the layers apart along a flat face.</p><p class="fb" aria-live="polite"></p></div>
+        <p class="q" id="s18-q"><span class="tag">Check:</span> A sharp blow splits a salt crystal. Why?</p>
+        <ol class="opts col1" data-lay="col"><li class="opt" id="s18-a" data-ok="1" data-fb="Like charges side by side repel, and the layers push apart."><b>A</b><span>Shifted layers put like charges together; they repel.</span></li><li class="opt" id="s18-b" data-ok="0" data-fb="Ionic bonds are strong, so salt is hard. Like charges repel when layers shift."><b>B</b><span>Ionic bonds are weak.</span></li><li class="opt" id="s18-c" data-ok="0" data-fb="Salt has no electron sea. Its ions stay charged, and like charges repel."><b>C</b><span>Electrons flow out of the crystal.</span></li></ol>
+        <div class="af"><p class="ans" id="s18-ans" data-label="answer">A. Like charges repel and push the layers apart.</p><p class="fb" aria-live="polite"></p></div>
       </div>
       </div>
       <p class="simcap" id="s18-cap" data-label="colors" data-zoom="caption">Atom colors show the element, not the charge.</p>
@@ -2737,7 +2747,7 @@ D.sim('networkVsMolecules',function(host){
         <p class="handsup">Hands up if you predicted this.</p>
       </div>
       <div class="phaseB" id="s25-B" data-label="exit ticket">
-        <div class="card prompt dq"><p>How do the forces within and between particles explain the melting point, conductivity and hardness of a substance?</p></div>
+        <div class="card prompt dq reg"><p>Forces act within and between particles. How do they explain melting point, conductivity and hardness?</p></div>
         <ol class="rail"><li id="s25-r1">Claim</li><li id="s25-r2">Evidence</li><li id="s25-r3">Reasoning</li><li id="s25-r4">Self-check</li><li id="s25-r5">Sample</li></ol>
         <div class="rt-main">
           <div class="acc">
@@ -2748,7 +2758,7 @@ D.sim('networkVsMolecules',function(host){
             </ol>
             <div class="bank"><b>Word bank:</b> <span>attractions between molecules</span> <span>bonds within</span> <span>ionic bonds</span> <span>covalent bonds</span> <span>a network</span> <span>weaker</span> <span>higher melting point</span></div></div>
             <div class="card" id="s25-check" data-label="self-check"><p class="tag">Self-check: did you write</p><ul class="crit"><li>a claim about the forces that come apart?</li><li>snow, salt and sand with their melting points?</li><li>attractions weaker than bonds in the reasoning?</li></ul></div>
-            <div class="card reg" id="s25-sample" data-label="sample answer"><p class="tag">Sample answer</p><p>The forces that come apart decide the melting point. Snow melts at 0 °C because only attractions between molecules let go. Salt needs 801 °C because ionic bonds must come apart. Sand needs near 1700 °C because covalent bonds must break. Attractions between molecules are much weaker than bonds within, so molecular solids melt low.</p></div>
+            <div class="card reg" id="s25-sample" data-label="sample answer"><p class="tag">Sample answer</p><p>The forces that come apart set the melting point. Snow melts at 0 °C: only attractions between molecules let go. Salt needs 801 °C: ionic bonds. Sand needs near 1700 °C: covalent bonds. Attractions are weaker than bonds.</p></div>
           </div>
           <div class="timer"></div>
         </div>

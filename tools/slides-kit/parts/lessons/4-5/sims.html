@@ -502,12 +502,17 @@ D.sim('forceDecider',function(host){
    CH4 melts at −182.5 °C and boils at −161.5 °C; water melts at 0.0 °C and boils at 100.0 °C. energy: boiling 18 g of water takes
    40.7 kJ; breaking all its O–H bonds about 928 kJ (OpenStax), two bars to one scale.
    Step 04 (review 03, F2): six molecules instead of nine. The solid is the tightest 2 x 3 block (4 px between atoms of neighbours) on
-   the container floor; the gas puts the six at the container's limits, each turned its own way. meta() measures the block and the spread. */
+   the container floor; the gas puts the six at the container's limits, each turned its own way. meta() measures the block and the spread.
+   Step 04a (review 04, F1): methane as four molecules (2 x 2, 166 x 206 px, 2 px between neighbours' atoms), water as six. */
 const HT_T={'CH4/solid':'−182.5 °C (melting point)','CH4/melt':'−182.5 °C, melting','CH4/liquid':'liquid','CH4/boil':'−161.5 °C, boiling','CH4/gas':'−161.5 °C (boiling point)',
   'H2O/solid':'0.0 °C (melting point)','H2O/boil':'100.0 °C, boiling','H2O/gas':'100.0 °C (boiling point)',energy:'100.0 °C (boiling point)'};
 /* attractions drawn per stage: neighbour pairs of the 2 x 3 block (index r*3+c, row 0 on top); the melt lets the top row go first */
-const HT_PAIRS=[[0,1],[1,2],[3,4],[4,5],[0,3],[1,4],[2,5]];
-const HT_KEEP={solid:HT_PAIRS,melt:[[0,1],[1,2],[3,4],[4,5]],liquid:[[0,1],[3,4],[1,4]],boil:[[3,4]],gas:[]};
+/* step 04a (review 04, F1): methane as four molecules (2 x 2), water as six (2 x 3) */
+const HT_N={CH4:[2,2],H2O:[2,3]};
+const HT_KEEPS={CH4:{solid:[[0,1],[2,3],[0,2],[1,3]],melt:[[0,1],[2,3]],liquid:[[2,3],[1,3]],boil:[[2,3]],gas:[]},
+  H2O:{solid:[[0,1],[1,2],[3,4],[4,5],[0,3],[1,4],[2,5]],melt:[[0,1],[1,2],[3,4],[4,5]],liquid:[[0,1],[3,4],[1,4]],boil:[[3,4]],gas:[]}};
+const HT_KEEP=(sub,ph)=>HT_KEEPS[sub][ph]||[];
+const htN=sub=>HT_N[sub][0]*HT_N[sub][1];
 D.sim('heating',function(host){
   const ST=Object.keys(HT_T),SPREAD={solid:0,melt:.25,liquid:.4,boil:.85,gas:1},params={};
   ST.forEach(s=>{const [sub,ph]=s==='energy'?['H2O','gas']:s.split('/');params[s]={sub,ph:ph||'gas',spread:SPREAD[ph||'gas'],top:ph==='melt'?1:0,en:s==='energy'?1:0}});
@@ -515,7 +520,7 @@ D.sim('heating',function(host){
   /* solid: centre spacing [dx, dy] and turn of the tightest 2 x 3 block with 4 px between neighbours' atoms (searched offline);
      gas: the six centres on a 2 x 3 grid as far apart as the container allows, each molecule clear of the walls by its reach + 12 px
      (the jiggle) */
-  const SP={CH4:{solid:[168,208],rot:deg(-30),sb:.82},H2O:{solid:[186,98],rot:deg(37.5),sb:.8}};
+  const SP={CH4:{solid:[166,206],rot:deg(-30),sb:.82},H2O:{solid:[186,98],rot:deg(37.5),sb:.8}};
   const GROT=[1.1,2.3,.6,1.8,2.9,1.4];
   const molAt=(sub,x,y,rot)=>sub==='CH4'?methane(x,y,rot,SP.CH4.sb):water(x,y,rot,SP.H2O.sb);
   const reach=sub=>{const M=molAt(sub,0,0,0);let r=0;M.atoms.forEach(A=>{r=Math.max(r,Math.hypot(A.x,A.y)+A.r)});
@@ -523,16 +528,18 @@ D.sim('heating',function(host){
   const bbox=Ms=>{let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;Ms.forEach(M=>M.atoms.forEach(A=>{x0=Math.min(x0,A.x-A.r);x1=Math.max(x1,A.x+A.r);y0=Math.min(y0,A.y-A.r);y1=Math.max(y1,A.y+A.r)}));return {x:x0,y:y0,w:x1-x0,h:y1-y0}};
   /* the two end arrangements in host px: solid centred on the floor, gas at the limits */
   function ends(sub,I){const L=lay(I.w,I.h),B=L.box,Q=SP[sub],sol=[],gas=[];
-    for(let i=0;i<6;i++){const r=Math.floor(i/3),c=i%3;sol.push([(c-1)*Q.solid[0],r*Q.solid[1],Q.rot])}
+    const [NR,NC]=HT_N[sub],N=NR*NC;
+    for(let i=0;i<N;i++){const r=Math.floor(i/NC),c=i%NC;sol.push([(c-(NC-1)/2)*Q.solid[0],r*Q.solid[1],Q.rot])}
     const bb=bbox(sol.map(([x,y,t])=>molAt(sub,x,y,t))),ox=B.x+B.w/2-(bb.x+bb.w/2),oy=B.y+B.h-8-(bb.y+bb.h);
     sol.forEach(q=>{q[0]+=ox;q[1]+=oy});
-    const m=reach(sub)+12,gx=(B.w-2*m)/2,gy=B.h-2*m;
-    for(let i=0;i<6;i++){const r=Math.floor(i/3),c=i%3;gas.push([B.x+m+c*gx,B.y+m+r*gy,Q.rot+GROT[i]])}
+    const m=reach(sub)+12,gx=(B.w-2*m)/(NC-1),gy=(B.h-2*m)/(NR-1);
+    for(let i=0;i<N;i++){const r=Math.floor(i/NC),c=i%NC;gas.push([B.x+m+c*gx,B.y+m+r*gy,Q.rot+GROT[i]])}
     return {sol,gas,B}}
   function places(p,I){const E=ends(p.sub,I),t=I.live?I.clock:0,s=clamp(p.spread,0,1),out=[];
-    for(let i=0;i<6;i++){const r=Math.floor(i/3),c=i%3,[x0,y0,r0]=E.sol[i],[x1,y1,r1]=E.gas[i];
+    const NC=HT_N[p.sub][1];
+    for(let i=0;i<E.sol.length;i++){const r=Math.floor(i/NC),c=i%NC,[x0,y0,r0]=E.sol[i],[x1,y1,r1]=E.gas[i];
       let x=lerp(x0,x1,s),y=lerp(y0,y1,s),rot=lerp(r0,r1,s);
-      if(p.top>.01&&r===0){x+=p.top*(c-1)*18;y-=p.top*30;rot+=p.top*(c%2?.45:-.35)}
+      if(p.top>.01&&r===0){x+=p.top*(c-(NC-1)/2)*18;y-=p.top*30;rot+=p.top*(c%2?.45:-.35)}
       const jig=I.live?(3+9*s):0;x+=jig*Math.sin(t*(1.1+i*.17)+i);y+=jig*Math.cos(t*(1.3+i*.11)+i*2);rot+=I.live?(.04+.12*s)*Math.sin(t*.9+i):0;
       out.push([x,y,rot])}return out}
   /* the measured spread: the solid block's share of the container, and the area per molecule (solid: its lattice cell dx x dy;
@@ -541,9 +548,9 @@ D.sim('heating',function(host){
     const nn=P=>{let d=1e9;P.forEach((a,i)=>P.forEach((b,j)=>{if(j>i)d=Math.min(d,Math.hypot(a[0]-b[0],a[1]-b[1]))}));return d};
     const r2=v=>Math.round(v*100)/100;
     return {container:[Math.round(B.w),Math.round(B.h)],solidBlockShare:r2(sb.w*sb.h/A),gasBoxShare:r2(gb.w*gb.h/A),
-      areaPerMolecule:{solid:Math.round(Q.solid[0]*Q.solid[1]),gas:Math.round(A/6)},areaRatio:r2(A/6/(Q.solid[0]*Q.solid[1])),
+      areaPerMolecule:{solid:Math.round(Q.solid[0]*Q.solid[1]),gas:Math.round(A/htN(sub))},areaRatio:r2(A/htN(sub)/(Q.solid[0]*Q.solid[1])),
       nearest:{solid:Math.round(nn(E.sol)),gas:Math.round(nn(E.gas))},spacingRatio:r2(Math.pow(nn(E.gas)/nn(E.sol),2))}}
-  function readouts(g,p,I,stage,draw){const L=lay(I.w,I.h),tot=p.sub==='CH4'?24:12,att=(HT_KEEP[p.ph]||[]).length,u=[];
+  function readouts(g,p,I,stage,draw){const L=lay(I.w,I.h),tot=p.sub==='CH4'?16:12,att=HT_KEEP(p.sub,p.ph).length,u=[];
     const lines3=[['Temperature',HT_T[stage]||''],['Covalent bonds: '+tot+' of '+tot+' intact'],['Attractions drawn: '+(p.en>.5?0:att)]];
     lines3.forEach((ln,i)=>{const y=L.rows[i];let w=0;
       if(ln.length===2){if(draw)g.text(ln[0],20,y,36,{align:'left',color:g.c('muted')});g.font(36,700);const lw=g.ctx.measureText(ln[0]).width;const cw=chip(g,0,0,ln[1],{measure:true,px:36});if(draw)chip(g,40+lw,y,ln[1],{px:36});w=lw+40+cw}
@@ -561,12 +568,12 @@ D.sim('heating',function(host){
     draw(g,p,I){const L=lay(I.w,I.h),B=L.box,sw=I.from&&I.from!==I.stage&&fam(I.from)!==fam(I.stage)&&fam(I.stage)!=='energy'&&I.k<1?Math.abs(1-2*I.k):1;
       g.rrect(B.x,B.y,B.w,B.h,18,D.mix(g.c('card'),g.c('accent'),.04),g.c('line'),4);
       fade(g,sw*(1-.85*p.en),()=>{const P=places(p,I),M=P.map(([x,y,r])=>molAt(p.sub,x,y,r));
-        if(p.en<.5)(HT_KEEP[p.ph]||[]).forEach(([a,b])=>{const A=M[a].atoms[0],C=M[b].atoms[0];dashGray(g,A.x,A.y,C.x,C.y,1)});
+        if(p.en<.5)HT_KEEP(p.sub,p.ph).forEach(([a,b])=>{const A=M[a].atoms[0],C=M[b].atoms[0];dashGray(g,A.x,A.y,C.x,C.y,1)});
         M.forEach(m=>mol2d(g,m))});
       readouts(g,p,I,I.stage,true);fade(g,p.en,()=>energy(g,I,true))},
     units:(p,I)=>{const L=lay(I.w,I.h),g=D.painter(document.createElement('canvas').getContext('2d')),u=readouts(g,p,I,I.stage,false);
       if(p.en>.5)u.push(...energy(g,I,false));else u.push(uRect(L.box.x,L.box.y,L.box.w,L.box.h,'the molecules'));return u},
-    meta:(p,s,I)=>{const tot=p.sub==='CH4'?24:12;return {substance:p.sub,stage:s,phase:p.ph,molecules:6,bondsTotal:tot,bondsIntact:tot,attractionsDrawn:p.en>.5?0:(HT_KEEP[p.ph]||[]).length,
+    meta:(p,s,I)=>{const tot=p.sub==='CH4'?16:12;return {substance:p.sub,stage:s,phase:p.ph,molecules:htN(p.sub),bondsTotal:tot,bondsIntact:tot,attractionsDrawn:p.en>.5?0:HT_KEEP(p.sub,p.ph).length,
       temperature:HT_T[s],energies:{boil:40.7,bonds:928},energyBars:p.en>.5,caption:p.en>.5?'more than 20 times as much':null,spread:I&&I.w?spread(p.sub,I):null}}});
 });
 
