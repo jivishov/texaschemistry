@@ -1,0 +1,5 @@
+# xcheck: the old step7/xcheck.js (from the base commit) run against the same walk-light.json files, compared with the new audits/xcheck.js
+xcheck: 81 of 81 pass
+old 81 assertions = 1 matrix-row assertion + 80 deck assertions; new 42 (4.1) + 40 (4.2) = 2 matrix-row assertions + 80 deck assertions
+the 80 deck assertions: identical in name, verdict and detail (old 80, new 80)
+old: matrix: ten rows 4.1.1 to 4.2.5 found (PASS); new: matrix: 5 rows 4.1.1 to 4.1.5 found (PASS), matrix: 5 rows 4.2.1 to 4.2.5 found (PASS)

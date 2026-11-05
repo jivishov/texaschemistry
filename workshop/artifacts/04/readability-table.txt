@@ -1,0 +1,57 @@
+slide  FK(all)  words/unit  prose FK  prose words/sentence  max prose words visible (frame)  sentences > 14 words  title
+ 1    2.2    3.8   11.1     18   18 (f0)  0  Bonds, forces and properties
+ 2    3.3    6.2    4.5    7.8   21 (f4)  0  Shake the bag
+ 3    3.3    7.8    3.7    8.5   18 (f7)  0  Snow day
+ 4    3.1    4.2    1.8    7.3   33 (f0)  0  Predict now
+ 5      7    4.1    6.4      7   35 (f0)  0  Targets and words
+ 6    6.2      5    6.6    7.3   38 (f8)  0  Bonds within, attractions between
+ 7    4.2    4.3    4.3    5.9   40 (f13)  0  Dispersion forces
+ 8    5.9    4.1    6.5    7.1   28 (f8)  0  Dipole-dipole forces
+ 9    2.7    4.8    3.1    8.5   29 (f10)  0  Hydrogen bonding
+10    1.8      3    0.6    5.4   16 (f0)  0  Name the attraction: I do, we do, you do
+11    4.3    4.4      4    6.1   39 (f10)  0  Molecules stay whole
+12    1.1    4.6    2.3    7.4   29 (f9)  0  Why ice floats
+13    4.7    3.7    7.2    8.5   10 (f3)  0  One picture: the ladder of attractions
+14      4    4.2    5.1    5.6    8 (f0)  0  Warm-up
+15    3.3    4.9    3.9    6.2   41 (f13)  0  Does it conduct?
+16    1.8      5      3    6.8   34 (f14)  0  Predict the bulb: I do, we do, you do
+17    5.2    2.9    5.8    7.1   36 (f10)  0  Does it dissolve?
+18    2.9    6.1    3.7    8.4   42 (f8)  0  Malleable or brittle
+19    4.2    4.3    5.6    6.9   35 (f6)  0  Covalent network solids
+20    4.7    3.4      2    5.3   16 (f4)  0  Four kinds of solids
+21    1.9    3.8    0.6      7   30 (f0)  0  Checkpoint routine
+22      3    3.5    3.5    6.4   35 (f5)  0  Checkpoint 1
+23    1.6    3.6    2.6    5.8   35 (f5)  0  Checkpoint 2
+24    1.6    3.5    2.5    7.4   35 (f5)  0  Checkpoint 3
+25    4.7      5      5      8   70 (f7)  0  Predictions and exit ticket
+26    3.7    4.3    6.4      7   35 (f0)  0  Rate your learning
+27    3.2    3.8    4.5      8   33 (f0)  0  Next
+
+register (.reg blocks):
+  slide 6 s06-rule: grade 7.8  "Bonds hold atoms or ions together in a substance. Much weaker attractions act between molecules."
+  slide 7 s07-rule: grade 7.4  "Dispersion forces act between all molecules. More electrons make stronger dispersion forces. Stronger forces mean a higher boiling point."
+  slide 8 s08-rule: grade 7.6  "Polar molecules pull each other. These pulls are dipole-dipole forces. They keep dispersion forces too."
+  slide 9 s09-rule: grade 4.3  "Hydrogen bonding needs an H atom bonded to N, O or F. The next molecule needs a lone pair on N, O or F."
+  slide 11 s11-rule: grade 7.4  "Melting and boiling separate molecules. They do not break the covalent bonds inside them."
+  slide 12 s12-rule: grade 3  "Hydrogen bonds hold ice in open rings. So ice is less dense than liquid water, and it floats."
+  slide 15 s15-rule: grade 5.9  "A substance conducts when it has charged particles that can move. Ions in a liquid or a solution. Delocalized electrons in a metal."
+  slide 17 s17-rule: grade 4  "Some ionic and some molecular substances dissolve in water. Some do not. The type of bond alone does not predict it."
+  slide 18 s18-rule: grade 5.8  "A metal bends because its electrons move with the shifting cations. An ionic crystal splits because shifted layers put like charges side by side."
+  slide 19 s19-rule: grade 5.8  "In a covalent network solid, covalent bonds join every atom to its neighbors. To melt it, covalent bonds must break. So it melts only when very hot."
+  slide 22 card prompt reg: grade 4.7  "Methane and water both have 10 electrons. Methane boils at −161.5 °C and water at 100.0 °C. Explain the difference."
+  slide 22 s22-sample: grade 5  "Water forms hydrogen bonds: H on O, lone pairs. Methane has only dispersion forces, so it boils lower."
+  slide 23 card prompt reg: grade 2.1  "Solid salt leaves the bulb dark. Salt water lights it. Explain both with the particles."
+  slide 23 s23-sample: grade 3.1  "Solid salt has Na + and Cl − ions, locked in the crystal. In salt water, ions move and carry the current."
+  slide 24 card prompt reg: grade 2.4  "A hammer bends a copper sheet but splits a salt crystal. Explain both."
+  slide 24 s24-sample: grade 4.3  "Copper's electrons move with the sliding cations, so it bends. In salt, shifted layers put like charges side by side; they repel."
+  slide 25 s25-sample: grade 6.8  "The forces that come apart decide the melting point. Snow melts at 0 °C because only attractions between molecules let go. Salt needs 801 °C because ionic bonds must come apart. Sand needs near 1700 °C because covalent bonds must break. Attractions between molecules are much weaker than bonds within, so molecular solids melt low."
+
+fails:
+  - slide 1: prose FK grade 11.1 > 8
+  - slide 6: 38 words of prose visible at frame 8 (budget 35)
+  - slide 7: 40 words of prose visible at frame 13 (budget 35)
+  - slide 11: 39 words of prose visible at frame 10 (budget 35)
+  - slide 15: 41 words of prose visible at frame 13 (budget 35)
+  - slide 17: 36 words of prose visible at frame 10 (budget 35)
+  - slide 18: 42 words of prose visible at frame 8 (budget 35)
+  - slide 25: 70 words of prose visible at frame 7 (budget 35)

@@ -1,0 +1,30 @@
+# Review 04: The 4.5 deck
+
+Step: 04 · Report: `reports/04-deck.md` (commit `22a3073`) · Verdict: **accepted as the deck to send to the teacher, with fix brief 04a** (the three failing audits and four small items). The teacher's own round follows as 04b.
+
+## Verified by the orchestrator (not from the report)
+1. `git pull --ff-only`; `git status --short` empty at `22a3073`; under `unit4/` only `slides-4-5.html` is new (294,677 bytes, md5 `2a2e378a…`), the blueprint, the index and `old-slides/` untouched; 4.1 `ebd342f1…` and 4.2 `c3fa219a…` unchanged; no shared part, audit or build script in the step's diff.
+2. `python3 build.py 4 5` here reproduces the deck byte for byte (same md5), repo still clean.
+3. The slide roster read from the built file: 27 slides, ids `s01` to `s27`, period 1 slides 1 to 13 and period 2 slides 14 to 27, templates and footer references as plan section 5, ten checks on slides 6, 7, 8, 9, 11, 12, 15, 17, 18, 19, the eleven animations on the slides the plan names (two hosts on slides 7 and 9). 210 frames, every one with minutes and a note.
+4. Every student-facing text extracted from the deck and read against `lessons/4-5.md`, the plan and RULES 7: the ten checks with the brief's questions, options, right answers and reasons word for word; the three predictions and their answers; the "I can" lines; the eight word cards with the glossary's Spanish; the legend with the two 4.5 entries; every rule card at FK grade 7.8 or less; the checkpoint prompts, frames, banks, criteria and samples; the exit ticket frames, bank and sample; the review lines "slides 6 and 7, 8 to 10, 11 and 12, 15 to 17, 18 and 19"; the missions. No ellipsis character in the file; no sentence over 14 words (readability table); numbers carry their meaning (label line then chips on slides 8, 10, 12, 18); the caption on slides 3, 6, 15, 17, 18, 19.
+5. All ten contact sheets, all six zoom sheets and the run-sheet opened. Every frame has a cue; no frame reads empty beyond the gate; the check frames show their subject (slide 6 at `between`, 11 at `H2O/gas`, 15 at `NaCl-l/zoom`, 17 at `dis/CaCO3`, 19 at `quartz`); the words slide, legend, ladder, four-solids table, checkpoints, exit ticket, rate and Next slides match the plan; the dark theme uses the tokens; zoomed units center and fill 65% or more. The run-sheet prints 12 pages with both period totals and the cover's safety and source notes.
+6. Re-run here through `suite.py 4 5 --only walk,readability,timing,chem,layout,click,keys,xcheck,contact --theme light`: walk 210 states PASS (max empty 33% at s18f1), readability FAIL with the same eight lines, timing PASS (45.5 and 47 min), chem FAIL on the same two methane lines, keys PASS 48 checks; click PASS (10 graded checks, 3 predict-now questions, 51 assertions), layout PASS (210 frames, 23 stacked and 3 row option lists, no clipping), xcheck 27 of 43 with the same sixteen blueprint-number lines; 6 of 9 pass, as the report says.
+7. The three failing audits are the ones the report names, nothing else: chem 154 of 156 (the two D1 methane targets), readability (slide 1's driving-question grade and seven frames over the 35-word budget), xcheck 27 of 43 (every failing line reads the blueprint's old 4.5 numbers; every mention and footer cue passes).
+
+## Findings
+- **F1 (fix, 04a item 1).** Heating with six CH₄ molecules: 58% block, 1.81 times (water 32%, 3.48 times). Four CH₄ molecules (2 × 2) meet the targets by the implementer's own measurement; water keeps six. Readouts become "16 of 16" for methane.
+- **F2 (fix, 04a item 2).** The 35-word budget on the answer frames of slides 6, 7, 11, 15, 17, 18: the brief's own texts overran by 1 to 7 words. The texts are trimmed in 04a (exact wording there); the plot already shows the two boiling points slide 7's question repeated.
+- **F3 (fix, 04a items 3 and 4).** The driving question reads at grade 11 on slide 1 (18 words, "conductivity"). On the slides it becomes two sentences with the same terms: "Forces act within and between particles. How do they explain melting point, conductivity and hardness?" (about grade 7). The reading and the blueprint keep the original. The exit-ticket sample is trimmed to 35 words, and the readability audit's visible-prose budget stops counting the driving question (`.dq`), a fixed prompt that RULES 6 keeps on screen while the sample shows; the reference decks pass that budget with or without it. Judgment calls reported to the teacher.
+- **F4 (accepted).** Caption placements (under the card column on slide 6, at the foot of the band on 15 and 18, under the animation on 3, 17, 19) and the 236 px band on the two wide slides: fonts and zoom pass, the sheets read well. Accepted.
+- **F5 (accepted).** The reported deviations 6 to 12: stacked checks a step smaller in a concept column (still above the floor), the rule leaving on slide 6's check frame, slide 9 without a separate `water` press, slide 17 opening on the six-samples card, the timer placements on slides 10 and 25, the per-slide minutes (45.5 and 47.0), the wording tightenings and the two lengthened lines, the exit frames without "Claim:" prefixes (the rail names them).
+- **F6 (polish, 04a item 5, small).** On the rate slide a zoomed target re-flows its sentence into a narrow column beside "Review: …"; the zoomed clone should let the sentence run the width with the review line under it. Same on the "I can" card if it shares the markup.
+- **F7 (accepted).** The ladder rows (slide 13) and table rows zoom by transform and gain little, as the runtime's known limitation says; the text stays at 44 px.
+
+## Decisions on the open questions
+1. Heating: four methane molecules (F1).
+2. The 35-word budget: trim the six check texts and the exit sample; exclude only the driving question from the count (F2, F3).
+3. The driving question: two sentences on the slides (F3); the teacher may veto in their round.
+4. Captions and the band: accepted (F4).
+
+## Next
+Brief 04a (fixes, high effort) to the implementer now; the deck, the sheets and the run-sheet to the teacher for their own round, whose remarks become 04b.

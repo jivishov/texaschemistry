@@ -1,0 +1,146 @@
+/* ===== Lesson 4.5 deck only (inserted into the shared head at build time, marker css-45) ===== */
+/* copied from parts/lessons/4-2/css.css: the 58/42 and 52/48 example splits, the text band, the caption under an animation,
+   the summary rows, the mission cards, the flow row, compact tables */
+.t-example.cb>.body{grid-template-columns:minmax(0,58fr) minmax(0,42fr)}
+.t-example.cw>.body{grid-template-columns:minmax(0,52fr) minmax(0,48fr);grid-template-rows:minmax(0,1fr)}
+.ptrow{height:214px}
+.leftcol{display:flex;flex-direction:column;gap:6px;min-width:0;min-height:0}
+.leftcol>.stack,.leftcol>.sim{flex:1;min-height:0}
+.leftcol>.stack>.sim{min-height:0}
+.simcap{font-size:34px;color:var(--muted);text-align:center;line-height:1.2}
+.flowrow{display:flex;align-items:center;gap:16px;flex-wrap:nowrap}
+.flowrow>b{width:190px;font-size:40px;color:var(--accent);flex:none}
+.fbox{padding:8px 22px;border:3px solid var(--accent);border-radius:16px;background:var(--accent-soft);font-weight:700;white-space:nowrap}
+.arw{font-size:44px;color:var(--muted);font-weight:700}
+.t-summary .stack{align-content:start}
+.mrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.mission{display:grid;justify-items:center;text-align:center;gap:8px;padding:18px 16px 22px;border:3px solid var(--line);border-radius:22px;background:var(--card)}
+.mission svg{width:120px;height:120px}
+.mission b{font-size:44px;line-height:1.1}
+.mission span{font-size:34px;color:var(--muted)}
+.mission.card{padding:18px 16px 22px}
+.tbl.compact td{padding:4px 18px}
+.tbl .why{font-size:34px;color:var(--muted)}
+.t-summary.tfill>.body{grid-template-rows:auto auto minmax(0,1fr);align-content:stretch}
+.t-summary.tnext>.body{grid-template-rows:minmax(0,1fr) auto;align-content:stretch}
+.t-summary.tnext .mission{align-content:center}
+.t-summary.tnext .mission svg{width:200px;height:200px}
+.t-summary.tnext .mission b{font-size:52px}
+.t-summary.tnext .mission span{font-size:40px}
+.t-example .stepscard .steps li,.t-concept .stepscard .steps li{font-size:38px;grid-template-columns:150px minmax(0,1fr)}
+.rulerow sup,.rulerow sub{font-size:.85em}
+/* 4.5 only: sprite fills (sample icons of slide 17), the stick and the dashed line of the legend */
+.f-o{fill:#e8443a}.f-sugar{fill:#f3ead2}.f-shell{fill:#ece4d4}.f-iodine{fill:#5b4a5e}.f-quartz{fill:#eef3f6}
+.k-stick{stroke:#8f989d}.k-wood{stroke:#9b6a2c}.k-copper{stroke:#c8763a}.k-bad{stroke:var(--bad)}.k-dp{stroke:var(--dplus)}.k-dm{stroke:var(--dminus)}
+.legend .stk{min-width:60px;width:60px;height:14px;padding:0;border-radius:7px;background:#8f989d;box-shadow:inset 0 0 0 3px #4d5559}
+.legend .dsh{min-width:60px;width:60px;height:0;padding:0;border-radius:0;border-top:6px dashed var(--muted)}
+/* slide 2: the two words of the last frame on two lines */
+.t-hook .line.two{font-size:44px}
+/* slide 3: the line of each press beside the caption, one row under the animation */
+.lrow{display:flex;align-items:center;gap:28px}
+.lrow>.stack{flex:1 1 auto}
+.lrow>.simcap{flex:none;text-align:right}
+/* slides 15 and 18: the text band holds one item at a time (a stack), the caption under it; the two-column rule and stacked check */
+.band2{display:flex;flex-direction:column;height:100%;gap:4px}
+.ptrow .band2>.stack{height:auto;flex:1 1 0;align-items:start;min-height:0}
+.band2>.simcap{flex:none}
+.band2>.blk:not(.on){display:none}
+.band2 .lines{display:grid;gap:8px;justify-items:center}
+.band2 .enrow{justify-items:center;margin:0}
+.band2>.simcap{line-height:1.15}
+.rulerow.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ptrow .checkrow.stk{gap:4px;padding:0 24px;justify-items:stretch}
+.ptrow .checkrow.stk .q{font-size:36px;line-height:1.12;text-align:center}
+.ptrow .checkrow.stk .opts.col1{gap:4px;justify-self:center}
+.ptrow .checkrow.stk .opt{font-size:36px;line-height:1.05;min-height:0;padding-top:0;padding-bottom:0}
+.ptrow .checkrow.stk .opt>b{width:38px;height:38px;font-size:34px}
+.ptrow .checkrow.stk .opt::after{top:-14px;width:32px;height:32px;font-size:24px}
+.ptrow .checkrow.stk .ans,.ptrow .checkrow.stk .fb{font-size:34px;line-height:1.12}
+/* slide 10: the three questions on one line */
+.t-cer .qline{font-size:40px;font-weight:700}
+/* slide 13: the ladder; slide 20: the four kinds of solids (the table fills; the line and the write row below) */
+.t-summary.tfill.lad>.body,.t-summary.tfill.tab>.body{grid-template-rows:minmax(min-content,1fr) auto auto}
+.t-summary.lad>.body>.blk:not(.on),.t-summary.tab>.body>.blk:not(.on){display:none}
+.t-summary.lad .tbl,.t-summary.tab .tbl{height:100%;align-self:stretch}
+.t-summary.lad #s13-line p{font-size:44px;font-weight:700}
+.tbl.ladder td{font-size:38px;line-height:1.15}
+.tbl.ladder td:first-child{width:30%}
+.tbl.ladder td:last-child{width:24%}
+.tbl.ladder .chip{font-size:40px}
+.tbl.kinds td{font-size:36px;line-height:1.2}
+.tbl.kinds td:first-child{width:22%}
+/* slide 16: the you-do answers; slide 17: the six samples and the dissolving table */
+.ansl{font-weight:700;color:var(--ok)}
+.ylow{justify-items:start;align-items:start}
+.sixgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 16px}
+.samp{display:grid;justify-items:center;text-align:center;gap:2px}
+.samp svg{width:150px;height:150px}
+.samp p{font-size:36px;font-weight:700;line-height:1.15}
+.sixcard{align-self:stretch;display:grid;align-content:center}
+.tbl.dis{border-spacing:0 6px}
+.tbl.dis td{font-size:34px;line-height:1.15;padding:2px 12px}
+.tbl.dis th{font-size:34px;padding:0 12px}
+/* a stacked check in a concept slide's column: long options wrap, so the card is set a step smaller (34 px floor kept) */
+.acc>.card.check:has(.opts.col1) .q{font-size:40px;line-height:1.15}
+.acc>.card.check .opts.col1{gap:6px}
+.acc>.card.check .opts.col1 .opt{font-size:36px;line-height:1.15;min-height:48px}
+.acc>.card.check:has(.opts.col1) .ans,.acc>.card.check:has(.opts.col1) .fb{font-size:36px}
+/* slide 25: the exit ticket's driving question a step smaller, so the three frames and the bank fit under it */
+.t-exit .phaseB .dq p{font-size:44px;line-height:1.15}
+.t-exit .phaseB .frames{font-size:36px}
+/* slide 25: the timer sits at the right end of the rail row, so the writing card keeps the full width */
+.t-exit .phaseB{position:relative}
+.t-exit .phaseB .rail{margin-right:240px}
+/* step 04b: the timer centred on the rail row, clear of the driving question above and of the writing card below */
+.t-exit .rt-main>.timer{font-size:54px;padding:6px 24px 10px;gap:6px;position:absolute;right:0;top:150px}
+/* slide 3: the starter row keeps the timer's height, so the animation does not shrink when the timer starts */
+.t-launch .qrow{min-height:156px}
+/* slide 5: eight word cards and the legend in the body */
+.t-words .wcard{padding:2px 16px}
+.t-words .wcard .m{line-height:1.15}
+.t-words .words{gap:10px}
+/* slide 10: one header line */
+.t-cer .hdr{font-size:40px;line-height:1.4}
+/* slide 10: the timer sits at the right of the title row, so the header line keeps its height and the boxes keep theirs */
+.slide>.timer.tr{position:absolute;top:22px;right:64px;z-index:1}
+/* slide 16: room for a superscript charge in a step answer */
+.stepscard .steps .stack>span{line-height:1.2;padding-top:12px}
+/* slide 17: the dissolving table's columns */
+.tbl.dis td:first-child{width:50%}
+.tbl.dis th:last-child{width:22%}
+/* slide 25: the sample a step smaller; slide 26: five targets in the body */
+.t-exit #s25-sample p{font-size:36px;line-height:1.18}
+.t-exit .phaseB .bank span{font-size:34px;padding:0 14px}
+.t-exit .phaseB .gap{width:3.5em}
+.rate li{font-size:40px;padding:4px 20px}
+/* slide 6: the caption under the card column (the animation keeps the full height); it leaves on the check frame */
+.rcol{display:flex;flex-direction:column;gap:6px;min-width:0;min-height:0}
+.rcol>.acc{flex:1;min-height:0}
+.rcol>.blk:not(.on){display:none}
+.rcol>.simcap{letter-spacing:-.015em;white-space:nowrap}
+.band2 .lines>.blk:not(.on),.band2 .lines .stack>.blk:not(.on){display:none}
+.band2 .lines>.stack{display:flex;flex-direction:column;align-items:center;gap:0}
+/* slide 26 zoomed (review 04, F6): a target line re-flows with its sentence across the width and "Review: slides ..." under it */
+.zflow .rate li{grid-template-columns:minmax(0,1fr);row-gap:6px}
+.zflow .rate li>.rev{justify-self:start}
+/* step 04b (the teacher's review) */
+/* a bond written with an en dash (O–H, C–H, Cl–Cl) stays on one line */
+.nw{white-space:nowrap}
+/* slides 15 and 18: one line at a time, centred in the band, clear of the animation's own labels and of the caption */
+.ptrow .band2>.stack{align-items:center}
+.ptrow .band2{gap:10px}
+/* slides 15 and 18: the check in two columns: the question across the top, the options on the left with room between them,
+   the answer or the mouse feedback in a box on the right (the box shows only when it holds a line) */
+.ptrow .checkrow.stk.two{display:grid;grid-template-columns:minmax(0,58fr) minmax(0,42fr);grid-template-rows:auto minmax(0,1fr);gap:10px 28px;padding:0 8px;
+  justify-items:stretch;align-items:stretch;align-self:stretch;height:100%}
+.ptrow .checkrow.stk.two .q{grid-column:1/-1;font-size:38px;line-height:1.15;text-align:left}
+.ptrow .checkrow.stk.two .opts.col1{display:grid;align-content:start;gap:12px;justify-self:stretch}
+.ptrow .checkrow.stk.two .opt{font-size:36px;line-height:1.15;min-height:50px;padding-top:2px;padding-bottom:2px}
+.ptrow .checkrow.stk.two .opt>b{width:40px;height:40px;font-size:34px}
+.ptrow .checkrow.stk.two .opt::after{top:-12px;right:-14px;width:32px;height:32px;font-size:24px}
+.ptrow .checkrow.stk.two .af{margin:0;align-self:stretch;align-items:center;justify-items:start;padding:8px 22px;border:3px solid transparent;border-radius:18px}
+.ptrow .checkrow.stk.two .af:has(.ans.on),.ptrow .checkrow.stk.two .af:has(.fb.on){border-color:var(--line);background:var(--card)}
+.ptrow .checkrow.stk.two .ans,.ptrow .checkrow.stk.two .fb{font-size:36px;line-height:1.2;text-align:left}
+/* slide 20 (step 04b): every row on two lines at most, so the table and the closing card both fit (34 px, the floor) */
+.tbl.kinds td{font-size:34px}
+.tbl.kinds td:first-child{width:23%}.tbl.kinds td:nth-child(2){width:35%}.tbl.kinds td:nth-child(3),.tbl.kinds td:nth-child(4){width:21%}

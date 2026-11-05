@@ -1,0 +1,714 @@
+{
+  "theme": "light",
+  "presses": 47,
+  "fails": [],
+  "rec": [
+    {
+      "press": 0,
+      "s": 1,
+      "f": 0,
+      "empty": 0.029,
+      "cue": "Next ▶ shake",
+      "sims": {
+        "bb-sim": "models"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "000-s1f0.png"
+    },
+    {
+      "press": 1,
+      "s": 1,
+      "f": 1,
+      "empty": 0,
+      "cue": "Next ▶ pour",
+      "sims": {
+        "bb-sim": "shake"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "001-s1f1.png"
+    },
+    {
+      "press": 2,
+      "s": 1,
+      "f": 2,
+      "empty": 0,
+      "cue": "Next ▶ words",
+      "sims": {
+        "bb-sim": "pour"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "002-s1f2.png"
+    },
+    {
+      "press": 3,
+      "s": 1,
+      "f": 3,
+      "empty": 0,
+      "cue": "Next ▶ slide 2: Scratch: meltScale",
+      "sims": {
+        "bb-sim": "words"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "003-s1f3.png"
+    },
+    {
+      "press": 4,
+      "s": 2,
+      "f": 0,
+      "empty": 0.074,
+      "cue": "Next ▶ melt",
+      "sims": {
+        "ms-sim": "three"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "004-s2f0.png"
+    },
+    {
+      "press": 5,
+      "s": 2,
+      "f": 1,
+      "empty": 0.074,
+      "cue": "Next ▶ numbers",
+      "sims": {
+        "ms-sim": "melt"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "005-s2f1.png"
+    },
+    {
+      "press": 6,
+      "s": 2,
+      "f": 2,
+      "empty": 0.074,
+      "cue": "Next ▶ numbers, with the driving question below",
+      "sims": {
+        "ms-sim": "numbers"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "006-s2f2.png"
+    },
+    {
+      "press": 7,
+      "s": 2,
+      "f": 3,
+      "empty": 0.074,
+      "cue": "Next ▶ slide 3: Scratch: threeSolids",
+      "sims": {
+        "ms-sim": "numbers"
+      },
+      "on": [
+        "ms-dq"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "007-s2f3.png"
+    },
+    {
+      "press": 8,
+      "s": 3,
+      "f": 0,
+      "empty": 0.392,
+      "cue": "Next ▶ within",
+      "sims": {
+        "ts-sim": "chlorine"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "008-s3f0.png"
+    },
+    {
+      "press": 9,
+      "s": 3,
+      "f": 1,
+      "empty": 0.392,
+      "cue": "Next ▶ between",
+      "sims": {
+        "ts-sim": "within"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "009-s3f1.png"
+    },
+    {
+      "press": 10,
+      "s": 3,
+      "f": 2,
+      "empty": 0.392,
+      "cue": "Next ▶ salt",
+      "sims": {
+        "ts-sim": "between"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "010-s3f2.png"
+    },
+    {
+      "press": 11,
+      "s": 3,
+      "f": 3,
+      "empty": 0.392,
+      "cue": "Next ▶ copper",
+      "sims": {
+        "ts-sim": "salt"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "011-s3f3.png"
+    },
+    {
+      "press": 12,
+      "s": 3,
+      "f": 4,
+      "empty": 0.392,
+      "cue": "Next ▶ slide 4: Scratch: attractions (dispersion family)",
+      "sims": {
+        "ts-sim": "copper"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "012-s3f4.png"
+    },
+    {
+      "press": 13,
+      "s": 4,
+      "f": 0,
+      "empty": 0.48,
+      "cue": "Next ▶ flicker",
+      "sims": {
+        "ad-sim": "cloud"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "013-s4f0.png"
+    },
+    {
+      "press": 14,
+      "s": 4,
+      "f": 1,
+      "empty": 0.421,
+      "cue": "Next ▶ neighbor",
+      "sims": {
+        "ad-sim": "flicker"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "014-s4f1.png"
+    },
+    {
+      "press": 15,
+      "s": 4,
+      "f": 2,
+      "empty": 0.421,
+      "cue": "Next ▶ attract",
+      "sims": {
+        "ad-sim": "neighbor"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "015-s4f2.png"
+    },
+    {
+      "press": 16,
+      "s": 4,
+      "f": 3,
+      "empty": 0.421,
+      "cue": "Next ▶ slide 5: Scratch: attractions (dipole family)",
+      "sims": {
+        "ad-sim": "attract"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "016-s4f3.png"
+    },
+    {
+      "press": 17,
+      "s": 5,
+      "f": 0,
+      "empty": 0.582,
+      "cue": "Next ▶ HCl",
+      "sims": {
+        "aq-sim": "F2"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "017-s5f0.png"
+    },
+    {
+      "press": 18,
+      "s": 5,
+      "f": 1,
+      "empty": 0.51,
+      "cue": "Next ▶ turn",
+      "sims": {
+        "aq-sim": "HCl"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "018-s5f1.png"
+    },
+    {
+      "press": 19,
+      "s": 5,
+      "f": 2,
+      "empty": 0.51,
+      "cue": "Next ▶ face",
+      "sims": {
+        "aq-sim": "turn"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "019-s5f2.png"
+    },
+    {
+      "press": 20,
+      "s": 5,
+      "f": 3,
+      "empty": 0.51,
+      "cue": "Next ▶ compare",
+      "sims": {
+        "aq-sim": "face"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "020-s5f3.png"
+    },
+    {
+      "press": 21,
+      "s": 5,
+      "f": 4,
+      "empty": 0.472,
+      "cue": "Next ▶ slide 6: Scratch: attractions (hydrogen family)",
+      "sims": {
+        "aq-sim": "compare"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "021-s5f4.png"
+    },
+    {
+      "press": 22,
+      "s": 6,
+      "f": 0,
+      "empty": 0.75,
+      "cue": "Next ▶ hbond",
+      "sims": {
+        "ah-sim": "water"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "022-s6f0.png"
+    },
+    {
+      "press": 23,
+      "s": 6,
+      "f": 1,
+      "empty": 0.584,
+      "cue": "Next ▶ ammonia",
+      "sims": {
+        "ah-sim": "hbond"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "023-s6f1.png"
+    },
+    {
+      "press": 24,
+      "s": 6,
+      "f": 2,
+      "empty": 0.614,
+      "cue": "Next ▶ methane",
+      "sims": {
+        "ah-sim": "ammonia"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "024-s6f2.png"
+    },
+    {
+      "press": 25,
+      "s": 6,
+      "f": 3,
+      "empty": 0.582,
+      "cue": "Next ▶ four",
+      "sims": {
+        "ah-sim": "methane"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "025-s6f3.png"
+    },
+    {
+      "press": 26,
+      "s": 6,
+      "f": 4,
+      "empty": 0.485,
+      "cue": "Next ▶ slide 7: Scratch: bpPlot",
+      "sims": {
+        "ah-sim": "four"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "026-s6f4.png"
+    },
+    {
+      "press": 27,
+      "s": 7,
+      "f": 0,
+      "empty": 0.405,
+      "cue": "Next ▶ F2",
+      "sims": {
+        "bp-sim": "axes"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "027-s7f0.png"
+    },
+    {
+      "press": 28,
+      "s": 7,
+      "f": 1,
+      "empty": 0.405,
+      "cue": "Next ▶ Cl2",
+      "sims": {
+        "bp-sim": "F2"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "028-s7f1.png"
+    },
+    {
+      "press": 29,
+      "s": 7,
+      "f": 2,
+      "empty": 0.405,
+      "cue": "Next ▶ Br2",
+      "sims": {
+        "bp-sim": "Cl2"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "029-s7f2.png"
+    },
+    {
+      "press": 30,
+      "s": 7,
+      "f": 3,
+      "empty": 0.405,
+      "cue": "Next ▶ I2",
+      "sims": {
+        "bp-sim": "Br2"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "030-s7f3.png"
+    },
+    {
+      "press": 31,
+      "s": 7,
+      "f": 4,
+      "empty": 0.405,
+      "cue": "Next ▶ trend",
+      "sims": {
+        "bp-sim": "I2"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "031-s7f4.png"
+    },
+    {
+      "press": 32,
+      "s": 7,
+      "f": 5,
+      "empty": 0.405,
+      "cue": "Next ▶ trio",
+      "sims": {
+        "bp-sim": "trend"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "032-s7f5.png"
+    },
+    {
+      "press": 33,
+      "s": 7,
+      "f": 6,
+      "empty": 0.405,
+      "cue": "Next ▶ reveal",
+      "sims": {
+        "bp-sim": "trio"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "033-s7f6.png"
+    },
+    {
+      "press": 34,
+      "s": 7,
+      "f": 7,
+      "empty": 0.405,
+      "cue": "Next ▶ HCl",
+      "sims": {
+        "bp-sim": "reveal"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "034-s7f7.png"
+    },
+    {
+      "press": 35,
+      "s": 7,
+      "f": 8,
+      "empty": 0.405,
+      "cue": "Next ▶ slide 8: Scratch: forceDecider",
+      "sims": {
+        "bp-sim": "HCl"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "035-s7f8.png"
+    },
+    {
+      "press": 36,
+      "s": 8,
+      "f": 0,
+      "empty": 0.059,
+      "cue": "Next ▶ NH3/H",
+      "sims": {
+        "fd-sim": "NH3/polar"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "036-s8f0.png"
+    },
+    {
+      "press": 37,
+      "s": 8,
+      "f": 1,
+      "empty": 0.059,
+      "cue": "Next ▶ NH3/lone",
+      "sims": {
+        "fd-sim": "NH3/H"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "037-s8f1.png"
+    },
+    {
+      "press": 38,
+      "s": 8,
+      "f": 2,
+      "empty": 0.059,
+      "cue": "Next ▶ NH3/strongest",
+      "sims": {
+        "fd-sim": "NH3/lone"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "038-s8f2.png"
+    },
+    {
+      "press": 39,
+      "s": 8,
+      "f": 3,
+      "empty": 0.059,
+      "cue": "Next ▶ CO2/polar",
+      "sims": {
+        "fd-sim": "NH3/strongest"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "039-s8f3.png"
+    },
+    {
+      "press": 40,
+      "s": 8,
+      "f": 4,
+      "empty": 0.059,
+      "cue": "Next ▶ CO2/H",
+      "sims": {
+        "fd-sim": "CO2/polar"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "040-s8f4.png"
+    },
+    {
+      "press": 41,
+      "s": 8,
+      "f": 5,
+      "empty": 0.059,
+      "cue": "Next ▶ CO2/strongest",
+      "sims": {
+        "fd-sim": "CO2/H"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "041-s8f5.png"
+    },
+    {
+      "press": 42,
+      "s": 8,
+      "f": 6,
+      "empty": 0.059,
+      "cue": "Next ▶ HBr/EN",
+      "sims": {
+        "fd-sim": "CO2/strongest"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "042-s8f6.png"
+    },
+    {
+      "press": 43,
+      "s": 8,
+      "f": 7,
+      "empty": 0.059,
+      "cue": "Next ▶ HBr/polar",
+      "sims": {
+        "fd-sim": "HBr/EN"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "043-s8f7.png"
+    },
+    {
+      "press": 44,
+      "s": 8,
+      "f": 8,
+      "empty": 0.059,
+      "cue": "Next ▶ HBr/H",
+      "sims": {
+        "fd-sim": "HBr/polar"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "044-s8f8.png"
+    },
+    {
+      "press": 45,
+      "s": 8,
+      "f": 9,
+      "empty": 0.059,
+      "cue": "Next ▶ HBr/strongest",
+      "sims": {
+        "fd-sim": "HBr/H"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "045-s8f9.png"
+    },
+    {
+      "press": 46,
+      "s": 8,
+      "f": 10,
+      "empty": 0.059,
+      "cue": "End of the deck",
+      "sims": {
+        "fd-sim": "HBr/strongest"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "046-s8f10.png"
+    }
+  ]
+}

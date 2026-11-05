@@ -1,0 +1,36 @@
+{
+ "lesson": "4.1",
+ "deck": "unit4/slides-4-1.html",
+ "scratch": false,
+ "theme": "both",
+ "matrix": false,
+ "audits": 3,
+ "failed": 0,
+ "seconds": 482.2,
+ "results": [
+  {
+   "audit": "keys",
+   "theme": "",
+   "pass": true,
+   "seconds": 35.3,
+   "summary": "keys: PASS 48 checks",
+   "log": "logs/keys.log"
+  },
+  {
+   "audit": "zoom",
+   "theme": "light",
+   "pass": true,
+   "seconds": 223.4,
+   "summary": "zoom light: 571 zoomed states over 156 frames (re-flow 432, transform 139), prompt 45, r800 1, animation 75, card 137, part 42, frames 1, check 24, wcard 14, legend 1, rule 22, table 1, column 21, item 42, row 30, caprow 3, p 5, hdr 9, rail 29, li 60, handsup 3, scale 6; min fill 64%; Back tests 24; PASS",
+   "log": "logs/zoom-light.log"
+  },
+  {
+   "audit": "zoom",
+   "theme": "dark",
+   "pass": true,
+   "seconds": 223.5,
+   "summary": "zoom dark: 571 zoomed states over 156 frames (re-flow 432, transform 139), prompt 45, r800 1, animation 75, card 137, part 42, frames 1, check 24, wcard 14, legend 1, rule 22, table 1, column 21, item 42, row 30, caprow 3, p 5, hdr 9, rail 29, li 60, handsup 3, scale 6; min fill 64%; Back tests 24; PASS",
+   "log": "logs/zoom-dark.log"
+  }
+ ]
+}

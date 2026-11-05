@@ -1,0 +1,273 @@
+{
+  "rows": [
+    {
+      "id": "s01",
+      "title": "Predicting bond type",
+      "period": "1",
+      "mins": 0.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s02",
+      "title": "Tug of war",
+      "period": "1",
+      "mins": 4,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s03",
+      "title": "Sodium, chlorine, salt",
+      "period": "1",
+      "mins": 4,
+      "timers": [
+        {
+          "timer": 60,
+          "t": 1.5
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s04",
+      "title": "Predict now",
+      "period": "1",
+      "mins": 2.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s05",
+      "title": "Targets and words",
+      "period": "1",
+      "mins": 3,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s06",
+      "title": "Forming ions",
+      "period": "1",
+      "mins": 5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s07",
+      "title": "The crystal",
+      "period": "1",
+      "mins": 4,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s08",
+      "title": "Covalent bonds",
+      "period": "1",
+      "mins": 4,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s09",
+      "title": "Polar and nonpolar",
+      "period": "1",
+      "mins": 5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s10",
+      "title": "Metallic bonds",
+      "period": "1",
+      "mins": 5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s11",
+      "title": "One picture for three bonds",
+      "period": "1",
+      "mins": 3,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s12",
+      "title": "Backpack sort",
+      "period": "1",
+      "mins": 4,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s13",
+      "title": "Period 1 exit",
+      "period": "1",
+      "mins": 3,
+      "timers": [
+        {
+          "timer": 120,
+          "t": 2
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s14",
+      "title": "Warm-up",
+      "period": "2",
+      "mins": 3,
+      "timers": [
+        {
+          "timer": 90,
+          "t": 1.5
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s15",
+      "title": "The electronegativity difference",
+      "period": "2",
+      "mins": 4,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s16",
+      "title": "Evidence from the table",
+      "period": "2",
+      "mins": 4,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s17",
+      "title": "Near the line",
+      "period": "2",
+      "mins": 3,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s18",
+      "title": "Bonding argument: I do, we do",
+      "period": "2",
+      "mins": 5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s19",
+      "title": "You do: three bonds",
+      "period": "2",
+      "mins": 5,
+      "timers": [
+        {
+          "timer": 180,
+          "t": 3
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s20",
+      "title": "Checkpoint routine",
+      "period": "2",
+      "mins": 1,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s21",
+      "title": "Checkpoint 1",
+      "period": "2",
+      "mins": 4.5,
+      "timers": [
+        {
+          "timer": 30,
+          "t": 0.5
+        },
+        {
+          "timer": 60,
+          "t": 1
+        },
+        {
+          "timer": 90,
+          "t": 1.5
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s22",
+      "title": "Checkpoint 2",
+      "period": "2",
+      "mins": 4.5,
+      "timers": [
+        {
+          "timer": 30,
+          "t": 0.5
+        },
+        {
+          "timer": 60,
+          "t": 1
+        },
+        {
+          "timer": 90,
+          "t": 1.5
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s23",
+      "title": "Checkpoint 3",
+      "period": "2",
+      "mins": 4.5,
+      "timers": [
+        {
+          "timer": 30,
+          "t": 0.5
+        },
+        {
+          "timer": 60,
+          "t": 1
+        },
+        {
+          "timer": 90,
+          "t": 1.5
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s24",
+      "title": "Predictions and exit ticket",
+      "period": "2",
+      "mins": 7,
+      "timers": [
+        {
+          "timer": 180,
+          "t": 3
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s25",
+      "title": "Rate your learning",
+      "period": "2",
+      "mins": 1.5,
+      "timers": [],
+      "noT": 0
+    }
+  ],
+  "per": {
+    "1": 47,
+    "2": 47
+  },
+  "fails": []
+}

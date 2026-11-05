@@ -1,0 +1,37 @@
+[
+  {
+    "n": "reduced motion: the turning 3D model holds a fixed view",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "reduced motion: a revealed block has no fade animation",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "reduced motion: no console errors",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "under 760 px: scrolling page of all slides",
+    "pass": true,
+    "i": "{\"flow\":true,\"scroll\":5512,\"shown\":25,\"wide\":false}"
+  },
+  {
+    "n": "under 760 px: no horizontal scroll",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "back to projector mode at 1920 px: one slide shown",
+    "pass": true,
+    "i": "{\"flow\":false,\"shown\":1}"
+  },
+  {
+    "n": "fallback: no console errors",
+    "pass": true,
+    "i": ""
+  }
+]

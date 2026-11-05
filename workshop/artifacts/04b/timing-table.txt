@@ -1,0 +1,29 @@
+slide  period  minutes  title  (timers)
+s01  P1  0.5  Bonds, forces and properties
+s02  P1  3  Shake the bag
+s03  P1  3.5  Snow day  timers 60 s on a 1 min frame
+s04  P1  2  Predict now
+s05  P1  2.5  Targets and words
+s06  P1  4.5  Bonds within, attractions between
+s07  P1  5  Dispersion forces
+s08  P1  4.25  Dipole-dipole forces
+s09  P1  4.25  Hydrogen bonding
+s10  P1  4.5  Name the attraction: I do, we do, you do  timers 90 s on a 1.5 min frame
+s11  P1  4.25  Molecules stay whole
+s12  P1  4  Why ice floats
+s13  P1  3.25  One picture: the ladder of attractions  timers 90 s on a 1.5 min frame
+s14  P2  2.5  Warm-up  timers 90 s on a 1.5 min frame
+s15  P2  5  Does it conduct?
+s16  P2  5  Predict the bulb: I do, we do, you do  timers 90 s on a 1.5 min frame
+s17  P2  4  Does it dissolve?
+s18  P2  4.25  Malleable or brittle
+s19  P2  3.5  Covalent network solids
+s20  P2  2.5  Four kinds of solids
+s21  P2  1  Checkpoint routine
+s22  P2  3.75  Checkpoint 1  timers 30 s on a 0.5 min frame,60 s on a 1 min frame,90 s on a 1.5 min frame
+s23  P2  3.75  Checkpoint 2  timers 30 s on a 0.5 min frame,60 s on a 1 min frame,90 s on a 1.5 min frame
+s24  P2  3.75  Checkpoint 3  timers 30 s on a 0.5 min frame,60 s on a 1 min frame,90 s on a 1.5 min frame
+s25  P2  6  Predictions and exit ticket  timers 180 s on a 3 min frame
+s26  P2  1.5  Rate your learning
+s27  P2  0.5  Next
+period 1: 45.5 min; period 2: 47 min; fails: none

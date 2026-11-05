@@ -1,0 +1,3214 @@
+{
+  "theme": "light",
+  "presses": 173,
+  "fails": [],
+  "rec": [
+    {
+      "press": 0,
+      "s": 1,
+      "f": 0,
+      "empty": 0.212,
+      "cue": "Next ▶ slide 2: Read the label",
+      "sims": {},
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "000-s1f0.png"
+    },
+    {
+      "press": 1,
+      "s": 2,
+      "f": 0,
+      "empty": 0.202,
+      "cue": "Next ▶ toothpaste",
+      "sims": {
+        "s02-sim": "shelf"
+      },
+      "on": [
+        "s02-l0"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "001-s2f0.png"
+    },
+    {
+      "press": 2,
+      "s": 2,
+      "f": 1,
+      "empty": 0.175,
+      "cue": "Next ▶ antacid",
+      "sims": {
+        "s02-sim": "focus0"
+      },
+      "on": [
+        "s02-l1"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "002-s2f1.png"
+    },
+    {
+      "press": 3,
+      "s": 2,
+      "f": 2,
+      "empty": 0.175,
+      "cue": "Next ▶ lawn food",
+      "sims": {
+        "s02-sim": "focus1"
+      },
+      "on": [
+        "s02-l2"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "003-s2f2.png"
+    },
+    {
+      "press": 4,
+      "s": 2,
+      "f": 3,
+      "empty": 0.175,
+      "cue": "Next ▶ the code",
+      "sims": {
+        "s02-sim": "focus2"
+      },
+      "on": [
+        "s02-l3"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "004-s2f3.png"
+    },
+    {
+      "press": 5,
+      "s": 2,
+      "f": 4,
+      "empty": 0.121,
+      "cue": "Next ▶ slide 3: Two copper oxides",
+      "sims": {
+        "s02-sim": "code"
+      },
+      "on": [
+        "s02-l4"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "005-s2f4.png"
+    },
+    {
+      "press": 6,
+      "s": 3,
+      "f": 0,
+      "empty": 0,
+      "cue": "Next ▶ black powder",
+      "sims": {},
+      "on": [
+        "s03-red"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "006-s3f0.png"
+    },
+    {
+      "press": 7,
+      "s": 3,
+      "f": 1,
+      "empty": 0,
+      "cue": "Next ▶ what is inside",
+      "sims": {},
+      "on": [
+        "s03-black",
+        "s03-red"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "007-s3f1.png"
+    },
+    {
+      "press": 8,
+      "s": 3,
+      "f": 2,
+      "empty": 0,
+      "cue": "Next ▶ driving question",
+      "sims": {},
+      "on": [
+        "s03-black",
+        "s03-both",
+        "s03-red"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "008-s3f2.png"
+    },
+    {
+      "press": 9,
+      "s": 3,
+      "f": 3,
+      "empty": 0,
+      "cue": "Next ▶ write 60 s",
+      "sims": {},
+      "on": [
+        "s03-black",
+        "s03-both",
+        "s03-dq",
+        "s03-red"
+      ],
+      "cls": [
+        "s03-trio:small"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "009-s3f3.png"
+    },
+    {
+      "press": 10,
+      "s": 3,
+      "f": 4,
+      "empty": 0.119,
+      "cue": "Next ▶ slide 4: Predict now",
+      "sims": {},
+      "on": [
+        "s03-black",
+        "s03-both",
+        "s03-dq",
+        "s03-red",
+        "s03-st"
+      ],
+      "cls": [
+        "s03-trio:small"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "010-s3f4.png"
+    },
+    {
+      "press": 11,
+      "s": 4,
+      "f": 0,
+      "empty": 0.286,
+      "cue": "Next ▶ question 2",
+      "sims": {},
+      "on": [
+        "s04-q1"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "011-s4f0.png"
+    },
+    {
+      "press": 12,
+      "s": 4,
+      "f": 1,
+      "empty": 0.286,
+      "cue": "Next ▶ question 3",
+      "sims": {},
+      "on": [
+        "s04-q2"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "012-s4f1.png"
+    },
+    {
+      "press": 13,
+      "s": 4,
+      "f": 2,
+      "empty": 0.286,
+      "cue": "Next ▶ slide 5: Targets and words",
+      "sims": {},
+      "on": [
+        "s04-q3"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "013-s4f2.png"
+    },
+    {
+      "press": 14,
+      "s": 5,
+      "f": 0,
+      "empty": 0.114,
+      "cue": "Next ▶ words",
+      "sims": {},
+      "on": [
+        "s05-ican"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "014-s5f0.png"
+    },
+    {
+      "press": 15,
+      "s": 5,
+      "f": 1,
+      "empty": 0.114,
+      "cue": "Next ▶ color code",
+      "sims": {},
+      "on": [
+        "s05-words"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "015-s5f1.png"
+    },
+    {
+      "press": 16,
+      "s": 5,
+      "f": 2,
+      "empty": 0.04,
+      "cue": "Next ▶ slide 6: Charges from the group",
+      "sims": {},
+      "on": [
+        "s05-leg",
+        "s05-words"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "016-s5f2.png"
+    },
+    {
+      "press": 17,
+      "s": 6,
+      "f": 0,
+      "empty": 0.237,
+      "cue": "Next ▶ group 1",
+      "sims": {
+        "s06-sim": "outline"
+      },
+      "on": [
+        "s06-p0"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "017-s6f0.png"
+    },
+    {
+      "press": 18,
+      "s": 6,
+      "f": 1,
+      "empty": 0.246,
+      "cue": "Next ▶ group 2",
+      "sims": {
+        "s06-sim": "g1"
+      },
+      "on": [
+        "s06-p1"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "018-s6f1.png"
+    },
+    {
+      "press": 19,
+      "s": 6,
+      "f": 2,
+      "empty": 0.237,
+      "cue": "Next ▶ aluminum",
+      "sims": {
+        "s06-sim": "g2"
+      },
+      "on": [
+        "s06-p2"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "019-s6f2.png"
+    },
+    {
+      "press": 20,
+      "s": 6,
+      "f": 3,
+      "empty": 0.237,
+      "cue": "Next ▶ group 17",
+      "sims": {
+        "s06-sim": "g13"
+      },
+      "on": [
+        "s06-p3"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "020-s6f3.png"
+    },
+    {
+      "press": 21,
+      "s": 6,
+      "f": 4,
+      "empty": 0.256,
+      "cue": "Next ▶ group 16",
+      "sims": {
+        "s06-sim": "g17"
+      },
+      "on": [
+        "s06-p4"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "021-s6f4.png"
+    },
+    {
+      "press": 22,
+      "s": 6,
+      "f": 5,
+      "empty": 0.256,
+      "cue": "Next ▶ group 15",
+      "sims": {
+        "s06-sim": "g16"
+      },
+      "on": [
+        "s06-p5"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "022-s6f5.png"
+    },
+    {
+      "press": 23,
+      "s": 6,
+      "f": 6,
+      "empty": 0.246,
+      "cue": "Next ▶ rule",
+      "sims": {
+        "s06-sim": "g15"
+      },
+      "on": [
+        "s06-p6"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "023-s6f6.png"
+    },
+    {
+      "press": 24,
+      "s": 6,
+      "f": 7,
+      "empty": 0.189,
+      "cue": "Next ▶ check (first ask aloud: K? S?)",
+      "sims": {
+        "s06-sim": "g15"
+      },
+      "on": [
+        "s06-rule"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "024-s6f7.png"
+    },
+    {
+      "press": 25,
+      "s": 6,
+      "f": 8,
+      "empty": 0.075,
+      "cue": "Next ▶ answer",
+      "sims": {
+        "s06-sim": "g15"
+      },
+      "on": [
+        "s06-check"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "025-s6f8.png"
+    },
+    {
+      "press": 26,
+      "s": 6,
+      "f": 9,
+      "empty": 0.075,
+      "cue": "Next ▶ slide 7: The four to memorize",
+      "sims": {
+        "s06-sim": "g15"
+      },
+      "on": [
+        "s06-ans",
+        "s06-check"
+      ],
+      "cls": [
+        "s06-b:right",
+        "s06-check:done"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "026-s6f9.png"
+    },
+    {
+      "press": 27,
+      "s": 7,
+      "f": 0,
+      "empty": 0.246,
+      "cue": "Next ▶ two ions each",
+      "sims": {
+        "s07-sim": "tm"
+      },
+      "on": [
+        "s07-p0"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "027-s7f0.png"
+    },
+    {
+      "press": 28,
+      "s": 7,
+      "f": 1,
+      "empty": 0.244,
+      "cue": "Next ▶ silver and zinc",
+      "sims": {
+        "s07-sim": "tm"
+      },
+      "on": [
+        "s07-p1"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "028-s7f1.png"
+    },
+    {
+      "press": 29,
+      "s": 7,
+      "f": 2,
+      "empty": 0.246,
+      "cue": "Next ▶ real life",
+      "sims": {
+        "s07-sim": "tm"
+      },
+      "on": [
+        "s07-p2"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "029-s7f2.png"
+    },
+    {
+      "press": 30,
+      "s": 7,
+      "f": 3,
+      "empty": 0.246,
+      "cue": "Next ▶ memory card",
+      "sims": {
+        "s07-sim": "tm"
+      },
+      "on": [
+        "s07-p3"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "030-s7f3.png"
+    },
+    {
+      "press": 31,
+      "s": 7,
+      "f": 4,
+      "empty": 0.132,
+      "cue": "Next ▶ check",
+      "sims": {
+        "s07-sim": "tm"
+      },
+      "on": [
+        "s07-mem"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "031-s7f4.png"
+    },
+    {
+      "press": 32,
+      "s": 7,
+      "f": 5,
+      "empty": 0.075,
+      "cue": "Next ▶ answer",
+      "sims": {
+        "s07-sim": "tm"
+      },
+      "on": [
+        "s07-check"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "032-s7f5.png"
+    },
+    {
+      "press": 33,
+      "s": 7,
+      "f": 6,
+      "empty": 0.075,
+      "cue": "Next ▶ slide 8: Balancing the charges",
+      "sims": {
+        "s07-sim": "tm"
+      },
+      "on": [
+        "s07-ans",
+        "s07-check"
+      ],
+      "cls": [
+        "s07-c:right",
+        "s07-check:done"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "033-s7f6.png"
+    },
+    {
+      "press": 34,
+      "s": 8,
+      "f": 0,
+      "empty": 0.279,
+      "cue": "Next ▶ Ca-Cl/add",
+      "sims": {
+        "s08-sim": "Ca-Cl/ions"
+      },
+      "on": [
+        "s08-c0"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "034-s8f0.png"
+    },
+    {
+      "press": 35,
+      "s": 8,
+      "f": 1,
+      "empty": 0.279,
+      "cue": "Next ▶ calcium chloride",
+      "sims": {
+        "s08-sim": "Ca-Cl/add"
+      },
+      "on": [
+        "s08-c0"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "035-s8f1.png"
+    },
+    {
+      "press": 36,
+      "s": 8,
+      "f": 2,
+      "empty": 0.243,
+      "cue": "Next ▶ Ca-Cl/formula",
+      "sims": {
+        "s08-sim": "Ca-Cl/balance"
+      },
+      "on": [
+        "s08-c0",
+        "s08-c1"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "036-s8f2.png"
+    },
+    {
+      "press": 37,
+      "s": 8,
+      "f": 3,
+      "empty": 0.257,
+      "cue": "Next ▶ Ca-Cl/name",
+      "sims": {
+        "s08-sim": "Ca-Cl/formula"
+      },
+      "on": [
+        "s08-c0",
+        "s08-c1"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "037-s8f3.png"
+    },
+    {
+      "press": 38,
+      "s": 8,
+      "f": 4,
+      "empty": 0.216,
+      "cue": "Next ▶ aluminum oxide",
+      "sims": {
+        "s08-sim": "Ca-Cl/name"
+      },
+      "on": [
+        "s08-c0",
+        "s08-c1"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "038-s8f4.png"
+    },
+    {
+      "press": 39,
+      "s": 8,
+      "f": 5,
+      "empty": 0.3,
+      "cue": "Next ▶ balance",
+      "sims": {
+        "s08-sim": "Al-O/ions"
+      },
+      "on": [
+        "s08-c0",
+        "s08-q2"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "039-s8f5.png"
+    },
+    {
+      "press": 40,
+      "s": 8,
+      "f": 6,
+      "empty": 0.214,
+      "cue": "Next ▶ Al-O/formula",
+      "sims": {
+        "s08-sim": "Al-O/balance"
+      },
+      "on": [
+        "s08-c0",
+        "s08-c2"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "040-s8f6.png"
+    },
+    {
+      "press": 41,
+      "s": 8,
+      "f": 7,
+      "empty": 0.229,
+      "cue": "Next ▶ rule",
+      "sims": {
+        "s08-sim": "Al-O/formula"
+      },
+      "on": [
+        "s08-c0",
+        "s08-c2"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "041-s8f7.png"
+    },
+    {
+      "press": 42,
+      "s": 8,
+      "f": 8,
+      "empty": 0.229,
+      "cue": "Next ▶ check",
+      "sims": {
+        "s08-sim": "Al-O/formula"
+      },
+      "on": [
+        "s08-c0",
+        "s08-c2",
+        "s08-rule"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "042-s8f8.png"
+    },
+    {
+      "press": 43,
+      "s": 8,
+      "f": 9,
+      "empty": 0.279,
+      "cue": "Next ▶ answer",
+      "sims": {
+        "s08-sim": "Na-O/ions"
+      },
+      "on": [
+        "s08-c0",
+        "s08-check",
+        "s08-rule"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "043-s8f9.png"
+    },
+    {
+      "press": 44,
+      "s": 8,
+      "f": 10,
+      "empty": 0.257,
+      "cue": "Next ▶ slide 9: Writing the formula",
+      "sims": {
+        "s08-sim": "Na-O/formula"
+      },
+      "on": [
+        "s08-ans",
+        "s08-c0",
+        "s08-check",
+        "s08-rule"
+      ],
+      "cls": [
+        "s08-c:right",
+        "s08-check:done"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "044-s8f10.png"
+    },
+    {
+      "press": 45,
+      "s": 9,
+      "f": 0,
+      "empty": 0.29,
+      "cue": "Next ▶ Mg-O/add",
+      "sims": {
+        "s09-sim": "Mg-O/ions"
+      },
+      "on": [
+        "s09-1",
+        "s09-2",
+        "s09-3"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "045-s9f0.png"
+    },
+    {
+      "press": 46,
+      "s": 9,
+      "f": 1,
+      "empty": 0.212,
+      "cue": "Next ▶ Mg-O/balance",
+      "sims": {
+        "s09-sim": "Mg-O/add"
+      },
+      "on": [
+        "s09-1",
+        "s09-2",
+        "s09-3"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "046-s9f1.png"
+    },
+    {
+      "press": 47,
+      "s": 9,
+      "f": 2,
+      "empty": 0.214,
+      "cue": "Next ▶ Mg-O/formula",
+      "sims": {
+        "s09-sim": "Mg-O/balance"
+      },
+      "on": [
+        "s09-1",
+        "s09-2",
+        "s09-3"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "047-s9f2.png"
+    },
+    {
+      "press": 48,
+      "s": 9,
+      "f": 3,
+      "empty": 0.214,
+      "cue": "Next ▶ lowest ratio",
+      "sims": {
+        "s09-sim": "Mg-O/formula"
+      },
+      "on": [
+        "s09-1",
+        "s09-2",
+        "s09-3"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "048-s9f3.png"
+    },
+    {
+      "press": 49,
+      "s": 9,
+      "f": 4,
+      "empty": 0.214,
+      "cue": "Next ▶ your turn",
+      "sims": {
+        "s09-sim": "Mg-O/reduce"
+      },
+      "on": [
+        "s09-1",
+        "s09-2",
+        "s09-3",
+        "s09-4"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "049-s9f4.png"
+    },
+    {
+      "press": 50,
+      "s": 9,
+      "f": 5,
+      "empty": 0.214,
+      "cue": "Next ▶ answer 1",
+      "sims": {
+        "s09-sim": "Mg-O/reduce"
+      },
+      "on": [
+        "s09-1",
+        "s09-2",
+        "s09-3",
+        "s09-4",
+        "s09-try"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "050-s9f5.png"
+    },
+    {
+      "press": 51,
+      "s": 9,
+      "f": 6,
+      "empty": 0.257,
+      "cue": "Next ▶ answer 2",
+      "sims": {
+        "s09-sim": "K-S/formula"
+      },
+      "on": [
+        "s09-1",
+        "s09-2",
+        "s09-3",
+        "s09-4",
+        "s09-a1",
+        "s09-try"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "051-s9f6.png"
+    },
+    {
+      "press": 52,
+      "s": 9,
+      "f": 7,
+      "empty": 0.229,
+      "cue": "Next ▶ slide 10: The crisscross shortcut",
+      "sims": {
+        "s09-sim": "Ca-N/formula"
+      },
+      "on": [
+        "s09-1",
+        "s09-2",
+        "s09-3",
+        "s09-4",
+        "s09-a1",
+        "s09-a2",
+        "s09-try"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "052-s9f7.png"
+    },
+    {
+      "press": 53,
+      "s": 10,
+      "f": 0,
+      "empty": 0.256,
+      "cue": "Next ▶ cross",
+      "sims": {
+        "s10-sim": "Al-O/ions"
+      },
+      "on": [
+        "s10-cA"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "053-s10f0.png"
+    },
+    {
+      "press": 54,
+      "s": 10,
+      "f": 1,
+      "empty": 0.319,
+      "cue": "Next ▶ check",
+      "sims": {
+        "s10-sim": "Al-O/cross"
+      },
+      "on": [
+        "s10-c0"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "054-s10f1.png"
+    },
+    {
+      "press": 55,
+      "s": 10,
+      "f": 2,
+      "empty": 0.107,
+      "cue": "Next ▶ magnesium oxide",
+      "sims": {
+        "s10-sim": "Al-O/check"
+      },
+      "on": [
+        "s10-c0",
+        "s10-c1"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "055-s10f2.png"
+    },
+    {
+      "press": 56,
+      "s": 10,
+      "f": 3,
+      "empty": 0.295,
+      "cue": "Next ▶ reduce",
+      "sims": {
+        "s10-sim": "Mg-O/cross"
+      },
+      "on": [
+        "s10-cB"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "056-s10f3.png"
+    },
+    {
+      "press": 57,
+      "s": 10,
+      "f": 4,
+      "empty": 0.204,
+      "cue": "Next ▶ rule",
+      "sims": {
+        "s10-sim": "Mg-O/reduce"
+      },
+      "on": [
+        "s10-c2",
+        "s10-cB"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "057-s10f4.png"
+    },
+    {
+      "press": 58,
+      "s": 10,
+      "f": 5,
+      "empty": 0.204,
+      "cue": "Next ▶ check",
+      "sims": {
+        "s10-sim": "Mg-O/reduce"
+      },
+      "on": [
+        "s10-c2",
+        "s10-rule"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "058-s10f5.png"
+    },
+    {
+      "press": 59,
+      "s": 10,
+      "f": 6,
+      "empty": 0.303,
+      "cue": "Next ▶ answer",
+      "sims": {
+        "s10-sim": "Ca-O/cross"
+      },
+      "on": [
+        "s10-check",
+        "s10-rule"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "059-s10f6.png"
+    },
+    {
+      "press": 60,
+      "s": 10,
+      "f": 7,
+      "empty": 0.145,
+      "cue": "Next ▶ slide 11: Naming binary compounds",
+      "sims": {
+        "s10-sim": "Ca-O/check"
+      },
+      "on": [
+        "s10-ans",
+        "s10-check",
+        "s10-rule"
+      ],
+      "cls": [
+        "s10-b:right",
+        "s10-check:done"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "060-s10f7.png"
+    },
+    {
+      "press": 61,
+      "s": 11,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ K2S/join",
+      "sims": {
+        "s11-sim": "K2S/parts"
+      },
+      "on": [
+        "s11-c0"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "061-s11f0.png"
+    },
+    {
+      "press": 62,
+      "s": 11,
+      "f": 1,
+      "empty": 0.014,
+      "cue": "Next ▶ anion names",
+      "sims": {
+        "s11-sim": "K2S/join"
+      },
+      "on": [
+        "s11-c0"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "062-s11f1.png"
+    },
+    {
+      "press": 63,
+      "s": 11,
+      "f": 2,
+      "empty": 0.027,
+      "cue": "Next ▶ rule",
+      "sims": {
+        "s11-sim": "K2S/join"
+      },
+      "on": [
+        "s11-tbl"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "063-s11f2.png"
+    },
+    {
+      "press": 64,
+      "s": 11,
+      "f": 3,
+      "empty": 0.014,
+      "cue": "Next ▶ check (first ask aloud: MgO? Na₂S?)",
+      "sims": {
+        "s11-sim": "K2S/join"
+      },
+      "on": [
+        "s11-rule"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "064-s11f3.png"
+    },
+    {
+      "press": 65,
+      "s": 11,
+      "f": 4,
+      "empty": 0.014,
+      "cue": "Next ▶ answer",
+      "sims": {
+        "s11-sim": "CaBr2/ask"
+      },
+      "on": [
+        "s11-check",
+        "s11-rule"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "065-s11f4.png"
+    },
+    {
+      "press": 66,
+      "s": 11,
+      "f": 5,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 12: The Stock system",
+      "sims": {
+        "s11-sim": "CaBr2/join"
+      },
+      "on": [
+        "s11-ans",
+        "s11-check",
+        "s11-rule"
+      ],
+      "cls": [
+        "s11-b:right",
+        "s11-check:done"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "066-s11f5.png"
+    },
+    {
+      "press": 67,
+      "s": 12,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ numeral",
+      "sims": {
+        "s12-nb": "FeCl3/parts",
+        "s12-sd": "CuO/anion"
+      },
+      "on": [
+        "s12-c0",
+        "s12-nb"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "067-s12f0.png"
+    },
+    {
+      "press": 68,
+      "s": 12,
+      "f": 1,
+      "empty": 0.014,
+      "cue": "Next ▶ one name",
+      "sims": {
+        "s12-nb": "FeCl3/numeral",
+        "s12-sd": "CuO/anion"
+      },
+      "on": [
+        "s12-c0",
+        "s12-nb"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "068-s12f1.png"
+    },
+    {
+      "press": 69,
+      "s": 12,
+      "f": 2,
+      "empty": 0.014,
+      "cue": "Next ▶ iron(II)",
+      "sims": {
+        "s12-nb": "FeCl3/join",
+        "s12-sd": "CuO/anion"
+      },
+      "on": [
+        "s12-c0",
+        "s12-nb"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "069-s12f2.png"
+    },
+    {
+      "press": 70,
+      "s": 12,
+      "f": 3,
+      "empty": 0.014,
+      "cue": "Next ▶ silver and zinc",
+      "sims": {
+        "s12-nb": "FeCl2/join",
+        "s12-sd": "CuO/anion"
+      },
+      "on": [
+        "s12-c1",
+        "s12-nb"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "070-s12f3.png"
+    },
+    {
+      "press": 71,
+      "s": 12,
+      "f": 4,
+      "empty": 0.014,
+      "cue": "Next ▶ zinc oxide",
+      "sims": {
+        "s12-nb": "AgCl/join",
+        "s12-sd": "CuO/anion"
+      },
+      "on": [
+        "s12-c2",
+        "s12-nb"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "071-s12f4.png"
+    },
+    {
+      "press": 72,
+      "s": 12,
+      "f": 5,
+      "empty": 0.014,
+      "cue": "Next ▶ copper oxides",
+      "sims": {
+        "s12-nb": "ZnO/join",
+        "s12-sd": "CuO/anion"
+      },
+      "on": [
+        "s12-c2",
+        "s12-nb"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "072-s12f5.png"
+    },
+    {
+      "press": 73,
+      "s": 12,
+      "f": 6,
+      "empty": 0.014,
+      "cue": "Next ▶ name CuO",
+      "sims": {
+        "s12-nb": "ZnO/join",
+        "s12-sd": "CuO/anion"
+      },
+      "on": [
+        "s12-c3",
+        "s12-sd"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "073-s12f6.png"
+    },
+    {
+      "press": 74,
+      "s": 12,
+      "f": 7,
+      "empty": 0.014,
+      "cue": "Next ▶ red Cu₂O",
+      "sims": {
+        "s12-nb": "ZnO/join",
+        "s12-sd": "CuO/name"
+      },
+      "on": [
+        "s12-c3",
+        "s12-sd"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "074-s12f7.png"
+    },
+    {
+      "press": 75,
+      "s": 12,
+      "f": 8,
+      "empty": 0.014,
+      "cue": "Next ▶ Cu2O/metal",
+      "sims": {
+        "s12-nb": "ZnO/join",
+        "s12-sd": "Cu2O/anion"
+      },
+      "on": [
+        "s12-c3",
+        "s12-sd"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "075-s12f8.png"
+    },
+    {
+      "press": 76,
+      "s": 12,
+      "f": 9,
+      "empty": 0.014,
+      "cue": "Next ▶ the driving question",
+      "sims": {
+        "s12-nb": "ZnO/join",
+        "s12-sd": "Cu2O/metal"
+      },
+      "on": [
+        "s12-c3",
+        "s12-sd"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "076-s12f9.png"
+    },
+    {
+      "press": 77,
+      "s": 12,
+      "f": 10,
+      "empty": 0.014,
+      "cue": "Next ▶ check",
+      "sims": {
+        "s12-nb": "ZnO/join",
+        "s12-sd": "Cu2O/name"
+      },
+      "on": [
+        "s12-c4",
+        "s12-sd"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "077-s12f10.png"
+    },
+    {
+      "press": 78,
+      "s": 12,
+      "f": 11,
+      "empty": 0.014,
+      "cue": "Next ▶ answer",
+      "sims": {
+        "s12-nb": "ZnO/join",
+        "s12-sd": "FeCl2/ask"
+      },
+      "on": [
+        "s12-c4",
+        "s12-check",
+        "s12-sd"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "078-s12f11.png"
+    },
+    {
+      "press": 79,
+      "s": 12,
+      "f": 12,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 13: Formula in 3 steps, name in 2 parts",
+      "sims": {
+        "s12-nb": "ZnO/join",
+        "s12-sd": "FeCl2/name"
+      },
+      "on": [
+        "s12-ans",
+        "s12-c4",
+        "s12-check",
+        "s12-sd"
+      ],
+      "cls": [
+        "s12-b:right",
+        "s12-check:done"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "079-s12f12.png"
+    },
+    {
+      "press": 80,
+      "s": 13,
+      "f": 0,
+      "empty": 0.283,
+      "cue": "Next ▶ name parts",
+      "sims": {},
+      "on": [
+        "s13-f"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "080-s13f0.png"
+    },
+    {
+      "press": 81,
+      "s": 13,
+      "f": 1,
+      "empty": 0.206,
+      "cue": "Next ▶ answer 1",
+      "sims": {},
+      "on": [
+        "s13-f",
+        "s13-n"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "081-s13f1.png"
+    },
+    {
+      "press": 82,
+      "s": 13,
+      "f": 2,
+      "empty": 0.206,
+      "cue": "Next ▶ answer 2",
+      "sims": {},
+      "on": [
+        "s13-a1",
+        "s13-f",
+        "s13-n"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "082-s13f2.png"
+    },
+    {
+      "press": 83,
+      "s": 13,
+      "f": 3,
+      "empty": 0.206,
+      "cue": "Next ▶ answer 3",
+      "sims": {},
+      "on": [
+        "s13-a1",
+        "s13-a2",
+        "s13-f",
+        "s13-n"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "083-s13f3.png"
+    },
+    {
+      "press": 84,
+      "s": 13,
+      "f": 4,
+      "empty": 0.206,
+      "cue": "Next ▶ answer 4",
+      "sims": {},
+      "on": [
+        "s13-a1",
+        "s13-a2",
+        "s13-a3",
+        "s13-f",
+        "s13-n"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "084-s13f4.png"
+    },
+    {
+      "press": 85,
+      "s": 13,
+      "f": 5,
+      "empty": 0.206,
+      "cue": "Next ▶ slide 14: Warm-up",
+      "sims": {},
+      "on": [
+        "s13-a1",
+        "s13-a2",
+        "s13-a3",
+        "s13-a4",
+        "s13-f",
+        "s13-n"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "085-s13f5.png"
+    },
+    {
+      "press": 86,
+      "s": 14,
+      "f": 0,
+      "empty": 0.067,
+      "cue": "Next ▶ timer 90 s",
+      "sims": {},
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "086-s14f0.png"
+    },
+    {
+      "press": 87,
+      "s": 14,
+      "f": 1,
+      "empty": 0.102,
+      "cue": "Next ▶ answer 1",
+      "sims": {},
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "087-s14f1.png"
+    },
+    {
+      "press": 88,
+      "s": 14,
+      "f": 2,
+      "empty": 0.151,
+      "cue": "Next ▶ answer 2",
+      "sims": {},
+      "on": [
+        "s14-a1"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "088-s14f2.png"
+    },
+    {
+      "press": 89,
+      "s": 14,
+      "f": 3,
+      "empty": 0.151,
+      "cue": "Next ▶ answer 3",
+      "sims": {},
+      "on": [
+        "s14-a1",
+        "s14-a2"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "089-s14f3.png"
+    },
+    {
+      "press": 90,
+      "s": 14,
+      "f": 4,
+      "empty": 0.151,
+      "cue": "Next ▶ slide 15: Polyatomic ions",
+      "sims": {},
+      "on": [
+        "s14-a1",
+        "s14-a2",
+        "s14-a3"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "090-s14f4.png"
+    },
+    {
+      "press": 91,
+      "s": 15,
+      "f": 0,
+      "empty": 0.184,
+      "cue": "Next ▶ next ion",
+      "sims": {
+        "s15-sim": "NH4"
+      },
+      "on": [
+        "s15-A",
+        "s15-c0",
+        "s15-cap",
+        "s15-r1"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "091-s15f0.png"
+    },
+    {
+      "press": 92,
+      "s": 15,
+      "f": 1,
+      "empty": 0.256,
+      "cue": "Next ▶ next ion",
+      "sims": {
+        "s15-sim": "OH"
+      },
+      "on": [
+        "s15-A",
+        "s15-c0",
+        "s15-cap",
+        "s15-r1",
+        "s15-r2"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "092-s15f1.png"
+    },
+    {
+      "press": 93,
+      "s": 15,
+      "f": 2,
+      "empty": 0.15,
+      "cue": "Next ▶ next ion",
+      "sims": {
+        "s15-sim": "NO3"
+      },
+      "on": [
+        "s15-A",
+        "s15-c0",
+        "s15-cap",
+        "s15-r1",
+        "s15-r2",
+        "s15-r3"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "093-s15f2.png"
+    },
+    {
+      "press": 94,
+      "s": 15,
+      "f": 3,
+      "empty": 0.15,
+      "cue": "Next ▶ next ion",
+      "sims": {
+        "s15-sim": "CO3"
+      },
+      "on": [
+        "s15-A",
+        "s15-c0",
+        "s15-cap",
+        "s15-r1",
+        "s15-r2",
+        "s15-r3",
+        "s15-r4"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "094-s15f3.png"
+    },
+    {
+      "press": 95,
+      "s": 15,
+      "f": 4,
+      "empty": 0.127,
+      "cue": "Next ▶ next ion",
+      "sims": {
+        "s15-sim": "SO4"
+      },
+      "on": [
+        "s15-A",
+        "s15-c0",
+        "s15-cap",
+        "s15-r1",
+        "s15-r2",
+        "s15-r3",
+        "s15-r4",
+        "s15-r5"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "095-s15f4.png"
+    },
+    {
+      "press": 96,
+      "s": 15,
+      "f": 5,
+      "empty": 0.115,
+      "cue": "Next ▶ pattern",
+      "sims": {
+        "s15-sim": "PO4"
+      },
+      "on": [
+        "s15-A",
+        "s15-c0",
+        "s15-cap",
+        "s15-r1",
+        "s15-r2",
+        "s15-r3",
+        "s15-r4",
+        "s15-r5",
+        "s15-r6"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "096-s15f5.png"
+    },
+    {
+      "press": 97,
+      "s": 15,
+      "f": 6,
+      "empty": 0.115,
+      "cue": "Next ▶ memory card",
+      "sims": {
+        "s15-sim": "PO4"
+      },
+      "on": [
+        "s15-A",
+        "s15-c0",
+        "s15-c1",
+        "s15-cap",
+        "s15-r1",
+        "s15-r2",
+        "s15-r3",
+        "s15-r4",
+        "s15-r5",
+        "s15-r6"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "097-s15f6.png"
+    },
+    {
+      "press": 98,
+      "s": 15,
+      "f": 7,
+      "empty": 0.115,
+      "cue": "Next ▶ check",
+      "sims": {
+        "s15-sim": "PO4"
+      },
+      "on": [
+        "s15-A",
+        "s15-c1",
+        "s15-c2",
+        "s15-cap",
+        "s15-r1",
+        "s15-r2",
+        "s15-r3",
+        "s15-r4",
+        "s15-r5",
+        "s15-r6"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "098-s15f7.png"
+    },
+    {
+      "press": 99,
+      "s": 15,
+      "f": 8,
+      "empty": 0.169,
+      "cue": "Next ▶ answer",
+      "sims": {
+        "s15-sim": "SO4"
+      },
+      "on": [
+        "s15-A",
+        "s15-check",
+        "s15-r1",
+        "s15-r2",
+        "s15-r3",
+        "s15-r4",
+        "s15-r5",
+        "s15-r6"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "099-s15f8.png"
+    },
+    {
+      "press": 100,
+      "s": 15,
+      "f": 9,
+      "empty": 0.169,
+      "cue": "Next ▶ slide 16: Parentheses",
+      "sims": {
+        "s15-sim": "SO4"
+      },
+      "on": [
+        "s15-A",
+        "s15-ans",
+        "s15-check",
+        "s15-r1",
+        "s15-r2",
+        "s15-r3",
+        "s15-r4",
+        "s15-r5",
+        "s15-r6"
+      ],
+      "cls": [
+        "s15-c:right",
+        "s15-check:done"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "100-s15f9.png"
+    },
+    {
+      "press": 101,
+      "s": 16,
+      "f": 0,
+      "empty": 0.245,
+      "cue": "Next ▶ two",
+      "sims": {
+        "s16-pb": "one",
+        "s16-cb": "NH4-SO4/ions"
+      },
+      "on": [
+        "s16-c0",
+        "s16-pb"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "101-s16f0.png"
+    },
+    {
+      "press": 102,
+      "s": 16,
+      "f": 1,
+      "empty": 0.114,
+      "cue": "Next ▶ wrong",
+      "sims": {
+        "s16-pb": "two",
+        "s16-cb": "NH4-SO4/ions"
+      },
+      "on": [
+        "s16-c0",
+        "s16-pb"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "102-s16f1.png"
+    },
+    {
+      "press": 103,
+      "s": 16,
+      "f": 2,
+      "empty": 0.15,
+      "cue": "Next ▶ two squads",
+      "sims": {
+        "s16-pb": "wrong",
+        "s16-cb": "NH4-SO4/ions"
+      },
+      "on": [
+        "s16-c0",
+        "s16-pb"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "103-s16f2.png"
+    },
+    {
+      "press": 104,
+      "s": 16,
+      "f": 3,
+      "empty": 0.243,
+      "cue": "Next ▶ NH4-SO4/formula",
+      "sims": {
+        "s16-pb": "wrong",
+        "s16-cb": "NH4-SO4/balance"
+      },
+      "on": [
+        "s16-c1",
+        "s16-cb"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "104-s16f3.png"
+    },
+    {
+      "press": 105,
+      "s": 16,
+      "f": 4,
+      "empty": 0.257,
+      "cue": "Next ▶ sodium nitrate",
+      "sims": {
+        "s16-pb": "wrong",
+        "s16-cb": "NH4-SO4/formula"
+      },
+      "on": [
+        "s16-c1",
+        "s16-cb"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "105-s16f4.png"
+    },
+    {
+      "press": 106,
+      "s": 16,
+      "f": 5,
+      "empty": 0.234,
+      "cue": "Next ▶ rule",
+      "sims": {
+        "s16-pb": "wrong",
+        "s16-cb": "Na-NO3/formula"
+      },
+      "on": [
+        "s16-c2",
+        "s16-cb"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "106-s16f5.png"
+    },
+    {
+      "press": 107,
+      "s": 16,
+      "f": 6,
+      "empty": 0.234,
+      "cue": "Next ▶ check",
+      "sims": {
+        "s16-pb": "wrong",
+        "s16-cb": "Na-NO3/formula"
+      },
+      "on": [
+        "s16-c2",
+        "s16-cb",
+        "s16-rule"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "107-s16f6.png"
+    },
+    {
+      "press": 108,
+      "s": 16,
+      "f": 7,
+      "empty": 0.279,
+      "cue": "Next ▶ answer",
+      "sims": {
+        "s16-pb": "wrong",
+        "s16-cb": "Mg-NO3/ions"
+      },
+      "on": [
+        "s16-cb",
+        "s16-check",
+        "s16-rule"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "108-s16f7.png"
+    },
+    {
+      "press": 109,
+      "s": 16,
+      "f": 8,
+      "empty": 0.243,
+      "cue": "Next ▶ slide 17: The two-way road",
+      "sims": {
+        "s16-pb": "wrong",
+        "s16-cb": "Mg-NO3/formula"
+      },
+      "on": [
+        "s16-ans",
+        "s16-cb",
+        "s16-check",
+        "s16-rule"
+      ],
+      "cls": [
+        "s16-b:right",
+        "s16-check:done"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "109-s16f8.png"
+    },
+    {
+      "press": 110,
+      "s": 17,
+      "f": 0,
+      "empty": 0.3,
+      "cue": "Next ▶ balance",
+      "sims": {
+        "s17-cb": "Al-SO4/ions",
+        "s17-sd": "Cu2S/anion"
+      },
+      "on": [
+        "s17-A",
+        "s17-a1",
+        "s17-cb"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "110-s17f0.png"
+    },
+    {
+      "press": 111,
+      "s": 17,
+      "f": 1,
+      "empty": 0.214,
+      "cue": "Next ▶ write",
+      "sims": {
+        "s17-cb": "Al-SO4/balance",
+        "s17-sd": "Cu2S/anion"
+      },
+      "on": [
+        "s17-A",
+        "s17-a1",
+        "s17-a2",
+        "s17-cb"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "111-s17f1.png"
+    },
+    {
+      "press": 112,
+      "s": 17,
+      "f": 2,
+      "empty": 0.229,
+      "cue": "Next ▶ formula to name",
+      "sims": {
+        "s17-cb": "Al-SO4/formula",
+        "s17-sd": "Cu2S/anion"
+      },
+      "on": [
+        "s17-A",
+        "s17-a1",
+        "s17-a2",
+        "s17-a3",
+        "s17-cb"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "112-s17f2.png"
+    },
+    {
+      "press": 113,
+      "s": 17,
+      "f": 3,
+      "empty": 0.014,
+      "cue": "Next ▶ the metal",
+      "sims": {
+        "s17-cb": "Al-SO4/formula",
+        "s17-sd": "Cu2S/anion"
+      },
+      "on": [
+        "s17-A",
+        "s17-B",
+        "s17-a1",
+        "s17-a2",
+        "s17-a3",
+        "s17-sd"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "113-s17f3.png"
+    },
+    {
+      "press": 114,
+      "s": 17,
+      "f": 4,
+      "empty": 0.014,
+      "cue": "Next ▶ the name",
+      "sims": {
+        "s17-cb": "Al-SO4/formula",
+        "s17-sd": "Cu2S/metal"
+      },
+      "on": [
+        "s17-A",
+        "s17-B",
+        "s17-a1",
+        "s17-a2",
+        "s17-a3",
+        "s17-sd"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "114-s17f4.png"
+    },
+    {
+      "press": 115,
+      "s": 17,
+      "f": 5,
+      "empty": 0.014,
+      "cue": "Next ▶ check both ways",
+      "sims": {
+        "s17-cb": "Al-SO4/formula",
+        "s17-sd": "Cu2S/name"
+      },
+      "on": [
+        "s17-A",
+        "s17-B",
+        "s17-a1",
+        "s17-a2",
+        "s17-a3",
+        "s17-sd"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "115-s17f5.png"
+    },
+    {
+      "press": 116,
+      "s": 17,
+      "f": 6,
+      "empty": 0.014,
+      "cue": "Next ▶ check",
+      "sims": {
+        "s17-cb": "Al-SO4/formula",
+        "s17-sd": "Cu2S/name"
+      },
+      "on": [
+        "s17-B",
+        "s17-a1",
+        "s17-a2",
+        "s17-a3",
+        "s17-both",
+        "s17-sd"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "116-s17f6.png"
+    },
+    {
+      "press": 117,
+      "s": 17,
+      "f": 7,
+      "empty": 0.014,
+      "cue": "Next ▶ answer",
+      "sims": {
+        "s17-cb": "Al-SO4/formula",
+        "s17-sd": "Fe2SO43/ask"
+      },
+      "on": [
+        "s17-a1",
+        "s17-a2",
+        "s17-a3",
+        "s17-both",
+        "s17-check",
+        "s17-sd"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "117-s17f7.png"
+    },
+    {
+      "press": 118,
+      "s": 17,
+      "f": 8,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 18: You do: six compounds",
+      "sims": {
+        "s17-cb": "Al-SO4/formula",
+        "s17-sd": "Fe2SO43/name"
+      },
+      "on": [
+        "s17-a1",
+        "s17-a2",
+        "s17-a3",
+        "s17-ans",
+        "s17-both",
+        "s17-check",
+        "s17-sd"
+      ],
+      "cls": [
+        "s17-b:right",
+        "s17-check:done"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "118-s17f8.png"
+    },
+    {
+      "press": 119,
+      "s": 18,
+      "f": 0,
+      "empty": 0.067,
+      "cue": "Next ▶ timer 3 min",
+      "sims": {},
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "119-s18f0.png"
+    },
+    {
+      "press": 120,
+      "s": 18,
+      "f": 1,
+      "empty": 0.029,
+      "cue": "Next ▶ answer 1",
+      "sims": {},
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "120-s18f1.png"
+    },
+    {
+      "press": 121,
+      "s": 18,
+      "f": 2,
+      "empty": 0.078,
+      "cue": "Next ▶ answer 2",
+      "sims": {},
+      "on": [
+        "s18-a1"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "121-s18f2.png"
+    },
+    {
+      "press": 122,
+      "s": 18,
+      "f": 3,
+      "empty": 0.078,
+      "cue": "Next ▶ answer 3",
+      "sims": {},
+      "on": [
+        "s18-a1",
+        "s18-a2"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "122-s18f3.png"
+    },
+    {
+      "press": 123,
+      "s": 18,
+      "f": 4,
+      "empty": 0.078,
+      "cue": "Next ▶ answer 4",
+      "sims": {},
+      "on": [
+        "s18-a1",
+        "s18-a2",
+        "s18-a3"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "123-s18f4.png"
+    },
+    {
+      "press": 124,
+      "s": 18,
+      "f": 5,
+      "empty": 0.078,
+      "cue": "Next ▶ answer 5",
+      "sims": {},
+      "on": [
+        "s18-a1",
+        "s18-a2",
+        "s18-a3",
+        "s18-a4"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "124-s18f5.png"
+    },
+    {
+      "press": 125,
+      "s": 18,
+      "f": 6,
+      "empty": 0.078,
+      "cue": "Next ▶ answer 6",
+      "sims": {},
+      "on": [
+        "s18-a1",
+        "s18-a2",
+        "s18-a3",
+        "s18-a4",
+        "s18-a5"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "125-s18f6.png"
+    },
+    {
+      "press": 126,
+      "s": 18,
+      "f": 7,
+      "empty": 0.078,
+      "cue": "Next ▶ slide 19: Spot the error",
+      "sims": {},
+      "on": [
+        "s18-a1",
+        "s18-a2",
+        "s18-a3",
+        "s18-a4",
+        "s18-a5",
+        "s18-a6"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "126-s18f7.png"
+    },
+    {
+      "press": 127,
+      "s": 19,
+      "f": 0,
+      "empty": 0.057,
+      "cue": "Next ▶ fix 1",
+      "sims": {},
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "127-s19f0.png"
+    },
+    {
+      "press": 128,
+      "s": 19,
+      "f": 1,
+      "empty": 0.057,
+      "cue": "Next ▶ fix 2",
+      "sims": {},
+      "on": [
+        "s19-a1"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "128-s19f1.png"
+    },
+    {
+      "press": 129,
+      "s": 19,
+      "f": 2,
+      "empty": 0.057,
+      "cue": "Next ▶ fix 3",
+      "sims": {},
+      "on": [
+        "s19-a1",
+        "s19-a2"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "129-s19f2.png"
+    },
+    {
+      "press": 130,
+      "s": 19,
+      "f": 3,
+      "empty": 0.057,
+      "cue": "Next ▶ fix 4",
+      "sims": {},
+      "on": [
+        "s19-a1",
+        "s19-a2",
+        "s19-a3"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "130-s19f3.png"
+    },
+    {
+      "press": 131,
+      "s": 19,
+      "f": 4,
+      "empty": 0.057,
+      "cue": "Next ▶ fix 5",
+      "sims": {},
+      "on": [
+        "s19-a1",
+        "s19-a2",
+        "s19-a3",
+        "s19-a4"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "131-s19f4.png"
+    },
+    {
+      "press": 132,
+      "s": 19,
+      "f": 5,
+      "empty": 0.057,
+      "cue": "Next ▶ fix 6",
+      "sims": {},
+      "on": [
+        "s19-a1",
+        "s19-a2",
+        "s19-a3",
+        "s19-a4",
+        "s19-a5"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "132-s19f5.png"
+    },
+    {
+      "press": 133,
+      "s": 19,
+      "f": 6,
+      "empty": 0.057,
+      "cue": "Next ▶ slide 20: Checkpoint routine",
+      "sims": {},
+      "on": [
+        "s19-a1",
+        "s19-a2",
+        "s19-a3",
+        "s19-a4",
+        "s19-a5",
+        "s19-a6"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "133-s19f6.png"
+    },
+    {
+      "press": 134,
+      "s": 20,
+      "f": 0,
+      "empty": 0,
+      "cue": "Next ▶ think",
+      "sims": {},
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "134-s20f0.png"
+    },
+    {
+      "press": 135,
+      "s": 20,
+      "f": 1,
+      "empty": 0,
+      "cue": "Next ▶ talk",
+      "sims": {},
+      "on": [],
+      "cls": [
+        "s20-r1:now",
+        "s20-s1:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "135-s20f1.png"
+    },
+    {
+      "press": 136,
+      "s": 20,
+      "f": 2,
+      "empty": 0,
+      "cue": "Next ▶ write",
+      "sims": {},
+      "on": [],
+      "cls": [
+        "s20-r1:done",
+        "s20-r2:now",
+        "s20-s2:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "136-s20f2.png"
+    },
+    {
+      "press": 137,
+      "s": 20,
+      "f": 3,
+      "empty": 0,
+      "cue": "Next ▶ self-check",
+      "sims": {},
+      "on": [],
+      "cls": [
+        "s20-r1:done",
+        "s20-r2:done",
+        "s20-r3:now",
+        "s20-s3:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "137-s20f3.png"
+    },
+    {
+      "press": 138,
+      "s": 20,
+      "f": 4,
+      "empty": 0,
+      "cue": "Next ▶ compare",
+      "sims": {},
+      "on": [],
+      "cls": [
+        "s20-r1:done",
+        "s20-r2:done",
+        "s20-r3:done",
+        "s20-r4:now",
+        "s20-s4:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "138-s20f4.png"
+    },
+    {
+      "press": 139,
+      "s": 20,
+      "f": 5,
+      "empty": 0,
+      "cue": "Next ▶ slide 21: Checkpoint 1",
+      "sims": {},
+      "on": [],
+      "cls": [
+        "s20-r1:done",
+        "s20-r2:done",
+        "s20-r3:done",
+        "s20-r4:done",
+        "s20-r5:now",
+        "s20-s5:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "139-s20f5.png"
+    },
+    {
+      "press": 140,
+      "s": 21,
+      "f": 0,
+      "empty": 0.009,
+      "cue": "Next ▶ think 30 s",
+      "sims": {},
+      "on": [
+        "s21-read"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "140-s21f0.png"
+    },
+    {
+      "press": 141,
+      "s": 21,
+      "f": 1,
+      "empty": 0.086,
+      "cue": "Next ▶ talk 60 s",
+      "sims": {},
+      "on": [
+        "s21-think"
+      ],
+      "cls": [
+        "s21-r1:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "141-s21f1.png"
+    },
+    {
+      "press": 142,
+      "s": 21,
+      "f": 2,
+      "empty": 0.086,
+      "cue": "Next ▶ write 90 s",
+      "sims": {},
+      "on": [
+        "s21-talk"
+      ],
+      "cls": [
+        "s21-r1:done",
+        "s21-r2:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "142-s21f2.png"
+    },
+    {
+      "press": 143,
+      "s": 21,
+      "f": 3,
+      "empty": 0.086,
+      "cue": "Next ▶ self-check",
+      "sims": {},
+      "on": [
+        "s21-write"
+      ],
+      "cls": [
+        "s21-r1:done",
+        "s21-r2:done",
+        "s21-r3:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "143-s21f3.png"
+    },
+    {
+      "press": 144,
+      "s": 21,
+      "f": 4,
+      "empty": 0.009,
+      "cue": "Next ▶ sample answer",
+      "sims": {},
+      "on": [
+        "s21-check",
+        "s21-write"
+      ],
+      "cls": [
+        "s21-r1:done",
+        "s21-r2:done",
+        "s21-r3:done",
+        "s21-r4:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "144-s21f4.png"
+    },
+    {
+      "press": 145,
+      "s": 21,
+      "f": 5,
+      "empty": 0.009,
+      "cue": "Next ▶ slide 22: Checkpoint 2",
+      "sims": {},
+      "on": [
+        "s21-check",
+        "s21-sample",
+        "s21-write"
+      ],
+      "cls": [
+        "s21-r1:done",
+        "s21-r2:done",
+        "s21-r3:done",
+        "s21-r4:done",
+        "s21-r5:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "145-s21f5.png"
+    },
+    {
+      "press": 146,
+      "s": 22,
+      "f": 0,
+      "empty": 0.009,
+      "cue": "Next ▶ think 30 s",
+      "sims": {},
+      "on": [
+        "s22-read"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "146-s22f0.png"
+    },
+    {
+      "press": 147,
+      "s": 22,
+      "f": 1,
+      "empty": 0.086,
+      "cue": "Next ▶ talk 60 s",
+      "sims": {},
+      "on": [
+        "s22-think"
+      ],
+      "cls": [
+        "s22-r1:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "147-s22f1.png"
+    },
+    {
+      "press": 148,
+      "s": 22,
+      "f": 2,
+      "empty": 0.086,
+      "cue": "Next ▶ write 90 s",
+      "sims": {},
+      "on": [
+        "s22-talk"
+      ],
+      "cls": [
+        "s22-r1:done",
+        "s22-r2:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "148-s22f2.png"
+    },
+    {
+      "press": 149,
+      "s": 22,
+      "f": 3,
+      "empty": 0.086,
+      "cue": "Next ▶ self-check",
+      "sims": {},
+      "on": [
+        "s22-write"
+      ],
+      "cls": [
+        "s22-r1:done",
+        "s22-r2:done",
+        "s22-r3:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "149-s22f3.png"
+    },
+    {
+      "press": 150,
+      "s": 22,
+      "f": 4,
+      "empty": 0.009,
+      "cue": "Next ▶ sample answer",
+      "sims": {},
+      "on": [
+        "s22-check",
+        "s22-write"
+      ],
+      "cls": [
+        "s22-r1:done",
+        "s22-r2:done",
+        "s22-r3:done",
+        "s22-r4:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "150-s22f4.png"
+    },
+    {
+      "press": 151,
+      "s": 22,
+      "f": 5,
+      "empty": 0.009,
+      "cue": "Next ▶ slide 23: Checkpoint 3",
+      "sims": {},
+      "on": [
+        "s22-check",
+        "s22-sample",
+        "s22-write"
+      ],
+      "cls": [
+        "s22-r1:done",
+        "s22-r2:done",
+        "s22-r3:done",
+        "s22-r4:done",
+        "s22-r5:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "151-s22f5.png"
+    },
+    {
+      "press": 152,
+      "s": 23,
+      "f": 0,
+      "empty": 0.009,
+      "cue": "Next ▶ think 30 s",
+      "sims": {},
+      "on": [
+        "s23-read"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "152-s23f0.png"
+    },
+    {
+      "press": 153,
+      "s": 23,
+      "f": 1,
+      "empty": 0.086,
+      "cue": "Next ▶ talk 60 s",
+      "sims": {},
+      "on": [
+        "s23-think"
+      ],
+      "cls": [
+        "s23-r1:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "153-s23f1.png"
+    },
+    {
+      "press": 154,
+      "s": 23,
+      "f": 2,
+      "empty": 0.086,
+      "cue": "Next ▶ write 90 s",
+      "sims": {},
+      "on": [
+        "s23-talk"
+      ],
+      "cls": [
+        "s23-r1:done",
+        "s23-r2:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "154-s23f2.png"
+    },
+    {
+      "press": 155,
+      "s": 23,
+      "f": 3,
+      "empty": 0.086,
+      "cue": "Next ▶ self-check",
+      "sims": {},
+      "on": [
+        "s23-write"
+      ],
+      "cls": [
+        "s23-r1:done",
+        "s23-r2:done",
+        "s23-r3:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "155-s23f3.png"
+    },
+    {
+      "press": 156,
+      "s": 23,
+      "f": 4,
+      "empty": 0.009,
+      "cue": "Next ▶ sample answer",
+      "sims": {},
+      "on": [
+        "s23-check",
+        "s23-write"
+      ],
+      "cls": [
+        "s23-r1:done",
+        "s23-r2:done",
+        "s23-r3:done",
+        "s23-r4:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "156-s23f4.png"
+    },
+    {
+      "press": 157,
+      "s": 23,
+      "f": 5,
+      "empty": 0.009,
+      "cue": "Next ▶ slide 24: Predictions and exit ticket",
+      "sims": {},
+      "on": [
+        "s23-check",
+        "s23-sample",
+        "s23-write"
+      ],
+      "cls": [
+        "s23-r1:done",
+        "s23-r2:done",
+        "s23-r3:done",
+        "s23-r4:done",
+        "s23-r5:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "157-s23f5.png"
+    },
+    {
+      "press": 158,
+      "s": 24,
+      "f": 0,
+      "empty": 0.068,
+      "cue": "Next ▶ answer 2",
+      "sims": {},
+      "on": [
+        "s24-A",
+        "s24-p1"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "158-s24f0.png"
+    },
+    {
+      "press": 159,
+      "s": 24,
+      "f": 1,
+      "empty": 0.068,
+      "cue": "Next ▶ answer 3",
+      "sims": {},
+      "on": [
+        "s24-A",
+        "s24-p2"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "159-s24f1.png"
+    },
+    {
+      "press": 160,
+      "s": 24,
+      "f": 2,
+      "empty": 0.068,
+      "cue": "Next ▶ exit ticket",
+      "sims": {},
+      "on": [
+        "s24-A",
+        "s24-p3"
+      ],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "160-s24f2.png"
+    },
+    {
+      "press": 161,
+      "s": 24,
+      "f": 3,
+      "empty": 0.008,
+      "cue": "Next ▶ evidence",
+      "sims": {},
+      "on": [
+        "s24-B",
+        "s24-f1",
+        "s24-fr",
+        "s24-p3"
+      ],
+      "cls": [
+        "s24-r1:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "161-s24f3.png"
+    },
+    {
+      "press": 162,
+      "s": 24,
+      "f": 4,
+      "empty": 0.008,
+      "cue": "Next ▶ write 3 min",
+      "sims": {},
+      "on": [
+        "s24-B",
+        "s24-f1",
+        "s24-f2",
+        "s24-fr",
+        "s24-p3"
+      ],
+      "cls": [
+        "s24-r1:done",
+        "s24-r2:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "162-s24f4.png"
+    },
+    {
+      "press": 163,
+      "s": 24,
+      "f": 5,
+      "empty": 0.08,
+      "cue": "Next ▶ self-check",
+      "sims": {},
+      "on": [
+        "s24-B",
+        "s24-f1",
+        "s24-f2",
+        "s24-f3",
+        "s24-fr",
+        "s24-p3"
+      ],
+      "cls": [
+        "s24-r1:done",
+        "s24-r2:done",
+        "s24-r3:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "163-s24f5.png"
+    },
+    {
+      "press": 164,
+      "s": 24,
+      "f": 6,
+      "empty": 0.008,
+      "cue": "Next ▶ sample answer",
+      "sims": {},
+      "on": [
+        "s24-B",
+        "s24-check",
+        "s24-f1",
+        "s24-f2",
+        "s24-f3",
+        "s24-fr",
+        "s24-p3"
+      ],
+      "cls": [
+        "s24-r1:done",
+        "s24-r2:done",
+        "s24-r3:done",
+        "s24-r4:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "164-s24f6.png"
+    },
+    {
+      "press": 165,
+      "s": 24,
+      "f": 7,
+      "empty": 0.008,
+      "cue": "Next ▶ slide 25: Rate your learning",
+      "sims": {},
+      "on": [
+        "s24-B",
+        "s24-check",
+        "s24-f1",
+        "s24-f2",
+        "s24-f3",
+        "s24-fr",
+        "s24-p3",
+        "s24-sample"
+      ],
+      "cls": [
+        "s24-r1:done",
+        "s24-r2:done",
+        "s24-r3:done",
+        "s24-r4:done",
+        "s24-r5:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "165-s24f7.png"
+    },
+    {
+      "press": 166,
+      "s": 25,
+      "f": 0,
+      "empty": 0.134,
+      "cue": "Next ▶ target 1",
+      "sims": {},
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "166-s25f0.png"
+    },
+    {
+      "press": 167,
+      "s": 25,
+      "f": 1,
+      "empty": 0.134,
+      "cue": "Next ▶ target 2",
+      "sims": {},
+      "on": [],
+      "cls": [
+        "s25-t1:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "167-s25f1.png"
+    },
+    {
+      "press": 168,
+      "s": 25,
+      "f": 2,
+      "empty": 0.134,
+      "cue": "Next ▶ target 3",
+      "sims": {},
+      "on": [],
+      "cls": [
+        "s25-t2:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "168-s25f2.png"
+    },
+    {
+      "press": 169,
+      "s": 25,
+      "f": 3,
+      "empty": 0.134,
+      "cue": "Next ▶ target 4",
+      "sims": {},
+      "on": [],
+      "cls": [
+        "s25-t3:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "169-s25f3.png"
+    },
+    {
+      "press": 170,
+      "s": 25,
+      "f": 4,
+      "empty": 0.134,
+      "cue": "Next ▶ target 5",
+      "sims": {},
+      "on": [],
+      "cls": [
+        "s25-t4:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "170-s25f4.png"
+    },
+    {
+      "press": 171,
+      "s": 25,
+      "f": 5,
+      "empty": 0.134,
+      "cue": "Next ▶ slide 26: Next",
+      "sims": {},
+      "on": [],
+      "cls": [
+        "s25-t5:now"
+      ],
+      "overflow": [],
+      "errors": [],
+      "file": "171-s25f5.png"
+    },
+    {
+      "press": 172,
+      "s": 26,
+      "f": 0,
+      "empty": 0,
+      "cue": "End of the deck",
+      "sims": {},
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "172-s26f0.png"
+    }
+  ]
+}

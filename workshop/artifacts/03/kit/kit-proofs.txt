@@ -1,0 +1,23 @@
+4.1: unit4/slides-4-1.html  194646 bytes, 2077 lines, md5 ebd342f1ee0e11c47157141cf3b2a59b
+4.2: unit4/slides-4-2.html  203769 bytes, 2153 lines, md5 c3fa219a806963f9a66c3baf643153f4
+4.5: not built yet (registry built: false); skipped
+ebd342f1ee0e11c47157141cf3b2a59b  unit4/slides-4-1.html
+c3fa219a806963f9a66c3baf643153f4  unit4/slides-4-2.html
+194646 unit4/slides-4-1.html
+203769 unit4/slides-4-2.html
+398415 total
+git status --short unit4: 0 entries
+
+4.5: not built yet (registry built: false); skipped
+== 4.1: unit4/slides-4-1.html
+   out <scratchpad>/m3/4-1, theme both, matrix off
+  PASS  timing                1.2 s  timing: period 1 47 min, period 2 47 min, PASS
+== 4.1: 1 of 1 pass, 0 fail, 1.2 s
+== 4.2: unit4/slides-4-2.html
+   out <scratchpad>/m3/4-2, theme both, matrix off
+  PASS  timing                1.2 s  timing: period 1 47 min, period 2 46.5 min, PASS
+== 4.2: 1 of 1 pass, 0 fail, 1.2 s
+== all decks
+  4.1: 1 of 1 pass, 1.2 s
+  4.2: 1 of 1 pass, 1.2 s
+exit=0

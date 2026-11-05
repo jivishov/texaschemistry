@@ -1,0 +1,5 @@
+s06 f6 1 text "Atom colors show the element, " over div#s06-rule.card.rule
+s13 f4 5 text "dispersion forces" over div#s13-line.card.blk | text "all molecules; more electrons," over div#s13-line.card.blk | text "CH" over div#s13-line.card.blk | text "4" over div#s13-line.card.blk
+s20 f4 9 text "Covalent network," over div#s20-end.card.blk | text "SiO" over div#s20-end.card.blk | text "2" over div#s20-end.card.blk | text "very high melting point" over div#s20-end.card.blk
+s25 f5 1 block div#s25-fr.card.phase x div.timer.run
+overlap scan: 210 frames, 16 overlaps

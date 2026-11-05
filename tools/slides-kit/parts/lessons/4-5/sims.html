@@ -1,0 +1,917 @@
+<script>
+/* ===== Animations for Lesson 4.5 (plan section 4). Each is a Deck.sim with named stages; every stage is a full state. =====
+   Shared data: D.chem (EN, CPK, uni), D.util. Period 1 (workshop step 02): brickBag, meltScale, threeSolids, attractions, bpPlot,
+   forceDecider. Drawing code of the unit (RULES 8, plan section 3): a bond within a molecule is a solid gray stick; every attraction
+   between molecules is dashed (dispersion gray and flickering, dipole-dipole warm to teal, hydrogen bond teal and heavier, always
+   from an H to a lone pair); a lone pair is a translucent violet lobe; ions red "+" and blue "−"; CPK colors with the symbol on
+   every sphere. Ball-and-stick radii: Cordero 2008 covalent radii compressed by +40 pm (as 4.2's polyIons does: H 0.30, O 0.44),
+   so hydrogen keeps a 60 px sphere; each drawing has one scale for bond lengths (real lengths in pm) and one for radii, so the
+   radii never set the bond lengths. Ions: Shannon radii (Na+ 102 pm, Cl- 181 pm) and the 282 pm spacing, to scale. */
+(function(){
+const D=window.Deck;
+const {EN,uni}=D.chem,{clamp,lerp,f2,hash,rgba}=D.util;
+const SANS="'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif",MONO="'IBM Plex Mono', ui-monospace, 'DejaVu Sans Mono', monospace";
+/* CPK colors: the shared table (H C N O S P) plus the elements this lesson draws (Jmol values): F, Cl, Br, Si, I */
+const CPK=Object.assign({},D.chem.CPK,{F:'#90e050',Cl:'#1ff01f',Br:'#a62929',Si:'#f0c8a0',I:'#940094'});
+const COV={H:31,C:76,N:71,O:66,F:57,Cl:102,Br:120,Si:111,I:139};                 /* Cordero 2008, pm */
+const BL={HH:74,ClCl:199,FF:142,HCl:127,HO:96,HN:101,HC:109,HBr:141,CO:116,SiO:161}; /* bond lengths, pm */
+const rad=(s,u)=>(COV[s]+40)/71*30*(u==null?1:u);                          /* H: 30 px at u = 1 */
+const TAU=Math.PI*2,deg=a=>a*Math.PI/180;
+/* drawing record (workshop shape check): every sphere that stands for an atom or an ion (2D: each one; 3D: per kind, the nearest,
+   i.e. the largest projected), and separately the exempt marks: electron dots, δ badges, plot markers. meta().drawn reports the
+   smallest of each, as diameters in canvas px, for the last frame painted. */
+let REC=null;
+const recAtom=r=>{if(REC)REC.atom=Math.min(REC.atom,2*r)},recMark=(k,r)=>{if(REC)REC[k]=Math.min(REC[k]||Infinity,2*r)};
+function spheres3d(g,scene,view){const P=D.spheres(g,scene,view);
+  if(REC){const near={};P.forEach((q,i)=>{const a=scene.atoms[i];if(a.dummy||!(q.r>.5)||(a.alpha!=null&&a.alpha<.01))return;const k=a.kind||a.label||a.color;near[k]=Math.max(near[k]||0,q.r)});
+    Object.values(near).forEach(r=>recAtom(r))}return P}
+/* an ion or a metal core drawn flat: a circle with its charge (recorded as an atom or ion sphere) */
+function ion(g,x,y,r,col,txt,px){recAtom(r);g.circle(x,y,r,col,D.mix(col,'#000000',.35),3);if(txt)g.text(txt,x,y+2,px||36,{color:g.c('on-ion')})}
+/* every canvas animation of the lesson: D.canvasSim with the drawing record */
+function sim(host,spec){const draw=spec.draw,meta=spec.meta;let last=null;
+  spec.draw=(g,p,I)=>{if(!g._rec){const B=g.badge,E=g.electron;g.badge=(x,y,t,c,r)=>{recMark('badge',r||36);B(x,y,t,c,r)};g.electron=(x,y,r)=>{recMark('dot',r||13);E(x,y,r)};g._rec=1}
+    const R={atom:Infinity},prev=REC;REC=R;try{draw(g,p,I)}finally{REC=prev}last=R};
+  const fin=v=>v&&isFinite(v)?Math.round(v):null;
+  spec.meta=(p,s,I)=>Object.assign({},meta?meta(p,s,I):{},{drawn:last?{atom:fin(last.atom),dot:fin(last.dot),badge:fin(last.badge),marker:fin(last.marker)}:null});
+  return D.canvasSim(host,spec)}
+const fam=s=>String(s).split('/')[0];
+/* width of chem markup at a size, without drawing (matches painter.chem) */
+function chemW(g,s,px,o){o=o||{};const ctx=g.ctx,re=/([_^])(\{[^}]*\}|.)/g,runs=[];let i=0,m;
+  while((m=re.exec(s))){if(m.index>i)runs.push([s.slice(i,m.index),0]);runs.push([m[2].replace(/[{}]/g,''),1]);i=re.lastIndex}
+  if(i<s.length)runs.push([s.slice(i),0]);let w=0;
+  runs.forEach(([t,k])=>{ctx.font=(o.wt||700)+' '+(k?Math.round(px*.7):px)+'px '+(o.mono?MONO:SANS);w+=ctx.measureText(t).width});return w}
+/* word-wrap plain text to a width; returns the lines */
+function wrap(g,s,maxW,px,wt){g.font(px,wt);const out=[];let line='';
+  s.split(' ').forEach(w=>{const t=line?line+' '+w:w;if(line&&g.ctx.measureText(t).width>maxW){out.push(line);line=w}else line=t});if(line)out.push(line);return out}
+/* a label "x: y" breaks after the colon when it needs more than one line */
+function colonLines(g,txt,maxW,px){g.font(px,700);if(g.ctx.measureText(txt).width<=maxW)return [txt];const i=txt.indexOf(': ');
+  return i>0?[txt.slice(0,i+1)].concat(wrap(g,txt.slice(i+2),maxW,px)):wrap(g,txt,maxW,px)}
+/* draw wrapped lines; returns the rect they cover */
+function lines(g,arr,x,y,px,lh,o){o=o||{};let w=0;g.font(px,o.wt);arr.forEach(t=>{w=Math.max(w,g.ctx.measureText(t).width)});
+  arr.forEach((t,i)=>g.text(t,x,y+i*lh,px,o));const x0=o.align==='left'?x:o.align==='right'?x-w:x-w/2;return {x:x0,y:y-lh/2,w,h:lh*arr.length}}
+/* a shaded sphere with its symbol (label 36 px or more) */
+function ball(g,x,y,r,sym,o){o=o||{};const ctx=g.ctx,col=o.color||CPK[sym]||'#999999';
+  const gr=ctx.createRadialGradient(x-r*.38,y-r*.42,r*.06,x,y,r);gr.addColorStop(0,D.mix(col,'#ffffff',.62));gr.addColorStop(.5,col);gr.addColorStop(1,D.mix(col,'#000000',.36));
+  recAtom(r);g.circle(x,y,r,gr,D.mix(col,'#000000',.5),3);
+  if(o.label!==false)g.chem(o.label||sym,x,y+1,Math.max(36,Math.min(o.px||r*.95,60)),{color:o.ink||(D.lum(col)>.3?'#10201c':'#ffffff')})}
+/* a bond within a molecule: a solid gray stick */
+const STICK='#8f989d',STICK2='#4d5559';
+function stick(g,x0,y0,x1,y1,w){g.line(x0,y0,x1,y1,STICK2,w+6);g.line(x0,y0,x1,y1,STICK,w)}
+/* a lone pair: a translucent violet lobe (two electron dots) standing out from atom A along ang; drawn behind the atom */
+function lobe(g,A,ang,k){const ctx=g.ctx,e=g.c('e'),sz=A.r*(k||.8),d=A.r+sz*.42,cx=A.x+Math.cos(ang)*d,cy=A.y+Math.sin(ang)*d;
+  ctx.save();ctx.translate(cx,cy);ctx.rotate(ang);ctx.beginPath();ctx.ellipse(0,0,sz,sz*.64,0,0,TAU);
+  ctx.fillStyle=rgba(e,.3);ctx.fill();ctx.lineWidth=3;ctx.strokeStyle=rgba(e,.85);ctx.stroke();
+  [-1,1].forEach(k=>g.circle(sz*.3,k*sz*.27,8,e,D.mix(e,'#000000',.4),2));ctx.restore()}
+/* dashed attraction lines (step 04b, the teacher's review: "the dashed lines are not clear"): round-capped dashes of a set visible
+   length and a set visible gap (the cap no longer eats the gap), over a halo of the slide's color, so a line reads over a sphere, a
+   lone pair or a stick; the lines are drawn after (over) the molecules they join */
+function dashLine(g,x0,y0,x1,y1,col,w,dl,gl,a,off){if(a<.01)return;const ctx=g.ctx;ctx.save();ctx.globalAlpha*=a;ctx.lineCap='round';ctx.setLineDash([Math.max(.1,dl-w),gl+w]);ctx.lineDashOffset=off||0;
+  ctx.beginPath();ctx.moveTo(x0,y0);ctx.lineTo(x1,y1);ctx.lineWidth=w+8;ctx.strokeStyle=g.c('slide');ctx.stroke();ctx.lineWidth=w;ctx.strokeStyle=col;ctx.stroke();ctx.setLineDash([]);ctx.restore()}
+function dashGray(g,x0,y0,x1,y1,a){dashLine(g,x0,y0,x1,y1,g.c('muted'),6,16,12,a)}
+function dashDipole(g,x0,y0,x1,y1,a){if(a<.01)return;const ctx=g.ctx;ctx.save();ctx.globalAlpha*=a;const gr=ctx.createLinearGradient(x0,y0,x1,y1);
+  gr.addColorStop(0,g.c('dplus'));gr.addColorStop(1,g.c('dminus'));ctx.lineCap='round';ctx.setLineDash([9,19]);ctx.beginPath();ctx.moveTo(x0,y0);ctx.lineTo(x1,y1);
+  ctx.lineWidth=15;ctx.strokeStyle=g.c('slide');ctx.stroke();ctx.lineWidth=7;ctx.strokeStyle=gr;ctx.stroke();ctx.setLineDash([]);ctx.restore()}
+function dashH(g,x0,y0,x1,y1,a){dashLine(g,x0,y0,x1,y1,g.c('dminus'),9,18,12,a)}
+/* a hydrogen bond from H (its surface) into the acceptor's lone pair k (the lobe's centre), so the line visibly ends in the lone pair */
+const lobeMid=(M,k)=>{const L=M.lobes[k],A=M.atoms[L.i],sz=A.r*(L.k||.8),d=A.r+sz*.42;return [A.x+Math.cos(L.ang)*d,A.y+Math.sin(L.ang)*d]};
+function hbond(g,H,M,k,a){const m=lobeMid(M,k),s0=edge(H,m[0],m[1],3);dashH(g,s0[0],s0[1],m[0],m[1],a)}
+/* a chip: rounded box with chem text; returns its width */
+function chip(g,x,y,txt,o){o=o||{};const px=o.px||40,w=chemW(g,txt,px,o)+36,h=px+22;if(o.measure)return w;
+  g.rrect(x,y-h/2,w,h,14,g.c('card2'),g.c('line'),3);g.chem(txt,x+18,y+1,px,{align:'left',mono:o.mono,color:g.c('ink')});return w}
+/* the label line, then chips on the next line (RULES 7); returns the rect */
+function chipRow(g,x,y,label,chips,o){o=o||{};const gap=16;let w=0;chips.forEach(c=>{w+=chip(g,0,0,c,{measure:true})+gap});w-=gap;
+  const x0=o.align==='center'?x-w/2:x;g.text(label,o.align==='center'?x:x0,y,36,{align:o.align==='center'?'center':'left',color:g.c('muted'),wt:700});
+  let cx=x0;chips.forEach(c=>{cx+=chip(g,cx,y+58,c)+gap});g.font(36,700);const lw=g.ctx.measureText(label).width;
+  const left=o.align==='center'?Math.min(x0,x-lw/2):x0;return {x:left-12,y:y-30,w:Math.max(w,lw)+24,h:58+31+30+12}}
+const fade=(g,a,fn)=>{if(a<.01)return;g.ctx.save();g.ctx.globalAlpha*=Math.min(1,a);fn();g.ctx.restore()};
+/* a molecule in 2D: atoms [{s,x,y,r,z}], bonds [[i,j]]; lobes [{i,ang}] behind; atoms drawn far to near (z) */
+function mol2d(g,M,a){fade(g,a==null?1:a,()=>{(M.lobes||[]).forEach(L=>lobe(g,M.atoms[L.i],L.ang,L.k));
+  const items=M.atoms.map((A,i)=>({z:A.z||0,i})).concat(M.bonds.map(([i,j])=>({z:Math.min(M.atoms[i].z||0,M.atoms[j].z||0)-.5,b:[i,j]}))).sort((u,v)=>u.z-v.z);
+  items.forEach(it=>{if(it.b){const A=M.atoms[it.b[0]],B=M.atoms[it.b[1]];stick(g,A.x,A.y,B.x,B.y,Math.max(10,Math.min(A.r,B.r)*.42))}
+    else{const A=M.atoms[it.i];ball(g,A.x,A.y,A.r,A.s,{color:A.color,label:A.label,ink:A.ink})}})})}
+/* molecule builders: center (x,y), rotation rot, bond scale sb (px per pm), radius scale u */
+function diatomic(a,b,bl,x,y,rot,sb,u){const d=bl*sb,c=Math.cos(rot),s=Math.sin(rot),ra=rad(a,u),rb=rad(b,u);
+  return {atoms:[{s:a,x:x-c*d/2,y:y-s*d/2,r:ra},{s:b,x:x+c*d/2,y:y+s*d/2,r:rb}],bonds:[[0,1]]}}
+function water(x,y,rot,sb,u){const a1=rot,a2=rot+deg(104.5),bis=rot+deg(52.25),d=BL.HO*sb;
+  return {atoms:[{s:'O',x,y,r:rad('O',u)},{s:'H',x:x+Math.cos(a1)*d,y:y+Math.sin(a1)*d,r:rad('H',u)},{s:'H',x:x+Math.cos(a2)*d,y:y+Math.sin(a2)*d,r:rad('H',u)}],
+    bonds:[[0,1],[0,2]],lobes:[{i:0,ang:bis+Math.PI-deg(56)},{i:0,ang:bis+Math.PI+deg(56)}]}}
+/* NH3 seen slightly from above: two H in the plane, one toward the viewer (drawn in front, foreshortened); the lone pair opposite */
+function ammonia(x,y,rot,sb,u){const d=BL.HN*sb,H=(ang,k,z)=>({s:'H',x:x+Math.cos(rot+ang)*d*k,y:y+Math.sin(rot+ang)*d*k,r:rad('H',u),z});
+  return {atoms:[{s:'N',x,y,r:rad('N',u),z:0},H(deg(-20),1,-1),H(deg(110),.95,-1),H(deg(45),.62,1)],bonds:[[0,1],[0,2],[0,3]],lobes:[{i:0,ang:rot+deg(212)}]}}
+/* CH4: one H up, two to the sides below, one toward the viewer */
+function methane(x,y,rot,sb,u){const d=BL.HC*sb,H=(ang,k,z)=>({s:'H',x:x+Math.cos(rot+ang)*d*k,y:y+Math.sin(rot+ang)*d*k,r:rad('H',u),z});
+  return {atoms:[{s:'C',x,y,r:rad('C',u),z:0},H(deg(-90),1,-1),H(deg(20),.98,-1),H(deg(160),.98,-1),H(deg(95),.6,1)],bonds:[[0,1],[0,2],[0,3],[0,4]]}}
+const lobeTip=(M,k)=>{const L=M.lobes[k],A=M.atoms[L.i],sz=A.r*(L.k||.8),d=A.r+sz*1.42;return [A.x+Math.cos(L.ang)*d,A.y+Math.sin(L.ang)*d]};
+/* point at the surface of atom A toward (x,y) */
+const edge=(A,x,y,pad)=>{const dx=x-A.x,dy=y-A.y,l=Math.hypot(dx,dy)||1,r=A.r+(pad||0);return [A.x+dx/l*r,A.y+dy/l*r]};
+const uRect=(x,y,w,h,label,pad)=>({x,y,w,h,label,pad});
+
+/* ---------- 1. brickBag (hook, slide 2): three snap-together brick models in a clear bag; shaking moves the models, never a brick ----------
+   stages: models, shake, pour, words. The counter "Bricks snapped: 11 of 11" never changes. */
+const SU=44,BH=70;
+const MODELS=[{name:'yellow',cols:['#f2c230','#e3ae1d','#f7d460','#ebb92a'],b:[[0,0,4],[0,1,2],[2,1,2],[1,2,2]]},
+  {name:'orange',cols:['#ec8a2e','#d9731a','#f4a65a','#e47f25'],b:[[1,0,2],[0,1,4],[1,2,2],[1,3,2]]},
+  {name:'pink',cols:['#e46aa0','#cf4f88','#ef8fbb'],b:[[0,0,3],[1,1,3],[2,2,3]]}];
+MODELS.forEach(M=>{M.w=Math.max(...M.b.map(([c,r,l])=>c+l))*SU;M.h=(Math.max(...M.b.map(([c,r])=>r))+1)*BH+16});
+const NBRICKS=MODELS.reduce((a,M)=>a+M.b.length,0);
+function drawModel(g,M,x,y,rot){const ctx=g.ctx;ctx.save();ctx.translate(x,y);ctx.rotate(rot);ctx.translate(-M.w/2,M.h/2);
+  M.b.forEach(([c,r,l],i)=>{const bx=c*SU,by=-(r+1)*BH,col=M.cols[i%M.cols.length],dk=D.mix(col,'#000000',.35);
+    for(let k=0;k<l;k++)g.rrect(bx+k*SU+7,by-14,SU-14,18,4,D.mix(col,'#ffffff',.18),dk,3);
+    g.rrect(bx,by,l*SU,BH,8,col,dk,3);g.line(bx+12,by+14,bx+l*SU-12,by+14,D.mix(col,'#ffffff',.35),5)});
+  ctx.restore()}
+function modelBox(M,x,y,rot){const c=Math.abs(Math.cos(rot)),s=Math.abs(Math.sin(rot)),w=M.w*c+M.h*s,h=M.w*s+M.h*c;return {x:x-w/2-10,y:y-h/2-10,w:w+20,h:h+20}}
+/* a label "x = y" breaks before the "=" when it needs two lines */
+function eqLines(g,txt,maxW,px){g.font(px,700);if(g.ctx.measureText(txt).width<=maxW)return [txt];const i=txt.indexOf(' = ');return i>0?[txt.slice(0,i),txt.slice(i+1)]:wrap(g,txt,maxW,px)}
+D.sim('brickBag',function(host){
+  const base={bag:1,table:0,lab:0,shake:0};
+  const params={models:{...base},shake:{...base,shake:1},pour:{...base,bag:0,table:1},words:{...base,bag:0,table:1,lab:1}};
+  /* bag: centre (cx, cy), size bw x bh; the models rest on its floor side by side, then tumble apart inside it (px from the centre) */
+  const geo=(w,h)=>{const bw=Math.min(860,w*.6),bh=Math.min(h-56,470),cx=24+bw/2,cy=h/2+2,ty=h-30,fl=bh/2-24;
+    const IN=[[-bw*.3,fl-MODELS[0].h/2,.03],[bw*.28,fl-MODELS[1].h/2,-.04],[-bw*.01,fl-MODELS[2].h/2,.05]];
+    const SH=[[-bw*.31,bh*.06,-.26],[bw*.3,bh*.07,.24],[-bw*.01,-bh*.11,.3]];
+    const tbl=[[w*.15,ty-MODELS[0].h/2,0],[w*.56,ty-MODELS[1].h/2,0],[w*.82,ty-MODELS[2].h/2,0]];
+    return {bw,bh,cx,cy,ty,IN,SH,tbl,card:{x:bw+60,y:Math.max(16,cy-130),w:w-bw-84,h:260}}};
+  function placed(p,I){const q=geo(I.w,I.h),t=I.live?I.clock:0;
+    return MODELS.map((M,i)=>{const a=q.IN[i],b=q.SH[i];let x=q.cx+lerp(a[0],b[0],p.shake),y=q.cy+lerp(a[1],b[1],p.shake),r=lerp(a[2],b[2],p.shake);
+      if(p.shake>.5&&I.live){x+=14*Math.sin(t*7+i*2);y+=12*Math.sin(t*9+i*1.3);r+=.12*Math.sin(t*5+i)}
+      const T=q.tbl[i];return [lerp(x,T[0],p.table),lerp(y,T[1],p.table),lerp(r,T[2],p.table)]})}
+  function bag(g,q,ang){const ctx=g.ctx;ctx.save();ctx.translate(q.cx,q.cy);ctx.rotate(ang);const w=q.bw,h=q.bh;
+    ctx.beginPath();ctx.moveTo(-w/2,-h/2+30);ctx.lineTo(-w/2+10,h/2-26);ctx.quadraticCurveTo(-w/2+14,h/2,-w/2+44,h/2);ctx.lineTo(w/2-44,h/2);ctx.quadraticCurveTo(w/2-14,h/2,w/2-10,h/2-26);ctx.lineTo(w/2,-h/2+30);ctx.closePath();
+    ctx.fillStyle=rgba(g.c('accent'),.07);ctx.fill();ctx.lineWidth=5;ctx.strokeStyle=g.c('muted');ctx.stroke();
+    g.rrect(-w/2-6,-h/2+8,w+12,26,8,rgba(g.c('accent'),.18),g.c('muted'),4);g.line(-w/2+20,-h/2+21,w/2-20,-h/2+21,g.c('muted'),3,[10,8]);
+    ctx.globalAlpha*=.5;g.line(-w/2+40,-h/2+70,-w/2+60,h/2-80,'#ffffff',8);ctx.restore()}
+  const C1='Bricks snapped:',C2=NBRICKS+' of '+NBRICKS,COUNT=C1+' '+C2;
+  const LAB1='a snap between bricks = a bond within',LAB2='models side by side = an attraction between';
+  function labels(g,p,I,P,draw){const w=I.w,out=[];
+    const a=P[0],l1=eqLines(g,LAB1,Math.min(560,w*.4),40),y1=Math.max(46,a[1]-MODELS[0].h/2-46-48*(l1.length-1));
+    const b=P[1],c=P[2],gx=(b[0]+MODELS[1].w/2+c[0]-MODELS[2].w/2)/2,l2=eqLines(g,LAB2,Math.min(560,w*.4),40),y2=Math.max(46,Math.min(b[1]-MODELS[1].h/2,c[1]-MODELS[2].h/2)-46-48*(l2.length-1));
+    const gx2=clamp(gx,0,w-20-Math.max(...l2.map(t=>{g.font(40,700);return g.ctx.measureText(t).width}))/2);
+    if(draw)fade(g,p.lab,()=>{lines(g,l1,a[0],y1,40,48,{color:g.c('ink')});const sx=a[0]+SU*.6,sy=a[1]+MODELS[0].h/2-BH;
+      g.line(a[0],y1+48*(l1.length-1)+30,sx,sy-10,g.c('accent'),5);g.circle(sx,sy,12,null,g.c('accent'),5);
+      lines(g,l2,gx2,y2,40,48,{color:g.c('ink')});const yy=c[1]+MODELS[2].h/2-BH*1.1,x0=b[0]+MODELS[1].w/2+14,x1=c[0]-MODELS[2].w/2-14;
+      dashGray(g,x0,yy,x1,yy,1);g.line(gx,y2+48*(l2.length-1)+30,gx,yy-14,g.c('accent'),5)});
+    g.font(40,700);const w1=Math.max(...l1.map(t=>g.ctx.measureText(t).width)),w2=Math.max(...l2.map(t=>g.ctx.measureText(t).width));
+    out.push(uRect(a[0]-w1/2-12,y1-30,w1+24,48*l1.length+12,'label: a bond within'),uRect(gx2-w2/2-12,y2-30,w2+24,48*l2.length+12,'label: an attraction between'));return out}
+  function counter(g,p,I,draw){const q=geo(I.w,I.h),K=q.card,big=1-p.table;
+    if(draw){fade(g,big,()=>{g.rrect(K.x,K.y,K.w,K.h,26,g.c('card'),g.c('line'),4);g.text(C1,K.x+K.w/2,K.y+80,44,{color:g.c('muted')});g.text(C2,K.x+K.w/2,K.y+168,80,{color:g.c('ink')})});
+      fade(g,p.table,()=>g.text(COUNT,I.w-30,40,40,{align:'right',color:g.c('ink')}))}
+    if(big>.5)return uRect(K.x,K.y,K.w,K.h,'counter');g.font(40,700);const cw=g.ctx.measureText(COUNT).width;return uRect(I.w-30-cw-14,10,cw+28,62,'counter')}
+  return sim(host,{stages:['models','shake','pour','words'],params,dur:{models:600,shake:800,pour:900,words:700},live:s=>s==='shake',
+    draw(g,p,I){const q=geo(I.w,I.h),P=placed(p,I),ang=p.shake*(I.live?.06*Math.sin(I.clock*6):.04);
+      fade(g,p.bag,()=>bag(g,q,ang));
+      fade(g,p.table,()=>{g.rrect(24,q.ty,I.w-48,20,6,g.c('rope'),D.mix(g.c('rope'),'#000000',.4),3)});
+      MODELS.forEach((M,i)=>drawModel(g,M,P[i][0],P[i][1],P[i][2]));
+      counter(g,p,I,true);labels(g,p,I,P,true)},
+    units:(p,I)=>{const q=geo(I.w,I.h),P=placed(p,{...I,live:false}),u=[],g=D.painter(document.createElement('canvas').getContext('2d'));
+      if(p.table<.5)u.push(uRect(q.cx-q.bw/2-14,q.cy-q.bh/2-10,q.bw+28,q.bh+20,'the bag'));else{const mh=Math.max(...MODELS.map(M=>M.h));u.push(uRect(16,q.ty-mh-24,I.w-32,mh+56,'the table'))}
+      MODELS.forEach((M,i)=>{const b=modelBox(M,...P[i]);u.push(uRect(b.x,b.y,b.w,b.h,M.name+' model'))});
+      u.push(counter(g,p,I,false));if(p.lab>.5)u.push(...labels(g,p,I,P,false));return u},
+    meta:(p,s)=>({stage:s,models:MODELS.length,bricks:NBRICKS,snapped:MODELS.reduce((a,M)=>a+M.b.length,0),counter:COUNT,
+      labels:p.lab>.5?[LAB1,LAB2]:[],inBag:p.bag>.5,onTable:p.table>.5})});
+});
+
+/* ---------- 2. meltScale (launch, slide 3): snow, salt and sand, their particles and a melting-point scale ----------
+   stages: snow, salt, sand (cumulative: each adds one solid), melt, numbers. Scale −200 to 1800 °C (linear).
+   Layout: a row of icons (120 px or taller) with their names, three equal particle panels, the scale. Snow: two water molecules at
+   full size linked by one hydrogen bond (the open ring is slide 12's); salt: a 2 x 4 grid (four Na+ 102 pm, four Cl- 181 pm) at
+   282 pm spacing, to scale; sand: two Si bridged by O, each Si with its four O. Every atom or ion sphere is 60 px or more, and every
+   drawing stays inside its panel (step 04b, the teacher's review; meta().clearance measures it).
+   melt: the snow's molecules leave their places and drift, each whole; salt and sand stay, and the names say so ("salt: stays
+   solid": at 0 °C only the snow melts). Under 600 px of height (the driving
+   question shown) the panels give way: icons, names, chips and the scale; under 360 px the icons too. */
+const MP=[{k:'snow',v:0.0,chip:'snow 0.0 °C'},{k:'salt',v:801,chip:'salt 801 °C'},{k:'sand',v:1700,chip:'sand near 1700 °C'}];
+const MS_NAME=['snow','salt','sand'],MS_S=0.30; /* px per pm for the salt grid: Na+ 102 pm -> 61 px across */
+/* icons, 130 px tall, bottom-centred at (x, yb) */
+function snowman(g,x,yb,slump){const ink=g.c('ink'),wh='#f6f8fa',st='#7f8c95',ctx=g.ctx,k=1-slump;
+  if(slump>.01)fade(g,Math.min(1,slump*1.4),()=>{ctx.beginPath();ctx.ellipse(x,yb-8,46+40*slump,12+4*slump,0,0,TAU);ctx.fillStyle='#b9d7ea';ctx.fill();ctx.lineWidth=3;ctx.strokeStyle=st;ctx.stroke()});
+  const r1=40,r2=30*(1-.35*slump),y1=yb-r1*(1-.5*slump),y2=y1-r1*(1-.3*slump)-r2*.85;
+  ctx.save();ctx.translate(x,y1);ctx.scale(1+.4*slump,1-.45*slump);g.circle(0,0,r1,wh,st,4);ctx.restore();
+  fade(g,Math.max(0,1-slump*.7),()=>{g.circle(x,y2,r2,wh,st,4);g.circle(x-r2*.35,y2-r2*.15,4,ink,null);g.circle(x+r2*.35,y2-r2*.15,4,ink,null);
+    ctx.beginPath();ctx.moveTo(x,y2+2);ctx.lineTo(x+r2*.95,y2+r2*.18);ctx.lineTo(x,y2+r2*.36);ctx.closePath();ctx.fillStyle='#ec8a2e';ctx.fill();
+    g.line(x-r1*.7,y1-r1*.55,x-r1*1.45,y1-r1*1.2,'#7a5230',5);g.line(x+r1*.7,y1-r1*.55,x+r1*1.45,y1-r1*1.2,'#7a5230',5)})}
+function saltIcon(g,x,yb){const ctx=g.ctx,ink=g.c('muted');g.rrect(x-100,yb-44,200,44,8,g.c('card2'),ink,4);
+  ctx.beginPath();ctx.moveTo(x-80,yb-44);ctx.quadraticCurveTo(x-10,yb-118,x+70,yb-44);ctx.closePath();ctx.fillStyle='#ffffff';ctx.fill();ctx.lineWidth=3;ctx.strokeStyle='#8a969c';ctx.stroke();
+  [[-38,-78],[0,-96],[30,-70],[-62,-58],[54,-56]].forEach(([a,b])=>g.rrect(x+a-13,yb+b-13,26,26,3,'#ffffff','#8a969c',3))}
+function sandIcon(g,x,yb){const ctx=g.ctx,ink=g.c('muted');g.rrect(x-100,yb-56,200,56,8,'#a8713b',D.mix('#a8713b','#000000',.4),4);
+  ctx.beginPath();ctx.moveTo(x-92,yb-52);ctx.quadraticCurveTo(x-20,yb-112,x+50,yb-60);ctx.quadraticCurveTo(x+80,yb-56,x+92,yb-52);ctx.closePath();ctx.fillStyle='#e8cf95';ctx.fill();ctx.lineWidth=3;ctx.strokeStyle='#b89a5b';ctx.stroke();
+  g.rrect(x+38,yb-128,52,64,6,'#3a8fd0',D.mix('#3a8fd0','#000000',.4),4);g.line(x+42,yb-128,x+64,yb-150,ink,4);g.line(x+86,yb-128,x+64,yb-150,ink,4)}
+/* step 04b (the teacher's review: the structures fit their frames; the hydrogen bond shows clearly): two water molecules at full
+   size, the left one giving an H to a lone pair of the right one, H···O at 1.94 times O–H (186 pm to 96 pm), so the bond's dashes
+   show between the molecules. melt: each molecule leaves its place whole (drifts and turns as one body) and stays inside the panel. */
+const SNOW_SB=.85,SNOW_LK=.65,SNOW_REACH=BL.HO*.85+rad('H')+6;
+function snowPair(cx,cy,melt,t,live,box){const A=water(0,0,0,SNOW_SB),Bm=turnLobe(water(0,0,0,SNOW_SB),0,Math.PI);[A,Bm].forEach(M=>M.lobes.forEach(L=>{L.k=SNOW_LK}));
+  const H=A.atoms[1],dOH=BL.HO*SNOW_SB,dHO=dOH*186/96;Bm.atoms.forEach(Q=>{Q.x+=H.x+dHO;Q.y+=H.y});
+  /* centre the pair by its full outline (spheres and lone-pair tips) */
+  let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;[A,Bm].forEach(M=>{M.atoms.forEach(Q=>{x0=Math.min(x0,Q.x-Q.r);x1=Math.max(x1,Q.x+Q.r);y0=Math.min(y0,Q.y-Q.r);y1=Math.max(y1,Q.y+Q.r)});
+    M.lobes.forEach((L,k)=>{const [x,y]=lobeTip(M,k);x0=Math.min(x0,x);x1=Math.max(x1,x);y0=Math.min(y0,y);y1=Math.max(y1,y)})});
+  const dx0=cx-(x0+x1)/2,dy0=cy-(y0+y1)/2;[A,Bm].forEach(M=>M.atoms.forEach(Q=>{Q.x+=dx0;Q.y+=dy0}));
+  const TG=[[-118,-14,-.9],[122,16,.8]];
+  [A,Bm].forEach((M,i)=>{if(melt<.01)return;const O=M.atoms[0],T=TG[i],dx=melt*(cx+T[0]-O.x+(live?12*Math.sin(t*1.2+i*2):0)),dy=melt*(cy+T[1]-O.y+(live?8*Math.sin(t*1.5+i):0)),rot=melt*(T[2]+(live?.2*Math.sin(t*.8+i):0));
+    const m=SNOW_REACH,X=box?clamp(O.x+dx,box.x+m,box.x+box.w-m)-O.x:dx,Y=box?clamp(O.y+dy,box.y+m,Math.max(box.y+m,box.y+box.h-m))-O.y:dy,c=Math.cos(rot),s=Math.sin(rot),ox=O.x,oy=O.y;
+    M.atoms.forEach(Q=>{const x=Q.x-ox,y=Q.y-oy;Q.x=ox+X+x*c-y*s;Q.y=oy+Y+x*s+y*c});M.lobes.forEach(L=>{L.ang+=rot})});
+  return {mols:[A,Bm],hb:[[A.atoms[1],Bm,0]]}}
+/* turn a molecule about its lobe's atom so lone pair k points along ang */
+function turnLobe(M,k,ang){const L=M.lobes[k],O=M.atoms[L.i],da=ang-L.ang,c=Math.cos(da),s=Math.sin(da);M.atoms.forEach(A=>{const x=A.x-O.x,y2=A.y-O.y;A.x=O.x+x*c-y2*s;A.y=O.y+x*s+y2*c});M.lobes.forEach(Q=>{Q.ang+=da});return M}
+/* the salt: 2 rows x 4, four Na+ and four Cl- (neutral), 282 pm apart, to scale */
+const SALT_RC=[2,4];
+function saltIons(cx,cy){const sp=282*MS_S,[R,C]=SALT_RC,out=[];for(let r=0;r<R;r++)for(let c=0;c<C;c++){const cat=(r+c)%2===1;out.push({x:cx+(c-(C-1)/2)*sp,y:cy+(r-(R-1)/2)*sp,r:(cat?102:181)*MS_S,cat})}return out}
+/* the sand: two Si bridged by O, each Si with its four O */
+function sandAtoms(cx,cy){const u=.67,d=BL.SiO*.5,O=[[-2,0],[0,0],[2,0],[-1,-1],[-1,1],[1,-1],[1,1]].map(([a,b])=>({x:cx+a*d,y:cy+b*d,r:rad('O',u),s:'O'})),Si=[{x:cx-d,y:cy,r:rad('Si',u),s:'Si'},{x:cx+d,y:cy,r:rad('Si',u),s:'Si'}];return {O,Si,d}}
+D.sim('meltScale',function(host){
+  const params={snow:{show:1,melt:0,num:0},salt:{show:2,melt:0,num:0},sand:{show:3,melt:0,num:0},melt:{show:3,melt:1,num:0},numbers:{show:3,melt:1,num:1}};
+  const lay=(w,h)=>{const cw=w/3,axY=h-60,ax0=Math.min(320,w*.22),ax1=w-120,X=v=>ax0+(v+200)/2000*(ax1-ax0),mode=h>=600?'tall':h>=360?'short':'tiny';
+    return {mode,cw,X,ax0,ax1,axY,tickY:h-22,chipY:axY-70,iconB:mode==='tiny'?0:136,nameY:mode==='tiny'?36:162,
+      panel:mode==='tall'?i=>({x:i*cw+10,y:190,w:cw-20,h:axY-70-47-190}):null}};
+  function particles(g,i,P,p,I){const cx=P.x+P.w/2,cy=P.y+P.h/2;
+    g.rrect(P.x,P.y,P.w,P.h,22,D.mix(g.c('card'),g.c('accent'),.05),g.c('line'),3);
+    if(i===0){const S=snowPair(cx,cy,p.melt,I.live?I.clock:0,I.live,P);S.mols.forEach(M=>mol2d(g,M));fade(g,1-p.melt,()=>S.hb.forEach(([H,M,k])=>hbond(g,H,M,k,1)))}
+    if(i===1)saltIons(cx,cy).forEach(q=>ion(g,q.x,q.y,q.r,q.cat?g.c('cat'):g.c('an'),q.cat?'+':'−',q.cat?36:44));
+    if(i===2){const S=sandAtoms(cx,cy);S.Si.forEach(A=>S.O.forEach(B=>{if(Math.hypot(B.x-A.x,B.y-A.y)<S.d*1.1)stick(g,A.x,A.y,B.x,B.y,12)}));[...S.O,...S.Si].forEach(A=>ball(g,A.x,A.y,A.r,A.s))}}
+  /* meta: each panel's drawing inside its frame (px of clearance on the tightest side; negative = spills) */
+  const clearance=(L,p)=>{if(!L.panel)return null;const out={};
+    const ext=(P,pts)=>{let m=1e9;pts.forEach(q=>{m=Math.min(m,q.x-q.r-P.x,P.x+P.w-q.x-q.r,q.y-q.r-P.y,P.y+P.h-q.y-q.r)});return Math.round(m)};
+    [0,1,2].forEach(i=>{const P=L.panel(i),cx=P.x+P.w/2,cy=P.y+P.h/2;
+      if(i===0){const S=snowPair(cx,cy,p.melt,0,false,P),pts=[];S.mols.forEach(M=>{M.atoms.forEach(A=>pts.push(A));M.lobes.forEach((Lb,k)=>{const [x,y]=lobeTip(M,k);pts.push({x,y,r:0})})});out.snow=ext(P,pts)}
+      if(i===1)out.salt=ext(P,saltIons(cx,cy));
+      if(i===2){const S=sandAtoms(cx,cy);out.sand=ext(P,[...S.O,...S.Si])}});return out};
+  /* the melt stage answers "do salt and sand melt too?": the names read snow: melts, salt: stays solid, sand: stays solid */
+  const MS_STATE=['snow: melts','salt: stays solid','sand: stays solid'];
+  const minSphere=(p,L)=>{if(!L.panel)return null;const m=[2*rad('H'),2*102*MS_S,2*rad('O',.67)].slice(0,Math.round(p.show));return Math.round(Math.min(...m)*10)/10};
+  return sim(host,{stages:['snow','salt','sand','melt','numbers'],params,dur:{snow:600,salt:600,sand:600,melt:900,numbers:700},live:s=>s==='melt'||s==='numbers',
+    draw(g,p,I){const L=lay(I.w,I.h),ink=g.c('ink');
+      MS_NAME.forEach((nm,i)=>fade(g,clamp(p.show-i,0,1),()=>{const x=(i+.5)*L.cw;
+        if(L.mode!=='tiny'){if(i===0)snowman(g,x,L.iconB,p.melt);if(i===1)saltIcon(g,x,L.iconB);if(i===2)sandIcon(g,x,L.iconB)}
+        fade(g,1-p.melt,()=>g.text(nm,x,L.nameY,40,{color:ink}));fade(g,p.melt,()=>g.text(MS_STATE[i],x,L.nameY,40,{color:i?ink:g.c('accent')}));if(L.panel)particles(g,i,L.panel(i),p,I)}));
+      /* the scale */
+      const y=L.axY;g.line(L.ax0,y,L.ax1,y,ink,5);
+      for(let v=-200;v<=1800;v+=200){const x=L.X(v);g.line(x,y-12,x,y+12,ink,4);if(v===-200||v%400===0)g.text((v<0?'−':'')+Math.abs(v),x,L.tickY,36,{mono:true,wt:600,color:g.c('muted')})}
+      g.text('°C',L.ax1+16,y+2,36,{align:'left',color:g.c('muted')});
+      fade(g,p.num,()=>{g.text('Melting point',20,L.chipY,36,{align:'left',color:g.c('muted')});
+        MP.forEach(m=>{const x=L.X(m.v),w=chip(g,0,0,m.chip,{measure:true}),cx=clamp(x-w/2,L.ax0-30,I.w-12-w);chip(g,cx,L.chipY,m.chip);
+          const ctx=g.ctx;ctx.beginPath();ctx.moveTo(x,y-8);ctx.lineTo(x-14,y-34);ctx.lineTo(x+14,y-34);ctx.closePath();ctx.fillStyle=g.c('accent');ctx.fill()})})},
+    units:(p,I)=>{const L=lay(I.w,I.h),u=[];
+      MS_NAME.forEach((nm,i)=>{if(p.show-i<.5)return;const x0=i*L.cw+6;u.push(uRect(x0,2,L.cw-12,(L.panel?L.panel(i).y+L.panel(i).h:L.nameY+30)+4,nm))});
+      u.push(uRect(L.ax0-50,L.axY-26,L.ax1-L.ax0+120,L.tickY-L.axY+48,'the scale'));
+      if(p.num>.5)u.push(uRect(10,L.chipY-36,I.w-20,72,'melting points'));return u},
+    meta:(p,s,I)=>{const L=lay(I.w||1472,I.h||687);return {stage:s,shown:MS_NAME.slice(0,Math.round(p.show)),layout:L.mode,minSphere:minSphere(p,L),values:{snow:0.0,salt:801,sand:'near 1700'},
+      chips:p.num>.5?MP.map(m=>m.chip):[],label:p.num>.5?'Melting point':null,snowMolecules:2,snowHbonds:p.melt>.5?0:1,hbondRatio:+(186/96).toFixed(2),snowMoleculesIntact:true,snowMoved:p.melt>.5,saltMoved:false,sandMoved:false,
+      saltIons:{rows:SALT_RC[0],cols:SALT_RC[1],cations:4,anions:4},states:p.melt>.5?MS_STATE:null,clearance:clearance(L,p),scale:[-200,1800]}}});
+});
+
+/* ---------- 3. threeSolids (slide 6): chlorine (Cl2 molecules), salt (NaCl crystal), copper (metal) ----------
+   stages: chlorine, within, between, salt, copper. Layout 1: chlorine fills the host; 2: chlorine and salt; 3: all three panels. */
+const TS_LAB={within:'bond within',between:'attraction between (much weaker)',salt:'ionic bonds through the whole crystal, no molecules',copper:'metallic bonds through the whole metal'};
+function clGrid(rect){for(let R=46;R>=30;R-=2){const mw=5*R,gx=1.7*R,mh=2*R,gy=1.4*R,cols=Math.min(3,Math.floor((rect.w+gx)/(mw+gx))),rows=Math.min(3,Math.floor((rect.h+gy)/(mh+gy)));
+    if(cols*rows>=4||R===30)return {R,cols:Math.max(1,cols),rows:Math.max(1,rows),mw,mh,gx,gy}}}
+function chlorine(g,rect,p,I,draw){const G=clGrid(rect),R=G.R,d=3*R,W=G.cols*G.mw+(G.cols-1)*G.gx,H=G.rows*G.mh+(G.rows-1)*G.gy,x0=rect.x+(rect.w-W)/2,y0=rect.y+(rect.h-H)/2,M=[];
+  for(let r=0;r<G.rows;r++)for(let c=0;c<G.cols;c++){const x=x0+c*(G.mw+G.gx)+G.mw/2,y=y0+r*(G.mh+G.gy)+G.mh/2,rot=((r+c)%2?1:-1)*.12;
+    M.push({x,y,a:[x-Math.cos(rot)*d/2,y-Math.sin(rot)*d/2],b:[x+Math.cos(rot)*d/2,y+Math.sin(rot)*d/2],r,c})}
+  const dash=[];M.forEach(m=>M.forEach(n=>{if(n.c===m.c+1&&n.r===m.r)dash.push([m.b,n.a]);if(n.r===m.r+1&&n.c===m.c){dash.push([m.a,n.a]);dash.push([m.b,n.b])}}));
+  if(draw){const t=I.live?I.clock:0;
+    dash.forEach(([A,B],k)=>{const dx=B[0]-A[0],dy=B[1]-A[1],l=Math.hypot(dx,dy)||1,ux=dx/l,uy=dy/l,fl=I.live?.3+.7*Math.abs(Math.sin(t*2.2+k*1.7)):1;
+      dashGray(g,A[0]+ux*(R+6),A[1]+uy*(R+6),B[0]-ux*(R+6),B[1]-uy*(R+6),p.between*fl)});
+    M.forEach(m=>{fade(g,p.within,()=>{g.line(m.a[0],m.a[1],m.b[0],m.b[1],rgba(g.c('warm'),.55),R*1.25);g.line(m.a[0],m.a[1],m.b[0],m.b[1],g.c('warm'),R*.62)});stick(g,m.a[0],m.a[1],m.b[0],m.b[1],R*.42);
+      ball(g,m.a[0],m.a[1],R,'Cl');ball(g,m.b[0],m.b[1],R,'Cl')})}
+  return {molecules:M.length,sticks:M.length,dashed:p.between>.5?dash.length:0}}
+function saltBlock(g,rect,I,draw){const n=rect.h>=300?[3,3,3]:[3,2,2],rc=102/282,ra=181/282,atoms=[];
+  for(let x=0;x<n[0];x++)for(let y=0;y<n[1];y++)for(let z=0;z<n[2];z++){const cat=(x+y+z)%2===0;atoms.push({p:[x-(n[0]-1)/2,y-(n[1]-1)/2,z-(n[2]-1)/2],cat})}
+  const ext=(n[0]-1)+2*ra,sc=Math.min(rect.w/(ext*1.45),rect.h/(((n[1]-1)+2*ra)*1.5)),yaw=-.55+(I.live?I.clock*.3:0);
+  if(draw)spheres3d(g,{atoms:atoms.map(a=>({p:a.p,r:a.cat?rc:ra,color:a.cat?g.c('cat'):g.c('an'),label:a.cat?'+':'−',labelPx:40}))},{cx:rect.x+rect.w/2,cy:rect.y+rect.h/2,scale:sc,yaw,pitch:.42,dist:9});
+  return {ions:atoms.length,rNa:rc*sc,rCl:ra*sc}}
+function copperLayer(g,rect,I,draw){const r=30,cols=Math.max(3,Math.floor((rect.w-20)/(2*r+22))),rows=Math.max(1,Math.min(3,Math.floor((rect.h-20)/(2*r+22)))),sx=(rect.w-20)/cols,sy=(rect.h-20)/rows,t=I.live?I.clock:1.2;
+  if(!draw)return {cores:cols*rows};
+  g.rrect(rect.x,rect.y,rect.w,rect.h,22,D.mix(g.c('e'),g.c('card'),.82),null);
+  for(let j=0;j<cols*rows*1.4;j++){const bx=rect.x+20+hash(j*3+1)*(rect.w-40),by=rect.y+18+hash(j*3+2)*(rect.h-36),x=bx+22*Math.sin(t*(.7+hash(j*5)*.6)+6.28*hash(j*7)),y=by+16*Math.sin(t*(.8+hash(j*11)*.6)+6.28*hash(j*13));
+    g.electron(clamp(x,rect.x+16,rect.x+rect.w-16),clamp(y,rect.y+16,rect.y+rect.h-16),11);g.line(clamp(x,rect.x+16,rect.x+rect.w-16)-6,clamp(y,rect.y+16,rect.y+rect.h-16),clamp(x,rect.x+16,rect.x+rect.w-16)+6,clamp(y,rect.y+16,rect.y+rect.h-16),g.c('on-ion'),4)}
+  for(let a=0;a<rows;a++)for(let b=0;b<cols;b++){const x=rect.x+10+sx*(b+.5),y=rect.y+10+sy*(a+.5);ion(g,x,y,r,g.c('metal'),'+',40)}
+  return {cores:cols*rows}}
+D.sim('threeSolids',function(host){
+  const b={lay:1,within:0,between:0};
+  const params={chlorine:{...b},within:{...b,within:1},between:{...b,within:1,between:1},salt:{...b,within:1,between:1,lay:2},copper:{...b,within:1,between:1,lay:3}};
+  const NAME=['chlorine, Cl_2','salt, NaCl','copper, Cu'],ITEMS=[['within','between'],['salt'],['copper']],ICON=[84,0,0];
+  /* label lines of panel i at a width (the chlorine labels carry a small legend: a stick, a dashed line); in the rows the salt
+     and copper labels start with the panel's name */
+  const labLines=(g,i,lw)=>ITEMS[i].map(k=>wrap(g,TS_LAB[k],lw-ICON[i],36));
+  const nameH=(n,i)=>n>1&&i>0?48:0;
+  /* layout n: [card, picture rect, label rect] per panel. Layout 1: chlorine fills the host, labels below. Layouts 2 and 3: one row per
+     panel, picture left, labels right; each row as tall as its labels or its smallest readable picture needs, the rest shared out */
+  function panels(g,n,w,h){const gap=14;
+    if(n===1){const L=labLines(g,0,w-48),lh=L.reduce((a,x)=>a+44*x.length+12,0);return [[{x:0,y:0,w,h},{x:18,y:70,w:w-36,h:h-70-lh-28},{x:24,y:h-lh-14,w:w-48,h:lh}]]}
+    const lx=[w*.42,w*.56,w*.42],MIN=[204,n===2?330:300,176],need=[];
+    for(let i=0;i<n;i++){const L=labLines(g,i,w-16-lx[i]);need.push(Math.max(MIN[i],nameH(n,i)+L.reduce((a,x)=>a+44*x.length+12,0)+28))}
+    const tot=need.reduce((a,b)=>a+b,0),avail=h-gap*(n-1),q=avail/tot,out=[];let y=0;
+    need.forEach((nd,i)=>{const ch=nd*q;out.push([{x:0,y,w,h:ch},{x:12,y:y+10,w:lx[i]-24,h:ch-20},{x:lx[i],y:y+14,w:w-16-lx[i],h:ch-28}]);y+=ch+gap});return out}
+  function labelBlock(g,i,n,R,p,draw){const ink=g.c('ink'),u=[],L=labLines(g,i,R.w),a={within:p.within,between:p.between,salt:1,copper:1};let y=R.y+22;
+    if(nameH(n,i)){if(draw)g.chem(NAME[i],R.x,y,36,{align:'left',color:g.c('muted')});y+=nameH(n,i)}
+    ITEMS[i].forEach((k,j)=>{const x=R.x+ICON[i];
+      if(draw)fade(g,a[k],()=>{if(i===0){if(k==='within')stick(g,R.x+6,y,R.x+66,y,14);else dashGray(g,R.x+4,y,R.x+68,y,1)}lines(g,L[j],x,y,36,44,{align:'left',color:ink})});
+      if(a[k]>.5){g.font(36,700);const lw=Math.max(...L[j].map(t=>g.ctx.measureText(t).width));u.push(uRect(R.x-8,y-28,x-R.x+lw+16,44*L[j].length+12,'label: '+TS_LAB[k]))}
+      y+=44*L[j].length+12});return u}
+  function layout(g,n,p,I,draw){const P=panels(g,n,I.w,I.h),u=[],facts={};
+    P.forEach(([card,pic,lab],i)=>{if(draw)g.rrect(card.x+2,card.y+2,card.w-4,card.h-4,22,D.mix(g.c('card'),g.c('accent'),.04),g.c('line'),3);
+      if(i===0)facts.cl=chlorine(g,pic,p,I,draw);if(i===1)facts.salt=saltBlock(g,pic,I,draw);if(i===2)facts.cu=copperLayer(g,pic,I,draw);
+      if(draw&&n===1)g.chem(NAME[0],24,40,44,{align:'left',color:ink(g)});
+      u.push(uRect(card.x,card.y,card.w,card.h,['chlorine','salt','copper'][i]+' panel'));u.push(...labelBlock(g,i,n,lab,p,draw))});
+    return {u,facts}}
+  const ink=g=>g.c('ink');
+  const wts=p=>[1,2,3].map(n=>Math.max(0,1-Math.abs(p.lay-n)));
+  return sim(host,{stages:['chlorine','within','between','salt','copper'],params,dur:{chlorine:600,within:700,between:700,salt:900,copper:900},
+    live:s=>s==='between'||s==='salt'||s==='copper',
+    draw(g,p,I){wts(p).forEach((wt,i)=>fade(g,wt,()=>layout(g,i+1,p,I,true)))},
+    units:(p,I)=>{const g=D.painter(document.createElement('canvas').getContext('2d'));return layout(g,Math.round(p.lay),p,{...I,live:false},false).u},
+    meta:(p,s,I)=>{const g=D.painter(document.createElement('canvas').getContext('2d')),f=layout(g,Math.round(p.lay),p,{w:I.w||749,h:I.h||687,live:false},false).facts;
+      return {stage:s,panels:Math.round(p.lay),molecules:f.cl.molecules,sticksWithin:f.cl.sticks,dashedBetween:f.cl.dashed,withinGlow:p.within>.5,
+        naclRadii:[102,181],naclSpacing:282,saltIons:f.salt?f.salt.ions:0,copper:p.lay>2.5?'delocalized electrons':null,
+        labels:[p.within>.5?TS_LAB.within:null,p.between>.5?TS_LAB.between:null,p.lay>1.5?TS_LAB.salt:null,p.lay>2.5?TS_LAB.copper:null].filter(Boolean)}}});
+});
+
+/* ---------- 4. attractions (slides 7, 8, 9): one picture language for the three attractions; three instances, one per family ----------
+   dispersion: cloud, flicker, neighbor, attract · dipole: F2, HCl, turn, face, compare · hydrogen: water, hbond, ammonia, methane, four */
+const AT_FAM={cloud:'dispersion',flicker:'dispersion',neighbor:'dispersion',attract:'dispersion',F2:'dipole',HCl:'dipole',turn:'dipole',face:'dipole',compare:'dipole',
+  water:'hydrogen',hbond:'hydrogen',ammonia:'hydrogen',methane:'hydrogen',four:'hydrogen'};
+const AT_STAGES=Object.keys(AT_FAM);
+const HB_LAB='hydrogen bond: about 5 to 10% of a covalent bond',CH4_LAB='H on C: no hydrogen bond',NH3_LAB='hydrogen bond: H on N to a lone pair on N',DD_LAB='dipole-dipole forces',DISP_LAB='dispersion forces';
+D.sim('attractions',function(host){
+  const P={crowd:0,second:0,line:0,dl:0,f2:0,hcl:0,turn:0,face:0,cmp:0,wat:0,hb:0,nh3:0,ch4:0,four:0};
+  const params={cloud:{...P},flicker:{...P,crowd:1},neighbor:{...P,crowd:1,second:1},attract:{...P,crowd:1,second:1,line:1},
+    F2:{...P,f2:1},HCl:{...P,hcl:1},turn:{...P,hcl:1,turn:1},face:{...P,hcl:1,turn:1,face:1},compare:{...P,f2:1,hcl:1,turn:1,face:1,cmp:1},
+    water:{...P,wat:1},hbond:{...P,wat:1,hb:1},ammonia:{...P,nh3:1},methane:{...P,ch4:1},four:{...P,four:1}};
+  const swap=I=>AT_FAM[I.from]!==AT_FAM[I.stage]&&I.k<1?Math.abs(1-2*I.k):1;
+  const famNow=I=>AT_FAM[I.from]!==AT_FAM[I.stage]&&I.k<.5?AT_FAM[I.from]:AT_FAM[I.stage];
+  /* a caption at the foot of the host (every stage draws down to it, so the drawing fills the column) */
+  const CAP={cloud:'electrons always moving',flicker:'for an instant: one end δ−, one end δ+',neighbor:"the neighbor's electrons shift too",attract:'it forms, fades and forms again',
+    F2:'F₂ is nonpolar: no δ+, no δ−',HCl:'HCl is polar: δ+ on H, δ− on Cl',turn:'they turn: δ+ toward δ−',face:'δ+ of one pulls δ− of the next'};
+  function caption(g,I,txt,a,draw){if(!txt)return null;const L=wrap(g,txt,I.w-40,40),y=I.h-50-48*(L.length-1);if(draw)fade(g,a,()=>lines(g,L,I.w/2,y,40,48,{color:g.c('muted')}));
+    g.font(40,700);const lw=Math.max(...L.map(t=>g.ctx.measureText(t).width));return uRect(I.w/2-lw/2-14,y-32,lw+28,48*L.length+16,'caption')}
+  const ext=(Ms,pad,lab)=>{let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;Ms.forEach(M=>{M.atoms.forEach(A=>{x0=Math.min(x0,A.x-A.r);x1=Math.max(x1,A.x+A.r);y0=Math.min(y0,A.y-A.r);y1=Math.max(y1,A.y+A.r)});
+    (M.lobes||[]).forEach((L,k)=>{const [x,y]=lobeTip(M,k);x0=Math.min(x0,x);x1=Math.max(x1,x);y0=Math.min(y0,y);y1=Math.max(y1,y)})});return uRect(x0-pad,y0-pad,x1-x0+2*pad,y1-y0+2*pad,lab)};
+  /* ---- dispersion: two nonpolar molecules as electron clouds ---- */
+  /* step 04b (the teacher's review: a key for the uncharged circles): each gray circle is a nucleus, marked +; the key at the top
+     names it and the electron */
+  function nucleus(g,x,y){g.circle(x,y,17,g.c('muted'),null);g.line(x-8,y,x+8,y,g.c('slide'),4);g.line(x,y-8,x,y+8,g.c('slide'),4)}
+  function dispKey(g,w,draw){const y=40,t1='nucleus',t2='electron';g.font(36,600);const w1=g.ctx.measureText(t1).width,w2=g.ctx.measureText(t2).width,tot=34+12+w1+56+34+22+w2;
+    let x=w/2-tot/2;const x0=x;if(draw){nucleus(g,x+17,y);g.text(t1,x+46,y+2,36,{align:'left',wt:600,color:g.c('ink')})}x+=46+w1+56;
+    if(draw){g.electron(x+17,y,13);g.line(x+10,y,x+24,y,g.c('on-ion'),4);g.text(t2,x+56,y+2,36,{align:'left',wt:600,color:g.c('ink')})}
+    return uRect(x0-12,y-30,tot+24,60,'key: nucleus, electron')}
+  function disp(g,p,I,draw){const w=I.w,h=I.h,gap=172,rx=Math.min(150,(w-88-gap)/4),ry=Math.min(150,h*.22),cy=h*.4,c1=w/2-rx-gap/2,c2=w/2+rx+gap/2,t=I.live?I.clock:0,u=[];
+    /* the attract loop: build, hold, fade; the direction flips each cycle */
+    const per=3.2,ph=I.live?(t%per)/per:.5,cyc=I.live?Math.floor(t/per):0,flip=p.line>.5&&cyc%2?-1:1;
+    const pulse=I.live&&p.line>.5?Math.sin(Math.PI*clamp(ph*1.25,0,1)):1,flick=I.live&&p.line<.5&&p.crowd>.5&&p.second<.5?.55+.45*Math.sin(t*2.4):1;
+    const k1=p.crowd*pulse*flick*flip,k2=p.second*pulse*flick*flip;
+    const cloud=(cx,k)=>{const ctx=g.ctx,e=g.c('e');const gr=ctx.createRadialGradient(cx+k*rx*.35,cy,ry*.2,cx,cy,rx);gr.addColorStop(0,rgba(e,.32));gr.addColorStop(1,rgba(e,.07));
+      ctx.beginPath();ctx.ellipse(cx,cy,rx,ry,0,0,TAU);ctx.fillStyle=gr;ctx.fill();ctx.lineWidth=3;ctx.strokeStyle=rgba(e,.55);ctx.stroke();
+      [-1,1].forEach(sd=>nucleus(g,cx+sd*rx*.42,cy));
+      for(let j=0;j<10;j++){const a0=hash(j*7+(cx|0))*TAU,r0=.25+.6*hash(j*13+(cx|0)),drift=I.live?t*(.6+hash(j*3)*.7):0;
+        let x=cx+Math.cos(a0+drift)*rx*r0*.9,y=cy+Math.sin(a0*1.3+drift*1.1)*ry*r0*.8;
+        const sg=Math.sign(k)||1,ak=Math.abs(k);x=lerp(x,cx+sg*rx*(.3+.45*hash(j*5)),ak*.85);y=lerp(y,cy+(hash(j*9)-.5)*ry*.9,ak*.5);
+        g.electron(x,y,13);g.line(x-7,y,x+7,y,g.c('on-ion'),4)}};
+    if(draw){dispKey(g,w,true);cloud(c1,k1);cloud(c2,k2);
+      /* the δ badges sit on the cloud's edge at its two ends */
+      const a1=Math.abs(k1),a2=Math.abs(k2),sg=Math.sign(k1)||1;
+      fade(g,p.line*pulse,()=>dashGray(g,c1+rx+34,cy,c2-rx-34,cy,1));
+      fade(g,a1,()=>{g.badge(c1+sg*rx,cy,sg>0?'δ−':'δ+',sg>0?g.c('dminus'):g.c('dplus'),32);g.badge(c1-sg*rx,cy,sg>0?'δ+':'δ−',sg>0?g.c('dplus'):g.c('dminus'),32)});
+      fade(g,a2,()=>{g.badge(c2-sg*rx,cy,sg>0?'δ+':'δ−',sg>0?g.c('dplus'):g.c('dminus'),32);g.badge(c2+sg*rx,cy,sg>0?'δ−':'δ+',sg>0?g.c('dminus'):g.c('dplus'),32)});fade(g,p.line,()=>g.text(DISP_LAB,w/2,cy+ry+58,40,{color:g.c('ink')}))}
+    u.push(dispKey(g,w,false),uRect(c1-rx-46,cy-ry-14,(c2+rx)-(c1-rx)+92,2*ry+28,'the two molecules'));
+    if(p.line>.5){g.font(40,700);const lw=g.ctx.measureText(DISP_LAB).width;u.push(uRect(w/2-lw/2-14,cy+ry+26,lw+28,64,'label: '+DISP_LAB))}
+    const st=AT_FAM[I.stage]==='dispersion'?I.stage:AT_FAM[I.from]==='dispersion'?I.from:'cloud',c=caption(g,I,CAP[st],1,draw);if(c)u.push(c);
+    return {u,facts:{family:'dispersion',key:['nucleus','electron'],polar:false,deltaLabels:p.crowd>.5?'instant':null,neighborShift:p.second>.5,line:p.line>.5,label:p.line>.5?DISP_LAB:null}}}
+  /* ---- dipole: F2 and HCl ---- */
+  function dip(g,p,I,draw){const w=I.w,h=I.h,u=[],t=I.live?I.clock:0,sb=1,up=clamp(p.hcl+p.cmp,0,1);
+    const yF=lerp(h*.3,h*.12,up),yH=lerp(h*.4,h*.36,p.cmp);
+    const f1=diatomic('F','F',BL.FF,w*.27,yF,0,sb),f2=diatomic('F','F',BL.FF,w*.73,yF,0,sb);
+    /* the HCl pair: random turns, then head to tail (Cl left, H right in both) */
+    const r1=lerp(deg(140),0,p.turn),r2=lerp(deg(-115),0,p.turn),h1=diatomic('Cl','H',BL.HCl,w*.29,yH+lerp(-30,0,p.turn),r1,sb),h2=diatomic('Cl','H',BL.HCl,w*.71,yH+lerp(30,0,p.turn),r2,sb);
+    if(draw){const fl=I.live?.35+.65*Math.abs(Math.sin(t*2.3)):1;
+      fade(g,p.f2,()=>{mol2d(g,f1);mol2d(g,f2);dashGray(g,f1.atoms[1].x+f1.atoms[1].r+6,yF,f2.atoms[0].x-f2.atoms[0].r-6,yF,fl);
+        fade(g,1-p.hcl,()=>g.text(DISP_LAB+' only',w/2,yF+f1.atoms[0].r+48,40,{color:g.c('ink')}))});
+      fade(g,p.hcl,()=>{const A=h1.atoms[1],B=h2.atoms[0];
+        fade(g,p.face,()=>{const s0=edge(A,B.x,B.y,6),e0=edge(B,A.x,A.y,6);dashDipole(g,s0[0],s0[1],e0[0],e0[1],1);g.text(DD_LAB,w/2,yH+h1.atoms[0].r+56,40,{color:g.c('ink')})});
+        [h1,h2].forEach(M=>{mol2d(g,M);const C=M.atoms[0],H=M.atoms[1];g.badge(H.x,H.y-H.r-34,'δ+',g.c('dplus'),30);g.badge(C.x,C.y-C.r-34,'δ−',g.c('dminus'),30)})});
+      fade(g,p.cmp,()=>{const y0=h*.64;chipRow(g,24,y0,'Electrons per molecule',['F_2 18','HCl 18']);chipRow(g,24,y0+124,'Boiling point',['F_2 −188.1 °C','HCl −85.1 °C'])})}
+    if(p.f2>.5)u.push(uRect(f1.atoms[0].x-f1.atoms[0].r-16,yF-f1.atoms[0].r-16,f2.atoms[1].x-f1.atoms[0].x+2*f1.atoms[0].r+32,2*f1.atoms[0].r+(p.hcl>.5?0:74)+32,'the F₂ pair'));
+    if(p.hcl>.5){const xs=[...h1.atoms,...h2.atoms],x0=Math.min(...xs.map(a=>a.x-a.r)),y0=Math.min(...xs.map(a=>a.y-a.r));
+      u.push(uRect(x0-16,y0-84,Math.max(...xs.map(a=>a.x+a.r))-x0+32,Math.max(...xs.map(a=>a.y+a.r))-y0+100+(p.face>.5?64:0),'the HCl pair'))}
+    if(p.cmp>.5){const y0=h*.64;u.push(uRect(12,y0-34,w-24,124,'electrons per molecule'),uRect(12,y0+90,w-24,124,'boiling point'))}
+    else{const st=AT_FAM[I.stage]==='dipole'?I.stage:AT_FAM[I.from]==='dipole'?I.from:'F2',c=caption(g,I,CAP[st],1-p.cmp,draw);if(c)u.push(c)}
+    return {u,facts:{family:'dipole',HCl:p.hcl>.5?{dplus:'H',dminus:'Cl'}:null,F2:p.f2>.5?{dplus:null,dminus:null,line:'dashed gray'}:null,headToTail:p.turn>.5,line:p.face>.5?'δ+ to δ−':null,
+      label:p.face>.5?DD_LAB:null,electrons:p.cmp>.5?{F2:18,HCl:18}:null,bp:p.cmp>.5?{F2:-188.1,HCl:-85.1}:null}}}
+  /* ---- hydrogen bonding: water, ammonia, methane, four ---- */
+  const turnTo=(M,k,ang)=>{const L=M.lobes[k],O=M.atoms[L.i],da=ang-L.ang,c=Math.cos(da),s=Math.sin(da);M.atoms.forEach(A=>{const x=A.x-O.x,y2=A.y-O.y;A.x=O.x+x*c-y2*s;A.y=O.y+x*s+y2*c});M.lobes.forEach(Q=>{Q.ang+=da});return M};
+  function hyd(g,p,I,draw){const w=I.w,h=I.h,u=[],y=h*.36,sb=1,yl=h-112;let facts={family:'hydrogen'};
+    const labelAt=(txt,a)=>{const L=colonLines(g,txt,w-40,40);if(draw)fade(g,a,()=>lines(g,L,w/2,yl,40,50,{color:g.c('ink')}));g.font(40,700);
+      const lw=Math.max(...L.map(t=>g.ctx.measureText(t).width));return uRect(w/2-lw/2-14,yl-32,lw+28,50*L.length+14,'label: '+txt)};
+    if(p.wat>.01){const W1=water(w/2-168,y,0,sb),W2=turnTo(water(w/2+168,y,0,sb),0,Math.PI);
+      if(draw)fade(g,p.wat,()=>{mol2d(g,W1);mol2d(g,W2);hbond(g,W1.atoms[1],W2,0,p.hb)});
+      const L=labelAt(HB_LAB,p.hb*p.wat);
+      if(p.wat>.5){u.push(ext([W1,W2],16,'two water molecules'));if(p.hb>.5)u.push(L);
+        const H=W1.atoms[1],O2=W2.atoms[0],hbLen=Math.hypot(O2.x-H.x,O2.y-H.y);
+        facts={family:'hydrogen',water:{donor:'H on O',acceptor:'lone pair on O'},hbond:p.hb>.5,hbondPx:Math.round(hbLen),ohPx:Math.round(BL.HO*sb),hbondLonger:hbLen>BL.HO*sb,
+          label:p.hb>.5?HB_LAB:null,strength:p.hb>.5?'about 5 to 10% of a covalent bond':null}}}
+    if(p.nh3>.01){const N1=ammonia(w/2-165,y,deg(20),sb),N2=turnTo(ammonia(w/2+165,y,deg(20),sb),0,Math.PI);
+      if(draw)fade(g,p.nh3,()=>{mol2d(g,N1);mol2d(g,N2);hbond(g,N1.atoms[1],N2,0,1)});const L=labelAt(NH3_LAB,p.nh3);
+      if(p.nh3>.5){u.push(ext([N1,N2],16,'two ammonia molecules'),L);facts={family:'hydrogen',ammonia:{donor:'H on N',acceptor:'lone pair on N'},label:NH3_LAB}}}
+    if(p.ch4>.01){const C1=methane(w/2-178,y,deg(-20),sb),C2=methane(w/2+178,y,deg(45),sb);
+      if(draw)fade(g,p.ch4,()=>{mol2d(g,C1);mol2d(g,C2);const H=C1.atoms[2],C=C2.atoms[0],s0=edge(H,C.x,C.y,4),e0=edge(C,H.x,H.y,4);dashGray(g,s0[0],s0[1],e0[0],e0[1],.9);
+        const mx=(s0[0]+e0[0])/2,my=(s0[1]+e0[1])/2;g.line(mx-24,my-24,mx+24,my+24,g.c('bad'),9);g.line(mx-24,my+24,mx+24,my-24,g.c('bad'),9)});
+      const L=labelAt(CH4_LAB,p.ch4);if(p.ch4>.5){u.push(ext([C1,C2],16,'two methane molecules'),L);facts={family:'hydrogen',methane:'none',label:CH4_LAB}}}
+    if(p.four>.01){const L=Math.min(w*.36,h*.36),sb4=L/276,cx=w/2,cy=h*.4,C=water(cx,cy,deg(90-52.25),sb4,1),nb=[],lines4=[];
+      /* the center gives its two H (down) to lone pairs of two neighbors, and takes an H from two neighbors at its own lone pairs (up) */
+      [1,2].forEach(i=>{const H=C.atoms[i],a=Math.atan2(H.y-cy,H.x-cx),N=turnTo(water(cx+Math.cos(a)*L,cy+Math.sin(a)*L,0,sb4,1),0,a+Math.PI);nb.push(N);lines4.push([H,N,0])});
+      [0,1].forEach(k=>{const a=C.lobes[k].ang,N=water(cx+Math.cos(a)*L,cy+Math.sin(a)*L,a+Math.PI,sb4,1);nb.push(N);lines4.push([N.atoms[1],C,k])});
+      if(draw)fade(g,p.four,()=>{nb.forEach(N=>mol2d(g,N));mol2d(g,C);lines4.forEach(([H,M,k])=>hbond(g,H,M,k,1))});
+      const FOUR='up to four hydrogen bonds',lb=(()=>{if(draw)fade(g,p.four,()=>g.text(FOUR,w/2,h-46,40,{color:g.c('ink')}));g.font(40,700);const lw=g.ctx.measureText(FOUR).width;return uRect(w/2-lw/2-14,h-78,lw+28,64,'label: '+FOUR)})();
+      if(p.four>.5){u.push(ext([C,...nb],16,'one water molecule and its four neighbors'),lb);facts={family:'hydrogen',waterMax:4,hbonds:lines4.length,neighbors:nb.length,label:FOUR}}}
+    return {u,facts}}
+  const FN={dispersion:disp,dipole:dip,hydrogen:hyd};
+  return sim(host,{stages:AT_STAGES,params,dur:800,live:s=>['cloud','flicker','neighbor','attract','F2','HCl','turn','face','compare'].includes(s),
+    draw(g,p,I){fade(g,swap(I),()=>FN[famNow(I)](g,p,I,true))},
+    units:(p,I)=>{const g=D.painter(document.createElement('canvas').getContext('2d'));return FN[AT_FAM[I.stage]](g,p,{...I,live:false},false).u},
+    meta:(p,s,I)=>{const g=D.painter(document.createElement('canvas').getContext('2d'));return {stage:s,...FN[AT_FAM[s]](g,p,{w:I.w||749,h:I.h||687,live:false,stage:s},false).facts}}});
+});
+
+/* ---------- 5. bpPlot (slides 7 and 9): boiling point against electrons per molecule ----------
+   stages: axes, F2, Cl2, Br2, I2, trend, trio, reveal, HCl. Values: lessons/4-5.md (the reading's data). */
+const BP=[{k:'F2',f:'F_2',e:18,bp:-188.1,force:'dispersion forces'},{k:'Cl2',f:'Cl_2',e:34,bp:-34.0,force:'dispersion forces'},{k:'Br2',f:'Br_2',e:70,bp:58.8,force:'dispersion forces'},
+  {k:'I2',f:'I_2',e:106,bp:184.4,force:'dispersion forces'},{k:'CH4',f:'CH_4',e:10,bp:-161.5,force:'dispersion forces'},{k:'NH3',f:'NH_3',e:10,bp:-33.3,force:'hydrogen bonding'},
+  {k:'H2O',f:'H_2O',e:10,bp:100.0,force:'hydrogen bonding'},{k:'HCl',f:'HCl',e:18,bp:-85.1,force:'dipole-dipole forces'}];
+const TREND=['more electrons,','higher boiling point'];
+const fmtBp=v=>(v<0?'−':'')+Math.abs(v).toFixed(1)+' °C';
+D.sim('bpPlot',function(host){
+  const st=['axes','F2','Cl2','Br2','I2','trend','trio','reveal','HCl'],params={};
+  /* per point: a (point alpha), l (label alpha); halogens fade behind the trio stages */
+  st.forEach((s,i)=>{const o={trend:0};BP.forEach(q=>{o[q.k]=0;o[q.k+'l']=0});
+    ['F2','Cl2','Br2','I2'].forEach((k,j)=>{if(i>=j+1&&i<=5){o[k]=1;o[k+'l']=1}else if(i>5){o[k]=.25;o[k+'l']=0}});
+    if(i>=5&&i<=5)o.trend=1;if(i>5)o.trend=0;
+    if(i>=6){['CH4','NH3','H2O'].forEach(k=>{o[k]=i===8?.25:1;o[k+'l']=i===7?1:0})}
+    if(i===8){o.F2=1;o.F2l=1;o.HCl=1;o.HCll=1}params[s]=o});
+  const lay=(w,h)=>{const L=120,R=36,T=86,B=118,X=e=>L+e/110*(w-L-R),Y=v=>T+(200-v)/400*(h-T-B);return {L,R,T,B,X,Y}};
+  const labelSide={F2:1,Cl2:1,Br2:-1,I2:-1,CH4:1,NH3:1,H2O:1,HCl:1},labelDy={F2:-30,CH4:-22,NH3:-46};
+  /* pass 1 draws the markers, pass 2 the labels: a label (with a halo in the slide colour) always lies over every marker, faint or not */
+  function pt(g,q,a,la,P,draw,pass){const x=P.X(q.e),y=P.Y(q.bp),s=labelSide[q.k],txt=q.f+'  '+fmtBp(q.bp),tw=chemW(g,txt,36);
+    if(draw&&pass===1)fade(g,a,()=>{recMark('marker',16);g.circle(x,y,16,g.c('accent'),g.c('ink'),3)}); /* one marker colour: warm and teal stay reserved for δ+ and δ− */
+    if(draw&&pass===2)fade(g,a*la,()=>g.chem(txt,x+s*28,y+(labelDy[q.k]||0),36,{align:s>0?'left':'right',halo:10,haloColor:g.c('slide'),color:g.c('ink')}));
+    /* the unit is at least 260 px wide, so it fills 60% of the slide at the 4x zoom cap */
+    const dy=labelDy[q.k]||0,uw=Math.max(tw+62,260),ux=(s>0?x-24:x-28-tw-10)-(uw-tw-62)*(s>0?0:1);return uRect(ux,Math.min(y,y+dy)-34,uw,68+Math.abs(dy),q.f.replace('_','')+' point')}
+  return sim(host,{stages:st,params,dur:700,
+    draw(g,p,I){const P=lay(I.w,I.h),ink=g.c('ink'),mu=g.c('muted'),ctx=g.ctx;
+      /* axes */
+      g.line(P.L,P.T-10,P.L,I.h-P.B,ink,4);g.line(P.L,I.h-P.B,I.w-P.R,I.h-P.B,ink,4);
+      for(let v=-200;v<=200;v+=100){const y=P.Y(v);g.line(P.L-10,y,P.L,y,ink,4);if(v>-200)g.line(P.L,y,I.w-P.R,y,rgba(mu,.25),2);g.text((v<0?'−':'')+Math.abs(v),P.L-16,y,36,{align:'right',mono:true,wt:600,color:mu})}
+      for(let e=0;e<=100;e+=20){const x=P.X(e);g.line(x,I.h-P.B,x,I.h-P.B+10,ink,4);g.text(String(e),x,I.h-P.B+34,36,{mono:true,wt:600,color:mu})}
+      g.text('Boiling point (°C)',P.L-110,40,36,{align:'left',color:mu});g.text('Electrons per molecule',(P.L+I.w-P.R)/2,I.h-30,36,{color:mu});
+      /* trend line through the halogens */
+      fade(g,p.trend,()=>{ctx.save();ctx.setLineDash([16,12]);ctx.beginPath();BP.slice(0,4).forEach((q,i)=>{const x=P.X(q.e),y=P.Y(q.bp);i?ctx.lineTo(x,y):ctx.moveTo(x,y)});
+        ctx.lineWidth=5;ctx.strokeStyle=g.c('accent');ctx.stroke();ctx.restore();lines(g,TREND,P.L+24,P.Y(170),36,46,{align:'left',color:ink,halo:8})});
+      BP.forEach(q=>pt(g,q,p[q.k],p[q.k+'l'],P,true,1));BP.forEach(q=>pt(g,q,p[q.k],p[q.k+'l'],P,true,2))},
+    units:(p,I)=>{const P=lay(I.w,I.h),g=D.painter(document.createElement('canvas').getContext('2d')),u=[uRect(P.L-120,10,I.w-P.L+110,I.h-20,'the axes')];
+      BP.forEach(q=>{if(p[q.k]>.5&&p[q.k+'l']>.5)u.push(pt(g,q,1,1,P,false))});
+      if(p.trend>.5){g.font(36,700);const tw=Math.max(...TREND.map(t=>g.ctx.measureText(t).width));u.push(uRect(P.L+12,P.Y(170)-30,tw+24,106,'trend caption'))}return u},
+    meta:(p,s)=>({stage:s,points:BP.filter(q=>p[q.k]>.01).map(q=>({f:uni(q.f),e:q.e,bp:q.bp,force:q.force,faint:p[q.k]<.5,labelled:p[q.k+'l']>.5})),trend:p.trend>.5,
+      xAxis:'Electrons per molecule',yAxis:'Boiling point (°C)',xRange:[0,110],yRange:[-200,200]})});
+});
+
+/* ---------- 6. forceDecider (DOM, slide 10): the three questions of the reading's triplet 1 as four boxes filling one per press ----------
+   stages: empty (the four titled boxes, nothing filled, no drawing), NH3/polar, NH3/H, NH3/lone, NH3/strongest, CO2/polar, CO2/H,
+   CO2/strongest, HBr/EN, HBr/polar, HBr/H, HBr/strongest.
+   Beside the boxes: the molecule (SVG, CPK, δ labels where polar) and, for HBr, the electronegativity label line and chips. */
+const FD_BOX=[{k:'polar',t:'Polar?'},{k:'H',t:'H on N, O or F?'},{k:'lone',t:'Lone pair on N, O or F?'},{k:'strongest',t:'Strongest attraction'}];
+const FD={NH3:{name:'ammonia, NH<sub>3</sub>',ans:{polar:'yes',H:'yes',lone:'yes',strongest:'hydrogen bonding'},
+    txt:{polar:'Yes. It is trigonal pyramidal (Lesson 4.4).',H:'Yes. H is on N.',lone:'Yes. N has a lone pair.',strongest:'Hydrogen bonding.'},
+    steps:[['polar'],['H'],['lone'],['strongest']]},
+  CO2:{name:'carbon dioxide, CO<sub>2</sub>',ans:{polar:'no',H:'no',lone:'not needed',strongest:'dispersion forces'},
+    txt:{polar:'No. It is linear, so the pulls&nbsp;cancel.',H:'No. CO<sub>2</sub> has no H.',lone:'Not needed.',strongest:'Dispersion forces.'},
+    steps:[['polar'],['H','lone'],['strongest']]},
+  HBr:{name:'hydrogen bromide, HBr',ans:{polar:'yes',H:'no',lone:'not needed',strongest:'dipole-dipole forces'},
+    txt:{polar:'Yes. The difference is&nbsp;0.76.',H:'No. H is on Br, not N, O or&nbsp;F.',lone:'Not needed.',strongest:'Dipole-dipole forces.'},
+    steps:[[],['polar'],['H','lone'],['strongest']]}};
+const FD_STAGES={empty:[null,-1],'NH3/polar':['NH3',0],'NH3/H':['NH3',1],'NH3/lone':['NH3',2],'NH3/strongest':['NH3',3],'CO2/polar':['CO2',0],'CO2/H':['CO2',1],'CO2/strongest':['CO2',2],
+  'HBr/EN':['HBr',0],'HBr/polar':['HBr',1],'HBr/H':['HBr',2],'HBr/strongest':['HBr',3]};
+/* molecule drawings (SVG, 400 x 300 px): CPK spheres with the symbol, gray sticks, δ labels where polar, a lone pair lobe on N */
+function fdSvg(m){const S=[],at=(x,y,r,s)=>{const c=CPK[s],ink=D.lum(c)>.3?'#10201c':'#ffffff';
+    S.push(`<circle cx="${x}" cy="${y}" r="${r}" fill="${c}" stroke="${D.mix(c,'#000000',.5)}" stroke-width="3"/><text x="${x}" y="${y+14}" font-size="40" font-weight="700" text-anchor="middle" fill="${ink}">${s}</text>`)},
+  st=(x0,y0,x1,y1)=>S.push(`<line x1="${x0}" y1="${y0}" x2="${x1}" y2="${y1}" stroke="${STICK2}" stroke-width="20" stroke-linecap="round"/><line x1="${x0}" y1="${y0}" x2="${x1}" y2="${y1}" stroke="${STICK}" stroke-width="14" stroke-linecap="round"/>`),
+  dl=(x,y,t,plus)=>S.push(`<g class="fd-d"><circle cx="${x}" cy="${y}" r="30" fill="var(${plus?'--dplus':'--dminus'})"/><text x="${x}" y="${y+13}" font-size="36" font-weight="700" text-anchor="middle" fill="var(--on-ion)">${t}</text></g>`);
+  if(m==='NH3'){S.push(`<ellipse cx="200" cy="58" rx="40" ry="26" fill="var(--e)" fill-opacity=".3" stroke="var(--e)" stroke-width="3"/><circle cx="188" cy="58" r="8" fill="var(--e)"/><circle cx="212" cy="58" r="8" fill="var(--e)"/>`);
+    st(200,135,104,196);st(200,135,296,196);st(200,135,226,232);at(104,196,30,'H');at(296,196,30,'H');at(200,135,47,'N');at(226,232,30,'H');
+    dl(292,74,'δ−',0);dl(42,250,'δ+',1);dl(358,250,'δ+',1)}
+  if(m==='CO2'){st(70,150,330,150);at(70,150,45,'O');at(330,150,45,'O');at(200,150,49,'C')}
+  if(m==='HBr'){st(110,160,290,160);at(110,160,30,'H');at(290,160,68,'Br');dl(110,92,'δ+',1);dl(290,56,'δ−',0)}
+  return `<svg width="400" height="300" viewBox="0 0 400 300" role="img" aria-label="${m} molecule">${S.join('')}</svg>`}
+D.sim('forceDecider',function(host){
+  const wrapEl=document.createElement('div');wrapEl.style.cssText='display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:22px;height:100%;min-height:0';
+  const grid=document.createElement('div');grid.className='cer-grid';grid.style.minHeight='0';
+  const side=document.createElement('div');side.style.cssText='display:flex;flex-direction:column;gap:14px;min-height:0;align-items:center;justify-content:center';
+  const boxes={};
+  FD_BOX.forEach(B=>{const b=document.createElement('div');b.className='cer-box';b.innerHTML='<h3>'+B.t+'</h3><div class="cer-body"></div>';
+    Object.keys(FD).forEach(m=>{const q=document.createElement('p');q.dataset.m=m;q.innerHTML=FD[m].txt[B.k];if(FD[m].ans[B.k]==='not needed')q.style.color='var(--muted)';b.lastChild.appendChild(q)});
+    grid.appendChild(b);boxes[B.k]=b});
+  const draw=document.createElement('div');draw.className='fd-mol';draw.style.cssText='display:grid;justify-items:center;gap:6px';
+  /* the other molecules' pictures are hidden (the hidden attribute), so no audit reads their text */
+  const pics={};Object.keys(FD).forEach(m=>{const d=document.createElement('div');d.dataset.m=m;d.hidden=true;d.style.textAlign='center';
+    d.innerHTML=fdSvg(m)+'<p style="margin:0;font-size:40px;font-weight:700">'+FD[m].name+'</p>';draw.appendChild(d);pics[m]=d});
+  const chips=document.createElement('div');chips.className='fd-en';chips.style.cssText='visibility:hidden;font-size:40px';
+  chips.innerHTML='<span class="enrow"><span class="enl lbl">Electronegativity (pull on electrons)</span><span class="chips"><span class="chip"><b>Br</b><span class="mono">2.96</span></span><span class="chip"><b>H</b><span class="mono">2.20</span></span><span class="chip"><b>difference</b><span class="mono">0.76</span></span></span></span>';
+  side.appendChild(draw);side.appendChild(chips);wrapEl.appendChild(grid);wrapEl.appendChild(side);host.appendChild(wrapEl);host.classList.add('cer');
+  const stages=Object.keys(FD_STAGES);let stage=stages[0];
+  const filled=s=>{const [m,i]=FD_STAGES[s];if(!m)return {m:null,i:-1,keys:[],now:null};return {m,i,keys:FD[m].steps.slice(0,i+1).flat(),now:FD[m].steps[i].length?FD[m].steps[i][0]:'polar'}};
+  return {stages,
+    set(s,instant){if(!FD_STAGES[s]){console.error('Deck: '+host.id+' has no stage "'+s+'"');return}stage=s;const F=filled(s);
+      if(instant||D.reduced())host.classList.add('instant');
+      FD_BOX.forEach(B=>{const b=boxes[B.k],on=F.keys.includes(B.k);[...b.lastChild.children].forEach(q=>q.classList.toggle('on',on&&q.dataset.m===F.m));
+        b.classList.toggle('now',B.k===F.now);b.classList.toggle('full',on)});
+      Object.keys(pics).forEach(m=>{pics[m].hidden=m!==F.m});chips.style.visibility=F.m==='HBr'?'visible':'hidden';
+      if(host.classList.contains('instant')){void host.offsetWidth;requestAnimationFrame(()=>requestAnimationFrame(()=>host.classList.remove('instant')))}},
+    get:()=>stage,bounds:()=>({x:0,y:0,w:host.clientWidth,h:host.clientHeight}),resize(){},redraw(){},active(){},minFont:Infinity,
+    units:()=>FD_BOX.map(B=>({el:boxes[B.k],label:B.t})).concat([{el:draw,label:'the molecule'},{el:chips,label:'electronegativity'}]),
+    meta(){const F=filled(stage),A={};FD_BOX.forEach(B=>{A[B.k]=F.keys.includes(B.k)?FD[F.m].ans[B.k]:null});
+      return {stage,molecule:F.m,drawing:F.m!==null,answers:A,en:F.m==='HBr'?{label:'Electronegativity (pull on electrons)',Br:2.96,H:2.20,difference:0.76}:null,boxes:FD_BOX.map(B=>B.t)}}};
+});
+
+/* ======================= Period 2 (workshop step 03) ======================= */
+
+/* ---------- 7. heating (slide 11): four CH4 (2 x 2) or six H2O (2 x 3) warm from solid to gas; the covalent bonds stay intact ----------
+   stages: CH4/solid, CH4/melt, CH4/liquid, CH4/boil, CH4/gas, H2O/solid, H2O/boil, H2O/gas, energy. Temperatures from the reading:
+   CH4 melts at −182.5 °C and boils at −161.5 °C; water melts at 0.0 °C and boils at 100.0 °C. energy: boiling 18 g of water takes
+   40.7 kJ; breaking all its O–H bonds about 928 kJ (OpenStax), two bars to one scale.
+   Step 04 (review 03, F2): fewer molecules than nine. The solid is the tightest block (4 px between atoms of neighbours) on the
+   container floor; the gas puts the molecules at the container's limits, each turned its own way. meta() measures the block and the spread.
+   Step 04a (review 04, F1): methane as four molecules (2 x 2, 166 x 206 px, 2 px between neighbours' atoms), water as six. */
+const HT_T={'CH4/solid':'−182.5 °C (melting point)','CH4/melt':'−182.5 °C, melting','CH4/liquid':'liquid','CH4/boil':'−161.5 °C, boiling','CH4/gas':'−161.5 °C (boiling point)',
+  'H2O/solid':'0.0 °C (melting point)','H2O/boil':'100.0 °C, boiling','H2O/gas':'100.0 °C (boiling point)',energy:'100.0 °C (boiling point)'};
+/* attractions drawn per stage: neighbour pairs of the 2 x 3 block (index r*3+c, row 0 on top); the melt lets the top row go first */
+/* step 04a (review 04, F1): methane as four molecules (2 x 2), water as six (2 x 3) */
+const HT_N={CH4:[2,2],H2O:[2,3]};
+const HT_KEEPS={CH4:{solid:[[0,1],[2,3],[0,2],[1,3]],melt:[[0,1],[2,3]],liquid:[[2,3],[1,3]],boil:[[2,3]],gas:[]},
+  H2O:{solid:[[0,1],[1,2],[3,4],[4,5],[0,3],[1,4],[2,5]],melt:[[0,1],[1,2],[3,4],[4,5]],liquid:[[0,1],[3,4],[1,4]],boil:[[3,4]],gas:[]}};
+const HT_KEEP=(sub,ph)=>HT_KEEPS[sub][ph]||[];
+const htN=sub=>HT_N[sub][0]*HT_N[sub][1];
+D.sim('heating',function(host){
+  const ST=Object.keys(HT_T),SPREAD={solid:0,melt:.25,liquid:.4,boil:.85,gas:1},params={};
+  ST.forEach(s=>{const [sub,ph]=s==='energy'?['H2O','gas']:s.split('/');params[s]={sub,ph:ph||'gas',spread:SPREAD[ph||'gas'],top:ph==='melt'?1:0,en:s==='energy'?1:0}});
+  const lay=(w,h)=>({box:{x:8,y:160,w:w-16,h:h-168},rows:[40,92,140]});
+  /* solid: centre spacing [dx, dy] and turn of the tightest block with 4 px between neighbours' atoms (searched offline);
+     gas: the centres on the 2 x 2 or 2 x 3 grid as far apart as the container allows, each molecule clear of the walls by its reach + 12 px
+     (the jiggle) */
+  const SP={CH4:{solid:[166,206],rot:deg(-30),sb:.82},H2O:{solid:[186,98],rot:deg(37.5),sb:.8}};
+  const GROT=[1.1,2.3,.6,1.8,2.9,1.4];
+  const molAt=(sub,x,y,rot)=>sub==='CH4'?methane(x,y,rot,SP.CH4.sb):water(x,y,rot,SP.H2O.sb);
+  const reach=sub=>{const M=molAt(sub,0,0,0);let r=0;M.atoms.forEach(A=>{r=Math.max(r,Math.hypot(A.x,A.y)+A.r)});
+    (M.lobes||[]).forEach((L,k)=>{const [x,y]=lobeTip(M,k);r=Math.max(r,Math.hypot(x,y))});return r};
+  const bbox=Ms=>{let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;Ms.forEach(M=>M.atoms.forEach(A=>{x0=Math.min(x0,A.x-A.r);x1=Math.max(x1,A.x+A.r);y0=Math.min(y0,A.y-A.r);y1=Math.max(y1,A.y+A.r)}));return {x:x0,y:y0,w:x1-x0,h:y1-y0}};
+  /* the two end arrangements in host px: solid centred on the floor, gas at the limits */
+  function ends(sub,I){const L=lay(I.w,I.h),B=L.box,Q=SP[sub],sol=[],gas=[];
+    const [NR,NC]=HT_N[sub],N=NR*NC;
+    for(let i=0;i<N;i++){const r=Math.floor(i/NC),c=i%NC;sol.push([(c-(NC-1)/2)*Q.solid[0],r*Q.solid[1],Q.rot])}
+    const bb=bbox(sol.map(([x,y,t])=>molAt(sub,x,y,t))),ox=B.x+B.w/2-(bb.x+bb.w/2),oy=B.y+B.h-8-(bb.y+bb.h);
+    sol.forEach(q=>{q[0]+=ox;q[1]+=oy});
+    const m=reach(sub)+12,gx=(B.w-2*m)/(NC-1),gy=(B.h-2*m)/(NR-1);
+    for(let i=0;i<N;i++){const r=Math.floor(i/NC),c=i%NC;gas.push([B.x+m+c*gx,B.y+m+r*gy,Q.rot+GROT[i]])}
+    return {sol,gas,B}}
+  function places(p,I){const E=ends(p.sub,I),t=I.live?I.clock:0,s=clamp(p.spread,0,1),out=[];
+    const NC=HT_N[p.sub][1];
+    for(let i=0;i<E.sol.length;i++){const r=Math.floor(i/NC),c=i%NC,[x0,y0,r0]=E.sol[i],[x1,y1,r1]=E.gas[i];
+      let x=lerp(x0,x1,s),y=lerp(y0,y1,s),rot=lerp(r0,r1,s);
+      if(p.top>.01&&r===0){x+=p.top*(c-(NC-1)/2)*18;y-=p.top*30;rot+=p.top*(c%2?.45:-.35)}
+      const jig=I.live?(3+9*s):0;x+=jig*Math.sin(t*(1.1+i*.17)+i);y+=jig*Math.cos(t*(1.3+i*.11)+i*2);rot+=I.live?(.04+.12*s)*Math.sin(t*.9+i):0;
+      out.push([x,y,rot])}return out}
+  /* the measured spread: the solid block's share of the container, and the area per molecule (solid: its lattice cell dx x dy;
+     gas: the container shared by all), with the nearest-neighbour distances of both ends */
+  function spread(sub,I){const E=ends(sub,I),B=E.B,A=B.w*B.h,Q=SP[sub],sb=bbox(E.sol.map(([x,y,t])=>molAt(sub,x,y,t))),gb=bbox(E.gas.map(([x,y,t])=>molAt(sub,x,y,t)));
+    const nn=P=>{let d=1e9;P.forEach((a,i)=>P.forEach((b,j)=>{if(j>i)d=Math.min(d,Math.hypot(a[0]-b[0],a[1]-b[1]))}));return d};
+    const r2=v=>Math.round(v*100)/100;
+    return {container:[Math.round(B.w),Math.round(B.h)],solidBlockShare:r2(sb.w*sb.h/A),gasBoxShare:r2(gb.w*gb.h/A),
+      areaPerMolecule:{solid:Math.round(Q.solid[0]*Q.solid[1]),gas:Math.round(A/htN(sub))},areaRatio:r2(A/htN(sub)/(Q.solid[0]*Q.solid[1])),
+      nearest:{solid:Math.round(nn(E.sol)),gas:Math.round(nn(E.gas))},spacingRatio:r2(Math.pow(nn(E.gas)/nn(E.sol),2))}}
+  /* an attraction line of the heating view: the shortest open gap between an atom of molecule a and an atom of molecule b
+     (28 px or longer so two dashes show, else 18 px or longer; crossing no other atom), surface to surface; with no such gap, the
+     line between the two central atoms */
+  function gapLine(M,a,b){return gapLine0(M,a,b,28)||gapLine0(M,a,b,18)||ctrLine(M,a,b)}
+  function ctrLine(M,a,b){const A=M[a].atoms[0],C=M[b].atoms[0],s0=edge(A,C.x,C.y,3),e0=edge(C,A.x,A.y,3);return Math.hypot(e0[0]-s0[0],e0[1]-s0[1])>=12?[s0[0],s0[1],e0[0],e0[1]]:null}
+  function gapLine0(M,a,b,min){let best=null;const all=[];M.forEach(m=>m.atoms.forEach(Q=>all.push(Q)));
+    const seg=(x0,y0,x1,y1,Q)=>{const dx=x1-x0,dy=y1-y0,l2=dx*dx+dy*dy||1,t=clamp(((Q.x-x0)*dx+(Q.y-y0)*dy)/l2,0,1);return Math.hypot(x0+dx*t-Q.x,y0+dy*t-Q.y)};
+    M[a].atoms.forEach(A=>M[b].atoms.forEach(B=>{const s0=edge(A,B.x,B.y,3),e0=edge(B,A.x,A.y,3),L=Math.hypot(e0[0]-s0[0],e0[1]-s0[1]);
+      if(Math.hypot(B.x-A.x,B.y-A.y)<=A.r+B.r+6||L<min||(best&&L>=best.L))return;
+      if(all.some(Q=>Q!==A&&Q!==B&&seg(s0[0],s0[1],e0[0],e0[1],Q)<Q.r+2))return;best={L,ln:[s0[0],s0[1],e0[0],e0[1]]}}));
+    return best?best.ln:null}
+  function readouts(g,p,I,stage,draw){const L=lay(I.w,I.h),tot=p.sub==='CH4'?16:12,att=HT_KEEP(p.sub,p.ph).length,u=[];
+    const lines3=[['Temperature',HT_T[stage]||''],['Covalent bonds: '+tot+' of '+tot+' intact'],['Attractions drawn: '+(p.en>.5?0:att)]];
+    lines3.forEach((ln,i)=>{const y=L.rows[i];let w=0;
+      if(ln.length===2){if(draw)g.text(ln[0],20,y,36,{align:'left',color:g.c('muted')});g.font(36,700);const lw=g.ctx.measureText(ln[0]).width;const cw=chip(g,0,0,ln[1],{measure:true,px:36});if(draw)chip(g,40+lw,y,ln[1],{px:36});w=lw+40+cw}
+      else{if(draw)g.text(ln[0],20,y,36,{align:'left',color:g.c('ink')});g.font(36,700);w=g.ctx.measureText(ln[0]).width}
+      u.push(uRect(8,y-28,w+28,56,['temperature','covalent bonds','attractions drawn'][i]))});return u}
+  function energy(g,I,draw){const w=I.w,x0=28,W=w-2*x0-10,k=W/928,b1=Math.max(28,40.7*k),u=[],y1=258,y2=430;
+    const L1='Boiling 18 g of water: 40.7 kJ',L2=wrap(g,'Breaking all its O–H bonds: about 928 kJ',W,36),CAP='more than 20 times as much';
+    if(draw){g.rrect(x0,y1-30,b1,60,6,g.c('accent'),null);g.text(L1,x0+b1+16,y1,36,{align:'left',color:g.c('ink')});
+      lines(g,L2,x0,y2-74-44*(L2.length-1),36,44,{align:'left',color:g.c('ink')});g.rrect(x0,y2-30,928*k,60,6,g.c('warm'),null);
+      g.text(CAP,w/2,y2+110,40,{color:g.c('ink')})}
+    g.font(36,700);const lw=g.ctx.measureText(L1).width;u.push(uRect(x0-10,y1-40,b1+16+lw+20,80,'boiling bar'),uRect(x0-10,y2-74-44*(L2.length-1)-26,W+20,44*L2.length+100,'bond bar'));
+    g.font(40,700);const cw=g.ctx.measureText(CAP).width;u.push(uRect(w/2-cw/2-14,y2+80,cw+28,62,'caption'));return u}
+  return sim(host,{stages:ST,params,dur:{'CH4/solid':600,'CH4/melt':900,'CH4/liquid':800,'CH4/boil':900,'CH4/gas':800,'H2O/solid':700,'H2O/boil':900,'H2O/gas':800,energy:800},
+    live:s=>/liquid|boil|gas/.test(s)||s==='CH4/melt',
+    draw(g,p,I){const L=lay(I.w,I.h),B=L.box,sw=I.from&&I.from!==I.stage&&fam(I.from)!==fam(I.stage)&&fam(I.stage)!=='energy'&&I.k<1?Math.abs(1-2*I.k):1;
+      /* step 04b (the teacher's review): the energy stage shows the two bars alone (the container and the molecules leave fully);
+         the attraction lines are drawn over the molecules, from the central atom's surface to the neighbour's, with a halo */
+      fade(g,1-p.en,()=>g.rrect(B.x,B.y,B.w,B.h,18,D.mix(g.c('card'),g.c('accent'),.04),g.c('line'),4));
+      fade(g,sw*(1-p.en),()=>{const P=places(p,I),M=P.map(([x,y,r])=>molAt(p.sub,x,y,r));M.forEach(m=>mol2d(g,m));
+        HT_KEEP(p.sub,p.ph).forEach(([a,b])=>{const ln=gapLine(M,a,b);if(ln)dashGray(g,...ln,1)})});
+      readouts(g,p,I,I.stage,true);fade(g,p.en,()=>energy(g,I,true))},
+    units:(p,I)=>{const L=lay(I.w,I.h),g=D.painter(document.createElement('canvas').getContext('2d')),u=readouts(g,p,I,I.stage,false);
+      if(p.en>.5)u.push(...energy(g,I,false));else u.push(uRect(L.box.x,L.box.y,L.box.w,L.box.h,'the molecules'));return u},
+    meta:(p,s,I)=>{const tot=p.sub==='CH4'?16:12;return {substance:p.sub,stage:s,phase:p.ph,molecules:htN(p.sub),bondsTotal:tot,bondsIntact:tot,attractionsDrawn:p.en>.5?0:HT_KEEP(p.sub,p.ph).length,
+      temperature:HT_T[s],energies:{boil:40.7,bonds:928},energyBars:p.en>.5,moleculesShown:p.en<.5,containerShown:p.en<.5,caption:p.en>.5?'more than 20 times as much':null,spread:I&&I.w?spread(p.sub,I):null}}});
+});
+
+/* ---------- 8. iceLattice (slide 12): a fragment of hexagonal ice in 3D; hydrogen bonds; four neighbours; open rings; floating ice ----------
+   stages: molecules, hbonds, neighbors, rings, float. Ideal oxygen framework (O···O 276 pm, tetrahedral), hydrogen directions
+   simplified (each O gives two H; each O···O link holds one H), as the data notes allow: two stacked chair rings (an open six-sided
+   tunnel down the c axis) and one more molecule, so one oxygen has all four neighbours. 13 molecules. The c axis is y. */
+const ICE=(()=>{const R=Math.sqrt(8/9),h=1/6,O=[];
+  for(let k=0;k<2;k++)for(let i=0;i<6;i++){const a=i*Math.PI/3,odd=i%2===1;O.push([R*Math.cos(a),k===0?(odd?-h:h):(odd?-h-1:-3*h-1),R*Math.sin(a)])}
+  const sub=(a,b)=>a.map((v,i)=>v-b[i]),add=(a,b)=>a.map((v,i)=>v+b[i]),mul=(a,k)=>a.map(v=>v*k),nrm=a=>{const l=Math.hypot(...a);return a.map(v=>v/l)};
+  const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+  const tetra=(u1,u2)=>{const s=add(u1,u2),n=nrm(cross(u1,u2)),k=Math.sqrt(2/3);return [u1,u2,add(mul(s,-.5),mul(n,k)),add(mul(s,-.5),mul(n,-k))]};
+  const ringN=i=>{const r=Math.floor(i/6)*6,j=i%6;return [r+(j+5)%6,r+(j+1)%6]};
+  const dirs=O.map((p,i)=>{const [a,b]=ringN(i);return tetra(nrm(sub(O[a],p)),nrm(sub(O[b],p)))});
+  /* the extra molecule E sits along the outward (equatorial) direction of O[1], so O[1] gets four neighbours */
+  const eq=dirs[1].find(d=>Math.abs(d[1])<.9&&Math.hypot(...sub(add(O[1],d),O[0]))>.5&&Math.hypot(...sub(add(O[1],d),O[2]))>.5);
+  const E=add(O[1],eq);O.push(E);const u1=nrm(sub(O[1],E)),ax=[0,u1[1]>0?-1:1,0];dirs.push(tetra(u1,ax));
+  /* links (O···O) and the donor of each: ring i -> i+1, ring1 odd -> ring2 below, E -> O[1] */
+  const links=[];for(let i=0;i<12;i++){const r=Math.floor(i/6)*6;links.push([i,r+(i%6+1)%6])}
+  [1,3,5].forEach(i=>links.push([i,i+6]));links.push([12,1]);
+  /* hydrogens: one per link at the donor; every O then completes its two with a free tetrahedral direction (axial first) */
+  const H=[];const given=O.map(()=>0),used=O.map(()=>[]);
+  links.forEach(([d,a])=>{const v=nrm(sub(O[a],O[d]));H.push({o:d,v,to:a});given[d]++;used[d].push(v)});
+  links.forEach(([d,a])=>used[a].push(nrm(sub(O[d],O[a]))));
+  O.forEach((p,i)=>{const free=dirs[i].filter(d=>!used[i].some(u=>Math.hypot(...sub(u,d))<.3)).sort((x,y)=>Math.abs(y[1])-Math.abs(x[1]));while(given[i]<2&&free.length){H.push({o:i,v:free.shift(),to:-1});given[i]++}});
+  const c=O.reduce((s,p)=>add(s,p),[0,0,0]).map(v=>v/O.length);return {O:O.map(p=>sub(p,c)),H,links,chosen:1,nb:[0,2,7,12],OH:.96/2.76}})();
+D.sim('iceLattice',function(host){
+  const base={hb:0,nb:0,top:0,fl:0},params={molecules:{...base},hbonds:{...base,hb:1},neighbors:{...base,hb:1,nb:1},rings:{...base,hb:1,top:1},float:{...base,hb:1,top:1,fl:1}};
+  const RO=.245,RH=.17; /* radii in O···O units: the nearest H reaches 60 px at this scale */
+  function scene(g,p,I){const ox=g.c('dminus'),atoms=[],bonds=[],lines4=[];const lit=i=>i===ICE.chosen||ICE.nb.includes(i);
+    ICE.O.forEach((q,i)=>atoms.push({p:q,r:RO,color:CPK.O,label:'O',labelPx:44,kind:'O',alpha:p.nb>.5&&!lit(i)?.35:1,ring:p.nb>.5&&lit(i),ringColor:i===ICE.chosen?g.c('warm'):g.c('dminus')}));
+    ICE.H.forEach(hh=>{const q=ICE.O[hh.o].map((v,k)=>v+hh.v[k]*ICE.OH);atoms.push({p:q,r:RH,color:CPK.H,label:'H',labelPx:38,kind:'H',alpha:p.nb>.5&&!lit(hh.o)?.35:1});bonds.push({a:hh.o,b:atoms.length-1,w:.07})});
+    /* hydrogen bonds (step 04b, the teacher's review): drawn after the spheres by hb3d, over them, from each H to the next O */
+    return {atoms,bonds,lines:lines4,hb:ICE.H.map((hh,k)=>hh.to<0?null:[ICE.O.length+k,hh.to]).filter(Boolean)}}
+  /* each hydrogen bond over the spheres: teal dashes with a halo, from the H's surface to the O's, cut only where a nearer sphere
+     covers it (so the lattice keeps its depth) */
+  function hb3d(g,P,pairs,a){if(a<.01)return;const N=40;
+    pairs.forEach(([i,j])=>{const A=P[i],B=P[j],dx=B.x-A.x,dy=B.y-A.y,l=Math.hypot(dx,dy)||1,ux=dx/l,uy=dy/l,x0=A.x+ux*(A.r+2),y0=A.y+uy*(A.r+2),x1=B.x-ux*(B.r+2),y1=B.y-uy*(B.r+2);
+      const L=(x1-x0)*ux+(y1-y0)*uy;if(L<6)return;const al=a*Math.min(A.a.alpha==null?1:A.a.alpha,B.a.alpha==null?1:B.a.alpha);
+      const occ=t=>{const x=x0+(x1-x0)*t,y=y0+(y1-y0)*t,z=A.z+(B.z-A.z)*t;return P.some((Q,k)=>k!==i&&k!==j&&Q.r>.5&&(Q.a.alpha==null||Q.a.alpha>.5)&&Q.z>z&&Math.hypot(x-Q.x,y-Q.y)<Q.r)};
+      let run=null;for(let s=0;s<=N;s++){const vis=s<N&&!occ((s+.5)/N);if(vis&&run==null)run=s;
+        if(!vis&&run!=null){const ta=run/N,tb=s/N;dashLine(g,x0+(x1-x0)*ta,y0+(y1-y0)*ta,x0+(x1-x0)*tb,y0+(y1-y0)*tb,g.c('dminus'),7,13,8,al,ta*L);run=null}}})}
+  const view=(p,I)=>{const L=I.w,H=I.h,sc=Math.min(L/4.5,(H-110)/3.9),t=I.live&&p.fl<.5?I.clock*.22:0;
+    return {cx:L/2,cy:(H-96)/2,scale:sc,yaw:lerp(.62+t,.0,p.top),pitch:lerp(.38,Math.PI/2-.001,p.top),dist:7,lineColor:D.tok('dminus'),fog:.25}};
+  const LAB={neighbors:'four neighbors, 276 pm away',rings:'open six-sided rings'};
+  /* step 04b (the teacher's review: no text over a drawing): the tank leaves room on its right for the label, which a bracket on the
+     ice's exposed part and a leader line point to */
+  function floatScene(g,I,draw){const w=I.w,u=[],tx=24,tw=Math.min(470,w-300),ty=20,th=280,sy=ty+80,bw=Math.min(280,tw-110),bh=200,above=bh*.083,by=sy-above,icx=tx+tw/2;
+    const L1='100.0 cm³ of water',L2='109.1 cm³ of ice, about 9% more',bl=Math.min(560,w-120),y1=340,y2=446,bx=icx+bw/2+16,lx=tx+tw+22;
+    if(draw){g.rrect(tx,ty,tw,th,16,null,g.c('line'),4);g.rrect(tx+3,sy,tw-6,ty+th-sy-3,12,rgba('#5aa9e6',.35),null);g.line(tx+3,sy,tx+tw-3,sy,'#3a8fd0',4);
+      g.rrect(icx-bw/2,by,bw,bh,10,rgba('#e8f6ff',.95),'#7fb3d5',4);g.text('ice',icx,by+bh/2,44,{color:'#1d4e72'});g.text('water',tx+24,ty+th-34,40,{align:'left',color:'#1d4e72'});
+      const ink=g.c('ink');g.line(bx,by,bx,sy,ink,4);g.line(bx-8,by,bx+8,by,ink,4);g.line(bx-8,sy,bx+8,sy,ink,4);g.line(bx+10,(by+sy)/2,lx-10,(by+sy)/2,ink,3);
+      lines(g,['8.3% above','the surface'],lx,(by+sy)/2-8,36,42,{align:'left',color:ink});
+      g.text(L1,tx,y1,36,{align:'left',color:ink});g.rrect(tx,y1+24,bl,40,6,'#5aa9e6',null);
+      g.text(L2,tx,y2,36,{align:'left',color:ink});g.rrect(tx,y2+24,bl*1.091,40,6,'#a9d4f0','#5aa9e6',3)}
+    g.font(36,700);const lw=Math.max(g.ctx.measureText('8.3% above').width,g.ctx.measureText('the surface').width);
+    u.push(uRect(tx-4,ty-4,lx+lw+12-tx,th+8,'floating ice'));g.font(36,700);const l2=g.ctx.measureText(L2).width;u.push(uRect(tx-10,y1-30,Math.max(bl*1.091,l2)+20,y2+70-y1+30,'volume bars'));
+    /* the label line, then the two chips (36 px, so both fit the column) */
+    const cy=560,cx0=16;if(draw){g.text('Density (mass in each cm³)',cx0,cy,36,{align:'left',color:g.c('muted')});let x=cx0;['ice 0.9167 g/cm³','water 0.99984 g/cm³'].forEach(c=>{x+=chip(g,x,cy+56,c,{px:36})+14})}
+    u.push(uRect(cx0-8,cy-30,w-2*cx0+16,128,'densities'));return u}
+  return sim(host,{stages:['molecules','hbonds','neighbors','rings','float'],params,dur:{molecules:600,hbonds:700,neighbors:700,rings:900,float:900},live:s=>s!=='float',
+    draw(g,p,I){const v=view(p,I);fade(g,1-p.fl,()=>{const sc=scene(g,p,I),P=spheres3d(g,sc,v);hb3d(g,P,sc.hb,p.hb);
+        if(p.nb>.01)fade(g,p.nb,()=>g.text(LAB.neighbors,I.w/2,I.h-46,40,{color:g.c('ink'),halo:8}));
+        if(p.top>.01&&p.fl<.5)fade(g,p.top,()=>g.text(LAB.rings,I.w/2,I.h-46,40,{color:g.c('ink'),halo:8}))});
+      fade(g,p.fl,()=>floatScene(g,I,true))},
+    units:(p,I)=>{const g=D.painter(document.createElement('canvas').getContext('2d')),u=[];if(p.fl>.5)return floatScene(g,I,false);
+      const sc=scene(g,p,{...I,live:false}),P=D.spheres(g,sc,view(p,{...I,live:false})),box=idx=>{let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;idx.forEach(i=>{const q=P[i];x0=Math.min(x0,q.x-q.r);x1=Math.max(x1,q.x+q.r);y0=Math.min(y0,q.y-q.r);y1=Math.max(y1,q.y+q.r)});return [x0,y0,x1-x0,y1-y0]};
+      const all=box(sc.atoms.map((a,i)=>a.dummy?-1:i).filter(i=>i>=0));u.push(uRect(...all.map((v,i)=>i<2?v-14:v+28),'the lattice'));
+      if(p.nb>.5){const b=box([ICE.chosen,...ICE.nb]);u.push(uRect(b[0]-24,b[1]-24,b[2]+48,b[3]+48,'one oxygen and its four neighbors'))}
+      const lab=p.nb>.5?LAB.neighbors:p.top>.5?LAB.rings:null;if(lab){g.font(40,700);const lw=g.ctx.measureText(lab).width;u.push(uRect(I.w/2-lw/2-14,I.h-78,lw+28,64,'label: '+lab))}return u},
+    meta:(p,s)=>({stage:s,molecules:ICE.O.length,bondsOH:ICE.H.length,hbonds:ICE.links.length,hbondsDrawn:p.hb>.5&&p.fl<.5,neighborsOfChosen:ICE.links.filter(l=>l.includes(ICE.chosen)).length,distancePm:276,
+      view:p.top>.5?'down the axis':'three-quarter',lattice:p.fl<.5,densities:{ice:0.9167,water:0.99984},volumes:{water:100.0,ice:109.1},aboveSurfacePct:8.3,reducedView:'fixed',
+      label:p.fl>.5?null:p.nb>.5?LAB.neighbors:p.top>.5?LAB.rings:null})});
+});
+
+/* ---------- 9. conductTester (slides 15, 16, 17): a battery, a switch, a bulb and a beaker; a magnified view; the dissolve family ----------
+   tester family: tester, then <s>/predict, <s>/close, <s>/zoom for NaCl-s, NaCl-l, NaCl-aq, Cu, sugar, water, KCl-l, CaCl2-s.
+   dissolve family: dis/NaCl, dis/sucrose, dis/CaCO3, dis/I2, dis/SiO2, dis/Cu. Data: lessons/4-5.md (the conductivity and the
+   dissolving tables). Ions to scale at 0.30 px per pm (Shannon): Na+ 102, K+ 138, Ca2+ 100, Cl- 181 pm; Cu cores 128 pm.
+   data-reserve keeps a band free at the bottom (t-concept wide). */
+const CT={'NaCl-s':{name:'solid NaCl',state:'solid',charged:'Na⁺ and Cl⁻',free:'no',lit:false,carriers:null,read:'Na⁺ and Cl⁻ locked in place'},
+  'NaCl-l':{name:'molten NaCl, 801 °C',state:'molten',charged:'Na⁺ and Cl⁻',free:'yes',lit:true,carriers:'ions',read:'Na⁺ and Cl⁻ free to move'},
+  'NaCl-aq':{name:'salt water',state:'dissolved',charged:'Na⁺ and Cl⁻',free:'yes',lit:true,carriers:'ions',read:'ions move among water molecules'},
+  Cu:{name:'copper',state:'solid',charged:'delocalized electrons',free:'yes',lit:true,carriers:'electrons',read:'delocalized electrons move'},
+  sugar:{name:'sugar water',state:'dissolved',charged:'none',free:null,lit:false,carriers:null,read:'whole molecules, no charge'},
+  water:{name:'distilled water',state:'liquid',charged:'very few ions',free:null,lit:false,carriers:null,read:'very few ions'},
+  'KCl-l':{name:'molten KCl',state:'molten',charged:'K⁺ and Cl⁻',free:'yes',lit:true,carriers:'ions',read:'K⁺ and Cl⁻ free to move'},
+  'CaCl2-s':{name:'solid CaCl_2',state:'solid',charged:'Ca²⁺ and Cl⁻',free:'no',lit:false,carriers:null,read:'Ca²⁺ and Cl⁻ locked in place'}};
+const DIS={NaCl:{name:'sodium chloride, NaCl',type:'ionic',dissolves:'yes',read:'ions spread out: an electrolyte'},sucrose:{name:'sucrose (table sugar)',type:'molecular',dissolves:'yes',read:'whole molecules spread out'},
+  CaCO3:{name:'calcium carbonate, CaCO_3',type:'ionic',dissolves:'barely',read:'barely'},I2:{name:'iodine, I_2',type:'molecular',dissolves:'slightly',read:'slightly'},
+  SiO2:{name:'quartz, SiO_2',type:'covalent network',dissolves:'no',read:'no'},Cu:{name:'copper, Cu',type:'metallic',dissolves:'no',read:'no'}};
+const CT_S=0.30,R_ION={Na:102,K:138,Ca:100,Cl:181,Cu:128};
+const CT_STAGES=['tester'].concat(...Object.keys(CT).map(k=>['predict','close','zoom'].map(s=>k+'/'+s)),Object.keys(DIS).map(k=>'dis/'+k));
+function ionK(g,k,x,y){const r=R_ION[k]*CT_S,cat=k!=='Cl';ion(g,x,y,r,cat?g.c('cat'):g.c('an'),cat?(k==='Ca'?'2+':'+'):'−',k==='Ca'?36:40)}
+function sugarBlob(g,x,y,lab){const ctx=g.ctx,c=D.mix('#e8d9b0',g.c('card'),.1);recAtom(40);ctx.beginPath();ctx.ellipse(x,y,lab?150:62,lab?52:42,0,0,TAU);ctx.fillStyle=c;ctx.fill();ctx.lineWidth=4;ctx.strokeStyle='#a8915a';ctx.stroke();
+  if(lab)g.text('sugar molecule',x,y+2,36,{color:'#4a3b14'})}
+/* the readout line of the tester family: results only (step 04b, the teacher's review: the question "Lights or stays dark?" is the
+   slide's own line, so the animation no longer repeats it); empty at tester and predict */
+function txt0(p,I){const st=String(I.stage).split('/')[1]||'tester';return !p.k||st==='predict'?'':st==='close'?(CT[p.k].lit?'The bulb lights.':'The bulb stays dark.'):CT[p.k].read}
+D.sim('conductTester',function(host){
+  const res=+(host.dataset.reserve||0),params={};
+  /* ph: the place of the magnified view, drawn as a dashed circle with "?" while the class predicts (tester, predict). tester is also
+     the reset state (no sample, switch open, no result) for a question that does not depend on the circuit (slide 16's you do) */
+  CT_STAGES.forEach(s=>{const [a,b]=s.split('/');params[s]=s==='tester'?{k:'',sw:0,lit:0,z:0,dis:'',ph:1}:a==='dis'?{k:'',sw:0,lit:0,z:0,dis:b,ph:0}:{k:a,sw:b==='predict'?0:1,lit:b!=='predict'&&CT[a].lit?1:0,z:b==='zoom'?1:0,dis:'',ph:b==='predict'?1:0}});
+  const lay=(w,h)=>{const H=h-res;if(w/H>=1.5){const rz=Math.min(H/2-44,181);return {R:{x:0,y:0,w:w-2*rz-60,h:H},Z:{x:w-rz-24,y:rz+10,r:rz},H,wide:true}}
+    const rz=Math.min(180,w*.22);return {R:{x:0,y:0,w:w-2*rz-30,h:H},Z:{x:w-rz-12,y:H*.42,r:rz},H}};
+  /* the wide readout's centre: under the magnified view, kept inside the host */
+  const rdX=(I,L,txt)=>{const g=D.painter(document.createElement('canvas').getContext('2d')),tw=chemW(g,txt,40);return Math.min(L.Z.x,I.w-12-tw/2)};
+  /* the circuit: battery on the top wire (+ to the right), switch, bulb (on the top wire, or on the right-hand wire when the host is
+     narrow), the beaker with two electrodes; the left electrode returns to the battery along a lower wire */
+  function circuit(g,p,I,R,draw){const ink=g.c('ink'),nar=R.w<600,y1=R.y+88,bw=Math.min(420,R.w*.5),bcx=R.x+R.w*(nar?.62:.6),btop=R.y+R.h*(nar?.45:.42),bbot=R.y+R.h-(nar?150:66),
+      ex1=bcx-bw*.22,ex2=bcx+bw*.22,y2=btop-40,x0=R.x+24,batL=R.x+44,batR=R.x+150,sx=Math.max(R.x+R.w*.25,R.x+210),lr=nar?42:52,
+      onTop=Math.max(R.x+R.w*.45,sx+150)+lr+30<ex2,lx=onTop?Math.max(R.x+R.w*.45,sx+150):ex2,ly=onTop?y1:(y1+btop)/2-10,u=[];
+    if(draw){const W=(...l)=>g.line(...l,ink,5);
+      W(x0,y2,x0,y1);W(x0,y1,batL,y1);W(batR,y1,sx-30,y1);W(ex1,y2,x0,y2);W(ex1,y2,ex1,btop-10);
+      if(onTop){W(sx+50,y1,lx-lr,y1);W(lx+lr,y1,ex2,y1);W(ex2,y1,ex2,btop-10)}else{W(sx+50,y1,ex2,y1);W(ex2,y1,ex2,ly-lr);W(ex2,ly+lr,ex2,btop-10)}
+      /* battery */
+      g.rrect(batL,y1-26,batR-batL,52,8,g.c('card2'),ink,4);g.rrect(batR,y1-12,10,24,3,ink,null);g.text('−',batL+22,y1+2,40,{color:ink});g.text('+',batR-22,y1+2,40,{color:ink});
+      /* switch: open (lever up) or closed */
+      g.circle(sx-30,y1,8,ink,null);g.circle(sx+50,y1,8,ink,null);const a=lerp(-.6,0,p.sw);g.line(sx-30,y1,sx-30+80*Math.cos(a),y1+80*Math.sin(a),ink,7);
+      /* bulb: warm glow when lit */
+      if(p.lit>.01)fade(g,p.lit,()=>{const gr=g.ctx.createRadialGradient(lx,ly,lr*.3,lx,ly,lr*2.5);gr.addColorStop(0,rgba(g.c('warm'),.9));gr.addColorStop(1,rgba(g.c('warm'),0));g.circle(lx,ly,lr*2.5,gr,null);
+        for(let k=0;k<8;k++){const an=k*TAU/8;g.line(lx+Math.cos(an)*(lr+12),ly+Math.sin(an)*(lr+12),lx+Math.cos(an)*(lr+36),ly+Math.sin(an)*(lr+36),g.c('warm'),6)}});
+      g.circle(lx,ly,lr,D.mix(g.c('muted'),g.c('warm'),p.lit),D.mix(ink,g.c('warm'),p.lit*.6),5);g.line(lx-16,ly+8,lx-6,ly-12,g.c('card'),4);g.line(lx-6,ly-12,lx+6,ly+8,g.c('card'),4);g.line(lx+6,ly+8,lx+16,ly-12,g.c('card'),4);
+      /* beaker with the sample and two electrodes */
+      const fill=p.k==='Cu'?'#c88033':p.k&&p.k.endsWith('-s')?'#eef2f4':p.k==='NaCl-l'||p.k==='KCl-l'?'#f1c48a':'#a9d4f0';
+      if(p.k)g.rrect(bcx-bw/2+6,btop+(p.k.endsWith('-s')||p.k==='Cu'?50:24),bw-12,bbot-btop-(p.k.endsWith('-s')||p.k==='Cu'?56:30),10,fill,null);
+      g.line(bcx-bw/2,btop,bcx-bw/2,bbot,ink,5);g.line(bcx+bw/2,btop,bcx+bw/2,bbot,ink,5);g.line(bcx-bw/2,bbot,bcx+bw/2,bbot,ink,5);
+      [ex1,ex2].forEach(x=>g.rrect(x-9,btop-10,18,bbot-btop-30,4,'#9aa3a8','#4d5559',3));
+      /* the sample under the beaker */
+      if(p.k)g.chem(CT[p.k].name,bcx,bbot+40,nar?36:40,{color:ink})}
+    u.push(uRect(R.x+6,R.y+4,R.w-12,btop-R.y-10,'the circuit'),uRect(bcx-bw/2-16,btop-18,bw+32,bbot-btop+84,'the beaker'));return {u,beaker:[bcx,(btop+bbot)/2]}}
+  function placeholder(g,Z){g.circle(Z.x,Z.y,Z.r,D.mix(g.c('card'),g.c('accent'),.04),null);
+    const ctx=g.ctx;ctx.save();ctx.setLineDash([16,12]);ctx.lineWidth=5;ctx.strokeStyle=g.c('muted');ctx.beginPath();ctx.arc(Z.x,Z.y,Z.r,0,TAU);ctx.stroke();ctx.restore();
+    g.text('?',Z.x,Z.y+4,110,{color:g.c('muted')})}
+  function zoomView(g,p,I,Z,from,draw){const k=p.k,t=I.live?I.clock:1.3,ctx=g.ctx;if(!draw)return;
+    ctx.save();ctx.globalAlpha*=p.z;g.line(from[0],from[1],Z.x-Z.r*.95,Z.y,g.c('muted'),4,[10,8]);g.circle(Z.x,Z.y,Z.r,g.c('card'),g.c('ink'),5);
+    ctx.beginPath();ctx.arc(Z.x,Z.y,Z.r-4,0,TAU);ctx.clip();const sp=282*CT_S,W=(x,y,r)=>mol2d(g,water(x,y,r,.8));
+    const grid=(pat)=>{for(let r=0;r<3;r++)for(let c=0;c<3;c++){const q=pat[r][c],j=I.live?2*Math.sin(t*9+r*3+c):0;ionK(g,q,Z.x+(c-1)*sp+j,Z.y+(r-1)*sp)}};
+    const drift=(list,trail)=>list.forEach(([q,x0,y0],i)=>{const a=t*(.5+.13*i)+i*2,x=Z.x+x0+28*Math.cos(a),y=Z.y+y0+22*Math.sin(a*1.3);
+      if(trail&&I.live)for(let s=1;s<=3;s++){const b=a-.18*s;ctx.save();ctx.globalAlpha*=.18*(4-s);g.circle(Z.x+x0+28*Math.cos(b),Z.y+y0+22*Math.sin(b*1.3),R_ION[q]*CT_S,q==='Cl'?g.c('an'):g.c('cat'),null);ctx.restore()}
+      ionK(g,q,x,y)});
+    if(k==='NaCl-s')grid([['Cl','Na','Cl'],['Na','Cl','Na'],['Cl','Na','Cl']]);
+    if(k==='CaCl2-s'){/* two rows: 2 Ca2+ and 4 Cl- (1 : 2), all inside the circle */const P=[['Cl','Ca','Cl'],['Ca','Cl','Cl']];
+      for(let r=0;r<2;r++)for(let c=0;c<3;c++){const j=I.live?2*Math.sin(t*9+r*3+c):0;ionK(g,P[r][c],Z.x+(c-1)*sp+j,Z.y+(r-.5)*sp)}}
+    if(k==='NaCl-l')drift([['Na',-.45*Z.r,-.4*Z.r],['Cl',.25*Z.r,-.45*Z.r],['Cl',-.4*Z.r,.38*Z.r],['Na',.42*Z.r,.3*Z.r],['Na',-.02*Z.r,.02*Z.r]],true);
+    if(k==='KCl-l')drift([['K',-.45*Z.r,-.4*Z.r],['Cl',.28*Z.r,-.45*Z.r],['Cl',-.38*Z.r,.4*Z.r],['K',.42*Z.r,.32*Z.r]],true);
+    if(k==='NaCl-aq'){W(Z.x-.42*Z.r,Z.y-.48*Z.r,.3);W(Z.x+.45*Z.r,Z.y+.1*Z.r,2.1);W(Z.x-.25*Z.r,Z.y+.5*Z.r,1.2);drift([['Na',.12*Z.r,-.45*Z.r],['Cl',-.4*Z.r,.05*Z.r]],true)}
+    if(k==='Cu'){const r=R_ION.Cu*CT_S;for(let a=0;a<2;a++)for(let b=0;b<4;b++)ion(g,Z.x+(b-1.5)*2*r,Z.y+(a-.5)*2.25*r,r,g.c('metal'),'+',40);
+      for(let j=0;j<10;j++){const span=2*Z.r,x=Z.x-Z.r+((hash(j*5)*span+t*90)%span),y=Z.y-Z.r*.6+hash(j*7)*Z.r*1.2;g.electron(x,y,12);g.line(x-6,y,x+6,y,g.c('on-ion'),4)}
+      ctx.save();ctx.globalAlpha*=.9;g.line(Z.x-Z.r*.5,Z.y+Z.r*.72,Z.x+Z.r*.4,Z.y+Z.r*.72,g.c('accent'),6);ctx.beginPath();ctx.moveTo(Z.x+Z.r*.5,Z.y+Z.r*.72);ctx.lineTo(Z.x+Z.r*.38,Z.y+Z.r*.64);ctx.lineTo(Z.x+Z.r*.38,Z.y+Z.r*.8);ctx.closePath();ctx.fillStyle=g.c('accent');ctx.fill();ctx.restore()}
+    if(k==='sugar'){sugarBlob(g,Z.x,Z.y-.05*Z.r,true);W(Z.x-.42*Z.r,Z.y-.55*Z.r,.4);W(Z.x+.4*Z.r,Z.y+.48*Z.r,2.4)}
+    if(k==='water'){W(Z.x-.4*Z.r,Z.y-.4*Z.r,.2);W(Z.x+.38*Z.r,Z.y-.3*Z.r,1.4);W(Z.x-.3*Z.r,Z.y+.42*Z.r,2.6);W(Z.x+.36*Z.r,Z.y+.48*Z.r,.9)}
+    ctx.restore()}
+  /* the dissolve family: the beaker alone; the sample drops in, then dissolves (or not) */
+  function dissolve(g,p,I,draw){const w=I.w,h=I.h-res,D0=DIS[p.dis],bw=Math.min(520,w-120),bcx=w/2,btop=150,bbot=h-150,ink=g.c('ink'),t=I.live?Math.min(I.t,3):3,u=[];
+    const drop=clamp(t/.4,0,1),sp=clamp((t-.4)/.55,0,1),wy=btop+40;
+    if(draw){g.rrect(bcx-bw/2+6,wy,bw-12,bbot-wy-6,10,p.dis==='I2'?D.mix('#a9d4f0','#c8a13a',.35*sp):'#a9d4f0',null);
+      g.line(bcx-bw/2,btop,bcx-bw/2,bbot,ink,5);g.line(bcx+bw/2,btop,bcx+bw/2,bbot,ink,5);g.line(bcx-bw/2,bbot,bcx+bw/2,bbot,ink,5);
+      g.chem(D0.name,w/2,60,40,{color:ink});
+      const fallY=lerp(btop-60,bbot-70,drop),fy=bbot-70;
+      if(p.dis==='NaCl'){const P=[['Na',-.32,-.1],['Cl',.05,-.25],['Na',.32,.05],['Cl',-.1,.18],['Na',.18,.32],['Cl',-.36,.3]];
+        P.forEach(([q,a,b],i)=>{const x=lerp(bcx+((i%3)-1)*40,bcx+a*bw,sp),y=lerp(fallY+(Math.floor(i/3)-.5)*40,wy+(bbot-wy)*(.5+b),sp);ionK(g,q,x,y)})}
+      if(p.dis==='sucrose'){[[-.28,-.2],[.25,-.25],[-.05,.15],[.3,.28]].forEach(([a,b],i)=>sugarBlob(g,lerp(bcx,bcx+a*bw,sp),lerp(fallY,wy+(bbot-wy)*(.5+b),sp),false));
+        fade(g,sp,()=>{g.text('sugar molecule',bcx+.25*bw,wy+(bbot-wy)*.25-70,36,{color:ink,halo:6})})}
+      if(p.dis==='CaCO3'){const ctx=g.ctx;ctx.beginPath();ctx.moveTo(bcx-80,fallY+40);ctx.lineTo(bcx-60,fallY-36);ctx.lineTo(bcx+30,fallY-50);ctx.lineTo(bcx+84,fallY+10);ctx.lineTo(bcx+60,fallY+44);ctx.closePath();ctx.fillStyle='#e9e4da';ctx.fill();ctx.lineWidth=4;ctx.strokeStyle='#8a8070';ctx.stroke();
+        fade(g,sp,()=>{ion(g,bcx-150,fy-90,30,g.c('cat'),'2+',36);ion(g,bcx+165,fy-110,46,g.c('an'),'2−',36)})}
+      if(p.dis==='I2'){const ctx=g.ctx;g.rrect(bcx-70,fallY-30,140,60,10,'#5b4a5e','#2e2530',4);
+        fade(g,sp,()=>[[-.3,-.25],[.28,-.1]].forEach(([a,b])=>mol2d(g,diatomic('I','I',266,bcx+a*bw,wy+(bbot-wy)*(.5+b),.3,.42,.5))))}
+      if(p.dis==='SiO2'){const ctx=g.ctx;ctx.beginPath();ctx.moveTo(bcx-60,fallY+40);ctx.lineTo(bcx-60,fallY-20);ctx.lineTo(bcx-30,fallY-60);ctx.lineTo(bcx+30,fallY-60);ctx.lineTo(bcx+60,fallY-20);ctx.lineTo(bcx+60,fallY+40);ctx.closePath();
+        ctx.fillStyle='#f3f6f8';ctx.fill();ctx.lineWidth=4;ctx.strokeStyle='#8a969c';ctx.stroke()}
+      if(p.dis==='Cu'){g.rrect(bcx-70,fallY-34,140,70,22,'#c88033','#7a4a1c',4)}
+      fade(g,sp,()=>g.text('dissolves: '+D0.dissolves,w/2,bbot+52,40,{color:ink}));
+      if(D0.read!==D0.dissolves)fade(g,sp,()=>g.text(D0.read,w/2,bbot+104,36,{color:g.c('muted')}))}
+    u.push(uRect(bcx-bw/2-16,btop-16,bw+32,bbot-btop+32,'the beaker'));g.font(40,700);const nw=Math.max(chemW(g,D0.name,40)+28,260);/* 260 px or wider: 60% of the slide at the 4x cap */u.push(uRect(w/2-nw/2,28,nw,64,'the sample'));
+    u.push(uRect(Math.max(8,w/2-300),bbot+20,Math.min(600,w-16),D0.read!==D0.dissolves?120:66,'the result'));return {u}}
+  return sim(host,{stages:CT_STAGES,params,dur:700,live:s=>/zoom$|^dis\//.test(s),
+    draw(g,p,I){if(p.dis){const sw=fam(I.from)==='dis'&&I.from!==I.stage&&I.k<1?Math.abs(1-2*I.k):1;fade(g,sw,()=>dissolve(g,p,I,true));return}
+      const L=lay(I.w,I.h),sw=fam(I.from)!==fam(I.stage)&&I.k<1?Math.abs(1-2*I.k):1;
+      fade(g,sw,()=>{const c=circuit(g,p,I,L.R,true);if(p.ph>.01)fade(g,p.ph*(1-p.z),()=>placeholder(g,L.Z));if(p.z>.01)zoomView(g,p,I,L.Z,c.beaker,true);
+        const txt=txt0(p,I);
+        /* the readout: centred under the magnified view's place (wide host) or at the foot (narrow host) */
+        if(txt&&L.wide)g.chem(txt,rdX(I,L,txt),L.H-24,40,{color:g.c('ink')});
+        else if(txt){const RL=wrap(g,uni(txt),I.w-48,40);lines(g,RL,24,L.H-30-48*(RL.length-1),40,48,{align:'left',color:g.c('ink')})}})},
+    units:(p,I)=>{const g=D.painter(document.createElement('canvas').getContext('2d'));if(p.dis)return dissolve(g,p,{...I,live:false},false).u;
+      const L=lay(I.w,I.h),u=circuit(g,p,I,L.R,false).u;if(p.z>.5||p.ph>.5)u.push(uRect(L.Z.x-L.Z.r-10,L.Z.y-L.Z.r-10,2*L.Z.r+20,2*L.Z.r+20,p.z>.5?'the magnified view':'the magnified view, to come'));
+      const txt=txt0(p,I);if(txt&&L.wide){const tw=chemW(g,txt,40),x=rdX(I,L,txt);u.push(uRect(x-tw/2-14,L.H-56,tw+28,60,'the readout'))}else if(txt)u.push(uRect(10,L.H-62,I.w-20,64,'the readout'));return u},
+    meta:(p,s)=>{if(p.dis){const d=DIS[p.dis];return {stage:s,family:'dissolve',sample:p.dis,name:uni(d.name),type:d.type,dissolves:d.dissolves,label:d.read}}
+      if(!p.k)return {stage:s,family:'tester',sample:null,lit:false,switchClosed:false,readout:null,placeholder:p.ph>.5};const c=CT[p.k];
+      return {stage:s,family:'tester',sample:p.k,readout:uni(txt0(p,{stage:s}))||null,placeholder:p.ph>.5,name:uni(c.name),state:c.state,chargedParticles:c.charged,freeToMove:c.free,lit:p.lit>.5,litWhenClosed:c.lit,switchClosed:p.sw>.5,zoom:p.z>.5,carriers:c.carriers}}});
+});
+
+/* ---------- 10. hammerBlow (slide 18): copper bends, salt splits ----------
+   stages: before, blow, shift, result. Front layer of each block to one scale (0.30 px per pm): copper cores 128 pm (metallic radius,
+   touching), Na+ 102 pm and Cl- 181 pm at 282 pm spacing; a faint back layer gives the depth. data-reserve keeps the text band free. */
+D.sim('hammerBlow',function(host){
+  const res=+(host.dataset.reserve||0),S=0.30,cs=2*128*S,ns=282*S,COLS=4,ROWS=3;
+  const params={before:{hit:0,shift:0,res:0},blow:{hit:1,shift:0,res:0},shift:{hit:1,shift:1,res:0},result:{hit:0,shift:1,res:1}};
+  const lay=(w,h)=>{const H=h-res;return {cu:{x:w*.25,y:H-40-((ROWS-1)*cs)/2-cs/2},na:{x:w*.72,y:H-40-((ROWS-1)*ns)/2-181*S},H}};
+  /* a hammer swung from the left at the top layer (step 04b, the teacher's review: the blow points the way the layer then slides):
+     the head (140 x 44) lies along the swing, its striking face (right end) at x; the handle rises from the head's middle. xc is the
+     block's left surface at the top row, y the row's centre; hit brings the face in to touch it; the head stays there while the row
+     slides on (so it never runs into the block), and rests there at the result */
+  const HM_IN=56;
+  function hammer(g,xc,y,hit,moving){const x=xc-lerp(HM_IN,2,hit),ink=g.c('muted');
+    if(hit>.5&&moving)[[-14,30],[0,46],[14,30]].forEach(([dy,l])=>g.line(x-148,y+dy,x-148-l,y+dy,ink,5));
+    g.line(x-70,y-22,x-96,y-128,'#5e3f18',22);g.line(x-70,y-22,x-96,y-128,'#9b6a2c',14);g.rrect(x-140,y-22,140,44,8,'#7d868c','#3c4246',4);
+    if(hit>.5&&moving)[[6,-30,22,-52],[6,30,22,52]].forEach(([a,b,c,d])=>g.line(x+a,y+b,x+c,y+d,g.c('bad'),5))}
+  /* a name over each block; at the result the verdict joins it ("copper: malleable") */
+  function nameLine(g,x,y,name,verdict,col,res,draw){const a=name,b=': '+verdict;g.font(40,700);const wa=g.ctx.measureText(a).width,wb=g.ctx.measureText(b).width;
+    if(draw){fade(g,1-res,()=>g.text(a,x,y,40,{color:g.c('ink')}));fade(g,res,()=>{const x0=x-(wa+wb)/2;g.text(a,x0,y,40,{align:'left',color:g.c('ink')});g.text(b,x0+wa,y,40,{align:'left',color:col})})}
+    /* the zoom unit is 260 px or wider (60% of the slide at the 4x cap), like the dissolve family's sample name */
+    const w=Math.max(res>.5?wa+wb:wa,232);return uRect(x-w/2-14,y-32,w+28,64,res>.5?'label: '+a+b:'label: '+a)}
+  /* copper: the top row slides one spacing at the shift; at the result the middle row follows half a spacing: the block bends, one piece */
+  function copper(g,p,I,o,draw){const t=I.live?I.clock:1,r=128*S,pos=[];
+    for(let a=0;a<ROWS;a++)for(let b=0;b<COLS;b++){const off=((a===0?p.shift:0)+(a===1?.5*p.res:0))*cs;pos.push([o.x+(b-1.5)*cs+off,o.y+(a-1)*cs])}
+    if(draw){fade(g,.35,()=>pos.forEach(([x,y])=>g.circle(x+28,y-28,r,g.c('metal'),null)));
+      g.rrect(o.x-1.5*cs-r-14,o.y-cs-r-14,3*cs+2*r+28+p.shift*cs,2*cs+2*r+28,26,D.mix(g.c('e'),g.c('card'),.85),null);
+      pos.forEach(([x,y])=>ion(g,x,y,r,g.c('metal'),'+',40));
+      const ew=3*cs+2*r+p.shift*cs;for(let j=0;j<12;j++){const x=o.x-1.5*cs-r+((hash(j*3)*ew+(I.live?t*(30+p.shift*90):0))%ew),y=o.y-cs-r+8+hash(j*7)*(2*cs+2*r-16);g.electron(x,y,11);g.line(x-6,y,x+6,y,g.c('on-ion'),4)}}
+    return pos}
+  function salt(g,p,I,o,draw){const pos=[];let pairs=0;
+    for(let a=0;a<ROWS;a++)for(let b=0;b<COLS;b++){const cat=(a+b)%2===0,x=o.x+(b-1.5)*ns+(a===0?p.shift*ns:0),y=o.y+(a-1)*ns-(a===0?p.res*46:0);pos.push({x,y,cat,a,b})}
+    /* after the shift every top ion sits above an ion of the same charge */
+    const like=pos.filter(q=>q.a===0).map(q=>{const below=pos.find(z=>z.a===1&&Math.abs(z.x-q.x)<ns*.3);return below&&below.cat===q.cat?[q,below]:null}).filter(Boolean);
+    pairs=p.shift>.5?like.length:0;
+    if(draw){fade(g,.35,()=>pos.forEach(q=>g.circle(q.x+28,q.y-28,(q.cat?102:181)*S,q.cat?g.c('cat'):g.c('an'),null)));
+      pos.slice().sort((u,v)=>(u.cat?1:0)-(v.cat?1:0)).forEach(q=>ion(g,q.x,q.y,(q.cat?102:181)*S,q.cat?g.c('cat'):g.c('an'),q.cat?'+':'−',q.cat?36:44));
+      if(p.shift>.5)like.forEach(([q,z])=>{g.circle(q.x,q.y,(q.cat?102:181)*S+6,null,g.c('bad'),6);g.circle(z.x,z.y,(z.cat?102:181)*S+6,null,g.c('bad'),6)});
+      if(p.res>.01)fade(g,p.res,()=>{const yC=o.y-ns/2-23,ctx=g.ctx;ctx.beginPath();for(let k=0;k<=12;k++){const x=o.x-2.2*ns+k*(4.4*ns/12),y=yC+(k%2?10:-10);k?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.lineWidth=7;ctx.strokeStyle=g.c('bad');ctx.stroke()})}
+    return {pos,pairs}}
+  /* the two names as headers at the top of the host, over their blocks (clear of salt's top row, which rises 46 px at the split) */
+  const names=(g,p,L,draw)=>[nameLine(g,L.cu.x+.5*cs*p.shift,40,'copper','malleable',g.c('ok'),p.res,draw),nameLine(g,L.na.x+.5*ns*p.shift,40,'salt, NaCl','brittle',g.c('bad'),p.res,draw)];
+  return sim(host,{stages:['before','blow','shift','result'],params,dur:{before:600,blow:500,shift:900,result:900},live:()=>true,
+    draw(g,p,I){const L=lay(I.w,I.h);copper(g,p,I,L.cu,true);salt(g,p,I,L.na,true);
+      hammer(g,L.cu.x-1.5*cs-128*S-14,L.cu.y-cs,Math.max(p.hit,p.res),p.shift<.5);hammer(g,L.na.x-1.5*ns-181*S,L.na.y-ns,Math.max(p.hit,p.res),p.shift<.5);
+      names(g,p,L,true)},
+    units:(p,I)=>{const L=lay(I.w,I.h),cuTop=L.cu.y-cs-128*S,naTop=L.na.y-ns-181*S,r1=128*S,r2=181*S,g=D.painter(document.createElement('canvas').getContext('2d'));
+      const u=[uRect(L.cu.x-1.5*cs-r1-16,cuTop-16,3*cs+2*r1+32+p.shift*cs+28,2*cs+2*r1+32+28,'the copper block'),uRect(L.na.x-1.5*ns-r2-16,naTop-16-46*p.res,3*ns+2*r2+32+p.shift*ns+28,2*ns+2*r2+32+28+46*p.res,'the salt block')];
+      {const hit=Math.max(p.hit,p.res),hx=(xc,y)=>{const x=xc-lerp(HM_IN,2,hit);return uRect(x-150,y-140,160,170)};
+        const a=hx(L.cu.x-1.5*cs-r1-14,L.cu.y-cs),b=hx(L.na.x-1.5*ns-r2,L.na.y-ns);a.label='the hammer on copper';b.label='the hammer on salt';u.push(a,b)}
+      u.push(...names(g,p,L,false));return u},
+    meta:(p,s,I)=>{const L=lay(I.w||1472,I.h||687),g=D.painter(document.createElement('canvas').getContext('2d')),sa=salt(g,p,{live:false},L.na,false);
+      return {stage:s,copper:{offsetSpacings:p.shift>.5?1:0,onePiece:true,label:p.res>.5?'malleable':null},nacl:{offsetSpacings:p.shift>.5?1:0,likeChargePairs:sa.pairs,split:p.res>.5,label:p.res>.5?'brittle':null},
+        hammer:p.hit>.5,hammerFrom:'left',hammerMoves:'right',struck:'top layer',topLayerMoves:p.shift>.5?'right':null,radii:{Na:102,Cl:181,Cu:128},spacingPm:282}}});
+});
+
+/* ---------- 11. networkVsMolecules (slide 19): dry ice (molecules), quartz and diamond (networks) ----------
+   stages: co2, sublime, quartz, heat, diamond. Dry ice sublimes at −78.5 °C (no liquid); quartz melts near 1700 °C; diamond is the
+   hardest natural substance. The networks are 3D (Deck.spheres): an idealized SiO2 (each Si bonded to four O, each O bridging two Si)
+   and a diamond fragment, slow turn, fixed view under reduced motion. */
+const NV_TET=[[1,1,1],[1,-1,-1],[-1,1,-1],[-1,-1,1]].map(v=>v.map(x=>x/Math.sqrt(3)));
+/* SiO2: a centre Si, its four O, the four Si beyond them, and each of those Si's three other O (Si–O 161 pm; straight Si–O–Si, idealized) */
+const NV_SIO2=(()=>{const d=1.61,atoms=[{e:'Si',p:[0,0,0]}],bonds=[];
+  NV_TET.forEach((v,k)=>{const o=atoms.push({e:'O',p:v.map(x=>x*d)})-1;bonds.push([0,o]);const si=atoms.push({e:'Si',p:v.map(x=>x*2*d)})-1;bonds.push([si,o]);
+    NV_TET.forEach((w,j)=>{if(j===k)return;const q=atoms.push({e:'O',p:atoms[si].p.map((x,i)=>x-w[i]*d)})-1;bonds.push([si,q])})});return {atoms,bonds}})();
+const NV_C=(()=>{const A=[{e:'C',p:[0,0,0]}],B=[],d=1.54;NV_TET.forEach(v=>{const c=v.map(x=>x*d);A.push({e:'C',p:c});const ci=A.length-1;B.push([0,ci]);
+  NV_TET.forEach(w=>{const q=c.map((x,i)=>x-w[i]*d);if(Math.hypot(...q)<.1)return;A.push({e:'C',p:q});B.push([ci,A.length-1])})});return {atoms:A,bonds:B}})();
+D.sim('networkVsMolecules',function(host){
+  const params={co2:{sc:0,fly:0,th:0,heat:0},sublime:{sc:0,fly:1,th:0,heat:0},quartz:{sc:1,fly:0,th:.08,heat:0},heat:{sc:1,fly:0,th:.62,heat:1},diamond:{sc:2,fly:0,th:0,heat:0}};
+  const LAB={sublime:'sublimes at −78.5 °C: no liquid',quartz:'quartz, SiO₂: one network, no molecules',heat:'to melt it, covalent bonds must break: near 1700 °C',diamond:'diamond: the hardest natural substance'};
+  const caseOf=s=>s==='co2'||s==='sublime'?'co2':s;
+  /* six CO2 molecules, 2 x 3; sublime: they fly apart, whole */
+  const CO2P=[[-.25,-.28,0],[.25,-.3,.08],[-.25,0,-.05],[.25,.02,.05],[-.25,.3,.04],[.25,.3,-.06]],FLY=[[-.25,-.38,-.7],[.22,-.36,.9],[.06,-.1,2.1],[-.2,.12,1.3],[-.22,.36,-.4],[.25,.33,.6]];
+  function co2(g,p,I,draw){const x0=120,W=I.w-x0-6,H=I.h-110,t=I.live?I.clock:0,M=CO2P.map(([a,b,r],i)=>{const f=FLY[i];
+      const x=x0+W/2+lerp(a,f[0],p.fly)*W+(I.live?p.fly*14*Math.sin(t+i):0),y=20+H/2+lerp(b,f[1],p.fly)*H+(I.live?p.fly*12*Math.cos(t*1.2+i):0),rot=lerp(r,f[2],p.fly);
+      const d=BL.CO*.85,c=Math.cos(rot),s=Math.sin(rot);return {atoms:[{s:'O',x:x-c*d,y:y-s*d,r:rad('O')},{s:'C',x,y,r:rad('C')},{s:'O',x:x+c*d,y:y+s*d,r:rad('O')}],bonds:[[0,1],[1,2]]}});
+    if(draw){fade(g,1-p.fly,()=>[[0,1],[2,3],[4,5],[0,2],[2,4],[1,3],[3,5]].forEach(([a,b],k)=>{const A=M[a].atoms[1],B=M[b].atoms[1],fl=I.live?.35+.65*Math.abs(Math.sin(I.clock*2.2+k)):1;dashGray(g,A.x,A.y,B.x,B.y,fl)}));
+      M.forEach(m=>mol2d(g,m))}
+    let x1=1e9,y1=1e9,x2=-1e9,y2=-1e9;M.forEach(m=>m.atoms.forEach(A=>{x1=Math.min(x1,A.x-A.r);x2=Math.max(x2,A.x+A.r);y1=Math.min(y1,A.y-A.r);y2=Math.max(y2,A.y+A.r)}));
+    return {u:[uRect(x1-12,y1-12,x2-x1+24,y2-y1+24,'dry ice: six CO₂ molecules')],n:M.length}}
+  function net(g,p,I,which,draw){const N=which==='sio2'?NV_SIO2:NV_C,x0=which==='sio2'?160:0,W=I.w-x0,H=I.h-120,t=I.live?I.clock*.25:0,jit=I.live&&p.heat>.5?.05:0;
+    const R=which==='sio2'?{Si:.62,O:.46}:{C:.5},sc=Math.min(W/(which==='sio2'?10.4:7.6),H/(which==='sio2'?9.6:7.2));
+    const atoms=N.atoms.map((a,i)=>({p:a.p.map((v,k)=>v+(jit?jit*Math.sin(I.clock*9+i*1.7+k):0)),r:R[a.e],color:CPK[a.e],label:a.e,labelPx:44,kind:a.e}));
+    const v={cx:x0+W/2,cy:20+H/2,scale:sc,yaw:.5+t,pitch:.42,dist:16};
+    let P;if(draw)P=spheres3d(g,{atoms,bonds:N.bonds.map(([a,b])=>({a,b,w:.16}))},v);else P=D.spheres(D.painter(document.createElement('canvas').getContext('2d')),{atoms,bonds:[]},v);
+    let x1=1e9,y1=1e9,x2=-1e9,y2=-1e9;P.forEach(q=>{x1=Math.min(x1,q.x-q.r);x2=Math.max(x2,q.x+q.r);y1=Math.min(y1,q.y-q.r);y2=Math.max(y2,q.y+q.r)});
+    return {u:[uRect(x1-12,y1-12,x2-x1+24,y2-y1+24,which==='sio2'?'quartz network':'diamond network')]}}
+  function thermo(g,p,I,draw,val){const x=52,top=40,bot=I.h-250,f=lerp(.12,.95,p.th),fy=lerp(bot,top+20,f);
+    if(draw){g.rrect(x-18,top,36,bot-top+20,18,g.c('card'),g.c('ink'),4);g.rrect(x-9,fy,18,bot-fy+10,9,g.c('bad'),null);g.circle(x,bot+30,32,g.c('bad'),g.c('ink'),4);
+      if(val)g.text(val,12,bot+100,36,{align:'left',color:g.c('ink')})}
+    g.font(36,700);const tw=g.ctx.measureText(val).width;return uRect(4,top-8,Math.max(110,tw+20),bot-top+146,'the thermometer')}
+  return sim(host,{stages:['co2','sublime','quartz','heat','diamond'],params,dur:{co2:600,sublime:900,quartz:900,heat:900,diamond:900},live:()=>true,
+    draw(g,p,I){const sw=caseOf(I.from)!==caseOf(I.stage)&&I.k<1?Math.abs(1-2*I.k):1,cs=I.k<.5&&caseOf(I.from)!==caseOf(I.stage)?caseOf(I.from):caseOf(I.stage);
+      fade(g,sw,()=>{if(cs==='co2'){co2(g,p,I,true);thermo(g,p,I,true,'−78.5 °C')}
+        else if(cs==='diamond')net(g,p,I,'c',true);else{net(g,p,I,'sio2',true);thermo(g,p,I,true,p.heat>.5?'above 1000 °C':'')}
+        const st=I.k<.5&&caseOf(I.from)!==caseOf(I.stage)?I.from:I.stage,lab=LAB[st];if(lab){const L=wrap(g,lab,I.w-40,40);lines(g,L,I.w/2,I.h-30-48*(L.length-1),40,48,{color:g.c('ink'),halo:8})}})},
+    units:(p,I)=>{const g=D.painter(document.createElement('canvas').getContext('2d')),c=caseOf(I.stage),u=c==='co2'?co2(g,p,{...I,live:false},false).u:net(g,p,{...I,live:false},c==='diamond'?'c':'sio2',false).u;
+      if(c!=='diamond')u.push(thermo(g,p,I,false,c==='co2'?'−78.5 °C':p.heat>.5?'above 1000 °C':''));
+      const lab=LAB[I.stage];if(lab){const L=wrap(g,lab,I.w-40,40);g.font(40,700);const lw=Math.max(...L.map(t=>g.ctx.measureText(t).width));u.push(uRect(I.w/2-lw/2-14,I.h-62-48*(L.length-1),lw+28,48*L.length+20,'label: '+lab))}return u},
+    meta:(p,s)=>({stage:s,co2:{molecules:6,intactAfterSublime:true,sublimesAt:-78.5,flown:p.fly>.5,attractionsDrawn:p.fly>.5?0:7},
+      sio2:{network:true,molecules:0,meltsNear:1700,si:NV_SIO2.atoms.filter(a=>a.e==='Si').length,o:NV_SIO2.atoms.filter(a=>a.e==='O').length,
+        siFourO:NV_SIO2.atoms.every((a,i)=>a.e!=='Si'||NV_SIO2.bonds.filter(b=>b.includes(i)).length===4),oBridging:NV_SIO2.atoms.map((a,i)=>a.e==='O'?NV_SIO2.bonds.filter(b=>b.includes(i)).length:0).filter(n=>n===2).length},
+      diamond:{element:'C',network:true,atoms:NV_C.atoms.length},label:LAB[s]||null,thermometer:s==='co2'||s==='sublime'?'−78.5 °C':s==='heat'?'above 1000 °C':s==='quartz'?'':null})});
+});
+})();
+</script>

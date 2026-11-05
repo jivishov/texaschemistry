@@ -1,0 +1,17 @@
+== 4.5 (scratch deck): <scratchpad>/scratch45.html
+   out <scratchpad>/c03/4-5, theme both, matrix off
+   scratch deck: EMPTY_MAX=1 for walk and layout (emptiness gate off); every other gate unchanged
+  PASS  walk light          131.5 s  walk light: 104 states, max empty 75% (s6f0), PASS
+  PASS  walk dark           131.5 s  walk dark: 104 states, max empty 75% (s6f0), PASS
+  PASS  back light           52.1 s  back: 104 forward, 104 back, PASS
+  PASS  back dark            52.2 s  back: 104 forward, 104 back, PASS
+  PASS  fonts light          30.8 s  fonts: PASS
+  PASS  render3d              2.8 s  render3d: PASS
+  PASS  extras                5.5 s  extras: PASS
+  PASS  zoom light          177.2 s  zoom light: 468 zoomed states over 104 frames (re-flow 1, transform 467), animation 104, part 363, prompt 1; min fill 65%; Back tests 15; PASS
+  PASS  zoom dark           177.7 s  zoom dark: 468 zoomed states over 104 frames (re-flow 1, transform 467), animation 104, part 363, prompt 1; min fill 65%; Back tests 15; PASS
+  PASS  layout               13.7 s  layout: 104 frames, 0 visible option lists (), max empty 75% (s6f0), gate 100%, clipped or ellipsized text: 0, PASS
+  PASS  contact light         3.7 s  contact sheets light: contact-light-1.png (99 shots, 3710 px tall), contact-light-2.png (5 shots, 1000 px tall)
+  PASS  contact dark          3.6 s  contact sheets dark: contact-dark-1.png (99 shots, 3710 px tall), contact-dark-2.png (5 shots, 1000 px tall)
+== 4.5: 12 of 12 pass, 0 fail, 782.3 s
+exit=0

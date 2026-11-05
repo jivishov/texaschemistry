@@ -1,0 +1,16 @@
+  slide 1: min text 56px, sub/sup -px, canvas labels 40px, below floor: 0
+  slide 2: min text 56px, sub/sup -px, canvas labels 36px, below floor: 0
+  slide 3: min text 34px, sub/sup -px, canvas labels 36px, below floor: 0
+  slide 4: min text 34px, sub/sup -px, canvas labels 36px, below floor: 0
+  slide 5: min text 34px, sub/sup -px, canvas labels 36px, below floor: 0
+  slide 6: min text 34px, sub/sup -px, canvas labels 36px, below floor: 0
+  slide 7: min text 34px, sub/sup -px, canvas labels 36px, below floor: 0
+  slide 8: min text 34px, sub/sup 34px, canvas labels -px, below floor: 0
+  slide 9: min text 34px, sub/sup -px, canvas labels 36px, below floor: 0
+  slide 10: min text 34px, sub/sup -px, canvas labels 36px, below floor: 0
+  slide 11: min text 44px, sub/sup -px, canvas labels 36px, below floor: 0
+  slide 12: min text 34px, sub/sup -px, canvas labels 36px, below floor: 0
+  slide 13: min text 34px, sub/sup -px, canvas labels 40px, below floor: 0
+  slide 14: min text 44px, sub/sup -px, canvas labels 36px, below floor: 0
+  slide 15: min text 34px, sub/sup -px, canvas labels 36px, below floor: 0
+fonts: PASS

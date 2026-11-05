@@ -1,0 +1,15 @@
+$ python3 build.py --all
+4.1: unit4/slides-4-1.html  194646 bytes, 2077 lines, md5 ebd342f1ee0e11c47157141cf3b2a59b
+4.2: unit4/slides-4-2.html  203769 bytes, 2153 lines, md5 c3fa219a806963f9a66c3baf643153f4
+4.5: unit4/slides-4-5.html  294677 bytes, 2820 lines, md5 2a2e378a4726e0a6eed58e4d18deb59f
+
+ebd342f1ee0e11c47157141cf3b2a59b  unit4/slides-4-1.html
+c3fa219a806963f9a66c3baf643153f4  unit4/slides-4-2.html
+2a2e378a4726e0a6eed58e4d18deb59f  unit4/slides-4-5.html
+194646 unit4/slides-4-1.html
+203769 unit4/slides-4-2.html
+294677 unit4/slides-4-5.html
+693092 total
+git status --short unit4:
+?? unit4/slides-4-5.html
+changed under tools/slides-kit/parts/shared, audits, build.py, suite.py: 0 files

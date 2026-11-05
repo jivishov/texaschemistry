@@ -1,0 +1,2906 @@
+{
+  "forward": 210,
+  "back": 210,
+  "fails": [],
+  "fwd": {
+    "0.0": {
+      "s": 0,
+      "f": 0,
+      "sims": {},
+      "on": [],
+      "cls": [],
+      "timer": 0
+    },
+    "1.0": {
+      "s": 1,
+      "f": 0,
+      "sims": {
+        "s02-sim": "models"
+      },
+      "on": [
+        "s02-l0"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "1.1": {
+      "s": 1,
+      "f": 1,
+      "sims": {
+        "s02-sim": "models"
+      },
+      "on": [
+        "s02-l1"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "1.2": {
+      "s": 1,
+      "f": 2,
+      "sims": {
+        "s02-sim": "shake"
+      },
+      "on": [
+        "s02-l2"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "1.3": {
+      "s": 1,
+      "f": 3,
+      "sims": {
+        "s02-sim": "pour"
+      },
+      "on": [
+        "s02-l3"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "1.4": {
+      "s": 1,
+      "f": 4,
+      "sims": {
+        "s02-sim": "words"
+      },
+      "on": [
+        "s02-l4"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "2.0": {
+      "s": 2,
+      "f": 0,
+      "sims": {
+        "s03-sim": "snow"
+      },
+      "on": [
+        "s03-c1",
+        "s03-cap",
+        "s03-row"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "2.1": {
+      "s": 2,
+      "f": 1,
+      "sims": {
+        "s03-sim": "salt"
+      },
+      "on": [
+        "s03-c2",
+        "s03-cap",
+        "s03-row"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "2.2": {
+      "s": 2,
+      "f": 2,
+      "sims": {
+        "s03-sim": "sand"
+      },
+      "on": [
+        "s03-c3",
+        "s03-cap",
+        "s03-row"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "2.3": {
+      "s": 2,
+      "f": 3,
+      "sims": {
+        "s03-sim": "sand"
+      },
+      "on": [
+        "s03-c4",
+        "s03-cap",
+        "s03-row"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "2.4": {
+      "s": 2,
+      "f": 4,
+      "sims": {
+        "s03-sim": "sand"
+      },
+      "on": [
+        "s03-c5",
+        "s03-cap",
+        "s03-row"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "2.5": {
+      "s": 2,
+      "f": 5,
+      "sims": {
+        "s03-sim": "melt"
+      },
+      "on": [
+        "s03-c5",
+        "s03-cap",
+        "s03-row"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "2.6": {
+      "s": 2,
+      "f": 6,
+      "sims": {
+        "s03-sim": "numbers"
+      },
+      "on": [
+        "s03-c5",
+        "s03-cap",
+        "s03-row"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "2.7": {
+      "s": 2,
+      "f": 7,
+      "sims": {
+        "s03-sim": "numbers"
+      },
+      "on": [
+        "s03-c5",
+        "s03-cap",
+        "s03-dq"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "2.8": {
+      "s": 2,
+      "f": 8,
+      "sims": {
+        "s03-sim": "numbers"
+      },
+      "on": [
+        "s03-c5",
+        "s03-cap",
+        "s03-dq",
+        "s03-st"
+      ],
+      "cls": [],
+      "timer": 60
+    },
+    "3.0": {
+      "s": 3,
+      "f": 0,
+      "sims": {},
+      "on": [
+        "s04-q1"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "3.1": {
+      "s": 3,
+      "f": 1,
+      "sims": {},
+      "on": [
+        "s04-q2"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "3.2": {
+      "s": 3,
+      "f": 2,
+      "sims": {},
+      "on": [
+        "s04-q3"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "4.0": {
+      "s": 4,
+      "f": 0,
+      "sims": {},
+      "on": [
+        "s05-ican"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "4.1": {
+      "s": 4,
+      "f": 1,
+      "sims": {},
+      "on": [
+        "s05-words"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "4.2": {
+      "s": 4,
+      "f": 2,
+      "sims": {},
+      "on": [
+        "s05-leg",
+        "s05-words"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "5.0": {
+      "s": 5,
+      "f": 0,
+      "sims": {
+        "s06-sim": "chlorine"
+      },
+      "on": [
+        "s06-c0",
+        "s06-cap"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "5.1": {
+      "s": 5,
+      "f": 1,
+      "sims": {
+        "s06-sim": "chlorine"
+      },
+      "on": [
+        "s06-c0",
+        "s06-cap",
+        "s06-pred"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "5.2": {
+      "s": 5,
+      "f": 2,
+      "sims": {
+        "s06-sim": "within"
+      },
+      "on": [
+        "s06-c0",
+        "s06-c1",
+        "s06-cap"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "5.3": {
+      "s": 5,
+      "f": 3,
+      "sims": {
+        "s06-sim": "between"
+      },
+      "on": [
+        "s06-c0",
+        "s06-c1",
+        "s06-c2",
+        "s06-cap"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "5.4": {
+      "s": 5,
+      "f": 4,
+      "sims": {
+        "s06-sim": "salt"
+      },
+      "on": [
+        "s06-c0",
+        "s06-c1",
+        "s06-c2",
+        "s06-c3",
+        "s06-cap"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "5.5": {
+      "s": 5,
+      "f": 5,
+      "sims": {
+        "s06-sim": "copper"
+      },
+      "on": [
+        "s06-c0",
+        "s06-c1",
+        "s06-c2",
+        "s06-c3",
+        "s06-c4",
+        "s06-cap"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "5.6": {
+      "s": 5,
+      "f": 6,
+      "sims": {
+        "s06-sim": "copper"
+      },
+      "on": [
+        "s06-cap",
+        "s06-rule"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "5.7": {
+      "s": 5,
+      "f": 7,
+      "sims": {
+        "s06-sim": "between"
+      },
+      "on": [
+        "s06-check"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "5.8": {
+      "s": 5,
+      "f": 8,
+      "sims": {
+        "s06-sim": "between"
+      },
+      "on": [
+        "s06-ans",
+        "s06-check"
+      ],
+      "cls": [
+        "s06-a:right",
+        "s06-check:done"
+      ],
+      "timer": 0
+    },
+    "6.0": {
+      "s": 6,
+      "f": 0,
+      "sims": {
+        "s07-sim": "cloud",
+        "s07-plot": "axes"
+      },
+      "on": [
+        "s07-c0",
+        "s07-sim"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "6.1": {
+      "s": 6,
+      "f": 1,
+      "sims": {
+        "s07-sim": "cloud",
+        "s07-plot": "axes"
+      },
+      "on": [
+        "s07-c0",
+        "s07-pred",
+        "s07-sim"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "6.2": {
+      "s": 6,
+      "f": 2,
+      "sims": {
+        "s07-sim": "flicker",
+        "s07-plot": "axes"
+      },
+      "on": [
+        "s07-c0",
+        "s07-c1",
+        "s07-sim"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "6.3": {
+      "s": 6,
+      "f": 3,
+      "sims": {
+        "s07-sim": "neighbor",
+        "s07-plot": "axes"
+      },
+      "on": [
+        "s07-c0",
+        "s07-c1",
+        "s07-sim"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "6.4": {
+      "s": 6,
+      "f": 4,
+      "sims": {
+        "s07-sim": "attract",
+        "s07-plot": "axes"
+      },
+      "on": [
+        "s07-c0",
+        "s07-c1",
+        "s07-c2",
+        "s07-sim"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "6.5": {
+      "s": 6,
+      "f": 5,
+      "sims": {
+        "s07-sim": "attract",
+        "s07-plot": "axes"
+      },
+      "on": [
+        "s07-c2",
+        "s07-c3",
+        "s07-plot"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "6.6": {
+      "s": 6,
+      "f": 6,
+      "sims": {
+        "s07-sim": "attract",
+        "s07-plot": "F2"
+      },
+      "on": [
+        "s07-c2",
+        "s07-c3",
+        "s07-plot"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "6.7": {
+      "s": 6,
+      "f": 7,
+      "sims": {
+        "s07-sim": "attract",
+        "s07-plot": "Cl2"
+      },
+      "on": [
+        "s07-c2",
+        "s07-c3",
+        "s07-plot"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "6.8": {
+      "s": 6,
+      "f": 8,
+      "sims": {
+        "s07-sim": "attract",
+        "s07-plot": "Br2"
+      },
+      "on": [
+        "s07-c2",
+        "s07-c3",
+        "s07-plot"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "6.9": {
+      "s": 6,
+      "f": 9,
+      "sims": {
+        "s07-sim": "attract",
+        "s07-plot": "I2"
+      },
+      "on": [
+        "s07-c2",
+        "s07-c3",
+        "s07-plot"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "6.10": {
+      "s": 6,
+      "f": 10,
+      "sims": {
+        "s07-sim": "attract",
+        "s07-plot": "trend"
+      },
+      "on": [
+        "s07-c2",
+        "s07-c3",
+        "s07-plot"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "6.11": {
+      "s": 6,
+      "f": 11,
+      "sims": {
+        "s07-sim": "attract",
+        "s07-plot": "trend"
+      },
+      "on": [
+        "s07-c2",
+        "s07-c3",
+        "s07-plot",
+        "s07-rule"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "6.12": {
+      "s": 6,
+      "f": 12,
+      "sims": {
+        "s07-sim": "attract",
+        "s07-plot": "trend"
+      },
+      "on": [
+        "s07-check",
+        "s07-plot",
+        "s07-rule"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "6.13": {
+      "s": 6,
+      "f": 13,
+      "sims": {
+        "s07-sim": "attract",
+        "s07-plot": "trend"
+      },
+      "on": [
+        "s07-ans",
+        "s07-check",
+        "s07-plot",
+        "s07-rule"
+      ],
+      "cls": [
+        "s07-a:right",
+        "s07-check:done"
+      ],
+      "timer": 0
+    },
+    "7.0": {
+      "s": 7,
+      "f": 0,
+      "sims": {
+        "s08-sim": "F2"
+      },
+      "on": [
+        "s08-c0"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "7.1": {
+      "s": 7,
+      "f": 1,
+      "sims": {
+        "s08-sim": "HCl"
+      },
+      "on": [
+        "s08-c0",
+        "s08-c1"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "7.2": {
+      "s": 7,
+      "f": 2,
+      "sims": {
+        "s08-sim": "HCl"
+      },
+      "on": [
+        "s08-c0",
+        "s08-c1",
+        "s08-pred"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "7.3": {
+      "s": 7,
+      "f": 3,
+      "sims": {
+        "s08-sim": "turn"
+      },
+      "on": [
+        "s08-c0",
+        "s08-c1"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "7.4": {
+      "s": 7,
+      "f": 4,
+      "sims": {
+        "s08-sim": "face"
+      },
+      "on": [
+        "s08-c0",
+        "s08-c1",
+        "s08-c2"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "7.5": {
+      "s": 7,
+      "f": 5,
+      "sims": {
+        "s08-sim": "compare"
+      },
+      "on": [
+        "s08-c0",
+        "s08-c1",
+        "s08-c2",
+        "s08-c3"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "7.6": {
+      "s": 7,
+      "f": 6,
+      "sims": {
+        "s08-sim": "compare"
+      },
+      "on": [
+        "s08-c0",
+        "s08-c1",
+        "s08-c2",
+        "s08-c3",
+        "s08-rule"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "7.7": {
+      "s": 7,
+      "f": 7,
+      "sims": {
+        "s08-sim": "compare"
+      },
+      "on": [
+        "s08-check",
+        "s08-rule"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "7.8": {
+      "s": 7,
+      "f": 8,
+      "sims": {
+        "s08-sim": "compare"
+      },
+      "on": [
+        "s08-ans",
+        "s08-check",
+        "s08-rule"
+      ],
+      "cls": [
+        "s08-a:right",
+        "s08-check:done"
+      ],
+      "timer": 0
+    },
+    "8.0": {
+      "s": 8,
+      "f": 0,
+      "sims": {
+        "s09-plot": "trio",
+        "s09-sim": "cloud"
+      },
+      "on": [
+        "s09-c0",
+        "s09-plot"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "8.1": {
+      "s": 8,
+      "f": 1,
+      "sims": {
+        "s09-plot": "trio",
+        "s09-sim": "cloud"
+      },
+      "on": [
+        "s09-c0",
+        "s09-plot",
+        "s09-pred"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "8.2": {
+      "s": 8,
+      "f": 2,
+      "sims": {
+        "s09-plot": "reveal",
+        "s09-sim": "cloud"
+      },
+      "on": [
+        "s09-c0",
+        "s09-plot",
+        "s09-pred"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "8.3": {
+      "s": 8,
+      "f": 3,
+      "sims": {
+        "s09-plot": "reveal",
+        "s09-sim": "hbond"
+      },
+      "on": [
+        "s09-c1",
+        "s09-sim"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "8.4": {
+      "s": 8,
+      "f": 4,
+      "sims": {
+        "s09-plot": "reveal",
+        "s09-sim": "hbond"
+      },
+      "on": [
+        "s09-c1",
+        "s09-c2",
+        "s09-sim"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "8.5": {
+      "s": 8,
+      "f": 5,
+      "sims": {
+        "s09-plot": "reveal",
+        "s09-sim": "ammonia"
+      },
+      "on": [
+        "s09-c1",
+        "s09-c2",
+        "s09-sim"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "8.6": {
+      "s": 8,
+      "f": 6,
+      "sims": {
+        "s09-plot": "reveal",
+        "s09-sim": "methane"
+      },
+      "on": [
+        "s09-c2",
+        "s09-c3",
+        "s09-sim"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "8.7": {
+      "s": 8,
+      "f": 7,
+      "sims": {
+        "s09-plot": "reveal",
+        "s09-sim": "four"
+      },
+      "on": [
+        "s09-c2",
+        "s09-c3",
+        "s09-c4",
+        "s09-sim"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "8.8": {
+      "s": 8,
+      "f": 8,
+      "sims": {
+        "s09-plot": "reveal",
+        "s09-sim": "four"
+      },
+      "on": [
+        "s09-c2",
+        "s09-c3",
+        "s09-c4",
+        "s09-rule",
+        "s09-sim"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "8.9": {
+      "s": 8,
+      "f": 9,
+      "sims": {
+        "s09-plot": "reveal",
+        "s09-sim": "four"
+      },
+      "on": [
+        "s09-check",
+        "s09-rule",
+        "s09-sim"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "8.10": {
+      "s": 8,
+      "f": 10,
+      "sims": {
+        "s09-plot": "reveal",
+        "s09-sim": "four"
+      },
+      "on": [
+        "s09-ans",
+        "s09-check",
+        "s09-rule",
+        "s09-sim"
+      ],
+      "cls": [
+        "s09-a:right",
+        "s09-check:done"
+      ],
+      "timer": 0
+    },
+    "9.0": {
+      "s": 9,
+      "f": 0,
+      "sims": {
+        "s10-sim": "empty"
+      },
+      "on": [
+        "s10-steps"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "9.1": {
+      "s": 9,
+      "f": 1,
+      "sims": {
+        "s10-sim": "NH3/polar"
+      },
+      "on": [
+        "s10-h1"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "9.2": {
+      "s": 9,
+      "f": 2,
+      "sims": {
+        "s10-sim": "NH3/H"
+      },
+      "on": [
+        "s10-h1"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "9.3": {
+      "s": 9,
+      "f": 3,
+      "sims": {
+        "s10-sim": "NH3/lone"
+      },
+      "on": [
+        "s10-h1"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "9.4": {
+      "s": 9,
+      "f": 4,
+      "sims": {
+        "s10-sim": "NH3/strongest"
+      },
+      "on": [
+        "s10-h1"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "9.5": {
+      "s": 9,
+      "f": 5,
+      "sims": {
+        "s10-sim": "CO2/polar"
+      },
+      "on": [
+        "s10-h2"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "9.6": {
+      "s": 9,
+      "f": 6,
+      "sims": {
+        "s10-sim": "CO2/H"
+      },
+      "on": [
+        "s10-h2"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "9.7": {
+      "s": 9,
+      "f": 7,
+      "sims": {
+        "s10-sim": "CO2/strongest"
+      },
+      "on": [
+        "s10-h2"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "9.8": {
+      "s": 9,
+      "f": 8,
+      "sims": {
+        "s10-sim": "HBr/EN"
+      },
+      "on": [
+        "s10-h3"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "9.9": {
+      "s": 9,
+      "f": 9,
+      "sims": {
+        "s10-sim": "HBr/EN"
+      },
+      "on": [
+        "s10-h3"
+      ],
+      "cls": [],
+      "timer": 90
+    },
+    "9.10": {
+      "s": 9,
+      "f": 10,
+      "sims": {
+        "s10-sim": "HBr/polar"
+      },
+      "on": [
+        "s10-h3"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "9.11": {
+      "s": 9,
+      "f": 11,
+      "sims": {
+        "s10-sim": "HBr/H"
+      },
+      "on": [
+        "s10-h3"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "9.12": {
+      "s": 9,
+      "f": 12,
+      "sims": {
+        "s10-sim": "HBr/strongest"
+      },
+      "on": [
+        "s10-h3"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "10.0": {
+      "s": 10,
+      "f": 0,
+      "sims": {
+        "s11-sim": "CH4/solid"
+      },
+      "on": [
+        "s11-c0"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "10.1": {
+      "s": 10,
+      "f": 1,
+      "sims": {
+        "s11-sim": "CH4/solid"
+      },
+      "on": [
+        "s11-c0",
+        "s11-pred"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "10.2": {
+      "s": 10,
+      "f": 2,
+      "sims": {
+        "s11-sim": "CH4/melt"
+      },
+      "on": [
+        "s11-c0",
+        "s11-c1"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "10.3": {
+      "s": 10,
+      "f": 3,
+      "sims": {
+        "s11-sim": "CH4/liquid"
+      },
+      "on": [
+        "s11-c0",
+        "s11-c1"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "10.4": {
+      "s": 10,
+      "f": 4,
+      "sims": {
+        "s11-sim": "CH4/boil"
+      },
+      "on": [
+        "s11-c0",
+        "s11-c1",
+        "s11-c2"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "10.5": {
+      "s": 10,
+      "f": 5,
+      "sims": {
+        "s11-sim": "CH4/gas"
+      },
+      "on": [
+        "s11-c0",
+        "s11-c1",
+        "s11-c2"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "10.6": {
+      "s": 10,
+      "f": 6,
+      "sims": {
+        "s11-sim": "H2O/boil"
+      },
+      "on": [
+        "s11-c3"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "10.7": {
+      "s": 10,
+      "f": 7,
+      "sims": {
+        "s11-sim": "energy"
+      },
+      "on": [
+        "s11-c3",
+        "s11-c4"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "10.8": {
+      "s": 10,
+      "f": 8,
+      "sims": {
+        "s11-sim": "energy"
+      },
+      "on": [
+        "s11-c3",
+        "s11-c4",
+        "s11-rule"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "10.9": {
+      "s": 10,
+      "f": 9,
+      "sims": {
+        "s11-sim": "H2O/gas"
+      },
+      "on": [
+        "s11-check",
+        "s11-rule"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "10.10": {
+      "s": 10,
+      "f": 10,
+      "sims": {
+        "s11-sim": "H2O/gas"
+      },
+      "on": [
+        "s11-ans",
+        "s11-check",
+        "s11-rule"
+      ],
+      "cls": [
+        "s11-a:right",
+        "s11-check:done"
+      ],
+      "timer": 0
+    },
+    "11.0": {
+      "s": 11,
+      "f": 0,
+      "sims": {
+        "s12-sim": "molecules"
+      },
+      "on": [
+        "s12-c0"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "11.1": {
+      "s": 11,
+      "f": 1,
+      "sims": {
+        "s12-sim": "hbonds"
+      },
+      "on": [
+        "s12-c0",
+        "s12-c1"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "11.2": {
+      "s": 11,
+      "f": 2,
+      "sims": {
+        "s12-sim": "neighbors"
+      },
+      "on": [
+        "s12-c0",
+        "s12-c1",
+        "s12-c2"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "11.3": {
+      "s": 11,
+      "f": 3,
+      "sims": {
+        "s12-sim": "neighbors"
+      },
+      "on": [
+        "s12-c0",
+        "s12-c1",
+        "s12-c2",
+        "s12-pred"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "11.4": {
+      "s": 11,
+      "f": 4,
+      "sims": {
+        "s12-sim": "rings"
+      },
+      "on": [
+        "s12-c0",
+        "s12-c1",
+        "s12-c2",
+        "s12-c3"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "11.5": {
+      "s": 11,
+      "f": 5,
+      "sims": {
+        "s12-sim": "float"
+      },
+      "on": [
+        "s12-c3",
+        "s12-c4"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "11.6": {
+      "s": 11,
+      "f": 6,
+      "sims": {
+        "s12-sim": "float"
+      },
+      "on": [
+        "s12-c3",
+        "s12-c4",
+        "s12-c5"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "11.7": {
+      "s": 11,
+      "f": 7,
+      "sims": {
+        "s12-sim": "float"
+      },
+      "on": [
+        "s12-c3",
+        "s12-c4",
+        "s12-c5",
+        "s12-rule"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "11.8": {
+      "s": 11,
+      "f": 8,
+      "sims": {
+        "s12-sim": "float"
+      },
+      "on": [
+        "s12-check",
+        "s12-rule"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "11.9": {
+      "s": 11,
+      "f": 9,
+      "sims": {
+        "s12-sim": "float"
+      },
+      "on": [
+        "s12-ans",
+        "s12-check",
+        "s12-rule"
+      ],
+      "cls": [
+        "s12-a:right",
+        "s12-check:done"
+      ],
+      "timer": 0
+    },
+    "12.0": {
+      "s": 12,
+      "f": 0,
+      "sims": {},
+      "on": [
+        "s13-r1"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "12.1": {
+      "s": 12,
+      "f": 1,
+      "sims": {},
+      "on": [
+        "s13-r1",
+        "s13-r2"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "12.2": {
+      "s": 12,
+      "f": 2,
+      "sims": {},
+      "on": [
+        "s13-r1",
+        "s13-r2",
+        "s13-r3"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "12.3": {
+      "s": 12,
+      "f": 3,
+      "sims": {},
+      "on": [
+        "s13-line",
+        "s13-r1",
+        "s13-r2",
+        "s13-r3"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "12.4": {
+      "s": 12,
+      "f": 4,
+      "sims": {},
+      "on": [
+        "s13-r1",
+        "s13-r2",
+        "s13-r3",
+        "s13-w"
+      ],
+      "cls": [],
+      "timer": 90
+    },
+    "13.0": {
+      "s": 13,
+      "f": 0,
+      "sims": {},
+      "on": [],
+      "cls": [],
+      "timer": 0
+    },
+    "13.1": {
+      "s": 13,
+      "f": 1,
+      "sims": {},
+      "on": [],
+      "cls": [],
+      "timer": 90
+    },
+    "13.2": {
+      "s": 13,
+      "f": 2,
+      "sims": {},
+      "on": [
+        "s14-a1"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "13.3": {
+      "s": 13,
+      "f": 3,
+      "sims": {},
+      "on": [
+        "s14-a1",
+        "s14-a2"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "13.4": {
+      "s": 13,
+      "f": 4,
+      "sims": {},
+      "on": [
+        "s14-a1",
+        "s14-a2",
+        "s14-a3"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "14.0": {
+      "s": 14,
+      "f": 0,
+      "sims": {
+        "s15-sim": "tester"
+      },
+      "on": [
+        "s15-cap",
+        "s15-p0"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "14.1": {
+      "s": 14,
+      "f": 1,
+      "sims": {
+        "s15-sim": "NaCl-s/predict"
+      },
+      "on": [
+        "s15-cap",
+        "s15-p1"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "14.2": {
+      "s": 14,
+      "f": 2,
+      "sims": {
+        "s15-sim": "NaCl-s/close"
+      },
+      "on": [
+        "s15-cap",
+        "s15-p1"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "14.3": {
+      "s": 14,
+      "f": 3,
+      "sims": {
+        "s15-sim": "NaCl-s/zoom"
+      },
+      "on": [
+        "s15-cap",
+        "s15-p2"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "14.4": {
+      "s": 14,
+      "f": 4,
+      "sims": {
+        "s15-sim": "NaCl-l/predict"
+      },
+      "on": [
+        "s15-cap",
+        "s15-p3"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "14.5": {
+      "s": 14,
+      "f": 5,
+      "sims": {
+        "s15-sim": "NaCl-l/close"
+      },
+      "on": [
+        "s15-cap",
+        "s15-p3"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "14.6": {
+      "s": 14,
+      "f": 6,
+      "sims": {
+        "s15-sim": "NaCl-l/zoom"
+      },
+      "on": [
+        "s15-cap",
+        "s15-p4"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "14.7": {
+      "s": 14,
+      "f": 7,
+      "sims": {
+        "s15-sim": "NaCl-aq/zoom"
+      },
+      "on": [
+        "s15-cap",
+        "s15-p5"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "14.8": {
+      "s": 14,
+      "f": 8,
+      "sims": {
+        "s15-sim": "Cu/zoom"
+      },
+      "on": [
+        "s15-cap",
+        "s15-p6"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "14.9": {
+      "s": 14,
+      "f": 9,
+      "sims": {
+        "s15-sim": "sugar/close"
+      },
+      "on": [
+        "s15-cap",
+        "s15-p7"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "14.10": {
+      "s": 14,
+      "f": 10,
+      "sims": {
+        "s15-sim": "water/close"
+      },
+      "on": [
+        "s15-cap",
+        "s15-p8"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "14.11": {
+      "s": 14,
+      "f": 11,
+      "sims": {
+        "s15-sim": "water/close"
+      },
+      "on": [
+        "s15-cap",
+        "s15-rule"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "14.12": {
+      "s": 14,
+      "f": 12,
+      "sims": {
+        "s15-sim": "NaCl-l/zoom"
+      },
+      "on": [
+        "s15-check"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "14.13": {
+      "s": 14,
+      "f": 13,
+      "sims": {
+        "s15-sim": "NaCl-l/zoom"
+      },
+      "on": [
+        "s15-ans",
+        "s15-check"
+      ],
+      "cls": [
+        "s15-a:right",
+        "s15-check:done"
+      ],
+      "timer": 0
+    },
+    "15.0": {
+      "s": 15,
+      "f": 0,
+      "sims": {
+        "s16-sim": "KCl-l/predict"
+      },
+      "on": [
+        "s16-steps",
+        "s16-tk"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "15.1": {
+      "s": 15,
+      "f": 1,
+      "sims": {
+        "s16-sim": "KCl-l/predict"
+      },
+      "on": [
+        "s16-k1",
+        "s16-steps",
+        "s16-tk"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "15.2": {
+      "s": 15,
+      "f": 2,
+      "sims": {
+        "s16-sim": "KCl-l/predict"
+      },
+      "on": [
+        "s16-k1",
+        "s16-k2",
+        "s16-steps",
+        "s16-tk"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "15.3": {
+      "s": 15,
+      "f": 3,
+      "sims": {
+        "s16-sim": "KCl-l/predict"
+      },
+      "on": [
+        "s16-k1",
+        "s16-k2",
+        "s16-k3",
+        "s16-steps",
+        "s16-tk"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "15.4": {
+      "s": 15,
+      "f": 4,
+      "sims": {
+        "s16-sim": "KCl-l/predict"
+      },
+      "on": [
+        "s16-k1",
+        "s16-k2",
+        "s16-k3",
+        "s16-k4",
+        "s16-steps",
+        "s16-tk"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "15.5": {
+      "s": 15,
+      "f": 5,
+      "sims": {
+        "s16-sim": "KCl-l/close"
+      },
+      "on": [
+        "s16-k1",
+        "s16-k2",
+        "s16-k3",
+        "s16-k4",
+        "s16-steps",
+        "s16-tk"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "15.6": {
+      "s": 15,
+      "f": 6,
+      "sims": {
+        "s16-sim": "CaCl2-s/predict"
+      },
+      "on": [
+        "s16-c1",
+        "s16-steps",
+        "s16-tc"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "15.7": {
+      "s": 15,
+      "f": 7,
+      "sims": {
+        "s16-sim": "CaCl2-s/predict"
+      },
+      "on": [
+        "s16-c1",
+        "s16-c2",
+        "s16-steps",
+        "s16-tc"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "15.8": {
+      "s": 15,
+      "f": 8,
+      "sims": {
+        "s16-sim": "CaCl2-s/predict"
+      },
+      "on": [
+        "s16-c1",
+        "s16-c2",
+        "s16-c3",
+        "s16-steps",
+        "s16-tc"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "15.9": {
+      "s": 15,
+      "f": 9,
+      "sims": {
+        "s16-sim": "CaCl2-s/predict"
+      },
+      "on": [
+        "s16-c1",
+        "s16-c2",
+        "s16-c3",
+        "s16-c4",
+        "s16-steps",
+        "s16-tc"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "15.10": {
+      "s": 15,
+      "f": 10,
+      "sims": {
+        "s16-sim": "CaCl2-s/close"
+      },
+      "on": [
+        "s16-c1",
+        "s16-c2",
+        "s16-c3",
+        "s16-c4",
+        "s16-steps",
+        "s16-tc"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "15.11": {
+      "s": 15,
+      "f": 11,
+      "sims": {
+        "s16-sim": "tester"
+      },
+      "on": [
+        "s16-c1",
+        "s16-c2",
+        "s16-c3",
+        "s16-c4",
+        "s16-steps",
+        "s16-tc",
+        "s16-you"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "15.12": {
+      "s": 15,
+      "f": 12,
+      "sims": {
+        "s16-sim": "tester"
+      },
+      "on": [
+        "s16-c1",
+        "s16-c2",
+        "s16-c3",
+        "s16-c4",
+        "s16-steps",
+        "s16-tc",
+        "s16-you"
+      ],
+      "cls": [],
+      "timer": 90
+    },
+    "15.13": {
+      "s": 15,
+      "f": 13,
+      "sims": {
+        "s16-sim": "tester"
+      },
+      "on": [
+        "s16-a1",
+        "s16-c1",
+        "s16-c2",
+        "s16-c3",
+        "s16-c4",
+        "s16-steps",
+        "s16-tc",
+        "s16-you"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "15.14": {
+      "s": 15,
+      "f": 14,
+      "sims": {
+        "s16-sim": "KCl-l/zoom"
+      },
+      "on": [
+        "s16-a1",
+        "s16-a2",
+        "s16-c1",
+        "s16-c2",
+        "s16-c3",
+        "s16-c4",
+        "s16-steps",
+        "s16-tc",
+        "s16-you"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "16.0": {
+      "s": 16,
+      "f": 0,
+      "sims": {
+        "s17-sim": "tester"
+      },
+      "on": [
+        "s17-c0",
+        "s17-cap",
+        "s17-six"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "16.1": {
+      "s": 16,
+      "f": 1,
+      "sims": {
+        "s17-sim": "tester"
+      },
+      "on": [
+        "s17-c0",
+        "s17-cap",
+        "s17-pred",
+        "s17-six"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "16.2": {
+      "s": 16,
+      "f": 2,
+      "sims": {
+        "s17-sim": "dis/NaCl"
+      },
+      "on": [
+        "s17-cap",
+        "s17-r1",
+        "s17-sim",
+        "s17-tab"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "16.3": {
+      "s": 16,
+      "f": 3,
+      "sims": {
+        "s17-sim": "dis/sucrose"
+      },
+      "on": [
+        "s17-cap",
+        "s17-r1",
+        "s17-r2",
+        "s17-sim",
+        "s17-tab"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "16.4": {
+      "s": 16,
+      "f": 4,
+      "sims": {
+        "s17-sim": "dis/CaCO3"
+      },
+      "on": [
+        "s17-cap",
+        "s17-r1",
+        "s17-r2",
+        "s17-r3",
+        "s17-sim",
+        "s17-tab"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "16.5": {
+      "s": 16,
+      "f": 5,
+      "sims": {
+        "s17-sim": "dis/I2"
+      },
+      "on": [
+        "s17-cap",
+        "s17-r1",
+        "s17-r2",
+        "s17-r3",
+        "s17-r4",
+        "s17-sim",
+        "s17-tab"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "16.6": {
+      "s": 16,
+      "f": 6,
+      "sims": {
+        "s17-sim": "dis/SiO2"
+      },
+      "on": [
+        "s17-cap",
+        "s17-r1",
+        "s17-r2",
+        "s17-r3",
+        "s17-r4",
+        "s17-r5",
+        "s17-sim",
+        "s17-tab"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "16.7": {
+      "s": 16,
+      "f": 7,
+      "sims": {
+        "s17-sim": "dis/Cu"
+      },
+      "on": [
+        "s17-cap",
+        "s17-r1",
+        "s17-r2",
+        "s17-r3",
+        "s17-r4",
+        "s17-r5",
+        "s17-r6",
+        "s17-sim",
+        "s17-tab"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "16.8": {
+      "s": 16,
+      "f": 8,
+      "sims": {
+        "s17-sim": "dis/Cu"
+      },
+      "on": [
+        "s17-cap",
+        "s17-r1",
+        "s17-r2",
+        "s17-r3",
+        "s17-r4",
+        "s17-r5",
+        "s17-r6",
+        "s17-rule",
+        "s17-sim"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "16.9": {
+      "s": 16,
+      "f": 9,
+      "sims": {
+        "s17-sim": "dis/CaCO3"
+      },
+      "on": [
+        "s17-check",
+        "s17-rule",
+        "s17-sim"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "16.10": {
+      "s": 16,
+      "f": 10,
+      "sims": {
+        "s17-sim": "dis/CaCO3"
+      },
+      "on": [
+        "s17-ans",
+        "s17-check",
+        "s17-rule",
+        "s17-sim"
+      ],
+      "cls": [
+        "s17-a:right",
+        "s17-check:done"
+      ],
+      "timer": 0
+    },
+    "17.0": {
+      "s": 17,
+      "f": 0,
+      "sims": {
+        "s18-sim": "before"
+      },
+      "on": [
+        "s18-cap",
+        "s18-p0",
+        "s18-sz"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "17.1": {
+      "s": 17,
+      "f": 1,
+      "sims": {
+        "s18-sim": "before"
+      },
+      "on": [
+        "s18-cap",
+        "s18-p0",
+        "s18-p1"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "17.2": {
+      "s": 17,
+      "f": 2,
+      "sims": {
+        "s18-sim": "blow"
+      },
+      "on": [
+        "s18-cap",
+        "s18-p0",
+        "s18-p1",
+        "s18-pb"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "17.3": {
+      "s": 17,
+      "f": 3,
+      "sims": {
+        "s18-sim": "shift"
+      },
+      "on": [
+        "s18-cap",
+        "s18-p2"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "17.4": {
+      "s": 17,
+      "f": 4,
+      "sims": {
+        "s18-sim": "result"
+      },
+      "on": [
+        "s18-cap",
+        "s18-p3"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "17.5": {
+      "s": 17,
+      "f": 5,
+      "sims": {
+        "s18-sim": "result"
+      },
+      "on": [
+        "s18-cap",
+        "s18-p4"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "17.6": {
+      "s": 17,
+      "f": 6,
+      "sims": {
+        "s18-sim": "result"
+      },
+      "on": [
+        "s18-cap",
+        "s18-rule"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "17.7": {
+      "s": 17,
+      "f": 7,
+      "sims": {
+        "s18-sim": "result"
+      },
+      "on": [
+        "s18-check"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "17.8": {
+      "s": 17,
+      "f": 8,
+      "sims": {
+        "s18-sim": "result"
+      },
+      "on": [
+        "s18-ans",
+        "s18-check"
+      ],
+      "cls": [
+        "s18-a:right",
+        "s18-check:done"
+      ],
+      "timer": 0
+    },
+    "18.0": {
+      "s": 18,
+      "f": 0,
+      "sims": {
+        "s19-sim": "co2"
+      },
+      "on": [
+        "s19-c0",
+        "s19-cap"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "18.1": {
+      "s": 18,
+      "f": 1,
+      "sims": {
+        "s19-sim": "co2"
+      },
+      "on": [
+        "s19-c0",
+        "s19-cap",
+        "s19-pred"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "18.2": {
+      "s": 18,
+      "f": 2,
+      "sims": {
+        "s19-sim": "sublime"
+      },
+      "on": [
+        "s19-c0",
+        "s19-c1",
+        "s19-cap"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "18.3": {
+      "s": 18,
+      "f": 3,
+      "sims": {
+        "s19-sim": "quartz"
+      },
+      "on": [
+        "s19-c0",
+        "s19-c1",
+        "s19-c2",
+        "s19-cap"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "18.4": {
+      "s": 18,
+      "f": 4,
+      "sims": {
+        "s19-sim": "heat"
+      },
+      "on": [
+        "s19-c0",
+        "s19-c1",
+        "s19-c2",
+        "s19-c3",
+        "s19-cap"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "18.5": {
+      "s": 18,
+      "f": 5,
+      "sims": {
+        "s19-sim": "diamond"
+      },
+      "on": [
+        "s19-c0",
+        "s19-c1",
+        "s19-c2",
+        "s19-c3",
+        "s19-c4",
+        "s19-cap"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "18.6": {
+      "s": 18,
+      "f": 6,
+      "sims": {
+        "s19-sim": "diamond"
+      },
+      "on": [
+        "s19-c3",
+        "s19-c4",
+        "s19-cap",
+        "s19-rule"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "18.7": {
+      "s": 18,
+      "f": 7,
+      "sims": {
+        "s19-sim": "quartz"
+      },
+      "on": [
+        "s19-check",
+        "s19-rule"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "18.8": {
+      "s": 18,
+      "f": 8,
+      "sims": {
+        "s19-sim": "quartz"
+      },
+      "on": [
+        "s19-ans",
+        "s19-check",
+        "s19-rule"
+      ],
+      "cls": [
+        "s19-a:right",
+        "s19-check:done"
+      ],
+      "timer": 0
+    },
+    "19.0": {
+      "s": 19,
+      "f": 0,
+      "sims": {},
+      "on": [
+        "s20-r1"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "19.1": {
+      "s": 19,
+      "f": 1,
+      "sims": {},
+      "on": [
+        "s20-r1",
+        "s20-r2"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "19.2": {
+      "s": 19,
+      "f": 2,
+      "sims": {},
+      "on": [
+        "s20-r1",
+        "s20-r2",
+        "s20-r3"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "19.3": {
+      "s": 19,
+      "f": 3,
+      "sims": {},
+      "on": [
+        "s20-r1",
+        "s20-r2",
+        "s20-r3",
+        "s20-r4"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "19.4": {
+      "s": 19,
+      "f": 4,
+      "sims": {},
+      "on": [
+        "s20-end",
+        "s20-r1",
+        "s20-r2",
+        "s20-r3",
+        "s20-r4"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "20.0": {
+      "s": 20,
+      "f": 0,
+      "sims": {},
+      "on": [],
+      "cls": [],
+      "timer": 0
+    },
+    "20.1": {
+      "s": 20,
+      "f": 1,
+      "sims": {},
+      "on": [],
+      "cls": [
+        "s21-r1:now",
+        "s21-s1:now"
+      ],
+      "timer": 0
+    },
+    "20.2": {
+      "s": 20,
+      "f": 2,
+      "sims": {},
+      "on": [],
+      "cls": [
+        "s21-r1:done",
+        "s21-r2:now",
+        "s21-s2:now"
+      ],
+      "timer": 0
+    },
+    "20.3": {
+      "s": 20,
+      "f": 3,
+      "sims": {},
+      "on": [],
+      "cls": [
+        "s21-r1:done",
+        "s21-r2:done",
+        "s21-r3:now",
+        "s21-s3:now"
+      ],
+      "timer": 0
+    },
+    "20.4": {
+      "s": 20,
+      "f": 4,
+      "sims": {},
+      "on": [],
+      "cls": [
+        "s21-r1:done",
+        "s21-r2:done",
+        "s21-r3:done",
+        "s21-r4:now",
+        "s21-s4:now"
+      ],
+      "timer": 0
+    },
+    "20.5": {
+      "s": 20,
+      "f": 5,
+      "sims": {},
+      "on": [],
+      "cls": [
+        "s21-r1:done",
+        "s21-r2:done",
+        "s21-r3:done",
+        "s21-r4:done",
+        "s21-r5:now",
+        "s21-s5:now"
+      ],
+      "timer": 0
+    },
+    "21.0": {
+      "s": 21,
+      "f": 0,
+      "sims": {},
+      "on": [
+        "s22-read"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "21.1": {
+      "s": 21,
+      "f": 1,
+      "sims": {},
+      "on": [
+        "s22-think"
+      ],
+      "cls": [
+        "s22-r1:now"
+      ],
+      "timer": 30
+    },
+    "21.2": {
+      "s": 21,
+      "f": 2,
+      "sims": {},
+      "on": [
+        "s22-talk"
+      ],
+      "cls": [
+        "s22-r1:done",
+        "s22-r2:now"
+      ],
+      "timer": 60
+    },
+    "21.3": {
+      "s": 21,
+      "f": 3,
+      "sims": {},
+      "on": [
+        "s22-write"
+      ],
+      "cls": [
+        "s22-r1:done",
+        "s22-r2:done",
+        "s22-r3:now"
+      ],
+      "timer": 90
+    },
+    "21.4": {
+      "s": 21,
+      "f": 4,
+      "sims": {},
+      "on": [
+        "s22-check",
+        "s22-write"
+      ],
+      "cls": [
+        "s22-r1:done",
+        "s22-r2:done",
+        "s22-r3:done",
+        "s22-r4:now"
+      ],
+      "timer": 0
+    },
+    "21.5": {
+      "s": 21,
+      "f": 5,
+      "sims": {},
+      "on": [
+        "s22-check",
+        "s22-sample",
+        "s22-write"
+      ],
+      "cls": [
+        "s22-r1:done",
+        "s22-r2:done",
+        "s22-r3:done",
+        "s22-r4:done",
+        "s22-r5:now"
+      ],
+      "timer": 0
+    },
+    "22.0": {
+      "s": 22,
+      "f": 0,
+      "sims": {},
+      "on": [
+        "s23-read"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "22.1": {
+      "s": 22,
+      "f": 1,
+      "sims": {},
+      "on": [
+        "s23-think"
+      ],
+      "cls": [
+        "s23-r1:now"
+      ],
+      "timer": 30
+    },
+    "22.2": {
+      "s": 22,
+      "f": 2,
+      "sims": {},
+      "on": [
+        "s23-talk"
+      ],
+      "cls": [
+        "s23-r1:done",
+        "s23-r2:now"
+      ],
+      "timer": 60
+    },
+    "22.3": {
+      "s": 22,
+      "f": 3,
+      "sims": {},
+      "on": [
+        "s23-write"
+      ],
+      "cls": [
+        "s23-r1:done",
+        "s23-r2:done",
+        "s23-r3:now"
+      ],
+      "timer": 90
+    },
+    "22.4": {
+      "s": 22,
+      "f": 4,
+      "sims": {},
+      "on": [
+        "s23-check",
+        "s23-write"
+      ],
+      "cls": [
+        "s23-r1:done",
+        "s23-r2:done",
+        "s23-r3:done",
+        "s23-r4:now"
+      ],
+      "timer": 0
+    },
+    "22.5": {
+      "s": 22,
+      "f": 5,
+      "sims": {},
+      "on": [
+        "s23-check",
+        "s23-sample",
+        "s23-write"
+      ],
+      "cls": [
+        "s23-r1:done",
+        "s23-r2:done",
+        "s23-r3:done",
+        "s23-r4:done",
+        "s23-r5:now"
+      ],
+      "timer": 0
+    },
+    "23.0": {
+      "s": 23,
+      "f": 0,
+      "sims": {},
+      "on": [
+        "s24-read"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "23.1": {
+      "s": 23,
+      "f": 1,
+      "sims": {},
+      "on": [
+        "s24-think"
+      ],
+      "cls": [
+        "s24-r1:now"
+      ],
+      "timer": 30
+    },
+    "23.2": {
+      "s": 23,
+      "f": 2,
+      "sims": {},
+      "on": [
+        "s24-talk"
+      ],
+      "cls": [
+        "s24-r1:done",
+        "s24-r2:now"
+      ],
+      "timer": 60
+    },
+    "23.3": {
+      "s": 23,
+      "f": 3,
+      "sims": {},
+      "on": [
+        "s24-write"
+      ],
+      "cls": [
+        "s24-r1:done",
+        "s24-r2:done",
+        "s24-r3:now"
+      ],
+      "timer": 90
+    },
+    "23.4": {
+      "s": 23,
+      "f": 4,
+      "sims": {},
+      "on": [
+        "s24-check",
+        "s24-write"
+      ],
+      "cls": [
+        "s24-r1:done",
+        "s24-r2:done",
+        "s24-r3:done",
+        "s24-r4:now"
+      ],
+      "timer": 0
+    },
+    "23.5": {
+      "s": 23,
+      "f": 5,
+      "sims": {},
+      "on": [
+        "s24-check",
+        "s24-sample",
+        "s24-write"
+      ],
+      "cls": [
+        "s24-r1:done",
+        "s24-r2:done",
+        "s24-r3:done",
+        "s24-r4:done",
+        "s24-r5:now"
+      ],
+      "timer": 0
+    },
+    "24.0": {
+      "s": 24,
+      "f": 0,
+      "sims": {},
+      "on": [
+        "s25-A",
+        "s25-p1"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "24.1": {
+      "s": 24,
+      "f": 1,
+      "sims": {},
+      "on": [
+        "s25-A",
+        "s25-p2"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "24.2": {
+      "s": 24,
+      "f": 2,
+      "sims": {},
+      "on": [
+        "s25-A",
+        "s25-p3"
+      ],
+      "cls": [],
+      "timer": 0
+    },
+    "24.3": {
+      "s": 24,
+      "f": 3,
+      "sims": {},
+      "on": [
+        "s25-B",
+        "s25-f1",
+        "s25-fr",
+        "s25-p3"
+      ],
+      "cls": [
+        "s25-r1:now"
+      ],
+      "timer": 0
+    },
+    "24.4": {
+      "s": 24,
+      "f": 4,
+      "sims": {},
+      "on": [
+        "s25-B",
+        "s25-f1",
+        "s25-f2",
+        "s25-fr",
+        "s25-p3"
+      ],
+      "cls": [
+        "s25-r1:done",
+        "s25-r2:now"
+      ],
+      "timer": 0
+    },
+    "24.5": {
+      "s": 24,
+      "f": 5,
+      "sims": {},
+      "on": [
+        "s25-B",
+        "s25-f1",
+        "s25-f2",
+        "s25-f3",
+        "s25-fr",
+        "s25-p3"
+      ],
+      "cls": [
+        "s25-r1:done",
+        "s25-r2:done",
+        "s25-r3:now"
+      ],
+      "timer": 180
+    },
+    "24.6": {
+      "s": 24,
+      "f": 6,
+      "sims": {},
+      "on": [
+        "s25-B",
+        "s25-check",
+        "s25-f1",
+        "s25-f2",
+        "s25-f3",
+        "s25-fr",
+        "s25-p3"
+      ],
+      "cls": [
+        "s25-r1:done",
+        "s25-r2:done",
+        "s25-r3:done",
+        "s25-r4:now"
+      ],
+      "timer": 0
+    },
+    "24.7": {
+      "s": 24,
+      "f": 7,
+      "sims": {},
+      "on": [
+        "s25-B",
+        "s25-check",
+        "s25-f1",
+        "s25-f2",
+        "s25-f3",
+        "s25-p3",
+        "s25-sample"
+      ],
+      "cls": [
+        "s25-r1:done",
+        "s25-r2:done",
+        "s25-r3:done",
+        "s25-r4:done",
+        "s25-r5:now"
+      ],
+      "timer": 0
+    },
+    "25.0": {
+      "s": 25,
+      "f": 0,
+      "sims": {},
+      "on": [],
+      "cls": [],
+      "timer": 0
+    },
+    "25.1": {
+      "s": 25,
+      "f": 1,
+      "sims": {},
+      "on": [],
+      "cls": [
+        "s26-t1:now"
+      ],
+      "timer": 0
+    },
+    "25.2": {
+      "s": 25,
+      "f": 2,
+      "sims": {},
+      "on": [],
+      "cls": [
+        "s26-t2:now"
+      ],
+      "timer": 0
+    },
+    "25.3": {
+      "s": 25,
+      "f": 3,
+      "sims": {},
+      "on": [],
+      "cls": [
+        "s26-t3:now"
+      ],
+      "timer": 0
+    },
+    "25.4": {
+      "s": 25,
+      "f": 4,
+      "sims": {},
+      "on": [],
+      "cls": [
+        "s26-t4:now"
+      ],
+      "timer": 0
+    },
+    "25.5": {
+      "s": 25,
+      "f": 5,
+      "sims": {},
+      "on": [],
+      "cls": [
+        "s26-t5:now"
+      ],
+      "timer": 0
+    },
+    "26.0": {
+      "s": 26,
+      "f": 0,
+      "sims": {},
+      "on": [],
+      "cls": [],
+      "timer": 0
+    }
+  }
+}

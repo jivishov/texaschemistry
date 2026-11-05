@@ -1,0 +1,242 @@
+{
+  "checks": 9,
+  "picks": 3,
+  "res": [
+    {
+      "n": "s4f0 s04-q1 option A: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[0],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f0 s04-q1 option B: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[1],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f0 s04-q1 option C: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[2],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f1 s04-q2 option A: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[0],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f1 s04-q2 option B: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[1],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f1 s04-q2 option C: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[2],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f2 s04-q3 option A: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[0],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f2 s04-q3 option B: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[1],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f2 s04-q3 option C: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[2],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s6f8 s06-check click A (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Mg+ lost only one electron. Group 2 loses two.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s6f8 s06-check click B (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"Magnesium is in group 2. It loses 2 electrons.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s6f8 s06-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"A minus charge means gained electrons. Metals lose electrons.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s6 s06-check Next: the answer shows, s06-b is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s06-b\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s7f5 s07-check click A (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Zinc forms one ion, Zn2+, so no numeral.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s7f5 s07-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Silver forms one ion, Ag+, so no numeral.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s7f5 s07-check click C (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"Copper forms two ions, Cu+ and Cu2+.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s7 s07-check Next: the answer shows, s07-c is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s07-c\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s8f9 s08-check click A (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"One Na+ and one O2− leave a charge of 1−.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s8f9 s08-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"NaO2 gives 1+ against 4−, even further from zero.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s8f9 s08-check click C (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"Two Na+ give 2+. One O2− gives 2−.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s8 s08-check Next: the answer shows, s08-c is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s08-c\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s10f6 s10-check click A (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Ca2O2 is not reduced. Divide both counts by 2.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s10f6 s10-check click B (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"Reduce 2 : 2 to 1 : 1. The charges 2+ and 2− make zero.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s10f6 s10-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"CaO2 gives 2+ against 4−, so it does not balance.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s10 s10-check Next: the answer shows, s10-b is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s10-b\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s11f4 s11-check click A (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Bromine is the element. The ion is bromide.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s11f4 s11-check click B (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"The anion takes -ide. No prefix is needed.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s11f4 s11-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Common names use no prefix: calcium bromide.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s11 s11-check Next: the answer shows, s11-b is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s11-b\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s12f11 s12-check click A (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Fe+ cannot cancel two Cl− ions, a total of 2−.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s12f11 s12-check click B (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"Two Cl− ions give 2−, so iron is 2+.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s12f11 s12-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Iron has two ions, so its name needs the numeral.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s12 s12-check Next: the answer shows, s12-b is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s12-b\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s15f8 s15-check click A (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"The atoms share electrons. There are no O2− ions inside.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s15f8 s15-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Sulfide is S2−, one atom. Sulfate has one S and four O.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s15f8 s15-check click C (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"The charge belongs to the whole group.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s15 s15-check Next: the answer shows, s15-c is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s15-c\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s16f7 s16-check click A (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"One NO3− gives 1−. That cannot cancel 2+.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s16f7 s16-check click B (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"Mg2+ needs two NO3− squads.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s16f7 s16-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"The squads were broken up. Keep each NO3− whole.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s16 s16-check Next: the answer shows, s16-b is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s16-b\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s17f7 s17-check click A (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Two Fe2+ give 4+ against 6−.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s17f7 s17-check click B (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"Three SO42− give 6−. Two Fe share 6+, so each is 3+.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s17f7 s17-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Sulfate is not sulfide, and iron needs its numeral.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s17 s17-check Next: the answer shows, s17-b is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s17-b\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "every graded option has a feedback line and exactly one right option per check",
+      "pass": true,
+      "i": ""
+    },
+    {
+      "n": "no console errors",
+      "pass": true,
+      "i": "[]"
+    }
+  ],
+  "fails": []
+}

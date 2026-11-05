@@ -1,0 +1,56 @@
+== 4.1: unit4/slides-4-1.html
+   out <scratchpad>/suite01/4-1, theme both, matrix off
+  PASS  walk light          190.5 s  walk light: 156 states, max empty 29% (s4f0), PASS
+  PASS  walk dark           189.8 s  walk dark: 156 states, max empty 29% (s4f0), PASS
+  PASS  back light           76.9 s  back: 156 forward, 156 back, PASS
+  PASS  back dark            77.0 s  back: 156 forward, 156 back, PASS
+  PASS  fonts light          47.7 s  fonts: PASS
+  PASS  keys                 35.5 s  keys: PASS 48 checks
+  PASS  readability           2.6 s  readability: PASS
+  PASS  print                 2.0 s  print: PASS stage hidden=true, 25 slides, 156 frame lines, 9 PDF page(s)
+  PASS  render3d              2.3 s  render3d: PASS
+  PASS  extras                5.5 s  extras: PASS
+  PASS  chem                  1.5 s  chem (deck): PASS 32 checks
+  PASS  timing                1.2 s  timing: period 1 47 min, period 2 47 min, PASS
+  PASS  supgap                4.5 s  supgap: 25 symbol+charge pairs checked, PASS
+  PASS  zoom light          225.2 s  zoom light: 571 zoomed states over 156 frames (re-flow 432, transform 139), prompt 45, r800 1, animation 75, card 137, part 42, frames 1, check 24, wcard 14, legend 1, rule 22, table 1, column 21, item 42, row 30, caprow 3, p 5, hdr 9, rail 29, li 60, handsup 3, scale 6; min fill 64%; Back tests 24; PASS
+  PASS  zoom dark           223.4 s  zoom dark: 571 zoomed states over 156 frames (re-flow 432, transform 139), prompt 45, r800 1, animation 75, card 137, part 42, frames 1, check 24, wcard 14, legend 1, rule 22, table 1, column 21, item 42, row 30, caprow 3, p 5, hdr 9, rail 29, li 60, handsup 3, scale 6; min fill 64%; Back tests 24; PASS
+  PASS  click                27.8 s  click: 9 graded checks, 3 Predict-now questions, 47 assertions, PASS
+  PASS  layout               19.4 s  layout: 156 frames, 24 visible option lists (stacked 7, row 17), max empty 29% (s4f0), gate 33%, clipped or ellipsized text: 0, PASS
+  PASS  xcheck                1.6 s  xcheck: 42 of 42 pass
+  PASS  contact light         4.3 s  contact sheets light: contact-light-1.png (102 shots, 3710 px tall), contact-light-2.png (54 shots, 1990 px tall)
+  PASS  contact dark          4.1 s  contact sheets dark: contact-dark-1.png (102 shots, 3710 px tall), contact-dark-2.png (54 shots, 1990 px tall)
+  PASS  zoomsheet light       2.3 s  zoom sheet light: zoomsheet-light-1.png (79 shots, 3065 px tall)
+  PASS  zoomsheet dark        2.4 s  zoom sheet dark: zoomsheet-dark-1.png (79 shots, 3065 px tall)
+== 4.1: 22 of 22 pass, 0 fail, 1147.6 s
+== 4.2: unit4/slides-4-2.html
+   out <scratchpad>/suite01/4-2, theme both, matrix off
+  PASS  walk light          210.3 s  walk light: 173 states, max empty 32% (s10f1), PASS
+  PASS  walk dark           210.5 s  walk dark: 173 states, max empty 32% (s10f1), PASS
+  PASS  back light           84.5 s  back: 173 forward, 173 back, PASS
+  PASS  back dark            84.6 s  back: 173 forward, 173 back, PASS
+  PASS  fonts light          51.1 s  fonts: PASS
+  PASS  keys                 35.2 s  keys: PASS 48 checks
+  PASS  readability           3.0 s  readability: PASS
+  PASS  print                 2.0 s  print: PASS stage hidden=true, 26 slides, 173 frame lines, 8 PDF page(s)
+  PASS  render3d              2.4 s  render3d: PASS
+  PASS  extras                5.3 s  extras: PASS
+  PASS  chem                  1.5 s  chem42 (deck): PASS 39 checks
+  PASS  timing                1.3 s  timing: period 1 47 min, period 2 46.5 min, PASS
+  PASS  supgap                4.6 s  supgap: 139 symbol+charge pairs checked, PASS
+  PASS  zoom light          261.0 s  zoom light: 707 zoomed states over 173 frames (re-flow 503, transform 204), prompt 35, r800 1, animation 96, part 108, card 159, frames 1, check 24, wcard 16, legend 1, caprow 10, p 5, memory card 1, rule 12, anion names 1, row 129, six ions 10, rail 29, li 60, handsup 3, scale 6; min fill 67%; Back tests 26; PASS
+  PASS  zoom dark           262.8 s  zoom dark: 707 zoomed states over 173 frames (re-flow 503, transform 204), prompt 35, r800 1, animation 96, part 108, card 159, frames 1, check 24, wcard 16, legend 1, caprow 10, p 5, memory card 1, rule 12, anion names 1, row 129, six ions 10, rail 29, li 60, handsup 3, scale 6; min fill 67%; Back tests 26; PASS
+  PASS  click                30.1 s  click: 9 graded checks, 3 Predict-now questions, 47 assertions, PASS
+  PASS  layout               21.8 s  layout: 173 frames, 24 visible option lists (stacked 15, row 9), max empty 32% (s10f1), gate 33%, clipped or ellipsized text: 0, PASS
+  PASS  units                10.2 s  63 frames, 89 visible cards and captions, 0 frames with a card missing or twice: PASS
+  PASS  cycle               157.6 s  112 checks, 0 short cycles
+  PASS  xcheck                1.6 s  xcheck: 40 of 40 pass
+  PASS  contact light         4.5 s  contact sheets light: contact-light-1.png (101 shots, 3710 px tall), contact-light-2.png (72 shots, 2635 px tall)
+  PASS  contact dark          4.1 s  contact sheets dark: contact-dark-1.png (101 shots, 3710 px tall), contact-dark-2.png (72 shots, 2635 px tall)
+  PASS  zoomsheet light       2.3 s  zoom sheet light: zoomsheet-light-1.png (83 shots, 3065 px tall)
+  PASS  zoomsheet dark        2.1 s  zoom sheet dark: zoomsheet-dark-1.png (83 shots, 3065 px tall)
+== 4.2: 24 of 24 pass, 0 fail, 1454.4 s
+== all decks
+  4.1: 22 of 22 pass, 1147.5 s
+  4.2: 24 of 24 pass, 1454.4 s
+exit=0
