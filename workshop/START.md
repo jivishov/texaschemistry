@@ -1,6 +1,14 @@
 # Running a deck workshop (teacher's notes)
 
-This folder is a reusable workshop for building projector slide decks for any lesson of the Chemistry Case Files site, with Claude Fable 5.1 as orchestrator in your account (A) and Claude Opus 5.5 as implementer in a school account (B). The reference implementation is the newest accepted Unit 4 decks on `main` (or the branch that carries the reference decks, the kit and this folder; today that is claude/unit-4-chemistry-slides-j62190 until it is merged) (at least `unit4/slides-4-1.html` and `unit4/slides-4-2.html`); older decks are archived under `unit4/old-slides/` and are not used; every new deck copies their engine, templates, chrome, register and audits.
+This folder is a reusable workshop for building projector slide decks for any lesson of the Chemistry Case Files site, with Claude Fable 5.1 as orchestrator in your account (A) and Claude Opus 5.5 as implementer in a school account (B). The reference implementation is the newest accepted Unit 4 decks on `main` (or the branch that carries the reference decks, the kit and this folder; today that is claude/unit-4-chemistry-slides-j62190 until it is merged) (at least `unit4/slides-4-1.html` and `unit4/slides-4-2.html`); older decks are archived under `unit4/old-slides/` and are not used; every new deck copies their engine, templates, chrome, register and audits; when the accepted 4.3, 4.4 and 4.5 decks are on the base they are reference too.
+
+## Same-account workshop (school account: Fable 5.1 orchestrates, Opus 5.5 implements as its in-session agent)
+Paste one message in the school account:
+```
+Open jivishov/texaschemistry, read workshop/ORCHESTRATOR.md, and run a workshop.
+Assignment: unit 5, lessons 5.1 and 5.2. Mode: in-session, lean. Base: main. Priority: 5.1 first.
+```
+Fable creates the workshop branch from the base, writes the lesson sheets and the plan, sends you the plan to confirm, then builds one lesson at a time with Opus as its agent (extra-high effort for builds, high for fixes), commits each accepted step to the workshop branch, and sends you each deck as soon as it is accepted. `lean` keeps the token use within a weekly limit (PROTOCOL.md, Lean mode): one step per lesson, one light-theme suite per step, the dark theme and the zoom matrix once at the end. Work can stop at any gate and resume next week with the same message plus "resume". Nothing reaches `main` until you merge the pull request.
 
 ## Once
 1. The reference decks, the kit `tools/slides-kit/` and this `workshop/` folder are on the branch `claude/unit-4-chemistry-slides-j62190`; merge it into `main` or name that branch as the base in the start message.
