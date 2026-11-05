@@ -1,6 +1,6 @@
 # Implementer instructions (Claude Opus 5.5)
 
-You build and test the decks named in `workshop/ASSIGNMENT.md`, one brief at a time. The orchestrator reviews your work through files in `workshop/`. In cross-account mode you are a session in account B and act only on the current brief; in in-session mode the orchestrator passes you the same brief directly.
+You build and test the decks named in `workshop/ASSIGNMENT.md`, one brief at a time. Reference decks: `unit4/slides-4-1.html`, `unit4/slides-4-2.html`, and any newer accepted Unit 4 deck on the base branch (the newest wins where they differ). The orchestrator reviews your work through files in `workshop/`. In cross-account mode you are a session in account B and act only on the current brief; in in-session mode the orchestrator passes you the same brief directly.
 
 ## Every session, in this order
 1. `git pull --ff-only`. Read `workshop/status.md`. If `turn` is not `implementer`, tell the user whose turn it is and stop.
@@ -15,11 +15,12 @@ Look at `tools/slides-kit/`. If it already follows KIT.md (parts per lesson, `bu
 - Study `unit4/slides-4-1.html` and `unit4/slides-4-2.html` and their kit parts before writing anything: the runtime's documented API (`Deck.frames`, `Deck.sim`, `canvasSim`, `Deck.spheres`, zoom units, `data-zoom`, `.reg`, `.acc`, `.timer` slots, the six templates), the generator pattern, the budget file, the chemistry audit, the head template.
 - A new lesson gets its own parts folder (KIT.md) and a registry entry; shared parts stay shared. Decks are built only through the kit. Never hand-edit a built deck. Never open the lesson's rejected deck (archived under `unit<U>/old-slides/`) on `main`; content comes only from the reading, the blueprint, RULES.md, the lesson sheet, the plan and the brief.
 - Every animation: named stages, `set/get/bounds/units`, tweens 500 to 900 ms, reduced-motion end states, both themes, labels at least 36 px, shapes at least 60 px, sub-units for zoom, `meta()` for the chemistry audit. Test every stage on scratch slides in a scratch build, never in the repo deck.
+- No overlap anywhere: cards, chips, badges, labels, footer and canvas labels never intersect on any frame; when content does not fit, re-flow, shorten or move it to the next frame. The layout audit's overlap check must pass before you report.
 - Every slide: the template, frames with cues, labels and notes (minutes, talk points, prediction, misconception, wrong-option feedback), the reading reference, the period marker, `.reg` on rule cards, prompts and samples, options in one row or stacked, checks whose subject is on screen.
 - Playwright and Chromium exist in a Claude cloud session; never run "playwright install"; open decks with `file://`. Fonts may not load offline; layouts must not depend on them.
 
 ## Suites per step
-Everything in RULES.md section 11, `MATRIX=0` until the last step. Commit text logs and JPEG sheets (at most 800 KB each) under `artifacts/NN/`; no per-press screenshot folders. If a shared part changed, rebuild every registered deck, re-run their suites with `MATRIX=0`, and list every deck's md5 before and after.
+Everything in RULES.md section 11, `MATRIX=0` until the last step; in lean mode light theme only until the last step, which runs the dark theme and the zoom matrix for every deck the workshop changed. Commit text logs and JPEG sheets (at most 800 KB each) under `artifacts/NN/`; no per-press screenshot folders. If a shared part changed, rebuild every registered deck, re-run their suites with `MATRIX=0`, and list every deck's md5 before and after.
 
 ## Report
 From `templates/report.md`: what was built with the specified wording quoted, suite numbers, md5 and size of each changed deck, `git status --short`, the commit hash, deviations with reasons, open questions. Do not resolve open questions on your own; the next brief will.

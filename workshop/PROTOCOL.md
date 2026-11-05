@@ -31,6 +31,15 @@ Steps are numbered consecutively (01, 02, 03 …) in briefs and reports; the tab
 - The implementer commits decks, kit changes, report and artifacts in one commit.
 - Before the merge, the implementer removes `workshop/artifacts/` (and `briefs/*/` images) in a last commit, on the orchestrator's instruction in FINAL.md. The rest of `workshop/` stays for the next workshop.
 
+## Lean mode (same-account workshops under a weekly limit)
+When the start message says `lean`, or the mode is in-session:
+- Per lesson, animations and deck are one step with one brief and one report; scratch-slide screenshots of the animations go in the same report. Fix rounds stay separate and time-boxed.
+- Each step runs the suite once with `MATRIX=0`, light theme only; the dark theme and the full zoom matrix run once, in the last step, for every deck the workshop changed.
+- The orchestrator reviews from the contact and zoom sheets and the report's numbers, opens full frames only where a sheet raises a question, and does not re-run audits that passed unless a claim looks wrong.
+- Reports are short: numbers, paths, quoted wording for rule cards and checks, deviations. No narration.
+- One deck at a time: a lesson's deck is sent to the teacher as soon as it is accepted, so work can pause at any gate and resume next week from `status.md`.
+- In-session: the orchestrator spawns the implementer as an agent per step (extra-high effort for build steps, high for fixes), passes the brief text and file paths, and commits the workshop record and the implementer's output to the workshop branch after each accepted step. The implementer agent makes no git state changes.
+
 ## Cost rules
 - Build steps at extra-high effort, fix steps at high (the teacher sets the session's effort in cross-account mode; the orchestrator sets the agent's effort in in-session mode).
 - Fix rounds do only what the brief lists, time-boxed, no refactoring, one report per turn.

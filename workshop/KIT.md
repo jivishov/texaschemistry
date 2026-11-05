@@ -8,7 +8,7 @@ The kit holds the source parts, generators, build scripts and audit scripts. Dec
 - `build.py <U> <L>`: assembles head + shared + lesson parts into `unit<U>/slides-<U>-<L>.html` with markers; `build.py --all` rebuilds every registered deck.
 - `suite.py <U> <L> [--matrix] [--theme light|dark|both]`: runs every audit for a deck and writes logs and sheets to an output folder; `suite.py --all` for every registered deck.
 - `registry.json`: every built deck with unit, lesson, title, description, period split, check count; the blueprint cross-check reads it.
-- `audits/`: walk, back, fonts, keys, readability, print, render3d, extras (reduced motion, narrow fallback), timing, supgap, zoom (with settle wait and the viewport matrix), click, layout, contact, zoomsheet, xcheck (parametrized by unit and lesson rows).
+- `audits/`: walk, back, fonts, keys, readability, print, render3d, extras (reduced motion, narrow fallback), timing, supgap, zoom (with settle wait and the viewport matrix), click, layout (including the overlap check: no intersecting bounding boxes among visible text, cards, chips and badges beyond 2 px, and canvas label boxes recorded by the painter), contact, zoomsheet, xcheck (parametrized by unit and lesson rows).
 - `README.md`: how to add a lesson, build, run suites, split parts, and the absolute paths to change if the repo moves.
 
 ## Rules
