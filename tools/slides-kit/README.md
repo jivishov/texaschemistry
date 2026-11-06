@@ -112,13 +112,16 @@ RULES.md sections 3 and 11: nothing visible may overlap on any frame, in either 
 light; `suite.py` runs it once per theme the run asks for) opens the deck with reduced motion, so every animation stage jumps to its
 end state, goes to every frame of every slide, runs the older layout checks after 100 ms (options, emptiness, clipped text, canvas
 text at the edge), then waits until the frame has settled (the boxes of the `.acc` cards, the options and the footer are the same two
-animation frames apart, so compaction is done) and measures:
+animation frames apart, so compaction is done) and measures (for live stages, also with motion on; below):
 - **DOM boxes**, in 1600 x 900 canvas px, on the current slide and in the footer: text lines (every visible element with its own
   visible text, and `p`, `li`, `td`, `th`, `h2`, `.line`, `.cell`, `.rh`, `.q`, `.ans`, `.fb`, `.tag`, `.term`, `.mean`, `.k`, `.small`,
   `.cap`, `.nm`, `.fm`, `.bt`, `.why`, `.big`, `.hdr` with visible text inside), cards (`.card`, `.phase`, `.wcard`, `.item`, `.key`,
   `.colh`, `.cer-box`), chips and badges (`.chip`, `.badge`, `.es`, `.rail li`, `.legend>span`, `.scale span`, `.opt`) and the footer
-  spans `#sec`, `#cue`, `#count`. A block box is its border box; an inline element (a `sup`, a `b`) is measured line by line
-  (`getClientRects`), so a phrase that wraps is not one big rectangle. Skipped: hidden, `display: none`, zero-size and opacity-0
+  spans `#sec`, `#cue`, `#count`. Only block-level boxes take part: computed display `block`, `flex`, `grid`, `list-item`,
+  `table-cell` or `table-row`, and an `inline-block` (or `inline-flex`, `inline-grid`) that is a card, chip, badge, option or footer
+  span by the lists above. Inline text (`sup`, `sub`, `b`, `span`, `i`, `.es`, `.nw`, `.gap`, inline formulas) and any other
+  inline-block are part of their nearest block ancestor, not boxes of their own: a superscript poking into the line above, or a
+  formula taller than its line, is the block's own text, not an overlap. A box is the block's border box. Skipped: hidden, `display: none`, zero-size and opacity-0
   elements (opacity multiplied up the ancestors), anything inside `.notes`, `script`, `style`, `svg`, a `.timer` that is not running,
   or a `.zoomed` clone.
 - Two DOM boxes **intersect** when their rectangles overlap by more than 2 px in both directions and neither contains the other
@@ -126,22 +129,52 @@ animation frames apart, so compaction is done) and measures:
 - **Canvas labels**, by test-time instrumentation (the runtime is not changed): `page.addInitScript` defines a setter for
   `window.Deck`; when the runtime assigns the Deck object, the setter installs a setter for its `canvasSim`, and the wrapped
   `canvasSim(host, spec)` replaces `spec.draw` so the animation paints through a proxy of the painter `g`. Each `text`, `chem`, `badge`
-  (and `fit`) call records a label box: x from the call's x and align, width from `ctx.measureText` with the font the painter set
-  (`chem`: the width it returns), y from y and the baseline (centred for `middle`), height the font size. Each `circle`, `rrect`,
-  `electron` (the dot, not its faint halo) and `badge` call records a shape box (half the stroke included). Calls drawn at
-  `globalAlpha` 0.01 or less are invisible and skipped. The boxes of the last on-screen paint are kept on the host
-  (`host.__boxes = {labels, shapes, stage}`, cleared at the start of each paint; the off-screen renders of `bounds()` are not
-  recorded). `D.spheres` draws through the same `g`, so its symbol labels and spheres are covered.
+  (and `fit`) call records a label box, in paint order: x from the call's x and align, width from `ctx.measureText` with the font the painter set
+  (`chem`: the width it returns), y from y and the baseline (centred for `middle`), height the font size. Each `circle`,
+  `electron` (the dot, not its faint halo) and `badge` call records a **disc** (centre and radius, half the stroke included);
+  each `rrect` a rectangle. A shape is **opaque** when its fill alpha (a gradient: its least opaque stop) and `globalAlpha` at the
+  call are both 0.9 or more. Calls drawn at `globalAlpha` 0.01 or less are invisible and skipped. The boxes of the last on-screen
+  paint are kept on the host (`host.__boxes = {labels, shapes, stage, scenes}`, cleared at the start of each paint; the off-screen
+  renders of `bounds()` are not recorded), with `host.__live` (the spec's `live(stage)`). The same setter wraps `Deck.spheres`:
+  each call on an instrumented painter is one **scene**, and every label and sphere it draws carries the scene's number.
 - Per visible animation and frame: no two labels intersect by more than 2 px in both directions (one label drawn twice at the same
-  place counts once), and no label partly cuts a shape: a label fully inside one shape is that shape's label; a label touching or
-  crossing a shape's edge by more than 2 px fails. Shapes are compared as their bounding boxes.
-- The gate: a frame with any intersection fails the audit. The audit also fails if a canvas animation of the deck was not wrapped or
-  a visible one has no recorded paint (the instrumentation did not take).
+  place counts once), and no label cuts a shape. Against a disc, a label is **inside** when all four corners of its box lie within
+  r − 2 px of the centre (that shape's label) and **cuts** it when the box's nearest point to the centre lies within r − 2 px and it
+  is not inside; a label in the empty corner of a circle's bounding square touches nothing. A badge's own label (the same `badge`
+  call) is not tested against that badge. Against an `rrect`, a label fully inside (within 2 px) is its label; one crossing the edge
+  by more than 2 px cuts it.
+- **Scenes**: inside one `D.spheres` scene no label-against-label and no label-against-shape test runs (the renderer draws far to
+  near, so a nearer sphere over part of a farther symbol is depth, not overlap); a scene's labels and spheres are still tested
+  against everything outside it. The scenes and their boxes are listed.
+- **Covered labels**: a label whose box lies fully (within 2 px) under an opaque shape drawn later in the same paint (inside the
+  disc's r + 2 px, or inside the rectangle) is hidden: it is counted as a covered label and not tested. A label only partly under
+  such a shape is tested as above.
+- **Live stages with motion on**: after the reduced-motion pass, every frame on which a visible animation reported a live stage is
+  measured again in a second browser context with motion on (same theme, same instrumentation): `Deck.go`, 1.4 s, the overlap
+  check, a further 1.0 s, the check again. Its lines carry the frame tags `s<N>f<F>@live1` and `@live2`; the verdict line says
+  `live: K frames at two moments`.
+- The gate: any intersection fails the audit, unless the deck's baseline lists it (below). The audit also fails if a canvas
+  animation of the deck was not wrapped or a visible one has no recorded paint (the instrumentation did not take), or if the
+  registry names a baseline file that cannot be read.
+- **Baselines** (review 01, F3): the two reference decks, 4.1 and 4.2, were built before the no-overlap rule and still carry
+  intersections the teacher has not yet decided to fix. Their registry entries name an `overlap_baseline` file
+  (`parts/lessons/4-1/overlap-baseline.json`, `parts/lessons/4-2/overlap-baseline.json`): `{"deck", "theme", "note", "entries":
+  [{"frame": "s10f1", "a": "<A as printed>", "b": "<B as printed>"}]}`, strings and not coordinates, so small drifts do not
+  matter (the `@live1`/`@live2` tags are part of the frame). A hit whose frame, A and B equal an entry's is **baselined** (marked
+  `[baselined]`, counted in the verdict line, not a failure); an entry can match more than one hit with the same strings (the moving
+  electrons of a live stage all print as `electron`). A hit with no entry fails as before; entries no hit matches are printed as
+  stale baseline entries (not a failure). The baseline is matched to the deck by its registry `file`, so `--deck` runs have none.
+  The files are records the orchestrator and the teacher review, written once by hand from a refined run (the union of several
+  runs, since live moments move); the kit has no option that writes them. Only those two decks have one: **a new deck gets no
+  baseline, and any intersection fails its gate.**
 
 Each intersection is a line `s<N>f<F>: <box A> ∩ <box B> (<w> × <h> px)` with ids or classes and the start of the text (canvas: the
-animation id, the stage, the label text and the shape kind). `overlap-<theme>.txt` lists every failing frame with both boxes as
-`[x0, y0, x1, y1]` in canvas px, or says `no intersections, N frames, M boxes`; `overlap-<theme>/s<N>f<F>.jpg` crops up to six
-failing frames (one per slide first) with box A outlined red and box B blue. The helpers `instrument`, `settle` and `overlap` are
+animation id, the stage, the label text and the shape kind; for a disc the numbers are the overlap with its bounding square).
+`overlap-<theme>.txt` lists every frame with intersections (baselined ones marked) with both boxes as `[x0, y0, x1, y1]` in canvas
+px, or says `no intersections, N frames, M boxes`; then the stale baseline entries, the live frames, the covered labels and the
+spheres scenes. `overlap-<theme>/s<N>f<F>.jpg` (a live moment: `s<N>f<F>-live1.jpg`, taken in the motion-on context at the same
+delay, so moving shapes may sit a little off their outlines) crops up to six frames with failing intersections (one per slide
+first) with box A outlined red and box B blue. The helpers `instrument`, `settle` and `overlap` are
 exported (`require('./layout')`) for tools that need the same boxes.
 
 ### The blueprint cross-check (xcheck) and its forms
@@ -178,7 +211,7 @@ One entry per deck in `decks`:
 | `checks` | the number of slides with a check ("Slide checks: N" in a Unit 4 blueprint; the Unit 5 form asserts it against the deck) |
 | `markers` | the five part markers in build order (head, runtime, shared, sims, slides) |
 | `css` | the CSS marker name if the lesson has `css.css`, else `null` |
-| `keys_cfg` | slide and element ids the keys audit drives: `cr` (a slide whose frames drive an animation), `sim` (that animation's id), `card` (a card the zoom cycle reaches on frame 3), `tm` (the timer slide, 180 s timer on frame 1), `ex` (a slide used for the blank-screen tests), `hk` (a slide with a frame 1 and no `.timer` slot), `notes` (slide id and frame for the notes screenshot) |
+| `keys_cfg` | slide and element ids the keys audit drives: `cr` (a slide whose frames drive an animation), `sim` (that animation's id), `card` (a card the zoom cycle reaches on frame 3), `tm` (the slide whose frame 1 starts a timer; the audit reads that timer's own length), `ex` (a slide used for the blank-screen tests), `hk` (a slide with a frame 1 and no `.timer` slot), `notes` (slide id and frame for the notes screenshot) |
 | `extras_cfg` | `hash` (a frame with the turning 3D model), `canvas` (its canvas selector), `block` (a block revealed on the next press), `slides` (the slide count) |
 | `budget`, `chem` | paths relative to the kit |
 | `zoom_checks` | optional: path of the lesson's `zoomchecks.js`, relative to the kit |
@@ -186,13 +219,14 @@ One entry per deck in `decks`:
 | `matrix` | the lesson's objectives, as the blueprint's objective rows name them |
 | `mentions` | every "slide N" mention in the deck's notes and text: `"<slide id>:<N>"` → the title of the slide meant |
 | `extra_audits`, `extra_slides` | additional audits (`units`, `cycle`) and the slide range they cover |
+| `overlap_baseline` | optional, relative to the kit: the file of accepted intersections of a reference deck built before the no-overlap rule (4.1 and 4.2 only; the layout audit, "Baselines" above). A new deck has none. |
 
 ## Add a lesson
 1. Folder `parts/lessons/<U>-<L>/` with `sims.html`, `gen_slides.py` (writing `slides.html` next to itself; copy the pattern of
    `parts/lessons/4-2/gen_slides.py`), `budget.json`, `chem.js` (requires `../../../audits/lib`, as the 4.1 and 4.2 ones do), and
    `css.css` only if the lesson needs CSS of its own; `zoomchecks.js` if the teacher asks for zoom checks of this deck. Lesson parts never redefine shared behavior; an engine feature goes into the
    shared runtime behind a per-lesson option, and every registered deck is then rebuilt and re-audited.
-2. A registry entry with every field above; markers per the convention (`01-head-<U><L>`, `02-runtime`, `02b-shared`,
+2. A registry entry with every field above (no `overlap_baseline`); markers per the convention (`01-head-<U><L>`, `02-runtime`, `02b-shared`,
    `sims-<U><L>`, `slides-<U><L>`, `css-<U><L>`). For 5.1: `file` `unit5/slides-5-1.html`, `blueprint` `{"section": "l51", "next": "l52",
    "form": "unit5", "teks_rows": {"C.8(A)": ["5.1.1", "5.1.2"], "C.8(B)": ["5.1.3", "5.1.4"]}}`, `matrix` `5.1.1` to `5.1.4`; `"built": false`
    until the deck step writes the deck.

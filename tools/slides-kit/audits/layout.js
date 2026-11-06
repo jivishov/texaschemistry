@@ -6,7 +6,8 @@
 //               intersections. Inline text (sup, sub, b, span, .es, inline formulas) is part of its nearest block, not a box of its own.
 //   canvas      the label boxes the painter draws (text, chem, badge, fit) intersect no other label by more than 2 px, and no label
 //               cuts a shape: circle, electron and badge are discs (inside: all four corners within r - 2 px of the centre; cut: the
-//               box's nearest point within r - 2 px and not inside), rrect a rectangle (a label fully inside it is its label).
+//               box's nearest point within r - 2 px and not inside; a badge's own label is not tested against it), rrect a rectangle
+//               (a label fully inside it is its label).
 //               Inside one D.spheres scene nothing is tested (the depth order draws it); a label fully under an opaque shape drawn
 //               after it is hidden (counted as a covered label, not tested). Recorded by test-time instrumentation of Deck.canvasSim
 //               and Deck.spheres (instrument() below); the runtime is not changed.
@@ -57,19 +58,20 @@ function instrument(){
           for(const [x,y] of [[x0,y0],[x1,y0],[x0,y1],[x1,y1]]){const q=m.transformPoint(new DOMPoint(x,y));a=Math.min(a,q.x);b=Math.min(b,q.y);c=Math.max(c,q.x);d=Math.max(d,q.y)}
           return {x0:a,y0:b,x1:c,y1:d}};
         const seen=()=>ctx.globalAlpha>.01;
-        const label=(kind,s,x0,y0,w,h)=>{s=String(s);if(seen()&&w>0&&h>0&&s.trim())rec.labels.push(Object.assign({kind,text:s,i:rec.n++,scene:rec.sc},box(x0,y0,x0+w,y0+h)))};
-        const shape=(kind,x0,y0,x1,y1,fill,disc)=>{if(!seen()||!(x1>x0&&y1>y0))return;
+        const label=(kind,s,x0,y0,w,h,own)=>{s=String(s);if(seen()&&w>0&&h>0&&s.trim())rec.labels.push(Object.assign({kind,text:s,i:rec.n++,scene:rec.sc,own},box(x0,y0,x0+w,y0+h)))};
+        const shape=(kind,x0,y0,x1,y1,fill,disc)=>{if(!seen()||!(x1>x0&&y1>y0))return null;
           const s=Object.assign({kind,i:rec.n++,scene:rec.sc,opaque:alpha(fill)>=.9&&ctx.globalAlpha>=.9},box(x0,y0,x1,y1));
           if(disc){const m=M(),c=m.transformPoint(new DOMPoint(disc[0],disc[1]));s.disc={cx:c.x,cy:c.y,r:disc[2]*Math.sqrt(Math.abs(m.a*m.d-m.b*m.c))}}
-          rec.shapes.push(s)};
+          rec.shapes.push(s);return s.i};
         const ax=(x,w,al)=>al==='left'||al==='start'?x:al==='right'||al==='end'?x-w:x-w/2;
         const ay=(y,h,b)=>b==='top'||b==='hanging'?y:b==='bottom'||b==='ideographic'?y-h:b==='alphabetic'?y-.8*h:y-h/2;
         const W={
           text(s,x,y,px,o){const r=g.text(s,x,y,px,o);o=o||{};const w=ctx.measureText(String(s)).width;label('text',s,ax(x,w,o.align||'center'),ay(y,px,o.base||'middle'),w,px);return r},
           chem(s,x,y,px,o){const w=g.chem(s,x,y,px,o);o=o||{};label('chem',s,o.align==='left'?x:o.align==='right'?x-w:x-w/2,y-px/2,w,px);return w},
-          /* the painter draws the badge's circle, then its text: the shape is recorded first */
+          /* the painter draws the badge's circle, then its text: the shape is recorded first, and the label is its own (never tested
+             against that disc: one call draws both, and the label box is the font's em box, taller than the glyphs) */
           badge(x,y,txt,col,r){const out=g.badge(x,y,txt,col,r);const R=r||36,px=Math.max(36,R*1.1),w=ctx.measureText(String(txt)).width;
-            shape('badge',x-R,y-R,x+R,y+R,col,[x,y,R]);label('badge',txt,x-w/2,y+2-px/2,w,px);return out},
+            const own=shape('badge',x-R,y-R,x+R,y+R,col,[x,y,R]);label('badge',txt,x-w/2,y+2-px/2,w,px,own);return out},
           fit(s,x,y,px,maxW,o){const ok=g.fit(s,x,y,px,maxW,o);if(ok){const w=Math.min(ctx.measureText(String(s)).width,maxW);label('fit',s,x-w/2,y-px/2,w,px)}return ok},
           circle(x,y,r,fill,stroke,lw){const out=g.circle(x,y,r,fill,stroke,lw);if((fill||stroke)&&r>0){const R=r+(stroke?(lw||3)/2:0);shape('circle',x-R,y-R,x+R,y+R,fill,[x,y,R])}return out},
           rrect(x,y,w,h,r,fill,stroke,lw){const out=g.rrect(x,y,w,h,r,fill,stroke,lw);if(fill||stroke){const e=stroke?(lw||3)/2:0;shape('rrect',Math.min(x,x+w)-e,Math.min(y,y+h)-e,Math.max(x,x+w)+e,Math.max(y,y+h)+e,fill,null)}return out},
@@ -158,7 +160,7 @@ const overlap=page=>page.evaluate(tol=>{
       if(s){covered++;hidden.push(where+': label "'+txt(l.text)+'" under '+s.kind)}else shown.push(l)}
     for(let i=0;i<shown.length;i++)for(let j=i+1;j<shown.length;j++){if(sameScene(shown[i],shown[j]))continue;const x=cut(shown[i],shown[j]);
       if(x)hits.push({kind:'label',a:where+': label "'+txt(shown[i].text)+'"',b:'label "'+txt(shown[j].text)+'"',ox:x.ox,oy:x.oy,ra:T(shown[i]),rb:T(shown[j])})}
-    for(const l of shown)for(const s of B.shapes){if(sameScene(l,s))continue;const x=s.disc?discCut(l,s):(cut(l,s)&&!inside(l,s)?cut(l,s):null);
+    for(const l of shown)for(const s of B.shapes){if(sameScene(l,s)||l.own!=null&&l.own===s.i)continue;const x=s.disc?discCut(l,s):(cut(l,s)&&!inside(l,s)?cut(l,s):null);
       if(x)hits.push({kind:s.disc?'disc':'rrect',a:where+': label "'+txt(l.text)+'"',b:s.kind,ox:x.ox,oy:x.oy,ra:T(l),rb:T(s)})}
     /* each spheres scene and the box of everything it drew */
     for(let n=1;n<=(B.scenes||0);n++){const m=[...labs,...B.shapes].filter(x=>x.scene===n);if(!m.length)continue;
@@ -193,7 +195,7 @@ if(require.main===module)(async()=>{
     x.unrec.forEach(id=>fails.push(`${tag}: overlap: canvas #${id} has no recorded paint (instrumentation)`));
     x.hits.forEach(h=>{h.frame=tag;const kk=bkey(tag,h.a,h.b);h.baselined=keys.has(kk);if(h.baselined)base.used.add(kk);
       else fails.push(`${tag}: ${h.a} ∩ ${h.b} (${h.ox} × ${h.oy} px)`)});
-    x.hidden.forEach(t=>ov.hidden.push(tag+' '+t));x.scenes.forEach(c=>ov.scenes.push({frame:tag,where:c.where,n:c.n,box:c.box}));
+    ov.covered+=x.covered;x.hidden.forEach(t=>ov.hidden.push(tag+' '+t));x.scenes.forEach(c=>ov.scenes.push({frame:tag,where:c.where,n:c.n,box:c.box}));
     if(x.hits.length)ov.frames.push({tag,s,f,hits:x.hits});
   };
   for(let s=0;s<nf.length;s++)for(let f=0;f<nf[s];f++){
@@ -212,7 +214,7 @@ if(require.main===module)(async()=>{
     /* the overlap check, after the frame settles */
     if(!await settle(page))ov.unsettled.push(`s${s+1}f${f}`);
     const x=await overlap(page);
-    ov.dom+=x.dom;ov.labels+=x.labels;ov.shapes+=x.shapes;ov.dup+=x.dup;ov.covered+=x.covered;
+    ov.dom+=x.dom;ov.labels+=x.labels;ov.shapes+=x.shapes;ov.dup+=x.dup;
     take(`s${s+1}f${f}`,s+1,f,x);
     if(x.live.length)ov.live.push({s:s+1,f,ids:x.live});
     rec.push({s:s+1,f,empty:em,opts:o,overlap:{dom:x.dom,labels:x.labels,shapes:x.shapes,canvases:x.hosts,covered:x.covered,scenes:x.scenes.length,live:x.live,hits:x.hits.length}});
@@ -253,7 +255,7 @@ if(require.main===module)(async()=>{
   const stale=base?base.list.filter(e=>!base.used.has(bkey(e.frame,e.a,e.b))):[];
   const byKind={};all.forEach(h=>{byKind[h.kind]=(byKind[h.kind]||0)+1});
   const boxesTxt=`${nb} boxes (${ov.dom} DOM boxes, ${ov.labels} canvas labels, ${ov.shapes} canvas shapes${ov.dup?', '+ov.dup+' repeated canvas labels counted once':''})`;
-  const extraTxt=`${ov.covered} covered canvas labels, ${ov.scenes.length} spheres scenes`;
+  const extraTxt=`${ov.covered} covered canvas labels, ${ov.scenes.length} spheres scenes (live moments included)`;
   const liveTxt=`live: ${ov.live.length} frames at two moments`;
   const baseTxt=base?`${nbl} baselined (${base.name}, ${base.list.length} entries, ${stale.length} stale), ${nh-nbl} not in the baseline`:'no baseline';
   const kindTxt=Object.entries(byKind).map(([k,v])=>k+' '+v).join(', ');
