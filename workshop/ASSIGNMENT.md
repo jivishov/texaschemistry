@@ -1,13 +1,20 @@
 # Assignment (written by the orchestrator in step 00 from the teacher's start message; the teacher may edit it)
 
-unit: <U>
-lessons: <L1, L2 …>            # in priority order
-mode: cross-account             # cross-account | in-session
-base: main (or the branch that carries the reference decks, the kit and this folder; today that is claude/unit-4-chemistry-slides-j62190 until it is merged)  # branch that holds the reference decks, the kit and workshop/
-branch: workshop/unit<U>-<L1>-<L2>
-pull request: <number, draft, to base>
-reference decks: unit4/slides-4-1.html, unit4/slides-4-2.html (baseline; old decks are under unit4/old-slides/)  # plus any newer accepted Unit 4 decks on the base
+unit: 5
+lessons: 5.1                    # one lesson in the start message ("unit 5, lesson 5.1")
+mode: in-session, lean          # the orchestrator spawns the implementer as an in-session agent (Opus 5.5) per step; PROTOCOL.md Lean mode
+base: main                      # from the start message. `main` (11d08fe) holds the readings, the blueprints and the pre-rebuild decks only. The reference decks, the kit and `workshop/` are on `claude/unit-4-chemistry-slides-j62190` (3cfc709), which descends from main's tip with no other change, so the workshop branch is main fast-forwarded to that branch; the pull request targets main and carries the Unit 4 rebuild with it (see "Judgment calls")
+branch: workshop/unit5-5-1
+pull request: see the line in `log.md` for step 00 (draft, to main)
+reference decks: unit4/slides-4-1.html (md5 ebd342f1ee0e11c47157141cf3b2a59b, 194,646 bytes), unit4/slides-4-2.html (md5 c3fa219a806963f9a66c3baf643153f4, 203,769 bytes); the pre-rebuild Unit 4 decks are under unit4/old-slides/. The 4.5 deck of pull request #1 (branch workshop/unit4-5-6, step 04b) is not on the base and is not reference until the teacher accepts and merges it.
 effort: build extra-high, fix high
-periods per lesson: from the blueprint lesson map
-kit state: <parametrized per KIT.md | deck-specific, generalize in step 01 | absent, rebuild from markers in step 01>
-teacher wishes: <verbatim from the start message>
+periods per lesson: 5.1 → 2 (blueprint lesson map)
+kit state: deck-specific on the base (tools/slides-kit/ with step1/step6/step7/step10/final, build.sh, build42.sh, run-all.sh, run-all42.sh, gen_slides42.py, chem42-deck.js). A kit generalized per KIT.md (parts/shared, parts/lessons/<U>-<L>, build.py, suite.py, registry.json, audits/, README) exists on workshop/unit4-5-6 at commit 52e1f8e, reviewed and accepted in that workshop's steps 01 to 04a; its shared parts 02-runtime.html and 02b-shared.html are byte-identical to the base's step1/src copies and its head differs only by the two placeholders. Step 01 adopts that kit (tools/slides-kit/ only, without the 4-5 lesson parts and registry entry) instead of generalizing a second time, proves 4.1 and 4.2 rebuild byte-identical, and adds what RULES.md 11 and KIT.md require and that kit does not yet have: the overlap check in the layout audit (DOM boxes and canvas label boxes) and a cross-check parser for the Unit 5 blueprint's forms.
+rejected deck: unit5/slides-5-1.html on main (the pre-rebuild deck). The deck step moves it to unit5/old-slides/slides-5-1.html first and never reads it.
+teacher wishes: none beyond the start message ("Mode: in-session, lean. Base: main.").
+
+## Judgment calls made at setup (for the teacher; say so if any is wrong)
+1. **Base.** The start message says `main`, and main lacks the reference decks, the kit and `workshop/`. START.md names two ways out (merge `claude/unit-4-chemistry-slides-j62190` into main, or name that branch as the base). The branch is a straight descendant of main's tip, so the workshop branch starts at its head: the pull request to main then shows the Unit 4 rebuild (4.1, 4.2, old-slides, plans, kit, workshop) plus this workshop's work. If the teacher merges that branch into main first, nothing changes here.
+2. **Kit.** Rather than pay for a second generalization and guarantee conflicts with pull request #1, step 01 copies the generalized kit from workshop/unit4-5-6 (52e1f8e) and verifies it here. When pull request #1 later merges, `registry.json` and the audits that this workshop touches will need a small merge; the shared parts will be identical unless step 01 has to change the runtime for the overlap check (brief 01 prefers instrumenting the painter from the audit, so the runtime stays untouched).
+3. **Blueprint form.** `unit5/blueprint.html` has no "Slide checks: N" sentence and no period-split sentence; its 5.1 numbers are "Deck: 22 slides. Checkpoints 16 to 19, predictions revisited 20, CER exit ticket 21, self-rating 22.", the "Slides" column of the objectives table, and the matrix rows "Deck 5.1, slides 5 to 11, 15" (C.8(A)) and "Deck 5.1, slides 12 to 14" (C.8(B)). RULES 10 allows numbers only, so the last step changes those numbers only, and the cross-check learns the Unit 5 forms (plan section 10); the check count and the period split are then cross-checked against the registry and the deck, not the blueprint.
+4. **unit5/old-slides/README.md.** The deck step adds the two-line README that unit4/old-slides/ has (same wording with "Unit 5"), so the archived deck is marked as never to be read. Say "no README" if the folder should hold the deck alone.

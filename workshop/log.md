@@ -1,1 +1,2 @@
 # Log (one line per turn: date, role, step, what)
+2026-11-06 orchestrator 00 workshop setup: branch workshop/unit5-5-1 from main fast-forwarded with claude/unit-4-chemistry-slides-j62190 (reference decks, kit, workshop/); ASSIGNMENT.md with four judgment calls (base, kit from workshop/unit4-5-6 at 52e1f8e, the Unit 5 blueprint form, old-slides README); kit deck-specific on the base; rejected deck unit5/slides-5-1.html noted; draft pull request to main opened next
