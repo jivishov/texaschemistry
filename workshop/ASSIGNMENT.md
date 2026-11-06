@@ -5,7 +5,7 @@ lessons: 5.1                    # one lesson in the start message ("unit 5, less
 mode: in-session, lean          # the orchestrator spawns the implementer as an in-session agent (Opus 5.5) per step; PROTOCOL.md Lean mode
 base: main                      # from the start message. `main` (11d08fe) holds the readings, the blueprints and the pre-rebuild decks only. The reference decks, the kit and `workshop/` are on `claude/unit-4-chemistry-slides-j62190` (3cfc709), which descends from main's tip with no other change, so the workshop branch is main fast-forwarded to that branch; the pull request targets main and carries the Unit 4 rebuild with it (see "Judgment calls")
 branch: workshop/unit5-5-1
-pull request: see the line in `log.md` for step 00 (draft, to main)
+pull request: #2 (https://github.com/jivishov/texaschemistry/pull/2), draft, to main
 reference decks: unit4/slides-4-1.html (md5 ebd342f1ee0e11c47157141cf3b2a59b, 194,646 bytes), unit4/slides-4-2.html (md5 c3fa219a806963f9a66c3baf643153f4, 203,769 bytes); the pre-rebuild Unit 4 decks are under unit4/old-slides/. The 4.5 deck of pull request #1 (branch workshop/unit4-5-6, step 04b) is not on the base and is not reference until the teacher accepts and merges it.
 effort: build extra-high, fix high
 periods per lesson: 5.1 → 2 (blueprint lesson map)
