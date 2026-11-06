@@ -1,0 +1,761 @@
+<main id="stage">
+<div id="prog"><i></i></div>
+<svg class="sprite" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"><defs>
+<symbol id="ic-next" viewBox="0 0 120 100"><rect x="6" y="10" width="108" height="80" rx="22" class="f-card2 k-ink" stroke-width="3"/><path d="M48 30v40l32-20Z" class="f-acc"/></symbol>
+<symbol id="ic-back" viewBox="0 0 120 100"><rect x="6" y="10" width="108" height="80" rx="22" class="f-card2 k-ink" stroke-width="3"/><path d="M72 30v40L40 50Z" class="f-acc"/></symbol>
+<symbol id="ic-blank" viewBox="0 0 120 100"><rect x="6" y="10" width="108" height="80" rx="22" class="f-card2 k-ink" stroke-width="3"/><rect x="34" y="30" width="52" height="34" rx="4" class="f-ink"/><path d="M52 74h16" class="k-ink" stroke-width="5" stroke-linecap="round"/></symbol>
+<symbol id="ic-start" viewBox="0 0 120 100"><rect x="6" y="10" width="108" height="80" rx="22" class="f-card2 k-ink" stroke-width="3"/><path d="M30 34v-8h10M90 34v-8H80M30 66v8h10M90 66v8H80" fill="none" class="k-acc" stroke-width="5" stroke-linecap="round"/><path d="M52 38v24l20-12Z" class="f-acc"/></symbol>
+<symbol id="ic-redpowder" viewBox="0 0 100 100"><ellipse cx="50" cy="74" rx="44" ry="14" class="f-dish k-ink" stroke-width="3"/><path d="M18 72q32-46 64 0Z" class="f-redp k-ink" stroke-width="3"/><path d="M58 18h30l-6 14H62Z" class="f-boat k-ink" stroke-width="3"/><path d="M73 6v12" class="k-ink" stroke-width="3"/></symbol>
+<symbol id="ic-blackpowder" viewBox="0 0 100 100"><ellipse cx="50" cy="74" rx="44" ry="14" class="f-dish k-ink" stroke-width="3"/><path d="M18 72q32-46 64 0Z" class="f-black k-ink" stroke-width="3"/><path d="M66 8h20l-2 6q8 10 0 20H68q-8-10 0-20Z" class="f-pot k-ink" stroke-width="3"/></symbol>
+<symbol id="ic-cuo" viewBox="0 0 100 100"><circle cx="32" cy="50" r="26" class="f-cat"/><circle cx="74" cy="50" r="20" class="f-an"/><path d="M20 50h24M32 38v24M66 50h16" class="k-on" stroke-width="6" stroke-linecap="round"/></symbol>
+<symbol id="ic-cation" viewBox="0 0 100 100"><circle cx="50" cy="50" r="38" class="f-cat"/><path d="M32 50h36M50 32v36" class="k-on" stroke-width="8" stroke-linecap="round"/></symbol>
+<symbol id="ic-anion" viewBox="0 0 100 100"><circle cx="50" cy="50" r="38" class="f-an"/><path d="M32 50h36" class="k-on" stroke-width="8" stroke-linecap="round"/></symbol>
+<symbol id="ic-charge" viewBox="0 0 100 100"><circle cx="34" cy="56" r="26" class="f-cat"/><circle cx="72" cy="30" r="20" class="f-card2 k-cat" stroke-width="4"/><path d="M24 56h20M34 46v20M64 30h16M72 22v16" class="k-on" stroke-width="5" stroke-linecap="round"/><path d="M64 30h16M72 22v16" class="k-cat" stroke-width="5" stroke-linecap="round"/></symbol>
+<symbol id="ic-formula" viewBox="0 0 100 100"><rect x="6" y="20" width="40" height="56" rx="8" class="f-cat"/><rect x="52" y="20" width="30" height="56" rx="8" class="f-an"/><rect x="84" y="62" width="12" height="20" rx="3" class="f-ink"/><path d="M16 48h20M26 38v20M59 48h16" class="k-on" stroke-width="5" stroke-linecap="round"/></symbol>
+<symbol id="ic-subscript" viewBox="0 0 100 100"><rect x="10" y="12" width="50" height="64" rx="8" class="f-card2 k-ink" stroke-width="4"/><rect x="66" y="60" width="24" height="30" rx="5" class="f-acc"/></symbol>
+<symbol id="ic-poly" viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="none" class="k-muted" stroke-width="4" stroke-dasharray="8 6"/><circle cx="50" cy="50" r="15" class="f-ink"/><circle cx="50" cy="20" r="11" class="f-redp"/><circle cx="76" cy="64" r="11" class="f-redp"/><circle cx="24" cy="64" r="11" class="f-redp"/><circle cx="84" cy="16" r="13" class="f-an"/><path d="M78 16h12" class="k-on" stroke-width="4" stroke-linecap="round"/></symbol>
+<symbol id="ic-roman" viewBox="0 0 100 100"><rect x="8" y="14" width="84" height="72" rx="12" class="f-card2 k-acc" stroke-width="4"/><path d="M34 30v40M50 30v40M66 30v40M26 30h48M26 70h48" class="k-ink" stroke-width="6" stroke-linecap="round"/></symbol>
+<symbol id="ic-paren" viewBox="0 0 100 100"><path d="M26 12q-18 38 0 76M74 12q18 38 0 76" fill="none" class="k-acc" stroke-width="7" stroke-linecap="round"/><circle cx="42" cy="50" r="12" class="f-redp"/><circle cx="60" cy="50" r="8" class="f-white k-ink" stroke-width="2"/><rect x="84" y="70" width="12" height="20" rx="3" class="f-ink"/></symbol>
+<symbol id="ic-tag" viewBox="0 0 100 100"><path d="M10 50 40 18h50v64H40Z" class="f-card2 k-acc" stroke-width="5" stroke-linejoin="round"/><circle cx="34" cy="50" r="7" class="f-acc"/><path d="M52 40h28M52 58h20" class="k-ink" stroke-width="6" stroke-linecap="round"/></symbol>
+<symbol id="ic-tiles" viewBox="0 0 100 100"><rect x="8" y="54" width="84" height="30" rx="6" class="f-cat"/><rect x="18" y="46" width="14" height="10" rx="2" class="f-cat"/><rect x="68" y="46" width="14" height="10" rx="2" class="f-cat"/><rect x="8" y="16" width="40" height="28" rx="6" class="f-an"/><rect x="52" y="16" width="40" height="28" rx="6" class="f-an"/><path d="M41 69h18M50 60v18M20 30h16M64 30h16" class="k-on" stroke-width="5" stroke-linecap="round"/></symbol>
+<symbol id="ic-magnify" viewBox="0 0 100 100"><circle cx="42" cy="42" r="28" class="f-card2 k-acc" stroke-width="7"/><path d="M62 62l26 26" class="k-acc" stroke-width="10" stroke-linecap="round"/><path d="M30 34l24 16M54 34 30 50" class="k-bad" stroke-width="6" stroke-linecap="round" style="stroke:var(--bad)"/></symbol>
+</defs></svg>
+<section class="slide t-cover" id="s01" data-period="1" data-title="Ionic formulas and names" data-sec="Lesson 4.2" data-ref="Reading §4.2">
+  <h2>Ionic formulas and names</h2>
+  <div class="body">
+    <div class="card dq reg"><p class="tag">Driving question</p><p>How do the charges of ions decide the formula and the name of an ionic compound?</p></div>
+    <div class="r800">
+      <div class="key"><svg viewBox="0 0 120 100" role="img" aria-label="Next button"><use href="#ic-next"/></svg><b>Next</b><span>next step</span></div>
+      <div class="key"><svg viewBox="0 0 120 100" role="img" aria-label="Back button"><use href="#ic-back"/></svg><b>Back</b><span>one step back</span></div>
+      <div class="key"><svg viewBox="0 0 120 100" role="img" aria-label="Blank button"><use href="#ic-blank"/></svg><b>Blank</b><span>zoom part by part<br>twice fast: blank</span></div>
+      <div class="key"><svg viewBox="0 0 120 100" role="img" aria-label="Start button"><use href="#ic-start"/></svg><b>Start</b><span>full screen</span></div>
+    </div>
+  </div>
+  <aside class="notes"><b>Safety.</b> No demonstration in this lesson. If real samples are shown (the two copper oxides, a fertilizer bag, an antacid), keep them sealed and out of reach: copper compounds are harmful if swallowed. <b>Data and sources.</b> Names follow IUPAC, <i>Nomenclature of Inorganic Chemistry: Recommendations 2005</i> (the Red Book), IR-5 compositional names; common names leave out prefixes because the charges fix the ratio. Ion charges from group number as in the reading §4.2.1; the four transition-metal ions Fe²⁺, Fe³⁺, Cu⁺, Cu²⁺, Ag⁺, Zn²⁺. Copper(I) oxide in antifouling paint and copper(II) oxide in glazes as in the reading opener; hematite is iron(III) oxide (Mindat). OpenStax Chemistry 2e, 2.7 Chemical Nomenclature. <b>Clicker.</b> Logitech R800: Next = PageDown, Back = PageUp (while zoomed: exit the zoom), Start/stop = F5 then Escape, Blank = period. Blank zooms one part of the slide per press, animation first; the press after the last part exits; two fast presses on an unzoomed slide blank the screen. Mouse: click an option to mark it right or wrong; click the slide number or the section label for the slide list. Laptop: N notes, O overview, T theme, Ctrl+P run-sheet.</aside>
+  <script>Deck.frames('s01',[
+    {t:0.5,note:"Two periods. Read the driving question aloud; students copy it. Show the four clicker buttons once so students know a zoom or a blank screen is on purpose."}
+  ]);</script>
+</section>
+
+<section class="slide t-hook" id="s02" data-period="1" data-title="Read the label" data-sec="Hook" data-ref="Reading §4.2 opener">
+  <h2>Read the label</h2>
+  <div class="body">
+    <div class="sim" id="s02-sim" data-sim="labelRead" aria-label="A store shelf with toothpaste, an antacid and lawn food; each label has a chemical name."></div>
+    <div class="stack card band">
+      <p class="line" id="s02-l0">Each product has a chemical name on its label.</p>
+      <p class="line" id="s02-l1" data-label="toothpaste">Toothpaste protects teeth with sodium fluoride.</p>
+      <p class="line" id="s02-l2" data-label="antacid">An antacid calms the stomach with calcium carbonate.</p>
+      <p class="line" id="s02-l3" data-label="lawn food">Lawn food feeds grass with ammonium sulfate.</p>
+      <p class="line" id="s02-l4" data-label="the code">Each name tells you the ions inside.</p>
+    </div>
+  </div>
+  <aside class="notes">Narrative thread for 4.2: the code. Store labels are a code; the letters are ions and charges; the rule is zero total charge; the name is the code read aloud. The three names return on slide 18.</aside>
+  <script>Deck.frames('s02',[
+    {show:"s02-l0",stage:"s02-sim:shelf",t:0.5,note:"Ask: who has read the small print on a toothpaste tube? Collect two guesses about what the names mean."},
+    {show:"s02-l1",hide:"s02-l0",stage:"s02-sim:focus0",t:0.75,note:"Sodium fluoride: sodium ions and fluoride ions. Do not explain yet; students only notice two words."},
+    {show:"s02-l2",hide:"s02-l1",stage:"s02-sim:focus1",t:0.75,note:"Calcium carbonate: calcium ions and carbonate ions, a group of atoms. Ask: what do the two names have in common? (metal first)."},
+    {show:"s02-l3",hide:"s02-l2",stage:"s02-sim:focus2",t:0.75,note:"Ammonium sulfate: two groups of atoms. Misconception to listen for: \"the name lists every atom\"."},
+    {show:"s02-l4",hide:"s02-l3",stage:"s02-sim:code",t:0.75,note:"The code line. Promise: by slide 18 students write the formula of each of these three."}
+  ]);</script>
+</section>
+
+<section class="slide t-launch" id="s03" data-period="1" data-title="Two copper oxides" data-sec="Launch" data-ref="Reading §4.2 opener">
+  <h2>Two copper oxides</h2>
+  <div class="body">
+    <div class="trio" id="s03-trio">
+      <div class="card pcard slot"><div data-b="s03-red" data-label="red powder"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: a dish of red powder and a boat"><use href="#ic-redpowder"/></svg><p class="nm">red powder</p><p class="cap">used in boat paint</p></div></div>
+      <div class="card pcard slot"><div data-b="s03-black" data-label="black powder"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: a dish of black powder and a pot"><use href="#ic-blackpowder"/></svg><p class="nm">black powder</p><p class="cap">used in pottery glaze</p></div></div>
+      <div class="card pcard slot"><div data-b="s03-both" data-label="what is inside"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: a copper atom and an oxygen atom"><use href="#ic-cuo"/></svg><p class="nm">both</p><p class="cap">only copper ions and oxide ions</p></div></div>
+    </div>
+    <div class="card dq reg" id="s03-dq" data-label="driving question"><p>How do the charges of ions decide the formula and the name of an ionic compound?</p></div>
+    <div class="qrow" id="s03-st" data-label="write 60 s"><ol class="frames"><li>I think the two powders have different formulas because <span class="gap"></span>.</li></ol><div class="timer"></div></div>
+  </div>
+  <aside class="notes">Copper(I) oxide is the red powder in antifouling boat paint; copper(II) oxide is the black powder in pottery glazes. Do not name them yet: the names are the answer of slide 12.</aside>
+  <script>Deck.frames('s03',[
+    {show:"s03-red",t:0.5,note:"Red powder in boat paint. It keeps barnacles off the hull."},
+    {show:"s03-black",t:0.5,note:"Black powder used to color glazes."},
+    {show:"s03-both",t:0.5,note:"Both contain only copper and oxygen. Ask: how can two compounds of the same two elements differ?"},
+    {show:"s03-dq",cls:{"s03-trio": "small"},t:0.5,note:"Read the driving question; students copy it."},
+    {show:"s03-st",timer:60,t:1.5,note:"Sixty seconds with the starter. Collect two answers; listen for \"different numbers of atoms\" and for \"copper has different charges\"."}
+  ]);</script>
+</section>
+
+<section class="slide t-routine" id="s04" data-period="1" data-title="Predict now" data-sec="Predict" data-ref="Reading §4.2 Before you read">
+  <h2>Predict now</h2>
+  <div class="body">
+    <div class="card prompt"><p>Hands up: one finger for A, two for B, three for C. Write your letter.</p></div>
+    <div class="stack top">
+      <div class="card check" id="s04-q1" data-label="question 1" data-mode="pick"><p class="tag">Question 1</p><p class="q">Mg<sup>2+</sup> with O<sup>2−</sup> gives…</p><ol class="opts col1" data-lay="col"><li class="opt"><b>A</b><span>MgO</span></li><li class="opt"><b>B</b><span>Mg<sub>2</sub>O<sub>2</sub></span></li><li class="opt"><b>C</b><span>MgO<sub>2</sub></span></li></ol></div>
+      <div class="card check" id="s04-q2" data-label="question 2" data-mode="pick"><p class="tag">Question 2</p><p class="q">The III in iron(III) chloride means…</p><ol class="opts col1" data-lay="col"><li class="opt"><b>A</b><span>a charge of 3+</span></li><li class="opt"><b>B</b><span>three iron atoms</span></li><li class="opt"><b>C</b><span>three electrons gained</span></li></ol></div>
+      <div class="card check" id="s04-q3" data-label="question 3" data-mode="pick"><p class="tag">Question 3</p><p class="q">Calcium hydroxide is…</p><ol class="opts col1" data-lay="col"><li class="opt"><b>A</b><span>Ca(OH)<sub>2</sub></span></li><li class="opt"><b>B</b><span>CaOH<sub>2</sub></span></li><li class="opt"><b>C</b><span>CaO<sub>2</sub>H<sub>2</sub></span></li></ol></div>
+    </div>
+  </div>
+  <aside class="notes">No answers on this slide. Students keep their letters; slide 24 returns all three answers.</aside>
+  <script>Deck.frames('s04',[
+    {show:"s04-q1",t:0.75,note:"Count hands for A, B, C and write the counts on the board. Do not react to the choices. A mouse click on an option only highlights it; there is no grading on this slide."},
+    {show:"s04-q2",hide:"s04-q1",t:0.75,note:"Count hands. Many choose \"three iron atoms\": the numeral read as a count."},
+    {show:"s04-q3",hide:"s04-q2",t:1,note:"Count hands. CaOH₂ is the common wrong idea. Keep the counts for slide 24."}
+  ]);</script>
+</section>
+
+<section class="slide t-words" id="s05" data-period="1" data-title="Targets and words" data-sec="Targets" data-ref="Reading §4.2 Vocabulary">
+  <h2>Targets and words</h2>
+  <div class="body">
+    <div class="stack">
+      <div class="card" id="s05-ican" data-label="targets"><p class="tag">I can…</p><ul class="ican">
+        <li><b>4.2.1</b>predict an ion's charge from its group.</li>
+        <li><b>4.2.2</b>write a formula with zero total charge.</li>
+        <li><b>4.2.3</b>name compounds, with numerals for Fe and Cu.</li>
+        <li><b>4.2.4</b>use polyatomic ions and parentheses.</li>
+        <li><b>4.2.5</b>go from name to formula and back.</li></ul></div>
+      <div class="words" id="s05-words" data-label="words">
+        <div class="wcard"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: cation"><use href="#ic-cation"/></svg><p class="t">cation <span class="es">(catión)</span></p><p class="m">a + ion; a metal atom lost electrons</p></div>
+        <div class="wcard"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: anion"><use href="#ic-anion"/></svg><p class="t">anion <span class="es">(anión)</span></p><p class="m">a − ion; a nonmetal atom gained electrons</p></div>
+        <div class="wcard"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: charge"><use href="#ic-charge"/></svg><p class="t">charge <span class="es">(carga)</span></p><p class="m">the + or − number on an ion: charge 2+</p></div>
+        <div class="wcard"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: formula"><use href="#ic-formula"/></svg><p class="t">formula <span class="es">(fórmula)</span></p><p class="m">symbols and small numbers for a compound</p></div>
+        <div class="wcard"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: subscript"><use href="#ic-subscript"/></svg><p class="t">subscript <span class="es">(subíndice)</span></p><p class="m">the small number: how many of each</p></div>
+        <div class="wcard"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: polyatomic ion"><use href="#ic-poly"/></svg><p class="t">polyatomic ion <span class="es">(ion poliatómico)</span></p><p class="m">a group of atoms with one charge</p></div>
+        <div class="wcard"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: Roman numeral"><use href="#ic-roman"/></svg><p class="t">Roman numeral <span class="es">(número romano)</span></p><p class="m">the charge of an iron or copper ion</p></div>
+        <div class="wcard"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: parentheses"><use href="#ic-paren"/></svg><p class="t">parentheses <span class="es">(paréntesis)</span></p><p class="m">marks around a group that repeats</p></div>
+      </div>
+    </div>
+    <div class="legend" id="s05-leg" data-label="color code"><span><i class="i-cat">+</i>cation</span><span><i class="i-an">−</i>anion</span><span><i class="e"></i>electron</span><span><i class="i-metal"> </i>metal</span><span><i class="i-nm"> </i>nonmetal</span><span><i class="i-dp">δ+</i>small +</span><span><i class="i-dm">δ−</i>small −</span></div>
+  </div>
+  <aside class="notes">The color code is the same as in Lesson 4.1: cation red with +, anion blue with −. Shapes also carry a sign, so color-blind students can read every drawing.</aside>
+  <script>Deck.frames('s05',[
+    {show:"s05-ican",t:1,note:"Read the five targets. Students copy 4.2.1 to 4.2.5; they rate themselves on slide 25."},
+    {show:"s05-words",hide:"s05-ican",t:1.5,note:"Choral reading: English term, then the Spanish cognate. Students add the words to the glossary with the icon."},
+    {show:"s05-leg",t:0.5,note:"Same color code as Lesson 4.1. Polyatomic ions appear later with a dashed outline: one unit."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept wide" id="s06" data-period="1" data-title="Charges from the group" data-sec="Ion charges" data-ref="Reading §4.2.1">
+  <h2>Charges from the group</h2>
+  <div class="body">
+    <div class="sim" id="s06-sim" data-sim="ionTable" data-fblock="0" data-reserve="214" aria-label="The periodic table with the charge of each group's ion."></div>
+    <div class="ptrow"><div class="stack">
+      <p class="caprow" id="s06-p0">Where are the metals? Where are the nonmetals?</p>
+      <p class="caprow" id="s06-p1" data-label="group 1">Group 1 metals lose 1 electron: charge 1+.</p>
+      <p class="caprow" id="s06-p2" data-label="group 2">Group 2 metals lose 2 electrons: charge 2+.</p>
+      <p class="caprow" id="s06-p3" data-label="aluminum">Aluminum loses 3 electrons: charge 3+.</p>
+      <p class="caprow" id="s06-p4" data-label="group 17">Group 17 gains 1 electron: charge 1−. The name ends in -ide.</p>
+      <p class="caprow" id="s06-p5" data-label="group 16">Group 16 gains 2 electrons: charge 2−.</p>
+      <p class="caprow" id="s06-p6" data-label="group 15">Nitrogen gains 3 electrons: charge 3−.</p>
+      <div class="rulerow reg" id="s06-rule" data-label="rule"><p>Metal atoms lose 1, 2 or 3 valence electrons.</p><p>Nonmetal atoms gain electrons to reach eight.</p><p>A monatomic anion name ends in -ide.</p></div>
+      <div class="checkrow" id="s06-check" data-label="check">
+        <p class="q" id="s06-q"><span class="tag">Check:</span> Which ion does magnesium form?</p>
+        <ol class="opts" data-lay="row"><li class="opt" id="s06-a" data-ok="0" data-fb="Mg&lt;sup&gt;+&lt;/sup&gt; lost only one electron. Group 2 loses two."><b>A</b><span>Mg<sup>+</sup></span></li><li class="opt" id="s06-b" data-ok="1" data-fb="Magnesium is in group 2. It loses 2 electrons."><b>B</b><span>Mg<sup>2+</sup></span></li><li class="opt" id="s06-c" data-ok="0" data-fb="A minus charge means gained electrons. Metals lose electrons."><b>C</b><span>Mg<sup>2−</sup></span></li></ol>
+        <div class="af"><p class="ans" id="s06-ans" data-label="answer">B. Magnesium is in group 2. It loses 2 electrons.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div></div>
+  </div>
+  <aside class="notes">Group number gives the charge for groups 1, 2, 13 (aluminum), 15, 16 and 17. Groups 14 and 18 form no simple ions in this course. Monatomic anions take -ide: fluoride, chloride, bromide, iodide, oxide, sulfide, nitride.</aside>
+  <script>Deck.frames('s06',[
+    {show:"s06-p0",stage:"s06-sim:outline",focus:"s06-sim",t:0.25,note:"Students point: metals left and middle, nonmetals upper right."},
+    {show:"s06-p1",hide:"s06-p0",stage:"s06-sim:g1",t:0.5,note:"Group 1: one valence electron lost, 1+ (Lesson 4.1: Na⁺)."},
+    {show:"s06-p2",hide:"s06-p1",stage:"s06-sim:g2",t:0.25,note:"Group 2: 2+. Ask: Ca? (Ca²⁺)."},
+    {show:"s06-p3",hide:"s06-p2",stage:"s06-sim:g13",t:0.25,note:"Only aluminum is lit in group 13 for this course: Al³⁺."},
+    {show:"s06-p4",hide:"s06-p3",stage:"s06-sim:g17",t:0.75,note:"Group 17 gains one electron to reach eight: 1−. Read the -ide names in the list."},
+    {show:"s06-p5",hide:"s06-p4",stage:"s06-sim:g16",t:0.25,note:"Group 16: oxide, sulfide."},
+    {show:"s06-p6",hide:"s06-p5",stage:"s06-sim:g15",t:0.75,note:"Nitride, 3−. The dash badges: groups 14 and 18 form no simple ion. Misconception: \"the charge equals the group number for nonmetals\" (it is 8 minus the valence electrons)."},
+    {show:"s06-rule",hide:"s06-p6",cue:"check (first ask aloud: K? S?)",t:1,note:"Students copy the three rules. Oral calls before the press: K? (K⁺) S? (S²⁻)."},
+    {show:"s06-check",hide:"s06-rule",t:0.5,note:"Hands up for A, B or C. The table still shows group 2 with its charge."},
+    {show:"s06-ans",cls:{"s06-b": "right", "s06-check": "done"},t:0.5,note:"B is right. A (Mg⁺): that is one electron lost; group 2 loses two. C (Mg²⁻): a minus charge means electrons gained; metals lose electrons."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept wide" id="s07" data-period="1" data-title="The four to memorize" data-sec="Ion charges" data-ref="Reading §4.2.1">
+  <h2>The four to memorize</h2>
+  <div class="body">
+    <div class="sim" id="s07-sim" data-sim="ionTable" data-fblock="0" data-reserve="214" aria-label="Iron, copper, silver and zinc lit on the periodic table with their ions."></div>
+    <div class="ptrow"><div class="stack">
+      <p class="caprow" id="s07-p0">Four transition metals to learn.</p>
+      <div class="rulerow" id="s07-p1" data-label="two ions each"><p>Fe<sup>2+</sup> and Fe<sup>3+</sup>, Cu<sup>+</sup> and Cu<sup>2+</sup>: two ions each.</p><p>The numeral is a version number, not a count.</p></div>
+      <p class="caprow" id="s07-p2" data-label="silver and zinc">Ag<sup>+</sup> and Zn<sup>2+</sup> have one ion each, so no numeral.</p>
+      <p class="caprow" id="s07-p3" data-label="real life">Rust and the iron ore hematite hold Fe<sup>3+</sup>.</p>
+      <div class="memrow card" id="s07-mem" data-label="memory card" data-zoom="memory card"><p class="tag">Memory card: the six ions and their charges</p><p class="memchips"><span>Fe<sup>2+</sup></span><span>Fe<sup>3+</sup></span><span>Cu<sup>+</sup></span><span>Cu<sup>2+</sup></span><span>Ag<sup>+</sup></span><span>Zn<sup>2+</sup></span></p></div>
+      <div class="checkrow" id="s07-check" data-label="check">
+        <p class="q" id="s07-q"><span class="tag">Check:</span> Which metal needs a Roman numeral in its name?</p>
+        <ol class="opts" data-lay="row"><li class="opt" id="s07-a" data-ok="0" data-fb="Zinc forms one ion, Zn&lt;sup&gt;2+&lt;/sup&gt;, so no numeral."><b>A</b><span>zinc</span></li><li class="opt" id="s07-b" data-ok="0" data-fb="Silver forms one ion, Ag&lt;sup&gt;+&lt;/sup&gt;, so no numeral."><b>B</b><span>silver</span></li><li class="opt" id="s07-c" data-ok="1" data-fb="Copper forms two ions, Cu&lt;sup&gt;+&lt;/sup&gt; and Cu&lt;sup&gt;2+&lt;/sup&gt;."><b>C</b><span>copper</span></li></ol>
+        <div class="af"><p class="ans" id="s07-ans" data-label="answer">C. Copper forms Cu<sup>+</sup> and Cu<sup>2+</sup>.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div></div>
+  </div>
+  <aside class="notes">Transition metals: iron and copper form two common ions each; silver and zinc form one. Rust and hematite (Fe₂O₃) contain Fe³⁺; iron(II) sulfate (a plant supplement) contains Fe²⁺. Honors box (not assessed): ferrous/ferric, cuprous/cupric, Sn²⁺/Sn⁴⁺, Pb²⁺/Pb⁴⁺.</aside>
+  <script>Deck.frames('s07',[
+    {show:"s07-p0",stage:"s07-sim:tm",focus:"s07-sim",t:0.5,note:"Fe, Cu, Ag and Zn light up. Ask: why can the group number not help here?"},
+    {show:"s07-p1",hide:"s07-p0",t:0.75,note:"Two ions each for Fe and Cu. Say: like version 2 and version 3 of an app, not two apps. Misconception: \"(III) means three atoms\"."},
+    {show:"s07-p2",hide:"s07-p1",t:0.5,note:"Silver and zinc have one ion each, so their names need no numeral."},
+    {show:"s07-p3",hide:"s07-p2",t:0.5,note:"Real life: rust and hematite are iron(III) compounds."},
+    {show:"s07-mem",hide:"s07-p3",t:0.75,note:"Memory card: students copy the six ions in large print and quiz a partner for 30 seconds."},
+    {show:"s07-check",hide:"s07-mem",t:0.5,note:"Hands up for A, B or C. The four metals stay lit on the table."},
+    {show:"s07-ans",cls:{"s07-c": "right", "s07-check": "done"},t:0.5,note:"C is right. A (zinc): one ion, Zn²⁺, so no numeral. B (silver): one ion, Ag⁺, no numeral."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept" id="s08" data-period="1" data-title="Balancing the charges" data-sec="Formulas" data-ref="Reading §4.2.2">
+  <h2>Balancing the charges</h2>
+  <div class="body">
+    <div class="sim" id="s08-sim" data-sim="chargeBlocks" data-pairs="Ca-Cl,Al-O,Na-O" aria-label="Ion tiles: plus studs on cations fit minus sockets on anions."></div>
+    <div class="col acc">
+      <div class="card" id="s08-c0" data-label="studs"><p class="tag">Model</p><p>Every + stud needs a − socket. The total charge must be zero.</p></div>
+      <div class="card" id="s08-c1" data-label="calcium chloride"><p class="tag">Ca and Cl</p><p>Ca<sup>2+</sup> has two studs, so it needs two Cl<sup>−</sup> ions. The charges 2+ and 2− add to zero.</p></div>
+      <div class="card" id="s08-q2" data-label="aluminum oxide"><p class="tag">Al and O</p><p>Al<sup>3+</sup> and O<sup>2−</sup>: how many of each ion make the total charge zero?</p></div>
+      <div class="card" id="s08-c2" data-label="balance"><p class="tag">Al and O</p><p>Two Al<sup>3+</sup> ions give a charge of 6+. Three O<sup>2−</sup> ions give 6−. The total charge is zero.</p></div>
+      <div class="card rule reg" id="s08-rule" data-label="rule"><p class="tag">Rule</p><p>The total charge of an ionic compound is zero. The formula shows the smallest whole-number ratio of ions.</p></div>
+      <div class="card check" id="s08-check" data-label="check">
+        <p class="tag">Check</p>
+        <p class="q">Na<sup>+</sup> with O<sup>2−</sup> balances as…</p>
+        <ol class="opts" data-lay="row"><li class="opt" id="s08-a" data-ok="0" data-fb="One Na&lt;sup&gt;+&lt;/sup&gt; and one O&lt;sup&gt;2−&lt;/sup&gt; leave a charge of 1−."><b>A</b><span>NaO</span></li><li class="opt" id="s08-b" data-ok="0" data-fb="NaO&lt;sub&gt;2&lt;/sub&gt; gives 1+ against 4−, even further from zero."><b>B</b><span>NaO<sub>2</sub></span></li><li class="opt" id="s08-c" data-ok="1" data-fb="Two Na&lt;sup&gt;+&lt;/sup&gt; give 2+. One O&lt;sup&gt;2−&lt;/sup&gt; gives 2−."><b>C</b><span>Na<sub>2</sub>O</span></li></ol>
+        <div class="af"><p class="ans" id="s08-ans" data-label="answer">C. Two Na<sup>+</sup> give 2+. One O<sup>2−</sup> gives 2−.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Ion-tile model (blueprint): a tile is as long as its charge. Studs equal sockets means the total charge is zero. Reading §4.2.2 Key idea: find the smallest numbers of cations and anions whose charges add to zero.</aside>
+  <script>Deck.frames('s08',[
+    {show:"s08-c0",stage:"s08-sim:Ca-Cl/ions",focus:"s08-sim",t:0.5,note:"One Ca²⁺ tile and one Cl⁻ tile. Ask: is this balanced? (one stud is empty)."},
+    {stage:"s08-sim:Ca-Cl/add",t:0.5,note:"A second Cl⁻ drops in. Predict first: how many Cl⁻ does one Ca²⁺ need?"},
+    {show:"s08-c1",stage:"s08-sim:Ca-Cl/balance",t:0.5,note:"The rows snap: 2+ and 2−. Point at each + stud in a − socket."},
+    {stage:"s08-sim:Ca-Cl/formula",t:0.25,note:"The counts become the formula CaCl₂: one Ca, two Cl."},
+    {stage:"s08-sim:Ca-Cl/name",t:0.25,note:"Calcium chloride: cation name, then anion with -ide."},
+    {show:"s08-q2",hide:"s08-c1",stage:"s08-sim:Al-O/ions",t:0.25,note:"Al³⁺ and O²⁻. Ask: how many of each? Give 20 seconds of partner talk."},
+    {show:"s08-c2",hide:"s08-q2",stage:"s08-sim:Al-O/balance",t:0.5,note:"Two Al³⁺ (6+) and three O²⁻ (6−). The least common multiple is 6."},
+    {stage:"s08-sim:Al-O/formula",t:0.25,note:"Al₂O₃. Misconception: \"Al₃O₂\" (counts swapped)."},
+    {show:"s08-rule",t:1,note:"Students copy the rule. \"Smallest set\" prepares the reduce step on slide 9."},
+    {show:"s08-check",hide:"s08-c2",stage:"s08-sim:Na-O/ions",t:0.5,note:"Hands up for A, B or C. The tiles show one Na⁺ and one O²⁻: not balanced yet."},
+    {show:"s08-ans",stage:"s08-sim:Na-O/formula",cls:{"s08-c": "right", "s08-check": "done"},t:0.5,note:"C is right. A (NaO): 1+ and 2− leave 1− left over. B (NaO₂): 1+ against 4−, even further off."}
+  ]);</script>
+</section>
+
+<section class="slide t-example cb" id="s09" data-period="1" data-title="Writing the formula" data-sec="Formulas" data-ref="Reading §4.2.2">
+  <h2>Writing the formula</h2>
+  <div class="body">
+    <div class="sim" id="s09-sim" data-sim="chargeBlocks" data-pairs="Mg-O:reduce,K-S,Ca-N" aria-label="Ion tiles for magnesium oxide, potassium sulfide and calcium nitride."></div>
+    <div class="col acc">
+      <div class="card stepscard" id="s09-steps"><p class="tag">Writing rules</p><ol class="steps">
+        <li id="s09-1" data-label="rules"><span class="k">Order</span><span>Write the cation first.</span></li>
+        <li id="s09-2" data-label="rule 2"><span class="k">Subscripts</span><span>The small numbers count the ions.</span></li>
+        <li id="s09-3" data-label="rule 3"><span class="k">No 1</span><span>Write no subscript 1.</span></li>
+        <li id="s09-4" data-label="lowest ratio"><span class="k">Lowest</span><span>Reduce to the lowest ratio: MgO, not Mg<sub>2</sub>O<sub>2</sub>.</span></li>
+      </ol></div>
+      <div class="card" id="s09-try" data-label="your turn"><p class="tag">Your turn: write each formula.</p>
+        <p>potassium sulfide → <span class="formula" data-b="s09-a1" data-label="answer 1">K<sub>2</sub>S</span></p>
+        <p>calcium nitride → <span class="formula" data-b="s09-a2" data-label="answer 2">Ca<sub>3</sub>N<sub>2</sub></span></p>
+        <div class="timer"></div></div>
+    </div>
+  </div>
+  <aside class="notes">Reading §4.2.2 Key idea: cation first, anion second; subscripts are the numbers of ions in the lowest whole-number ratio: MgO, not Mg₂O₂.</aside>
+  <script>Deck.frames('s09',[
+    {show:["s09-1", "s09-2", "s09-3"],stage:"s09-sim:Mg-O/ions",t:1,note:"Three writing rules. Order: cation first (NaCl, never ClNa). Subscripts count ions in the formula unit. A 1 is never written: MgO, not Mg₁O₁."},
+    {stage:"s09-sim:Mg-O/add",t:0.25,note:"Someone adds a second pair: two Mg²⁺ and two O²⁻."},
+    {stage:"s09-sim:Mg-O/balance",t:0.25,note:"4+ and 4−: balanced, but not the smallest set."},
+    {stage:"s09-sim:Mg-O/formula",t:0.25,note:"Mg₂O₂ is not a formula. Ask: what is wrong with it?"},
+    {show:"s09-4",stage:"s09-sim:Mg-O/reduce",t:0.75,note:"Two pairs collapse to one: 2 : 2 → 1 : 1, MgO. Misconception: \"crisscross always gives the final formula\"."},
+    {show:"s09-try",timer:60,t:1.5,note:"One minute. Students write both formulas in notebooks with the tile picture in mind."},
+    {show:"s09-a1",stage:"s09-sim:K-S/formula",t:0.5,note:"K⁺ and S²⁻: two K⁺ for one S²⁻, K₂S."},
+    {show:"s09-a2",stage:"s09-sim:Ca-N/formula",t:0.5,note:"Ca²⁺ and N³⁻: 6+ and 6−, Ca₃N₂."}
+  ]);</script>
+</section>
+
+<section class="slide t-example cw" id="s10" data-period="1" data-title="The crisscross shortcut" data-sec="Formulas" data-ref="Reading §4.2.2">
+  <h2>The crisscross shortcut</h2>
+  <div class="body">
+    <div class="sim" id="s10-sim" data-sim="crisscross" data-pairs="Al-O,Mg-O,Ca-O" aria-label="The charge numbers cross over to become subscripts."></div>
+    <div class="col acc">
+      <div class="card" id="s10-cA" data-label="start"><p class="tag">Shortcut</p><p>Crisscross is a fast way to balance the charges.</p></div>
+      <div class="card" id="s10-cB" data-label="magnesium oxide"><p class="tag">Mg and O</p><p>Mg<sup>2+</sup> and O<sup>2−</sup>: cross the charge numbers again.</p></div>
+      <div class="card" id="s10-c0" data-label="cross"><p class="tag">Cross</p><p>Each charge number becomes the other ion's subscript. The signs drop.</p></div>
+      <div class="card" id="s10-c1" data-label="check"><p class="tag">Check</p><p>Two Al<sup>3+</sup> ions give 6+. Three O<sup>2−</sup> ions give 6−. The total charge is zero.</p></div>
+      <div class="card" id="s10-c2" data-label="reduce"><p class="tag">Reduce</p><p>Crossing gives Mg<sub>2</sub>O<sub>2</sub>. Divide both counts by 2: MgO.</p></div>
+      <div class="card rule reg" id="s10-rule" data-label="rule"><p class="tag">Rule</p><p>Crisscross is a shortcut, not the final formula. Always reduce the ratio, then check the total charge.</p></div>
+      <div class="card check" id="s10-check" data-label="check">
+        <p class="tag">Check</p>
+        <p class="q">Crisscross gives Ca<sub>2</sub>O<sub>2</sub>. The formula is…</p>
+        <ol class="opts" data-lay="row"><li class="opt" id="s10-a" data-ok="0" data-fb="Ca&lt;sub&gt;2&lt;/sub&gt;O&lt;sub&gt;2&lt;/sub&gt; is not reduced. Divide both counts by 2."><b>A</b><span>Ca<sub>2</sub>O<sub>2</sub></span></li><li class="opt" id="s10-b" data-ok="1" data-fb="Reduce 2 : 2 to 1 : 1. The charges 2+ and 2− make zero."><b>B</b><span>CaO</span></li><li class="opt" id="s10-c" data-ok="0" data-fb="CaO&lt;sub&gt;2&lt;/sub&gt; gives 2+ against 4−, so it does not balance."><b>C</b><span>CaO<sub>2</sub></span></li></ol>
+        <div class="af"><p class="ans" id="s10-ans" data-label="answer">B. Reduce 2 : 2 to 1 : 1. The charges 2+ and 2− make zero.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">The crisscross is a shortcut for the tile picture; it must be followed by reducing and by checking the charge totals.</aside>
+  <script>Deck.frames('s10',[
+    {show:"s10-cA",stage:"s10-sim:Al-O/ions",focus:"s10-sim",t:0.25,note:"Al³⁺ and O²⁻ again, the same pair as slide 8."},
+    {show:"s10-c0",hide:"s10-cA",stage:"s10-sim:Al-O/cross",t:0.5,note:"The 3 moves under O, the 2 under Al. The signs are not written in the formula."},
+    {show:"s10-c1",stage:"s10-sim:Al-O/check",t:0.5,note:"Check: 6+ and 6−. 3 and 2 share no factor, so Al₂O₃ stays."},
+    {show:"s10-cB",hide:["s10-c0", "s10-c1"],stage:"s10-sim:Mg-O/cross",t:0.25,note:"Mg²⁺ and O²⁻ crossed: Mg₂O₂. Ask: done?"},
+    {show:"s10-c2",stage:"s10-sim:Mg-O/reduce",t:0.5,note:"Strike the common factor 2: MgO."},
+    {show:"s10-rule",hide:"s10-cB",t:1,note:"Students copy the rule. Misconception: \"crisscross always gives the final formula\"."},
+    {show:"s10-check",hide:"s10-c2",stage:"s10-sim:Ca-O/cross",t:0.5,note:"Hands up for A, B or C. The animation shows Ca²⁺ and O²⁻ crossed, as in the question."},
+    {show:"s10-ans",stage:"s10-sim:Ca-O/check",cls:{"s10-b": "right", "s10-check": "done"},t:0.5,note:"B is right. A (Ca₂O₂): not reduced. C (CaO₂): 2+ against 4−, not balanced."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept cw" id="s11" data-period="1" data-title="Naming binary compounds" data-sec="Names" data-ref="Reading §4.2.3">
+  <h2>Naming binary compounds</h2>
+  <div class="body">
+    <div class="sim" id="s11-sim" data-sim="nameBuilder" data-cases="K2S,CaBr2" data-ask="CaBr2" aria-label="Name tiles slide together into one name."></div>
+    <div class="col acc">
+      <div class="card" id="s11-c0" data-label="two parts"><p class="tag">Two parts</p><p>A name has two parts: the cation first, then the anion.</p></div>
+      <table class="tbl compact fill" id="s11-tbl" data-label="anion names" data-zoom="anion names"><thead><tr><th>Anion</th><th>Name</th></tr></thead><tbody><tr><td>F<sup>−</sup></td><td>fluoride</td></tr><tr><td>Cl<sup>−</sup></td><td>chloride</td></tr><tr><td>Br<sup>−</sup></td><td>bromide</td></tr><tr><td>I<sup>−</sup></td><td>iodide</td></tr><tr><td>O<sup>2−</sup></td><td>oxide</td></tr><tr><td>S<sup>2−</sup></td><td>sulfide</td></tr><tr><td>N<sup>3−</sup></td><td>nitride</td></tr></tbody></table>
+      <div class="card rule reg" id="s11-rule" data-label="rule"><p class="tag">Rule</p><p>Name the cation first, then the anion root plus -ide. Common names omit prefixes because the ion charges determine the ratio.</p></div>
+      <div class="card check" id="s11-check" data-label="check">
+        <p class="tag">Check</p>
+        <p class="q">Name CaBr<sub>2</sub>.</p>
+        <ol class="opts" data-lay="row"><li class="opt" id="s11-a" data-ok="0" data-fb="Bromine is the element. The ion is bromide."><b>A</b><span>calcium bromine</span></li><li class="opt" id="s11-b" data-ok="1" data-fb="The anion takes -ide. No prefix is needed."><b>B</b><span>calcium bromide</span></li><li class="opt" id="s11-c" data-ok="0" data-fb="Common names use no prefix: calcium bromide."><b>C</b><span>calcium dibromide</span></li></ol>
+        <div class="af"><p class="ans" id="s11-ans" data-label="answer">B. The anion takes -ide. No prefix is needed.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">A binary compound has exactly two elements. Common names use no prefixes (di-, tri-) because the charges fix the ratio. IUPAC also accepts a compositional name with prefixes (calcium dibromide), but the common name is calcium bromide.</aside>
+  <script>Deck.frames('s11',[
+    {show:"s11-c0",stage:"s11-sim:K2S/parts",focus:"s11-sim",t:0.25,note:"Three tiles: potassium, sulf, -ide. Ask: which part names the cation?"},
+    {stage:"s11-sim:K2S/join",t:0.5,note:"One name: potassium sulfide. The formula K₂S has two K, but the name has no \"di\"."},
+    {show:"s11-tbl",hide:"s11-c0",t:0.75,note:"Choral reading of the seven anion names. Nitride is N³⁻, not nitrate (slide 15)."},
+    {show:"s11-rule",hide:"s11-tbl",cue:"check (first ask aloud: MgO? Na₂S?)",t:1,note:"Students copy the rule. Oral calls before the press: MgO? (magnesium oxide) Na₂S? (sodium sulfide)."},
+    {show:"s11-check",stage:"s11-sim:CaBr2/ask",t:0.5,note:"Hands up for A, B or C. The animation shows only the formula CaBr₂."},
+    {show:"s11-ans",stage:"s11-sim:CaBr2/join",cls:{"s11-b": "right", "s11-check": "done"},t:0.5,note:"B is right. A (calcium bromine): bromine is the element; the ion is bromide. C (calcium dibromide): IUPAC accepts this compositional name, but the common name uses no prefix; accept it orally and write calcium bromide."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept cw" id="s12" data-period="1" data-title="The Stock system" data-sec="Names" data-ref="Reading §4.2.3">
+  <h2>The Stock system</h2>
+  <div class="body">
+    <div class="stack">
+      <div class="sim" id="s12-nb" data-sim="nameBuilder" data-cases="FeCl3,FeCl2,AgCl,ZnO" aria-label="Name tiles with a Roman numeral for iron."></div>
+      <div class="sim" id="s12-sd" data-sim="stockDetective" data-cases="CuO,Cu2O,FeCl2" data-ask="FeCl2" aria-label="Working back from a copper oxide formula to its name."></div>
+    </div>
+    <div class="col acc">
+      <div class="card" id="s12-c0" data-label="version numbers"><p class="tag">Two irons</p><p>Iron(II) and iron(III) are two different ions, like version numbers.</p></div>
+      <div class="card" id="s12-c1" data-label="iron(II)"><p class="tag">Same anion</p><p>A different numeral gives a different formula: FeCl<sub>3</sub> and FeCl<sub>2</sub>.</p></div>
+      <div class="card" id="s12-c2" data-label="silver and zinc"><p class="tag">One ion only</p><p>Silver and zinc have one ion each. Their names have no numeral.</p></div>
+      <div class="card" id="s12-c3" data-label="copper oxides"><p class="tag">Work back</p><p>Start from the anion's charge. The metal must cancel it.</p></div>
+      <div class="card reg" id="s12-c4" data-label="the driving question"><p class="tag">Driving question</p><p>The copper ion's charge determines the formula. The Roman numeral records that charge in the name.</p></div>
+      <div class="card check" id="s12-check" data-label="check">
+        <p class="tag">Check</p>
+        <p class="q">Name FeCl<sub>2</sub>.</p>
+        <ol class="opts" data-lay="row"><li class="opt" id="s12-a" data-ok="0" data-fb="Fe&lt;sup&gt;+&lt;/sup&gt; cannot cancel two Cl&lt;sup&gt;−&lt;/sup&gt; ions, a total of 2−."><b>A</b><span>iron(I) chloride</span></li><li class="opt" id="s12-b" data-ok="1" data-fb="Two Cl&lt;sup&gt;−&lt;/sup&gt; ions give 2−, so iron is 2+."><b>B</b><span>iron(II) chloride</span></li><li class="opt" id="s12-c" data-ok="0" data-fb="Iron has two ions, so its name needs the numeral."><b>C</b><span>iron chloride</span></li></ol>
+        <div class="af"><p class="ans" id="s12-ans" data-label="answer">B. Two Cl<sup>−</sup> ions give 2−, so iron is 2+.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Stock system (Alfred Stock, 1919): the Roman numeral is the charge of the metal ion, found by working back from the anion. Only metals with more than one common ion take one. Red Cu₂O is copper(I) oxide; black CuO is copper(II) oxide: this answers slide 3.</aside>
+  <script>Deck.frames('s12',[
+    {show:"s12-c0",stage:"s12-nb:FeCl3/parts",focus:"s12-nb",t:0.75,note:"Iron(III) chloride, FeCl₃. Ask: what does the numeral count? (nothing: it is the charge)."},
+    {stage:"s12-nb:FeCl3/numeral",label:"numeral",t:0.5,note:"Fe³⁺ gives the numeral (III). Misconception: \"Roman numerals count atoms\"."},
+    {stage:"s12-nb:FeCl3/join",label:"one name",t:0.25,note:"Iron(III) chloride, no space before the parenthesis."},
+    {show:"s12-c1",hide:"s12-c0",stage:"s12-nb:FeCl2/join",t:0.5,note:"Iron(II) chloride, FeCl₂: same anion, different numeral and formula."},
+    {show:"s12-c2",hide:"s12-c1",stage:"s12-nb:AgCl/join",t:0.25,note:"Silver chloride: Ag⁺ is the only silver ion."},
+    {stage:"s12-nb:ZnO/join",label:"zinc oxide",t:0.25,note:"Zinc oxide (sunscreen): Zn²⁺ only."},
+    {show:["s12-sd", "s12-c3"],hide:["s12-c2", "s12-nb"],stage:"s12-sd:CuO/anion",t:0.25,note:"Now backward: black CuO. O is oxide, 2−."},
+    {stage:"s12-sd:CuO/name",label:"name CuO",t:0.25,note:"One Cu cancels 2−, so Cu²⁺: copper(II) oxide."},
+    {stage:"s12-sd:Cu2O/anion",label:"red Cu₂O",t:0.25,note:"Red Cu₂O. The anion is still 2−."},
+    {stage:"s12-sd:Cu2O/metal",t:0.5,note:"Two coppers share 2+, so each is 1+."},
+    {show:"s12-c4",hide:"s12-c3",stage:"s12-sd:Cu2O/name",t:0.25,note:"Copper(I) oxide. This answers the driving question for the two powders of slide 3."},
+    {show:"s12-check",stage:"s12-sd:FeCl2/ask",t:0.5,note:"Hands up for A, B or C. The animation shows only the formula FeCl₂."},
+    {show:"s12-ans",stage:"s12-sd:FeCl2/name",cls:{"s12-b": "right", "s12-check": "done"},t:0.5,note:"B is right. A (iron(I)): the numeral would mean Fe⁺, which cannot cancel 2−. C (iron chloride): iron has two ions, so the name needs the numeral."}
+  ]);</script>
+</section>
+
+<section class="slide t-summary tfill" id="s13" data-period="1" data-title="Formula in 3 steps, name in 2 parts" data-sec="Summary" data-ref="Reading §4.2.2 and §4.2.3">
+  <h2>Formula in 3 steps, name in 2 parts</h2>
+  <div class="body">
+    <div class="flowrow" id="s13-f" data-label="formula steps"><b>Formula</b><span class="fbox">1 Ions</span><span class="arw">→</span><span class="fbox">2 Balance</span><span class="arw">→</span><span class="fbox">3 Write</span></div>
+    <div class="flowrow" id="s13-n" data-label="name parts"><b>Name</b><span class="fbox">cation (numeral for Fe, Cu)</span><span class="arw">+</span><span class="fbox">anion with -ide</span></div>
+    <table class="tbl compact fill">
+      <thead><tr><th>Question</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>Name AlCl<sub>3</sub>.</td><td class="slot"><span data-b="s13-a1" data-label="answer 1">aluminum chloride</span></td></tr>
+        <tr><td>Name K<sub>2</sub>O.</td><td class="slot"><span data-b="s13-a2" data-label="answer 2">potassium oxide</span></td></tr>
+        <tr><td>Write calcium sulfide.</td><td class="slot"><span data-b="s13-a3" data-label="answer 3">CaS</span></td></tr>
+        <tr><td>Name FeO.</td><td class="slot"><span data-b="s13-a4" data-label="answer 4">iron(II) oxide</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes">One picture closes period 1. Students copy the two rows as a flow chart. Period 1 ends here.</aside>
+  <script>Deck.frames('s13',[
+    {show:"s13-f",t:0.5,note:"Formula: ions, balance, write. The four retrieval items are on screen; students start them in notebooks."},
+    {show:"s13-n",t:0.5,note:"Name: cation (numeral only for Fe and Cu), then anion with -ide."},
+    {show:"s13-a1",t:0.5,note:"Al³⁺ is the only aluminum ion: no numeral."},
+    {show:"s13-a2",t:0.25,note:"Two K⁺ for one O²⁻; the name has no prefix."},
+    {show:"s13-a3",t:0.5,note:"Ca²⁺ and S²⁻: 1 : 1."},
+    {show:"s13-a4",t:0.25,note:"O is 2−, so Fe is 2+: iron(II) oxide. End of period 1."}
+  ]);</script>
+</section>
+
+<section class="slide t-turn two" id="s14" data-period="2" data-title="Warm-up" data-sec="Warm-up, period 2" data-ref="Reading §4.2.1 to §4.2.3">
+  <h2>Warm-up</h2>
+  <div class="body">
+    <div class="qrow">
+      <div class="card"><p>Answer in your notebook. Then check each answer.</p></div>
+      <div class="timer"></div>
+    </div>
+    <table class="tbl fill">
+      <thead><tr><th>Question</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>What charge does a group 16 ion have?</td><td class="slot"><span data-b="s14-a1" data-label="answer 1">charge 2−</span></td></tr>
+        <tr><td>Write magnesium chloride.</td><td class="slot"><span data-b="s14-a2" data-label="answer 2">MgCl<sub>2</sub></span></td></tr>
+        <tr><td>What does (III) mean in iron(III)?</td><td class="slot"><span data-b="s14-a3" data-label="answer 3">the iron ion has a charge of 3+</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes">Period 2 starts here. The three questions retrieve 4.2.1, 4.2.2 and 4.2.3.</aside>
+  <script>Deck.frames('s14',[
+    {t:0.5,note:"Students write while you take attendance."},
+    {timer:90,label:"timer 90 s",t:1.5,note:"Ninety seconds."},
+    {show:"s14-a1",t:0.25,note:"Group 16 gains two electrons: 2−."},
+    {show:"s14-a2",t:0.25,note:"Mg²⁺ needs two Cl⁻: MgCl₂."},
+    {show:"s14-a3",t:0.5,note:"The numeral is the charge, not a count."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept cw" id="s15" data-period="2" data-title="Polyatomic ions" data-sec="Polyatomic ions" data-ref="Reading §4.2.4">
+  <h2>Polyatomic ions</h2>
+  <div class="body">
+    <div class="leftcol"><div class="sim" id="s15-sim" data-sim="polyIons" aria-label="A polyatomic ion turning slowly in 3D."></div><p class="simcap" id="s15-cap" data-label="colors">Atom colors show the element, not the charge.</p></div>
+    <div class="col acc">
+      <div class="card" id="s15-c0" data-label="squad"><p class="tag">A squad</p><p>A polyatomic ion is a group of atoms with one shared charge.</p></div>
+      <div class="card" id="s15-A" data-zoom="six ions"><p class="tag">Six polyatomic ions</p><div class="pgrid"><div class="pchip slot"><span data-b="s15-r1">ammonium</span><span class="pf" data-b="s15-r1">NH<sub>4</sub><sup>+</sup></span></div><div class="pchip slot"><span data-b="s15-r2">hydroxide</span><span class="pf" data-b="s15-r2">OH<sup>−</sup></span></div><div class="pchip slot"><span data-b="s15-r3">nitrate</span><span class="pf" data-b="s15-r3">NO<sub>3</sub><sup>−</sup></span></div><div class="pchip slot"><span data-b="s15-r4">carbonate</span><span class="pf" data-b="s15-r4">CO<sub>3</sub><sup>2−</sup></span></div><div class="pchip slot"><span data-b="s15-r5">sulfate</span><span class="pf" data-b="s15-r5">SO<sub>4</sub><sup>2−</sup></span></div><div class="pchip slot"><span data-b="s15-r6">phosphate</span><span class="pf" data-b="s15-r6">PO<sub>4</sub><sup>3−</sup></span></div></div></div>
+      <div class="card" id="s15-c1" data-label="pattern"><p class="tag">Pattern</p><p>An -ate ion contains oxygen. Nitrate is not nitride. Sulfate is not sulfide.</p></div>
+      <div class="card" id="s15-c2" data-label="memory card"><p class="tag">Memory card</p><p class="mem">Nick the Camel ate Supper in Phoenix.</p><p class="small">Consonants count O atoms. Vowels give the charge.</p></div>
+      <div class="card check" id="s15-check" data-label="check">
+        <p class="tag">Check</p>
+        <p class="q">Sulfate, SO<sub>4</sub><sup>2−</sup>: which statement is right?</p>
+        <ol class="opts col1" data-lay="col"><li class="opt" id="s15-a" data-ok="0" data-fb="The atoms share electrons. There are no O&lt;sup&gt;2−&lt;/sup&gt; ions inside."><b>A</b><span>Each O is an oxide ion.</span></li><li class="opt" id="s15-b" data-ok="0" data-fb="Sulfide is S&lt;sup&gt;2−&lt;/sup&gt;, one atom. Sulfate has one S and four O."><b>B</b><span>It is the same as sulfide.</span></li><li class="opt" id="s15-c" data-ok="1" data-fb="The charge belongs to the whole group."><b>C</b><span>The whole group carries 2−.</span></li></ol>
+        <div class="af"><p class="ans" id="s15-ans" data-label="answer">C. The charge belongs to the whole group.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Six core polyatomic ions. Memory sentence: Nick = NO₃⁻ (3 consonants N, c, k; 1 vowel), Camel = CO₃²⁻ (3 consonants, 2 vowels), Supper = SO₄²⁻ (4 consonants, 2 vowels), Phoenix = PO₄³⁻ (4 consonants, 3 vowels). Ammonium NH₄⁺ is the only common positive one; hydroxide OH⁻.</aside>
+  <script>Deck.frames('s15',[
+    {show:["s15-A", "s15-c0", "s15-r1", "s15-cap"],stage:"s15-sim:NH4",t:0.5,note:"Ammonium, NH₄⁺, the only positive one; the badge is on the whole group. Atom colors are CPK colors and show the element: H white, C dark gray, N blue, O red, S yellow, P orange. They are not the ion colors."},
+    {show:"s15-r2",stage:"s15-sim:OH",label:"next ion",t:0.25,note:"Hydroxide, OH⁻: two atoms, one charge."},
+    {show:"s15-r3",stage:"s15-sim:NO3",label:"next ion",t:0.25,note:"Nitrate, NO₃⁻: flat triangle. Watch it turn edge-on."},
+    {show:"s15-r4",stage:"s15-sim:CO3",label:"next ion",t:0.25,note:"Carbonate, CO₃²⁻: same shape as nitrate, different charge. Limestone is calcium carbonate."},
+    {show:"s15-r5",stage:"s15-sim:SO4",label:"next ion",t:0.25,note:"Sulfate, SO₄²⁻: a tetrahedron, not flat."},
+    {show:"s15-r6",stage:"s15-sim:PO4",label:"next ion",t:0.5,note:"Phosphate, PO₄³⁻: tetrahedron like sulfate, charge 3−."},
+    {show:"s15-c1",t:0.5,note:"The -ate ending signals oxygen. Misconception: \"nitrate = nitride\"."},
+    {show:"s15-c2",hide:"s15-c0",t:1,note:"Read the sentence together. Count with students: Nick has N, c, k (3 O) and i (1−)."},
+    {show:"s15-check",hide:["s15-c1", "s15-c2", "s15-cap"],stage:"s15-sim:SO4",t:0.5,note:"Hands up for A, B or C. The model turns back to sulfate, the ion in the question."},
+    {show:"s15-ans",cls:{"s15-c": "right", "s15-check": "done"},t:0.5,note:"C is right. A (each O an oxide ion): the atoms are joined by covalent bonds; there are no O²⁻ ions inside. B (same as sulfide): sulfide is S²⁻, a single atom."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept" id="s16" data-period="2" data-title="Parentheses" data-sec="Polyatomic ions" data-ref="Reading §4.2.4">
+  <h2>Parentheses</h2>
+  <div class="body">
+    <div class="stack">
+      <div class="sim" id="s16-pb" data-sim="parenBus" aria-label="One hydroxide squad, then two squads in parentheses."></div>
+      <div class="sim" id="s16-cb" data-sim="chargeBlocks" data-pairs="NH4-SO4,Na-NO3,Mg-NO3" aria-label="Ion tiles with polyatomic ions."></div>
+    </div>
+    <div class="col acc">
+      <div class="card" id="s16-c0" data-label="squad"><p class="tag">Squad</p><p>OH<sup>−</sup> is one squad: one O and one H with one charge.</p></div>
+      <div class="card" id="s16-c1" data-label="two squads"><p class="tag">Two squads</p><p>Two ammonium squads ride in parentheses. One sulfate squad needs none.</p></div>
+      <div class="card" id="s16-c2" data-label="one squad"><p class="tag">One squad</p><p>One nitrate squad, so no parentheses.</p></div>
+      <div class="card rule reg" id="s16-rule" data-label="rule"><p class="tag">Rule</p><p>Treat a polyatomic ion as one unit. Never change the subscripts inside a polyatomic ion.</p></div>
+      <div class="card check" id="s16-check" data-label="check">
+        <p class="tag">Check</p>
+        <p class="q">Write the formula of magnesium nitrate.</p>
+        <ol class="opts" data-lay="row"><li class="opt" id="s16-a" data-ok="0" data-fb="One NO&lt;sub&gt;3&lt;/sub&gt;&lt;sup&gt;−&lt;/sup&gt; gives 1−. That cannot cancel 2+."><b>A</b><span>MgNO<sub>3</sub></span></li><li class="opt" id="s16-b" data-ok="1" data-fb="Mg&lt;sup&gt;2+&lt;/sup&gt; needs two NO&lt;sub&gt;3&lt;/sub&gt;&lt;sup&gt;−&lt;/sup&gt; squads."><b>B</b><span>Mg(NO<sub>3</sub>)<sub>2</sub></span></li><li class="opt" id="s16-c" data-ok="0" data-fb="The squads were broken up. Keep each NO&lt;sub&gt;3&lt;/sub&gt;&lt;sup&gt;−&lt;/sup&gt; whole."><b>C</b><span>MgN<sub>2</sub>O<sub>6</sub></span></li></ol>
+        <div class="af"><p class="ans" id="s16-ans" data-label="answer">B. Mg<sup>2+</sup> needs two NO<sub>3</sub><sup>−</sup> squads.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Reading §4.2.4 Key idea: treat a polyatomic ion as one unit; put it in parentheses when the formula needs more than one of it; never change the subscripts inside it (SO₃²⁻ is a different ion, sulfite).</aside>
+  <script>Deck.frames('s16',[
+    {show:"s16-c0",stage:"s16-pb:one",focus:"s16-pb",t:0.5,note:"NaOH: one squad, no parentheses."},
+    {stage:"s16-pb:two",t:0.5,note:"Ca²⁺ needs two OH⁻ squads: they ride in parentheses, the 2 outside: Ca(OH)₂."},
+    {stage:"s16-pb:wrong",t:0.5,note:"CaOH₂ would mean one O and two H. Misconception: \"parentheses change an ion\"."},
+    {show:["s16-cb", "s16-c1"],hide:["s16-c0", "s16-pb"],stage:"s16-cb:NH4-SO4/balance",t:0.5,note:"Two NH₄⁺ (2+) and one SO₄²⁻ (2−)."},
+    {stage:"s16-cb:NH4-SO4/formula",t:0.25,note:"(NH₄)₂SO₄, the lawn food of slide 2."},
+    {show:"s16-c2",hide:"s16-c1",stage:"s16-cb:Na-NO3/formula",label:"sodium nitrate",t:0.25,note:"Na⁺ and NO₃⁻: 1 : 1, NaNO₃, no parentheses."},
+    {show:"s16-rule",t:1,note:"Students copy the rule."},
+    {show:"s16-check",hide:"s16-c2",stage:"s16-cb:Mg-NO3/ions",t:0.5,note:"Hands up for A, B or C. The tiles show Mg²⁺ and one NO₃⁻: not balanced yet."},
+    {show:"s16-ans",stage:"s16-cb:Mg-NO3/formula",cls:{"s16-b": "right", "s16-check": "done"},t:0.5,note:"B is right. A (MgNO₃): 2+ against 1−, not balanced. C (MgN₂O₆): the squads were broken up; the numbers inside a squad never change."}
+  ]);</script>
+</section>
+
+<section class="slide t-example cb" id="s17" data-period="2" data-title="The two-way road" data-sec="Translating" data-ref="Reading §4.2.5">
+  <h2>The two-way road</h2>
+  <div class="body">
+    <div class="stack">
+      <div class="sim" id="s17-cb" data-sim="chargeBlocks" data-pairs="Al-SO4" aria-label="Ion tiles for aluminum sulfate."></div>
+      <div class="sim" id="s17-sd" data-sim="stockDetective" data-cases="Cu2S,Fe2SO43" data-ask="Fe2SO43" aria-label="Working back from Cu2S to its name."></div>
+    </div>
+    <div class="col acc">
+      <div class="card stepscard k1" id="s17-A"><p class="tag">Name → formula: aluminum sulfate</p>
+        <ol class="steps">
+          <li><span class="k">Ions</span><span id="s17-a1">Al<sup>3+</sup> and SO<sub>4</sub><sup>2−</sup></span></li>
+          <li><span class="k">Balance</span><span id="s17-a2" data-label="balance">two Al<sup>3+</sup>: 2 × 3+ = 6+<br>three SO<sub>4</sub><sup>2−</sup>: 3 × 2− = 6−</span></li>
+          <li><span class="k">Write</span><span class="formula" id="s17-a3" data-label="write">Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub></span></li>
+        </ol>
+      </div>
+      <div class="card" id="s17-B" data-label="formula to name"><p class="tag">Formula → name: Cu<sub>2</sub>S</p><p>Work back: start from the anion. The copper ions must cancel its charge.</p></div>
+      <div class="card" id="s17-both" data-label="check both ways"><p class="tag">Check both ways</p><p>Name your formula again. Write your name again. Both must agree.</p></div>
+      <div class="card check" id="s17-check" data-label="check">
+        <p class="tag">Check</p>
+        <p class="q">Name Fe<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub>.</p>
+        <ol class="opts" data-lay="row"><li class="opt" id="s17-a" data-ok="0" data-fb="Two Fe&lt;sup&gt;2+&lt;/sup&gt; give 4+ against 6−."><b>A</b><span>iron(II) sulfate</span></li><li class="opt" id="s17-b" data-ok="1" data-fb="Three SO&lt;sub&gt;4&lt;/sub&gt;&lt;sup&gt;2−&lt;/sup&gt; give 6−. Two Fe share 6+, so each is 3+."><b>B</b><span>iron(III) sulfate</span></li><li class="opt" id="s17-c" data-ok="0" data-fb="Sulfate is not sulfide, and iron needs its numeral."><b>C</b><span>iron sulfide</span></li></ol>
+        <div class="af"><p class="ans" id="s17-ans" data-label="answer">B. Three SO<sub>4</sub><sup>2−</sup> give 6−. Two Fe share 6+, so each is 3+.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Reading §4.2.5 Key idea: name to formula: ions, balance, write. Formula to name: find the anion charge, work back to the metal charge if it needs a numeral, then name both ions.</aside>
+  <script>Deck.frames('s17',[
+    {show:["s17-A", "s17-a1"],stage:"s17-cb:Al-SO4/ions",focus:"s17-cb",t:0.5,note:"Name to formula. Identify both ions first; sulfate is a squad."},
+    {show:"s17-a2",stage:"s17-cb:Al-SO4/balance",t:0.5,note:"Least common multiple 6: two Al³⁺ and three SO₄²⁻."},
+    {show:"s17-a3",stage:"s17-cb:Al-SO4/formula",t:0.5,note:"Al₂(SO₄)₃: parentheses because sulfate repeats."},
+    {show:["s17-B", "s17-sd"],hide:"s17-cb",stage:"s17-sd:Cu2S/anion",label:"formula to name",t:0.25,note:"Formula to name: Cu₂S. Start with the anion: sulfide, 2−."},
+    {stage:"s17-sd:Cu2S/metal",label:"the metal",t:0.5,note:"Two copper ions share 2+: each is Cu⁺."},
+    {stage:"s17-sd:Cu2S/name",label:"the name",t:0.5,note:"Copper(I) sulfide. Misconception: \"the 2 in Cu₂S means copper(II)\"."},
+    {show:"s17-both",hide:"s17-A",t:0.75,note:"Check both ways: write the formula from your name; it must match."},
+    {show:"s17-check",hide:"s17-B",stage:"s17-sd:Fe2SO43/ask",t:0.5,note:"Hands up for A, B or C. The animation shows only the formula Fe₂(SO₄)₃."},
+    {show:"s17-ans",stage:"s17-sd:Fe2SO43/name",cls:{"s17-b": "right", "s17-check": "done"},t:0.5,note:"B is right. A (iron(II)): would give 4+ against 6−. C (iron sulfide): sulfate is not sulfide, and iron needs its numeral."}
+  ]);</script>
+</section>
+
+<section class="slide t-turn two" id="s18" data-period="2" data-title="You do: six compounds" data-sec="Translating" data-ref="Reading §4.2.5">
+  <h2>You do: six compounds</h2>
+  <div class="body">
+    <div class="qrow">
+      <div class="card"><p>Write each formula or name. The first three are the shelf labels.</p></div>
+      <div class="timer"></div>
+    </div>
+    <table class="tbl compact fill">
+      <thead><tr><th>Given</th><th>Write</th><th>Answer</th></tr></thead>
+      <tbody><tr><td>sodium fluoride <span class="why">(toothpaste)</span></td><td>formula</td><td class="slot"><span data-b="s18-a1" data-label="answer 1">NaF</span></td></tr><tr><td>calcium carbonate <span class="why">(antacid)</span></td><td>formula</td><td class="slot"><span data-b="s18-a2" data-label="answer 2">CaCO<sub>3</sub></span></td></tr><tr><td>ammonium sulfate <span class="why">(lawn food)</span></td><td>formula</td><td class="slot"><span data-b="s18-a3" data-label="answer 3">(NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub></span></td></tr><tr><td>MgBr<sub>2</sub></td><td>name</td><td class="slot"><span data-b="s18-a4" data-label="answer 4">magnesium bromide</span></td></tr><tr><td>FeO</td><td>name</td><td class="slot"><span data-b="s18-a5" data-label="answer 5">iron(II) oxide</span></td></tr><tr><td>Zn(OH)<sub>2</sub></td><td>name</td><td class="slot"><span data-b="s18-a6" data-label="answer 6">zinc hydroxide</span></td></tr></tbody>
+    </table>
+  </div>
+  <aside class="notes">You do. The first three names come from the shelf on slide 2. Circulate during the timer; look for missing parentheses and for missing numerals.</aside>
+  <script>Deck.frames('s18',[
+    {t:0.25,note:"Read the task. Students work alone in notebooks."},
+    {timer:180,label:"timer 3 min",t:3,note:"Three minutes. Early finishers check both ways."},
+    {show:"s18-a1",t:0.125,note:"Na⁺ and F⁻: NaF."},
+    {show:"s18-a2",t:0.125,note:"Ca²⁺ and CO₃²⁻: CaCO₃, one squad, no parentheses."},
+    {show:"s18-a3",t:0.125,note:"NH₄⁺ and SO₄²⁻: (NH₄)₂SO₄."},
+    {show:"s18-a4",t:0.125,note:"Magnesium bromide: no prefix."},
+    {show:"s18-a5",t:0.125,note:"O is 2−, so Fe is 2+: iron(II) oxide."},
+    {show:"s18-a6",t:0.125,note:"Zinc hydroxide: zinc needs no numeral."}
+  ]);</script>
+</section>
+
+<section class="slide t-turn two" id="s19" data-period="2" data-title="Spot the error" data-sec="Translating" data-ref="Reading §4.2.5">
+  <h2>Spot the error</h2>
+  <div class="body">
+    <div class="card"><p>Each item has one error. Call out the fix.</p></div>
+    <table class="tbl compact fill">
+      <thead><tr><th>Wrong</th><th>Fix</th></tr></thead>
+      <tbody><tr><td>NaSO<sub>4</sub></td><td class="slot"><span data-b="s19-a1" data-label="fix 1">Na<sub>2</sub>SO<sub>4</sub></span> <span class="why" data-b="s19-a1">charges must total zero</span></td></tr><tr><td>Mg<sub>2</sub>O<sub>2</sub></td><td class="slot"><span data-b="s19-a2" data-label="fix 2">MgO</span> <span class="why" data-b="s19-a2">lowest ratio</span></td></tr><tr><td>CaOH<sub>2</sub></td><td class="slot"><span data-b="s19-a3" data-label="fix 3">Ca(OH)<sub>2</sub></span> <span class="why" data-b="s19-a3">keep the squad</span></td></tr><tr><td>Cu<sub>2</sub>O: copper(II) oxide</td><td class="slot"><span data-b="s19-a4" data-label="fix 4">copper(I) oxide</span> <span class="why" data-b="s19-a4">each Cu is 1+</span></td></tr><tr><td>FeCl<sub>3</sub>: iron chloride</td><td class="slot"><span data-b="s19-a5" data-label="fix 5">iron(III) chloride</span> <span class="why" data-b="s19-a5">iron needs its numeral</span></td></tr><tr><td>NaNO<sub>3</sub>: sodium nitride</td><td class="slot"><span data-b="s19-a6" data-label="fix 6">sodium nitrate</span> <span class="why" data-b="s19-a6">-ate has oxygen</span></td></tr></tbody>
+    </table>
+  </div>
+  <aside class="notes">Six errors from the reading’s Find the error mission. Ask a student to name the error before each press.</aside>
+  <script>Deck.frames('s19',[
+    {t:0.5,note:"Students study the six items with a partner for 30 seconds."},
+    {show:"s19-a1",t:0.5,note:"Na⁺ and SO₄²⁻ need two Na⁺: Na₂SO₄."},
+    {show:"s19-a2",t:0.5,note:"Reduce 2 : 2 to MgO."},
+    {show:"s19-a3",t:0.5,note:"Two OH⁻ squads ride in parentheses."},
+    {show:"s19-a4",t:0.25,note:"O is 2−, two Cu share it: each Cu is 1+."},
+    {show:"s19-a5",t:0.5,note:"Iron has two ions; three Cl⁻ mean Fe³⁺."},
+    {show:"s19-a6",t:0.25,note:"NO₃⁻ is nitrate; nitride is N³⁻."}
+  ]);</script>
+</section>
+
+<section class="slide t-routine" id="s20" data-period="2" data-title="Checkpoint routine" data-sec="Checkpoint" data-ref="Objectives 4.2.2 to 4.2.4">
+  <h2>Checkpoint routine</h2>
+  <div class="body">
+    <div class="card prompt"><p>Each checkpoint uses the same five steps.</p></div>
+    <ol class="rail"><li id="s20-r1">Think</li><li id="s20-r2">Talk</li><li id="s20-r3">Write</li><li id="s20-r4">Self-check</li><li id="s20-r5">Compare</li></ol>
+    <ol class="steprows">
+        <li id="s20-s1"><b class="lbl">Think · 30 s</b><span>alone, no talking</span></li>
+        <li id="s20-s2"><b class="lbl">Talk · 60 s</b><span>tell your partner, then listen</span></li>
+        <li id="s20-s3"><b class="lbl">Write · 90 s</b><span>use the sentence frames</span></li>
+        <li id="s20-s4"><b class="lbl">Self-check</b><span>tick each success criterion</span></li>
+        <li id="s20-s5"><b class="lbl">Compare</b><span>read the sample and fix one line</span></li>
+    </ol>
+  </div>
+  <aside class="notes">Routine for slides 21 to 23: think 30 s, talk 60 s, write 90 s, self-check 30 s, compare 45 s.</aside>
+  <script>Deck.frames('s20',[
+    {t:0.5,note:"Explain that the routine repeats for each question."},
+    {cls:{"s20-r1": "now", "s20-s1": "now"},label:"think",t:0.1,note:"Think: silent, no pencils."},
+    {cls:{"s20-r1": "done", "s20-s1": "", "s20-r2": "now", "s20-s2": "now"},label:"talk",t:0.1,note:"Talk: partner A first, then partner B."},
+    {cls:{"s20-r1": "done", "s20-r2": "done", "s20-s1": "", "s20-s2": "", "s20-r3": "now", "s20-s3": "now"},label:"write",t:0.1,note:"Write: the sentence frames and word bank stay on screen."},
+    {cls:{"s20-r1": "done", "s20-r2": "done", "s20-r3": "done", "s20-s1": "", "s20-s2": "", "s20-s3": "", "s20-r4": "now", "s20-s4": "now"},label:"self-check",t:0.1,note:"Self-check: tick each criterion you met."},
+    {cls:{"s20-r1": "done", "s20-r2": "done", "s20-r3": "done", "s20-r4": "done", "s20-s1": "", "s20-s2": "", "s20-s3": "", "s20-s4": "", "s20-r5": "now", "s20-s5": "now"},label:"compare",t:0.1,note:"Compare: read the sample answer and fix one line."}
+  ]);</script>
+</section>
+
+<section class="slide t-routine" id="s21" data-period="2" data-title="Checkpoint 1" data-sec="Checkpoint 1" data-ref="Objective 4.2.2">
+  <h2>Checkpoint 1</h2>
+  <div class="body">
+    <div class="card prompt reg"><p>Write the formula of aluminum oxide from Al<sup>3+</sup> and O<sup>2−</sup>. Explain why the ratio is correct.</p></div>
+    <ol class="rail"><li id="s21-r1">Think</li><li id="s21-r2">Talk</li><li id="s21-r3">Write</li><li id="s21-r4">Self-check</li><li id="s21-r5">Compare</li></ol>
+    <div class="rt-main">
+      <div class="acc">
+        <div class="card phase" id="s21-read" data-label="read"><p class="big">Read the question. Which ions do you have?</p></div>
+        <div class="card phase" id="s21-think" data-label="think 30 s"><p class="big">Think alone. Do not talk yet.</p></div>
+        <div class="card phase" id="s21-talk" data-label="talk 60 s"><p class="big">Tell your partner your answer. Then listen.</p></div>
+        <div class="card phase" id="s21-write" data-label="write 90 s"><p class="tag">Write</p><ol class="frames"><li>The formula is <span class="gap"></span>.</li><li>Two Al<sup>3+</sup> ions give a charge of <span class="gap"></span>, and three O<sup>2−</sup> ions give <span class="gap"></span>.</li><li>The ratio is right because <span class="gap"></span>.</li></ol><p class="bank"><b>Word bank:</b> <span>6+ and 6−</span> <span>total charge</span> <span>zero</span> <span>lowest ratio</span></p></div>
+        <div class="card phase" id="s21-check" data-label="self-check"><p class="tag">Self-check: did you write…</p><ul class="crit"><li>the formula Al<sub>2</sub>O<sub>3</sub>?</li><li>the totals 6+ and 6−?</li><li>zero total charge?</li></ul></div>
+        <div class="card phase reg" id="s21-sample" data-label="sample answer"><p class="tag">Sample answer</p><p>The formula is Al<sub>2</sub>O<sub>3</sub>. Two aluminum ions provide 6+, and three oxide ions provide 6−. The total charge equals zero.</p></div>
+      </div>
+      <div class="timer"></div>
+    </div>
+  </div>
+  <aside class="notes">Routine: think 30 s, talk 60 s, write 90 s, self-check 30 s, compare 45 s. The question stays on screen on every frame.</aside>
+  <script>Deck.frames('s21',[
+    {show:"s21-read",t:0.25,note:"Read the prompt aloud. Ask: which numbers will you balance? (3+ and 2−)."},
+    {show:"s21-think",hide:"s21-read",cls:{"s21-r1": "now"},timer:30,t:0.5,note:"Silent thinking. No pencils yet."},
+    {show:"s21-talk",hide:"s21-think",cls:{"s21-r1": "done", "s21-r2": "now"},timer:60,t:1,note:"Partner A speaks first, then B. Listen for: \"Al₃O₂\" (counts swapped) and \"AlO\" (charges ignored)."},
+    {show:"s21-write",hide:"s21-talk",cls:{"s21-r2": "done", "s21-r3": "now"},timer:90,t:1.5,note:"Students write in notebooks with the frames; the word bank stays up."},
+    {show:"s21-check",cls:{"s21-r3": "done", "s21-r4": "now"},t:0.5,note:"Students tick each criterion they met and fix one line."},
+    {show:"s21-sample",cls:{"s21-r4": "done", "s21-r5": "now"},t:0.75,note:"Compare with the sample. Reading §4.2.2: the total charge is zero, in the lowest whole-number ratio."}
+  ]);</script>
+</section>
+
+<section class="slide t-routine" id="s22" data-period="2" data-title="Checkpoint 2" data-sec="Checkpoint 2" data-ref="Objective 4.2.3">
+  <h2>Checkpoint 2</h2>
+  <div class="body">
+    <div class="card prompt reg"><p>Iron forms two different chlorides, FeCl<sub>2</sub> and FeCl<sub>3</sub>. Name both compounds and explain how you determined each Roman numeral.</p></div>
+    <ol class="rail"><li id="s22-r1">Think</li><li id="s22-r2">Talk</li><li id="s22-r3">Write</li><li id="s22-r4">Self-check</li><li id="s22-r5">Compare</li></ol>
+    <div class="rt-main">
+      <div class="acc">
+        <div class="card phase" id="s22-read" data-label="read"><p class="big">Read the question. What is the anion?</p></div>
+        <div class="card phase" id="s22-think" data-label="think 30 s"><p class="big">Think alone. Do not talk yet.</p></div>
+        <div class="card phase" id="s22-talk" data-label="talk 60 s"><p class="big">Tell your partner your answer. Then listen.</p></div>
+        <div class="card phase" id="s22-write" data-label="write 90 s"><p class="tag">Write</p><ol class="frames"><li>FeCl<sub>2</sub> is <span class="gap"></span> because <span class="gap"></span>.</li><li>FeCl<sub>3</sub> is <span class="gap"></span> because <span class="gap"></span>.</li></ol><p class="bank"><b>Word bank:</b> <span>chloride is 1−</span> <span>total charge</span> <span>numeral = charge</span></p></div>
+        <div class="card phase" id="s22-check" data-label="self-check"><p class="tag">Self-check: did you write…</p><ul class="crit"><li>both names with numerals?</li><li>each Cl<sup>−</sup> is 1−?</li><li>the numeral is the iron charge?</li></ul></div>
+        <div class="card phase reg" id="s22-sample" data-label="sample answer"><p class="tag">Sample answer</p><p>FeCl<sub>2</sub> is iron(II) chloride. FeCl<sub>3</sub> is iron(III) chloride. Each chloride ion is 1−, so iron balances them.</p></div>
+      </div>
+      <div class="timer"></div>
+    </div>
+  </div>
+  <aside class="notes">Routine: think 30 s, talk 60 s, write 90 s, self-check 30 s, compare 45 s. The question stays on screen on every frame.</aside>
+  <script>Deck.frames('s22',[
+    {show:"s22-read",t:0.25,note:"Read the prompt aloud. Both compounds have the same anion."},
+    {show:"s22-think",hide:"s22-read",cls:{"s22-r1": "now"},timer:30,t:0.5,note:"Silent thinking. No pencils yet."},
+    {show:"s22-talk",hide:"s22-think",cls:{"s22-r1": "done", "s22-r2": "now"},timer:60,t:1,note:"Partner A speaks first, then B. Listen for: \"the numeral counts the chlorines\" (it gives the charge; here the two agree only because Cl⁻ is 1−)."},
+    {show:"s22-write",hide:"s22-talk",cls:{"s22-r2": "done", "s22-r3": "now"},timer:90,t:1.5,note:"Students write in notebooks with the frames; the word bank stays up."},
+    {show:"s22-check",cls:{"s22-r3": "done", "s22-r4": "now"},t:0.5,note:"Students tick each criterion they met and fix one line."},
+    {show:"s22-sample",cls:{"s22-r4": "done", "s22-r5": "now"},t:0.75,note:"Compare with the sample. Reading §4.2.3: the numeral is the charge of the metal ion, found from the anion."}
+  ]);</script>
+</section>
+
+<section class="slide t-routine" id="s23" data-period="2" data-title="Checkpoint 3" data-sec="Checkpoint 3" data-ref="Objective 4.2.4">
+  <h2>Checkpoint 3</h2>
+  <div class="body">
+    <div class="card prompt reg"><p>Some antacids contain aluminum hydroxide. Write its formula. Explain why it needs parentheses but NaOH does not.</p></div>
+    <ol class="rail"><li id="s23-r1">Think</li><li id="s23-r2">Talk</li><li id="s23-r3">Write</li><li id="s23-r4">Self-check</li><li id="s23-r5">Compare</li></ol>
+    <div class="rt-main">
+      <div class="acc">
+        <div class="card phase" id="s23-read" data-label="read"><p class="big">Read the question. How many hydroxide ions does aluminum need?</p></div>
+        <div class="card phase" id="s23-think" data-label="think 30 s"><p class="big">Think alone. Do not talk yet.</p></div>
+        <div class="card phase" id="s23-talk" data-label="talk 60 s"><p class="big">Tell your partner your answer. Then listen.</p></div>
+        <div class="card phase" id="s23-write" data-label="write 90 s"><p class="tag">Write</p><ol class="frames"><li>The formula is <span class="gap"></span>.</li><li>It needs <span class="gap"></span> OH<sup>−</sup> because <span class="gap"></span>.</li><li>NaOH needs no parentheses because <span class="gap"></span>.</li></ol><p class="bank"><b>Word bank:</b> <span>squad</span> <span>one charge</span> <span>three</span> <span>parentheses</span></p></div>
+        <div class="card phase" id="s23-check" data-label="self-check"><p class="tag">Self-check: did you write…</p><ul class="crit"><li>Al(OH)<sub>3</sub> with parentheses?</li><li>three OH<sup>−</sup> balance 3+?</li><li>one OH<sup>−</sup> needs none?</li></ul></div>
+        <div class="card phase reg" id="s23-sample" data-label="sample answer"><p class="tag">Sample answer</p><p>The formula is Al(OH)<sub>3</sub>. Aluminum needs three hydroxide ions, so they go in parentheses. NaOH has one.</p></div>
+      </div>
+      <div class="timer"></div>
+    </div>
+  </div>
+  <aside class="notes">Routine: think 30 s, talk 60 s, write 90 s, self-check 30 s, compare 45 s. The question stays on screen on every frame.</aside>
+  <script>Deck.frames('s23',[
+    {show:"s23-read",t:0.25,note:"Read the prompt aloud. Aluminum hydroxide neutralizes stomach acid in some antacids."},
+    {show:"s23-think",hide:"s23-read",cls:{"s23-r1": "now"},timer:30,t:0.5,note:"Silent thinking. No pencils yet."},
+    {show:"s23-talk",hide:"s23-think",cls:{"s23-r1": "done", "s23-r2": "now"},timer:60,t:1,note:"Partner A speaks first, then B. Listen for: \"AlOH₃\" (squad broken) and \"Al(OH)\" (charges not balanced)."},
+    {show:"s23-write",hide:"s23-talk",cls:{"s23-r2": "done", "s23-r3": "now"},timer:90,t:1.5,note:"Students write in notebooks with the frames; the word bank stays up."},
+    {show:"s23-check",cls:{"s23-r3": "done", "s23-r4": "now"},t:0.5,note:"Students tick each criterion they met and fix one line."},
+    {show:"s23-sample",cls:{"s23-r4": "done", "s23-r5": "now"},t:0.75,note:"Compare with the sample. Reading §4.2.4: parentheses only when a polyatomic ion repeats."}
+  ]);</script>
+</section>
+
+<section class="slide t-routine t-exit" id="s24" data-period="2" data-title="Predictions and exit ticket" data-sec="Exit ticket" data-ref="Objectives 4.2.2 and 4.2.3">
+  <h2>Predictions and exit ticket</h2>
+  <div class="body">
+    <div class="stack">
+      <div class="phaseA" id="s24-A" data-label="answers">
+        <div class="stack">
+      <div class="card check done" id="s24-p1" data-label="answer 1" data-mode="none"><p class="tag">Question 1</p><p class="q">Mg<sup>2+</sup> with O<sup>2−</sup> gives…</p><ol class="opts" data-lay="row"><li class="opt right"><b>A</b><span>MgO</span></li></ol><p class="reason">The charges 2+ and 2− cancel in a 1 : 1 ratio.</p></div>
+      <div class="card check done" id="s24-p2" data-label="answer 2" data-mode="none"><p class="tag">Question 2</p><p class="q">The III in iron(III) chloride means…</p><ol class="opts" data-lay="row"><li class="opt right"><b>A</b><span>a charge of 3+</span></li></ol><p class="reason">The numeral is the charge of the iron ion.</p></div>
+      <div class="card check done" id="s24-p3" data-label="answer 3" data-mode="none"><p class="tag">Question 3</p><p class="q">Calcium hydroxide is…</p><ol class="opts" data-lay="row"><li class="opt right"><b>A</b><span>Ca(OH)<sub>2</sub></span></li></ol><p class="reason">Two OH<sup>−</sup> squads ride in parentheses.</p></div>
+        </div>
+        <p class="handsup">Hands up if you predicted this.</p>
+      </div>
+      <div class="phaseB" id="s24-B" data-label="exit ticket">
+        <div class="card prompt reg dq"><p>How do the charges of ions decide the formula and the name of an ionic compound?</p></div>
+        <ol class="rail"><li id="s24-r1">Claim</li><li id="s24-r2">Evidence</li><li id="s24-r3">Reasoning</li><li id="s24-r4">Self-check</li><li id="s24-r5">Sample</li></ol>
+        <div class="rt-main">
+          <div class="acc">
+            <div class="card phase" id="s24-fr" data-label="claim"><p class="tag">Write</p><ol class="frames">
+              <li id="s24-f1">Claim: The charges decide <span class="gap"></span>.</li>
+              <li id="s24-f2" data-label="evidence">Evidence: Cu<sub>2</sub>O and CuO both contain <span class="gap"></span>, but <span class="gap"></span>.</li>
+              <li id="s24-f3" data-label="reasoning">Reasoning: This works because the total charge <span class="gap"></span>.</li>
+            </ol>
+            <p class="bank"><b>Word bank:</b> <span>zero</span> <span>ratio</span> <span>numeral</span> <span>copper(I)</span> <span>copper(II)</span></p></div>
+            <div class="card" id="s24-check" data-label="self-check"><p class="tag">Self-check: did you write…</p><ul class="crit"><li>a claim about formula and name?</li><li>the two copper oxides as evidence?</li><li>zero total charge in the reasoning?</li></ul></div>
+            <div class="card reg" id="s24-sample" data-label="sample answer"><p class="tag">Sample answer</p><p>The total charge must be zero, so ion charges determine the ratio. Copper(I) gives Cu<sub>2</sub>O; copper(II) gives CuO.</p></div>
+          </div>
+          <div class="timer"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Predictions from slide 4 come back first; students check their letters. Then the CER exit ticket on the driving question, with the two copper oxides as evidence. The question stays on screen while the sample shows. Collect the exit tickets.</aside>
+  <script>Deck.frames('s24',[
+    {show:["s24-A", "s24-p1"],t:0.5,note:"Answer 1: MgO. Hands up if you predicted A. Compare with the counts from slide 4."},
+    {show:"s24-p2",hide:"s24-p1",t:0.5,note:"Answer 2: the charge 3+. Ask a student who changed their mind to say why."},
+    {show:"s24-p3",hide:"s24-p2",t:0.5,note:"Answer 3: Ca(OH)₂. CaOH₂ was the common wrong idea."},
+    {show:["s24-B", "s24-fr", "s24-f1"],hide:"s24-A",cls:{"s24-r1": "now"},t:0.5,note:"Exit ticket. Claim first: the charges decide both the formula and the name."},
+    {show:"s24-f2",cls:{"s24-r1": "done", "s24-r2": "now"},t:0.5,note:"Evidence: the two copper oxides of slide 3."},
+    {show:"s24-f3",cls:{"s24-r2": "done", "s24-r3": "now"},timer:180,label:"write 3 min",t:3,note:"Reasoning: zero total charge sets the ratio; the numeral records the charge. Three minutes of writing."},
+    {show:"s24-check",cls:{"s24-r3": "done", "s24-r4": "now"},t:0.5,note:"Self-check with the three criteria."},
+    {show:"s24-sample",cls:{"s24-r4": "done", "s24-r5": "now"},t:0.5,note:"Compare with the sample. Collect the tickets."}
+  ]);</script>
+</section>
+
+<section class="slide t-routine" id="s25" data-period="2" data-title="Rate your learning" data-sec="Reflect" data-ref="All objectives">
+  <h2>Rate your learning</h2>
+  <div class="body">
+    <div class="scale lbl"><span>1 finger: not yet</span><span>2 fingers: almost</span><span>3 fingers: I can teach it</span></div>
+    <p class="tag">I can…</p>
+    <ol class="rate">
+        <li id="s25-t1"><span><b class="mono lbl">4.2.1</b> predict an ion's charge from its group.</span><span class="rev">Review: slides 6 and 7</span></li>
+        <li id="s25-t2"><span><b class="mono lbl">4.2.2</b> write a formula with zero total charge.</span><span class="rev">Review: slides 8 to 10</span></li>
+        <li id="s25-t3"><span><b class="mono lbl">4.2.3</b> name compounds, with numerals for Fe and Cu.</span><span class="rev">Review: slides 11 and 12</span></li>
+        <li id="s25-t4"><span><b class="mono lbl">4.2.4</b> use polyatomic ions and parentheses.</span><span class="rev">Review: slides 15 and 16</span></li>
+        <li id="s25-t5"><span><b class="mono lbl">4.2.5</b> go from name to formula and back.</span><span class="rev">Review: slides 17 to 19</span></li>
+    </ol>
+  </div>
+  <aside class="notes">Fingers 1 to 3 for each target. Students below 3 revisit the slides named on the right.</aside>
+  <script>Deck.frames('s25',[
+    {t:0.25,note:"Explain the scale: 1 not yet, 2 almost, 3 I can teach it."},
+    {cls:{"s25-t1": "now"},label:"target 1",t:0.25,note:"Fingers for target 4.2.1. Note who shows 1 and point to the review slides."},
+    {cls:{"s25-t1": "", "s25-t2": "now"},label:"target 2",t:0.25,note:"Fingers for target 4.2.2. Note who shows 1 and point to the review slides."},
+    {cls:{"s25-t1": "", "s25-t2": "", "s25-t3": "now"},label:"target 3",t:0.25,note:"Fingers for target 4.2.3. Note who shows 1 and point to the review slides."},
+    {cls:{"s25-t1": "", "s25-t2": "", "s25-t3": "", "s25-t4": "now"},label:"target 4",t:0.25,note:"Fingers for target 4.2.4. Note who shows 1 and point to the review slides."},
+    {cls:{"s25-t1": "", "s25-t2": "", "s25-t3": "", "s25-t4": "", "s25-t5": "now"},label:"target 5",t:0.25,note:"Fingers for target 4.2.5. Note who shows 1 and point to the review slides."}
+  ]);</script>
+</section>
+
+<section class="slide t-summary tnext" id="s26" data-period="2" data-title="Next" data-sec="Next" data-ref="Missions 4.2 and Lesson 4.3">
+  <h2>Next</h2>
+  <div class="body">
+    <div class="mrow">
+      <div class="mission card"><svg viewBox="0 0 100 100" role="img" aria-label="Icon: a name tag"><use href="#ic-tag"/></svg><b>Name the compound</b><span>six compounds</span></div>
+      <div class="mission card"><svg viewBox="0 0 100 100" role="img" aria-label="Icon: ion tiles"><use href="#ic-tiles"/></svg><b>Build the formula</b><span>six formulas from tiles</span></div>
+      <div class="mission card"><svg viewBox="0 0 100 100" role="img" aria-label="Icon: a magnifier over an error"><use href="#ic-magnify"/></svg><b>Find the error</b><span>six items to fix</span></div>
+    </div>
+    <div class="card"><p class="big">Next lesson: two nonmetals get names with prefixes. One example is carbon dioxide.</p></div>
+  </div>
+  <aside class="notes">Missions for Lesson 4.2: Name the compound, Build the formula, Find the error. Lesson 4.3 adds prefix names for compounds of two nonmetals and their Lewis structures.</aside>
+  <script>Deck.frames('s26',[
+    {t:0.5,note:"Point to the three missions. Preview Lesson 4.3: two nonmetals share electrons, so their names count atoms with prefixes."}
+  ]);</script>
+</section>
+
+<footer id="foot"><span id="sec"></span><span id="cue"></span><span id="count"></span></footer>
+</main>
+<div id="notes" hidden></div>
+<div id="overview" hidden></div>
+<div id="blank" hidden></div>
+<div id="runsheet"></div>
+<script>Deck.start()</script>
+</body>
+</html>

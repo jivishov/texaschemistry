@@ -1,0 +1,135 @@
+slides-4-2.html light: 95 intersections on 38 of 173 frames, 7259 boxes (3012 DOM boxes, 2278 canvas labels, 1969 canvas shapes); boxes as [x0, y0, x1, y1] in 1600 x 900 canvas px
+s4f0: 2 intersections
+  - text <p.tag> in #s04-q1 "Question 1" ∩ text <sup> in #s04-q1 "2+" (38 × 9 px)  A [96, 260, 1504, 302]  B [158, 293, 196, 338]
+  - text <p.tag> in #s04-q1 "Question 1" ∩ text <sup> in #s04-q1 "2−" (39 × 9 px)  A [96, 260, 1504, 302]  B [335, 293, 374, 338]
+s7f4: 4 intersections
+  - text <p.tag> in #s07-mem "Memory card: the six ions and t…" ∩ text <sup> in #s07-mem "2+" (45 × 3 px)  A [340, 647, 1027, 689]  B [415, 686, 459, 739]
+  - text <p.tag> in #s07-mem "Memory card: the six ions and t…" ∩ text <sup> in #s07-mem "3+" (46 × 3 px)  A [340, 647, 1027, 689]  B [572, 686, 618, 739]
+  - text <p.tag> in #s07-mem "Memory card: the six ions and t…" ∩ text <sup> in #s07-mem "+" (23 × 3 px)  A [340, 647, 1027, 689]  B [743, 686, 767, 739]
+  - text <p.tag> in #s07-mem "Memory card: the six ions and t…" ∩ text <sup> in #s07-mem "2+" (45 × 3 px)  A [340, 647, 1027, 689]  B [892, 686, 936, 739]
+s7f6: 2 intersections
+  - chip #s07-c "Ccopper" ∩ text <sup> in #s07-ans "+" (20 × 5 px)  A [871, 677, 1086, 741]  B [876, 736, 896, 781]
+  - chip #s07-c "Ccopper" ∩ text <sup> in #s07-ans "2+" (38 × 5 px)  A [871, 677, 1086, 741]  B [1032, 736, 1070, 781]
+s8f2: 1 intersection
+  - text <p.tag> in #s08-c1 "Ca and Cl" ∩ text <sup> in #s08-c1 "2+" (37 × 7 px)  A [963, 471, 1504, 514]  B [1017, 506, 1054, 551]
+s8f3: 1 intersection
+  - text <p.tag> in #s08-c1 "Ca and Cl" ∩ text <sup> in #s08-c1 "2+" (37 × 7 px)  A [963, 471, 1504, 514]  B [1017, 506, 1054, 551]
+s8f4: 1 intersection
+  - text <p.tag> in #s08-c1 "Ca and Cl" ∩ text <sup> in #s08-c1 "2+" (37 × 7 px)  A [963, 471, 1504, 514]  B [1017, 506, 1054, 551]
+s8f5: 2 intersections
+  - text <p.tag> in #s08-q2 "Al and O" ∩ text <sup> in #s08-q2 "3+" (39 × 7 px)  A [963, 499, 1504, 541]  B [999, 534, 1038, 579]
+  - text <p.tag> in #s08-q2 "Al and O" ∩ text <sup> in #s08-q2 "2−" (38 × 7 px)  A [963, 499, 1504, 541]  B [1161, 534, 1199, 579]
+s8f6: 1 intersection
+  - text <p.tag> in #s08-c2 "Al and O" ∩ text <sup> in #s08-c2 "3+" (39 × 7 px)  A [963, 499, 1504, 541]  B [1085, 534, 1123, 579]
+s8f7: 1 intersection
+  - text <p.tag> in #s08-c2 "Al and O" ∩ text <sup> in #s08-c2 "3+" (39 × 7 px)  A [963, 499, 1504, 541]  B [1085, 534, 1123, 579]
+s8f8: 1 intersection
+  - text <p.tag> in #s08-c2 "Al and O" ∩ text <sup> in #s08-c2 "3+" (39 × 7 px)  A [963, 222, 1504, 264]  B [1085, 257, 1123, 302]
+s8f9: 2 intersections
+  - text <p.tag> in #s08-check "Check" ∩ text <sup> in #s08-check "+" (20 × 9 px)  A [963, 319, 1504, 362]  B [1017, 352, 1037, 397]
+  - text <p.tag> in #s08-check "Check" ∩ text <sup> in #s08-check "2−" (39 × 9 px)  A [963, 319, 1504, 362]  B [1175, 352, 1214, 397]
+s8f10: 2 intersections
+  - text <p.tag> in #s08-check "Check" ∩ text <sup> in #s08-check "+" (20 × 9 px)  A [963, 319, 1504, 362]  B [1017, 352, 1037, 397]
+  - text <p.tag> in #s08-check "Check" ∩ text <sup> in #s08-check "2−" (39 × 9 px)  A [963, 319, 1504, 362]  B [1175, 352, 1214, 397]
+s9f6: 3 intersections
+  - text <p.tag> in #s09-try "Your turn: write each formula." ∩ text <span.formula.blk.on> in #s09-try "K2S" (90 × 3 px)  A [963, 342, 1504, 385]  B [1353, 382, 1443, 455]
+  - text <span.formula.blk.on> in #s09-try "K2S" ∩ text <p> in #s09-try "calcium nitride → Ca3N2" (90 × 4 px)  A [1353, 382, 1443, 455]  B [963, 451, 1504, 515]
+  - text <sub> in #s09-try "2" ∩ text <p> in #s09-try "calcium nitride → Ca3N2" (23 × 11 px)  A [1388, 407, 1411, 462]  B [963, 451, 1504, 515]
+s9f7: 6 intersections
+  - text <p.tag> in #s09-try "Your turn: write each formula." ∩ text <span.formula.blk.on> in #s09-try "K2S" (90 × 3 px)  A [963, 342, 1504, 385]  B [1353, 382, 1443, 455]
+  - text <p> in #s09-try "potassium sulfide → K2S" ∩ text <span.formula.blk.on> in #s09-try "Ca3N2" (158 × 5 px)  A [963, 387, 1504, 451]  B [1301, 446, 1459, 519]
+  - text <span.formula.blk.on> in #s09-try "K2S" ∩ text <p> in #s09-try "calcium nitride → Ca3N2" (90 × 4 px)  A [1353, 382, 1443, 455]  B [963, 451, 1504, 515]
+  - text <span.formula.blk.on> in #s09-try "K2S" ∩ text <span.formula.blk.on> in #s09-try "Ca3N2" (90 × 9 px)  A [1353, 382, 1443, 455]  B [1301, 446, 1459, 519]
+  - text <sub> in #s09-try "2" ∩ text <p> in #s09-try "calcium nitride → Ca3N2" (23 × 11 px)  A [1388, 407, 1411, 462]  B [963, 451, 1504, 515]
+  - text <sub> in #s09-try "2" ∩ text <span.formula.blk.on> in #s09-try "Ca3N2" (23 × 16 px)  A [1388, 407, 1411, 462]  B [1301, 446, 1459, 519]
+s10f2: 2 intersections
+  - text <p.tag> in #s10-c1 "Check" ∩ text <sup> in #s10-c1 "3+" (39 × 7 px)  A [877, 498, 1504, 540]  B [998, 533, 1037, 578]
+  - text <p.tag> in #s10-c1 "Check" ∩ text <sup> in #s10-c1 "2−" (38 × 7 px)  A [877, 498, 1504, 540]  B [1436, 533, 1474, 578]
+s10f3: 2 intersections
+  - text <p.tag> in #s10-cB "Mg and O" ∩ text <sup> in #s10-cB "2+" (40 × 8 px)  A [877, 386, 1504, 429]  B [942, 421, 982, 470]
+  - text <p.tag> in #s10-cB "Mg and O" ∩ text <sup> in #s10-cB "2−" (41 × 8 px)  A [877, 386, 1504, 429]  B [1117, 421, 1157, 470]
+s10f4: 2 intersections
+  - text <p.tag> in #s10-cB "Mg and O" ∩ text <sup> in #s10-cB "2+" (37 × 7 px)  A [877, 147, 1504, 190]  B [937, 182, 974, 227]
+  - text <p.tag> in #s10-cB "Mg and O" ∩ text <sup> in #s10-cB "2−" (38 × 7 px)  A [877, 147, 1504, 190]  B [1097, 182, 1135, 227]
+s15f0: 4 intersections
+  - text <span.blk.on> in #s15-A "ammonium" ∩ text <sup> in #s15-A "+" (22 × 8 px)  A [938, 426, 1124, 468]  B [1064, 460, 1086, 509]
+  - canvas #s15-sim [NH4]: label "H" ∩ label "N" (5 × 24 px)  A [449, 389, 478, 433]  B [423, 369, 454, 413]
+  - canvas #s15-sim [NH4]: label "one unit" ∩ circle (58 × 36 px)  A [161, 200, 294, 236]  B [237, 188, 640, 592]
+  - canvas #s15-sim [NH4]: label "N" ∩ circle (18 × 31 px)  A [423, 369, 454, 413]  B [436, 382, 491, 437]
+s15f1: 3 intersections
+  - text <span.blk.on> in #s15-A "ammonium" ∩ text <sup> in #s15-A "+" (22 × 8 px)  A [938, 426, 1124, 468]  B [1064, 460, 1086, 509]
+  - text <span.blk.on> in #s15-A "hydroxide" ∩ text <sup> in #s15-A "−" (22 × 8 px)  A [1268, 426, 1431, 468]  B [1373, 460, 1395, 509]
+  - canvas #s15-sim [OH]: label "one unit" ∩ circle (40 × 36 px)  A [206, 254, 340, 290]  B [300, 251, 577, 529]
+s15f2: 4 intersections
+  - text <span.blk.on> in #s15-A "ammonium" ∩ text <sup> in #s15-A "+" (22 × 8 px)  A [938, 426, 1124, 468]  B [1064, 460, 1086, 509]
+  - text <span.blk.on> in #s15-A "hydroxide" ∩ text <sup> in #s15-A "−" (22 × 8 px)  A [1268, 426, 1431, 468]  B [1373, 460, 1395, 509]
+  - text <span.blk.on> in #s15-A "nitrate" ∩ text <sup> in #s15-A "−" (19 × 8 px)  A [978, 547, 1085, 588]  B [1066, 580, 1088, 629]
+  - canvas #s15-sim [NO3]: label "one unit" ∩ circle (62 × 36 px)  A [150, 187, 284, 223]  B [222, 173, 655, 607]
+s15f3: 5 intersections
+  - text <span.blk.on> in #s15-A "ammonium" ∩ text <sup> in #s15-A "+" (22 × 8 px)  A [938, 426, 1124, 468]  B [1064, 460, 1086, 509]
+  - text <span.blk.on> in #s15-A "hydroxide" ∩ text <sup> in #s15-A "−" (22 × 8 px)  A [1268, 426, 1431, 468]  B [1373, 460, 1395, 509]
+  - text <span.blk.on> in #s15-A "nitrate" ∩ text <sup> in #s15-A "−" (19 × 8 px)  A [978, 547, 1085, 588]  B [1066, 580, 1088, 629]
+  - text <span.blk.on> in #s15-A "carbonate" ∩ text <sup> in #s15-A "2−" (42 × 8 px)  A [1266, 547, 1433, 588]  B [1375, 580, 1417, 629]
+  - canvas #s15-sim [CO3]: label "one unit" ∩ circle (62 × 36 px)  A [150, 187, 284, 223]  B [222, 173, 655, 607]
+s15f4: 7 intersections
+  - text <span.blk.on> in #s15-A "ammonium" ∩ text <sup> in #s15-A "+" (22 × 8 px)  A [938, 426, 1124, 468]  B [1064, 460, 1086, 509]
+  - text <span.blk.on> in #s15-A "hydroxide" ∩ text <sup> in #s15-A "−" (22 × 8 px)  A [1268, 426, 1431, 468]  B [1373, 460, 1395, 509]
+  - text <span.blk.on> in #s15-A "nitrate" ∩ text <sup> in #s15-A "−" (19 × 8 px)  A [978, 547, 1085, 588]  B [1066, 580, 1088, 629]
+  - text <span.blk.on> in #s15-A "carbonate" ∩ text <sup> in #s15-A "2−" (42 × 8 px)  A [1266, 547, 1433, 588]  B [1375, 580, 1417, 629]
+  - text <span.blk.on> in #s15-A "sulfate" ∩ text <sup> in #s15-A "2−" (32 × 8 px)  A [977, 667, 1086, 709]  B [1054, 701, 1096, 750]
+  - canvas #s15-sim [SO4]: label "one unit" ∩ circle (66 × 36 px)  A [138, 173, 272, 209]  B [206, 157, 671, 623]
+  - canvas #s15-sim [SO4]: label "S" ∩ circle (22 × 39 px)  A [426, 369, 451, 413]  B [429, 374, 507, 452]
+s15f5: 8 intersections
+  - text <span.blk.on> in #s15-A "ammonium" ∩ text <sup> in #s15-A "+" (22 × 8 px)  A [938, 426, 1124, 468]  B [1064, 460, 1086, 509]
+  - text <span.blk.on> in #s15-A "hydroxide" ∩ text <sup> in #s15-A "−" (22 × 8 px)  A [1268, 426, 1431, 468]  B [1373, 460, 1395, 509]
+  - text <span.blk.on> in #s15-A "nitrate" ∩ text <sup> in #s15-A "−" (19 × 8 px)  A [978, 547, 1085, 588]  B [1066, 580, 1088, 629]
+  - text <span.blk.on> in #s15-A "carbonate" ∩ text <sup> in #s15-A "2−" (42 × 8 px)  A [1266, 547, 1433, 588]  B [1375, 580, 1417, 629]
+  - text <span.blk.on> in #s15-A "sulfate" ∩ text <sup> in #s15-A "2−" (32 × 8 px)  A [977, 667, 1086, 709]  B [1054, 701, 1096, 750]
+  - text <span.blk.on> in #s15-A "phosphate" ∩ text <sup> in #s15-A "3−" (43 × 8 px)  A [1262, 667, 1437, 709]  B [1372, 701, 1415, 750]
+  - canvas #s15-sim [PO4]: label "one unit" ∩ circle (67 × 36 px)  A [136, 170, 270, 206]  B [202, 154, 675, 626]
+  - canvas #s15-sim [PO4]: label "P" ∩ circle (21 × 39 px)  A [426, 369, 451, 413]  B [430, 375, 507, 452]
+s15f6: 2 intersections
+  - canvas #s15-sim [PO4]: label "one unit" ∩ circle (67 × 36 px)  A [136, 170, 270, 206]  B [202, 154, 675, 626]
+  - canvas #s15-sim [PO4]: label "P" ∩ circle (21 × 39 px)  A [426, 369, 451, 413]  B [430, 375, 507, 452]
+s15f7: 2 intersections
+  - canvas #s15-sim [PO4]: label "one unit" ∩ circle (67 × 36 px)  A [136, 170, 270, 206]  B [202, 154, 675, 626]
+  - canvas #s15-sim [PO4]: label "P" ∩ circle (21 × 39 px)  A [426, 369, 451, 413]  B [430, 375, 507, 452]
+s15f8: 3 intersections
+  - text <p.tag> in #s15-check "Check" ∩ text <sup> in #s15-check "2−" (39 × 9 px)  A [877, 229, 1504, 271]  B [1112, 262, 1151, 307]
+  - canvas #s15-sim [SO4]: label "one unit" ∩ circle (66 × 36 px)  A [138, 173, 272, 209]  B [206, 157, 671, 623]
+  - canvas #s15-sim [SO4]: label "S" ∩ circle (22 × 39 px)  A [426, 369, 451, 413]  B [429, 374, 507, 452]
+s15f9: 3 intersections
+  - text <p.tag> in #s15-check "Check" ∩ text <sup> in #s15-check "2−" (39 × 9 px)  A [877, 229, 1504, 271]  B [1112, 262, 1151, 307]
+  - canvas #s15-sim [SO4]: label "one unit" ∩ circle (66 × 36 px)  A [138, 173, 272, 209]  B [206, 157, 671, 623]
+  - canvas #s15-sim [SO4]: label "S" ∩ circle (22 × 39 px)  A [426, 369, 451, 413]  B [429, 374, 507, 452]
+s16f0: 1 intersection
+  - text <p.tag> in #s16-c0 "Squad" ∩ text <sup> in #s16-c0 "−" (21 × 8 px)  A [963, 356, 1504, 399]  B [1030, 391, 1051, 440]
+s16f1: 2 intersections
+  - text <p.tag> in #s16-c0 "Squad" ∩ text <sup> in #s16-c0 "−" (21 × 8 px)  A [963, 356, 1504, 399]  B [1030, 391, 1051, 440]
+  - canvas #s16-pb [two]: label "OH^−" ∩ label "OH^−" (73 × 48 px)  A [384, 226, 472, 274]  B [368, 226, 456, 274]
+s16f2: 2 intersections
+  - text <p.tag> in #s16-c0 "Squad" ∩ text <sup> in #s16-c0 "−" (21 × 8 px)  A [963, 356, 1504, 399]  B [1030, 391, 1051, 440]
+  - canvas #s16-pb [wrong]: label "OH^−" ∩ label "OH^−" (73 × 48 px)  A [384, 226, 472, 274]  B [368, 226, 456, 274]
+s17f0: 2 intersections
+  - text <span.k> in #s17-A "Ions" ∩ text <sup> in #s17-a1 "3+" (38 × 15 px)  A [981, 327, 1486, 369]  B [1013, 354, 1051, 399]
+  - text <span.k> in #s17-A "Ions" ∩ text <sup> in #s17-a1 "2−" (37 × 15 px)  A [981, 327, 1486, 369]  B [1201, 354, 1238, 399]
+s17f1: 3 intersections
+  - text <span.k> in #s17-A "Ions" ∩ text <sup> in #s17-a1 "3+" (38 × 15 px)  A [981, 327, 1486, 369]  B [1013, 354, 1051, 399]
+  - text <span.k> in #s17-A "Ions" ∩ text <sup> in #s17-a1 "2−" (37 × 15 px)  A [981, 327, 1486, 369]  B [1201, 354, 1238, 399]
+  - text <span.k> in #s17-A "Balance" ∩ text <sup> in #s17-a2 "3+" (38 × 15 px)  A [981, 435, 1486, 477]  B [1083, 462, 1121, 507]
+s17f2: 3 intersections
+  - text <span.k> in #s17-A "Ions" ∩ text <sup> in #s17-a1 "3+" (38 × 15 px)  A [981, 327, 1486, 369]  B [1013, 354, 1051, 399]
+  - text <span.k> in #s17-A "Ions" ∩ text <sup> in #s17-a1 "2−" (37 × 15 px)  A [981, 327, 1486, 369]  B [1201, 354, 1238, 399]
+  - text <span.k> in #s17-A "Balance" ∩ text <sup> in #s17-a2 "3+" (38 × 15 px)  A [981, 435, 1486, 477]  B [1083, 462, 1121, 507]
+s17f3: 1 intersection
+  - text <sub> in #s17-B "2" ∩ text <p> in #s17-B "Work back: start from the anion…" (19 × 8 px)  A [1287, 429, 1306, 474]  B [963, 466, 1504, 631]
+s17f4: 1 intersection
+  - text <sub> in #s17-B "2" ∩ text <p> in #s17-B "Work back: start from the anion…" (19 × 8 px)  A [1287, 429, 1306, 474]  B [963, 466, 1504, 631]
+s17f5: 1 intersection
+  - text <sub> in #s17-B "2" ∩ text <p> in #s17-B "Work back: start from the anion…" (19 × 8 px)  A [1287, 429, 1306, 474]  B [963, 466, 1504, 631]
+s17f6: 1 intersection
+  - text <sub> in #s17-B "2" ∩ text <p> in #s17-B "Work back: start from the anion…" (19 × 8 px)  A [1324, 155, 1343, 200]  B [963, 192, 1504, 357]
+s24f0: 2 intersections
+  - text <p.tag> in #s24-p1 "Question 1" ∩ text <sup> in #s24-p1 "2+" (38 × 9 px)  A [96, 147, 1504, 190]  B [158, 180, 196, 225]
+  - text <p.tag> in #s24-p1 "Question 1" ∩ text <sup> in #s24-p1 "2−" (39 × 9 px)  A [96, 147, 1504, 190]  B [335, 180, 374, 225]
+crops (A red, B blue): overlap-light/s4f0.jpg, overlap-light/s7f4.jpg, overlap-light/s8f2.jpg, overlap-light/s9f6.jpg, overlap-light/s10f2.jpg, overlap-light/s15f0.jpg

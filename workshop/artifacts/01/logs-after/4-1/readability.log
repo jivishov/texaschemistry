@@ -1,0 +1,45 @@
+  register (rule/prompt/sample) slide 1 card dq reg: grade 6.7: "How can the periodic table predict the kind of bond two elements form?"
+  register (rule/prompt/sample) slide 3 s03-dq: grade 6.7: "How can the periodic table predict the kind of bond two elements form?"
+  register (rule/prompt/sample) slide 6 s06-rule: grade 6.7: "A metal atom loses its valence electrons and becomes a + ion (cation). A nonmetal atom gains them and becomes a − ion (anion). The transfer alone costs energy."
+  register (rule/prompt/sample) slide 7 cr-rule: grade 6: "The pull (attraction) between + ions and − ions is the ionic bond. The formula NaCl gives a ratio, not a molecule."
+  register (rule/prompt/sample) slide 8 s08-rule: grade 6.6: "A pair of electrons shared by two atoms is a covalent bond. Atoms joined this way form a molecule (molécula)."
+  register (rule/prompt/sample) slide 9 s09-rule: grade 7.2: "The electrons spend more time near one atom. It is the atom with the higher electronegativity. That atom gets a small negative charge, written δ− (delta minus). The other atom gets a small positive charge, δ+."
+  register (rule/prompt/sample) slide 10 s10-rule: grade 6.6: "Metal cations sit in a sea of delocalized electrons. Their attraction is the metallic bond. Real electrons behave as waves, not dots."
+  register (rule/prompt/sample) slide 13 card prompt reg: grade 6.7: "Write one sentence that compares the particles and attractions in three kinds of bonds."
+  register (rule/prompt/sample) slide 13 s13-s: grade 7.1: "Ionic bonds hold oppositely charged ions. Covalent bonds share pairs of electrons. Metallic bonds hold cations in an electron sea."
+  register (rule/prompt/sample) slide 15 s15-rule: grade 5.4: "Subtract the smaller value from the larger one. Below 0.4, the bond is nonpolar covalent. From 0.4 to 1.8, it is polar covalent. Above 1.8, it is ionic."
+  register (rule/prompt/sample) slide 16 s16-rule: grade 7.9: "A metal and a nonmetal: electrons transfer. Ionic bond. Two nonmetals: electrons are shared. Covalent bond. A metal alone: electrons are delocalized, a sea. Metallic bond."
+  register (rule/prompt/sample) slide 21 card prompt reg: grade 5.4: "A student calls the transferred electron the ionic bond. Explain the error. What holds solid salt together?"
+  register (rule/prompt/sample) slide 21 s21-sample: grade 6.7: "The transfer only forms the ions. The attraction between oppositely charged ions is the ionic bond."
+  register (rule/prompt/sample) slide 22 card prompt reg: grade 5.1: "Cl 2 and HCl each contain one shared electron pair. Explain why Cl 2 is nonpolar, but HCl is polar. Identify the δ− atom."
+  register (rule/prompt/sample) slide 22 s22-sample: grade 6.5: "Both Cl atoms have the same electronegativity. In HCl, Cl pulls harder and is δ−."
+  register (rule/prompt/sample) slide 23 card prompt reg: grade 7.1: "A copper wire carries an electric current. Use the electron-sea model to explain why. Name one limitation of the model."
+  register (rule/prompt/sample) slide 23 s23-sample: grade 7.8: "Delocalized electrons flow through the metal, so copper conducts. Real electrons are waves."
+  register (rule/prompt/sample) slide 24 card prompt reg: grade 6.7: "How can the periodic table predict the kind of bond two elements form?"
+  register (rule/prompt/sample) slide 24 s24-sample: grade 5.1: "Look up both values on the table and subtract. A metal and a nonmetal above 1.8 form ions. Two nonmetals share electrons."
+  slide 1 Predicting bond type: FK 0.8 (3.3 words/unit, 11 units, 36 words); prose only: FK 6.7, 13 words/sentence, 1 sentences; max 0 prose words visible (frame 0)
+  slide 2 Tug of war: FK 3.3 (5.1 words/unit, 10 units, 51 words); prose only: FK 4.2, 5.6 words/sentence, 8 sentences; max 10 prose words visible (frame 3)
+  slide 3 Sodium, chlorine, salt: FK 4.9 (5.1 words/unit, 9 units, 46 words); prose only: FK 7.7, 12.5 words/sentence, 2 sentences; max 18 prose words visible (frame 2)
+  slide 4 Predict now: FK 1.2 (3.9 words/unit, 18 units, 71 words); prose only: FK 1.9, 12 words/sentence, 1 sentences; max 33 prose words visible (frame 2)
+  slide 5 Targets and words: FK 6 (3.8 words/unit, 28 units, 107 words); prose only: FK 4, 6.2 words/sentence, 5 sentences; max 31 prose words visible (frame 0)
+  slide 6 Forming ions: FK 2.6 (4 words/unit, 20 units, 81 words); prose only: FK 4.5, 6.8 words/sentence, 9 sentences; max 27 prose words visible (frame 3)
+  slide 7 The crystal: FK 1.8 (4 words/unit, 16 units, 64 words); prose only: FK 2, 7.3 words/sentence, 6 sentences; max 20 prose words visible (frame 3)
+  slide 8 Covalent bonds: FK 2.7 (4.8 words/unit, 20 units, 95 words); prose only: FK 4.1, 8.4 words/sentence, 10 sentences; max 20 prose words visible (frame 3)
+  slide 9 Polar and nonpolar: FK 3.4 (3.8 words/unit, 31 units, 118 words); prose only: FK 3.5, 6.9 words/sentence, 12 sentences; max 34 prose words visible (frame 1)
+  slide 10 Metallic bonds: FK 3.2 (4.9 words/unit, 31 units, 151 words); prose only: FK 3.4, 7.1 words/sentence, 19 sentences; max 32 prose words visible (frame 9)
+  slide 11 One picture for three bonds: FK 4 (1.9 words/unit, 24 units, 45 words); prose only: FK null, null words/sentence, 0 sentences; max 33 prose words visible (frame 8)
+  slide 12 Backpack sort: FK 4.7 (2.2 words/unit, 27 units, 60 words); prose only: FK -2.2, 4 words/sentence, 1 sentences; max 31 prose words visible (frame 6)
+  slide 13 Period 1 exit: FK 5.2 (6.2 words/unit, 9 units, 56 words); prose only: FK 5.9, 8.6 words/sentence, 5 sentences; max 34 prose words visible (frame 2)
+  slide 14 Warm-up: FK 2.8 (4.1 words/unit, 11 units, 45 words); prose only: FK 2.4, 5 words/sentence, 5 sentences; max 8 prose words visible (frame 0)
+  slide 15 The electronegativity difference: FK 5.1 (3.9 words/unit, 21 units, 81 words); prose only: FK 3.9, 7.3 words/sentence, 8 sentences; max 24 prose words visible (frame 5)
+  slide 16 Evidence from the table: FK 3.6 (4 words/unit, 21 units, 83 words); prose only: FK 4.7, 5.6 words/sentence, 11 sentences; max 20 prose words visible (frame 6)
+  slide 17 Near the line: FK 3.2 (3.5 words/unit, 24 units, 83 words); prose only: FK 4.6, 6 words/sentence, 10 sentences; max 34 prose words visible (frame 4)
+  slide 18 Bonding argument: I do, we do: FK 5.1 (4.6 words/unit, 31 units, 144 words); prose only: FK 5.9, 6.6 words/sentence, 18 sentences; max 30 prose words visible (frame 10)
+  slide 19 You do: three bonds: FK 2.6 (3 words/unit, 19 units, 57 words); prose only: FK 2.3, 6.8 words/sentence, 4 sentences; max 30 prose words visible (frame 3)
+  slide 20 Checkpoint routine: FK 1.9 (3.8 words/unit, 12 units, 45 words); prose only: FK 0.6, 7 words/sentence, 1 sentences; max 30 prose words visible (frame 0)
+  slide 21 Checkpoint 1: FK 3.3 (3.9 words/unit, 26 units, 102 words); prose only: FK 3.6, 6 words/sentence, 11 sentences; max 35 prose words visible (frame 4)
+  slide 22 Checkpoint 2: FK 3.6 (3.8 words/unit, 27 units, 102 words); prose only: FK 3.1, 5.8 words/sentence, 11 sentences; max 35 prose words visible (frame 5)
+  slide 23 Checkpoint 3: FK 3.6 (3.7 words/unit, 27 units, 99 words); prose only: FK 4.4, 5.2 words/sentence, 13 sentences; max 33 prose words visible (frame 5)
+  slide 24 Predictions and exit ticket: FK 4.9 (4.8 words/unit, 34 units, 164 words); prose only: FK 5.5, 7.1 words/sentence, 15 sentences; max 34 prose words visible (frame 7)
+  slide 25 Rate your learning: FK 2.5 (4 words/unit, 15 units, 60 words); prose only: FK 4, 6.2 words/sentence, 5 sentences; max 31 prose words visible (frame 0)
+readability: PASS

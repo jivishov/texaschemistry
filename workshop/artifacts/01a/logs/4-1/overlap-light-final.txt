@@ -1,0 +1,229 @@
+slides-4-1.html light: 158 intersections on 32 frames (156 frames and 28 live moments measured; disc 127, rrect 31); 158 baselined (parts/lessons/4-1/overlap-baseline.json, 60 entries, 1 stale), 0 not in the baseline; 6215 boxes (2633 DOM boxes, 1690 canvas labels, 1892 canvas shapes); 6 covered canvas labels, 13 spheres scenes (live moments included); live: 14 frames at two moments; boxes as [x0, y0, x1, y1] in 1600 x 900 canvas px
+s10f1: 1 intersection
+  - canvas #s10-sim [cores]: label "sodium" ∩ circle (47 × 16 px)  A [116, 152, 251, 192]  B [182, 176, 229, 223]  [baselined]
+s10f2: 3 intersections
+  - canvas #s10-sim [sea]: label "+" ∩ electron (4 × 22 px)  A [683, 261, 709, 305]  B [705, 283, 736, 314]  [baselined]
+  - canvas #s10-sim [sea]: label "+" ∩ electron (13 × 25 px)  A [168, 407, 194, 451]  B [180, 426, 211, 457]  [baselined]
+  - canvas #s10-sim [sea]: label "+" ∩ electron (22 × 30 px)  A [426, 407, 451, 451]  B [430, 422, 461, 453]  [baselined]
+s10f3: 7 intersections
+  - canvas #s10-sim [drift]: label "+" ∩ electron (25 × 28 px)  A [168, 261, 194, 305]  B [166, 258, 197, 289]  [baselined]
+  - canvas #s10-sim [drift]: label "+" ∩ electron (17 × 15 px)  A [297, 261, 322, 305]  B [305, 245, 336, 276]  [baselined]
+  - canvas #s10-sim [drift]: label "+" ∩ electron (14 × 7 px)  A [297, 407, 322, 451]  B [280, 444, 311, 475]  [baselined]
+  - canvas #s10-sim [drift]: label "+" ∩ electron (6 × 27 px)  A [555, 407, 580, 451]  B [530, 403, 561, 434]  [baselined]
+  - canvas #s10-sim [drift]: label "+" ∩ electron (9 × 11 px)  A [683, 407, 709, 451]  B [661, 441, 692, 472]  [baselined]
+  - canvas #s10-sim [drift]: label "+" ∩ electron (18 × 12 px)  A [168, 554, 194, 598]  B [155, 535, 186, 566]  [baselined]
+  - canvas #s10-sim [drift]: label "+" ∩ electron (16 × 31 px)  A [426, 554, 451, 598]  B [435, 555, 466, 586]  [baselined]
+s10f4: 5 intersections
+  - canvas #s10-sim [Mg]: label "2+" ∩ electron (12 × 17 px)  A [547, 265, 587, 301]  B [528, 284, 559, 315]  [baselined]
+  - canvas #s10-sim [Mg]: label "2+" ∩ electron (11 × 18 px)  A [676, 265, 716, 301]  B [705, 283, 736, 314]  [baselined]
+  - canvas #s10-sim [Mg]: label "2+" ∩ electron (21 × 21 px)  A [161, 411, 201, 447]  B [180, 426, 211, 457]  [baselined]
+  - canvas #s10-sim [Mg]: label "2+" ∩ electron (29 × 26 px)  A [418, 411, 459, 447]  B [430, 422, 461, 453]  [baselined]
+  - canvas #s10-sim [Mg]: label "2+" ∩ electron (11 × 28 px)  A [418, 558, 459, 594]  B [398, 566, 429, 597]  [baselined]
+s10f5: 10 intersections
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (12 × 17 px)  A [547, 265, 588, 301]  B [528, 284, 559, 315]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (12 × 18 px)  A [675, 265, 717, 301]  B [705, 283, 736, 314]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (16 × 16 px)  A [675, 265, 717, 301]  B [661, 250, 692, 281]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (21 × 21 px)  A [160, 411, 202, 447]  B [180, 426, 211, 457]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (30 × 14 px)  A [160, 411, 202, 447]  B [159, 434, 190, 465]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (30 × 26 px)  A [418, 411, 459, 447]  B [430, 422, 461, 453]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (31 × 18 px)  A [418, 411, 459, 447]  B [420, 398, 451, 429]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (4 × 10 px)  A [160, 558, 202, 594]  B [198, 537, 229, 568]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (6 × 31 px)  A [160, 558, 202, 594]  B [135, 561, 166, 592]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (12 × 28 px)  A [418, 558, 459, 594]  B [398, 566, 429, 597]  [baselined]
+s10f6: 3 intersections
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (4 × 22 px)  A [683, 261, 709, 305]  B [705, 283, 736, 314]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (13 × 25 px)  A [168, 407, 194, 451]  B [180, 426, 211, 457]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (22 × 30 px)  A [426, 407, 451, 451]  B [430, 422, 461, 453]  [baselined]
+s10f7: 3 intersections
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (4 × 22 px)  A [683, 261, 709, 305]  B [705, 283, 736, 314]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (13 × 25 px)  A [168, 407, 194, 451]  B [180, 426, 211, 457]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (22 × 30 px)  A [426, 407, 451, 451]  B [430, 422, 461, 453]  [baselined]
+s10f8: 3 intersections
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (4 × 22 px)  A [683, 261, 709, 305]  B [705, 283, 736, 314]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (13 × 25 px)  A [168, 407, 194, 451]  B [180, 426, 211, 457]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (22 × 30 px)  A [426, 407, 451, 451]  B [430, 422, 461, 453]  [baselined]
+s10f9: 3 intersections
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (4 × 22 px)  A [683, 261, 709, 305]  B [705, 283, 736, 314]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (13 × 25 px)  A [168, 407, 194, 451]  B [180, 426, 211, 457]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (22 × 30 px)  A [426, 407, 451, 451]  B [430, 422, 461, 453]  [baselined]
+s16f3: 12 intersections
+  - canvas #s16-sim [Na-Cl]: label "Li" ∩ rrect (26 × 7 px)  A [243, 211, 269, 245]  B [203, 238, 309, 344]  [baselined]
+  - canvas #s16-sim [Na-Cl]: label "Be" ∩ rrect (9 × 7 px)  A [300, 211, 340, 245]  B [203, 238, 309, 344]  [baselined]
+  - canvas #s16-sim [Na-Cl]: label "O" ∩ rrect (2 × 7 px)  A [1203, 211, 1229, 245]  B [1227, 238, 1333, 344]  [baselined]
+  - canvas #s16-sim [Na-Cl]: label "F" ∩ rrect (18 × 7 px)  A [1271, 211, 1289, 245]  B [1227, 238, 1333, 344]  [baselined]
+  - canvas #s16-sim [Na-Cl]: label "Ne" ∩ rrect (11 × 7 px)  A [1323, 211, 1366, 245]  B [1227, 238, 1333, 344]  [baselined]
+  - canvas #s16-sim [Na-Cl]: label "Mg" ∩ rrect (13 × 34 px)  A [295, 275, 344, 309]  B [203, 238, 309, 344]  [baselined]
+  - canvas #s16-sim [Na-Cl]: label "Ar" ∩ rrect (7 × 34 px)  A [1326, 275, 1362, 309]  B [1227, 238, 1333, 344]  [baselined]
+  - canvas #s16-sim [Na-Cl]: label "K" ∩ rrect (21 × 5 px)  A [245, 339, 266, 373]  B [203, 238, 309, 344]  [baselined]
+  - canvas #s16-sim [Na-Cl]: label "Ca" ∩ rrect (11 × 5 px)  A [298, 339, 342, 373]  B [203, 238, 309, 344]  [baselined]
+  - canvas #s16-sim [Na-Cl]: label "Se" ∩ rrect (8 × 5 px)  A [1197, 339, 1236, 373]  B [1227, 238, 1333, 344]  [baselined]
+  - canvas #s16-sim [Na-Cl]: label "Br" ∩ rrect (34 × 5 px)  A [1263, 339, 1297, 373]  B [1227, 238, 1333, 344]  [baselined]
+  - canvas #s16-sim [Na-Cl]: label "Kr" ∩ rrect (6 × 5 px)  A [1327, 339, 1361, 373]  B [1227, 238, 1333, 344]  [baselined]
+s16f4: 11 intersections
+  - canvas #s16-sim [H-Cl]: label "Li" ∩ rrect (26 × 21 px)  A [243, 211, 269, 245]  B [203, 126, 309, 232]  [baselined]
+  - canvas #s16-sim [H-Cl]: label "Be" ∩ rrect (9 × 21 px)  A [300, 211, 340, 245]  B [203, 126, 309, 232]  [baselined]
+  - canvas #s16-sim [H-Cl]: label "O" ∩ rrect (2 × 7 px)  A [1203, 211, 1229, 245]  B [1227, 238, 1333, 344]  [baselined]
+  - canvas #s16-sim [H-Cl]: label "F" ∩ rrect (18 × 7 px)  A [1271, 211, 1289, 245]  B [1227, 238, 1333, 344]  [baselined]
+  - canvas #s16-sim [H-Cl]: label "Ne" ∩ rrect (11 × 7 px)  A [1323, 211, 1366, 245]  B [1227, 238, 1333, 344]  [baselined]
+  - canvas #s16-sim [H-Cl]: label "Ar" ∩ rrect (7 × 34 px)  A [1326, 275, 1362, 309]  B [1227, 238, 1333, 344]  [baselined]
+  - canvas #s16-sim [H-Cl]: label "Se" ∩ rrect (8 × 5 px)  A [1197, 339, 1236, 373]  B [1227, 238, 1333, 344]  [baselined]
+  - canvas #s16-sim [H-Cl]: label "Br" ∩ rrect (34 × 5 px)  A [1263, 339, 1297, 373]  B [1227, 238, 1333, 344]  [baselined]
+  - canvas #s16-sim [H-Cl]: label "Kr" ∩ rrect (6 × 5 px)  A [1327, 339, 1361, 373]  B [1227, 238, 1333, 344]  [baselined]
+  - canvas #s16-sim [H-Cl]: label "H" ∩ rrect (30 × 36 px)  A [241, 159, 271, 204]  B [225, 132, 287, 194]  [baselined]
+  - canvas #s16-sim [H-Cl]: label "H" ∩ rrect (30 × 7 px)  A [241, 159, 271, 204]  B [225, 196, 287, 258]  [baselined]
+s16f5: 8 intersections
+  - canvas #s16-sim [Cu-Cu]: label "Ni" ∩ rrect (5 × 34 px)  A [816, 339, 848, 373]  B [843, 302, 949, 408]  [baselined]
+  - canvas #s16-sim [Cu-Cu]: label "Zn" ∩ rrect (20 × 34 px)  A [941, 339, 979, 373]  B [855, 314, 961, 420]  [baselined]
+  - canvas #s16-sim [Cu-Cu]: label "Zn" ∩ rrect (8 × 34 px)  A [941, 339, 979, 373]  B [843, 302, 949, 408]  [baselined]
+  - canvas #s16-sim [Cu-Cu]: label "Pd" ∩ rrect (9 × 5 px)  A [812, 403, 852, 437]  B [843, 302, 949, 408]  [baselined]
+  - canvas #s16-sim [Cu-Cu]: label "Ag" ∩ rrect (43 × 17 px)  A [875, 403, 917, 437]  B [855, 314, 961, 420]  [baselined]
+  - canvas #s16-sim [Cu-Cu]: label "Ag" ∩ rrect (43 × 5 px)  A [875, 403, 917, 437]  B [843, 302, 949, 408]  [baselined]
+  - canvas #s16-sim [Cu-Cu]: label "Cd" ∩ rrect (24 × 17 px)  A [937, 403, 983, 437]  B [855, 314, 961, 420]  [baselined]
+  - canvas #s16-sim [Cu-Cu]: label "Cd" ∩ rrect (12 × 5 px)  A [937, 403, 983, 437]  B [843, 302, 949, 408]  [baselined]
+s17f4: 2 intersections
+  - canvas #s17-sim [Fe-Cl]: label "1" ∩ circle (12 × 36 px)  A [108, 586, 120, 622]  B [93, 582, 136, 625]  [baselined]
+  - canvas #s17-sim [Fe-Cl]: label "2" ∩ circle (20 × 36 px)  A [362, 586, 382, 622]  B [351, 582, 394, 625]  [baselined]
+s17f5: 2 intersections
+  - canvas #s17-sim [Fe-Cl]: label "1" ∩ circle (12 × 36 px)  A [108, 586, 120, 622]  B [93, 582, 136, 625]  [baselined]
+  - canvas #s17-sim [Fe-Cl]: label "2" ∩ circle (20 × 36 px)  A [362, 586, 382, 622]  B [351, 582, 394, 625]  [baselined]
+s17f6: 2 intersections
+  - canvas #s17-sim [Fe-Cl]: label "1" ∩ circle (12 × 36 px)  A [108, 586, 120, 622]  B [93, 582, 136, 625]  [baselined]
+  - canvas #s17-sim [Fe-Cl]: label "2" ∩ circle (20 × 36 px)  A [362, 586, 382, 622]  B [351, 582, 394, 625]  [baselined]
+s10f1@live1: 1 intersection
+  - canvas #s10-sim [cores]: label "sodium" ∩ circle (47 × 28 px)  A [116, 152, 251, 192]  B [199, 163, 246, 210]  [baselined]
+s10f2@live1: 4 intersections
+  - canvas #s10-sim [sea]: label "+" ∩ electron (13 × 19 px)  A [168, 261, 194, 305]  B [150, 249, 181, 280]  [baselined]
+  - canvas #s10-sim [sea]: label "+" ∩ electron (7 × 31 px)  A [683, 261, 709, 305]  B [701, 261, 732, 292]  [baselined]
+  - canvas #s10-sim [sea]: label "+" ∩ electron (9 × 31 px)  A [426, 407, 451, 451]  B [442, 421, 473, 452]  [baselined]
+  - canvas #s10-sim [sea]: label "+" ∩ electron (14 × 25 px)  A [683, 554, 709, 598]  B [695, 548, 726, 579]  [baselined]
+s10f2@live2: 4 intersections
+  - canvas #s10-sim [sea]: label "+" ∩ electron (16 × 28 px)  A [168, 261, 194, 305]  B [178, 258, 209, 289]  [baselined]
+  - canvas #s10-sim [sea]: label "+" ∩ electron (8 × 25 px)  A [683, 261, 709, 305]  B [701, 280, 732, 311]  [baselined]
+  - canvas #s10-sim [sea]: label "+" ∩ electron (14 × 27 px)  A [168, 407, 194, 451]  B [179, 424, 210, 455]  [baselined]
+  - canvas #s10-sim [sea]: label "+" ∩ electron (25 × 6 px)  A [683, 554, 709, 598]  B [677, 528, 708, 559]  [baselined]
+s10f3@live1: 1 intersection
+  - canvas #s10-sim [drift]: label "+" ∩ electron (4 × 31 px)  A [426, 554, 451, 598]  B [399, 556, 430, 587]  [baselined]
+s10f3@live2: 7 intersections
+  - canvas #s10-sim [drift]: label "+" ∩ electron (2 × 29 px)  A [168, 261, 194, 305]  B [192, 258, 223, 289]  [baselined]
+  - canvas #s10-sim [drift]: label "+" ∩ electron (17 × 8 px)  A [297, 407, 322, 451]  B [306, 444, 337, 475]  [baselined]
+  - canvas #s10-sim [drift]: label "+" ∩ electron (19 × 8 px)  A [555, 407, 580, 451]  B [543, 443, 574, 474]  [baselined]
+  - canvas #s10-sim [drift]: label "+" ∩ electron (24 × 26 px)  A [555, 407, 580, 451]  B [556, 402, 587, 433]  [baselined]
+  - canvas #s10-sim [drift]: label "+" ∩ electron (22 × 11 px)  A [683, 407, 709, 451]  B [687, 440, 718, 471]  [baselined]
+  - canvas #s10-sim [drift]: label "+" ∩ electron (13 × 11 px)  A [168, 554, 194, 598]  B [181, 534, 212, 565]  [baselined]
+  - canvas #s10-sim [drift]: label "+" ∩ electron (25 × 14 px)  A [297, 554, 322, 598]  B [291, 537, 322, 568]  [baselined]
+s10f4@live1: 8 intersections
+  - canvas #s10-sim [Mg]: label "2+" ∩ electron (29 × 8 px)  A [547, 265, 587, 301]  B [558, 242, 589, 273]  [baselined]
+  - canvas #s10-sim [Mg]: label "2+" ∩ electron (23 × 25 px)  A [547, 265, 587, 301]  B [539, 259, 570, 290]  [baselined]
+  - canvas #s10-sim [Mg]: label "2+" ∩ electron (31 × 11 px)  A [676, 265, 716, 301]  B [685, 245, 716, 276]  [baselined]
+  - canvas #s10-sim [Mg]: label "2+" ∩ electron (30 × 18 px)  A [418, 411, 459, 447]  B [417, 429, 448, 460]  [baselined]
+  - canvas #s10-sim [Mg]: label "2+" ∩ electron (22 × 26 px)  A [418, 411, 459, 447]  B [436, 421, 467, 452]  [baselined]
+  - canvas #s10-sim [Mg]: label "2+" ∩ electron (11 × 6 px)  A [547, 411, 587, 447]  B [527, 386, 558, 417]  [baselined]
+  - canvas #s10-sim [Mg]: label "2+" ∩ electron (12 × 19 px)  A [161, 558, 201, 594]  B [189, 546, 220, 577]  [baselined]
+  - canvas #s10-sim [Mg]: label "2+" ∩ electron (27 × 31 px)  A [676, 558, 716, 594]  B [690, 558, 721, 589]  [baselined]
+s10f4@live2: 7 intersections
+  - canvas #s10-sim [Mg]: label "2+" ∩ electron (13 × 30 px)  A [161, 265, 201, 301]  B [143, 263, 174, 294]  [baselined]
+  - canvas #s10-sim [Mg]: label "2+" ∩ electron (18 × 31 px)  A [547, 265, 587, 301]  B [570, 269, 601, 300]  [baselined]
+  - canvas #s10-sim [Mg]: label "2+" ∩ electron (11 × 28 px)  A [676, 265, 716, 301]  B [705, 262, 736, 293]  [baselined]
+  - canvas #s10-sim [Mg]: label "2+" ∩ electron (11 × 7 px)  A [161, 411, 201, 447]  B [190, 441, 221, 472]  [baselined]
+  - canvas #s10-sim [Mg]: label "2+" ∩ electron (22 × 3 px)  A [161, 558, 201, 594]  B [179, 530, 210, 561]  [baselined]
+  - canvas #s10-sim [Mg]: label "2+" ∩ electron (8 × 31 px)  A [418, 558, 459, 594]  B [396, 561, 427, 592]  [baselined]
+  - canvas #s10-sim [Mg]: label "2+" ∩ electron (25 × 25 px)  A [676, 558, 716, 594]  B [691, 552, 722, 583]  [baselined]
+s10f5@live1: 10 intersections
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (15 × 22 px)  A [160, 265, 202, 301]  B [187, 256, 218, 287]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (31 × 10 px)  A [160, 265, 202, 301]  B [163, 290, 194, 321]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (18 × 3 px)  A [547, 265, 588, 301]  B [570, 298, 601, 329]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (13 × 11 px)  A [547, 265, 588, 301]  B [529, 290, 560, 321]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (31 × 18 px)  A [675, 265, 717, 301]  B [683, 283, 714, 314]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (17 × 30 px)  A [160, 411, 202, 447]  B [184, 417, 215, 448]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (24 × 29 px)  A [418, 411, 459, 447]  B [436, 410, 467, 441]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (9 × 19 px)  A [547, 411, 588, 447]  B [579, 429, 610, 460]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (31 × 30 px)  A [160, 558, 202, 594]  B [167, 564, 198, 595]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (14 × 14 px)  A [418, 558, 459, 594]  B [401, 541, 432, 572]  [baselined]
+s10f5@live2: 11 intersections
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (30 × 22 px)  A [160, 265, 202, 301]  B [172, 256, 203, 287]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (11 × 15 px)  A [160, 265, 202, 301]  B [141, 286, 172, 317]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (24 × 12 px)  A [547, 265, 588, 301]  B [539, 289, 570, 320]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (27 × 24 px)  A [547, 265, 588, 301]  B [542, 277, 573, 308]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (28 × 7 px)  A [547, 265, 588, 301]  B [560, 241, 591, 272]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (13 × 27 px)  A [675, 265, 717, 301]  B [658, 274, 689, 305]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (12 × 13 px)  A [675, 265, 717, 301]  B [657, 247, 688, 278]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (11 × 8 px)  A [418, 411, 459, 447]  B [448, 388, 479, 419]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (31 × 20 px)  A [418, 411, 459, 447]  B [419, 427, 450, 458]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (31 × 9 px)  A [160, 558, 202, 594]  B [170, 535, 201, 566]  [baselined]
+  - canvas #s10-sim [Al]: label "3+" ∩ electron (28 × 15 px)  A [160, 558, 202, 594]  B [173, 542, 204, 573]  [baselined]
+s10f6@live1: 4 intersections
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (13 × 17 px)  A [683, 261, 709, 305]  B [666, 247, 697, 278]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (19 × 31 px)  A [426, 407, 451, 451]  B [432, 418, 463, 449]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (17 × 23 px)  A [168, 554, 194, 598]  B [177, 546, 208, 577]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (22 × 17 px)  A [683, 554, 709, 598]  B [675, 540, 706, 571]  [baselined]
+s10f6@live2: 3 intersections
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (15 × 16 px)  A [683, 261, 709, 305]  B [694, 246, 725, 277]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (12 × 8 px)  A [426, 407, 451, 451]  B [439, 443, 470, 474]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (15 × 31 px)  A [683, 554, 709, 598]  B [694, 556, 725, 587]  [baselined]
+s10f7@live1: 5 intersections
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (13 × 16 px)  A [555, 261, 580, 305]  B [567, 246, 598, 277]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (9 × 31 px)  A [683, 261, 709, 305]  B [700, 272, 731, 303]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (14 × 25 px)  A [168, 407, 194, 451]  B [180, 427, 211, 458]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (19 × 13 px)  A [555, 407, 580, 451]  B [561, 439, 592, 470]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (19 × 26 px)  A [683, 554, 709, 598]  B [672, 548, 703, 579]  [baselined]
+s10f7@live2: 6 intersections
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (8 × 14 px)  A [168, 261, 194, 305]  B [185, 244, 216, 275]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (24 × 2 px)  A [555, 261, 580, 305]  B [548, 232, 579, 263]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (21 × 22 px)  A [683, 261, 709, 305]  B [674, 283, 705, 314]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (4 × 31 px)  A [168, 407, 194, 451]  B [190, 417, 221, 448]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (6 × 31 px)  A [555, 407, 580, 451]  B [574, 419, 605, 450]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (13 × 12 px)  A [168, 554, 194, 598]  B [180, 535, 211, 566]  [baselined]
+s10f8@live1: 4 intersections
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (14 × 28 px)  A [168, 261, 194, 305]  B [151, 258, 182, 289]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (10 × 27 px)  A [426, 407, 451, 451]  B [441, 425, 472, 456]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (21 × 31 px)  A [426, 407, 451, 451]  B [430, 412, 461, 443]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (25 × 24 px)  A [168, 554, 194, 598]  B [168, 547, 199, 578]  [baselined]
+s10f8@live2: 2 intersections
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (22 × 16 px)  A [683, 261, 709, 305]  B [675, 246, 706, 277]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (24 × 12 px)  A [683, 554, 709, 598]  B [685, 535, 716, 566]  [baselined]
+s10f9@live1: 2 intersections
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (4 × 22 px)  A [683, 261, 709, 305]  B [705, 252, 736, 283]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (21 × 31 px)  A [683, 554, 709, 598]  B [688, 558, 719, 589]  [baselined]
+s10f9@live2: 4 intersections
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (16 × 31 px)  A [683, 261, 709, 305]  B [693, 273, 724, 304]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (14 × 29 px)  A [168, 407, 194, 451]  B [179, 423, 210, 454]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (19 × 26 px)  A [555, 407, 580, 451]  B [561, 426, 592, 457]  [baselined]
+  - canvas #s10-sim [Cu]: label "+" ∩ electron (8 × 29 px)  A [683, 554, 709, 598]  B [661, 552, 692, 583]  [baselined]
+stale baseline entries (1; listed in parts/lessons/4-1/overlap-baseline.json, matched by no hit; not a failure):
+  - s10f1@live2: canvas #s10-sim [cores]: label "sodium" ∩ circle
+live frames (14; measured with motion on 1.4 s and 2.4 s after Deck.go):
+  - s7f2: #cr-sim; live1 0 intersections, live2 0 intersections
+  - s7f3: #cr-sim; live1 0 intersections, live2 0 intersections
+  - s7f4: #cr-sim; live1 0 intersections, live2 0 intersections
+  - s7f5: #cr-sim; live1 0 intersections, live2 0 intersections
+  - s10f0: #s10-sim; live1 0 intersections, live2 0 intersections
+  - s10f1: #s10-sim; live1 1 intersection, live2 0 intersections
+  - s10f2: #s10-sim; live1 4 intersections, live2 4 intersections
+  - s10f3: #s10-sim; live1 1 intersection, live2 7 intersections
+  - s10f4: #s10-sim; live1 8 intersections, live2 7 intersections
+  - s10f5: #s10-sim; live1 10 intersections, live2 11 intersections
+  - s10f6: #s10-sim; live1 4 intersections, live2 3 intersections
+  - s10f7: #s10-sim; live1 5 intersections, live2 6 intersections
+  - s10f8: #s10-sim; live1 4 intersections, live2 2 intersections
+  - s10f9: #s10-sim; live1 2 intersections, live2 4 intersections
+covered canvas labels (6; fully under an opaque shape drawn later, so hidden; not tested, not a failure):
+  - s16f3 canvas #s16-sim [Na-Cl]: label "Na" under rrect
+  - s16f3 canvas #s16-sim [Na-Cl]: label "Cl" under rrect
+  - s16f4 canvas #s16-sim [H-Cl]: label "H" under rrect
+  - s16f4 canvas #s16-sim [H-Cl]: label "Cl" under rrect
+  - s16f5 canvas #s16-sim [Cu-Cu]: label "Cu" under rrect
+  - s16f5 canvas #s16-sim [Cu-Cu]: label "Cu" under rrect
+spheres scenes (13; nothing inside one scene is tested against the same scene):
+  - s7f1 canvas #cr-sim [grow]: scene 1 [50, 137, 803, 893]
+  - s7f2 canvas #cr-sim [turn]: scene 1 [70, 154, 784, 872]
+  - s7f3 canvas #cr-sim [turn]: scene 1 [70, 154, 784, 872]
+  - s7f4 canvas #cr-sim [turn]: scene 1 [70, 154, 784, 872]
+  - s7f5 canvas #cr-sim [turn]: scene 1 [70, 154, 784, 872]
+  - s7f2@live1 canvas #cr-sim [turn]: scene 1 [97, 163, 714, 836]
+  - s7f2@live2 canvas #cr-sim [turn]: scene 1 [161, 164, 777, 833]
+  - s7f3@live1 canvas #cr-sim [turn]: scene 1 [95, 154, 807, 872]
+  - s7f3@live2 canvas #cr-sim [turn]: scene 1 [71, 153, 786, 873]
+  - s7f4@live1 canvas #cr-sim [turn]: scene 1 [94, 163, 715, 838]
+  - s7f4@live2 canvas #cr-sim [turn]: scene 1 [156, 165, 774, 831]
+  - s7f5@live1 canvas #cr-sim [turn]: scene 1 [97, 154, 807, 871]
+  - s7f5@live2 canvas #cr-sim [turn]: scene 1 [72, 153, 788, 873]

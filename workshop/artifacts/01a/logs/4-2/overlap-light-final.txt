@@ -1,0 +1,109 @@
+slides-4-2.html light: 30 intersections on 30 frames (173 frames and 20 live moments measured; disc 30); 30 baselined (parts/lessons/4-2/overlap-baseline.json, 30 entries, 0 stale), 0 not in the baseline; 6763 boxes (2516 DOM boxes, 2278 canvas labels, 1969 canvas shapes); 5 covered canvas labels, 30 spheres scenes (live moments included); live: 10 frames at two moments; boxes as [x0, y0, x1, y1] in 1600 x 900 canvas px
+s15f0: 1 intersection
+  - canvas #s15-sim [NH4]: label "+" ∩ circle (25 × 44 px)  A [570, 226, 595, 270]  B [237, 188, 640, 592]  [baselined]
+s15f1: 1 intersection
+  - canvas #s15-sim [OH]: label "−" ∩ circle (25 × 44 px)  A [525, 271, 550, 315]  B [300, 251, 577, 529]  [baselined]
+s15f2: 1 intersection
+  - canvas #s15-sim [NO3]: label "−" ∩ circle (25 × 44 px)  A [581, 215, 606, 259]  B [222, 173, 655, 607]  [baselined]
+s15f3: 1 intersection
+  - canvas #s15-sim [CO3]: label "2−" ∩ circle (49 × 44 px)  A [569, 215, 618, 259]  B [222, 173, 655, 607]  [baselined]
+s15f4: 1 intersection
+  - canvas #s15-sim [SO4]: label "2−" ∩ circle (49 × 44 px)  A [580, 204, 629, 248]  B [206, 157, 671, 623]  [baselined]
+s15f5: 1 intersection
+  - canvas #s15-sim [PO4]: label "3−" ∩ circle (50 × 44 px)  A [582, 201, 633, 245]  B [202, 154, 675, 626]  [baselined]
+s15f6: 1 intersection
+  - canvas #s15-sim [PO4]: label "3−" ∩ circle (50 × 44 px)  A [582, 201, 633, 245]  B [202, 154, 675, 626]  [baselined]
+s15f7: 1 intersection
+  - canvas #s15-sim [PO4]: label "3−" ∩ circle (50 × 44 px)  A [582, 201, 633, 245]  B [202, 154, 675, 626]  [baselined]
+s15f8: 1 intersection
+  - canvas #s15-sim [SO4]: label "2−" ∩ circle (49 × 44 px)  A [580, 204, 629, 248]  B [206, 157, 671, 623]  [baselined]
+s15f9: 1 intersection
+  - canvas #s15-sim [SO4]: label "2−" ∩ circle (49 × 44 px)  A [580, 204, 629, 248]  B [206, 157, 671, 623]  [baselined]
+s15f0@live1: 1 intersection
+  - canvas #s15-sim [NH4]: label "+" ∩ circle (25 × 44 px)  A [570, 226, 595, 270]  B [237, 188, 640, 592]  [baselined]
+s15f0@live2: 1 intersection
+  - canvas #s15-sim [NH4]: label "+" ∩ circle (25 × 44 px)  A [570, 226, 595, 270]  B [237, 188, 640, 592]  [baselined]
+s15f1@live1: 1 intersection
+  - canvas #s15-sim [OH]: label "−" ∩ circle (25 × 44 px)  A [525, 271, 550, 315]  B [300, 251, 577, 529]  [baselined]
+s15f1@live2: 1 intersection
+  - canvas #s15-sim [OH]: label "−" ∩ circle (25 × 44 px)  A [525, 271, 550, 315]  B [300, 251, 577, 529]  [baselined]
+s15f2@live1: 1 intersection
+  - canvas #s15-sim [NO3]: label "−" ∩ circle (25 × 44 px)  A [581, 215, 606, 259]  B [222, 173, 655, 607]  [baselined]
+s15f2@live2: 1 intersection
+  - canvas #s15-sim [NO3]: label "−" ∩ circle (25 × 44 px)  A [581, 215, 606, 259]  B [222, 173, 655, 607]  [baselined]
+s15f3@live1: 1 intersection
+  - canvas #s15-sim [CO3]: label "2−" ∩ circle (49 × 44 px)  A [569, 215, 618, 259]  B [222, 173, 655, 607]  [baselined]
+s15f3@live2: 1 intersection
+  - canvas #s15-sim [CO3]: label "2−" ∩ circle (49 × 44 px)  A [569, 215, 618, 259]  B [222, 173, 655, 607]  [baselined]
+s15f4@live1: 1 intersection
+  - canvas #s15-sim [SO4]: label "2−" ∩ circle (49 × 44 px)  A [580, 204, 629, 248]  B [206, 157, 671, 623]  [baselined]
+s15f4@live2: 1 intersection
+  - canvas #s15-sim [SO4]: label "2−" ∩ circle (49 × 44 px)  A [580, 204, 629, 248]  B [206, 157, 671, 623]  [baselined]
+s15f5@live1: 1 intersection
+  - canvas #s15-sim [PO4]: label "3−" ∩ circle (50 × 44 px)  A [582, 201, 633, 245]  B [202, 154, 675, 626]  [baselined]
+s15f5@live2: 1 intersection
+  - canvas #s15-sim [PO4]: label "3−" ∩ circle (50 × 44 px)  A [582, 201, 633, 245]  B [202, 154, 675, 626]  [baselined]
+s15f6@live1: 1 intersection
+  - canvas #s15-sim [PO4]: label "3−" ∩ circle (50 × 44 px)  A [582, 201, 633, 245]  B [202, 154, 675, 626]  [baselined]
+s15f6@live2: 1 intersection
+  - canvas #s15-sim [PO4]: label "3−" ∩ circle (50 × 44 px)  A [582, 201, 633, 245]  B [202, 154, 675, 626]  [baselined]
+s15f7@live1: 1 intersection
+  - canvas #s15-sim [PO4]: label "3−" ∩ circle (50 × 44 px)  A [582, 201, 633, 245]  B [202, 154, 675, 626]  [baselined]
+s15f7@live2: 1 intersection
+  - canvas #s15-sim [PO4]: label "3−" ∩ circle (50 × 44 px)  A [582, 201, 633, 245]  B [202, 154, 675, 626]  [baselined]
+s15f8@live1: 1 intersection
+  - canvas #s15-sim [SO4]: label "2−" ∩ circle (49 × 44 px)  A [580, 204, 629, 248]  B [206, 157, 671, 623]  [baselined]
+s15f8@live2: 1 intersection
+  - canvas #s15-sim [SO4]: label "2−" ∩ circle (49 × 44 px)  A [580, 204, 629, 248]  B [206, 157, 671, 623]  [baselined]
+s15f9@live1: 1 intersection
+  - canvas #s15-sim [SO4]: label "2−" ∩ circle (49 × 44 px)  A [580, 204, 629, 248]  B [206, 157, 671, 623]  [baselined]
+s15f9@live2: 1 intersection
+  - canvas #s15-sim [SO4]: label "2−" ∩ circle (49 × 44 px)  A [580, 204, 629, 248]  B [206, 157, 671, 623]  [baselined]
+live frames (10; measured with motion on 1.4 s and 2.4 s after Deck.go):
+  - s15f0: #s15-sim; live1 1 intersection, live2 1 intersection
+  - s15f1: #s15-sim; live1 1 intersection, live2 1 intersection
+  - s15f2: #s15-sim; live1 1 intersection, live2 1 intersection
+  - s15f3: #s15-sim; live1 1 intersection, live2 1 intersection
+  - s15f4: #s15-sim; live1 1 intersection, live2 1 intersection
+  - s15f5: #s15-sim; live1 1 intersection, live2 1 intersection
+  - s15f6: #s15-sim; live1 1 intersection, live2 1 intersection
+  - s15f7: #s15-sim; live1 1 intersection, live2 1 intersection
+  - s15f8: #s15-sim; live1 1 intersection, live2 1 intersection
+  - s15f9: #s15-sim; live1 1 intersection, live2 1 intersection
+covered canvas labels (5; fully under an opaque shape drawn later, so hidden; not tested, not a failure):
+  - s16f1 canvas #s16-pb [two]: label "OH^−" under rrect
+  - s16f2 canvas #s16-pb [wrong]: label "OH^−" under rrect
+  - s15f2@live2 canvas #s15-sim [NO3]: label "O" under circle
+  - s15f3@live2 canvas #s15-sim [CO3]: label "O" under circle
+  - s15f7@live2 canvas #s15-sim [PO4]: label "O" under circle
+spheres scenes (30; nothing inside one scene is tested against the same scene):
+  - s15f0 canvas #s15-sim [NH4]: scene 1 [305, 278, 582, 545]
+  - s15f1 canvas #s15-sim [OH]: scene 1 [339, 345, 530, 450]
+  - s15f2 canvas #s15-sim [NO3]: scene 1 [280, 201, 576, 530]
+  - s15f3 canvas #s15-sim [CO3]: scene 1 [280, 201, 576, 530]
+  - s15f4 canvas #s15-sim [SO4]: scene 1 [269, 246, 625, 590]
+  - s15f5 canvas #s15-sim [PO4]: scene 1 [266, 244, 628, 593]
+  - s15f6 canvas #s15-sim [PO4]: scene 1 [266, 244, 628, 593]
+  - s15f7 canvas #s15-sim [PO4]: scene 1 [266, 244, 628, 593]
+  - s15f8 canvas #s15-sim [SO4]: scene 1 [269, 246, 625, 590]
+  - s15f9 canvas #s15-sim [SO4]: scene 1 [269, 246, 625, 590]
+  - s15f0@live1 canvas #s15-sim [NH4]: scene 1 [311, 267, 545, 530]
+  - s15f0@live2 canvas #s15-sim [NH4]: scene 1 [321, 260, 568, 507]
+  - s15f1@live1 canvas #s15-sim [OH]: scene 1 [363, 334, 497, 463]
+  - s15f1@live2 canvas #s15-sim [OH]: scene 1 [389, 332, 489, 466]
+  - s15f2@live1 canvas #s15-sim [NO3]: scene 1 [329, 201, 523, 565]
+  - s15f2@live2 canvas #s15-sim [NO3]: scene 1 [388, 201, 492, 573]
+  - s15f3@live1 canvas #s15-sim [CO3]: scene 1 [329, 201, 523, 565]
+  - s15f3@live2 canvas #s15-sim [CO3]: scene 1 [388, 201, 492, 573]
+  - s15f4@live1 canvas #s15-sim [SO4]: scene 1 [253, 244, 605, 588]
+  - s15f4@live2 canvas #s15-sim [SO4]: scene 1 [276, 233, 584, 566]
+  - s15f5@live1 canvas #s15-sim [PO4]: scene 1 [250, 242, 607, 591]
+  - s15f5@live2 canvas #s15-sim [PO4]: scene 1 [274, 231, 586, 568]
+  - s15f6@live1 canvas #s15-sim [PO4]: scene 1 [277, 223, 608, 523]
+  - s15f6@live2 canvas #s15-sim [PO4]: scene 1 [270, 224, 592, 536]
+  - s15f7@live1 canvas #s15-sim [PO4]: scene 1 [293, 235, 616, 579]
+  - s15f7@live2 canvas #s15-sim [PO4]: scene 1 [260, 248, 628, 596]
+  - s15f8@live1 canvas #s15-sim [SO4]: scene 1 [253, 244, 604, 588]
+  - s15f8@live2 canvas #s15-sim [SO4]: scene 1 [276, 233, 584, 566]
+  - s15f9@live1 canvas #s15-sim [SO4]: scene 1 [279, 225, 605, 521]
+  - s15f9@live2 canvas #s15-sim [SO4]: scene 1 [272, 226, 590, 533]

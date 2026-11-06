@@ -1,0 +1,45 @@
+/* ===== Lesson 4.2 deck only (inserted into the shared head at build time) ===== */
+.t-example.cb>.body{grid-template-columns:minmax(0,58fr) minmax(0,42fr)}
+.leftcol{display:flex;flex-direction:column;gap:6px;min-width:0;min-height:0}
+.leftcol>.stack,.leftcol>.sim{flex:1;min-height:0}
+.leftcol>.stack>.sim{min-height:0}
+.simcap{font-size:34px;color:var(--muted);text-align:center;line-height:1.2}
+.f-black{fill:#2c2c2c}.f-redp{fill:#c4382a}.f-dish{fill:#e9eef0}.f-boat{fill:#6f8fa6}.f-pot{fill:#c9a27a}
+.memrow{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 40px;padding-top:16px}
+.memrow span{font-size:56px;font-weight:700;line-height:1.15}
+.flowrow{display:flex;align-items:center;gap:16px;flex-wrap:nowrap}
+.flowrow>b{width:190px;font-size:40px;color:var(--accent);flex:none}
+.fbox{padding:8px 22px;border:3px solid var(--accent);border-radius:16px;background:var(--accent-soft);font-weight:700;white-space:nowrap}
+.arw{font-size:44px;color:var(--muted);font-weight:700}
+.t-summary .stack{align-content:start}
+.mrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.mission{display:grid;justify-items:center;text-align:center;gap:8px;padding:18px 16px 22px;border:3px solid var(--line);border-radius:22px;background:var(--card)}
+.mission svg{width:120px;height:120px}
+.mission b{font-size:44px;line-height:1.1}
+.mission span{font-size:34px;color:var(--muted)}
+.tbl.compact td{padding:8px 20px}
+.tbl .why{font-size:34px;color:var(--muted)}
+.tbl s{text-decoration-thickness:4px;text-decoration-color:var(--bad)}
+.pgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.pchip{display:grid;justify-items:center;gap:0;padding:2px 10px 4px;border-radius:16px;border:2px solid var(--line);line-height:1.15}
+.pchip>span:first-child{font-size:36px;font-weight:600}
+.pchip .pf{font-size:48px;font-weight:700;padding-top:4px}
+.mem{font-size:48px;font-weight:700;line-height:1.15}
+.tbl.compact td{padding:4px 18px}
+.rulerow sup,.rulerow sub{font-size:.85em}
+/* round 1 for 4.2: fill the slide; 52/48 on the slides without ion tiles */
+.t-example.cw>.body{grid-template-columns:minmax(0,52fr) minmax(0,48fr);grid-template-rows:minmax(0,1fr)}
+.memrow.card{display:grid;justify-items:center;gap:6px;padding:12px 24px}
+.memrow.card .tag{justify-self:start}
+.memchips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 18px}
+.memchips span{font-size:52px;font-weight:700;line-height:1.15;padding:0 18px 2px;border-radius:14px;border:2px solid var(--line);background:var(--card2)}
+.t-summary.tfill>.body{grid-template-rows:auto auto minmax(0,1fr);align-content:stretch}
+.t-summary.tnext>.body{grid-template-rows:minmax(0,1fr) auto;align-content:stretch}
+.t-summary.tnext .mission{align-content:center}
+.t-summary.tnext .mission svg{width:200px;height:200px}
+.t-summary.tnext .mission b{font-size:52px}
+.t-summary.tnext .mission span{font-size:40px}
+.t-example .stepscard .steps li,.t-concept .stepscard .steps li{font-size:38px;grid-template-columns:150px minmax(0,1fr)}
+.mission.card{padding:18px 16px 22px}
+.stepscard.k1 .steps li{grid-template-columns:minmax(0,1fr);row-gap:0}
+.ptrow{height:214px}

@@ -1,0 +1,580 @@
+<body>
+<script>
+/* ===== Deck runtime (plan section 3). Written once, copied into each Unit 4 deck. =====
+   A slide declares its frames with Deck.frames(slideId, [state, ...]). A state is declarative:
+     show:['id'|group]  hide:[...]  stage:'simId:stage' or [...]  cls:{elementId:'classes'}
+     timer:seconds  zoom:'id'  focus:'id'  label:'what this frame reveals'  cue:'override for this frame'
+     note:'teacher note (HTML)'  t:minutes
+   Frame n is computed by replaying states 0..n, so Back never needs a reverse action.
+   An animation registers with Deck.sim(name, factory(host, Deck)) and returns
+     {stages:[...], set(stage, instant), get(), bounds(), resize(), redraw(), active(on)} (+ optional meta() for tests).
+   bounds() is the rect the animation draws, in host px; zoom fits it (up to 4x). Optional units(): sub-units of the current stage,
+   [{x,y,w,h,label}] rects in host px or [{el,label}] elements, each its own step of the zoom cycle.
+   Zoom cycle: the Blank key zooms the slide's visible units one per press (animation first, then top-left to bottom-right),
+   and the press after the last unit unzooms. Units: [data-zoom], cards, check rows, lines, steps, table rows, summary columns, ...
+   Accumulating columns (.acc): hidden cards take no space; earlier cards get .adone, and compact to their tag line (.cmp, the body
+   hidden, nothing truncated) only when the column overflows, earliest first; a lone card gets .lone (48 px).
+   Text units zoom by re-flow: a clone in an overlay, scaled up to 2.2x to fit the slide with 60 px margins, lines re-wrapped;
+   animations, their parts and table columns keep the transform zoom.  */
+(function(){
+'use strict';
+const W=1600,H=900,RM=matchMedia('(prefers-reduced-motion: reduce)');
+const D=window.Deck={types:{},defs:{},sims:{},slides:[],cur:{s:-1,f:0}};
+D.sim=(name,factory)=>{D.types[name]=factory};
+D.frames=(id,frames)=>{D.defs[id]=frames};
+D.reduced=()=>RM.matches;
+const $=(s,r)=>(r||document).querySelector(s), $$=(s,r)=>Array.from((r||document).querySelectorAll(s));
+const arr=x=>x==null?[]:Array.isArray(x)?x:[x];
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let k=1,flow=false,zoom=null,cyc=null,blankOn=false,timer=null,lastNav=0,lastDot=0,dotUndo=null,ovSel=0;
+const ZMAX=4;
+
+/* ---------- model ---------- */
+function norm(fr){
+  fr=fr||{};
+  const stage=arr(fr.stage).map(x=>{if(typeof x!=='string')return x;const i=x.lastIndexOf(':');return {sim:x.slice(0,i),s:x.slice(i+1)}});
+  return {show:arr(fr.show),hide:arr(fr.hide),stage,cls:fr.cls||{},timer:fr.timer||0,zoom:fr.zoom||null,focus:fr.focus||null,cue:fr.cue,label:fr.label,note:fr.note||'',t:fr.t};
+}
+function find(el,name){return $$('[id="'+name+'"],[data-b="'+name+'"]',el)}
+function build(el,i){
+  const frames=(D.defs[el.id]||[{}]).map(norm), blocks=new Map(), init=new Map(), clsIds=new Set();
+  frames.forEach(fr=>{
+    fr.hide.forEach(n=>{if(!blocks.has(n)){blocks.set(n,find(el,n));init.set(n,true)}});
+    fr.show.forEach(n=>{if(!blocks.has(n)){blocks.set(n,find(el,n));init.set(n,false)}});
+    Object.keys(fr.cls).forEach(id=>clsIds.add(id));
+  });
+  blocks.forEach((els,n)=>{if(!els.length)console.error('Deck: block "'+n+'" not found on slide '+el.id);els.forEach(e=>e.classList.add('blk'))});
+  clsIds.forEach(id=>{if(!document.getElementById(id))console.error('Deck: cls target "'+id+'" not found on slide '+el.id)});
+  const h=$('h2',el);
+  return {period:el.dataset.period||'',el,i,id:el.id,title:el.dataset.title||(h?h.textContent.trim():el.id),sec:el.dataset.sec||'',ref:el.dataset.ref||'',
+    frames,blocks,init,clsIds:[...clsIds],sims:$$('.sim[data-sim]',el).map(x=>D.sims[x.id]).filter(Boolean),notes:$('.notes',el)};
+}
+function compute(S,f){
+  const vis=new Map(S.init),stg={},cls={};
+  for(let i=0;i<=f;i++){const fr=S.frames[i];fr.hide.forEach(n=>vis.set(n,false));fr.show.forEach(n=>vis.set(n,true));fr.stage.forEach(x=>{stg[x.sim]=x.s});Object.assign(cls,fr.cls)}
+  return {vis,stg,cls};
+}
+function apply(S,st,fr,anim){
+  st.vis.forEach((v,n)=>S.blocks.get(n).forEach(e=>{
+    e.classList.toggle('on',v);e.classList.remove('fx');
+    if(v&&anim&&fr.show.includes(n)){void e.getBoundingClientRect();e.classList.add('fx')}
+  }));
+  S.clsIds.forEach(id=>{const e=document.getElementById(id);if(!e)return;(e._dc||[]).forEach(c=>e.classList.remove(c));
+    const v=String(st.cls[id]||'').split(/\s+/).filter(Boolean);v.forEach(c=>e.classList.add(c));e._dc=v});
+}
+
+/* ---------- frame engine ---------- */
+function go(s,f,o){
+  o=o||{};
+  if(!D.slides.length)return;
+  s=Math.max(0,Math.min(D.slides.length-1,s|0));
+  const S=D.slides[s],nf=S.frames.length;
+  f=f<0?nf-1:Math.max(0,Math.min(nf-1,f|0));
+  const P=D.slides[D.cur.s],changed=P!==S,step=!changed&&o.dir===1&&f===D.cur.f+1,anim=step&&!RM.matches;
+  const kept=zoom&&zoom.manual&&!changed&&!zoom.u.rect&&D.sims[zoom.el.id]?zoom.el:null;
+  unzoom();stopTimer();if(P)clearMarks(P.el);
+  if(changed){if(P){P.el.classList.remove('current');P.sims.forEach(x=>x.active(false))}S.el.classList.add('current')}
+  const fr=S.frames[f],st=compute(S,f);
+  apply(S,st,fr,anim);clearMarks(S.el);fitLayout(S);
+  if(changed)S.sims.forEach(x=>x.active(true));else S.sims.forEach(x=>x.resize());
+  S.sims.forEach(x=>{const t=st.stg[x.id]!==undefined?st.stg[x.id]:x.stages[0];x.set(t,!(anim&&fr.stage.some(y=>y.sim===x.id)))});
+  D.cur={s,f};
+  if(fr.timer)startTimer(fr.timer,S);
+  if(fr.zoom)zoomTo({el:lift(blockEl(S,fr.zoom))},false);
+  else if(kept&&fr.stage.some(x=>x.sim===kept.id))zoomTo({el:kept,kind:'animation'},true); /* zoomed on an animation: stay on it while the frames drive it */
+  chrome();notesRender();
+  try{history.replaceState(null,'','#'+(s+1)+'.'+f)}catch(e){}
+}
+function next(){const S=D.slides[D.cur.s];if(D.cur.f<S.frames.length-1)go(D.cur.s,D.cur.f+1,{dir:1});else if(D.cur.s<D.slides.length-1)go(D.cur.s+1,0,{dir:1})}
+function prev(){if(D.cur.f>0)go(D.cur.s,D.cur.f-1,{dir:-1});else if(D.cur.s>0)go(D.cur.s-1,-1,{dir:-1})}
+D.go=go;D.next=next;D.prev=prev;
+
+function frameLabel(S,fr){
+  if(fr.label)return fr.label;
+  for(const n of fr.show){const e=(S.blocks.get(n)||[])[0];if(e&&e.dataset.label)return e.dataset.label}
+  if(fr.timer)return 'timer '+fmt(fr.timer);
+  if(fr.stage.length)return fr.stage[fr.stage.length-1].s;
+  return 'next step';
+}
+function cueText(S,f){
+  const fr=S.frames[f];
+  if(fr.cue)return 'Next ▶ '+fr.cue;
+  if(f+1<S.frames.length)return 'Next ▶ '+frameLabel(S,S.frames[f+1]);
+  if(S.i+1<D.slides.length){const N=D.slides[S.i+1];return 'Next ▶ slide '+(N.i+1)+': '+N.title}
+  return 'End of the deck';
+}
+function zoomCue(){
+  if(!cyc||cyc.i<0)return 'Zoom · Blank ▶ next · Back ▶ exit';
+  return 'Zoom '+(cyc.i+1)+' of '+cyc.U.length+' · Blank ▶ '+(cyc.i+1<cyc.U.length?'next':'exit')+' · Back ▶ exit';
+}
+function chrome(){
+  const S=D.slides[D.cur.s],f=D.cur.f;
+  $('#count').textContent=(S.i+1)+' / '+D.slides.length;
+  $('#sec').textContent=[S.sec,S.ref].filter(Boolean).join(' · ');
+  $('#cue').textContent=zoom?zoomCue():cueText(S,f);
+  $('#prog i').style.width=((S.i+(f+1)/S.frames.length)/D.slides.length*100)+'%';
+}
+
+/* ---------- timer: 96 px digits in the slide's .timer slot (a layout element, so it never covers content); restarts whenever its frame is entered ---------- */
+const mfmt=m=>String(Math.round(m*100)/100);
+function fmt(sec){sec=Math.max(0,Math.ceil(sec));return Math.floor(sec/60)+':'+String(sec%60).padStart(2,'0')}
+function startTimer(sec,S){
+  const el=$('.timer',S.el);
+  if(!el){console.error('Deck: slide '+S.id+' has a timed frame but no .timer slot');return}
+  if(!$('.d',el))el.innerHTML='<span class="d"></span><span class="tb"><i></i></span>';
+  const d=$('.d',el),bar=$('.tb i',el),t0=performance.now(),dur=sec*1000;
+  el.classList.add('run');el.classList.remove('end');
+  const tick=()=>{const left=Math.max(0,dur-(performance.now()-t0));d.textContent=fmt(left/1000);bar.style.width=(left/dur*100)+'%';
+    if(left<=0){el.classList.add('end');clearInterval(timer.iv)}};
+  timer={el,sec,iv:setInterval(tick,200)};tick();
+}
+function stopTimer(){if(timer){clearInterval(timer.iv);timer.el.classList.remove('run','end');timer=null}}
+
+/* ---------- zoom: transform the focus block to fill the slide, up to 3x ---------- */
+function blockEl(S,name){const b=S.blocks.get(name);return b&&b[0]?b[0]:(document.getElementById(name)||null)}
+function lift(e){
+  if(!e)return e;
+  if(e instanceof SVGElement){while(e.ownerSVGElement)e=e.ownerSVGElement}
+  const t=e.closest&&e.closest('table');if(t)e=t;
+  return e;
+}
+function focusEl(){
+  const S=D.slides[D.cur.s],fr=S.frames[D.cur.f];let e=null;
+  if(fr.focus)e=blockEl(S,fr.focus);
+  for(let i=fr.show.length-1;!e&&i>=0;i--)e=blockEl(S,fr.show[i]);
+  if(!e&&fr.stage.length)e=document.getElementById(fr.stage[fr.stage.length-1].sim);
+  if(!e)e=$('[data-focus]',S.el)||$('.sim',S.el)||$('.body',S.el);
+  return lift(e);
+}
+/* zoom geometry is read live and at rest: the stage scale is measured from the stage itself (never a k cached before a
+   resize or a full-screen change), and an in-flight zoom transition (.35 s) or block reveal (.25 s) is finished first, since
+   a box measured half way through its transition puts the next zoom off centre (stepping the cycle on one animation,
+   Next while zoomed, a press during the zoom-out). settle() keeps each finished element's in-flight transform so zoomTo
+   can start its own transition from where the element visibly was. */
+const liveK=()=>{const r=$('#stage').getBoundingClientRect().width/W;return r>0?r:k};
+let zfrom=null;
+function settle(){
+  const S=D.slides[D.cur.s];if(!S||!S.el.getAnimations)return;
+  S.el.getAnimations({subtree:true}).forEach(a=>{const e=a.effect&&a.effect.target;if(!e)return;
+    if(a.transitionProperty==='transform'){if(!zfrom){zfrom=new Map();queueMicrotask(()=>{zfrom=null})}if(!zfrom.has(e))zfrom.set(e,getComputedStyle(e).transform);a.finish()}
+    else if(a.animationName==='fadeUp')a.finish()});
+}
+/* the zoomed element measured without its zoom transform (no visible change: nothing paints in between) */
+function unzoomed(fn){
+  const z=zoom&&!zoom.reflow?zoom.el:null;if(!z)return fn();
+  const t=z.style.transform,tr=z.style.transition,c=z.style.clipPath;z.style.transition='none';z.style.transform='none';z.style.clipPath='';
+  try{return fn()}finally{z.style.transform=t;z.style.clipPath=c;void getComputedStyle(z).transform;z.style.transition=tr}
+}
+/* zoom units (every piece of information on the slide), in cycle order: animations first with their sub-units, then top-left to bottom-right */
+const UNIT_SEL='[data-zoom],.card,.checkrow,.line,.hdr,.caprow,.rulerow>p,.steps>li,.item,.wcard,.legend,.frames,.bank,.rate>li,.steprows>li,.scale,.handsup,.phase,.r800,.rail,.body>p,.tbl,.g3';
+function visEl(e){if(!e||!e.getClientRects().length)return false;const cs=getComputedStyle(e);if(cs.visibility!=='visible'||parseFloat(cs.opacity)<.05)return false;const r=e.getBoundingClientRect();return r.width>8&&r.height>8}
+function hasContent(e){const w=document.createTreeWalker(e,NodeFilter.SHOW_TEXT);let n;
+  while((n=w.nextNode())){if(n.nodeValue.trim()&&getComputedStyle(n.parentElement).visibility==='visible'&&!n.parentElement.closest('.timer'))return true}
+  return $$('svg,canvas',e).some(x=>getComputedStyle(x).visibility==='visible'&&x.getBoundingClientRect().width>8)}
+/* the rect a unit's information actually covers (text, pictures, options, chips), padded: a wide card with a short line zooms to the line */
+function contentRect(el){const R=[],w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);let n;
+  while((n=w.nextNode())){if(!n.nodeValue.trim()||getComputedStyle(n.parentElement).visibility!=='visible')continue;const rg=document.createRange();rg.selectNodeContents(n);for(const r of rg.getClientRects())if(r.width>0)R.push(r)}
+  $$('svg,canvas,img,.opt,.chip,.gap,.bank span',el).forEach(x=>{if(visEl(x))R.push(x.getBoundingClientRect())});
+  if(!R.length)return null;const a=el.getBoundingClientRect(),p=22*liveK();
+  return {left:Math.max(a.left,Math.min(...R.map(r=>r.left))-p),top:Math.max(a.top,Math.min(...R.map(r=>r.top))-p),right:Math.min(a.right,Math.max(...R.map(r=>r.right))+p),bottom:Math.min(a.bottom,Math.max(...R.map(r=>r.bottom))+p)}}
+function kindOf(e){return e.dataset.zoom||(e.matches('.check,.checkrow')?'check':e.matches('.rule')?'rule':e.matches('.prompt,.dq')?'prompt':e.matches('.card')?'card':
+  (['line','hdr','caprow','item','wcard','legend','frames','bank','scale','handsup','phase','r800','rail'].find(c=>e.classList.contains(c))||e.tagName.toLowerCase()))}
+function zoomUnits(){
+  const S=D.slides[D.cur.s];if(!S||flow)return [];
+  settle();return unzoomed(()=>unitsAtRest(S));
+}
+function unitsAtRest(S){
+  const k=liveK(),sr=S.el.getBoundingClientRect(),out=[],rest=[];
+  const loc=(el,r)=>{const a=el.getBoundingClientRect();return {x:(r.left-a.left)/k,y:(r.top-a.top)/k,w:(r.right-r.left)/k,h:(r.bottom-r.top)/k}};
+  S.sims.forEach(x=>{const h=x.host;if(!visEl(h)||!(x.bounds&&x.bounds()))return;out.push({el:h,kind:'animation',label:h.dataset.sim});
+    ((x.units&&x.units())||[]).forEach(u=>{if(u.el){if(visEl(u.el)&&hasContent(u.el))out.push({el:u.el,kind:'part',label:u.label||''})}
+      else if(u.w>8&&u.h>8)out.push({el:h,rect:u.pad!=null?{x:u.x,y:u.y,w:u.w,h:u.h,pad:u.pad}:{x:u.x,y:u.y,w:u.w,h:u.h},kind:'part',label:u.label||''})})});
+  const cand=$$(UNIT_SEL,S.el).filter(e=>!e.closest('.sim,.notes,.timer')&&!e.matches('.tag')&&e.dataset.zoom!=='none'&&visEl(e)&&hasContent(e));
+  cand.filter(e=>!cand.some(o=>o!==e&&o.contains(e))).forEach(e=>{
+    if(e.matches('.tbl')&&!e.dataset.zoom){$$('tbody tr',e).forEach(tr=>{if(visEl(tr)&&hasContent(tr)){const r=tr.getBoundingClientRect(),c=contentRect(tr)||r;rest.push({el:e,rect:loc(e,c),row:tr,kind:'row',pos:r})}});return}
+    if(e.matches('.g3')){const kids=[...e.children];if(![1,2,3].some(c=>kids.some((x,i)=>i%4===c&&hasContent(x)))){rest.push({el:e,kind:'table',pos:e.getBoundingClientRect()});return}
+      for(let c=1;c<=3;c++){const cells=kids.filter((x,i)=>i%4===c&&hasContent(x));if(!cells.length)continue;
+      const rs=cells.map(x=>x.getBoundingClientRect()),r={left:Math.min(...rs.map(q=>q.left)),top:Math.min(...rs.map(q=>q.top)),right:Math.max(...rs.map(q=>q.right)),bottom:Math.max(...rs.map(q=>q.bottom))};
+      rest.push({el:e,rect:loc(e,r),kind:'column',pos:r})}return}
+    /* a unit zooms to the part its information covers (a card stretched to fill its column, a wide card with a short line);
+       a compacted card zooms whole, since it opens up in full while zoomed */
+    if(!e.classList.contains('cmp')){const a=e.getBoundingClientRect(),c=contentRect(e);
+      if(c&&(c.right-c.left)*(c.bottom-c.top)<.85*a.width*a.height){rest.push({el:e,rect:loc(e,c),kind:kindOf(e),pos:a});return}}
+    rest.push({el:e,kind:kindOf(e),pos:e.getBoundingClientRect()})});
+  rest.sort((a,b)=>Math.round((a.pos.top-sr.top)/k/40)-Math.round((b.pos.top-sr.top)/k/40)||a.pos.left-b.pos.left);
+  return out.concat(rest.map(u=>({el:u.el,rect:u.rect,row:u.row,kind:u.kind,label:u.label||u.el.dataset.label||''})));
+}
+const sameUnit=(a,b)=>a&&b&&a.el===b.el&&a.row===b.row&&(!a.rect&&!b.rect||a.rect&&b.rect&&Math.abs(a.rect.x-b.rect.x)<2&&Math.abs(a.rect.y-b.rect.y)<2);
+/* re-flow zoom: a text unit is cloned into an overlay, inside shallow copies of its ancestors (so every style that depends on them
+   still applies, their own layout neutralized), and scaled (CSS zoom) to the largest size up to 2.2x that fits the slide with
+   60 px margins; the clone's lines re-wrap at the wider measure; options and chips keep their layout */
+const isReflow=u=>u.kind!=='animation'&&u.kind!=='part'&&u.kind!=='column'&&!u.el.closest('.sim')&&!u.el.matches('.g3');
+function cleanClone(n){n.removeAttribute('id');n.classList.remove('adone','cmp','act','lone','zoomable','zoomed','fx','fill');$$('[id]',n).forEach(x=>x.removeAttribute('id'));
+  $$('.fx',n).forEach(x=>x.classList.remove('fx'));n.style.transform='';n.style.clipPath='';n.style.position='';return n}
+function zoomReflow(u,S){
+  const src=u.row||u.el,k=liveK(),sr=S.el.getBoundingClientRect(),SW=sr.width/k,SH=sr.height/k,M=60;
+  const node=src.cloneNode(true);
+  /* what is hidden on the slide (an answer not yet revealed, an empty feedback line) takes no room in the clone */
+  /* (a table row keeps its empty answer slot, as on the slide) */
+  const A=[src,...$$('*',src)],B=[node,...$$('*',node)];if(src.tagName!=='TR')A.forEach((e,i)=>{if(i&&getComputedStyle(e).visibility==='hidden'&&B[i])B[i].style.display='none'});
+  cleanClone(node);let outer=node;
+  for(let a=src.parentElement;a&&a!==S.el;a=a.parentElement){const w=cleanClone(a.cloneNode(false));const tbl=/^(TABLE|TBODY|THEAD|TR)$/.test(w.tagName);
+    w.style.cssText='position:static;width:auto;height:auto;min-height:0;max-width:none;margin:0;padding:0;border:0;background:none;box-shadow:none;transform:none;overflow:visible;visibility:visible;opacity:1;list-style:none;'+(tbl?'':'display:block;');
+    w.appendChild(outer);outer=w}
+  const ov=document.createElement('div');ov.className='zflow';ov.appendChild(outer);S.el.appendChild(ov);
+  node.style.cssText+=';box-sizing:border-box;margin:0;height:auto;min-height:0;flex:none;'+(node.tagName==='TR'?'':'width:max-content;');
+  const fits=z=>{outer.style.zoom=z;node.style.maxWidth=((SW-2*M)/z).toFixed(1)+'px';const r=node.getBoundingClientRect();
+    if(!(r.width/k<=SW-2*M+1&&r.height/k<=SH-2*M+1))return false;
+    /* every piece must stay inside the clone sideways (an option row or a rail that cannot shrink would stick out); raised and
+       lowered numbers may sit a little above or below a line, as they do on the slide */
+    return $$('*',node).every(e=>{const q=e.getBoundingClientRect();return !q.width||q.left>=r.left-2&&q.right<=r.right+2})};
+  let lo=1,hi=2.2;if(fits(hi))lo=hi;else{for(let i=0;i<9;i++){const m=(lo+hi)/2;if(fits(m))lo=m;else hi=m}}fits(lo);
+  const r=node.getBoundingClientRect();
+  return {z:lo,ov,node,rect:{x:(r.left-sr.left)/k,y:(r.top-sr.top)/k,w:r.width/k,h:r.height/k},sw:SW,sh:SH};
+}
+function zoomTo(u,manual){
+  if(!u||!u.el)return;
+  const el=u.el,S=D.slides[D.cur.s],from=(zfrom&&zfrom.get(el))||getComputedStyle(el).transform;
+  clearZoom();
+  if(!cyc||!cyc.U.some(x=>sameUnit(x,u))){const U=zoomUnits();cyc={U,i:U.findIndex(x=>sameUnit(x,u))}}
+  else cyc.i=cyc.U.findIndex(x=>sameUnit(x,u));
+  settle();const k=liveK();
+  if(isReflow(u)){const f=zoomReflow(u,S);S.el.classList.add('zooming');zoom={el,z:f.z,manual,u,ov:f.ov,node:f.node,rect:f.rect,sw:f.sw,sh:f.sh,reflow:true};chrome();return}
+  if(el.classList.contains('cmp')){el.classList.remove('cmp');el._uncmp=1} /* a compacted card shows in full while zoomed */
+  const r=el.getBoundingClientRect(),sr=S.el.getBoundingClientRect();
+  const w=r.width/k,h=r.height/k;if(w<8||h<8)return;
+  /* an animation reports the rect it actually draws (bounds); a sub-unit or a table row brings its own rect; else the element's box */
+  let b=u.rect||null;
+  if(!b){const sim=D.sims[el.id];b=sim&&sim.bounds?sim.bounds():null}
+  if(!b||!(b.w>8&&b.h>8))b={x:0,y:0,w,h};
+  const SW=sr.width/k,SH=sr.height/k,m=24,pz=b.pad||0; /* pz: the exact clip pad a sub-unit asks for, kept inside the margins */
+  const z=Math.max(1,Math.min(ZMAX,(SW-2*m-2*pz)/b.w,(SH-2*m-2*pz)/b.h));
+  const ex=(r.left-sr.left)/k,ey=(r.top-sr.top)/k,dx=SW/2-(ex+z*(b.x+b.w/2)),dy=SH/2-(ey+z*(b.y+b.h/2));
+  if(getComputedStyle(el).position==='static'){el.style.position='relative';el._dpos=1}
+  if(u.rect){const p=b.pad!=null?b.pad/z:12;el.style.clipPath='inset('+Math.max(0,b.y-p).toFixed(1)+'px '+Math.max(0,w-b.x-b.w-p).toFixed(1)+'px '+Math.max(0,h-b.y-b.h-p).toFixed(1)+'px '+Math.max(0,b.x-p).toFixed(1)+'px round 16px)'}
+  el.classList.add('zoomable','zoomed');S.el.classList.add('zooming');el.style.transformOrigin='0 0';
+  if(from&&from!=='none'&&!RM.matches){el.style.transition='none';el.style.transform=from;void getComputedStyle(el).transform;el.style.transition=''}
+  el.style.transform='translate('+dx.toFixed(1)+'px,'+dy.toFixed(1)+'px) scale('+z.toFixed(3)+')';
+  zoom={el,z,manual,u,b,ew:w,rect:{x:ex+dx+z*b.x,y:ey+dy+z*b.y,w:z*b.w,h:z*b.h},sw:SW,sh:SH};resizeIn(el);
+  chrome();
+}
+function clearZoom(){
+  if(!zoom)return;const el=zoom.el;
+  if(zoom.reflow){zoom.ov.remove();zoom=null;$$('.slide.zooming').forEach(x=>x.classList.remove('zooming'));return}
+  zoom=null;
+  el.style.transform='';el.style.clipPath='';el.classList.remove('zoomed');if(el._dpos){el.style.position='';el._dpos=0}
+  $$('.slide.zooming').forEach(x=>x.classList.remove('zooming'));resizeIn(el);
+  if(el._uncmp){el._uncmp=0;const S=D.slides[D.cur.s];if(S)fitLayout(S)}
+}
+function unzoom(){const had=!!zoom;clearZoom();cyc=null;if(had&&D.cur.s>=0)chrome()}
+/* ---------- layout pass after every frame ----------
+   Options: one row when they fit, else stacked (never a 2 + 1 wrap). Accumulating columns (.acc): the last visible card is
+   active and grows; earlier ones are done; when the column overflows they compact (34 px), then clamp to one line, earliest first. */
+function fitLayout(S){
+  $$('.opts',S.el).forEach(o=>{if(o.dataset.lay)o.classList.toggle('col1',o.dataset.lay==='col');
+    if(o.dataset.lay==='row'&&o.getClientRects().length){const R=o.getBoundingClientRect().right+2;if([...o.children].some(c=>c.getBoundingClientRect().right>R))o.classList.add('col1')}});
+  $$('.acc',S.el).forEach(col=>{
+    const kids=[...col.children].filter(c=>c.getClientRects().length&&getComputedStyle(c).visibility==='visible');
+    [...col.children].forEach(c=>c.classList.remove('adone','cmp','lone','act'));
+    if(!kids.length)return;
+    kids[kids.length-1].classList.add('act');if(kids.length===1&&!col.classList.contains('nolone'))kids[0].classList.add('lone');
+    const early=kids.slice(0,-1);early.forEach(c=>c.classList.add('adone'));
+    const over=()=>col.scrollHeight>col.clientHeight;
+    for(const c of early){if(!over())break;if($(':scope>.tag',c))c.classList.add('cmp')}
+    if(over()&&kids[0].classList.contains('lone')){kids[0].classList.remove('lone')}
+  });
+}
+/* ---------- check options: a mouse click marks one option (the clicker path is unchanged) ---------- */
+function clearMarks(el){$$('.opt.picked,.opt.okmk,.opt.wrong',el).forEach(o=>o.classList.remove('picked','okmk','wrong'));$$('.fb',el).forEach(f=>{f.innerHTML='';f.className='fb'})}
+function grade(opt){
+  const card=opt.closest('.check,.checkrow');if(!card||!card.closest('.slide.current'))return;
+  const mode=card.dataset.mode||'grade';if(mode==='none')return;
+  clearMarks(card);
+  if(mode==='pick'){opt.classList.add('picked');return}
+  if(opt.dataset.fb==null)return;
+  const ok=opt.dataset.ok==='1',fb=$('.fb',card);opt.classList.add(ok?'okmk':'wrong');
+  if(fb){fb.innerHTML=opt.dataset.fb;fb.className='fb on '+(ok?'ok':'bad')}
+}
+D.grade=grade;
+function resizeIn(el){Object.values(D.sims).forEach(x=>{if(el.contains(x.host))x.resize()})}
+D.px=host=>Math.min(4,(devicePixelRatio||1)*(flow?innerWidth/W:k)*(zoom&&!zoom.reflow&&zoom.el.contains(host)?zoom.z:1));
+
+/* ---------- blank, notes, overview, theme ---------- */
+function blank(on){blankOn=on;$('#blank').hidden=!on}
+function notes(open){const p=$('#notes');p.hidden=open===undefined?!p.hidden:!open;notesRender()}
+function notesRender(){
+  const p=$('#notes');if(p.hidden||D.cur.s<0)return;
+  const S=D.slides[D.cur.s];let mins=0;S.frames.forEach(fr=>{mins+=fr.t||0});
+  let h='<header><b>'+(S.i+1)+'. '+esc(S.title)+'</b><span>'+esc([S.sec,S.ref].filter(Boolean).join(' · '))+(mins?' · '+mfmt(mins)+' min':'')+'</span></header><ol>';
+  S.frames.forEach((fr,i)=>{h+='<li'+(i===D.cur.f?' class="now"':'')+'><b>'+i+' · '+esc(i?frameLabel(S,fr):(fr.label||'enter'))+(fr.t?' <em>· '+mfmt(fr.t)+' min</em>':'')+'</b>'+fr.note+'</li>'});
+  h+='</ol>'+(S.notes?'<div class="sn">'+S.notes.innerHTML+'</div>':'')+'<p class="keys">Clicker: PageDown next · PageUp back (while zoomed: exit zoom) · F5 full screen · Esc close · . zoom one unit per press, the press after the last unit exits (twice fast: blank). Mouse: click an option to mark it; click the slide number for the slide list. Laptop: arrows, Home, End, N notes, O overview, Z zoom, T theme, Ctrl+P run-sheet.</p>';
+  p.innerHTML=h;const now=$('li.now',p);if(now)now.scrollIntoView({block:'nearest'});
+}
+function overview(open){
+  const o=$('#overview');if(open===undefined)open=o.hidden;o.hidden=!open;if(!open)return;
+  ovSel=D.cur.s;
+  o.innerHTML=D.slides.map(S=>'<button type="button" data-i="'+S.i+'"><b>'+(S.i+1)+'</b><span>'+esc(S.title)+'</span><small>'+esc(S.sec)+' · '+S.frames.length+' frames</small></button>').join('');
+  ovMark();
+}
+function ovMark(){$$('#overview button').forEach((b,i)=>b.classList.toggle('sel',i===ovSel));const b=$('#overview button.sel');if(b)b.scrollIntoView({block:'nearest'})}
+function theme(t){
+  const r=document.documentElement;t=t||(r.dataset.theme==='dark'?'light':'dark');r.dataset.theme=t;
+  try{localStorage.setItem('tcf-slides-theme',t)}catch(e){}
+  tok={};Object.values(D.sims).forEach(x=>x.redraw());
+}
+D.theme=theme;
+
+/* ---------- clicker map (Logitech R800: PageDown, PageUp, F5/Escape, period) ---------- */
+const NEXT=new Set(['PageDown','ArrowRight','ArrowDown',' ']),BACK=new Set(['PageUp','ArrowLeft','ArrowUp']);
+const KEYS=new Set(['Home','End','F5','.','b','B','n','N','o','O','z','Z','t','T']);
+function dot(){
+  const now=performance.now();
+  /* a second press within 400 ms of the press that started zooming blanks the screen; while zoomed, every press steps the cycle */
+  if(dotUndo&&now-lastDot<400){dotUndo();dotUndo=null;lastDot=0;blank(true);return}
+  lastDot=now;dotUndo=null;
+  if(!zoom){const U=zoomUnits();if(!U.length){dotUndo=()=>{};return}cyc={U,i:0};zoomTo(U[0],true);dotUndo=()=>unzoom();return}
+  if(!cyc||cyc.i<0){const U=zoomUnits(),i=U.findIndex(x=>x.el===zoom.el);cyc={U,i}}
+  if(cyc.i+1>=cyc.U.length){unzoom();return}
+  cyc.i++;zoomTo(cyc.U[cyc.i],true);
+}
+D.dot=dot;D.zoomUnits=()=>zoomUnits().map(u=>({id:u.el.id||u.el.dataset.b||u.el.className,kind:u.kind,label:u.label,rect:u.rect||null}));
+function ovKey(e){
+  const key=e.key,n=D.slides.length;e.preventDefault();e.stopPropagation();if(e.repeat)return;
+  if(key==='Escape'||key==='o'||key==='O'){overview(false);return}
+  if(key==='Enter'||key==='.'){overview(false);go(ovSel,0);return}
+  if(NEXT.has(key))ovSel=Math.min(n-1,ovSel+1);else if(BACK.has(key))ovSel=Math.max(0,ovSel-1);
+  else if(key==='Home')ovSel=0;else if(key==='End')ovSel=n-1;
+  ovMark();
+}
+function onKey(e){
+  const key=e.key,t=e.target;
+  if(t&&t.tagName==='TEXTAREA')return;
+  if(flow||key==='Shift'||key==='Control'||key==='Alt'||key==='Meta'||key==='CapsLock')return;
+  if(blankOn){e.preventDefault();e.stopPropagation();if(!e.repeat)blank(false);return}
+  if(e.ctrlKey||e.metaKey||e.altKey)return;
+  if(!$('#overview').hidden){ovKey(e);return}
+  if(key==='Escape'){
+    if(zoom){unzoom();e.preventDefault()}else if(!$('#notes').hidden){notes(false);e.preventDefault()}
+    else if(document.fullscreenElement&&document.exitFullscreen)document.exitFullscreen().catch(()=>{}); /* reached only when Escape is locked */
+    return;
+  }
+  const nav=NEXT.has(key)||BACK.has(key);
+  if(!nav&&!KEYS.has(key))return;
+  e.preventDefault();e.stopPropagation();
+  if(e.repeat)return;
+  if(nav){const now=performance.now();if(now-lastNav<180)return;lastNav=now;dotUndo=null;if(zoom&&BACK.has(key)){unzoom();return}NEXT.has(key)?next():prev();return}
+  switch(key){
+    case 'F5':if(!document.fullscreenElement&&document.documentElement.requestFullscreen)document.documentElement.requestFullscreen()
+      .then(()=>{/* Chrome/Edge: hold Escape so a short press can close blank, zoom and notes first */if(navigator.keyboard&&navigator.keyboard.lock)return navigator.keyboard.lock(['Escape'])}).catch(()=>{});break;
+    case '.':case 'b':case 'B':dot();break;
+    case 'Home':go(0,0);break;
+    case 'End':go(D.slides.length-1,-1);break;
+    case 'n':case 'N':notes();break;
+    case 'o':case 'O':overview();break;
+    case 'z':case 'Z':dotUndo=null;if(zoom)unzoom();else{const f=focusEl(),U=zoomUnits();zoomTo(U.find(u=>u.el===f&&!u.rect)||U[0]||{el:f},true)}break;
+    case 't':case 'T':theme();break;
+  }
+}
+
+/* ---------- canvas helpers shared by every animation ---------- */
+const SANS="'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif",MONO="'IBM Plex Mono', ui-monospace, 'DejaVu Sans Mono', monospace";
+let tok={};
+D.tok=n=>tok[n]||(tok[n]=getComputedStyle(document.documentElement).getPropertyValue('--'+n).trim()||'#888888');
+function rgb(c){c=String(c).trim();if(c[0]==='#'){if(c.length===4)c='#'+c[1]+c[1]+c[2]+c[2]+c[3]+c[3];const n=parseInt(c.slice(1,7),16);return [n>>16&255,n>>8&255,n&255]}const m=c.match(/[\d.]+/g);return m?m.slice(0,3).map(Number):[128,128,128]}
+D.mix=(a,b,t)=>{const A=rgb(a),B=rgb(b);return 'rgb('+A.map((v,i)=>Math.round(v+(B[i]-v)*t)).join(',')+')'};
+D.lum=c=>{const v=rgb(c).map(x=>{x/=255;return x<=.03928?x/12.92:Math.pow((x+.055)/1.055,2.4)});return .2126*v[0]+.7152*v[1]+.0722*v[2]};
+/* painter: text never below 36 px (labels) unless a sim asks; records the smallest size drawn for the font audit */
+function painter(ctx){
+  const g={ctx,minFont:Infinity,outText:0,W:0,c:D.tok,mix:D.mix,
+    /* counts text drawn past the left or right edge of the canvas (it would be cut off) */
+    edge(x,w,al){if(!g.W)return;const x0=al==='left'||al==='start'?x:al==='right'||al==='end'?x-w:x-w/2;if(x0<-2||x0+w>g.W+2)g.outText++},
+    font(px,wt,mono){if(px<g.minFont)g.minFont=px;ctx.font=(wt||700)+' '+px+'px '+(mono?MONO:SANS)},
+    text(s,x,y,px,o){o=o||{};g.font(px,o.wt,o.mono);ctx.textAlign=o.align||'center';ctx.textBaseline=o.base||'middle';g.edge(x,ctx.measureText(s).width,ctx.textAlign);
+      if(o.halo){ctx.lineJoin='round';ctx.lineWidth=o.halo;ctx.strokeStyle=o.haloColor||D.tok('slide');ctx.strokeText(s,x,y)}
+      ctx.fillStyle=o.color||D.tok('ink');ctx.fillText(s,x,y)},
+    /* chemistry text: Na^+  Cl^−  H_2O  SO_4^{2−} ; sub/sup at 0.7 of the base size */
+    chem(s,x,y,px,o){o=o||{};const runs=[];const re=/([_^])(\{[^}]*\}|.)/g;let i=0,m;
+      while((m=re.exec(s))){if(m.index>i)runs.push({t:s.slice(i,m.index),k:0});runs.push({t:m[2].replace(/[{}]/g,''),k:m[1]==='_'?1:2});i=re.lastIndex}
+      if(i<s.length)runs.push({t:s.slice(i),k:0});
+      g.font(px,o.wt,o.mono);const fb=ctx.font,fs=(o.wt||700)+' '+Math.round(px*.7)+'px '+(o.mono?MONO:SANS);
+      let wsum=0;runs.forEach(r=>{ctx.font=r.k?fs:fb;r.w=ctx.measureText(r.t).width;wsum+=r.w});
+      let cx=o.align==='left'?x:o.align==='right'?x-wsum:x-wsum/2;ctx.textAlign='left';ctx.textBaseline='middle';g.edge(cx,wsum,'left');
+      runs.forEach(r=>{ctx.font=r.k?fs:fb;const yy=y+(r.k===1?px*.28:r.k===2?-px*.36:0);
+        if(o.halo){ctx.lineJoin='round';ctx.lineWidth=o.halo;ctx.strokeStyle=o.haloColor||D.tok('slide');ctx.strokeText(r.t,cx,yy)}
+        ctx.fillStyle=o.color||D.tok('ink');ctx.fillText(r.t,cx,yy);cx+=r.w});
+      return wsum},
+    circle(x,y,r,fill,stroke,lw){ctx.beginPath();ctx.arc(x,y,Math.max(0,r),0,Math.PI*2);if(fill){ctx.fillStyle=fill;ctx.fill()}if(stroke){ctx.lineWidth=lw||3;ctx.strokeStyle=stroke;ctx.stroke()}},
+    line(x0,y0,x1,y1,col,lw,dash){ctx.beginPath();ctx.setLineDash(dash||[]);ctx.lineCap='round';ctx.moveTo(x0,y0);ctx.lineTo(x1,y1);ctx.lineWidth=lw||3;ctx.strokeStyle=col;ctx.stroke();ctx.setLineDash([])},
+    rrect(x,y,w,h,r,fill,stroke,lw){ctx.beginPath();ctx.roundRect(x,y,w,h,r);if(fill){ctx.fillStyle=fill;ctx.fill()}if(stroke){ctx.lineWidth=lw||3;ctx.strokeStyle=stroke;ctx.stroke()}},
+    /* an electron: a dot with a soft halo */
+    electron(x,y,r){r=r||13;const e=D.tok('e');ctx.save();ctx.globalAlpha*=.3;g.circle(x,y,r*2.1,e);ctx.restore();g.circle(x,y,r,e,D.mix(e,'#000000',.45),3)},
+    /* a round badge with a sign or short label, 72 px across by default */
+    badge(x,y,txt,col,r){r=r||36;g.circle(x,y,r,col);g.text(txt,x,y+2,Math.max(36,r*1.1),{color:D.tok('on-ion')})},
+    /* fit text: shrink horizontally (not below 85%) to fit maxW at a fixed size; returns false if it cannot fit */
+    fit(s,x,y,px,maxW,o){o=o||{};g.font(px,o.wt,o.mono);const tw=ctx.measureText(s).width;const q=tw>maxW?maxW/tw:1;if(q<(o.min||.85))return false;
+      ctx.save();ctx.translate(x,y);ctx.scale(q,1);ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle=o.color||D.tok('ink');ctx.fillText(s,0,0);ctx.restore();return true}
+  };
+  return g;
+}
+D.painter=painter;
+const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+function lerpP(a,b,t){const o={};for(const n in b){const x=a[n],y=b[n];
+  if(typeof y==='number'&&typeof x==='number')o[n]=x+(y-x)*t;
+  else if(Array.isArray(y)&&Array.isArray(x)&&x.length===y.length)o[n]=y.map((v,i)=>typeof v==='number'?x[i]+(v-x[i])*t:(t<.5?x[i]:v));
+  else o[n]=t<.5&&(n in a)?x:y}return o}
+/* canvasSim: the base for every animation. Each stage is a full parameter set; set() tweens to it (300-900 ms) or jumps.
+   spec = {stages, params:{stage:{...}} | fn(stage), draw(g, p, info), dur: ms | {stage: ms}, live: fn(stage) -> continuous redraw,
+           bounds?: fn(p, info) -> rect (default: measured from a render of the target stage), meta?: fn(p, stage) -> facts for tests} */
+D.canvasSim=function(host,spec){
+  const cv=document.createElement('canvas');cv.setAttribute('role','img');cv.setAttribute('aria-label',host.getAttribute('aria-label')||'');host.appendChild(cv);
+  const ctx=cv.getContext('2d'),g=painter(ctx),P=s=>Object.assign({},typeof spec.params==='function'?spec.params(s):spec.params[s]);
+  let w=0,h=0,px=1,stage=spec.stages[0],from=null,cur=P(stage),to=cur,t0=0,dur=0,raf=0,on=false,live=false,ts=performance.now(),prevStage=stage;
+  function size(){w=host.clientWidth;h=host.clientHeight;px=D.px(host);const W2=Math.max(1,Math.round(w*px)),H2=Math.max(1,Math.round(h*px));
+    if(cv.width!==W2||cv.height!==H2){cv.width=W2;cv.height=H2}cv.style.width=w+'px';cv.style.height=h+'px'}
+  function paint(now){if(!w||!h)return;ctx.setTransform(px,0,0,px,0,0);ctx.clearRect(0,0,w,h);g.minFont=Infinity;g.outText=0;g.W=w;
+    spec.draw(g,cur,{w,h,stage,from:prevStage,k:cur._k==null?1:cur._k,t:(now-ts)/1000,clock:now/1000,live:live&&on&&!RM.matches});api.minFont=g.minFont;api.outText=g.outText}
+  function frame(now){raf=0;let busy=false;
+    if(from){const q=Math.min(1,(now-t0)/dur);cur=lerpP(from,to,ease(q));cur._k=q;if(q<1)busy=true;else{from=null;cur=Object.assign({},to)}}
+    paint(now);if(on&&(busy||(live&&!RM.matches)))raf=requestAnimationFrame(frame)}
+  function kick(){if(on&&!raf)raf=requestAnimationFrame(frame)}
+  function fresh(){if(host.clientWidth!==w||host.clientHeight!==h){size();paint(performance.now())}} /* zoom reads the live size */
+  const api={stages:spec.stages,minFont:Infinity,
+    set(s,instant){if(!spec.stages.includes(s)){console.error('Deck: '+host.id+' has no stage "'+s+'"');return}
+      const target=P(s);if(s!==stage){prevStage=stage;ts=performance.now()}stage=s;live=!!(spec.live&&spec.live(s));
+      if(instant||RM.matches||!on){from=null;cur=target;to=target;if(raf){cancelAnimationFrame(raf);raf=0}paint(performance.now());kick()}
+      else{from=Object.assign({},cur);delete from._k;to=target;t0=performance.now();dur=(typeof spec.dur==='object'?spec.dur[s]:spec.dur)||700;kick()}},
+    get(){return stage},
+    /* bounds(): the rect the target stage draws, in host px (live stages: union over several moments) */
+    bounds(){fresh();if(!w||!h)return null;if(spec.bounds)return spec.bounds(to,{w,h,stage});
+      const oc=document.createElement('canvas');oc.width=Math.ceil(w);oc.height=Math.ceil(h);const ox=oc.getContext('2d',{willReadFrequently:true}),og=painter(ox);
+      const L=live&&!RM.matches,times=L?[0,.9,1.8,2.7,3.6,4.5,5.4,6.3]:[0];let x0=1e9,y0=1e9,x1=-1,y1=-1;
+      for(const t of times){ox.setTransform(1,0,0,1,0,0);ox.clearRect(0,0,oc.width,oc.height);spec.draw(og,Object.assign({},to),{w,h,stage,from:stage,k:1,t,clock:t,live:L});
+        const d=ox.getImageData(0,0,oc.width,oc.height).data,W2=oc.width;
+        for(let y=0;y<oc.height;y++){const row=y*W2*4;for(let x=0;x<W2;x++){if(d[row+x*4+3]>10){if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y}}}}
+      if(x1<0)return null;const pad=14;x0=Math.max(0,x0-pad);y0=Math.max(0,y0-pad);x1=Math.min(w,x1+pad);y1=Math.min(h,y1+pad);
+      return {x:x0,y:y0,w:x1-x0,h:y1-y0}},
+    meta(){return spec.meta?spec.meta(Object.assign({},to),stage,{w,h}):{}},
+    units(){fresh();return spec.units&&w&&h?spec.units(Object.assign({},to),{w,h,stage})||[]:[]},
+    resize(){size();paint(performance.now())},
+    redraw(){paint(performance.now())},
+    active(v){on=v;if(v){size();paint(performance.now());kick()}else{if(raf){cancelAnimationFrame(raf);raf=0}if(from){from=null;cur=Object.assign({},to)}}}
+  };
+  return api;
+};
+
+/* ---------- small depth-sorted 3D sphere renderer (no libraries) ----------
+   scene = {atoms:[{p:[x,y,z], r, color, label, labelPx, alpha, s (scale 0..1), ring}],
+            bonds:[{a, b, w, alpha}]   sticks of a ball-and-stick model, depth-sorted with the spheres,
+            lines:[{a, b, w, alpha}]}  guide lines drawn behind every sphere (lattice edges)
+   view  = {cx, cy, scale (px per unit), yaw, pitch, dist (camera distance, units), fog 0..1, minLabel (px, default 36), lineColor}
+   Perspective projection, painter's algorithm (far to near), shaded spheres, labels never below 36 px.
+   Returns the projected atoms [{x, y, r, z}] so a sim can draw overlays. */
+D.spheres=function(g,scene,v){
+  const ctx=g.ctx,cy=Math.cos(v.yaw||0),sy=Math.sin(v.yaw||0),cp=Math.cos(v.pitch||0),sp=Math.sin(v.pitch||0),dist=v.dist||8,sc=v.scale||100,bg=D.tok('slide');
+  const P=scene.atoms.map(a=>{const x=a.p[0],y=a.p[1],z=a.p[2];const x1=x*cy+z*sy,z1=-x*sy+z*cy,y2=y*cp-z1*sp,z2=y*sp+z1*cp,f=dist/Math.max(.5,dist-z2);
+    return {a,x:v.cx+x1*sc*f,y:v.cy-y2*sc*f,r:(a.r||.3)*sc*f*(a.s==null?1:a.s),z:z2,f}});
+  const vis=p=>p.r>.5&&(p.a.alpha==null||p.a.alpha>.01),al=p=>p.a.alpha==null?1:p.a.alpha;
+  let zmin=Infinity,zmax=-Infinity;P.forEach(p=>{zmin=Math.min(zmin,p.z);zmax=Math.max(zmax,p.z)});
+  const fog=v.fog==null?.22:v.fog,depth=z=>zmax>zmin?(zmax-z)/(zmax-zmin):0;
+  ctx.lineCap='round';
+  (scene.lines||[]).forEach(l=>{const A=P[l.a],B=P[l.b];if(!vis(A)||!vis(B))return;
+    ctx.globalAlpha=Math.min(al(A),al(B))*(l.alpha==null?1:l.alpha);ctx.lineWidth=Math.max(2,(l.w||.04)*sc*(A.f+B.f)/2);
+    ctx.strokeStyle=v.lineColor||D.tok('muted');ctx.beginPath();ctx.moveTo(A.x,A.y);ctx.lineTo(B.x,B.y);ctx.stroke()});
+  ctx.globalAlpha=1;
+  const items=P.filter(vis).map(p=>({z:p.z,p}));
+  (scene.bonds||[]).forEach(b=>{const A=P[b.a],B=P[b.b];if(vis(A)&&vis(B))items.push({z:(A.z+B.z)/2-1e-6,b,A,B})});
+  items.sort((u,w)=>u.z-w.z);
+  items.forEach(it=>{
+    if(it.b){const A=it.A,B=it.B,lw=(it.b.w||.13)*sc*(A.f+B.f)/2,dx=B.x-A.x,dy=B.y-A.y,l2=Math.hypot(dx,dy)||1;
+      const d3=Math.hypot(A.a.p[0]-B.a.p[0],A.a.p[1]-B.a.p[1],A.a.p[2]-B.a.p[2])*sc*(A.f+B.f)/2||1,sn=Math.min(1,l2/d3)*.9,ux=dx/l2,uy=dy/l2;
+      /* the stick starts where it leaves each sphere's surface, so it never runs over a label it should not */
+      const ax=A.x+ux*A.r*sn,ay=A.y+uy*A.r*sn,bx=B.x-ux*B.r*sn,by=B.y-uy*B.r*sn,mx=(ax+bx)/2,my=(ay+by)/2;
+      ctx.globalAlpha=Math.min(al(A),al(B))*(it.b.alpha==null?1:it.b.alpha);
+      [[A,ax,ay],[B,bx,by]].forEach(([E,ex,ey])=>{const c=D.mix(E.a.color,bg,depth(E.z)*fog);
+        ctx.beginPath();ctx.moveTo(ex,ey);ctx.lineTo(mx,my);ctx.lineWidth=lw+4;ctx.strokeStyle=D.mix(c,'#000000',.5);ctx.stroke();
+        ctx.lineWidth=lw;ctx.strokeStyle=D.mix(c,'#ffffff',.15);ctx.stroke()});
+      ctx.globalAlpha=1;return}
+    const p=it.p,a=p.a,col=D.mix(a.color,bg,depth(p.z)*fog);
+    ctx.globalAlpha=al(p);
+    const gr=ctx.createRadialGradient(p.x-p.r*.38,p.y-p.r*.42,p.r*.06,p.x,p.y,p.r);
+    gr.addColorStop(0,D.mix(col,'#ffffff',.62));gr.addColorStop(.5,col);gr.addColorStop(1,D.mix(col,'#000000',.36));
+    g.circle(p.x,p.y,p.r,gr,D.mix(col,'#000000',.5),v.stroke||3);
+    if(a.ring)g.circle(p.x,p.y,p.r+9,null,a.ringColor||D.tok('warm'),7);
+    if(a.label&&p.r>10){const lp=Math.max(v.minLabel||36,Math.min(a.labelPx||p.r*.85,72));
+      g.chem(a.label,p.x,p.y+lp*.03,lp,{color:D.lum(col)>.3?'#10201c':'#ffffff'})}
+    ctx.globalAlpha=1;
+  });
+  return P;
+};
+
+/* ---------- layout: fit the canvas, or fall back to a scrolling page under 760 px ---------- */
+function fit(){
+  const fl=innerWidth<760;
+  if(fl!==flow){flow=fl;document.documentElement.classList.toggle('flow',fl);if(fl){unzoom();stopTimer();flowRender()}else{D.slides.forEach(S=>{S.el.style.zoom='';if(S.i!==D.cur.s){S.el.classList.remove('current');S.sims.forEach(x=>x.active(false))}});const c=D.cur;D.cur={s:-1,f:0};go(c.s,c.f)}}
+  if(flow)D.slides.forEach(S=>{S.el.style.zoom=String(innerWidth/W)});
+  else{k=Math.min(innerWidth/W,innerHeight/H);$('#stage').style.setProperty('--k',k)}
+  Object.values(D.sims).forEach(x=>x.resize());
+}
+/* a window or full-screen change (or a move to a screen of another density) while a slide shows: the stage scale, every
+   animation's size and canvas resolution are refreshed (fit), the cycle's units are measured again and the zoom, if any,
+   is laid out afresh on them */
+function refit(){
+  fit();
+  if(!zoom||flow||D.cur.s<0)return;
+  const u=zoom.u,m=zoom.manual;clearZoom();
+  const U=zoomUnits(),j=U.findIndex(x=>sameUnit(x,u));
+  if(j>=0){cyc={U,i:j};zoomTo(U[j],m)}else{cyc=null;zoomTo(u,m)} /* a zoom outside the cycle (a frame's own zoom, the Z key) */
+}
+function watchDpr(){const q=matchMedia('(resolution: '+(devicePixelRatio||1)+'dppx)');const h=()=>{q.removeEventListener('change',h);refit();watchDpr()};if(q.addEventListener)q.addEventListener('change',h)}
+function flowRender(){D.slides.forEach(S=>{const f=S.frames.length-1,st=compute(S,f);S.el.classList.add('current');apply(S,st,S.frames[f],false);fitLayout(S);
+  S.sims.forEach(x=>{x.active(true);x.set(st.stg[x.id]!==undefined?st.stg[x.id]:x.stages[0],true)})})}
+
+/* ---------- run-sheet for print ---------- */
+function runsheet(){
+  const tot={};D.slides.forEach(S=>{tot[S.period]=(tot[S.period]||0)+S.frames.reduce((a,fr)=>a+(fr.t||0),0)});
+  let h='<h1>'+esc(document.title)+' · run-sheet</h1>',per=null;
+  D.slides.forEach(S=>{let mins=0;S.frames.forEach(fr=>{mins+=fr.t||0});
+    if(S.period&&S.period!==per){per=S.period;h+='<h1 class="per">Period '+esc(per)+' · '+mfmt(tot[per])+' min</h1>'}
+    h+='<section><h2>'+(S.i+1)+'. '+esc(S.title)+' <small>'+esc([S.sec,S.ref].filter(Boolean).join(' · '))+' · '+mfmt(mins)+' min</small></h2><ol start="0">';
+    S.frames.forEach((fr,i)=>{h+='<li><b>'+esc(i?frameLabel(S,fr):(fr.label||'enter'))+'</b>'+(fr.t?' ('+mfmt(fr.t)+' min)':'')+(fr.note?': '+fr.note:'')+'</li>'});
+    h+='</ol>'+(S.notes?'<div class="sn">'+S.notes.innerHTML+'</div>':'')+'</section>'});
+  $('#runsheet').innerHTML=h;
+}
+
+/* ---------- test hooks ---------- */
+/* live: the zoomed element's box on screen now (getBoundingClientRect, so any transition, stale scale or offset shows), with the
+   unit's rect inside it; for a re-flow, the clone's box. In slide px, with the slide's live size. */
+function zoomLive(){const S=D.slides[D.cur.s],sr=S.el.getBoundingClientRect(),q=liveK();
+  if(zoom.reflow){const n=zoom.node.getBoundingClientRect();return {x:(n.left-sr.left)/q,y:(n.top-sr.top)/q,w:n.width/q,h:n.height/q,sw:sr.width/q,sh:sr.height/q}}
+  const e=zoom.el.getBoundingClientRect(),s=e.width/zoom.ew,b=zoom.b;
+  return {x:(e.left-sr.left+b.x*s)/q,y:(e.top-sr.top+b.y*s)/q,w:b.w*s/q,h:b.h*s/q,sw:sr.width/q,sh:sr.height/q}}
+D.state=()=>{const S=D.slides[D.cur.s],sims={};S.sims.forEach(x=>{sims[x.id]=x.get()});
+  return {s:D.cur.s,f:D.cur.f,ns:D.slides.length,nf:S.frames.length,id:S.id,sims,zoom:zoom?(zoom.el.id||zoom.el.className):null,zoomScale:zoom?zoom.z:0,zoomKind:zoom?zoom.u.kind||'':null,zoomMode:zoom?(zoom.reflow?'reflow':'transform'):null,zoomIndex:zoom&&cyc?cyc.i:-1,zoomCount:zoom&&cyc?cyc.U.length:0,zoomRect:zoom?{x:zoom.rect.x,y:zoom.rect.y,w:zoom.rect.w,h:zoom.rect.h,sw:zoom.sw,sh:zoom.sh}:null,zoomLive:zoom?zoomLive():null,
+    blank:blankOn,notes:!$('#notes').hidden,overview:!$('#overview').hidden,timer:timer?{sec:timer.sec,text:$('.d',timer.el).textContent,end:timer.el.classList.contains('end')}:null,
+    cue:$('#cue').textContent,theme:document.documentElement.dataset.theme||'light',flow}};
+
+D.start=function(){
+  $$('.sim[data-sim]').forEach(h=>{const f=D.types[h.dataset.sim];if(!f){console.error('Deck: unknown animation "'+h.dataset.sim+'"');return}
+    const x=f(h,D);x.id=h.id;x.host=h;D.sims[h.id]=x});
+  D.slides=$$('#stage>.slide').map(build);
+  D.slides.forEach(S=>{if(S.frames.some(fr=>fr.timer)&&!$('.timer',S.el))console.error('Deck: slide '+S.id+' has a timed frame but no .timer slot')});
+  D.slides.forEach(S=>S.frames.forEach((fr,i)=>fr.stage.forEach(st=>{const x=D.sims[st.sim];
+    if(!x)console.error('Deck: slide '+S.id+' frame '+i+' names unknown animation "'+st.sim+'"');
+    else if(!x.stages.includes(st.s))console.error('Deck: slide '+S.id+' frame '+i+': '+st.sim+' has no stage "'+st.s+'"')})));
+  runsheet();
+  addEventListener('keydown',onKey,true);
+  addEventListener('resize',refit);document.addEventListener('fullscreenchange',refit);watchDpr();
+  document.addEventListener('click',e=>{const c=e.target.closest&&e.target.closest('button,a,input,select,[tabindex]');if(c)setTimeout(()=>c.blur(),0);
+    if(blankOn)blank(false);const ob=e.target.closest&&e.target.closest('#overview button');if(ob){overview(false);go(+ob.dataset.i,0);return}
+    const op=e.target.closest&&e.target.closest('.slide .opt');if(op&&!flow)grade(op);
+    if(e.target.closest&&e.target.closest('#count,#sec')&&!flow)overview(true)},true);
+  document.addEventListener('change',e=>{if(e.target.tagName==='SELECT')e.target.blur()},true);
+  const m=/^#(\d+)(?:\.(\d+))?$/.exec(location.hash);
+  k=Math.min(innerWidth/W,innerHeight/H);$('#stage').style.setProperty('--k',k);
+  go(m?m[1]-1:0,m&&m[2]?+m[2]:0);
+  fit();
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{if(!flow&&D.cur.s>=0&&!zoom)fitLayout(D.slides[D.cur.s]);Object.values(D.sims).forEach(x=>x.resize())});
+  if(RM.addEventListener)RM.addEventListener('change',()=>{if(!flow){const c=D.cur;D.cur={s:c.s,f:-9};go(c.s,c.f)}});
+};
+})();
+</script>

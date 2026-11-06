@@ -1,0 +1,307 @@
+{
+ "deck": "unit4/slides-4-1.html",
+ "theme": "light",
+ "note": "Accepted intersections of a reference deck built before the no-overlap rule (review 01, F3 and F5): each entry is a frame and the A and B strings as the layout audit prints them. Written once from the refined runs of brief 01a (the union of several runs, since live moments move); reviewed by the orchestrator and the teacher, not by a tool. A new deck has no baseline.",
+ "entries": [
+  {
+   "frame": "s10f1",
+   "a": "canvas #s10-sim [cores]: label \"sodium\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s10f1@live1",
+   "a": "canvas #s10-sim [cores]: label \"sodium\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s10f1@live2",
+   "a": "canvas #s10-sim [cores]: label \"sodium\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s10f2",
+   "a": "canvas #s10-sim [sea]: label \"+\"",
+   "b": "electron"
+  },
+  {
+   "frame": "s10f2@live1",
+   "a": "canvas #s10-sim [sea]: label \"+\"",
+   "b": "electron"
+  },
+  {
+   "frame": "s10f2@live2",
+   "a": "canvas #s10-sim [sea]: label \"+\"",
+   "b": "electron"
+  },
+  {
+   "frame": "s10f3",
+   "a": "canvas #s10-sim [drift]: label \"+\"",
+   "b": "electron"
+  },
+  {
+   "frame": "s10f3@live1",
+   "a": "canvas #s10-sim [drift]: label \"+\"",
+   "b": "electron"
+  },
+  {
+   "frame": "s10f3@live2",
+   "a": "canvas #s10-sim [drift]: label \"+\"",
+   "b": "electron"
+  },
+  {
+   "frame": "s10f4",
+   "a": "canvas #s10-sim [Mg]: label \"2+\"",
+   "b": "electron"
+  },
+  {
+   "frame": "s10f4@live1",
+   "a": "canvas #s10-sim [Mg]: label \"2+\"",
+   "b": "electron"
+  },
+  {
+   "frame": "s10f4@live2",
+   "a": "canvas #s10-sim [Mg]: label \"2+\"",
+   "b": "electron"
+  },
+  {
+   "frame": "s10f5",
+   "a": "canvas #s10-sim [Al]: label \"3+\"",
+   "b": "electron"
+  },
+  {
+   "frame": "s10f5@live1",
+   "a": "canvas #s10-sim [Al]: label \"3+\"",
+   "b": "electron"
+  },
+  {
+   "frame": "s10f5@live2",
+   "a": "canvas #s10-sim [Al]: label \"3+\"",
+   "b": "electron"
+  },
+  {
+   "frame": "s10f6",
+   "a": "canvas #s10-sim [Cu]: label \"+\"",
+   "b": "electron"
+  },
+  {
+   "frame": "s10f6@live1",
+   "a": "canvas #s10-sim [Cu]: label \"+\"",
+   "b": "electron"
+  },
+  {
+   "frame": "s10f6@live2",
+   "a": "canvas #s10-sim [Cu]: label \"+\"",
+   "b": "electron"
+  },
+  {
+   "frame": "s10f7",
+   "a": "canvas #s10-sim [Cu]: label \"+\"",
+   "b": "electron"
+  },
+  {
+   "frame": "s10f7@live1",
+   "a": "canvas #s10-sim [Cu]: label \"+\"",
+   "b": "electron"
+  },
+  {
+   "frame": "s10f7@live2",
+   "a": "canvas #s10-sim [Cu]: label \"+\"",
+   "b": "electron"
+  },
+  {
+   "frame": "s10f8",
+   "a": "canvas #s10-sim [Cu]: label \"+\"",
+   "b": "electron"
+  },
+  {
+   "frame": "s10f8@live1",
+   "a": "canvas #s10-sim [Cu]: label \"+\"",
+   "b": "electron"
+  },
+  {
+   "frame": "s10f8@live2",
+   "a": "canvas #s10-sim [Cu]: label \"+\"",
+   "b": "electron"
+  },
+  {
+   "frame": "s10f9",
+   "a": "canvas #s10-sim [Cu]: label \"+\"",
+   "b": "electron"
+  },
+  {
+   "frame": "s10f9@live1",
+   "a": "canvas #s10-sim [Cu]: label \"+\"",
+   "b": "electron"
+  },
+  {
+   "frame": "s10f9@live2",
+   "a": "canvas #s10-sim [Cu]: label \"+\"",
+   "b": "electron"
+  },
+  {
+   "frame": "s16f3",
+   "a": "canvas #s16-sim [Na-Cl]: label \"Ar\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f3",
+   "a": "canvas #s16-sim [Na-Cl]: label \"Be\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f3",
+   "a": "canvas #s16-sim [Na-Cl]: label \"Br\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f3",
+   "a": "canvas #s16-sim [Na-Cl]: label \"Ca\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f3",
+   "a": "canvas #s16-sim [Na-Cl]: label \"F\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f3",
+   "a": "canvas #s16-sim [Na-Cl]: label \"K\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f3",
+   "a": "canvas #s16-sim [Na-Cl]: label \"Kr\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f3",
+   "a": "canvas #s16-sim [Na-Cl]: label \"Li\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f3",
+   "a": "canvas #s16-sim [Na-Cl]: label \"Mg\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f3",
+   "a": "canvas #s16-sim [Na-Cl]: label \"Ne\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f3",
+   "a": "canvas #s16-sim [Na-Cl]: label \"O\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f3",
+   "a": "canvas #s16-sim [Na-Cl]: label \"Se\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f4",
+   "a": "canvas #s16-sim [H-Cl]: label \"Ar\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f4",
+   "a": "canvas #s16-sim [H-Cl]: label \"Be\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f4",
+   "a": "canvas #s16-sim [H-Cl]: label \"Br\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f4",
+   "a": "canvas #s16-sim [H-Cl]: label \"F\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f4",
+   "a": "canvas #s16-sim [H-Cl]: label \"H\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f4",
+   "a": "canvas #s16-sim [H-Cl]: label \"Kr\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f4",
+   "a": "canvas #s16-sim [H-Cl]: label \"Li\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f4",
+   "a": "canvas #s16-sim [H-Cl]: label \"Ne\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f4",
+   "a": "canvas #s16-sim [H-Cl]: label \"O\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f4",
+   "a": "canvas #s16-sim [H-Cl]: label \"Se\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f5",
+   "a": "canvas #s16-sim [Cu-Cu]: label \"Ag\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f5",
+   "a": "canvas #s16-sim [Cu-Cu]: label \"Cd\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f5",
+   "a": "canvas #s16-sim [Cu-Cu]: label \"Ni\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f5",
+   "a": "canvas #s16-sim [Cu-Cu]: label \"Pd\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s16f5",
+   "a": "canvas #s16-sim [Cu-Cu]: label \"Zn\"",
+   "b": "rrect"
+  },
+  {
+   "frame": "s17f4",
+   "a": "canvas #s17-sim [Fe-Cl]: label \"1\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s17f4",
+   "a": "canvas #s17-sim [Fe-Cl]: label \"2\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s17f5",
+   "a": "canvas #s17-sim [Fe-Cl]: label \"1\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s17f5",
+   "a": "canvas #s17-sim [Fe-Cl]: label \"2\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s17f6",
+   "a": "canvas #s17-sim [Fe-Cl]: label \"1\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s17f6",
+   "a": "canvas #s17-sim [Fe-Cl]: label \"2\"",
+   "b": "circle"
+  }
+ ]
+}
