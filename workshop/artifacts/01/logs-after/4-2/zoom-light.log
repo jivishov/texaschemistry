@@ -1,0 +1,15 @@
+zoom light: 707 zoomed states over 173 frames (re-flow 503, transform 204), prompt 35, r800 1, animation 96, part 108, card 159, frames 1, check 24, wcard 16, legend 1, caprow 10, p 5, memory card 1, rule 12, anion names 1, row 129, six ions 10, rail 29, li 60, handsup 3, scale 6; min fill 67%; Back tests 26; PASS
+  PASS  every zoomed check shows its options
+  PASS  every prompt on a routine slide is a unit (routine slides with a prompt: 4, 20, 21, 22, 23, 24)
+  PASS  slide 2: each product of labelRead is a unit (shelf), and the open label card (focus)
+  PASS  slides 6 and 7: the whole ionTable and the lit group of each stage are units
+  PASS  slides 8, 9, 16, 17: chargeBlocks at its current stage is a unit on every frame that shows it
+  PASS  slide 10: crisscross is a unit
+  PASS  slides 11 and 12: nameBuilder formula and the tiles or the joined name are units
+  PASS  slides 12 and 17: each step line of stockDetective is a unit
+  PASS  slide 15: polyIons (the current ion) is a unit on every frame
+  PASS  slide 16: parenBus is a unit
+  PASS  every check card with its options
+  PASS  each answer-table row (slides 13, 14, 18) and each spot-the-error row (slide 19) is a unit
+  PASS  each word card on slide 5 is a unit
+  PASS  the memory cards (slides 7 and 15) and the pattern card (slide 15) are units

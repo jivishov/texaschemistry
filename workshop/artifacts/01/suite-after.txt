@@ -1,0 +1,52 @@
+2026-11-06T14:10:55Z
+== 4.1: unit4/slides-4-1.html
+   out <scratchpad>/kit-out/4-1, theme light, matrix off
+  PASS  walk light          193.9 s  walk light: 156 states, max empty 29% (s4f0), PASS
+  PASS  back light           77.8 s  back: 156 forward, 156 back, PASS
+  PASS  fonts light          48.3 s  fonts: PASS
+  PASS  keys                 36.0 s  keys: PASS 48 checks
+  PASS  readability           3.0 s  readability: PASS
+  PASS  print                 2.1 s  print: PASS stage hidden=true, 25 slides, 156 frame lines, 9 PDF page(s)
+  PASS  render3d              2.6 s  render3d: PASS
+  PASS  extras                6.0 s  extras: PASS
+  PASS  chem                  1.7 s  chem (deck): PASS 32 checks
+  PASS  timing                1.4 s  timing: period 1 47 min, period 2 47 min, PASS
+  PASS  supgap                4.6 s  supgap: 25 symbol+charge pairs checked, PASS
+  PASS  zoom light          233.3 s  zoom light: 571 zoomed states over 156 frames (re-flow 432, transform 139), prompt 45, r800 1, animation 75, card 137, part 42, frames 1, check 24, wcard 14, legend 1, rule 22, table 1, column 21, item 42, row 30, caprow 3, p 5, hdr 9, rail 29, li 60, handsup 3, scale 6; min fill 64%; Back tests 24; PASS
+  PASS  click                28.7 s  click: 9 graded checks, 3 Predict-now questions, 47 assertions, PASS
+  FAIL  layout light         24.4 s  layout light: 156 frames, 24 visible option lists (stacked 7, row 17), max empty 29% (s4f0), gate 33%, clipped or ellipsized text: 0, overlap: 175 intersections on 22 frames (6395 boxes (2813 DOM boxes, 1690 canvas labels, 1892 canvas shapes), 10 of 10 canvas animations instrumented), FAIL
+  PASS  xcheck                1.7 s  xcheck: 42 of 42 pass
+  PASS  contact light         4.9 s  contact sheets light: contact-light-1.png (102 shots, 3710 px tall), contact-light-2.png (54 shots, 1990 px tall)
+  PASS  zoomsheet light       2.6 s  zoom sheet light: zoomsheet-light-1.png (79 shots, 3065 px tall)
+== 4.1: 16 of 17 pass, 1 fail, 673.0 s
+== 4.2: unit4/slides-4-2.html
+   out <scratchpad>/kit-out/4-2, theme light, matrix off
+  PASS  walk light          213.2 s  walk light: 173 states, max empty 32% (s10f1), PASS
+  PASS  back light           85.6 s  back: 173 forward, 173 back, PASS
+  PASS  fonts light          51.5 s  fonts: PASS
+  PASS  keys                 36.0 s  keys: PASS 48 checks
+  PASS  readability           3.1 s  readability: PASS
+  PASS  print                 2.2 s  print: PASS stage hidden=true, 26 slides, 173 frame lines, 8 PDF page(s)
+  PASS  render3d              2.6 s  render3d: PASS
+  PASS  extras                5.7 s  extras: PASS
+  PASS  chem                  1.7 s  chem42 (deck): PASS 39 checks
+  PASS  timing                1.3 s  timing: period 1 47 min, period 2 46.5 min, PASS
+  PASS  supgap                4.8 s  supgap: 139 symbol+charge pairs checked, PASS
+  PASS  zoom light          276.0 s  zoom light: 707 zoomed states over 173 frames (re-flow 503, transform 204), prompt 35, r800 1, animation 96, part 108, card 159, frames 1, check 24, wcard 16, legend 1, caprow 10, p 5, memory card 1, rule 12, anion names 1, row 129, six ions 10, rail 29, li 60, handsup 3, scale 6; min fill 67%; Back tests 26; PASS
+  PASS  click                31.1 s  click: 9 graded checks, 3 Predict-now questions, 47 assertions, PASS
+  FAIL  layout light         26.8 s  layout light: 173 frames, 24 visible option lists (stacked 15, row 9), max empty 32% (s10f1), gate 33%, clipped or ellipsized text: 0, overlap: 95 intersections on 38 frames (7259 boxes (3012 DOM boxes, 2278 canvas labels, 1969 canvas shapes), 14 of 14 canvas animations instrumented), FAIL
+  PASS  units                10.6 s  63 frames, 89 visible cards and captions, 0 frames with a card missing or twice: PASS
+  PASS  cycle               159.3 s  112 checks, 0 short cycles
+  PASS  xcheck                1.8 s  xcheck: 40 of 40 pass
+  PASS  contact light         5.5 s  contact sheets light: contact-light-1.png (101 shots, 3710 px tall), contact-light-2.png (72 shots, 2635 px tall)
+  PASS  zoomsheet light       2.6 s  zoom sheet light: zoomsheet-light-1.png (83 shots, 3065 px tall)
+== 4.2: 18 of 19 pass, 1 fail, 921.4 s
+== all decks
+  4.1: 16 of 17 pass, 673.0 s, FAIL: layout light
+  4.2: 18 of 19 pass, 921.4 s, FAIL: layout light
+
+real	26m34.444s
+user	2m3.646s
+sys	0m23.924s
+exit 1
+2026-11-06T14:37:29Z

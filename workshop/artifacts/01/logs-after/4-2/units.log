@@ -1,0 +1,64 @@
+s6f0: animation(ionTable)#s06-sim | caprow#s06-p0
+s6f1: animation(ionTable)#s06-sim | part(group 1)#s06-sim | caprow(group 1)#s06-p1
+s6f2: animation(ionTable)#s06-sim | part(group 2)#s06-sim | caprow(group 2)#s06-p2
+s6f3: animation(ionTable)#s06-sim | part(group 13)#s06-sim | caprow(aluminum)#s06-p3
+s6f4: animation(ionTable)#s06-sim | part(group 17)#s06-sim | part(anion names)#s06-sim | caprow(group 17)#s06-p4
+s6f5: animation(ionTable)#s06-sim | part(group 16)#s06-sim | part(anion names)#s06-sim | caprow(group 16)#s06-p5
+s6f6: animation(ionTable)#s06-sim | part(group 15)#s06-sim | part(anion names)#s06-sim | caprow(group 15)#s06-p6
+s6f7: animation(ionTable)#s06-sim | part(group 15)#s06-sim | part(anion names)#s06-sim | p | p | p
+s6f8: animation(ionTable)#s06-sim | part(group 15)#s06-sim | part(anion names)#s06-sim | check(check)#s06-check
+s6f9: animation(ionTable)#s06-sim | part(group 15)#s06-sim | part(anion names)#s06-sim | check(check)#s06-check
+s7f0: animation(ionTable)#s07-sim | part(four metals)#s07-sim | part(learn these four)#s07-sim | caprow#s07-p0
+s7f1: animation(ionTable)#s07-sim | part(four metals)#s07-sim | part(learn these four)#s07-sim | p | p
+s7f2: animation(ionTable)#s07-sim | part(four metals)#s07-sim | part(learn these four)#s07-sim | caprow(silver and zinc)#s07-p2
+s7f3: animation(ionTable)#s07-sim | part(four metals)#s07-sim | part(learn these four)#s07-sim | caprow(real life)#s07-p3
+s7f4: animation(ionTable)#s07-sim | part(four metals)#s07-sim | part(learn these four)#s07-sim | memory card(memory card)#s07-mem
+s7f5: animation(ionTable)#s07-sim | part(four metals)#s07-sim | part(learn these four)#s07-sim | check(check)#s07-check
+s7f6: animation(ionTable)#s07-sim | part(four metals)#s07-sim | part(learn these four)#s07-sim | check(check)#s07-check
+s8f0: animation(chargeBlocks)#s08-sim | card(studs)#s08-c0
+s8f1: animation(chargeBlocks)#s08-sim | card(studs)#s08-c0
+s8f2: animation(chargeBlocks)#s08-sim | card(studs)#s08-c0 | card(calcium chloride)#s08-c1
+s8f3: animation(chargeBlocks)#s08-sim | card(studs)#s08-c0 | card(calcium chloride)#s08-c1
+s8f4: animation(chargeBlocks)#s08-sim | card(studs)#s08-c0 | card(calcium chloride)#s08-c1
+s8f5: animation(chargeBlocks)#s08-sim | card(studs)#s08-c0 | card(aluminum oxide)#s08-q2
+s8f6: animation(chargeBlocks)#s08-sim | card(studs)#s08-c0 | card(balance)#s08-c2
+s8f7: animation(chargeBlocks)#s08-sim | card(studs)#s08-c0 | card(balance)#s08-c2
+s8f8: animation(chargeBlocks)#s08-sim | card(studs)#s08-c0 | card(balance)#s08-c2 | rule(rule)#s08-rule
+s8f9: animation(chargeBlocks)#s08-sim | card(studs)#s08-c0 | rule(rule)#s08-rule | check(check)#s08-check
+s8f10: animation(chargeBlocks)#s08-sim | card(studs)#s08-c0 | rule(rule)#s08-rule | check(check)#s08-check
+s9f0: animation(chargeBlocks)#s09-sim | card#s09-steps
+s9f1: animation(chargeBlocks)#s09-sim | card#s09-steps
+s9f2: animation(chargeBlocks)#s09-sim | card#s09-steps
+s9f3: animation(chargeBlocks)#s09-sim | card#s09-steps
+s9f4: animation(chargeBlocks)#s09-sim | card#s09-steps
+s9f5: animation(chargeBlocks)#s09-sim | card#s09-steps | card(your turn)#s09-try
+s9f6: animation(chargeBlocks)#s09-sim | card#s09-steps | card(your turn)#s09-try
+s9f7: animation(chargeBlocks)#s09-sim | card#s09-steps | card(your turn)#s09-try
+s10f0: animation(crisscross)#s10-sim | card(start)#s10-cA
+s10f1: animation(crisscross)#s10-sim | card(cross)#s10-c0
+s10f2: animation(crisscross)#s10-sim | card(cross)#s10-c0 | card(check)#s10-c1
+s10f3: animation(crisscross)#s10-sim | card(magnesium oxide)#s10-cB
+s10f4: animation(crisscross)#s10-sim | card(magnesium oxide)#s10-cB | card(reduce)#s10-c2
+s10f5: animation(crisscross)#s10-sim | card(reduce)#s10-c2 | rule(rule)#s10-rule
+s10f6: animation(crisscross)#s10-sim | rule(rule)#s10-rule | check(check)#s10-check
+s10f7: animation(crisscross)#s10-sim | rule(rule)#s10-rule | check(check)#s10-check
+s11f0: animation(nameBuilder)#s11-sim | part(formula)#s11-sim | part(name tiles)#s11-sim | card(two parts)#s11-c0
+s11f1: animation(nameBuilder)#s11-sim | part(formula)#s11-sim | part(the joined name)#s11-sim | card(two parts)#s11-c0
+s11f2: animation(nameBuilder)#s11-sim | part(formula)#s11-sim | part(the joined name)#s11-sim | anion names(anion names)#s11-tbl
+s11f3: animation(nameBuilder)#s11-sim | part(formula)#s11-sim | part(the joined name)#s11-sim | rule(rule)#s11-rule
+s11f4: animation(nameBuilder)#s11-sim | part(formula)#s11-sim | part(name slots)#s11-sim | rule(rule)#s11-rule | check(check)#s11-check
+s11f5: animation(nameBuilder)#s11-sim | part(formula)#s11-sim | part(the joined name)#s11-sim | rule(rule)#s11-rule | check(check)#s11-check
+s12f0: animation(nameBuilder)#s12-nb | part(formula)#s12-nb | part(name tiles)#s12-nb | card(version numbers)#s12-c0
+s12f1: animation(nameBuilder)#s12-nb | part(formula)#s12-nb | part(name tiles)#s12-nb | card(version numbers)#s12-c0
+s12f2: animation(nameBuilder)#s12-nb | part(formula)#s12-nb | part(the joined name)#s12-nb | card(version numbers)#s12-c0
+s12f3: animation(nameBuilder)#s12-nb | part(formula)#s12-nb | part(the joined name)#s12-nb | card(iron(II))#s12-c1
+s12f4: animation(nameBuilder)#s12-nb | part(formula)#s12-nb | part(the joined name)#s12-nb | card(silver and zinc)#s12-c2
+s12f5: animation(nameBuilder)#s12-nb | part(formula)#s12-nb | part(the joined name)#s12-nb | card(silver and zinc)#s12-c2
+s12f6: animation(stockDetective)#s12-sd | part(formula)#s12-sd | part(step 1)#s12-sd | card(copper oxides)#s12-c3
+s12f7: animation(stockDetective)#s12-sd | part(formula)#s12-sd | part(step 1)#s12-sd | part(step 2)#s12-sd | part(step 3)#s12-sd | part(name)#s12-sd | card(copper oxides)#s12-c3
+s12f8: animation(stockDetective)#s12-sd | part(formula)#s12-sd | part(step 1)#s12-sd | card(copper oxides)#s12-c3
+s12f9: animation(stockDetective)#s12-sd | part(formula)#s12-sd | part(step 1)#s12-sd | part(step 2)#s12-sd | part(step 3)#s12-sd | card(copper oxides)#s12-c3
+s12f10: animation(stockDetective)#s12-sd | part(formula)#s12-sd | part(step 1)#s12-sd | part(step 2)#s12-sd | part(step 3)#s12-sd | part(name)#s12-sd | card(the driving question)#s12-c4
+s12f11: animation(stockDetective)#s12-sd | part(formula)#s12-sd | card(the driving question)#s12-c4 | check(check)#s12-check
+s12f12: animation(stockDetective)#s12-sd | part(formula)#s12-sd | part(step 1)#s12-sd | part(step 2)#s12-sd | part(step 3)#s12-sd | part(name)#s12-sd | card(the driving question)#s12-c4 | check(check)#s12-check
+63 frames, 89 visible cards and captions, 0 frames with a card missing or twice: PASS
