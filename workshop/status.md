@@ -1,3 +1,3 @@
 turn: implementer
-step: 01
-waiting_for: workshop/reports/01-kit-check.md (in-session: the orchestrator's agent run of briefs/01-kit-check.md)
+step: 01a
+waiting_for: workshop/reports/01a-overlap-refinements.md (in-session: the orchestrator's agent run of briefs/01a-overlap-refinements.md)
