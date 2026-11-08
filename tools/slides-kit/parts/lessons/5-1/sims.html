@@ -1,0 +1,539 @@
+<script>
+/* ===== Animations for Lesson 5.1 (plan section 4). Each is a Deck.sim over Deck.canvasSim with named stages; every stage is a full
+   parameter set, so Back replays it exactly. Unit 5 color code (plan section 3): mass in grams --warm, amount in moles --accent,
+   number of particles --e; a conversion factor is a bridge in --muted with the canceled unit struck in --bad and the unit that remains
+   circled; ions red "+" and blue "−" as in Unit 4; atoms in CPK with the symbol on every sphere; coins: nickel --metal, cent made before
+   1982 --rope, cent made after 1982 a lighter mix with a gray zinc core. Labels 36 px or more, shapes 60 px or more, numbers as a
+   label line then chips. No label crosses another label or a shape, at rest or while a live stage runs. ===== */
+(function(){
+const D=window.Deck;
+const {CPK}=D.chem,{clamp,lerp,rgba}=D.util;
+const SANS="'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif",MONO="'IBM Plex Mono', ui-monospace, 'DejaVu Sans Mono', monospace";
+
+/* ---------- lesson data: workshop/lessons/5-1.md, "Data the deck may use" (U.S. Mint, BIPM, NIST, CIAAW, NASA JPL, USGS); no other numbers ---------- */
+const COIN={nickel:5.000,old:3.11,new:2.500};                              // g: a nickel; a cent made before 1982 (95% copper); a cent made after 1982 (zinc coated with copper)
+const BANK={bag:1250.0,count:250,roll:200.0,rollCount:40,jar:2000.0,jarCount:400}; // the bank's bag; a roll of nickels (u51-s1); the hook jar (the reading's "Finish it")
+const CENTS={jar:1017.1,sample:267.69,sampleN:100,avg:2.6769,count:380,tooMany:407,tooFew:327}; // the jar of pennies; the wrong quotients 1,017.1 g ÷ 2.500 g and ÷ 3.11 g
+const MOLE={exact:'6.02214076',coef:'6.022',exp:23,since:'May 20, 2019',vote:'November 16, 2018',dozen:12,ream:500};
+const MASS1={Al:26.982,Cu:63.546,Si:28.085};                                 // g, the mass of one mole (CIAAW)
+const SI={a:543.102,perCube:8};                                              // pm and atoms per cube (the model's numbers; 2.329 g/cm³ and the arithmetic stay in the notes)
+const NACL={a:564,mol:4.50,fu:'2.71 × 10^{24}',wrongMol:2.50,wrong:'1.51 × 10^{24}'};
+const TIME={year:3.156e7,earth:4.5e9,universe:1.38e10,moleYears:1.908e16,times:1.38e6,water:18};
+const IE={mol:496,atom:'8.24 × 10^{−19}'};                                  // kJ/mol (Lesson 3.2) and J for one atom
+const STEPS=7,LAST=602;                                                      // seven steps of × 1,000 to 10²¹, then × 602: 6.022 × 10²³
+/* drawing data, never printed: covalent radii (Cordero 2008) and ionic radii (Shannon 1976) in pm; bond lengths and angles (NIST
+   CCCBDB). Ball and stick: a sphere's radius is 0.6 of the covalent radius at the drawing's scale; bond lengths set the distances. */
+const RCOV={H:31,C:69,N:71,O:66,Na:166,Al:121,Si:111,Cu:132},RION={Na:102,Cl:181};
+const BOND={OH:95.8,CO:116.0,NH:101.2,OO:120.8},ANGLE={H2O:104.5,CO2:180,NH3:106.7},BS=.6;
+
+/* ---------- helpers ---------- */
+const fmt=(v,d)=>{const s=v.toFixed(d),q=s.split('.');return q[0].replace(/\B(?=(\d{3})+(?!\d))/g,',')+(q[1]?'.'+q[1]:'')};
+const sci=(c,e)=>c+' × 10^{'+e+'}',NA_T=sci(MOLE.coef,MOLE.exp),uni=s=>D.chem.uni(s);
+function chemW(g,s,px,o){o=o||{};const ctx=g.ctx,re=/([_^])(\{[^}]*\}|.)/g,runs=[];let i=0,m;
+  while((m=re.exec(s))){if(m.index>i)runs.push([s.slice(i,m.index),0]);runs.push([m[2].replace(/[{}]/g,''),1]);i=re.lastIndex}
+  if(i<s.length)runs.push([s.slice(i),0]);let w=0;
+  runs.forEach(([t,k])=>{ctx.font=(o.wt||700)+' '+(k?Math.round(px*.7):px)+'px '+(o.mono?MONO:SANS);w+=ctx.measureText(t).width});return w}
+const fitPx=(g,s,maxW,max,min)=>{min=min||36;for(let px=max;px>min;px--)if(chemW(g,s,px)<=maxW)return px;return min};
+function fade(g,a,fn){if(a<=.01)return;const c=g.ctx;c.save();c.globalAlpha*=Math.min(1,a);fn();c.restore()}
+/* a label line (muted, 36 px) and plain text; both return their width */
+function lab(g,s,x,y,o){o=o||{};return g.chem(s,x,y,o.px||36,{align:o.align||'left',color:o.color||g.c('muted')})}
+function say(g,s,x,y,px,o){o=o||{};return g.chem(s,x,y,px,{align:o.align||'left',color:o.color||g.c('ink')})}
+/* a chip: the value inside a rounded box in its quantity's color */
+const chipW=(g,s,px)=>chemW(g,s,px||40)+36;
+function chip(g,s,x,y,col,o){o=o||{};const px=o.px||40,w=chipW(g,s,px),h=px+20,x0=o.align==='left'?x:o.align==='right'?x-w:x-w/2;
+  g.rrect(x0,y-h/2,w,h,14,D.mix(col,g.c('card'),.86),col,3);g.chem(s,x0+w/2,y+1,px,{color:col});return {x0,x1:x0+w,y0:y-h/2,y1:y+h/2,w,h}}
+/* the smallest primary shape of the last paint (spheres, coins, cells, eggs, cards, badges), for the 60 px rule */
+function stats(){let m=Infinity;return {reset(){m=Infinity},add(d){if(d<m)m=d},get min(){return isFinite(m)?Math.round(m*10)/10:null}}}
+/* the figure's panel: a soft card over the whole host (or above a kept band) */
+function panel(g,I,band){g.rrect(3,3,I.w-6,I.h-(band||0)-6,22,D.mix(g.c('card'),g.c('slide'),.5),g.c('line'),2)}
+const unit=(x,y,w,h,label)=>({x,y,w:Math.max(w,250),h:Math.max(h,130),label});
+/* spheres through Deck.spheres (positions and radii in pm, k px per pm); returns the projected spheres */
+function balls(g,atoms,bonds,cx,cy,k,view,st,o){o=o||{};
+  const sc={atoms:atoms.map(a=>({p:a.p,r:a.r,color:a.color,label:a.label,labelPx:a.px||40,alpha:a.alpha,ring:a.ring,ringColor:a.ringColor})),
+    bonds:(bonds||[]).map(([i,j])=>({a:i,b:j,w:o.bw||16,alpha:o.balpha})),lines:o.lines||[]};
+  const P=D.spheres(g,sc,Object.assign({cx,cy,scale:k,yaw:0,pitch:0,dist:1e6,fog:.12,minLabel:36},view||{}));
+  if(st)P.forEach(q=>{if(q.r>.5&&(q.a.alpha==null||q.a.alpha>.01))st.add(2*q.r)});return P}
+const at=(s,p,o)=>Object.assign({s,p,r:BS*RCOV[s],color:CPK[s],label:s},o||{});
+function water(){const h=ANGLE.H2O/2*Math.PI/180,d=BOND.OH,c=d*Math.cos(h)/2;return {atoms:[at('O',[0,c,0]),at('H',[-d*Math.sin(h),-c,0]),at('H',[d*Math.sin(h),-c,0])],bonds:[[0,1],[0,2]]}}
+function co2(){const d=BOND.CO;return {atoms:[at('C',[0,0,0]),at('O',[-d,0,0]),at('O',[d,0,0])],bonds:[[0,1],[0,2]]}}
+function nh3(){const th=ANGLE.NH3*Math.PI/180,s2=(1-Math.cos(th))/1.5,sa=Math.sqrt(s2),ca=Math.sqrt(1-s2),d=BOND.NH,c=d*ca/2,A=[at('N',[0,c,0])];
+  [90,210,330].forEach(f=>{const r=f*Math.PI/180;A.push(at('H',[d*sa*Math.cos(r),-c,d*sa*Math.sin(r)]))});return {atoms:A,bonds:[[0,1],[0,2],[0,3]]}}
+function o2(){const d=BOND.OO/2;return {atoms:[at('O',[-d,0,0]),at('O',[d,0,0])],bonds:[[0,1]]}}
+/* one formula unit of NaCl: the two ions touching, Shannon radii, a sign on each */
+function ionPair(g,cat,an){const d=RION.Na+RION.Cl;return {atoms:[{p:[-d/2+RION.Na/2-RION.Cl/2,0,0],r:RION.Na,color:cat,label:'Na^+',px:40},{p:[d/2+RION.Na/2-RION.Cl/2,0,0],r:RION.Cl,color:an,label:'Cl^−',px:44}],bonds:[]}}
+/* a coin: nickel, a cent made before 1982 (copper), a cent made after 1982 (copper coat), or one cut to show its zinc core */
+function coin(g,x,y,r,kind,st){const m=g.c('metal'),rp=g.c('rope'),cd=g.c('card');
+  if(kind==='nickel'){g.circle(x,y,r,D.mix(m,cd,.3),D.mix(m,'#000000',.3),4);g.circle(x,y,r*.7,null,D.mix(m,cd,.6),3)}
+  else if(kind==='old'){g.circle(x,y,r,rp,D.mix(rp,'#000000',.35),4);g.circle(x,y,r*.7,null,D.mix(rp,cd,.4),3)}
+  else{g.circle(x,y,r,D.mix(rp,cd,.42),D.mix(rp,'#000000',.3),4);if(kind==='cut')g.circle(x,y,r*.72,D.mix(m,cd,.2),D.mix(m,'#000000',.2),2);else g.circle(x,y,r*.7,null,D.mix(rp,cd,.65),3)}
+  if(st)st.add(2*r)}
+/* coins piled from a bottom line, rows of n, staggered */
+function pileXY(n,cx,bottom,w,r){const per=Math.max(1,Math.floor((w-16)/(2*r))),out=[];let i=0,row=0;
+  while(i<n){const k=row%2?per-1:per;for(let c=0;c<k&&i<n;c++,i++)out.push([cx-(k-1)*r+c*2*r,bottom-r-row*r*1.5]);row++}return out}
+/* a scale: platform, body and a display with the reading; returns the display box */
+function scaleShape(g,cx,top,w,h,reading,col){const ink=g.c('ink');
+  g.rrect(cx-w/2,top,w,16,8,D.mix(g.c('metal'),g.c('card'),.45),ink,3);
+  g.rrect(cx-w/2+14,top+16,w-28,h-16,14,g.c('card2'),ink,3);
+  const dw=Math.min(w-60,240),dh=60,dy=top+16+(h-16)/2;g.rrect(cx-dw/2,dy-dh/2,dw,dh,10,g.c('card'),ink,3);
+  if(reading){const px=fitPx(g,reading,dw-24,40,36);g.chem(reading,cx,dy+1,px,{color:col||g.c('warm'),mono:false})}
+  return {x0:cx-dw/2,x1:cx+dw/2,y:dy}}
+/* a glass jar with a lid; the coins are drawn between its back and its outline */
+function jarShape(g,cx,top,w,h,inside){const ink=g.c('ink');
+  g.rrect(cx-w/2+18,top,w-36,30,10,D.mix(g.c('metal'),g.c('card'),.4),ink,3);
+  g.rrect(cx-w/2,top+28,w,h-28,36,rgba(D.mix(g.c('an'),g.c('card'),.75),.3),null);
+  inside();g.rrect(cx-w/2,top+28,w,h-28,36,null,ink,4)}
+/* the flask of particles (the counting-units figure); the dots are an icon */
+function flask(g,cx,cy,R,st){const ink=g.c('ink'),e=g.c('e');
+  g.rrect(cx-R*.3,cy-R*1.62,R*.6,R*.8,10,rgba(D.mix(e,g.c('card'),.8),.5),ink,4);
+  g.circle(cx,cy,R,rgba(D.mix(e,g.c('card'),.8),.55),ink,4);
+  for(let i=0;i<22;i++){const a=i*2.39996,q=Math.sqrt((i+.5)/22)*R*.78;g.circle(cx+q*Math.cos(a),cy+q*Math.sin(a)*.9+R*.05,Math.max(6,R*.07),e,null)}
+  if(st)st.add(2*R)}
+/* a spoon of water: the bowl and the handle */
+function spoon(g,cx,cy,R,st){const ink=g.c('ink');g.rrect(cx+R*.7,cy-R*.16,R*2.1,R*.32,R*.16,D.mix(g.c('metal'),g.c('card'),.35),ink,3);
+  g.circle(cx,cy,R,D.mix(g.c('an'),g.c('card'),.55),ink,4);if(st)st.add(2*R)}
+
+/* ---------- 1. coinScale: the jar of nickels (hook) and the bank's bag (counting by weighing) ----------
+   stages: jar, guess, tally (live), scale, reveal | bag, zero, read, divide, count | roll */
+const TALLY=8;
+D.sim('coinScale',function(host){
+  const HOOK=['jar','guess','tally','scale','reveal'],BNK=['bag','zero','read','divide','count','roll'],st=stats();
+  const h0={fam:'hook',q:0,ta:0,sc:0,rv:0},b0={fam:'bank',full:1,roll:0,disp:0,zero:0,br:0,ct:0,val:''};
+  const params={jar:{...h0},guess:{...h0,q:1},tally:{...h0,ta:1},scale:{...h0,sc:1},reveal:{...h0,sc:1,rv:1},
+    bag:{...b0},zero:{...b0,full:0,disp:1,zero:1,val:fmt(0,1)+' g'},read:{...b0,disp:1,zero:1,val:fmt(BANK.bag,1)+' g'},
+    divide:{...b0,disp:1,zero:1,br:1,val:fmt(BANK.bag,1)+' g'},count:{...b0,disp:1,zero:1,br:1,ct:1,val:fmt(BANK.bag,1)+' g'},
+    roll:{...b0,full:0,roll:1,disp:1,zero:1,val:fmt(BANK.roll,1)+' g'}};
+  const G=v=>fmt(v,1)+' g',N1=fmt(COIN.nickel,3)+' g';
+  function hook(g,p,I){
+    const W=I.w,H=I.h,T=H-26,R=31,ink=g.c('ink'),warm=g.c('warm'),e=g.c('e');
+    g.line(12,T,W-12,T,g.c('line'),6);
+    const jw=Math.min(300,W*.2),jx=Math.max(jw/2+60,W*.16),sh=100*p.sc,jh=Math.min(330,T-124),jy=T-sh-jh;
+    fade(g,p.sc,()=>scaleShape(g,jx,T-100,jw+100,100,G(BANK.jar),warm));
+    jarShape(g,jx,jy,jw,jh,()=>pileXY(14,jx,jy+jh-6,jw-8,R).forEach(([x,y])=>coin(g,x,y,R,'nickel',st)));
+    const right=jx+jw/2;
+    fade(g,p.q,()=>{g.badge(right+66,jy+86,'?',g.c('accent'),40);st.add(80);chip(g,'How many?',right+126,jy+86,g.c('accent'),{px:44,align:'left'})});
+    if(p.ta>.01){const tl=I.live?I.t:99,P0=W-600;
+      fade(g,p.ta,()=>{
+        let n=0;for(let k=0;k<TALLY;k++){const q=clamp((tl-k)/.8,0,1);if(tl>=k+.8)n++;if(q<=0)continue;
+          const tx=right+92+k*(2*R+14),ty=T-R-3,ax=jx,ay=jy-16,cx=jx+250,cy=jy-100,u=1-q;
+          coin(g,u*u*ax+2*u*q*cx+q*q*tx,u*u*ay+2*u*q*cy+q*q*ty,R,'nickel',st)}
+        g.rrect(P0,22,576,200,22,g.c('card'),g.c('line'),3);
+        lab(g,'Coins counted',P0+28,64);chip(g,String(n),P0+28,144,e,{px:56,align:'left'});
+        const lost=tl>=TALLY+.3;if(lost)fade(g,I.live?(Math.floor(tl*2.5)%2?1:.35):1,()=>say(g,'lost count',P0+132,144,40,{color:g.c('bad')}));
+        const cx=P0+476,cy=122,cr=78;g.circle(cx,cy,cr,g.c('card2'),ink,4);st.add(2*cr);
+        for(let i=0;i<12;i++){const a=i*Math.PI/6;g.line(cx+Math.cos(a)*(cr-8),cy+Math.sin(a)*(cr-8),cx+Math.cos(a)*(cr-20),cy+Math.sin(a)*(cr-20),g.c('muted'),4)}
+        const a=-Math.PI/2+Math.min(tl,TALLY+3)*Math.PI/30;g.line(cx,cy,cx+Math.cos(a)*(cr-16),cy+Math.sin(a)*(cr-16),g.c('bad'),6);g.circle(cx,cy,8,ink,null)})}
+    const R0=right+140;
+    fade(g,p.sc,()=>{lab(g,'Mass of the coins',R0,66);chip(g,G(BANK.jar),R0,126,warm,{px:48,align:'left'});
+      lab(g,'Mass of one nickel',R0,214);chip(g,N1,R0,274,warm,{px:48,align:'left'})});
+    fade(g,p.rv,()=>{const t=G(BANK.jar)+' ÷ '+N1+' =',w=say(g,t,R0,376,44);chip(g,BANK.jarCount+' nickels',R0+w+18,376,e,{px:48,align:'left'})});
+  }
+  function bank(g,p,I){
+    const W=I.w,H=I.h,sx=Math.min(W*.3,230),PY=Math.min(330,H*.48),ink=g.c('ink'),warm=g.c('warm'),e=g.c('e'),bad=g.c('bad');
+    const disp=scaleShape(g,sx,PY,360,118,p.disp>.5?p.val:'– – – –',p.disp>.5?warm:g.c('muted'));
+    /* the bag: full of nickels, or empty while the scale is zeroed */
+    fade(g,1-p.roll,()=>{const bw=lerp(180,224,p.full),bh=lerp(78,236,p.full),tan=D.mix('#b98a4e',g.c('card'),.15);
+      g.rrect(sx-bw/2,PY-bh,bw,bh,lerp(30,60,p.full),tan,ink,4);st.add(Math.min(bw,bh));
+      fade(g,p.full,()=>{g.rrect(sx-30,PY-bh-34,60,40,12,D.mix(tan,'#000000',.2),ink,3);say(g,'nickels',sx,PY-bh/2,40,{align:'center'})});
+      fade(g,1-p.full,()=>say(g,'empty',sx,PY-bh/2,36,{align:'center'}))});
+    fade(g,p.roll,()=>{const m=g.c('metal');g.rrect(sx-136,PY-74,272,74,37,D.mix(m,g.c('card'),.3),ink,4);st.add(74);
+      for(let x=sx-104;x<=sx+104;x+=26)g.line(x,PY-66,x,PY-8,D.mix(m,'#000000',.25),3)});
+    const RX=sx+200;
+    fade(g,p.disp,()=>{lab(g,'Scale reading',RX,92);chip(g,p.val,RX,152,warm,{px:fitPx(g,p.val,W-RX-48,44,36),align:'left'})});
+    fade(g,p.zero,()=>chip(g,'zeroed',RX,236,g.c('accent'),{px:40,align:'left'}));
+    const BY=PY+150,px=44;
+    fade(g,p.br,()=>{const A=G(BANK.bag),Nn='1 nickel',Dn=N1,wA=chemW(g,A,px),wX=chemW(g,'×',px),fw=Math.max(chemW(g,Nn,px),chemW(g,Dn,px))+20,tot=wA+22+wX+22+fw,x0=(W-tot)/2,cf=x0+wA+22+wX+22+fw/2;
+      say(g,A,x0,BY,px,{color:warm});say(g,'×',x0+wA+22,BY,px,{color:g.c('muted')});
+      say(g,Nn,cf,BY-34,px,{align:'center',color:e});g.line(cf-fw/2,BY,cf+fw/2,BY,g.c('muted'),4);say(g,Dn,cf,BY+34,px,{align:'center',color:warm});
+      const gA=x0+chemW(g,fmt(BANK.bag,1)+' ',px),gD=cf-chemW(g,Dn,px)/2+chemW(g,fmt(COIN.nickel,3)+' ',px),gw=chemW(g,'g',px);
+      g.line(gA-4,BY+14,gA+gw+4,BY-14,bad,5);g.line(gD-4,BY+48,gD+gw+4,BY+20,bad,5)});
+    fade(g,p.ct,()=>{const r=BANK.count+' nickels',w=chemW(g,'=',48)+16+chipW(g,r,48),x0=(W-w)/2;say(g,'=',x0,BY+102,48,{color:g.c('muted')});chip(g,r,x0+chemW(g,'=',48)+16,BY+102,e,{px:48,align:'left'});
+      const c=BANK.count+' × '+N1+' = '+G(BANK.bag),wl=chemW(g,'Check:',36),w2=wl+14+chemW(g,c,36),x1=(W-w2)/2;lab(g,'Check:',x1,BY+170);say(g,c,x1+wl+14,BY+170,36)});
+  }
+  return D.canvasSim(host,{stages:[...HOOK,...BNK],params,dur:{jar:600,guess:600,tally:600,scale:800,reveal:700,bag:600,zero:800,read:800,divide:800,count:700,roll:800},live:s=>s==='tally',
+    draw(g,p,I){st.reset();panel(g,I);if(p.fam==='hook')hook(g,p,I);else bank(g,p,I)},
+    units:(p,I)=>{const W=I.w,H=I.h,out=[];
+      if(p.fam==='hook'){const jw=Math.min(300,W*.2),jx=Math.max(jw/2+60,W*.16),R0=jx+jw/2+140;out.push(unit(jx-jw/2-40,30,jw+80,H-40,'the jar'));
+        if(p.ta>.5)out.push(unit(W-610,12,596,220,'the counter'));if(p.sc>.5)out.push(unit(R0-16,30,W-R0,290,'the scale reading'));if(p.rv>.5)out.push(unit(R0-16,334,W-R0,90,'the count'));return out}
+      const sx=Math.min(W*.3,230),PY=Math.min(330,H*.48),RX=sx+200,BY=PY+150;out.push(unit(sx-190,PY-290,380,420,p.roll>.5?'the roll and the scale':'the bag and the scale'));
+      if(p.disp>.5)out.push(unit(RX-14,58,W-RX+6,p.zero>.5?216:136,'the scale reading'));if(p.br>.5)out.push(unit(12,BY-70,W-24,140,'the bridge'));if(p.ct>.5)out.push(unit(12,BY+64,W-24,140,'the count'));return out},
+    meta:(p,s)=>{if(p.fam==='hook')return {stage:s,family:'hook',coin:'nickel',massPerCoin:COIN.nickel,total:p.sc>.5?BANK.jar:null,count:p.rv>.5?BANK.jarCount:null,
+        texts:[p.sc>.5?G(BANK.jar):null,p.sc>.5?N1:null,p.rv>.5?BANK.jarCount+' nickels':null].filter(Boolean),guess:p.q>.5,tallyCoins:p.ta>.5?TALLY:0,live:s==='tally',minShape:st.min};
+      const total=s==='zero'?0:s==='roll'?BANK.roll:p.disp>.5?BANK.bag:null;
+      return {stage:s,family:'bank',coin:'nickel',massPerCoin:COIN.nickel,reading:p.disp>.5?p.val:null,total,zeroed:p.zero>.5,
+        bridge:p.br>.5?G(BANK.bag)+' × 1 nickel / '+N1:null,struck:p.br>.5?['g','g']:[],count:p.ct>.5?BANK.count:null,check:p.ct>.5?BANK.count+' × '+N1+' = '+G(BANK.bag):null,
+        roll:s==='roll'?{mass:BANK.roll,answer:BANK.rollCount,answerDrawn:false}:null,live:false,minShape:st.min}}});
+});
+
+/* ---------- 2. centJar: a jar of pennies with two kinds of cents; the wrong divisors, the sample, the average, the count, the isotopes ----------
+   stages: jar, wrong, sample, average, count, isotopes */
+D.sim('centJar',function(host){
+  const st=stats(),b={main:1,wr:0,sa:0,av:0,ct:0,iso:0};
+  const params={jar:{...b},wrong:{...b,wr:1},sample:{...b,sa:1},average:{...b,sa:1,av:1},count:{...b,ct:1},isotopes:{...b,main:0,iso:1}};
+  const OLD=fmt(COIN.old,2)+' g',NEW=fmt(COIN.new,3)+' g',JAR=fmt(CENTS.jar,1)+' g',SMP=fmt(CENTS.sample,2)+' g',AVG=fmt(CENTS.avg,4)+' g';
+  return D.canvasSim(host,{stages:['jar','wrong','sample','average','count','isotopes'],params,dur:800,
+    draw(g,p,I){st.reset();const W=I.w,H=I.h,ink=g.c('ink'),warm=g.c('warm'),bad=g.c('bad'),e=g.c('e'),R=30;
+      const jcx=Math.min(W*.24,190),SY=Math.min(320,H*.47),RX=W*.5;panel(g,I);
+      fade(g,p.main,()=>{
+        scaleShape(g,jcx,SY,330,90,JAR,warm);
+        jarShape(g,jcx,28,250,SY-28,()=>pileXY(13,jcx,SY-6,236,R).forEach(([x,y],i)=>coin(g,x,y,R,i%3===1?'old':'new',st)));
+        /* the two kinds, each with its year side */
+        coin(g,RX+40,104,34,'old',st);lab(g,'before 1982',RX+94,76);chip(g,OLD,RX+94,130,warm,{align:'left'});
+        coin(g,RX+40,254,34,'cut',st);lab(g,'after 1982',RX+94,226);chip(g,NEW,RX+94,280,warm,{align:'left'});
+        const B0=SY+104,cw=(W-40)/2;
+        fade(g,p.wr,()=>[[NEW,CENTS.tooMany,'too many'],[OLD,CENTS.tooFew,'too few']].forEach(([d,q,v],i)=>{const x=12+i*(cw+16),cx=x+cw/2;
+          g.rrect(x,B0,cw,H-B0-12,20,D.mix(bad,g.c('card'),.9),bad,3);const y0=B0+(H-B0-12)/2;
+          say(g,'÷ '+d,cx,y0-62,40,{align:'center',color:warm});const t='about '+q+' cents';say(g,t,cx,y0,fitPx(g,t,cw-28,40,36),{align:'center',color:bad});say(g,v,cx,y0+62,40,{align:'center',color:bad})}));
+        fade(g,p.sa*(1-p.ct),()=>{const sy=H-96;scaleShape(g,jcx,sy,300,84,SMP,warm);pileXY(5,jcx,sy-4,220,R).forEach(([x,y])=>coin(g,x,y,R,'new',st));
+          lab(g,'Sample: '+CENTS.sampleN+' cents',RX+12,B0+30);chip(g,SMP,RX+12,B0+86,warm,{align:'left'})});
+        fade(g,p.av*(1-p.ct),()=>{lab(g,'Average per cent',RX+12,B0+166);chip(g,AVG,RX+12,B0+222,warm,{align:'left'})});
+        fade(g,p.ct,()=>{const y=B0+40;say(g,JAR+' ÷ '+AVG+' =',W/2,y,40,{align:'center'});chip(g,'about '+CENTS.count+' cents',W/2,y+76,e,{px:48,align:'center'});
+          const c=NEW+' < '+AVG+' < '+OLD,wl=chemW(g,'Check:',36),w=wl+14+chemW(g,c,36),x=(W-w)/2;lab(g,'Check:',x,y+158);say(g,c,x+wl+14,y+158,36)});
+      });
+      fade(g,p.iso,()=>{say(g,'Average atomic mass',W/2,50,44,{align:'center'});lab(g,"(the table's number)",W/2,104,{align:'center'});
+        const ax=W*.27,ay=H*.55,rp=g.c('rope'),sm=[[-120,-62],[120,-62],[-120,62],[0,62]],bg=[[0,-62],[120,62]];
+        lab(g,'isotopes',ax+20,ay-176,{align:'center',px:40,color:ink});
+        const A=[...sm.map(([x,y])=>({p:[x,y,0],r:40,color:rp,label:'Cu'})),...bg.map(([x,y])=>({p:[x,y,0],r:52,color:D.mix(rp,'#000000',.15),label:'Cu',px:44}))];
+        balls(g,A,[],ax,ay,1,{},st);
+        const cx=W*.76,cy=ay,cs=250;g.rrect(cx-cs/2,cy-cs/2,cs,cs,18,g.c('card'),g.c('accent'),5);st.add(cs);
+        say(g,'Cu',cx,cy-34,84,{align:'center'});say(g,fmt(MASS1.Cu,3),cx,cy+58,40,{align:'center',color:g.c('accent')})});
+    },
+    units:(p,I)=>{const W=I.w,H=I.h,jcx=Math.min(W*.24,190),SY=Math.min(320,H*.47),B0=SY+104,RX=W*.5,cw=(W-40)/2,out=[];
+      if(p.iso>.5)return [unit(12,150,W*.5,H-160,'isotopes'),unit(W*.76-140,H*.55-140,280,280,'the periodic table cell'),unit(12,20,W-24,110,'average atomic mass')];
+      out.push(unit(jcx-170,20,340,SY+80,'the jar'),unit(RX,50,W-RX-8,270,'two kinds of cents'));
+      if(p.wr>.5)out.push(unit(12,B0,cw,H-B0-12,'÷ '+NEW),unit(28+cw,B0,cw,H-B0-12,'÷ '+OLD));
+      if(p.sa>.5&&p.ct<.5)out.push(unit(jcx-160,H-180,320,170,'the sample'),unit(RX,B0,W-RX-8,p.av>.5?250:120,'sample and average'));
+      if(p.ct>.5)out.push(unit(12,B0,W-24,H-B0-8,'the count'));return out},
+    meta:(p,s)=>({stage:s,old:COIN.old,new:COIN.new,jar:CENTS.jar,wrong:p.wr>.5?[{divisor:COIN.new,cents:CENTS.tooMany,verdict:'too many'},{divisor:COIN.old,cents:CENTS.tooFew,verdict:'too few'}]:null,
+      sample:p.sa>.5?CENTS.sample:null,sampleN:CENTS.sampleN,average:p.av>.5||p.ct>.5?CENTS.avg:null,count:p.ct>.5?CENTS.count:null,countText:p.ct>.5?'about '+CENTS.count+' cents':null,
+      between:CENTS.avg>COIN.new&&CENTS.avg<COIN.old,isotopes:p.iso>.5?{label:'isotopes',cell:'Cu',mass:fmt(MASS1.Cu,3),isotopeMassesShown:false}:null,minShape:st.min})});
+});
+
+/* ---------- 3. countingUnits: a dozen, a ream, a mole; the exact value; the Avogadro constant ----------
+   stages: dozen, ream, mole, exact, constant */
+D.sim('countingUnits',function(host){
+  const st=stats(),b={dz:1,rm:0,ml:0,ex:0,co:0,up:0};
+  const params={dozen:{...b},ream:{...b,rm:1},mole:{...b,rm:1,ml:1},exact:{...b,dz:0,ml:1,ex:1,up:1},constant:{...b,dz:0,ml:1,ex:1,co:1,up:1}};
+  const EX=sci(MOLE.exact,MOLE.exp),CONST='N_A = '+NA_T+' mol^{−1}';
+  function egg(g,x,y){const c=D.mix('#f3e3c8',g.c('card'),.1),k=D.mix('#b9905a',g.c('ink'),.2);g.circle(x,y+8,31,c,k,3);g.circle(x,y-10,26,c,null);st.add(62)}
+  return D.canvasSim(host,{stages:['dozen','ream','mole','exact','constant'],params,dur:800,
+    draw(g,p,I){st.reset();panel(g,I);const W=I.w,ink=g.c('ink'),e=g.c('e'),TX=340;
+      const row=(y,title,num,icon,a)=>fade(g,a,()=>{icon(y);say(g,title,TX,y-34,48);chip(g,num,TX,y+36,e,{px:48,align:'left'})});
+      row(118,'1 dozen',String(MOLE.dozen),y=>{g.rrect(14,y-108,280,216,18,D.mix('#9aa0a6',g.c('card'),.55),ink,3);st.add(216);
+        for(let r=0;r<3;r++)for(let c=0;c<4;c++)egg(g,50+c*69,y-70+r*68)},p.dz);
+      row(318,'1 ream',String(MOLE.ream),y=>{const x=34,w=240;g.rrect(x,y-64,w,128,10,g.c('card'),ink,3);st.add(128);
+        for(let i=1;i<6;i++)g.line(x+8,y-64+i*21,x+w-8,y-64+i*21,g.c('line'),2);g.rrect(x,y-20,w,40,6,D.mix(g.c('accent'),g.c('card'),.55),ink,2)},p.rm);
+      const my=lerp(520,120,p.up);
+      fade(g,p.ml,()=>{flask(g,140,my+26,78,st);g.badge(268,my-66,'mol',g.c('accent'),40);st.add(80);say(g,'1 mole',TX,my-34,48);chip(g,NA_T,TX,my+36,e,{px:48,align:'left'})});
+      const E0=280;
+      fade(g,p.ex,()=>{lab(g,'One mole, exactly',16,E0);chip(g,'since '+MOLE.since,W-22,E0,g.c('muted'),{px:36,align:'right'});
+        chip(g,EX,16,E0+70,e,{px:48,align:'left'});const w=lab(g,'rounded',16,E0+146);chip(g,NA_T,16+w+16,E0+146,e,{px:44,align:'left'})});
+      fade(g,p.co,()=>{lab(g,'the Avogadro constant (per mole)',16,E0+232);chip(g,CONST,16,E0+300,g.c('muted'),{px:fitPx(g,CONST,W-70,44,36),align:'left'})});
+    },
+    units:(p,I)=>{const W=I.w,out=[];if(p.dz>.5)out.push(unit(8,8,W-16,224,'a dozen'));if(p.rm>.5&&p.up<.5)out.push(unit(8,248,W-16,140,'a ream'));
+      if(p.ml>.5){const my=lerp(520,120,p.up);out.push(unit(8,my-112,W-16,224,'a mole'))}
+      if(p.ex>.5)out.push(unit(8,250,W-16,200,'exactly'));if(p.co>.5)out.push(unit(8,456,W-16,130,'the Avogadro constant'));return out},
+    meta:(p,s)=>({stage:s,dozen:p.dz>.5?MOLE.dozen:null,ream:p.rm>.5&&p.up<.5?MOLE.ream:null,mole:p.ml>.5?uni(NA_T):null,exact:p.ex>.5?uni(EX):null,rounded:p.ex>.5?uni(NA_T):null,
+      since:p.ex>.5?MOLE.since:null,constant:p.co>.5?uni(CONST):null,symbol:p.ml>.5?'mol':null,minShape:st.min})});
+});
+
+/* ---------- 4. howMany: the size of a mole as a powers-of-ten cascade (the teacher's animated setup) ----------
+   stages: one, dozen, thousand, zoom (live), mole, spoon. Every 1.2 s the cube shrinks into one cell of a fresh 10 × 10 face. */
+const WORDS=['a thousand','a million','a billion','a trillion','a quadrillion','a quintillion','a sextillion'];
+D.sim('howMany',function(host){
+  const st=stats(),params={one:{v:0},dozen:{v:1},thousand:{v:2},zoom:{v:3},mole:{v:4},spoon:{v:5}},T0=.5,P=1.2,TR=.7;
+  /* completed zoom-outs (0..6) and the progress of the running one, at time t */
+  const prog=(t)=>{let k=0,u=0;for(let i=1;i<STEPS;i++){const s=T0+(i-1)*P;if(t>=s+TR)k=i;else if(t>=s){u=(t-s)/TR;break}else break}return {k,u:k>=STEPS-1?0:u}};
+  function icon(g,x,y,c){const r=c*.2;g.circle(x,y-c*.06,r,CPK.O,null);g.circle(x-c*.2,y+c*.14,r*.6,CPK.H,g.c('line'),2);g.circle(x+c*.2,y+c*.14,r*.6,CPK.H,g.c('line'),2)}
+  function face(g,x0,y0,S,kind,a){const c=S/10,ink=g.c('ink');fade(g,a,()=>{for(let r=0;r<10;r++)for(let q=0;q<10;q++){const x=x0+q*c,y=y0+r*c;
+      g.rrect(x+1,y+1,c-2,c-2,Math.min(6,c*.1),kind==='cube'?D.mix(g.c('e'),g.c('card'),.82):g.c('card2'),D.mix(ink,g.c('card'),.45),2);
+      if(c>=40){if(kind==='cube'){g.rrect(x+c*.24,y+c*.24,c*.52,c*.52,3,null,D.mix(g.c('e'),g.c('card'),.4),2)}else icon(g,x+c/2,y+c/2,c)}}
+    if(S>=590)st.add(c)})}
+  return D.canvasSim(host,{stages:['one','dozen','thousand','zoom','mole','spoon'],params,dur:{one:600,dozen:800,thousand:900,zoom:600,mole:900,spoon:800},live:s=>s==='zoom',
+    draw(g,p,I){st.reset();panel(g,I);const W=I.w,H=I.h,e=g.c('e'),ink=g.c('ink'),stage=I.stage,GX=12,GY=80,S=600,C=S/10,LX=GX+S+16,v=Math.round(p.v);
+      const t=I.live?I.t:99,z=v===3?prog(t):{k:STEPS-1,u:0},k=v<2?-1:v===2?0:v===3?z.k:STEPS;
+      /* the counter: a label line, then the count in a chip, then the word */
+      const cnt=v===0?'1':v===1?String(MOLE.dozen):v===2?fmt(1000,0)+' = 10^{3}':v===3?'10^{'+3*(k+1)+'}':NA_T,
+        word=v===0?'one molecule':v===1?'a dozen':v<=3?WORDS[Math.max(0,k)]:'one mole';
+      const wl=lab(g,'Molecules',GX,36),c1=chip(g,cnt,GX+wl+14,36,e,{px:44,align:'left'});say(g,word,c1.x1+14,36,fitPx(g,word,W-c1.x1-20,40,36));
+      /* the ladder of exponents builds down the side */
+      for(let i=0;i<=STEPS;i++){if(i>k)break;const y=GY+38+i*75,last=i===STEPS,lit=i===k;
+        g.rrect(LX,y-28,W-LX-12,56,14,lit?D.mix(e,g.c('card'),.8):g.c('card'),lit?e:g.c('line'),3);g.chem(last?'× '+LAST:'10^{'+3*(i+1)+'}',LX+(W-LX-12)/2,y+1,last?36:40,{color:last||lit?e:ink})}
+      if(v===0)balls(g,water().atoms,water().bonds,GX+S/2,GY+S/2,1.7,{},st);
+      if(v===1){const cw=136,x0=GX+(S-4*cw)/2,y0=GY+(S-3*cw)/2;g.rrect(x0-10,y0-10,4*cw+20,3*cw+20,18,D.mix('#9aa0a6',g.c('card'),.6),ink,3);
+        for(let r=0;r<3;r++)for(let q=0;q<4;q++){g.rrect(x0+q*cw+6,y0+r*cw+6,cw-12,cw-12,14,g.c('card2'),g.c('line'),2);st.add(cw-12);icon(g,x0+q*cw+cw/2,y0+r*cw+cw/2,cw*.62)}}
+      if(v===2)face(g,GX,GY,S,'molecule',1);
+      if(v===3){const tx=GX+4*C,ty=GY+4*C,u=z.u<=0?0:(z.u<.5?2*z.u*z.u:1-2*(1-z.u)*(1-z.u)),s=lerp(1,.1,u);
+        face(g,GX,GY,S,k>0?'cube':'molecule',u>0?u:1);if(u>0)face(g,tx+(GX-tx)*s,ty+(GY-ty)*s,S*s,k>0?'cube':'molecule',1)}
+      if(v>=4){const sp=v===5,fx=sp?GX+150:GX+S/2,fy=sp?GY+222:GY+332,FR=sp?108:148;flask(g,fx,fy,FR,st);
+        if(sp){spoon(g,GX+378,GY+290,74,st);lab(g,'One mole of water',GX+12,GY+446);chip(g,'about '+TIME.water+' g',GX+12,GY+506,g.c('warm'),{px:44,align:'left'});say(g,'less than a large spoonful',GX+12,GY+574,40)}}
+    },
+    units:(p,I)=>{const W=I.w,GX=12,GY=80,S=600,v=Math.round(p.v),out=[unit(0,0,Math.min(W,620),72,'the count')];
+      if(v<4)out.push(unit(GX,GY,S,S,v===0?'one molecule':v===1?'a dozen':'the current face'));
+      if(v>=2)out.push(unit(GX+S+12,GY,W-GX-S-12,S,'the ladder of exponents'));
+      if(v===4)out.push(unit(GX,GY,S,S,'the flask: one mole'));if(v===5)out.push(unit(GX,GY,300,400,'the flask'),unit(GX+290,GY+180,310,220,'the spoon'),unit(GX,GY+410,S,200,'one mole of water'));return out},
+    meta:(p,s)=>{const v=Math.round(p.v);return {stage:s,perStep:1000,steps:STEPS,top:'10²¹',last:LAST,mole:uni(NA_T),water:v===5?TIME.water:null,
+      ladder:v<2?[]:v===2?['10³']:v===3?null:[...Array(STEPS).keys()].map(i=>uni('10^{'+3*(i+1)+'}')).concat(['× '+LAST]),
+      exps:[...Array(STEPS).keys()].map(i=>3*(i+1)),check:Math.abs(Math.pow(10,3*STEPS)*LAST/1e23-6.02)<1e-9,live:s==='zoom',minShape:st.min}}});
+});
+
+/* ---------- 5. moleKinds: one mole of Al and of Cu on a balance; "one mole of oxygen"; the four kinds of particles ----------
+   stages: al, cu, compare, oxygen, four */
+D.sim('moleKinds',function(host){
+  const st=stats(),b={bal:1,cu:0,cmp:0,tilt:-1,ox:0,four:0};
+  const params={al:{...b},cu:{...b,cu:1,tilt:1},compare:{...b,cu:1,cmp:1,tilt:1},oxygen:{...b,bal:0,cu:1,ox:1},four:{...b,bal:0,cu:1,four:1}};
+  const kAl=.44,pile=(cx,base,s,r,col)=>{const A=[],pos=[[-2,0],[0,0],[2,0],[-1,1],[1,1],[0,2]];pos.forEach(([x,y])=>A.push({p:[x*r*1.02/kAl,(y*r*1.72+r)/kAl,0],r:BS*RCOV[s],color:col,label:s}));return A};
+  return D.canvasSim(host,{stages:['al','cu','compare','oxygen','four'],params,dur:800,
+    draw(g,p,I){st.reset();panel(g,I);const W=I.w,H=I.h,ink=g.c('ink'),e=g.c('e'),warm=g.c('warm');
+      fade(g,p.bal,()=>{const cx=W/2,BY=172,L=230,th=.1*p.tilt,ex=L*Math.cos(th),ey=L*Math.sin(th);
+        g.rrect(cx-14,BY,28,206,8,D.mix(g.c('metal'),g.c('card'),.4),ink,3);g.rrect(cx-120,BY+206,240,24,10,D.mix(g.c('metal'),g.c('card'),.4),ink,3);
+        g.line(cx-ex,BY-ey,cx+ex,BY+ey,ink,12);g.circle(cx,BY,14,ink,null);
+        [[-1,'Al',g.c('metal'),1],[1,'Cu',g.c('rope'),p.cu]].forEach(([sd,s,col,a])=>{const px=cx+sd*ex,py=BY+sd*ey,pany=py+150;
+          g.line(px,py,px-110,pany,g.c('muted'),3);g.line(px,py,px+110,pany,g.c('muted'),3);g.rrect(px-120,pany,240,16,8,D.mix(g.c('metal'),g.c('card'),.3),ink,3);
+          fade(g,a,()=>{const r=BS*RCOV[s]*kAl;balls(g,pile(px,pany,s,r,col),[],px,pany,kAl,{},st,{})})});
+        const ys=[426,484,562];[[0,'Al',MASS1.Al,1],[1,'Cu',MASS1.Cu,p.cu]].forEach(([i,s,m,a])=>fade(g,a,()=>{const al=i?'right':'left',x=i?W-12:12;
+          lab(g,'1 mol of '+s+' atoms',x,ys[0],{align:al});chip(g,fmt(m,3)+' g',x,ys[1],warm,{px:44,align:al});
+          fade(g,p.cmp,()=>chip(g,NA_T+' atoms',x,ys[2],e,{px:36,align:al}))}));
+        fade(g,p.cmp,()=>say(g,'Same number of atoms. Different mass.',W/2,38,36,{align:'center'}))});
+      fade(g,p.ox,()=>{const bw=(W-40)/2,by=72,bh=320;lab(g,'1 mol of each',W/2,32,{align:'center'});
+        [['O atoms',0],['O_2 molecules',1]].forEach(([t,i])=>{const x=12+i*(bw+16);g.rrect(x,by,bw,bh,22,g.c('card'),g.c('line'),3);say(g,t,x+bw/2,by+40,40,{align:'center'});
+          const k=.8,cx=x+bw/2;if(!i)[[-82,-62],[82,-62],[-82,62],[82,62]].forEach(([dx,dy])=>balls(g,[at('O',[0,0,0])],[],cx+dx,by+190+dy,k,{},st));
+          else [[-82,-62],[82,-62],[-82,62],[82,62]].forEach(([dx,dy],j)=>{const d=BOND.OO/2*Math.SQRT1_2,s2=j%2?-1:1;balls(g,[at('O',[-d,-s2*d,0]),at('O',[d,s2*d,0])],[[0,1]],cx+dx,by+190+dy,k,{},st)});
+          lab(g,'atoms',x+bw/2,by+bh+42,{align:'center'});chip(g,i?'twice as many':NA_T,x+bw/2,by+bh+100,e,{px:40,align:'center'})})});
+      fade(g,p.four,()=>{const tw=(W-36)/2,th=(H-108)/2,names=['atoms','molecules','formula units','ions'];
+        names.forEach((n,i)=>{const x=12+(i%2)*(tw+12),y=12+Math.floor(i/2)*(th+12),cx=x+tw/2,cy=y+(th-56)/2+6;g.rrect(x,y,tw,th,20,g.c('card'),g.c('line'),3);
+          if(i===0)balls(g,[{p:[0,0,0],r:BS*RCOV.Cu,color:g.c('rope'),label:'Cu',px:44}],[],cx,cy,.62,{},st);
+          if(i===1){const m=water();balls(g,m.atoms,m.bonds,cx,cy+4,1.7,{},st)}
+          if(i===2){const m=ionPair(g,g.c('cat'),g.c('an'));balls(g,m.atoms,[],cx,cy,.37,{},st)}
+          if(i===3){balls(g,[{p:[-140,0,0],r:RION.Na,color:g.c('cat'),label:'Na^+',px:40},{p:[150,0,0],r:RION.Cl,color:g.c('an'),label:'Cl^−',px:44}],[],cx,cy,.37,{},st)}
+          say(g,n,cx,y+th-32,40,{align:'center'})});
+        say(g,'Name the particle every time.',W/2,H-34,40,{align:'center'})});
+    },
+    units:(p,I)=>{const W=I.w,H=I.h;
+      if(p.four>.5){const tw=(W-36)/2,th=(H-108)/2;return ['atoms','molecules','formula units','ions'].map((n,i)=>unit(12+(i%2)*(tw+12),12+Math.floor(i/2)*(th+12),tw,th,n))}
+      if(p.ox>.5){const bw=(W-40)/2;return [unit(12,60,bw,440,'1 mol of O atoms'),unit(28+bw,60,bw,440,'1 mol of O₂ molecules')]}
+      const out=[unit(W/2-360,60,720,350,'the balance'),unit(8,396,W/2-8,p.cmp>.5?200:126,'aluminum')];if(p.cu>.5)out.push(unit(W/2,396,W/2-8,p.cmp>.5?200:126,'copper'));return out},
+    meta:(p,s)=>({stage:s,masses:{Al:MASS1.Al,Cu:p.cu>.5?MASS1.Cu:null},counts:p.cmp>.5?{Al:uni(NA_T),Cu:uni(NA_T)}:null,equal:p.cmp>.5,heavier:p.tilt>.5?'Cu':'Al',
+      o2Ratio:p.ox>.5?2:null,names:p.four>.5?['atoms','molecules','formula units','ions']:null,radii:{Al:RCOV.Al,Cu:RCOV.Cu,Na_ion:RION.Na,Cl_ion:RION.Cl},minShape:st.min})});
+});
+
+/* ---------- 6. secondsLine: counting one particle each second on a log time line ----------
+   stages: line (live), year, earth, universe, mole, times, spoon. data-band keeps the bottom band free for the row below. */
+D.sim('secondsLine',function(host){
+  const st=stats(),band=+(host.dataset.band||0),b={cnt:1,yr:0,ea:0,un:0,mo:0,tm:0,sp:0};
+  const params={line:{...b},year:{...b,cnt:0,yr:1},earth:{...b,cnt:0,yr:1,ea:1},universe:{...b,cnt:0,yr:1,ea:1,un:1},mole:{...b,cnt:0,yr:1,ea:1,un:1,mo:1},
+    times:{...b,cnt:0,yr:1,ea:1,un:1,mo:1,tm:1},spoon:{...b,cnt:0,yr:1,ea:1,un:1,mo:1,tm:1,sp:1}};
+  const LOG={year:Math.log10(TIME.year),earth:Math.log10(TIME.earth*TIME.year),universe:Math.log10(TIME.universe*TIME.year),mole:Math.log10(6.022e23)};
+  const geo=I=>{const W=I.w,x0=70,x1=W-70;return {W,X:e=>x0+e/24*(x1-x0),LY:262,x0,x1}};
+  let t0=performance.now();const since=()=>(performance.now()-t0)/1000;
+  const api=D.canvasSim(host,{stages:['line','year','earth','universe','mole','times','spoon'],params,dur:800,live:s=>s==='line',
+    draw(g,p,I){st.reset();panel(g,I,band);const {W,X,LY,x0,x1}=geo(I),ink=g.c('ink'),mu=g.c('muted'),e=g.c('e'),warm=g.c('warm');
+      g.line(x0,LY,x1,LY,ink,6);
+      for(let i=0;i<=24;i++){const x=X(i),M=i%4===0;g.line(x,LY-(M?22:12),x,LY+(M?22:12),M?ink:mu,M?4:3);if(M)g.chem(i?'10^{'+i+'} s':'1 s',x,LY+46,36,{color:mu})}
+      const mark=(e,a)=>fade(g,a,()=>{const x=X(e),c=g.ctx;c.beginPath();c.moveTo(x,LY-4);c.lineTo(x-13,LY-28);c.lineTo(x+13,LY-28);c.closePath();c.fillStyle=ink;c.fill()});
+      const row=(x,y,label,val,col,a)=>fade(g,a,()=>{const wc=chipW(g,val,40),wl=chemW(g,label,36),x0=x-wc-14-wl;lab(g,label,x0,y);chip(g,val,x-wc,y,col,{px:40,align:'left'})});
+      /* the counter: one particle each second, beside a clock */
+      fade(g,p.cnt,()=>{const tl=I.live?since():4,n=Math.floor(tl)+1;g.rrect(20,16,620,200,22,g.c('card'),g.c('line'),3);lab(g,'Particles counted',48,62);chip(g,fmt(n,0),48,144,e,{px:56,align:'left'});
+        const cx=540,cy=116,cr=78;g.circle(cx,cy,cr,g.c('card2'),ink,4);st.add(2*cr);for(let i=0;i<12;i++){const a=i*Math.PI/6;g.line(cx+Math.cos(a)*(cr-8),cy+Math.sin(a)*(cr-8),cx+Math.cos(a)*(cr-20),cy+Math.sin(a)*(cr-20),mu,4)}
+        const a=-Math.PI/2+tl*Math.PI/30;g.line(cx,cy,cx+Math.cos(a)*(cr-16),cy+Math.sin(a)*(cr-16),g.c('bad'),6);g.circle(cx,cy,8,ink,null)});
+      const lead=(e,y,a)=>fade(g,a,()=>g.line(X(e),LY-30,X(e),y+30,mu,3,[8,8]));
+      mark(LOG.year,p.yr);lead(LOG.year,190,p.yr);row(X(LOG.year)-14,190,'1 year',sci('3.156',7)+' s',ink,p.yr);
+      mark(LOG.earth,p.ea);lead(LOG.earth,190,p.ea);row(X(LOG.earth)-14,190,'Earth','4.5 billion years',ink,p.ea);
+      mark(LOG.universe,p.un);lead(LOG.universe,115,p.un);row(X(LOG.universe)-14,115,'the universe','13.8 billion years',ink,p.un);
+      mark(LOG.mole,p.mo);lead(LOG.mole,40,p.mo);row(W-20,40,NA_T+' s','about '+sci('1.9',16)+' years',e,p.mo);
+      fade(g,p.tm,()=>{const a=X(LOG.universe),b2=X(LOG.mole),y=LY+86;g.line(a,y,b2,y,e,5);g.line(a,y-14,a,y+14,e,5);g.line(b2,y-14,b2,y+14,e,5);
+        fade(g,.35,()=>g.line(X(LOG.earth),y-12,b2,y-12,mu,3,[6,6]));chip(g,'about 1.4 million times',(a+b2)/2-30,y+46,e,{px:36,align:'center'})});
+      fade(g,p.sp,()=>{spoon(g,104,LY+150,34,st);const w=lab(g,'1 mol of water',220,LY+150);chip(g,'about '+TIME.water+' g',220+w+14,LY+150,warm,{px:40,align:'left'})});
+    },
+    units:(p,I)=>{const {W,X,LY}=geo(I),out=[unit(20,LY-40,W-40,110,'the time line')];if(p.cnt>.5)out.push(unit(12,8,640,216,'one each second'));
+      if(p.yr>.5)out.push(unit(40,160,X(LOG.year)-20,64,'one year'));if(p.ea>.5)out.push(unit(X(LOG.earth)-520,160,520,64,'Earth'));
+      if(p.un>.5)out.push(unit(X(LOG.universe)-640,85,640,64,'the universe'));if(p.mo>.5)out.push(unit(W-820,10,812,64,'the mole'));
+      if(p.tm>.5)out.push(unit(X(LOG.universe)-80,LY+60,X(LOG.mole)-X(LOG.universe)+120,120,'1.4 million times'));if(p.sp>.5)out.push(unit(60,LY+110,760,80,'the spoon'));return out},
+    meta:(p,s)=>({stage:s,yearS:TIME.year,earthYears:TIME.earth,universeYears:TIME.universe,moleYears:TIME.moleYears,moleShown:p.mo>.5?'about 1.9 × 10¹⁶ years':null,
+      times:TIME.times,timesShown:p.tm>.5?'about 1.4 million times':null,earthTimes:Math.round(TIME.moleYears/TIME.earth/1e5)/10,water:p.sp>.5?TIME.water:null,
+      order:[LOG.year,LOG.earth,LOG.universe,LOG.mole].every((v,i,a)=>!i||v>a[i-1]),moleSeconds:6.022e23,yearsCheck:Math.abs(6.022e23/TIME.year/TIME.moleYears-1)<.001,
+      timesCheck:Math.abs(TIME.moleYears/TIME.universe/TIME.times-1)<.002,live:s==='line',minShape:st.min})});
+  const act=api.active,set=api.set;api.active=v=>{if(v)t0=performance.now();act(v)};api.set=(s,i)=>{if(s!==api.get())t0=performance.now();set(s,i)};return api;
+});
+
+/* ---------- 7. moleHistory: a time ruler 1800 to 2020 with one card per stage; an earlier card shrinks to its year and name on the ruler ----------
+   stages: avogadro, loschmidt, ostwald, perrin, si, exact */
+const HIST=[
+  {k:'avogadro',year:1811,yt:'1811',name:'Avogadro',title:'1811 · Amedeo Avogadro',lines:['Equal gas volumes hold equal','numbers of particles.','He never knew the number.'],row:0},
+  {k:'loschmidt',year:1865,yt:'1865',name:'Loschmidt',title:'1865 · Josef Loschmidt',lines:['The first estimate of the','size of molecules.'],row:1},
+  {k:'ostwald',year:1890,yt:'1890s',name:'Ostwald',title:'1890s · Wilhelm Ostwald',lines:['The word Mol, as a unit.'],row:0},
+  {k:'perrin',year:1909,yt:'1909',name:'Perrin',title:'1909 · Jean Perrin',lines:['Measured the number.','Named it after Avogadro.','Nobel Prize, 1926.'],row:1},
+  {k:'si',year:1971,yt:'1971',name:'SI',title:'1971 · an SI base unit',lines:['The mole, an SI base unit.','Defined by 12 g','of carbon-12.'],row:0},
+  {k:'exact',year:2019,yt:'2019',name:'exact',title:'2018 and 2019',lines:['Voted '+MOLE.vote+'.','Exact since '+MOLE.since+':',sci(MOLE.exact,MOLE.exp)],row:1}];
+D.sim('moleHistory',function(host){
+  const st=stats(),band=+(host.dataset.band||0),params={};HIST.forEach((h,i)=>{params[h.k]={c:HIST.map((x,j)=>j===i?1:0),n:i}});
+  const geo=I=>{const W=I.w,X=y=>70+(y-1800)/220*(W-140);return {W,X,RY:134}};
+  function drawing(g,i,x,y,w,h){const ink=g.c('ink'),cx=x+w/2,cy=y+h/2;
+    if(i===0){[-70,70].forEach(dx=>{g.rrect(cx+dx-56,cy-90,112,180,18,rgba(D.mix(g.c('an'),g.c('card'),.75),.4),ink,4);st.add(112);
+      for(let j=0;j<6;j++)g.circle(cx+dx-28+(j%2)*56,cy-56+Math.floor(j/2)*56,9,g.c('e'),null)})}
+    if(i===1){[-64,64].forEach(dx=>{g.circle(cx+dx,cy-10,46,D.mix(g.c('metal'),g.c('card'),.4),ink,4);st.add(92)});g.line(cx-110,cy+70,cx+110,cy+70,ink,4);g.line(cx-110,cy+56,cx-110,cy+84,ink,4);g.line(cx+110,cy+56,cx+110,cy+84,ink,4)}
+    if(i===2){g.circle(cx,cy,74,g.c('accent'),null);st.add(148);say(g,'mol',cx,cy+2,52,{align:'center',color:g.c('on-ion')})}
+    if(i===3){g.circle(cx,cy,78,D.mix('#d4a52c',g.c('card'),.1),D.mix('#8a6a12',ink,.2),5);st.add(156);say(g,'1926',cx,cy+2,44,{align:'center',color:'#3a2a00'})}
+    if(i===4){g.rrect(cx-80,cy-90,160,150,16,CPK.C,ink,4);st.add(150);say(g,'12 g',cx,cy-14,48,{align:'center',color:'#ffffff'});lab(g,'carbon-12',cx,cy+92,{align:'center',color:ink})}
+    if(i===5){g.rrect(cx-60,cy-36,120,96,14,g.c('accent'),ink,4);st.add(96);const c=g.ctx;c.beginPath();c.arc(cx,cy-36,38,Math.PI,0);c.lineWidth=12;c.strokeStyle=ink;c.stroke();
+      g.circle(cx,cy+8,10,g.c('on-ion'),null)}}
+  return D.canvasSim(host,{stages:HIST.map(h=>h.k),params,dur:800,
+    draw(g,p,I){st.reset();panel(g,I,band);const {W,X,RY}=geo(I),ink=g.c('ink'),mu=g.c('muted'),acc=g.c('accent'),n=Math.round(p.n);
+      g.line(X(1800),RY,X(2020),RY,ink,6);for(let y=1800;y<=2020;y+=10){const M=y%50===0;g.line(X(y),RY-(M?16:9),X(y),RY+(M?16:9),M?ink:mu,M?4:3)}
+      [1800,1850,1900,1950,2000].forEach(y=>g.chem(String(y),X(y),RY+40,36,{color:mu}));
+      HIST.forEach((h,i)=>{const a=clamp(n-i+1,0,1);if(i>n)return;const x=X(h.year),ly=h.row?84:32,t=h.yt+' '+h.name,w=chemW(g,t,36),c=clamp(x,8+w/2,W-8-w/2);
+        g.line(x,ly+20,x,RY-18,i===n?acc:mu,3);g.circle(x,RY,10,i===n?acc:ink,null);g.chem(t,c,ly,36,{color:i===n?acc:ink})});
+      HIST.forEach((h,i)=>fade(g,p.c[i],()=>{const cw=Math.min(W-24,1000),x=clamp(X(h.year)-cw/2,12,W-12-cw),y=196,ch=Math.max(250,I.h-band-y-8),dw=330,tw=cw-dw-60;
+        g.rrect(x,y,cw,ch,22,g.c('card'),acc,4);say(g,h.title,x+30,y+44,fitPx(g,h.title,tw,44,36),{color:acc});
+        const px=Math.min(...h.lines.map(l=>fitPx(g,l,tw,40,36)));h.lines.forEach((l,j)=>say(g,l,x+30,y+104+j*50,px));
+        if(i===5){lab(g,'exact, no longer',x+cw-dw/2-15,y+ch-82,{align:'center',color:acc});lab(g,'measured',x+cw-dw/2-15,y+ch-36,{align:'center',color:acc});drawing(g,i,x+cw-dw-30,y+14,dw,ch-130)}
+        else drawing(g,i,x+cw-dw-30,y+10,dw,ch-20)}));
+    },
+    units:(p,I)=>{const {W,X}=geo(I),n=Math.round(p.n),h=HIST[n],cw=Math.min(W-24,1000),x=clamp(X(h.year)-cw/2,12,W-12-cw);return [unit(16,6,W-32,186,'the time ruler'),unit(x,196,cw,Math.max(250,I.h-band-204),h.title)]},
+    meta:(p,s)=>{const n=Math.round(p.n);return {stage:s,ticks:HIST.slice(0,n+1).map(h=>({year:h.yt,name:h.name})),card:HIST[n].title,lines:HIST[n].lines.map(uni),
+      oldDefinition:'12 g of carbon-12',vote:MOLE.vote,since:MOLE.since,exact:uni(sci(MOLE.exact,MOLE.exp)),minShape:st.min}}});
+});
+
+/* ---------- 8. siliconSphere: the Avogadro project's sphere, its crystal of cubes, one cube, one atom, the division ----------
+   stages: sphere, crystal (live), cube (live), atom, divide. Diamond-cubic positions in a 2 × 2 × 2 block of cubes, edge 543.102 pm;
+   atom radius the covalent radius (Cordero 2008); a slow turn, a fixed three-quarter view under reduced motion. */
+const SIP=(()=>{const P=[],seen=new Set(),add=(x,y,z)=>{const key=[x,y,z].map(v=>Math.round(v*4)).join();if(seen.has(key))return;seen.add(key);P.push([x-1,y-1,z-1])};
+  for(let i=0;i<=4;i++)for(let j=0;j<=4;j++)for(let k=0;k<=4;k++)if((i+j+k)%2===0)add(i/2,j/2,k/2);
+  for(let i=0;i<4;i++)for(let j=0;j<4;j++)for(let k=0;k<4;k++)if((i+j+k)%2===0)add(i/2+.25,j/2+.25,k/2+.25);
+  const B=[],L=[],d=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1],a[2]-b[2]),isInt=v=>v.every(c=>Math.abs(c-Math.round(c))<1e-9);
+  P.forEach((a,i)=>P.forEach((b,j)=>{if(j<=i)return;const q=d(a,b);if(Math.abs(q-Math.sqrt(3)/4)<.01)B.push([i,j]);if(isInt(a)&&isInt(b)&&Math.abs(q-1)<1e-9)L.push([i,j])}));
+  const lit=P.map(a=>a.every(c=>c>-1e-9&&c<1+1e-9));return {P,B,L,lit}})();
+D.sim('siliconSphere',function(host){
+  const st=stats(),b={sp:1,blk:0,cube:0,atom:0,div:0};
+  const params={sphere:{...b},crystal:{...b,sp:0,blk:1},cube:{...b,sp:0,blk:1,cube:1},atom:{...b,sp:0,blk:1,cube:1,atom:1},divide:{...b,sp:0,blk:1,cube:1,div:1}};
+  const A=158,RR=RCOV.Si/SI.a,view=(I,live)=>({cx:I.w/2,cy:256,scale:A,yaw:-.6+(live?.3*Math.sin(I.t*.6):0),pitch:.3,dist:30,fog:.2,minLabel:36});
+  return D.canvasSim(host,{stages:['sphere','crystal','cube','atom','divide'],params,dur:{sphere:600,crystal:900,cube:800,atom:800,divide:800},live:s=>s==='crystal'||s==='cube',
+    draw(g,p,I){st.reset();panel(g,I);const W=I.w,H=I.h,ink=g.c('ink'),e=g.c('e'),si=D.mix('#7d8a9a',g.c('card'),.08);
+      fade(g,p.sp,()=>{const ctx=g.ctx,R=230,cx=W/2,cy=270,gr=ctx.createRadialGradient(cx-R*.4,cy-R*.45,R*.05,cx,cy,R);gr.addColorStop(0,'#f4f7fb');gr.addColorStop(.35,'#a9b4c2');gr.addColorStop(1,'#4b5563');
+        g.circle(cx,cy,R,gr,ink,4);st.add(2*R);say(g,'silicon, one single crystal',W/2,588,44,{align:'center'})});
+      fade(g,p.blk,()=>{const live=I.live,cu=p.cube,atoms=SIP.P.map((q,i)=>({p:q,r:RR,color:si,label:'Si',px:36,alpha:SIP.lit[i]?1:1-.85*cu,ring:SIP.lit[i]&&cu>.5,ringColor:g.c('warm')}));
+        const P=D.spheres(g,{atoms,bonds:SIP.B.map(([a,b2])=>({a,b:b2,w:.06})),lines:SIP.L.map(([a,b2])=>({a,b:b2,w:.025,alpha:.8}))},view(I,live));P.forEach(q=>{if(q.a.alpha>.01)st.add(2*q.r)});
+        fade(g,cu,()=>{/* the edge of the lit cube, measured along its front lower edge */
+          const idx=(x,y,z)=>SIP.P.findIndex(q=>Math.abs(q[0]-x)<1e-9&&Math.abs(q[1]-y)<1e-9&&Math.abs(q[2]-z)<1e-9),a=P[idx(0,0,1)],c=P[idx(1,0,1)],dx=c.x-a.x,dy=c.y-a.y,l=Math.hypot(dx,dy)||1,nx=-dy/l*70,ny=dx/l*70;
+          g.line(a.x+nx,a.y+ny,c.x+nx,c.y+ny,g.c('warm'),5);g.line(a.x+nx*.6,a.y+ny*.6,a.x+nx*1.4,a.y+ny*1.4,g.c('warm'),5);g.line(c.x+nx*.6,c.y+ny*.6,c.x+nx*1.4,c.y+ny*1.4,g.c('warm'),5)})});
+      const y1=H-130,y2=H-58;
+      fade(g,p.cube*(1-p.atom)*(1-p.div),()=>{chip(g,'edge '+fmt(SI.a,3)+' pm (by X-rays)',W/2,y1+8,ink,{px:40,align:'center'});chip(g,SI.perCube+' atoms per cube',W/2,y2+2,e,{px:40,align:'center'})});
+      fade(g,p.atom,()=>{lab(g,'Mass of one atom',16,H-140);say(g,'cube volume → density →',16,H-92,40);say(g,'mass of one cube → ÷ '+SI.perCube,16,H-42,40)});
+      fade(g,p.div,()=>{say(g,'mass of one mole of silicon',16,H-146,40);say(g,'÷ mass of one atom =',16,H-98,40);chip(g,'= '+NA_T,16,H-42,e,{px:44,align:'left'})});
+    },
+    units:(p,I)=>{const W=I.w,H=I.h;if(p.sp>.5)return [unit(W/2-245,30,490,490,'the sphere')];const out=[unit(W/2-300,0,600,H-160,p.cube>.5?'one cube lit':'the crystal')];
+      if(p.cube>.5&&p.atom<.5&&p.div<.5)out.push(unit(12,H-170,W-24,80,'the edge'),unit(12,H-96,W-24,80,'8 atoms per cube'));if(p.atom>.5||p.div>.5)out.push(unit(8,H-166,W-16,160,p.div>.5?'the division':'the mass of one atom'));return out},
+    meta:(p,s)=>({stage:s,edge:SI.a,perCube:SI.perCube,atoms:SIP.P.length,litAtoms:SIP.lit.filter(Boolean).length,bonds:SIP.B.length,edges:SIP.L.length,radius:RCOV.Si,
+      cornerFaceInside:[8/8,6/2,4].reduce((a,b2)=>a+b2,0),result:p.div>.5?uni(NA_T):null,live:s==='crystal'||s==='cube',minShape:st.min})});
+});
+
+/* ---------- 9. moleMap: the moles-particles map, two stations and a bridge; factors whose units cancel ----------
+   stages: map; Cu/, Fe/, CO2m/, H2Om/ + setup, cancel, result; half; energy/mole, energy/one, energy/why */
+const MAP={
+  Cu:{dir:1,given:['2.00','mol'],num:[NA_T,'atoms'],den:['1','mol'],res:['1.20 × 10^{24}','Cu atoms'],chk:'Check: 2.00 mol > 1 mol, so > '+NA_T,L:['2.00 mol','of Cu atoms'],R:['1.20 × 10^{24}','Cu atoms'],n:[2.00,1.20e24]},
+  Fe:{dir:-1,given:['9.03 × 10^{23}','Fe atoms'],num:['1','mol'],den:[NA_T,'Fe atoms'],res:['1.50','mol'],chk:'Check: 9.03 is 1.5 times 6.022',L:['1.50 mol','of Fe atoms'],R:['9.03 × 10^{23}','Fe atoms'],n:[1.50,9.03e23]},
+  CO2m:{dir:1,given:['0.250','mol'],num:[NA_T,'molecules'],den:['1','mol'],res:['1.51 × 10^{23}','molecules'],chk:'Check: a quarter of '+NA_T,L:['0.250 mol','of CO_2'],R:['1.51 × 10^{23}','CO_2 molecules'],n:[0.250,1.51e23]},
+  H2Om:{dir:-1,given:['1.81 × 10^{24}','molecules'],num:['1','mol'],den:[NA_T,'molecules'],res:['3.01','mol'],chk:'Check: 18.1 is about 3 × 6.022',L:['3.01 mol','of H_2O'],R:['1.81 × 10^{24}','H_2O molecules'],n:[3.01,1.81e24]}};
+D.sim('moleMap',function(host){
+  const st=stats(),stages=['map'],params={},b={ex:'',su:0,cn:0,re:0,half:0,en:0,one:0,why:0};params.map={...b};
+  Object.keys(MAP).forEach(k=>{params[k+'/setup']={...b,ex:k,su:1};params[k+'/cancel']={...b,ex:k,su:1,cn:1};params[k+'/result']={...b,ex:k,su:1,cn:1,re:1};stages.push(k+'/setup',k+'/cancel',k+'/result')});
+  stages.push('half','energy/mole','energy/one','energy/why');params.half={...b,half:1};params['energy/mole']={...b,en:1};params['energy/one']={...b,en:1,one:1};params['energy/why']={...b,en:1,one:1,why:1};
+  /* number and unit as two labels, so a unit can be struck or circled on its own; returns the unit's box */
+  function nu(g,num,u,x,y,px,cn,cu,o){const wn=chemW(g,num,px),wu=chemW(g,u,px),gap=20,x0=o==='center'?x-(wn+gap+wu)/2:x;say(g,num,x0,y,px,{color:cn});say(g,u,x0+wn+gap,y,px,{color:cu});return {x0:x0+wn+gap,x1:x0+wn+gap+wu,w:wn+gap+wu}}
+  const nuW=(g,num,u,px)=>chemW(g,num,px)+20+chemW(g,u,px);
+  return D.canvasSim(host,{stages,params,dur:700,
+    draw(g,p,I){st.reset();panel(g,I);const W=I.w,H=I.h,ink=g.c('ink'),mu=g.c('muted'),acc=g.c('accent'),e=g.c('e'),bad=g.c('bad'),warm=g.c('warm');
+      const X=p.ex&&MAP[p.ex],gap=16,cw=(W-3*gap)/2,top=8,chh=184,en=p.en>.5;
+      /* the two stations */
+      const station=(i,title,val,name,col,vcol)=>{const x=gap+i*(cw+gap),cx=x+cw/2;g.rrect(x,top,cw,chh,22,D.mix(col,g.c('card'),.9),col,4);st.add(chh);
+        say(g,title,cx,top+38,fitPx(g,title,cw-24,40,36),{align:'center',color:col});
+        if(val)chip(g,val,cx,top+100,vcol||col,{px:fitPx(g,val,cw-60,44,36),align:'center'});if(name)say(g,name,cx,top+156,fitPx(g,name,cw-24,36,36),{align:'center'})};
+      const showL=X&&(X.dir>0||p.re>.5),showR=X&&(X.dir<0||p.re>.5);
+      station(0,en?'one mole':'moles',en?IE.mol+' kJ':p.half>.5?'0.5000 mol':showL?X.L[0]:'',en?'of Na atoms':p.half>.5?'of CO_2':showL?X.L[1]:'',acc,en?ink:acc);
+      station(1,en?'one atom':'particles',en?(p.one>.5?IE.atom+' J':''):p.half>.5?sci('3.011',23):showR?X.R[0]:'',en?(p.one>.5?'for one Na atom':''):p.half>.5?'molecules':showR?X.R[1]:'',e,en?ink:e);
+      /* the bridge: an arc from one station to the other, with the factor */
+      const dir=X?X.dir:en?1:p.half>.5?-1:0,ax=gap+cw/2,bx=W-gap-cw/2,y0=top+chh+8,ctx=g.ctx;
+      ctx.beginPath();ctx.moveTo(ax,y0);ctx.quadraticCurveTo(W/2,y0+64,bx,y0);ctx.lineWidth=6;ctx.strokeStyle=mu;ctx.stroke();
+      const head=(x,y,s)=>{ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x-s*22,y+8);ctx.lineTo(x-s*8,y+24);ctx.closePath();ctx.fillStyle=mu;ctx.fill()};
+      if(dir>=0)head(bx,y0,1);if(dir<=0)head(ax,y0,-1);
+      say(g,en?'÷ '+NA_T:NA_T+' per mole',W/2,y0+76,40,{align:'center',color:mu});
+      if(X){const px=Math.min(44,fitPx(g,'× '+X.den[0]+' '+X.den[1],W-60,44,36),fitPx(g,X.given[0]+' '+X.given[1],W-40,44,36)),gy=342,fy=450;
+        const gc=X.dir>0?acc:e,nc=X.dir>0?e:acc,gb=nu(g,X.given[0],X.given[1],W/2,gy,px,gc,gc,'center');
+        const fw=Math.max(nuW(g,X.num[0],X.num[1],px),nuW(g,X.den[0],X.den[1],px))+24,wx=chemW(g,'×',px),fx0=(W-(wx+18+fw))/2,fc=fx0+wx+18+fw/2;
+        say(g,'×',fx0,fy,px,{color:mu});const nb=nu(g,X.num[0],X.num[1],fc,fy-36,px,nc,nc,'center');g.line(fc-fw/2,fy,fc+fw/2,fy,mu,4);const db=nu(g,X.den[0],X.den[1],fc,fy+36,px,gc,gc,'center');
+        fade(g,p.cn,()=>{g.line(gb.x0-6,gy+16,gb.x1+6,gy-16,bad,5);g.line(db.x0-6,fy+52,db.x1+6,fy+20,bad,5);g.rrect(nb.x0-9,fy-36-px/2-8,nb.x1-nb.x0+18,px+16,14,null,nc,4)});
+        fade(g,p.re,()=>{const r=X.res[0]+' '+X.res[1],c=X.dir>0?e:acc,w=chemW(g,'=',44)+14+chipW(g,r,44),x0=(W-w)/2;say(g,'=',x0,556,44,{color:mu});chip(g,r,x0+chemW(g,'=',44)+14,556,c,{px:fitPx(g,r,W-100,44,36),align:'left'});
+          say(g,X.chk,W/2,638,fitPx(g,X.chk,W-24,36,36),{align:'center',color:mu})})}
+      fade(g,p.half,()=>{say(g,'Moles can be fractions',W/2,348,40,{align:'center'});const x=40,w=W-80;g.rrect(x,396,w,66,14,g.c('card2'),acc,4);g.rrect(x,396,w/2,66,14,D.mix(acc,g.c('card'),.55),null);
+        say(g,'0',x,500,36,{color:mu});say(g,'1 mol',x+w,500,36,{align:'right',color:mu});chip(g,'0.5000 mol',W/2,580,acc,{px:44,align:'center'});say(g,'Check: half of '+NA_T,W/2,650,36,{align:'center',color:mu})});
+      if(en){const na=g.c('metal');balls(g,[[-1,0],[1,0],[0,1.73]].map(([x,y])=>({p:[x*101,y*101,0],r:BS*RCOV.Na,color:na,label:'Na',px:40})),[],gap+cw/2,446,.4,{},st);
+        fade(g,p.one,()=>{const cx=W-gap-cw/2-40,cy=440;balls(g,[{p:[0,0,0],r:BS*RCOV.Na,color:na,label:'Na',px:44}],[],cx,cy,.5,{},st);
+          const ex=cx+120,ey=cy-74;g.line(cx+50,cy-30,ex-24,ey+14,mu,4,[8,7]);g.electron(ex,ey,18);g.line(ex-9,ey,ex+9,ey,g.c('on-ion'),4)});
+        fade(g,p.why,()=>{say(g,'Per mole:',W/2,582,44,{align:'center'});say(g,'numbers of a handy size',W/2,640,40,{align:'center'})})}
+    },
+    units:(p,I)=>{const W=I.w,gap=16,cw=(W-3*gap)/2,out=[unit(gap,8,cw,184,'moles'),unit(W-gap-cw,8,cw,184,'particles'),unit(gap,198,W-2*gap,110,'the bridge')];
+      if(p.ex){out.push(unit(8,312,W-16,200,'the factor'));if(p.re>.5)out.push(unit(8,522,W-16,70,'the result'),unit(8,612,W-16,52,'the check'))}
+      if(p.half>.5)out.push(unit(8,318,W-16,350,'moles can be fractions'));if(p.en>.5)out.push(unit(8,330,W-16,200,p.one>.5?'one atom loses an electron':'a mole of sodium atoms'));if(p.why>.5)out.push(unit(8,550,W-16,120,'per mole'));return out},
+    meta:(p,s)=>{const X=p.ex&&MAP[p.ex];if(X)return {stage:s,key:p.ex,dir:X.dir>0?'moles to particles':'particles to moles',given:uni(X.given.join(' ')),factor:uni(X.num.join(' ')+' / '+X.den.join(' ')),
+        canceled:p.cn>.5?X.den[1]:null,remains:p.cn>.5?X.num[1]:null,result:p.re>.5?uni(X.res.join(' ')):null,particle:X.dir>0?X.res[1]:X.given[1],check:p.re>.5?uni(X.chk):null,numbers:X.n,minShape:st.min};
+      if(p.half>.5)return {stage:s,key:'half',particles:3.011e23,moles:0.5000,label:'Moles can be fractions',minShape:st.min};
+      if(p.en>.5)return {stage:s,key:'energy',perMole:IE.mol,perMoleShown:IE.mol+' kJ',perAtom:p.one>.5?uni(IE.atom)+' J':null,perAtomValue:8.24e-19,why:p.why>.5?'Per mole: numbers of a handy size':null,minShape:st.min};
+      return {stage:s,key:'map',bridge:uni(NA_T)+' per mole',stations:['moles','particles'],minShape:st.min}}});
+});
+
+/* ---------- 10. naclCrystal: sodium chloride, a crystal of ions; one formula unit; counting formula units; "molecules" is the wrong particle ----------
+   stages: crystal (live), unit (live), count, wrong. Shannon radii (Na⁺ 102 pm, Cl⁻ 181 pm), ions touching along the 564 pm cell's edges. */
+D.sim('naclCrystal',function(host){
+  const st=stats(),b={pair:0,ct:0,wr:0},params={crystal:{...b},unit:{...b,pair:1},count:{...b,pair:1,ct:1},wrong:{...b,pair:1,wr:1}},S=NACL.a/2,ions=[];
+  for(let x=-1;x<=1;x++)for(let y=-1;y<=1;y++)for(let z=-1;z<=1;z++)ions.push({p:[x,y,z],cat:((x+y+z)%2+2)%2===0,lit:(x===1&&y===1&&z===1)||(x===0&&y===1&&z===1)});
+  const sc=105,view=(I,live)=>({cx:I.w/2,cy:250,scale:sc,yaw:-.6+(live?.3*Math.sin(I.t*.6):0),pitch:.4,dist:30,fog:.18,minLabel:36});
+  return D.canvasSim(host,{stages:['crystal','unit','count','wrong'],params,dur:800,live:s=>s==='crystal'||s==='unit',
+    draw(g,p,I){st.reset();panel(g,I);const W=I.w,ink=g.c('ink'),e=g.c('e'),bad=g.c('bad'),acc=g.c('accent');
+      const atoms=ions.map(o=>({p:o.p,r:(o.cat?RION.Na:RION.Cl)/S,color:o.cat?g.c('cat'):g.c('an'),label:o.cat?'+':'−',labelPx:48,alpha:o.lit?1:1-.6*p.pair,ring:o.lit&&p.pair>.5}));
+      const P=D.spheres(g,{atoms},view(I,I.live));P.forEach(q=>st.add(2*q.r));
+      fade(g,1-p.pair,()=>say(g,'a crystal of ions, no molecules',W/2,548,40,{align:'center'}));
+      fade(g,p.pair*(1-p.ct)*(1-p.wr),()=>chip(g,'one formula unit: one Na^+ and one Cl^−',W/2,552,e,{px:fitPx(g,'one formula unit: one Na^+ and one Cl^−',W-60,40,36),align:'center'}));
+      fade(g,p.ct,()=>{say(g,NACL.mol.toFixed(2)+' mol × '+NA_T+' per mol',W/2,540,40,{align:'center'});chip(g,'= '+NACL.fu+' formula units',W/2,620,e,{px:40,align:'center'})});
+      fade(g,p.wr,()=>{chip(g,NACL.wrongMol.toFixed(2)+' mol of NaCl',W/2,540,acc,{px:40,align:'center'});const px=40,a=NACL.wrong,b2='molecules',c='formula units',wa=chemW(g,a,px),wb=chemW(g,b2,px),wc=chemW(g,c,px),w=wa+18+wb+24+wc,x0=(W-w)/2,y=624;
+        say(g,a,x0,y,px);say(g,b2,x0+wa+18,y,px,{color:bad});g.line(x0+wa+12,y+4,x0+wa+18+wb+6,y-4,bad,5);say(g,c,x0+wa+18+wb+24,y,px,{color:e})});
+    },
+    units:(p,I)=>{const W=I.w,H=I.h,out=[unit(W/2-250,10,500,480,'the crystal')];if(p.pair>.5)out.push(unit(W/2-10,20,330,260,'one formula unit'));
+      if(p.ct>.5)out.push(unit(12,500,W-24,160,'the count'));if(p.wr>.5)out.push(unit(12,500,W-24,170,'the wrong particle'));if(p.pair>.5&&p.ct<.5&&p.wr<.5)out.push(unit(12,516,W-24,72,'one formula unit'));return out},
+    meta:(p,s)=>({stage:s,radii:{Na:RION.Na,Cl:RION.Cl},cell:NACL.a,ions:ions.length,cations:ions.filter(o=>o.cat).length,lit:p.pair>.5?ions.filter(o=>o.lit).map(o=>o.cat?'Na⁺':'Cl⁻').sort():[],
+      count:p.ct>.5?uni(NACL.fu):null,particle:'formula units',wrong:p.wr>.5?uni(NACL.wrong):null,wrongParticle:p.wr>.5?'molecules':null,
+      numbers:{count:[NACL.mol,2.71e24],wrong:[NACL.wrongMol,1.51e24]},live:s==='crystal'||s==='unit',minShape:st.min})});
+});
+
+/* ---------- 11. atomCounter: a molecule (or one formula unit) and a counting table; the subscript multiplies the moles ----------
+   stages: H2O/one, H2O/mol, CO2/mol, CO2/atoms, NaCl/mol, NH3/mol */
+const AC={
+  'H2O/one':{m:'H2O',f:[['H',0],['2',1],['O',0]],title:'In one H_2O molecule:',rows:[['H atoms','2 atoms','n'],['O atoms','1 atom','n']],sub:{H:2,O:1},molIn:null,molOut:null},
+  'H2O/mol':{m:'H2O',f:[['H',0],['2',1],['O',0]],title:'In 1 mol of H_2O:',rows:[['H atoms','1 mol × 2 = 2 mol','mol'],['O atoms','1 mol × 1 = 1 mol','mol']],sub:{H:2,O:1},molIn:1,molOut:{H:2,O:1}},
+  'CO2/mol':{m:'CO2',f:[['C',0],['O',0],['2',1]],title:'In 2.00 mol of CO_2:',rows:[['O atoms','2.00 mol × 2 = 4.00 mol','mol']],sub:{C:1,O:2},molIn:2.00,molOut:{O:4.00}},
+  'CO2/atoms':{m:'CO2',f:[['C',0],['O',0],['2',1]],title:'In 2.00 mol of CO_2:',rows:[['O atoms','4.00 mol × '+NA_T,'ink'],['O atoms','2.41 × 10^{24} O atoms','n']],sub:{C:1,O:2},molIn:2.00,molOut:{O:4.00},atoms:'2.41 × 10^{24}'},
+  'NaCl/mol':{m:'NaCl',f:[['NaCl',0]],title:'In 1 mol of NaCl:',rows:[['Na^+ ions','1 mol','mol'],['Cl^− ions','1 mol','mol']],sub:{Na:1,Cl:1},molIn:1,molOut:{'Na⁺':1,'Cl⁻':1}},
+  'NH3/mol':{m:'NH3',f:[['N',0],['H',0],['3',1]],title:'In 0.500 mol of NH_3:',rows:[['H atoms','0.500 mol × 3 = 1.50 mol','mol']],sub:{N:1,H:3},molIn:0.500,molOut:{H:1.50}}};
+D.sim('atomCounter',function(host){
+  const st=stats(),keys=Object.keys(AC),params={};keys.forEach(k=>{params[k]={k}});
+  return D.canvasSim(host,{stages:keys,params,dur:700,
+    draw(g,p,I){st.reset();panel(g,I);const W=I.w,H=I.h,c=AC[p.k],ink=g.c('ink'),FPX=64,SPX=46,col={n:g.c('e'),mol:g.c('accent'),ink:ink};
+      const narrow=W<680,mx=narrow?185:Math.min(W*.27,200),my=150;
+      if(c.m==='H2O'){const m=water();balls(g,m.atoms,m.bonds,mx+(narrow?0:10),my,1.7,{},st)}
+      if(c.m==='CO2'){const m=co2();balls(g,m.atoms,m.bonds,mx+10,my,1.05,{},st)}
+      if(c.m==='NH3'){const m=nh3();balls(g,m.atoms,m.bonds,mx,my+10,1.7,{pitch:.3,yaw:0},st)}
+      if(c.m==='NaCl'){const m=ionPair(g,g.c('cat'),g.c('an'));balls(g,m.atoms,[],mx+10,my,.4,{},st)}
+      /* the formula, its subscript ringed: the subscript counts the atoms and multiplies the moles */
+      let x=Math.max(mx+(c.m==='NH3'||c.m==='H2O'?190:170),W*.52);const fy=my-10;
+      c.f.forEach(([t,s])=>{if(s){const w=chemW(g,t,SPX),cx=x+36,cy=fy+FPX*.28;g.circle(cx,cy,34,null,g.c('warm'),5);say(g,t,cx,cy,SPX,{align:'center',color:g.c('warm')});x=cx+38}
+        else{x+=say(g,t,x,fy,FPX)+2}});
+      const ty=338;say(g,c.title,16,ty,fitPx(g,c.title,W-32,44,36));
+      let y=ty+70;c.rows.forEach(([l,v,k])=>{const px=fitPx(g,v,W-60,40,36),wl=chemW(g,l,36),wc=chipW(g,v,px);
+        if(16+wl+16+wc<=W-16){lab(g,l,16,y);chip(g,v,16+wl+16,y,col[k],{px,align:'left'});y+=82}
+        else{lab(g,l,16,y);chip(g,v,16,y+56,col[k],{px,align:'left'});y+=140}});
+    },
+    units:(p,I)=>{const W=I.w,c=AC[p.k],mx=W<680?185:Math.min(W*.27,200),out=[unit(Math.max(0,mx-180),10,370,290,'the molecule'),unit(W*.5,40,W*.5-8,220,'the formula')];
+      let y=338+70;out.push(unit(8,300,W-16,70,'the title'));c.rows.forEach(([l,v])=>{out.push(unit(8,y-36,W-16,W<680?130:72,l));y+=W<680?140:82});return out},
+    meta:(p,s)=>{const c=AC[p.k];return {stage:s,formula:uni({H2O:'H_2O',CO2:'CO_2',NaCl:'NaCl',NH3:'NH_3'}[c.m]),subscripts:c.sub,molIn:c.molIn,molOut:c.molOut,atomsOut:c.atoms?uni(c.atoms):null,
+      rows:c.rows.map(r=>uni(r[0]+': '+r[1])),ions:c.m==='NaCl',minShape:st.min}}});
+});
+})();
+</script>
