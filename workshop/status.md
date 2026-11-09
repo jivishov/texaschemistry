@@ -1,3 +1,3 @@
-turn: implementer
+turn: teacher
 step: 02
-waiting_for: workshop/reports/02-animations-and-deck.md (in-session: the orchestrator's agent run of briefs/02-animations-and-deck.md; the bench first, then the deck)
+waiting_for: the teacher's review of unit5/slides-5-1.html (md5 be9bc2c7…) with its contact and zoom sheets (workshop/artifacts/02/sheets/); remarks become fix brief 02a, "no remarks" releases brief 03 (blueprint numbers, dark theme, zoom matrix, final suites)
