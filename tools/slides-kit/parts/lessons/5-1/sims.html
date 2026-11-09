@@ -167,6 +167,7 @@ D.sim('coinScale',function(host){
 /* ---------- 2. centJar: a jar of pennies with two kinds of cents; the wrong divisors, the sample, the average, the count, the isotopes ----------
    stages: jar, wrong, sample, average, count, isotopes */
 const ISO_R=46; /* px: the one radius of every isotope sphere (review 02 F1) */
+const ISO_DK=.4; /* the heavier isotope's shade: --rope mixed 40% toward black (review 03 F2); the icon ic-avgmass uses the same mix */
 D.sim('centJar',function(host){
   const st=stats(),b={main:1,wr:0,sa:0,av:0,ct:0,iso:0};let iso={n:0,sizes:0,shades:0,radius:null};
   const params={jar:{...b},wrong:{...b,wr:1},sample:{...b,sa:1},average:{...b,sa:1,av:1},count:{...b,ct:1},isotopes:{...b,main:0,iso:1}};
@@ -194,7 +195,7 @@ D.sim('centJar',function(host){
         /* one size, two shades: isotopes of one element have the same size; the darker shade stands for the heavier mass */
         const ax=W*.27,ay=H*.55,rp=g.c('rope'),lt=[[-120,-62],[120,-62],[-120,62],[0,62]],dk=[[0,-62],[120,62]];
         lab(g,'isotopes',ax+20,ay-176,{align:'center',px:40,color:ink});
-        const A=[...lt.map(([x,y])=>({p:[x,y,0],r:ISO_R,color:rp,label:'Cu',px:44})),...dk.map(([x,y])=>({p:[x,y,0],r:ISO_R,color:D.mix(rp,'#000000',.15),label:'Cu',px:44}))];
+        const A=[...lt.map(([x,y])=>({p:[x,y,0],r:ISO_R,color:rp,label:'Cu',px:44})),...dk.map(([x,y])=>({p:[x,y,0],r:ISO_R,color:D.mix(rp,'#000000',ISO_DK),label:'Cu',px:44}))];
         iso={n:A.length,sizes:new Set(A.map(a=>a.r)).size,shades:new Set(A.map(a=>a.color)).size,radius:ISO_R};
         balls(g,A,[],ax,ay,1,{},st);
         const cx=W*.76,cy=ay,cs=250;g.rrect(cx-cs/2,cy-cs/2,cs,cs,18,g.c('card'),g.c('accent'),5);st.add(cs);
