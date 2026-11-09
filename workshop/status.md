@@ -1,3 +1,3 @@
 turn: implementer
-step: 03
-waiting_for: workshop/reports/03-final.md (in-session: the orchestrator's agent run of briefs/03-final.md; four fidelity refinements, the dark-theme particle color, the blueprint numbers, both themes with the zoom matrix, the kit records)
+step: 03a
+waiting_for: workshop/reports/03a-isotope-picture.md (in-session: the orchestrator's agent run of briefs/03a-isotope-picture.md; the slide 7 word-card icon at one size, a plainly darker second shade in the isotope stage, the final suites in both themes)
