@@ -59,7 +59,7 @@
     {show:"s02-l0",stage:"s02-sim:jar",t:0.5,note:"Ask: who has a jar of coins at home? How would you find out how many are in it?"},
     {show:"s02-l1",hide:"s02-l0",stage:"s02-sim:guess",t:0.5,note:"Prediction: each table writes one guess and one way to count. Collect the guesses on the board. Do not judge them."},
     {show:"s02-l2",hide:"s02-l1",stage:"s02-sim:tally",t:0.5,note:"The counter climbs one coin a second, then \"lost count\". Ask: how long would a jar of 400 take? Listen for \"too long\"."},
-    {show:"s02-l3",hide:"s02-l2",stage:"s02-sim:scale",t:0.25,note:"The scale reads the coins: 2,000.0 g. Every nickel has a mass of 5.000 g."},
+    {show:"s02-l3",hide:"s02-l2",stage:"s02-sim:scale",t:0.25,note:"The scale reads the coins: 2,000.0 g. Every nickel has a mass of 5.000 g. The scale was zeroed with the empty jar; slide 6 teaches zeroing."},
     {show:"s02-l4",hide:"s02-l3",stage:"s02-sim:reveal",t:0.25,note:"2,000.0 g ÷ 5.000 g = 400 nickels. Compare with the guesses. Misconception to listen for: \"multiply the two masses\"."},
     {show:"s02-l5",hide:"s02-l4",t:0.5,note:"The thread line. Students write it at the top of the page: too many to count? Weigh them."}
   ]);</script>
@@ -188,7 +188,7 @@
       </div>
     </div>
   </div>
-  <aside class="notes">Lesson 2.3 link: the average atomic mass on the periodic table is the average over an element's isotopes, just as 2.6769 g is the average cent of this jar. "About 407" (1,017.1 g ÷ 2.500 g) and "about 327" (1,017.1 g ÷ 3.11 g) are computed from the reading's data; the reading says "too many" and "too few". The two atom sizes in the isotope picture stand for two masses; real isotopes of one element have the same size.</aside>
+  <aside class="notes">Lesson 2.3 link: the average atomic mass on the periodic table is the average over an element's isotopes, just as 2.6769 g is the average cent of this jar. "About 407" (1,017.1 g ÷ 2.500 g) and "about 327" (1,017.1 g ÷ 3.11 g) are computed from the reading's data; the reading says "too many" and "too few". The isotope picture draws every copper atom at one size in two shades: the shades stand for two masses, and isotopes of one element have the same size.</aside>
   <script>Deck.frames('s07',[
     {show:"s07-c0",stage:"s07-sim:jar",focus:"s07-sim",t:0.25,note:"Two kinds of cents: made before 1982 (95% copper, 3.11 g) and made after 1982 (zinc coated with copper, 2.500 g). The jar of pennies has a mass of 1,017.1 g."},
     {show:"s07-pred",t:0.25,note:"Prediction: thumbs up or down for dividing by 2.500 g. Most say up."},
@@ -197,7 +197,7 @@
     {show:"s07-c3",stage:"s07-sim:average",t:0.25,note:"267.69 g ÷ 100 = 2.6769 g per cent. Misconception: \"average 2.500 and 3.11\" (works only with equal numbers of each)."},
     {show:"s07-c4",hide:["s07-c1", "s07-c2"],stage:"s07-sim:count",t:0.25,note:"1,017.1 g ÷ 2.6769 g = about 380 cents. Check: 2.6769 lies between 2.500 and 3.11."},
     {show:"s07-word",hide:"s07-c3",t:0.25,note:"Read the word card; students repeat \"average atomic mass, masa atómica promedio\"."},
-    {show:"s07-c5",stage:"s07-sim:isotopes",t:0.25,note:"The coins become atoms: one element, a mix of isotopes. The periodic table gives the average mass: copper 63.546. No isotope masses are needed."},
+    {show:"s07-c5",stage:"s07-sim:isotopes",t:0.25,note:"The coins become atoms: one element, a mix of isotopes. The two shades stand for two masses. Isotopes of one element have the same size. The periodic table gives the average mass: copper 63.546. No isotope masses are needed."},
     {show:"s07-rule",hide:["s07-c4", "s07-word"],t:1,note:"Students copy the rule card (reading §5.1.1 Key idea)."},
     {show:"s07-check",hide:["s07-c5", "s07-rule"],stage:"s07-sim:sample",t:0.75,note:"Hands up for A, B or C. The animation returns to the sample of 100 cents."},
     {show:"s07-ans",cls:{"s07-a": "right", "s07-check": "done"},t:0.25,note:"A is right: weigh a sample of this jar and divide its mass by its count. B (the average of 2.500 g and 3.11 g): that works only if the jar holds equal numbers of each kind. C (2.500 g): dividing by the lighter cent counts too many coins."}
@@ -352,7 +352,7 @@
   <div class="body">
     <div class="sim" id="s12-sim" data-sim="moleHistory" data-band="214" aria-label="A time ruler from 1800 to 2020 with the people and dates behind the mole."></div>
     <div class="ptrow blk" id="s12-row" data-label="history"><div class="stack">
-      <p class="caprow" id="s12-p0">1811: Avogadro's idea. Equal gas volumes hold equal numbers of particles. He never knew the number.</p>
+      <p class="caprow" id="s12-p0">1811: Avogadro's idea. At one temperature and pressure, equal gas volumes hold equal numbers of particles. He never knew the number.</p>
       <p class="caprow" id="s12-p1" data-label="1865">1865: Loschmidt made the first estimate of the size of molecules.</p>
       <p class="caprow" id="s12-p2" data-label="1890s">1890s: Ostwald made the word Mol a unit.</p>
       <p class="caprow" id="s12-p3" data-label="1909">1909: Jean Perrin measured it several ways and named it after Avogadro. Nobel Prize, 1926.</p>
@@ -364,7 +364,7 @@
   </div>
   <aside class="notes">The reading's section "How the number was found". The 1971 definition (the atoms in exactly 12 g of carbon-12) is "a definition that older books still print". The silicon spheres of the Avogadro project come next, on slide 13.</aside>
   <script>Deck.frames('s12',[
-    {show:["s12-row", "s12-p0"],stage:"s12-sim:avogadro",focus:"s12-sim",t:0.25,note:"1811, Amedeo Avogadro: equal volumes of gases at the same temperature and pressure hold equal numbers of particles. He never knew how large that number was. Misconception: \"Avogadro measured the number\"."},
+    {show:["s12-row", "s12-p0"],stage:"s12-sim:avogadro",focus:"s12-sim",t:0.25,note:"1811, Amedeo Avogadro: equal volumes of gases at the same temperature and pressure hold equal numbers of particles. The condition matters: both gases at one temperature and one pressure. He never knew how large that number was. Misconception: \"Avogadro measured the number\"."},
     {show:"s12-p1",hide:"s12-p0",stage:"s12-sim:loschmidt",t:0.25,note:"1865, Josef Loschmidt: the first estimate of the size of molecules, and so of the number."},
     {show:"s12-p2",hide:"s12-p1",stage:"s12-sim:ostwald",t:0.25,note:"1890s, Wilhelm Ostwald: the word Mol as a unit."},
     {show:"s12-p3",hide:"s12-p2",stage:"s12-sim:perrin",t:0.25,note:"Around 1909, Jean Perrin measured the number by several independent methods and proposed naming it after Avogadro; Nobel Prize in Physics, 1926."},
@@ -383,15 +383,15 @@
       <div class="card" id="s13-c0" data-label="the sphere"><p class="tag">The sphere</p><p>The Avogadro project: a nearly perfect sphere of silicon.</p></div>
       <div class="card" id="s13-pred" data-label="predict"><p class="tag">Predict</p><p>How could anyone count the atoms in this ball?</p></div>
       <div class="card" id="s13-c1" data-label="one crystal"><p class="tag">One crystal</p><p>The sphere is one crystal. Its atoms repeat in identical cubes.</p></div>
-      <div class="card" id="s13-cube" data-label="one cube"><p class="tag">One cube</p><p>X-rays measure one cube's edge: 543.102&nbsp;pm. Each cube holds 8 atoms.</p></div>
+      <div class="card" id="s13-cube" data-label="one cube"><p class="tag">One cube</p><p>X-rays measure one cube's edge: 543.102&nbsp;pm. Corner and face atoms are shared: 8 atoms per cube.</p></div>
       <div class="card" id="s13-c2" data-label="one atom"><p class="tag">One atom</p><p>The density gives the mass of one cube, so of one atom.</p></div>
       <div class="card" id="s13-c3" data-label="the count"><p class="tag">The count</p><p>Mass of one mole of silicon ÷ mass of one atom = 6.022&nbsp;×&nbsp;10<sup>23</sup>.</p></div>
       <div class="card rule reg" id="s13-rule" data-label="rule"><p class="tag">Rule</p><p>The atoms of a crystal repeat in identical cubes. Count one cube and measure its size. Then the whole sphere is counted.</p></div>
       <div class="card check" id="s13-check" data-label="check">
         <p class="tag">Check</p>
         <p class="q">In the Avogadro project, a silicon sphere was used to…</p>
-        <ol class="opts col1" data-lay="col"><li class="opt" id="s13-a" data-ok="1" data-fb="Volume, density and atom spacing give the count."><b>A</b><span>count its atoms: mass, density, atom spacing</span></li><li class="opt" id="s13-b" data-ok="0" data-fb="The spheres counted atoms. Since 2019 the kilogram is defined by the Planck constant."><b>B</b><span>define the kilogram by its size</span></li><li class="opt" id="s13-c" data-ok="0" data-fb="The project counted atoms. It did not compare their sizes."><b>C</b><span>compare silicon and carbon atoms</span></li></ol>
-        <div class="af"><p class="ans" id="s13-ans" data-label="answer">A. They gave the value fixed in 2019.</p><p class="fb" aria-live="polite"></p></div>
+        <ol class="opts col1" data-lay="col"><li class="opt" id="s13-a" data-ok="1" data-fb="Volume, density and atom spacing give the count."><b>A</b><span>count atoms: mass, density, atom spacing</span></li><li class="opt" id="s13-b" data-ok="0" data-fb="The spheres counted atoms. Since 2019 the kilogram is defined by the Planck constant."><b>B</b><span>define the kilogram by its size</span></li><li class="opt" id="s13-c" data-ok="0" data-fb="The project counted atoms. It did not compare their sizes."><b>C</b><span>compare silicon and carbon atoms</span></li></ol>
+        <div class="af"><p class="ans" id="s13-ans" data-label="answer">A. Those measurements gave the value fixed in 2019.</p><p class="fb" aria-live="polite"></p></div>
       </div>
     </div>
   </div>
@@ -400,7 +400,7 @@
     {show:"s13-c0",stage:"s13-sim:sphere",focus:"s13-sim",t:0.25,note:"The international Avogadro project polished nearly perfect spheres of silicon. Ask: what could you measure about this ball?"},
     {show:"s13-pred",stage:"s13-sim:sphere",t:0.25,note:"Prediction: how could anyone count its atoms? Collect ideas. Misconception: \"they weighed one atom\"."},
     {show:"s13-c1",hide:["s13-c0", "s13-pred"],stage:"s13-sim:crystal",t:0.25,note:"The sphere is a single crystal: the atoms repeat in identical cubes. The model turns slowly."},
-    {show:"s13-cube",stage:"s13-sim:cube",t:0.25,note:"X-rays measure the edge of one cube: 543.102 pm. Each cube holds the equivalent of 8 atoms (8 corners × 1/8, 6 faces × 1/2, 4 inside)."},
+    {show:"s13-cube",stage:"s13-sim:cube",t:0.25,note:"X-rays measure the edge of one cube: 543.102 pm. The picture rings the 18 atoms that touch the cube; corner and face atoms are shared with the next cubes. Each cube holds the equivalent of 8 atoms: 8 corners × 1/8 + 6 faces × 1/2 + 4 inside = 8."},
     {show:"s13-c2",hide:"s13-c1",stage:"s13-sim:atom",t:0.25,note:"The density gives the mass of one cube; divide by 8 for the mass of one atom."},
     {show:"s13-c3",stage:"s13-sim:divide",t:0.25,note:"The mass of one mole of silicon ÷ the mass of one atom = the number of atoms in one mole: 6.022 × 10²³."},
     {show:"s13-rule",hide:["s13-cube", "s13-c2"],t:1,note:"Students copy the rule card. The project counted atoms; it did not weigh one atom directly."},

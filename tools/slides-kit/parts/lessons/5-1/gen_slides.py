@@ -113,7 +113,7 @@ S.append(slide('s02','t-hook','The coin jar','Hook','Reading §5.1.1','''    <di
  [dict(show='s02-l0',stage='s02-sim:jar',note='Ask: who has a jar of coins at home? How would you find out how many are in it?'),
   dict(hide='s02-l0',show='s02-l1',stage='s02-sim:guess',note='Prediction: each table writes one guess and one way to count. Collect the guesses on the board. Do not judge them.'),
   dict(hide='s02-l1',show='s02-l2',stage='s02-sim:tally',note='The counter climbs one coin a second, then "lost count". Ask: how long would a jar of 400 take? Listen for "too long".'),
-  dict(hide='s02-l2',show='s02-l3',stage='s02-sim:scale',note='The scale reads the coins: 2,000.0 g. Every nickel has a mass of 5.000 g.'),
+  dict(hide='s02-l2',show='s02-l3',stage='s02-sim:scale',note='The scale reads the coins: 2,000.0 g. Every nickel has a mass of 5.000 g. The scale was zeroed with the empty jar; slide 6 teaches zeroing.'),
   dict(hide='s02-l3',show='s02-l4',stage='s02-sim:reveal',note='2,000.0 g ÷ 5.000 g = 400 nickels. Compare with the guesses. Misconception to listen for: "multiply the two masses".'),
   dict(hide='s02-l4',show='s02-l5',note='The thread line. Students write it at the top of the page: too many to count? Weigh them.')]))
 # ---------- 3 launch
@@ -205,7 +205,7 @@ S.append(slide('s07','t-concept cw','Counting a mixed jar','Counting by weighing
 {check('s07','A jar holds both kinds. Which mass do you divide by?',['this jar\'s own average','the average of 2.500&nbsp;g and 3.11&nbsp;g','2.500&nbsp;g, a newer cent'],col=True,ans='A. Divide a sample\'s mass by its count.',right='A',
   fb=['The jar\'s own average is the right divisor.','That works only if the jar holds equal numbers of each kind.','Dividing by the lighter cent counts too many coins.'])}
     </div>''',
- 'Lesson 2.3 link: the average atomic mass on the periodic table is the average over an element\'s isotopes, just as 2.6769 g is the average cent of this jar. "About 407" (1,017.1 g ÷ 2.500 g) and "about 327" (1,017.1 g ÷ 3.11 g) are computed from the reading\'s data; the reading says "too many" and "too few". The two atom sizes in the isotope picture stand for two masses; real isotopes of one element have the same size.',
+ 'Lesson 2.3 link: the average atomic mass on the periodic table is the average over an element\'s isotopes, just as 2.6769 g is the average cent of this jar. "About 407" (1,017.1 g ÷ 2.500 g) and "about 327" (1,017.1 g ÷ 3.11 g) are computed from the reading\'s data; the reading says "too many" and "too few". The isotope picture draws every copper atom at one size in two shades: the shades stand for two masses, and isotopes of one element have the same size.',
  [dict(show='s07-c0',stage='s07-sim:jar',focus='s07-sim',note='Two kinds of cents: made before 1982 (95% copper, 3.11 g) and made after 1982 (zinc coated with copper, 2.500 g). The jar of pennies has a mass of 1,017.1 g.'),
   dict(show='s07-pred',note='Prediction: thumbs up or down for dividing by 2.500 g. Most say up.'),
   dict(hide='s07-pred',show='s07-c1',stage='s07-sim:wrong',note='÷ 2.500 g gives about 407: too many, because some cents are heavier. ÷ 3.11 g gives about 327: too few.'),
@@ -213,7 +213,7 @@ S.append(slide('s07','t-concept cw','Counting a mixed jar','Counting by weighing
   dict(show='s07-c3',stage='s07-sim:average',note='267.69 g ÷ 100 = 2.6769 g per cent. Misconception: "average 2.500 and 3.11" (works only with equal numbers of each).'),
   dict(hide=['s07-c1','s07-c2'],show='s07-c4',stage='s07-sim:count',note='1,017.1 g ÷ 2.6769 g = about 380 cents. Check: 2.6769 lies between 2.500 and 3.11.'),
   dict(hide='s07-c3',show='s07-word',note='Read the word card; students repeat "average atomic mass, masa atómica promedio".'),
-  dict(show='s07-c5',stage='s07-sim:isotopes',note='The coins become atoms: one element, a mix of isotopes. The periodic table gives the average mass: copper 63.546. No isotope masses are needed.'),
+  dict(show='s07-c5',stage='s07-sim:isotopes',note='The coins become atoms: one element, a mix of isotopes. The two shades stand for two masses. Isotopes of one element have the same size. The periodic table gives the average mass: copper 63.546. No isotope masses are needed.'),
   dict(hide=['s07-c4','s07-word'],show='s07-rule',note='Students copy the rule card (reading §5.1.1 Key idea).'),
   dict(hide=['s07-c5','s07-rule'],show='s07-check',stage='s07-sim:sample',note='Hands up for A, B or C. The animation returns to the sample of 100 cents.'),
   dict(show='s07-ans',cls={'s07-a':'right','s07-check':'done'},note='A is right: weigh a sample of this jar and divide its mass by its count. B (the average of 2.500 g and 3.11 g): that works only if the jar holds equal numbers of each kind. C (2.500 g): dividing by the lighter cent counts too many coins.')]))
@@ -323,7 +323,7 @@ S.append(slide('s11','t-concept wide','The size of a mole','The mole','Reading �
 # ---------- 12 who found the number (wide, no check)
 S.append(slide('s12','t-concept wide','Who found the number','The mole','Reading §5.1.2',f'''    <div class="sim" id="s12-sim" data-sim="moleHistory" data-band="214" aria-label="A time ruler from 1800 to 2020 with the people and dates behind the mole."></div>
     <div class="ptrow blk" id="s12-row" data-label="history"><div class="stack">
-      <p class="caprow" id="s12-p0">1811: Avogadro's idea. Equal gas volumes hold equal numbers of particles. He never knew the number.</p>
+      <p class="caprow" id="s12-p0">1811: Avogadro's idea. At one temperature and pressure, equal gas volumes hold equal numbers of particles. He never knew the number.</p>
       <p class="caprow" id="s12-p1" data-label="1865">1865: Loschmidt made the first estimate of the size of molecules.</p>
       <p class="caprow" id="s12-p2" data-label="1890s">1890s: Ostwald made the word Mol a unit.</p>
       <p class="caprow" id="s12-p3" data-label="1909">1909: Jean Perrin measured it several ways and named it after Avogadro. Nobel Prize, 1926.</p>
@@ -333,7 +333,7 @@ S.append(slide('s12','t-concept wide','Who found the number','The mole','Reading
       <div class="card rule reg" id="s12-rule" data-label="rule"><p class="tag">Rule</p><p>Since May 20, 2019 the number is exact: {NAX}. It is no longer measured.</p></div>
     </div></div>''',
  'The reading\'s section "How the number was found". The 1971 definition (the atoms in exactly 12 g of carbon-12) is "a definition that older books still print". The silicon spheres of the Avogadro project come next, on slide 13.',
- [dict(show=['s12-row','s12-p0'],stage='s12-sim:avogadro',focus='s12-sim',note='1811, Amedeo Avogadro: equal volumes of gases at the same temperature and pressure hold equal numbers of particles. He never knew how large that number was. Misconception: "Avogadro measured the number".'),
+ [dict(show=['s12-row','s12-p0'],stage='s12-sim:avogadro',focus='s12-sim',note='1811, Amedeo Avogadro: equal volumes of gases at the same temperature and pressure hold equal numbers of particles. The condition matters: both gases at one temperature and one pressure. He never knew how large that number was. Misconception: "Avogadro measured the number".'),
   dict(hide='s12-p0',show='s12-p1',stage='s12-sim:loschmidt',note='1865, Josef Loschmidt: the first estimate of the size of molecules, and so of the number.'),
   dict(hide='s12-p1',show='s12-p2',stage='s12-sim:ostwald',note='1890s, Wilhelm Ostwald: the word Mol as a unit.'),
   dict(hide='s12-p2',show='s12-p3',stage='s12-sim:perrin',note='Around 1909, Jean Perrin measured the number by several independent methods and proposed naming it after Avogadro; Nobel Prize in Physics, 1926.'),
@@ -347,18 +347,18 @@ S.append(slide('s13','t-concept cw','Counting the atoms in a silicon sphere','Th
 {card('s13-c0','The sphere','The Avogadro project: a nearly perfect sphere of silicon.','the sphere')}
 {card('s13-pred','Predict','How could anyone count the atoms in this ball?','predict')}
 {card('s13-c1','One crystal','The sphere is one crystal. Its atoms repeat in identical cubes.','one crystal')}
-{card('s13-cube','One cube','X-rays measure one cube\'s edge: 543.102&nbsp;pm. Each cube holds 8 atoms.','one cube')}
+{card('s13-cube','One cube','X-rays measure one cube\'s edge: 543.102&nbsp;pm. Corner and face atoms are shared: 8 atoms per cube.','one cube')}
 {card('s13-c2','One atom','The density gives the mass of one cube, so of one atom.','one atom')}
 {card('s13-c3','The count','Mass of one mole of silicon ÷ mass of one atom = '+NA+'.','the count')}
 {card('s13-rule','Rule','The atoms of a crystal repeat in identical cubes. Count one cube and measure its size. Then the whole sphere is counted.','rule','rule reg')}
-{check('s13','In the Avogadro project, a silicon sphere was used to…',['count its atoms: mass, density, atom spacing','define the kilogram by its size','compare silicon and carbon atoms'],ans='A. They gave the value fixed in 2019.',right='A',
+{check('s13','In the Avogadro project, a silicon sphere was used to…',['count atoms: mass, density, atom spacing','define the kilogram by its size','compare silicon and carbon atoms'],ans='A. Those measurements gave the value fixed in 2019.',right='A',
   fb=['Volume, density and atom spacing give the count.','The spheres counted atoms. Since 2019 the kilogram is defined by the Planck constant.','The project counted atoms. It did not compare their sizes.'])}
     </div>''',
  '<b>Honors (notes only, never assessed).</b> The real spheres were enriched to more than 99.99% silicon-28: natural silicon is a mix of silicon-28, -29 and -30, and every uncertainty in those abundances becomes an uncertainty in the count; the other isotopes were measured with a mass spectrometer. <b>The model\'s arithmetic</b> with natural silicon: one cube has an edge of 543.102 pm, so a volume of (5.43102 × 10⁻⁸ cm)³ = 1.6019 × 10⁻²² cm³; × 2.329 g/cm³ = 3.7308 × 10⁻²² g per cube; ÷ 8 atoms = 4.6635 × 10⁻²³ g per atom; 28.085 g ÷ 4.6635 × 10⁻²³ g = 6.022 × 10²³ atoms per mole. The real spheres used their own measured values. "Molar mass" is Lesson 5.2\'s word; here say "the mass of one mole of silicon".',
  [dict(show='s13-c0',stage='s13-sim:sphere',focus='s13-sim',note='The international Avogadro project polished nearly perfect spheres of silicon. Ask: what could you measure about this ball?'),
   dict(show='s13-pred',stage='s13-sim:sphere',note='Prediction: how could anyone count its atoms? Collect ideas. Misconception: "they weighed one atom".'),
   dict(hide=['s13-c0','s13-pred'],show='s13-c1',stage='s13-sim:crystal',note='The sphere is a single crystal: the atoms repeat in identical cubes. The model turns slowly.'),
-  dict(show='s13-cube',stage='s13-sim:cube',note='X-rays measure the edge of one cube: 543.102 pm. Each cube holds the equivalent of 8 atoms (8 corners × 1/8, 6 faces × 1/2, 4 inside).'),
+  dict(show='s13-cube',stage='s13-sim:cube',note='X-rays measure the edge of one cube: 543.102 pm. The picture rings the 18 atoms that touch the cube; corner and face atoms are shared with the next cubes. Each cube holds the equivalent of 8 atoms: 8 corners × 1/8 + 6 faces × 1/2 + 4 inside = 8.'),
   dict(hide='s13-c1',show='s13-c2',stage='s13-sim:atom',note='The density gives the mass of one cube; divide by 8 for the mass of one atom.'),
   dict(show='s13-c3',stage='s13-sim:divide',note='The mass of one mole of silicon ÷ the mass of one atom = the number of atoms in one mole: 6.022 × 10²³.'),
   dict(hide=['s13-cube','s13-c2'],show='s13-rule',note='Students copy the rule card. The project counted atoms; it did not weigh one atom directly.'),

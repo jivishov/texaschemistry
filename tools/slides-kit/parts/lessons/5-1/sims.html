@@ -166,8 +166,9 @@ D.sim('coinScale',function(host){
 
 /* ---------- 2. centJar: a jar of pennies with two kinds of cents; the wrong divisors, the sample, the average, the count, the isotopes ----------
    stages: jar, wrong, sample, average, count, isotopes */
+const ISO_R=46; /* px: the one radius of every isotope sphere (review 02 F1) */
 D.sim('centJar',function(host){
-  const st=stats(),b={main:1,wr:0,sa:0,av:0,ct:0,iso:0};
+  const st=stats(),b={main:1,wr:0,sa:0,av:0,ct:0,iso:0};let iso={n:0,sizes:0,shades:0,radius:null};
   const params={jar:{...b},wrong:{...b,wr:1},sample:{...b,sa:1},average:{...b,sa:1,av:1},count:{...b,ct:1},isotopes:{...b,main:0,iso:1}};
   const OLD=fmt(COIN.old,2)+' g',NEW=fmt(COIN.new,3)+' g',JAR=fmt(CENTS.jar,1)+' g',SMP=fmt(CENTS.sample,2)+' g',AVG=fmt(CENTS.avg,4)+' g';
   return D.canvasSim(host,{stages:['jar','wrong','sample','average','count','isotopes'],params,dur:800,
@@ -190,9 +191,11 @@ D.sim('centJar',function(host){
           const c=NEW+' < '+AVG+' < '+OLD,wl=chemW(g,'Check:',36),w=wl+14+chemW(g,c,36),x=(W-w)/2;lab(g,'Check:',x,y+158);say(g,c,x+wl+14,y+158,36)});
       });
       fade(g,p.iso,()=>{say(g,'Average atomic mass',W/2,50,44,{align:'center'});lab(g,"(the table's number)",W/2,104,{align:'center'});
-        const ax=W*.27,ay=H*.55,rp=g.c('rope'),sm=[[-120,-62],[120,-62],[-120,62],[0,62]],bg=[[0,-62],[120,62]];
+        /* one size, two shades: isotopes of one element have the same size; the darker shade stands for the heavier mass */
+        const ax=W*.27,ay=H*.55,rp=g.c('rope'),lt=[[-120,-62],[120,-62],[-120,62],[0,62]],dk=[[0,-62],[120,62]];
         lab(g,'isotopes',ax+20,ay-176,{align:'center',px:40,color:ink});
-        const A=[...sm.map(([x,y])=>({p:[x,y,0],r:40,color:rp,label:'Cu'})),...bg.map(([x,y])=>({p:[x,y,0],r:52,color:D.mix(rp,'#000000',.15),label:'Cu',px:44}))];
+        const A=[...lt.map(([x,y])=>({p:[x,y,0],r:ISO_R,color:rp,label:'Cu',px:44})),...dk.map(([x,y])=>({p:[x,y,0],r:ISO_R,color:D.mix(rp,'#000000',.15),label:'Cu',px:44}))];
+        iso={n:A.length,sizes:new Set(A.map(a=>a.r)).size,shades:new Set(A.map(a=>a.color)).size,radius:ISO_R};
         balls(g,A,[],ax,ay,1,{},st);
         const cx=W*.76,cy=ay,cs=250;g.rrect(cx-cs/2,cy-cs/2,cs,cs,18,g.c('card'),g.c('accent'),5);st.add(cs);
         say(g,'Cu',cx,cy-34,84,{align:'center'});say(g,fmt(MASS1.Cu,3),cx,cy+58,40,{align:'center',color:g.c('accent')})});
@@ -205,7 +208,7 @@ D.sim('centJar',function(host){
       if(p.ct>.5)out.push(unit(12,B0,W-24,H-B0-8,'the count'));return out},
     meta:(p,s)=>({stage:s,old:COIN.old,new:COIN.new,jar:CENTS.jar,wrong:p.wr>.5?[{divisor:COIN.new,cents:CENTS.tooMany,verdict:'too many'},{divisor:COIN.old,cents:CENTS.tooFew,verdict:'too few'}]:null,
       sample:p.sa>.5?CENTS.sample:null,sampleN:CENTS.sampleN,average:p.av>.5||p.ct>.5?CENTS.avg:null,count:p.ct>.5?CENTS.count:null,countText:p.ct>.5?'about '+CENTS.count+' cents':null,
-      between:CENTS.avg>COIN.new&&CENTS.avg<COIN.old,isotopes:p.iso>.5?{label:'isotopes',cell:'Cu',mass:fmt(MASS1.Cu,3),isotopeMassesShown:false}:null,minShape:st.min})});
+      between:CENTS.avg>COIN.new&&CENTS.avg<COIN.old,isotopes:p.iso>.5?{label:'isotopes',cell:'Cu',mass:fmt(MASS1.Cu,3),isotopeMassesShown:false,spheres:iso.n,sizes:iso.sizes,shades:iso.shades,radius:iso.radius}:null,minShape:st.min})});
 });
 
 /* ---------- 3. countingUnits: a dozen, a ream, a mole; the exact value; the Avogadro constant ----------
@@ -358,7 +361,7 @@ D.sim('secondsLine',function(host){
 /* ---------- 7. moleHistory: a time ruler 1800 to 2020 with one card per stage; an earlier card shrinks to its year and name on the ruler ----------
    stages: avogadro, loschmidt, ostwald, perrin, si, exact */
 const HIST=[
-  {k:'avogadro',year:1811,yt:'1811',name:'Avogadro',title:'1811 · Amedeo Avogadro',lines:['Equal gas volumes hold equal','numbers of particles.','He never knew the number.'],row:0},
+  {k:'avogadro',year:1811,yt:'1811',name:'Avogadro',title:'1811 · Amedeo Avogadro',lines:['At one temperature and pressure,','equal gas volumes hold equal','numbers of particles.','He never knew the number.'],row:0},
   {k:'loschmidt',year:1865,yt:'1865',name:'Loschmidt',title:'1865 · Josef Loschmidt',lines:['The first estimate of the','size of molecules.'],row:1},
   {k:'ostwald',year:1890,yt:'1890s',name:'Ostwald',title:'1890s · Wilhelm Ostwald',lines:['The word Mol, as a unit.'],row:0},
   {k:'perrin',year:1909,yt:'1909',name:'Perrin',title:'1909 · Jean Perrin',lines:['Measured the number.','Named it after Avogadro.','Nobel Prize, 1926.'],row:1},
@@ -384,7 +387,8 @@ D.sim('moleHistory',function(host){
         g.line(x,ly+20,x,RY-18,i===n?acc:mu,3);g.circle(x,RY,10,i===n?acc:ink,null);g.chem(t,c,ly,36,{color:i===n?acc:ink})});
       HIST.forEach((h,i)=>fade(g,p.c[i],()=>{const cw=Math.min(W-24,1000),x=clamp(X(h.year)-cw/2,12,W-12-cw),y=196,ch=Math.max(250,I.h-band-y-8),dw=330,tw=cw-dw-60;
         g.rrect(x,y,cw,ch,22,g.c('card'),acc,4);say(g,h.title,x+30,y+44,fitPx(g,h.title,tw,44,36),{color:acc});
-        const px=Math.min(...h.lines.map(l=>fitPx(g,l,tw,40,36)));h.lines.forEach((l,j)=>say(g,l,x+30,y+104+j*50,px));
+        /* four lines (Avogadro's card, with its condition) at 36 px on a 44 px pitch, so they stay inside the card */
+        const four=h.lines.length>3,px=four?36:Math.min(...h.lines.map(l=>fitPx(g,l,tw,40,36))),lh=four?44:50;h.lines.forEach((l,j)=>say(g,l,x+30,y+104+j*lh,px));
         if(i===5){lab(g,'exact, no longer',x+cw-dw/2-15,y+ch-82,{align:'center',color:acc});lab(g,'measured',x+cw-dw/2-15,y+ch-36,{align:'center',color:acc});drawing(g,i,x+cw-dw-30,y+14,dw,ch-130)}
         else drawing(g,i,x+cw-dw-30,y+10,dw,ch-20)}));
     },

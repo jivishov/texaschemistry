@@ -21,6 +21,10 @@
 /* Unit 5 color code: the legend swatches and the quantity chips (grams --warm, moles --accent, particles --e) */
 .i-g{background:var(--warm)}.i-mol{background:var(--accent)}.i-n{background:var(--e)}.i-atom{background:#e3332a;color:#ffffff!important}
 .chip.g{color:var(--warm);border-color:var(--warm)}.chip.mol{color:var(--accent);border-color:var(--accent)}.chip.n{color:var(--e);border-color:var(--e)}
+/* dark theme: the shared dark --e is amber-yellow like --warm, so the particle color gets its own violet here (review 02 F2). It covers
+   the .chip.n chips, the legend dot .i-n, the icons and every canvas (the painter reads --e from the computed style). Contrast 7.1:1 on
+   --card, 7.6:1 on the animation panel and on --card2, 5.5:1 on a canvas chip's fill. The light theme keeps the shared --e. */
+:root[data-theme="dark"]{--e:#cc99ff}
 .f-rope{fill:var(--rope)}.f-warm{fill:var(--warm)}.k-warm{stroke:var(--warm)}.k-bad{stroke:var(--bad)}.f-tan{fill:#c19458}.f-cent{fill:color-mix(in srgb,var(--rope) 58%,var(--card))}
 .f-zinc{fill:color-mix(in srgb,var(--metal) 75%,var(--card))}.f-nickel{fill:color-mix(in srgb,var(--metal) 70%,var(--card))}
 /* word cards: 104 px icons, so the digits in an icon stay at 34 px or more */

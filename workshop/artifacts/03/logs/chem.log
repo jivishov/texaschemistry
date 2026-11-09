@@ -1,0 +1,95 @@
+  PASS  slide 2 coinScale tally: live, 8 coins counted one a second
+  PASS  slide 2 tally: labels at 36 px or more, shapes at 60 px or more
+  PASS  slide 2 coinScale scale: 2,000.0 g of coins, 5.000 g per nickel
+  PASS  slide 2 coinScale reveal: 2,000.0 g ÷ 5.000 g = 400 nickels
+  PASS  slide 2 reveal: labels at 36 px or more, shapes at 60 px or more
+  PASS  slide 6 coinScale zero: the empty bag, 0.0 g, zeroed
+  PASS  slide 6 coinScale read: 1,250.0 g
+  PASS  slide 6 coinScale divide: 1,250.0 g × 1 nickel / 5.000 g, the grams struck
+  PASS  slide 6 coinScale count: 250 nickels; 250 × 5.000 g = 1,250.0 g
+  PASS  slide 6 count: labels at 36 px or more, shapes at 60 px or more
+  PASS  slide 6 coinScale roll (the check): 200.0 g, the answer 40 not drawn
+  PASS  slide 7 centJar: before 1982 3.11 g, after 1982 2.500 g, the jar 1,017.1 g
+  PASS  slide 7 centJar wrong: about 407 (too many), about 327 (too few)
+  PASS  slide 7 centJar: 267.69 g ÷ 100 = 2.6769 g
+  PASS  slide 7 centJar: 1,017.1 g ÷ 2.6769 g = about 380 cents, between the two masses
+  PASS  slide 7 count: labels at 36 px or more, shapes at 60 px or more
+  PASS  slide 7 centJar isotopes: the table's average mass, no isotope masses; six Cu atoms at one size in two shades
+  PASS  slide 8 countingUnits: a dozen is 12, a ream 500
+  PASS  slide 8 countingUnits: exactly 6.02214076 × 10²³, rounded 6.022 × 10²³, since May 20, 2019
+  PASS  slide 8 countingUnits: N_A = 6.022 × 10²³ mol⁻¹
+  PASS  slide 8 constant: labels at 36 px or more, shapes at 60 px or more
+  PASS  slide 9 howMany zoom: live, seven steps of × 1,000 to 10²¹
+  PASS  slide 9 howMany mole: × 602 more, 6.022 × 10²³
+  PASS  slide 9 howMany spoon: one mole of water about 18 g
+  PASS  slide 9 spoon: labels at 36 px or more, shapes at 60 px or more
+  PASS  slide 10 moleKinds compare: 26.982 g and 63.546 g, the same 6.022 × 10²³ atoms
+  PASS  slide 10 moleKinds oxygen: O₂ holds twice the atoms
+  PASS  slide 10 moleKinds four: atoms, molecules, formula units, ions; Na⁺ 102 pm, Cl⁻ 181 pm
+  PASS  slide 10 four: labels at 36 px or more, shapes at 60 px or more
+  PASS  slide 11 secondsLine line: live
+  PASS  slide 11 secondsLine: 6.022 × 10²³ s ÷ 3.156 × 10⁷ s = 1.908 × 10¹⁶ years
+  PASS  slide 11 secondsLine times: about 1.4 million times 13.8 billion years; Earth 4.5 billion: about 4 million
+  PASS  slide 11 times: labels at 36 px or more, shapes at 60 px or more
+  PASS  slide 11 secondsLine spoon: about 18 g
+  PASS  slide 12 moleHistory: 1811, 1865, 1890s, 1909, 1971, 2019; voted November 16, 2018; exact since May 20, 2019
+  PASS  slide 12 exact: labels at 36 px or more, shapes at 60 px or more
+  PASS  slide 12 moleHistory avogadro: the card states the condition (one temperature and pressure)
+  PASS  slide 12 moleHistory si: the old definition, 12 g of carbon-12
+  PASS  slide 13 siliconSphere crystal: 95 atoms in 2 × 2 × 2 diamond cubes, turning
+  PASS  slide 13 siliconSphere cube: edge 543.102 pm, 8 atoms per cube
+  PASS  slide 13 cube: labels at 36 px or more, shapes at 60 px or more
+  PASS  slide 13 siliconSphere divide: 6.022 × 10²³
+  PASS  slide 16 moleMap Cu/cancel: one unit struck, the other circled
+  PASS  slide 16 moleMap Cu/result: 1.20 × 10²⁴ Cu atoms
+  PASS  slide 16 Cu: labels at 36 px or more, shapes at 60 px or more
+  PASS  slide 17 moleMap Fe/cancel: one unit struck, the other circled
+  PASS  slide 17 moleMap Fe/result: 1.50 mol
+  PASS  slide 17 Fe: labels at 36 px or more, shapes at 60 px or more
+  PASS  slide 20 moleMap CO2m/cancel: one unit struck, the other circled
+  PASS  slide 20 moleMap CO2m/result: 1.51 × 10²³ molecules
+  PASS  slide 20 CO2m: labels at 36 px or more, shapes at 60 px or more
+  PASS  slide 20 moleMap H2Om/cancel: one unit struck, the other circled
+  PASS  slide 20 moleMap H2Om/result: 3.01 mol
+  PASS  slide 20 H2Om: labels at 36 px or more, shapes at 60 px or more
+  PASS  slide 16 moleMap map: the bridge 6.022 × 10²³ per mole
+  PASS  slide 17 moleMap half: 3.011 × 10²³ = 0.5000 mol
+  PASS  slide 21 moleMap energy: 496 kJ/mol ÷ 6.022 × 10²³ = 8.24 × 10⁻¹⁹ J per atom
+  PASS  slide 21 energy: labels at 36 px or more, shapes at 60 px or more
+  PASS  slide 18 naclCrystal unit: one Na⁺ and one Cl⁻ lit; Shannon radii; 564 pm cell; turning
+  PASS  slide 18 naclCrystal count: 4.50 mol × 6.022 × 10²³ = 2.71 × 10²⁴ formula units
+  PASS  slide 18 naclCrystal wrong: 2.50 mol → 1.51 × 10²⁴, "molecules" is the wrong particle
+  PASS  slide 18 wrong: labels at 36 px or more, shapes at 60 px or more
+  PASS  slide 19 atomCounter H2O/mol: 1 mol H₂O → 2 mol H, 1 mol O
+  PASS  slide 19 atomCounter CO2/mol: 2.00 mol × 2 = 4.00 mol O
+  PASS  slide 19 atomCounter CO2/atoms: 2.41 × 10²⁴ O atoms
+  PASS  slide 19 atomCounter NaCl/mol: 1 mol Na⁺ and 1 mol Cl⁻
+  PASS  slide 19 NaCl: labels at 36 px or more, shapes at 60 px or more
+  PASS  slide 20 atomCounter NH3/mol: 0.500 mol × 3 = 1.50 mol H
+  PASS  slide 6: the check frame shows s06-sim at "roll"
+  PASS  slide 7: the check frame shows s07-sim at "sample"
+  PASS  slide 8: the check frame shows s08-sim at "constant"
+  PASS  slide 9: the check frame shows s09-sim at "spoon"
+  PASS  slide 10: the check frame shows s10-sim at "compare"
+  PASS  slide 11: the check frame shows s11-sim at "times"
+  PASS  slide 13: the check frame shows s13-sim at "cube"
+  PASS  slide 16: the check frame shows s16-sim at "Cu/result"
+  PASS  slide 17: the check frame shows s17-sim at "half"
+  PASS  slide 18: the check frame shows s18-sim at "unit"
+  PASS  slide 19: the check frame shows s19-sim at "CO2/mol"
+  PASS  slide 15 warm-up answers: 200, 6.022 × 10²³, the four particles
+  PASS  slide 20 you-do answers: 1.50 mol of H atoms; 7.23 × 10²⁴ H atoms; 0.042 mol
+  PASS  slide 14 table: nickels, cents, atoms; 5.000 g; the average; moles of 6.022 × 10²³; the particles named
+  PASS  slide 27 review lines: slides 6 and 7; 8 to 13 and 21; 16 to 18; 19 and 20
+  PASS  slide 26 the three predictions: the same number of atoms (B), formula units (B), 2 mol (B), with their reasons
+  PASS  slide 26 answers are the slide 4 options B
+  PASS  slide 5 the eight Spanish cognates of the lesson sheet
+  PASS  slide 5 the cognates match the reading's glossary (unit5/reading-5-1.html)
+  PASS  slide 5 the Unit 5 legend: grams, moles, particles, cation, anion, atom
+  PASS  slides 10 and 19: "Atom colors show the element, not the charge."
+  PASS  slide 12 caption row 1811 states the condition; slide 13 cube card names the sharing; slide 13 answer line
+  PASS  eleven checks on slides 6, 7, 8, 9, 10, 11, 13, 16, 17, 18, 19
+  PASS  registry: 11 checks and periods [[1,14],[15,28]] match the deck
+  PASS  Unit 5 colors: grams, moles and particles differ in both themes; particles #7a2fc0 (light, shared) and #cc99ff (dark, css-51)
+  PASS  no console errors
+chem51 (deck): PASS 94 checks

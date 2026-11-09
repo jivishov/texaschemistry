@@ -38,7 +38,9 @@ const near=(a,b,r)=>Math.abs(a/b-1)<=(r||.005);
   m=(await at('centJar','sample')).meta;ok('centJar sample: 100 cents, 267.69 g',m.sample===267.69&&m.sampleN===100,m);
   m=(await at('centJar','average')).meta;ok('centJar average: 267.69 g ÷ 100 = 2.6769 g',m.average===2.6769&&near(m.sample/m.sampleN,m.average,1e-9),m);
   m=(await at('centJar','count')).meta;ok('centJar count: 1,017.1 g ÷ 2.6769 g = about 380 cents; 2.6769 between 2.500 and 3.11',m.count===380&&Math.round(m.jar/m.average)===380&&m.countText==='about 380 cents'&&m.between,m);
-  m=(await at('centJar','isotopes')).meta;ok('centJar isotopes: "isotopes", the table cell, no isotope masses',m.isotopes&&m.isotopes.label==='isotopes'&&!m.isotopes.isotopeMassesShown&&m.isotopes.mass==='63.546',m.isotopes);
+  m=(await at('centJar','isotopes')).meta;ok('centJar isotopes: "isotopes", the table cell, no isotope masses; six Cu atoms at one size in two shades',m.isotopes&&m.isotopes.label==='isotopes'&&!m.isotopes.isotopeMassesShown&&m.isotopes.mass==='63.546'&&m.isotopes.spheres===6&&m.isotopes.sizes===1&&m.isotopes.shades===2,m.isotopes);
+  {const x=list.find(r=>r.sim==='centJar'&&r.stage==='isotopes'),d=await page.evaluate(([i,id])=>{Deck.go(i,0);const B=Deck.sims[id].host.__boxes;return B?B.shapes.filter(q=>q.disc).map(q=>Math.round(q.disc.r*2)/2):null},[x.i,x.host]);
+    ok('centJar isotopes: the painted spheres (instrumented discs) all have one radius',d&&d.length===6&&new Set(d).size===1,d)}
   /* 3. countingUnits */
   m=(await at('countingUnits','dozen')).meta;ok('countingUnits dozen: 12',m.dozen===12);
   m=(await at('countingUnits','ream')).meta;ok('countingUnits ream: 500',m.ream===500&&m.dozen===12);
@@ -67,6 +69,7 @@ const near=(a,b,r)=>Math.abs(a/b-1)<=(r||.005);
   /* 7. moleHistory */
   const H=[['avogadro','1811','Avogadro'],['loschmidt','1865','Loschmidt'],['ostwald','1890s','Ostwald'],['perrin','1909','Perrin'],['si','1971','SI'],['exact','2019','exact']];
   for(let i=0;i<H.length;i++){m=(await at('moleHistory',H[i][0])).meta;ok(`moleHistory ${H[i][0]}: ${i+1} ticks, the last ${H[i][1]} ${H[i][2]}`,m.ticks.length===i+1&&m.ticks[i].year===H[i][1]&&m.ticks[i].name===H[i][2],m.ticks)}
+  m=(await at('moleHistory','avogadro')).meta;ok('moleHistory avogadro: the condition in the card (one temperature and pressure), equal volumes, equal numbers; he never knew the number',m.lines.join(' ')==='At one temperature and pressure, equal gas volumes hold equal numbers of particles. He never knew the number.',m.lines);
   m=(await at('moleHistory','perrin')).meta;ok('moleHistory perrin: measured, named after Avogadro, Nobel Prize 1926',m.lines.join(' ').includes('Nobel Prize, 1926')&&m.lines.join(' ').includes('Named it after Avogadro'),m.lines);
   m=(await at('moleHistory','si')).meta;ok('moleHistory si: SI base unit, the old definition (12 g of carbon-12)',m.lines.join(' ').includes('SI base unit')&&m.lines.join(' ').includes('12 g')&&m.oldDefinition==='12 g of carbon-12',m.lines);
   m=(await at('moleHistory','exact')).meta;ok('moleHistory exact: voted November 16, 2018; exact since May 20, 2019; 6.02214076 × 10²³',m.vote==='November 16, 2018'&&m.since==='May 20, 2019'&&m.lines.join(' ').includes('6.02214076 × 10²³'),m.lines);

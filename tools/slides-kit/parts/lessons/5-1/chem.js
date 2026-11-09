@@ -25,7 +25,7 @@ const near=(a,b,r)=>Math.abs(a/b-1)<=(r||.005);
   m=await meta('s07','s07-sim','wrong');ok('slide 7 centJar wrong: about 407 (too many), about 327 (too few)',m.wrong[0].cents===Math.round(1017.1/2.5)&&m.wrong[1].cents===Math.round(1017.1/3.11)&&m.wrong[0].verdict==='too many'&&m.wrong[1].verdict==='too few',m.wrong);
   m=await meta('s07','s07-sim','average');ok('slide 7 centJar: 267.69 g ÷ 100 = 2.6769 g',m.sample===267.69&&m.sampleN===100&&near(267.69/100,m.average,1e-9),m);
   m=await meta('s07','s07-sim','count');ok('slide 7 centJar: 1,017.1 g ÷ 2.6769 g = about 380 cents, between the two masses',m.count===380&&Math.round(1017.1/2.6769)===380&&m.between,m);floors('slide 7 count',m);
-  m=await meta('s07','s07-sim','isotopes');ok('slide 7 centJar isotopes: the table\'s average mass, no isotope masses',m.isotopes&&m.isotopes.label==='isotopes'&&!m.isotopes.isotopeMassesShown,m.isotopes);
+  m=await meta('s07','s07-sim','isotopes');ok('slide 7 centJar isotopes: the table\'s average mass, no isotope masses; six Cu atoms at one size in two shades',m.isotopes&&m.isotopes.label==='isotopes'&&!m.isotopes.isotopeMassesShown&&m.isotopes.spheres===6&&m.isotopes.sizes===1&&m.isotopes.shades===2,m.isotopes);
   /* slide 8: the counting units */
   m=await meta('s08','s08-sim','ream');ok('slide 8 countingUnits: a dozen is 12, a ream 500',m.dozen===12&&m.ream===500,m);
   m=await meta('s08','s08-sim','exact');ok('slide 8 countingUnits: exactly 6.02214076 × 10²³, rounded 6.022 × 10²³, since May 20, 2019',m.exact==='6.02214076 × 10²³'&&m.rounded==='6.022 × 10²³'&&m.since==='May 20, 2019',m);
@@ -45,6 +45,7 @@ const near=(a,b,r)=>Math.abs(a/b-1)<=(r||.005);
   m=await meta('s11','s11-sim','spoon');ok('slide 11 secondsLine spoon: about 18 g',m.water===18,m);
   /* slide 12: who found the number */
   m=await meta('s12','s12-sim','exact');ok('slide 12 moleHistory: 1811, 1865, 1890s, 1909, 1971, 2019; voted November 16, 2018; exact since May 20, 2019',m.ticks.map(t=>t.year+' '+t.name).join('|')==='1811 Avogadro|1865 Loschmidt|1890s Ostwald|1909 Perrin|1971 SI|2019 exact'&&m.vote==='November 16, 2018'&&m.since==='May 20, 2019',m);floors('slide 12 exact',m);
+  m=await meta('s12','s12-sim','avogadro');ok('slide 12 moleHistory avogadro: the card states the condition (one temperature and pressure)',m.lines.join(' ')==='At one temperature and pressure, equal gas volumes hold equal numbers of particles. He never knew the number.',m.lines);
   m=await meta('s12','s12-sim','si');ok('slide 12 moleHistory si: the old definition, 12 g of carbon-12',m.oldDefinition==='12 g of carbon-12'&&m.lines.join(' ').includes('12 g'),m.lines);
   /* slide 13: the silicon sphere */
   m=await meta('s13','s13-sim','crystal');ok('slide 13 siliconSphere crystal: 95 atoms in 2 × 2 × 2 diamond cubes, turning',m.atoms===95&&m.live,m);
@@ -82,7 +83,7 @@ const near=(a,b,r)=>Math.abs(a/b-1)<=(r||.005);
     q4:[1,2,3].map(i=>[...document.querySelectorAll('#s04-q'+i+' .opt span')].map(s=>s.textContent.replace(/\s+/g,' ').trim())),
     es:[...document.querySelectorAll('#s05 .wcard')].map(w=>[w.querySelector('.t').firstChild.textContent.trim(),w.querySelector('.es').textContent.replace(/[()]/g,'').trim()]),
     legend:[...document.querySelectorAll('#s05-leg>span')].map(s=>s.textContent.replace(/\s+/g,' ').trim()),
-    cap:[t('s10-cap'),t('s19-cap')],
+    cap:[t('s10-cap'),t('s19-cap')],s12p0:t('s12-p0'),s13cube:(e=>e?e.textContent.replace(/\s+/g,' ').trim():null)(document.querySelector('#s13-cube p:not(.tag)')),s13ans:t('s13-ans'),
     checks:[...document.querySelectorAll('.slide')].filter(s=>s.querySelector('.card.check[id$="-check"],.checkrow')).map(s=>+s.id.slice(1)),
     periods:Deck.slides.map(S=>+S.period),n:Deck.slides.length}});
   ok('slide 15 warm-up answers: 200, 6.022 × 10²³, the four particles',(w=>w[0]==='200(1,000.0g÷5.000g)'&&w[1].startsWith('6.022×1023(exactly6.02214076×1023')&&w[2]==='atoms,molecules,formulaunits,ions')(T.warm.map(x=>x.replace(/\s/g,''))),T.warm);
@@ -97,9 +98,14 @@ const near=(a,b,r)=>Math.abs(a/b-1)<=(r||.005);
   ok('slide 5 the cognates match the reading\'s glossary (unit5/reading-5-1.html)',COG.every(([t,e])=>gl[t]===e),COG.map(([t])=>t+': '+gl[t]));
   ok('slide 5 the Unit 5 legend: grams, moles, particles, cation, anion, atom',T.legend.join('|')==='ggrams (mass)|molmoles (amount)|#particles (number)|+cation|−anion|Oatom (CPK color = element)',T.legend);
   ok('slides 10 and 19: "Atom colors show the element, not the charge."',T.cap.every(c=>c==='Atom colors show the element, not the charge.'),T.cap);
+  ok('slide 12 caption row 1811 states the condition; slide 13 cube card names the sharing; slide 13 answer line',T.s12p0==='1811: Avogadro\'s idea. At one temperature and pressure, equal gas volumes hold equal numbers of particles. He never knew the number.'&&T.s13cube==='X-rays measure one cube\'s edge: 543.102 pm. Corner and face atoms are shared: 8 atoms per cube.'&&/^A\. Those measurements gave the value fixed in 2019\.$/.test(T.s13ans||''),[T.s12p0,T.s13cube,T.s13ans]);
   ok('eleven checks on slides 6, 7, 8, 9, 10, 11, 13, 16, 17, 18, 19',T.checks.join()==='6,7,8,9,10,11,13,16,17,18,19',T.checks);
   const reg=JSON.parse(fs.readFileSync(path.join(__dirname,'../../../registry.json'),'utf8')).decks.find(d=>d.unit===5&&d.lesson===1);
   ok(`registry: ${reg.checks} checks and periods ${JSON.stringify(reg.periods)} match the deck`,T.checks.length===reg.checks&&T.n===reg.periods[1][1]&&T.periods.every((p,i)=>p===(i+1<=reg.periods[0][1]?1:2)),{checks:T.checks.length,periods:T.periods.join('')});
+  /* the Unit 5 color code in both themes: grams --warm, moles --accent, particles --e; the dark --e is the lesson's violet (css-51) */
+  const TK=await page.evaluate(()=>{const R=document.documentElement,was=R.getAttribute('data-theme'),v=()=>['warm','accent','e'].map(n=>getComputedStyle(R).getPropertyValue('--'+n).trim().toLowerCase());
+    R.setAttribute('data-theme','light');const light=v();R.setAttribute('data-theme','dark');const dark=v();R.setAttribute('data-theme',was||'light');return {light,dark}});
+  ok('Unit 5 colors: grams, moles and particles differ in both themes; particles #7a2fc0 (light, shared) and #cc99ff (dark, css-51)',new Set(TK.light).size===3&&new Set(TK.dark).size===3&&TK.light[2]==='#7a2fc0'&&TK.dark[2]==='#cc99ff',TK);
   ok('no console errors',!errors.length,errors);
   L.save('chem51-deck.json',res);res.forEach(r=>console.log(`  ${r.pass?'PASS':'FAIL'}  ${r.n}${r.pass?'':'  '+r.i}`));
   const n=res.filter(r=>!r.pass).length;console.log(`chem51 (deck): ${n?'FAIL ('+n+')':'PASS'} ${res.length} checks`);await browser.close();process.exitCode=n?1:0;

@@ -1,9 +1,9 @@
 # Slides kit: parts, builds and audits for the projector decks
 
-Every projector deck of the site (today `unit4/slides-4-1.html` and `unit4/slides-4-2.html`) is one standalone HTML page assembled
+Every projector deck of the site (today `unit4/slides-4-1.html`, `unit4/slides-4-2.html` and `unit5/slides-5-1.html`) is one standalone HTML page assembled
 from the parts in `parts/` by `build.py`, and audited by `suite.py`. Never hand-edit a built deck: edit a part or a generator, then build.
 `registry.json` lists every built deck and holds all of its deck-specific settings. `docs/handoff-4-1-4-2.md` has the clicker map,
-how the decks run, the animation list and the known limitations.
+how the decks run, the animation list and the known limitations; `docs/handoff-5-1.md` has the same for 5.1.
 
 No path in the kit is absolute. `build.py` and `suite.py` find the repo root two folders above themselves (`../..`); the audits get
 every path from the environment that `suite.py` sets. If the repo moves, nothing in the kit changes. No absolute path remains:
@@ -24,18 +24,20 @@ history (its first line says so). The examples below write `<scratchpad>` for a 
 | `parts/lessons/<U>-<L>/chem.js` | the lesson's chemistry audit (`meta()` of each placed animation, checked against the reading's data) |
 | `parts/lessons/<U>-<L>/zoomchecks.js` | optional: the teacher's explicit zoom checks for this deck (`module.exports=(rec,{has,cnt})=>[[name, ok], …]`), run by the zoom audit after its two generic checks |
 | `parts/lessons/<U>-<L>/scratch.html` | animation test bench: scratch slides of every stage (never in a repo deck) |
-| `parts/lessons/<U>-<L>/gen_scratch.py` | optional: writes `scratch.html` (4.2 has one; 4.1's `scratch.html` is hand-written) |
+| `parts/lessons/<U>-<L>/gen_scratch.py` | optional: writes `scratch.html` (4.2 and 5.1 have one; 4.1's `scratch.html` is hand-written) |
 | `registry.json` | every built deck: file, head strings, periods, checks, markers, audit settings (fields below) |
 | `build.py` | assembles decks (repo, `--out`, `--scratch`) |
 | `suite.py` | runs a deck's audits and writes logs, JSON, screenshots and sheets outside the repo |
 | `audits/` | `lib.js` (shared helpers) and the audits: walk, back, fonts, keys, readability, print, render3d, extras, timing, supgap, zoom, click, layout (with the overlap check), contact, zoomsheet, xcheck (Unit 4 and Unit 5 blueprint forms), units, cycle |
 | `split_parts.py` | splits a built deck back into its parts |
 | `docs/handoff-4-1-4-2.md` | the 4.1 and 4.2 handoff (clicker map, animations, limitations) |
+| `docs/handoff-5-1.md` | the 5.1 handoff (clicker map, animations and stages, the Unit 5 color code, limitations, blueprint form) |
 
 ## Build
 ```sh
 cd tools/slides-kit
 python3 build.py 4 2                                   # 4.2 -> unit4/slides-4-2.html (runs parts/lessons/4-2/gen_slides.py first)
+python3 build.py 5 1                                   # 5.1 -> unit5/slides-5-1.html
 python3 build.py --all                                 # every registered deck
 python3 build.py 4 2 --out /path/outside/deck42.html   # the same deck, written elsewhere
 python3 build.py 4 2 --scratch --out /path/outside/scratch42.html   # the 4.2 animation bench (runs gen_scratch.py first)
@@ -59,8 +61,8 @@ change comes out byte-identical.
 4.1 `01-head`, `02-runtime`, `02b-shared`, `03-sims`, `04-slides` (no lesson CSS);
 4.2 `01-head-42` (CSS marker `01c-css-42`), `02-runtime`, `02b-shared`, `06-sims-42`, `08-slides-42`.
 Every new lesson uses `01-head-<U><L>`, `02-runtime`, `02b-shared`, `sims-<U><L>`, `slides-<U><L>`, and the CSS marker
-`css-<U><L>` if it has a `css.css`. Lesson 5.1: `01-head-51`, `02-runtime`, `02b-shared`, `sims-51`, `slides-51`, and `css-51` if
-it has a `css.css`.
+`css-<U><L>` if it has a `css.css`. Lesson 5.1 (built, `unit5/slides-5-1.html`): `01-head-51`, `02-runtime`, `02b-shared`, `sims-51`,
+`slides-51`, and the CSS marker `css-51` (it has a `css.css`).
 
 ## Test
 Needs Node with Playwright and Chromium (`require('playwright')`, `chromium.launch()`; in a Claude cloud session both are installed:
@@ -228,12 +230,12 @@ One entry per deck in `decks`:
    shared runtime behind a per-lesson option, and every registered deck is then rebuilt and re-audited.
 2. A registry entry with every field above (no `overlap_baseline`); markers per the convention (`01-head-<U><L>`, `02-runtime`, `02b-shared`,
    `sims-<U><L>`, `slides-<U><L>`, `css-<U><L>`). For 5.1: `file` `unit5/slides-5-1.html`, `blueprint` `{"section": "l51", "next": "l52",
-   "form": "unit5", "teks_rows": {"C.8(A)": ["5.1.1", "5.1.2"], "C.8(B)": ["5.1.3", "5.1.4"]}}`, `matrix` `5.1.1` to `5.1.4`; `"built": false`
-   until the deck step writes the deck.
+   "form": "unit5", "teks_rows": {"C.8(A)": ["5.1.1", "5.1.2"], "C.8(B)": ["5.1.3", "5.1.4"]}}`, `matrix` `5.1.1` to `5.1.4`; it carried `"built": false`
+   until its deck step wrote `unit5/slides-5-1.html` and is now `"built": true` (a new lesson starts the same way).
 3. Animations first, on a bench: `scratch.html` (or `gen_scratch.py`) in the lesson folder, then
    `python3 build.py <U> <L> --scratch --out <scratchpad>/scratch.html` and `python3 suite.py <U> <L> --deck <that file> --only walk,...`.
 4. The deck: `python3 build.py <U> <L>` writes `unit<U>/slides-<U>-<L>.html` (for 5.1, `python3 build.py 5 1` writes
-   `unit5/slides-5-1.html`; move an older deck at that path to `unit5/old-slides/` first); `python3 suite.py <U> <L>` audits it, and the
+   `unit5/slides-5-1.html`; move an older deck at that path to `unit<U>/old-slides/` first, as 5.1's rejected deck was); `python3 suite.py <U> <L>` audits it, and the
    layout audit's overlap check must pass.
 
 ## Split a deck into its parts
