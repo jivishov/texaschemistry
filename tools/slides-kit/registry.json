@@ -55,7 +55,7 @@
     {
       "unit": 5,
       "lesson": 1,
-      "built": false,
+      "built": true,
       "file": "unit5/slides-5-1.html",
       "title": "Counting Particles with the Mole Slides",
       "description": "Unit 5, Lesson 5.1 projector slides: Counting particles with the mole (TEKS C.8(A), C.8(B)).",
@@ -70,7 +70,11 @@
       "zoom_checks": "parts/lessons/5-1/zoomchecks.js",
       "blueprint": {"section": "l51", "next": "l52", "form": "unit5", "teks_rows": {"C.8(A)": ["5.1.1", "5.1.2"], "C.8(B)": ["5.1.3", "5.1.4"]}},
       "matrix": ["5.1.1", "5.1.2", "5.1.3", "5.1.4"],
-      "mentions": {},
+      "mentions": {
+        "s02:3": "A bag of nickels at the bank", "s02:6": "Counting by weighing", "s04:26": "Predictions and exit ticket", "s05:27": "Rate your learning",
+        "s09:8": "The mole", "s12:13": "Counting the atoms in a silicon sphere", "s22:23": "Checkpoint 1", "s22:24": "Checkpoint 2", "s22:25": "Checkpoint 3",
+        "s26:4": "Predict now"
+      },
       "extra_audits": [],
       "extra_slides": null
     }

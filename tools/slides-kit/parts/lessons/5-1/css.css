@@ -18,3 +18,39 @@
 .t-summary.tnext .mission b{font-size:52px}
 .t-summary.tnext .mission span{font-size:40px}
 .ptrow{height:214px}
+/* Unit 5 color code: the legend swatches and the quantity chips (grams --warm, moles --accent, particles --e) */
+.i-g{background:var(--warm)}.i-mol{background:var(--accent)}.i-n{background:var(--e)}.i-atom{background:#e3332a;color:#ffffff!important}
+.chip.g{color:var(--warm);border-color:var(--warm)}.chip.mol{color:var(--accent);border-color:var(--accent)}.chip.n{color:var(--e);border-color:var(--e)}
+.f-rope{fill:var(--rope)}.f-warm{fill:var(--warm)}.k-warm{stroke:var(--warm)}.k-bad{stroke:var(--bad)}.f-tan{fill:#c19458}.f-cent{fill:color-mix(in srgb,var(--rope) 58%,var(--card))}
+.f-zinc{fill:color-mix(in srgb,var(--metal) 75%,var(--card))}.f-nickel{fill:color-mix(in srgb,var(--metal) 70%,var(--card))}
+/* word cards: 104 px icons, so the digits in an icon stay at 34 px or more */
+.wcard{grid-template-columns:104px minmax(0,1fr)}.wcard svg{width:104px;height:104px}
+/* slide 14: the summary table fills its row; the thread line and the write step share the row below */
+.t-summary.s3>.body{grid-template-rows:minmax(0,1fr) auto;align-content:stretch}
+.s3 .g3{grid-template-rows:auto repeat(3,minmax(0,1fr));align-items:stretch;height:100%}
+.s3 .g3 .rh{align-self:center}.s3 .g3 .cell{display:grid;align-content:center;font-size:40px}
+.s3 .g3 .colh svg{width:120px;height:96px}
+.s3 .qrow .frames li{font-size:40px}
+/* the wide slide with a check in its band */
+.ptrow.tall{height:236px}
+/* slide 5: eight word cards in four rows; the icon digits stay at 34 px (100 px icon, 34-unit text) */
+.wcard{grid-template-columns:100px minmax(0,1fr);padding:6px 16px}.wcard svg{width:100px;height:100px}.wcard .t{font-size:36px}.wcard .es{font-size:34px}.words{gap:10px}
+/* slide 4: each question card fills the row below the prompt */
+.t-routine.pn>.body{grid-template-rows:auto minmax(0,1fr)}.pn .stack.top{align-items:stretch}.pn .stack.top>.check{display:flex;flex-direction:column;justify-content:center}
+/* slide 11: the check question in the band on one line */
+.ptrow .checkrow .q{font-size:40px}
+/* slide 14: the thread line and the write step take room only when shown */
+.s3 .acc.s3b{gap:12px}
+/* slide 20: the you-do table */
+#s20-yd td{font-size:36px;width:50%}
+/* slide 26: the two-sentence driving question stays on screen while students write */
+.t-exit .dq p:not(.tag){font-size:40px}
+/* stacked options of a check inside an accumulating column: 40 px, so the card fits the column */
+.acc .check .opts.col1 .opt{font-size:40px}.acc .check .q{font-size:40px}
+/* slide 14: cells and the write step at 36 px when all rows are on screen */
+.s3 .g3 .cell{font-size:36px}.s3 .g3 .colh svg{height:80px}.s3 .qrow .frames li{font-size:36px}
+/* slide 26: the exit ticket's frames, rail and prompt a little tighter */
+.t-exit .phaseB{gap:12px}.t-exit .phaseB>.prompt{padding:10px 24px}.t-exit .rail li{font-size:34px;padding:4px 6px}
+.t-exit .frames{font-size:36px}.t-exit .gap{width:3.4em}.t-exit .bank span{font-size:34px}
+/* the ✓ / ✗ badge of a row option sits 24 px above the option: keep that room free of the question line above */
+.check .opts:not(.col1){margin-top:28px}.checkrow .opts:not(.col1){margin-top:20px}

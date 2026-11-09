@@ -1,0 +1,871 @@
+<main id="stage">
+<div id="prog"><i></i></div>
+<svg class="sprite" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"><defs>
+<symbol id="ic-next" viewBox="0 0 120 100"><rect x="6" y="10" width="108" height="80" rx="22" class="f-card2 k-ink" stroke-width="3"/><path d="M48 30v40l32-20Z" class="f-acc"/></symbol>
+<symbol id="ic-back" viewBox="0 0 120 100"><rect x="6" y="10" width="108" height="80" rx="22" class="f-card2 k-ink" stroke-width="3"/><path d="M72 30v40L40 50Z" class="f-acc"/></symbol>
+<symbol id="ic-blank" viewBox="0 0 120 100"><rect x="6" y="10" width="108" height="80" rx="22" class="f-card2 k-ink" stroke-width="3"/><rect x="34" y="30" width="52" height="34" rx="4" class="f-ink"/><path d="M52 74h16" class="k-ink" stroke-width="5" stroke-linecap="round"/></symbol>
+<symbol id="ic-start" viewBox="0 0 120 100"><rect x="6" y="10" width="108" height="80" rx="22" class="f-card2 k-ink" stroke-width="3"/><path d="M30 34v-8h10M90 34v-8H80M30 66v8h10M90 66v8H80" fill="none" class="k-acc" stroke-width="5" stroke-linecap="round"/><path d="M52 38v24l20-12Z" class="f-acc"/></symbol>
+<symbol id="ic-bag" viewBox="0 0 100 100"><path d="M24 34h52l10 52a8 8 0 0 1-8 10H22a8 8 0 0 1-8-10Z" class="f-tan k-ink" stroke-width="3" stroke-linejoin="round"/><path d="M36 34l-6-18h40l-6 18" class="f-tan k-ink" stroke-width="3" stroke-linejoin="round"/><path d="M30 34h40" class="k-ink" stroke-width="6" stroke-linecap="round"/><circle cx="50" cy="66" r="14" class="f-nickel k-ink" stroke-width="3"/></symbol>
+<symbol id="ic-spoonful" viewBox="0 0 100 100"><path d="M52 62 94 38" class="k-ink" stroke-width="9" stroke-linecap="round"/><ellipse cx="34" cy="66" rx="30" ry="20" class="f-metal k-ink" stroke-width="3"/><ellipse cx="34" cy="64" rx="22" ry="12" class="f-water"/></symbol>
+<symbol id="ic-dots" viewBox="0 0 100 100"><g class="f-e"><circle cx="20" cy="30" r="5"/><circle cx="38" cy="22" r="5"/><circle cx="58" cy="30" r="5"/><circle cx="78" cy="24" r="5"/><circle cx="26" cy="50" r="5"/><circle cx="46" cy="44" r="5"/><circle cx="66" cy="52" r="5"/><circle cx="86" cy="46" r="5"/><circle cx="16" cy="72" r="5"/><circle cx="36" cy="68" r="5"/><circle cx="56" cy="74" r="5"/><circle cx="76" cy="70" r="5"/><circle cx="46" cy="88" r="5"/><circle cx="66" cy="90" r="5"/></g></symbol>
+<symbol id="ic-mole" viewBox="0 0 100 100"><rect x="39" y="2" width="22" height="26" rx="4" class="f-sea k-ink" stroke-width="3"/><circle cx="50" cy="62" r="36" class="f-sea k-ink" stroke-width="3"/><g class="f-e"><circle cx="34" cy="44" r="4"/><circle cx="50" cy="38" r="4"/><circle cx="66" cy="44" r="4"/></g><text x="50" y="80" text-anchor="middle" font-size="34" class="f-e">mol</text></symbol>
+<symbol id="ic-number" viewBox="0 0 100 100"><text x="50" y="38" text-anchor="middle" font-size="34" class="f-e">6.022</text><rect x="3" y="50" width="94" height="46" rx="12" class="f-card2 k-ink" stroke-width="3"/><text x="50" y="85" text-anchor="middle" font-size="34" class="f-ink">×10²³</text></symbol>
+<symbol id="ic-constant" viewBox="0 0 100 100"><text x="50" y="38" text-anchor="middle" font-size="34" class="f-e">6.022</text><rect x="8" y="50" width="84" height="46" rx="12" class="f-card2 k-acc" stroke-width="4"/><text x="50" y="85" text-anchor="middle" font-size="34" class="f-acc">/mol</text></symbol>
+<symbol id="ic-amount" viewBox="0 0 100 100"><path d="M8 70h62l-8 14H16Z" class="f-metal k-ink" stroke-width="3" stroke-linejoin="round"/><path d="M39 84v8M22 94h34" class="k-ink" stroke-width="5" stroke-linecap="round"/><g class="f-e"><circle cx="26" cy="62" r="7"/><circle cx="40" cy="62" r="7"/><circle cx="54" cy="62" r="7"/><circle cx="33" cy="50" r="7"/><circle cx="47" cy="50" r="7"/></g><circle cx="76" cy="28" r="23" class="f-acc"/><text x="76" y="40" text-anchor="middle" font-size="34" class="f-on">n</text></symbol>
+<symbol id="ic-molecule" viewBox="0 0 100 100"><path d="M50 46 22 70M50 46l28 24" class="k-ink" stroke-width="7" stroke-linecap="round"/><circle cx="50" cy="44" r="24" class="f-nm"/><circle cx="20" cy="72" r="14" class="f-nms k-nm" stroke-width="3"/><circle cx="80" cy="72" r="14" class="f-nms k-nm" stroke-width="3"/></symbol>
+<symbol id="ic-funit" viewBox="0 0 100 100"><circle cx="30" cy="52" r="22" class="f-cat"/><circle cx="68" cy="52" r="30" class="f-an"/><path d="M20 52h20M30 42v20M56 52h24" class="k-on" stroke-width="6" stroke-linecap="round"/></symbol>
+<symbol id="ic-formula" viewBox="0 0 100 100"><text x="2" y="62" font-size="40" class="f-ink">H</text><circle cx="48" cy="66" r="16" fill="none" class="k-warm" stroke-width="4"/><text x="48" y="78" text-anchor="middle" font-size="34" class="f-warm">2</text><text x="66" y="62" font-size="40" class="f-ink">O</text></symbol>
+<symbol id="ic-subscript" viewBox="0 0 100 100"><text x="4" y="66" font-size="62" class="f-ink">O</text><circle cx="72" cy="70" r="20" fill="none" class="k-warm" stroke-width="5"/><text x="72" y="82" text-anchor="middle" font-size="34" class="f-warm">2</text></symbol>
+<symbol id="ic-avgmass" viewBox="0 0 100 100"><circle cx="28" cy="46" r="18" class="f-rope"/><circle cx="72" cy="42" r="24" class="f-rope" style="filter:brightness(.82)"/><path d="M8 80h84" class="k-ink" stroke-width="5" stroke-linecap="round"/><path d="M50 70v20" class="k-acc" stroke-width="6" stroke-linecap="round"/></symbol>
+<symbol id="ic-nickel" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" class="f-nickel k-ink" stroke-width="4"/><circle cx="50" cy="50" r="28" fill="none" class="k-ink" stroke-width="2"/></symbol>
+<symbol id="ic-cents" viewBox="0 0 100 100"><circle cx="32" cy="44" r="26" class="f-rope k-ink" stroke-width="3"/><circle cx="68" cy="58" r="26" class="f-cent k-ink" stroke-width="3"/><circle cx="68" cy="58" r="18" class="f-zinc"/></symbol>
+<symbol id="ic-flask" viewBox="0 0 100 100"><rect x="39" y="2" width="22" height="26" rx="4" class="f-sea k-ink" stroke-width="3"/><circle cx="50" cy="62" r="36" class="f-sea k-ink" stroke-width="3"/><g class="f-e"><circle cx="34" cy="50" r="5"/><circle cx="52" cy="44" r="5"/><circle cx="68" cy="56" r="5"/><circle cx="40" cy="70" r="5"/><circle cx="60" cy="76" r="5"/><circle cx="28" cy="64" r="5"/><circle cx="72" cy="72" r="5"/><circle cx="50" cy="60" r="5"/><circle cx="50" cy="88" r="5"/></g></symbol>
+<symbol id="ic-scale" viewBox="0 0 100 100"><rect x="10" y="60" width="80" height="32" rx="8" class="f-card2 k-ink" stroke-width="3"/><rect x="26" y="68" width="48" height="16" rx="4" class="f-card k-ink" stroke-width="2"/><path d="M8 56h84" class="k-ink" stroke-width="6" stroke-linecap="round"/><g class="f-nickel k-ink" stroke-width="2"><circle cx="38" cy="44" r="10"/><circle cx="58" cy="44" r="10"/><circle cx="48" cy="28" r="10"/></g></symbol>
+<symbol id="ic-swap" viewBox="0 0 100 100"><circle cx="24" cy="50" r="18" class="f-acc"/><g class="f-e"><circle cx="72" cy="38" r="6"/><circle cx="86" cy="50" r="6"/><circle cx="72" cy="62" r="6"/><circle cx="62" cy="50" r="6"/></g><path d="M40 36h22m-8-8 8 8-8 8M60 64H38m8 8-8-8 8-8" fill="none" class="k-muted" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="ic-jar" viewBox="0 0 100 100"><rect x="26" y="6" width="48" height="12" rx="4" class="f-metal k-ink" stroke-width="3"/><rect x="18" y="18" width="64" height="76" rx="16" class="f-water k-ink" stroke-width="3" fill-opacity=".5"/><g class="k-ink" stroke-width="2"><circle cx="36" cy="80" r="10" class="f-rope"/><circle cx="58" cy="80" r="10" class="f-cent"/><circle cx="47" cy="62" r="10" class="f-nickel"/><circle cx="66" cy="60" r="10" class="f-rope"/></g></symbol>
+</defs></svg>
+<section class="slide t-cover" id="s01" data-period="1" data-title="Counting particles with the mole" data-sec="Lesson 5.1" data-ref="Reading §5.1">
+  <h2>Counting particles with the mole</h2>
+  <div class="body">
+    <div class="card dq reg"><p class="tag">Driving question</p><p>Particles are far too small and too many to count one by one. How can chemists count them?</p></div>
+    <div class="r800">
+      <div class="key"><svg class="" viewBox="0 0 120 100" role="img" aria-label="Next button"><use href="#ic-next"/></svg><b>Next</b><span>next step</span></div>
+      <div class="key"><svg class="" viewBox="0 0 120 100" role="img" aria-label="Back button"><use href="#ic-back"/></svg><b>Back</b><span>one step back</span></div>
+      <div class="key"><svg class="" viewBox="0 0 120 100" role="img" aria-label="Blank button"><use href="#ic-blank"/></svg><b>Blank</b><span>zoom part by part<br>twice fast: blank</span></div>
+      <div class="key"><svg class="" viewBox="0 0 120 100" role="img" aria-label="Start button"><use href="#ic-start"/></svg><b>Start</b><span>full screen</span></div>
+    </div>
+  </div>
+  <aside class="notes"><b>Safety.</b> Nothing dangerous in this lesson. A real bag of nickels and a balance may be used live as the hook, and are recommended; nothing in the deck depends on it. <b>Data and sources.</b> U.S. Mint coin specifications: nickel 5.000 g, cent made after 1982 2.500 g (zinc coated with copper); the cent made before 1982, 3.11 g (95% copper), from secondary sources. The Mint struck its last circulating cent on November 12, 2025, so the deck says "cents made after 1982", never "today's cents". BIPM: the 2019 definition of the mole (exactly 6.02214076 × 10²³, voted November 16, 2018, in force May 20, 2019) and the 1971 resolution (12 g of carbon-12). NIST: the silicon spheres of the Avogadro project, lattice parameter 543.102 pm. NobelPrize.org: Jean Perrin, Physics 1926. NASA JPL: the universe 13.8 billion years old. USGS: Earth 4.54 billion years (the deck says about 4.5 billion). OpenStax Chemistry 2e, section 3.1. CIAAW masses: Al 26.982, Cu 63.546, Si 28.085 (g for one mole). Shannon 1976 ionic radii (Na⁺ 102 pm, Cl⁻ 181 pm); Cordero 2008 covalent radii; NIST CCCBDB geometries (H₂O 104.5°, CO₂ 180°, NH₃ 106.7°); NaCl cell 564 pm (the value Unit 4 used). <b>Clicker.</b> Logitech R800: Next = PageDown, Back = PageUp (while zoomed: exit the zoom), Start/stop = F5 then Escape, Blank = period. Blank zooms one part of the slide per press, animation first; the press after the last part exits; two fast presses on an unzoomed slide blank the screen. Mouse: click an option to mark it right or wrong; click the slide number or the section label for the slide list. Laptop: N notes, O overview, T theme, Ctrl+P run-sheet.</aside>
+  <script>Deck.frames('s01',[
+    {t:0.5,note:"Two periods. Read the driving question aloud; students copy it. Show the four clicker buttons once, so a zoom or a blank screen is on purpose."}
+  ]);</script>
+</section>
+
+<section class="slide t-hook" id="s02" data-period="1" data-title="The coin jar" data-sec="Hook" data-ref="Reading §5.1.1">
+  <h2>The coin jar</h2>
+  <div class="body">
+    <div class="sim" id="s02-sim" data-sim="coinScale" aria-label="A jar of nickels on a kitchen table; then the jar on a kitchen scale."></div>
+    <div class="stack card band">
+      <p class="line" id="s02-l0">A jar of nickels on the kitchen table. How many?</p>
+      <p class="line" id="s02-l1" data-label="predict">Predict: guess the number. Then say how you would count them.</p>
+      <p class="line" id="s02-l2" data-label="count one by one">Counting one by one is slow. It is easy to lose count.</p>
+      <p class="line" id="s02-l3" data-label="the scale">Put the jar on a scale. Every nickel has the same mass.</p>
+      <p class="line" id="s02-l4" data-label="divide">Divide the mass of the coins by the mass of one coin.</p>
+      <p class="line" id="s02-l5" data-label="the thread">Too many to count? Weigh them.</p>
+    </div>
+  </div>
+  <aside class="notes">Narrative thread for 5.1: too many to count? weigh them, then think in moles. An everyday jar, no chemistry yet. The bank's bag comes next (slide 3), and the bank's scale returns on slide 6.</aside>
+  <script>Deck.frames('s02',[
+    {show:"s02-l0",stage:"s02-sim:jar",t:0.5,note:"Ask: who has a jar of coins at home? How would you find out how many are in it?"},
+    {show:"s02-l1",hide:"s02-l0",stage:"s02-sim:guess",t:0.5,note:"Prediction: each table writes one guess and one way to count. Collect the guesses on the board. Do not judge them."},
+    {show:"s02-l2",hide:"s02-l1",stage:"s02-sim:tally",t:0.5,note:"The counter climbs one coin a second, then \"lost count\". Ask: how long would a jar of 400 take? Listen for \"too long\"."},
+    {show:"s02-l3",hide:"s02-l2",stage:"s02-sim:scale",t:0.25,note:"The scale reads the coins: 2,000.0 g. Every nickel has a mass of 5.000 g."},
+    {show:"s02-l4",hide:"s02-l3",stage:"s02-sim:reveal",t:0.25,note:"2,000.0 g ÷ 5.000 g = 400 nickels. Compare with the guesses. Misconception to listen for: \"multiply the two masses\"."},
+    {show:"s02-l5",hide:"s02-l4",t:0.5,note:"The thread line. Students write it at the top of the page: too many to count? Weigh them."}
+  ]);</script>
+</section>
+
+<section class="slide t-launch" id="s03" data-period="1" data-title="A bag of nickels at the bank" data-sec="Launch" data-ref="Reading §5.1 opener">
+  <h2>A bag of nickels at the bank</h2>
+  <div class="body">
+    <div class="trio" id="s03-trio">
+      <div class="card pcard slot"><div data-b="s03-bag" data-label="the bank bag"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: a sealed bank bag of nickels"><use href="#ic-bag"/></svg><p class="nm lbl">bank bag</p><p class="cap">1,250.0 g of nickels. The bank says 250, without opening it.</p></div></div>
+      <div class="card pcard slot"><div data-b="s03-spoon" data-label="a spoonful of water"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: a spoonful of water"><use href="#ic-spoonful"/></svg><p class="nm lbl">spoonful of water</p><p class="cap">About 18 g of water. More molecules than anyone can count.</p></div></div>
+      <div class="card pcard slot"><div data-b="s03-dots" data-label="atoms"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: a cloud of tiny dots"><use href="#ic-dots"/></svg><p class="nm lbl">atoms</p><p class="cap">Atoms: too small to see, too many to count.</p></div></div>
+    </div>
+    <div class="card dq reg" id="s03-dq" data-label="driving question"><p>Particles are far too small and too many to count one by one. How can chemists count them?</p></div>
+    <div class="qrow" id="s03-st" data-label="write 60 s"><ol class="frames"><li>I think chemists count tiny particles by <span class="gap"></span>.</li></ol><div class="timer"></div></div>
+  </div>
+  <aside class="notes">The reading's opener: a bank teller counts a sealed bag of nickels by weighing it. A few grams of any substance hold more atoms than anyone could count one by one.</aside>
+  <script>Deck.frames('s03',[
+    {show:"s03-bag",t:0.5,note:"The bank never opens the bag. Ask: how can it know there are 250?"},
+    {show:"s03-spoon",t:0.5,note:"About 18 g of water, a little more than a spoonful. Ask: could anyone count its molecules?"},
+    {show:"s03-dots",t:0.5,note:"Atoms are far too small to see, and far too many to count."},
+    {show:"s03-dq",cls:{"s03-trio": "small"},t:0.5,note:"Read the driving question. Students copy it at the top of the notebook page."},
+    {show:"s03-st",timer:60,t:1,note:"Sixty seconds with the starter. Collect two answers; do not correct yet. Listen for \"a microscope\" and \"a very big number\"."}
+  ]);</script>
+</section>
+
+<section class="slide t-routine pn" id="s04" data-period="1" data-title="Predict now" data-sec="Predict" data-ref="Reading §5.1 Before you read">
+  <h2>Predict now</h2>
+  <div class="body">
+    <div class="card prompt"><p>Hands up: one finger for A, two for B, three for C. Write your letter.</p></div>
+    <div class="stack top">
+      <div class="card check" id="s04-q1" data-label="question 1" data-mode="pick"><p class="tag">Question 1</p><p class="q">One mole of copper and one mole of aluminum have…</p><ol class="opts col1" data-lay="col"><li class="opt"><b>A</b><span>the same mass</span></li><li class="opt"><b>B</b><span>the same number of atoms</span></li><li class="opt"><b>C</b><span>the same mass and number</span></li></ol></div>
+      <div class="card check" id="s04-q2" data-label="question 2" data-mode="pick"><p class="tag">Question 2</p><p class="q">One mole of sodium chloride, NaCl, holds 6.022&nbsp;×&nbsp;10<sup>23</sup>…</p><ol class="opts" data-lay="row"><li class="opt"><b>A</b><span>molecules</span></li><li class="opt"><b>B</b><span>formula units</span></li><li class="opt"><b>C</b><span>atoms</span></li></ol></div>
+      <div class="card check" id="s04-q3" data-label="question 3" data-mode="pick"><p class="tag">Question 3</p><p class="q">One mole of water, H<sub>2</sub>O, holds how many moles of hydrogen atoms?</p><ol class="opts" data-lay="row"><li class="opt"><b>A</b><span>1 mol</span></li><li class="opt"><b>B</b><span>2 mol</span></li><li class="opt"><b>C</b><span>6.022&nbsp;×&nbsp;10<sup>23</sup> mol</span></li></ol></div>
+    </div>
+  </div>
+  <aside class="notes">No answers on this slide. Students keep their letters; slide 26 returns all three answers.</aside>
+  <script>Deck.frames('s04',[
+    {show:"s04-q1",t:0.75,note:"Count hands for A, B, C and write the counts on the board. Do not react. A mouse click on an option only highlights it; there is no grading on this slide."},
+    {show:"s04-q2",hide:"s04-q1",t:0.5,note:"Count hands. Many choose \"molecules\" for salt (the particle is a formula unit)."},
+    {show:"s04-q3",hide:"s04-q2",t:0.75,note:"Count hands. \"1 mol\" is the common idea: one water, one hydrogen. Keep the counts for slide 26."}
+  ]);</script>
+</section>
+
+<section class="slide t-words" id="s05" data-period="1" data-title="Targets and words" data-sec="Targets" data-ref="Reading §5.1 Vocabulary">
+  <h2>Targets and words</h2>
+  <div class="body">
+    <div class="stack">
+      <div class="card" id="s05-ican" data-label="targets"><p class="tag">I can…</p><ul class="ican">
+        <li><b>5.1.1</b>count objects by weighing, with one mass or an average.</li>
+        <li><b>5.1.2</b>define the mole and use Avogadro's number.</li>
+        <li><b>5.1.3</b>change moles to particles and back, naming the particle.</li>
+        <li><b>5.1.4</b>use a formula to count the atoms in a sample.</li></ul></div>
+      <div class="words" id="s05-words" data-label="words">
+        <div class="wcard" id="s05-w1"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: mole"><use href="#ic-mole"/></svg><p class="t">mole <span class="es">(mol)</span></p><p class="m">the counting unit: 6.022&nbsp;×&nbsp;10<sup>23</sup> particles</p></div>
+        <div class="wcard" id="s05-w2"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: Avogadro's number"><use href="#ic-number"/></svg><p class="t">Avogadro's number <span class="es">(número de Avogadro)</span></p><p class="m">the number in one mole, no unit</p></div>
+        <div class="wcard" id="s05-w3"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: Avogadro constant"><use href="#ic-constant"/></svg><p class="t">Avogadro constant <span class="es">(constante de Avogadro)</span></p><p class="m">the same number per mole, mol<sup>−1</sup></p></div>
+        <div class="wcard" id="s05-w4"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: amount of substance"><use href="#ic-amount"/></svg><p class="t">amount of substance <span class="es">(cantidad de sustancia)</span></p><p class="m">what moles measure</p></div>
+        <div class="wcard" id="s05-w5"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: molecule"><use href="#ic-molecule"/></svg><p class="t">molecule <span class="es">(molécula)</span></p><p class="m">atoms joined by covalent bonds</p></div>
+        <div class="wcard" id="s05-w6"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: formula unit"><use href="#ic-funit"/></svg><p class="t">formula unit <span class="es">(unidad fórmula)</span></p><p class="m">one set of ions: Na<sup>+</sup> and Cl<sup>−</sup></p></div>
+        <div class="wcard" id="s05-w7"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: chemical formula"><use href="#ic-formula"/></svg><p class="t">chemical formula <span class="es">(fórmula química)</span></p><p class="m">which atoms, how many of each</p></div>
+        <div class="wcard" id="s05-w8"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: subscript"><use href="#ic-subscript"/></svg><p class="t">subscript <span class="es">(subíndice)</span></p><p class="m">the small number after a symbol</p></div>
+      </div>
+    </div>
+    <div class="legend" id="s05-leg" data-label="color code"><span><i class="i-g">g</i>grams (mass)</span><span><i class="i-mol">mol</i>moles (amount)</span><span><i class="i-n">#</i>particles (number)</span><span><i class="i-cat">+</i>cation</span><span><i class="i-an">−</i>anion</span><span><i class="i-atom">O</i>atom (CPK color = element)</span></div>
+  </div>
+  <aside class="notes">Unit 5 color code (plan section 3), the same in every Unit 5 deck: mass in grams amber, amount in moles teal, number of particles violet; a conversion factor is a gray bridge; ions keep Unit 4's red "+" and blue "−"; atoms keep CPK colors with the symbol on every sphere. Shapes carry a sign or a symbol, so color-blind students can read every drawing.</aside>
+  <script>Deck.frames('s05',[
+    {show:"s05-ican",t:1,note:"Read the four targets. Students copy 5.1.1 to 5.1.4; they rate themselves on slide 27."},
+    {show:"s05-words",hide:"s05-ican",t:1,note:"Choral reading: English term, then the Spanish cognate. Students add the words to the glossary with the icon. Stress: Avogadro's number has no unit; the Avogadro constant is per mole."},
+    {show:"s05-leg",t:0.5,note:"Color code: grams amber, moles teal, particles violet; cation red with +, anion blue with −; atoms in CPK colors."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept cw" id="s06" data-period="1" data-title="Counting by weighing" data-sec="Counting by weighing" data-ref="Reading §5.1.1">
+  <h2>Counting by weighing</h2>
+  <div class="body">
+    <div class="sim" id="s06-sim" data-sim="coinScale" aria-label="A bank bag of nickels on a scale; the scale is zeroed; the mass is divided by the mass of one nickel."></div>
+    <div class="col acc">
+      <div class="card" id="s06-c0" data-label="the bag"><p class="tag">The bank</p><p>A sealed bag of nickels on the bank's scale.</p></div>
+      <div class="card" id="s06-c1" data-label="zero"><p class="tag">Zero the scale</p><p>First, zero the scale with the empty bag. Now it reads the coins alone.</p></div>
+      <div class="card" id="s06-pred" data-label="predict"><p class="tag">Predict</p><p>The scale reads 1,250.0&nbsp;g. How many nickels?</p></div>
+      <div class="card" id="s06-c2" data-label="divide"><p class="tag">Divide</p><span class="enrow"><span class="enl lbl">Mass of one nickel</span><span class="chips"><span class="chip g">5.000&nbsp;g</span></span></span><p>1,250.0&nbsp;g ÷ 5.000&nbsp;g per nickel. The grams cancel.</p></div>
+      <div class="card" id="s06-c3" data-label="count"><p class="tag">Count</p><p>250 nickels. Check: 250 × 5.000&nbsp;g = 1,250.0&nbsp;g.</p></div>
+      <div class="card rule reg" id="s06-rule" data-label="rule"><p class="tag">Rule</p><p>If every object has the same mass, divide the total by one object's mass. The grams cancel. A pure number is left.</p></div>
+      <div class="card check" id="s06-check" data-label="check">
+        <p class="tag">Check</p>
+        <p class="q">A roll of nickels has a mass of 200.0&nbsp;g. How many nickels is that?</p>
+        <ol class="opts" data-lay="row"><li class="opt" id="s06-a" data-ok="1" data-fb="Divide: 200.0 g ÷ 5.000 g = 40."><b>A</b><span>40</span></li><li class="opt" id="s06-b" data-ok="0" data-fb="That multiplies the two masses. Divide by the mass of one nickel."><b>B</b><span>1,000</span></li><li class="opt" id="s06-c" data-ok="0" data-fb="200 is the mass in grams, not the count. Divide by 5.000 g."><b>C</b><span>200</span></li></ol>
+        <div class="af"><p class="ans" id="s06-ans" data-label="answer">A. 200.0&nbsp;g ÷ 5.000&nbsp;g per nickel = 40 nickels.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Zeroing (taring) in words: the scale reads 0.0 g with the empty bag on it, so it then shows the mass of the coins alone. The grams cancel, leaving a pure number of nickels.</aside>
+  <script>Deck.frames('s06',[
+    {show:"s06-c0",stage:"s06-sim:bag",focus:"s06-sim",t:0.25,note:"A bank bag of nickels on the bank's scale. Ask: what would the scale show?"},
+    {show:"s06-c1",stage:"s06-sim:zero",t:0.5,note:"The empty bag on the scale, then zero: the reading is 0.0 g. Say \"zero\", the word \"tare\" once."},
+    {show:"s06-pred",hide:["s06-c0", "s06-c1"],stage:"s06-sim:read",t:0.5,note:"Prediction: 1,250.0 g of nickels. How many? Collect answers on whiteboards. Listen for \"multiply\"."},
+    {show:"s06-c2",hide:"s06-pred",stage:"s06-sim:divide",t:0.25,note:"1,250.0 g × 1 nickel / 5.000 g: the grams cancel (struck in red)."},
+    {show:"s06-c3",stage:"s06-sim:count",t:0.25,note:"250 nickels. The check multiplies back: 250 × 5.000 g = 1,250.0 g."},
+    {show:"s06-rule",hide:"s06-c2",t:1,note:"Students copy the rule card (reading §5.1.1 Key idea)."},
+    {show:"s06-check",hide:"s06-c3",stage:"s06-sim:roll",t:1,note:"Hands up for A, B or C. The animation shows the roll: 200.0 g on the scale. The answer is not drawn."},
+    {show:"s06-ans",cls:{"s06-a": "right", "s06-check": "done"},t:0.25,note:"A is right: 200.0 g ÷ 5.000 g = 40. B (1,000): that multiplies the two masses; divide by the mass of one nickel. C (200): 200 is the mass in grams, not the count; divide by 5.000 g."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept cw" id="s07" data-period="1" data-title="Counting a mixed jar" data-sec="Counting by weighing" data-ref="Reading §5.1.1">
+  <h2>Counting a mixed jar</h2>
+  <div class="body">
+    <div class="sim" id="s07-sim" data-sim="centJar" aria-label="A jar of pennies with two kinds of cents; a sample of 100 cents gives the average mass."></div>
+    <div class="col acc">
+      <div class="card" id="s07-c0" data-label="the jar"><p class="tag">A jar of pennies</p><p>Two kinds of cents, two masses.</p><span class="enrow"><span class="enl lbl">Mass of one cent</span><span class="chips"><span class="chip g">before 1982: 3.11&nbsp;g</span><span class="chip g">after 1982: 2.500&nbsp;g</span></span></span></div>
+      <div class="card" id="s07-pred" data-label="predict"><p class="tag">Predict</p><p>Divide the jar's 1,017.1&nbsp;g by 2.500&nbsp;g? Thumbs up or down.</p></div>
+      <div class="card" id="s07-c1" data-label="wrong divisors"><p class="tag">Wrong divisors</p><p>÷ 2.500&nbsp;g counts too many. ÷ 3.11&nbsp;g counts too few.</p></div>
+      <div class="card" id="s07-c2" data-label="sample"><p class="tag">Sample</p><p>Weigh a sample of 100 cents: 267.69&nbsp;g.</p></div>
+      <div class="card" id="s07-c3" data-label="average"><p class="tag">Average</p><p>267.69&nbsp;g ÷ 100 = 2.6769&nbsp;g per cent in this jar.</p></div>
+      <div class="card" id="s07-c4" data-label="count"><p class="tag">Count</p><p>1,017.1&nbsp;g ÷ 2.6769&nbsp;g = about 380 cents.</p></div>
+      <div class="card word" id="s07-word" data-label="new word"><svg class="ic" viewBox="0 0 100 100" role="img" aria-label="Icon: two atoms of different mass and their average"><use href="#ic-avgmass"/></svg><p class="term">average atomic mass <span class="es">(masa atómica promedio)</span></p><p class="mean">the table's mass, an average over isotopes</p></div>
+      <div class="card" id="s07-c5" data-label="isotopes"><p class="tag">Isotopes</p><p>Most elements are a mix of isotopes. The table gives the average mass.</p></div>
+      <div class="card rule reg" id="s07-rule" data-label="rule"><p class="tag">Rule</p><p>A mix of objects is counted with the average mass of one object. Average atomic masses let chemists count atoms the same way.</p></div>
+      <div class="card check" id="s07-check" data-label="check">
+        <p class="tag">Check</p>
+        <p class="q">A jar holds both kinds of cents. Which mass do you divide by?</p>
+        <ol class="opts col1" data-lay="col"><li class="opt" id="s07-a" data-ok="1" data-fb="The jar&#x27;s own average is the right divisor."><b>A</b><span>the average mass of a sample from this jar</span></li><li class="opt" id="s07-b" data-ok="0" data-fb="That works only if the jar holds equal numbers of each kind."><b>B</b><span>the average of 2.500&nbsp;g and 3.11&nbsp;g</span></li><li class="opt" id="s07-c" data-ok="0" data-fb="Dividing by the lighter cent counts too many coins."><b>C</b><span>2.500&nbsp;g, the mass of a newer cent</span></li></ol>
+        <div class="af"><p class="ans" id="s07-ans" data-label="answer">A. Weigh a sample from the jar. Divide its mass by its count.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Lesson 2.3 link: the average atomic mass on the periodic table is the average over an element's isotopes, just as 2.6769 g is the average cent of this jar. "About 407" (1,017.1 g ÷ 2.500 g) and "about 327" (1,017.1 g ÷ 3.11 g) are computed from the reading's data; the reading says "too many" and "too few". The two atom sizes in the isotope picture stand for two masses; real isotopes of one element have the same size.</aside>
+  <script>Deck.frames('s07',[
+    {show:"s07-c0",stage:"s07-sim:jar",focus:"s07-sim",t:0.25,note:"Two kinds of cents: made before 1982 (95% copper, 3.11 g) and made after 1982 (zinc coated with copper, 2.500 g). The jar of pennies has a mass of 1,017.1 g."},
+    {show:"s07-pred",t:0.25,note:"Prediction: thumbs up or down for dividing by 2.500 g. Most say up."},
+    {show:"s07-c1",hide:"s07-pred",stage:"s07-sim:wrong",t:0.25,note:"÷ 2.500 g gives about 407: too many, because some cents are heavier. ÷ 3.11 g gives about 327: too few."},
+    {show:"s07-c2",hide:"s07-c0",stage:"s07-sim:sample",t:0.25,note:"A sample of 100 cents from this jar has a mass of 267.69 g."},
+    {show:"s07-c3",stage:"s07-sim:average",t:0.25,note:"267.69 g ÷ 100 = 2.6769 g per cent. Misconception: \"average 2.500 and 3.11\" (works only with equal numbers of each)."},
+    {show:"s07-c4",hide:["s07-c1", "s07-c2"],stage:"s07-sim:count",t:0.25,note:"1,017.1 g ÷ 2.6769 g = about 380 cents. Check: 2.6769 lies between 2.500 and 3.11."},
+    {show:"s07-word",hide:"s07-c3",t:0.25,note:"Read the word card; students repeat \"average atomic mass, masa atómica promedio\"."},
+    {show:"s07-c5",stage:"s07-sim:isotopes",t:0.25,note:"The coins become atoms: one element, a mix of isotopes. The periodic table gives the average mass: copper 63.546. No isotope masses are needed."},
+    {show:"s07-rule",hide:["s07-c4", "s07-word"],t:1,note:"Students copy the rule card (reading §5.1.1 Key idea)."},
+    {show:"s07-check",hide:["s07-c5", "s07-rule"],stage:"s07-sim:sample",t:0.75,note:"Hands up for A, B or C. The animation returns to the sample of 100 cents."},
+    {show:"s07-ans",cls:{"s07-a": "right", "s07-check": "done"},t:0.25,note:"A is right: weigh a sample of this jar and divide its mass by its count. B (the average of 2.500 g and 3.11 g): that works only if the jar holds equal numbers of each kind. C (2.500 g): dividing by the lighter cent counts too many coins."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept cw" id="s08" data-period="1" data-title="The mole" data-sec="The mole" data-ref="Reading §5.1.2">
+  <h2>The mole</h2>
+  <div class="body">
+    <div class="sim" id="s08-sim" data-sim="countingUnits" aria-label="A dozen eggs, a ream of paper and a flask holding one mole of particles."></div>
+    <div class="col acc">
+      <div class="card" id="s08-c0" data-label="a dozen"><p class="tag">A dozen</p><p>A baker counts eggs by the dozen: 12.</p></div>
+      <div class="card" id="s08-c1" data-label="a ream"><p class="tag">A ream</p><p>A ream of paper: 500 sheets.</p></div>
+      <div class="card" id="s08-pred" data-label="predict"><p class="tag">Predict</p><p>Atoms are tiny. How big must the chemist's counting unit be?</p></div>
+      <div class="card" id="s08-c2" data-label="the mole"><p class="tag">The mole</p><p>One mole: 6.022&nbsp;×&nbsp;10<sup>23</sup> particles. The symbol is mol.</p></div>
+      <div class="card" id="s08-c3" data-label="exactly"><p class="tag">Exactly</p><p>Since May 20, 2019: exactly 6.02214076&nbsp;×&nbsp;10<sup>23</sup>. We round it to 6.022&nbsp;×&nbsp;10<sup>23</sup>.</p></div>
+      <div class="card" id="s08-c4" data-label="the constant"><p class="tag">Number or constant</p><p>Avogadro's number has no unit. The Avogadro constant is the same number per mole: 6.022&nbsp;×&nbsp;10<sup>23</sup>&nbsp;mol<sup>−1</sup>.</p></div>
+      <div class="card rule reg" id="s08-rule" data-label="rule"><p class="tag">Rule</p><p>One mole contains exactly 6.02214076&nbsp;×&nbsp;10<sup>23</sup> particles. In calculations we round it to 6.022&nbsp;×&nbsp;10<sup>23</sup>. A mole is a count, not a mass.</p></div>
+      <div class="card check" id="s08-check" data-label="check">
+        <p class="tag">Check</p>
+        <p class="q">A mole is a…</p>
+        <ol class="opts col1" data-lay="col"><li class="opt" id="s08-a" data-ok="1" data-fb="A mole counts particles, like a dozen counts eggs."><b>A</b><span>count of particles: 6.022&nbsp;×&nbsp;10<sup>23</sup> of them</span></li><li class="opt" id="s08-b" data-ok="0" data-fb="A mole is a count. One mole of different substances has different masses."><b>B</b><span>mass of a substance in grams</span></li><li class="opt" id="s08-c" data-ok="0" data-fb="A mole is a count. One mole of different substances fills different volumes."><b>C</b><span>volume of a substance</span></li></ol>
+        <div class="af"><p class="ans" id="s08-ans" data-label="answer">A. Like a dozen, a mole is a number of things. A very large one.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">"Amount of substance" is the SI quantity; the mole is its unit. The rounded value 6.022 × 10²³ is the exact number written with fewer digits, not a measurement. N_A is read "N sub A".</aside>
+  <script>Deck.frames('s08',[
+    {show:"s08-c0",stage:"s08-sim:dozen",focus:"s08-sim",t:0.25,note:"A counting unit: the baker counts eggs by the dozen. Ask for other counting units (a pair, a ream)."},
+    {show:"s08-c1",stage:"s08-sim:ream",t:0.25,note:"A ream of paper is 500 sheets. Paper is thin, so the unit is bigger."},
+    {show:"s08-pred",hide:["s08-c0", "s08-c1"],t:0.25,note:"Prediction: how big must the counting unit be for atoms? Collect guesses: a thousand? a million?"},
+    {show:"s08-c2",hide:"s08-pred",stage:"s08-sim:mole",t:0.25,note:"One mole is 6.022 × 10²³ particles. Say it: six point oh two two times ten to the twenty-third. The symbol is mol."},
+    {show:"s08-c3",stage:"s08-sim:exact",t:0.25,note:"Since May 20, 2019 the number is exact: 6.02214076 × 10²³. In calculations we round it."},
+    {show:"s08-c4",hide:"s08-c2",stage:"s08-sim:constant",t:0.25,note:"Avogadro's number has no unit; the Avogadro constant, N_A, is the same number per mole."},
+    {show:"s08-rule",hide:"s08-c3",t:1,note:"Students copy the rule card. Misconception: \"a mole is a mass\"."},
+    {show:"s08-check",hide:["s08-c4", "s08-rule"],t:0.75,note:"Hands up for A, B or C. The figure of the three counting units stays on screen."},
+    {show:"s08-ans",cls:{"s08-a": "right", "s08-check": "done"},t:0.25,note:"A is right. B (a mass in grams): a mole is a count; one mole of different substances has different masses. C (a volume): one mole of different substances fills different volumes."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept cw" id="s09" data-period="1" data-title="How many is a mole?" data-sec="The mole" data-ref="Reading §5.1.2">
+  <h2>How many is a mole?</h2>
+  <div class="body">
+    <div class="sim" id="s09-sim" data-sim="howMany" aria-label="One water molecule, a dozen, a thousand, then zooming out by a thousand each step to one mole."></div>
+    <div class="col acc">
+      <div class="card" id="s09-c0" data-label="one"><p class="tag">One</p><p>One water molecule.</p></div>
+      <div class="card" id="s09-c1" data-label="a dozen"><p class="tag">A dozen</p><p>A dozen: 12. You can count them.</p></div>
+      <div class="card" id="s09-c2" data-label="a thousand"><p class="tag">A thousand</p><p>A thousand: 10 rows, 10 across, 10 deep.</p></div>
+      <div class="card" id="s09-pred" data-label="predict"><p class="tag">Predict</p><p>10<sup>23</sup> has 23 zeros. How many times must we zoom out by 1,000?</p></div>
+      <div class="card" id="s09-c3" data-label="zoom out"><p class="tag">Zoom out</p><p>Every step is 1,000 times more. Watch the counter.</p></div>
+      <div class="card" id="s09-c4" data-label="one mole"><p class="tag">One mole</p><p>Seven steps, then × 602: 6.022&nbsp;×&nbsp;10<sup>23</sup>. One mole.</p></div>
+      <div class="card" id="s09-c5" data-label="the spoon"><p class="tag">A spoonful</p><p>All of that water fits in a spoon: about 18&nbsp;g.</p></div>
+      <div class="card rule reg" id="s09-rule" data-label="rule"><p class="tag">Rule</p><p>A mole is 6.022&nbsp;×&nbsp;10<sup>23</sup> particles. Molecules are so small that a mole of water is only about 18&nbsp;g.</p></div>
+      <div class="card check" id="s09-check" data-label="check">
+        <p class="tag">Check</p>
+        <p class="q">One mole of water molecules has a mass of about…</p>
+        <ol class="opts col1" data-lay="col"><li class="opt" id="s09-a" data-ok="1" data-fb="A mole of water is about 18 g, a spoonful."><b>A</b><span>18&nbsp;g, less than a large spoonful</span></li><li class="opt" id="s09-b" data-ok="0" data-fb="A mole is a count, not one gram. One mole of water is about 18 g."><b>B</b><span>1&nbsp;g</span></li><li class="opt" id="s09-c" data-ok="0" data-fb="6.022 × 10²³ is the number of molecules, not the mass in grams."><b>C</b><span>6.022&nbsp;×&nbsp;10<sup>23</sup>&nbsp;g</span></li></ol>
+        <div class="af"><p class="ans" id="s09-ans" data-label="answer">A. Avogadro's number is huge because molecules are tiny.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">The prediction's answer: seven zoom-outs of × 1,000 reach 10²¹ (1,000 × 1,000 × … seven times), then a last factor of 602: 10²¹ × 602.2 = 6.022 × 10²³. The step words (a million, a billion, …) are names of powers of ten. Under reduced motion the cascade shows its end state with the ladder complete.</aside>
+  <script>Deck.frames('s09',[
+    {show:"s09-c0",stage:"s09-sim:one",focus:"s09-sim",t:0.25,note:"One water molecule, drawn in CPK colors: O red, H white."},
+    {show:"s09-c1",stage:"s09-sim:dozen",t:0.25,note:"A dozen molecules in a carton. Twelve is easy to count."},
+    {show:"s09-c2",hide:["s09-c0", "s09-c1"],stage:"s09-sim:thousand",t:0.25,note:"A thousand: the front face shows 100 cells; the cube is 10 deep. The counter says 1,000 = 10³."},
+    {show:"s09-pred",t:0.25,note:"Prediction: how many zoom-outs by 1,000 to reach 10²³? Collect numbers. Listen for \"23\"."},
+    {show:"s09-c3",hide:["s09-c2", "s09-pred"],stage:"s09-sim:zoom",t:0.75,note:"Each 1.2 s the whole cube shrinks into one cell of a new face: 10⁶, 10⁹, … 10²¹. Read the words aloud with the class."},
+    {show:"s09-c4",stage:"s09-sim:mole",t:0.25,note:"Seven steps reach 10²¹; × 602 more gives 6.022 × 10²³: one mole, the flask of slide 8."},
+    {show:"s09-c5",hide:"s09-c3",stage:"s09-sim:spoon",t:0.25,note:"One mole of water is only about 18 g, less than a large spoonful."},
+    {show:"s09-rule",hide:"s09-c4",t:1,note:"Students copy the rule card. Misconception: \"one mole always has a mass of 1 gram\"."},
+    {show:"s09-check",hide:["s09-c5", "s09-rule"],t:0.75,note:"Hands up for A, B or C. The spoon of water stays on screen."},
+    {show:"s09-ans",cls:{"s09-a": "right", "s09-check": "done"},t:0.25,note:"A is right. B (1 g): a mole is a count, not one gram; a mole of water is about 18 g. C (6.022 × 10²³ g): that is the number of molecules, not the mass in grams."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept cw" id="s10" data-period="1" data-title="Name the particle" data-sec="The mole" data-ref="Reading §5.1.2">
+  <h2>Name the particle</h2>
+  <div class="body">
+    <div class="leftcol"><div class="sim" id="s10-sim" data-sim="moleKinds" aria-label="One mole of aluminum and one mole of copper on a balance; then the four kinds of particles."></div><p class="simcap blk" id="s10-cap" data-zoom="caption">Atom colors show the element, not the charge.</p></div>
+    <div class="col acc">
+      <div class="card" id="s10-c0" data-label="aluminum"><p class="tag">Aluminum</p><p>One mole of aluminum atoms: 26.982&nbsp;g.</p></div>
+      <div class="card" id="s10-c1" data-label="copper"><p class="tag">Copper</p><p>One mole of copper atoms: 63.546&nbsp;g.</p></div>
+      <div class="card" id="s10-p1" data-label="predict"><p class="tag">Predict</p><p>Which pan holds more atoms?</p></div>
+      <div class="card" id="s10-c2" data-label="same number"><p class="tag">Compare</p><span class="enrow"><span class="enl lbl">Mass of one mole</span><span class="chips"><span class="chip g">Al 26.982&nbsp;g</span><span class="chip g">Cu 63.546&nbsp;g</span></span></span><p>Same number of atoms. Different mass.</p></div>
+      <div class="card" id="s10-p2" data-label="predict"><p class="tag">Predict</p><p>"One mole of oxygen." Oxygen atoms, or O<sub>2</sub> molecules?</p></div>
+      <div class="card" id="s10-c3" data-label="oxygen"><p class="tag">Oxygen</p><p>1&nbsp;mol of O<sub>2</sub> molecules holds twice the atoms of 1&nbsp;mol of O atoms.</p></div>
+      <div class="card" id="s10-c4" data-label="four kinds"><p class="tag">Four kinds</p><p>Name the particle every time: atoms, molecules, formula units or ions.</p></div>
+      <div class="card rule reg" id="s10-rule" data-label="rule"><p class="tag">Rule</p><p>A mole must always name its particle: atoms, molecules, formula units or ions.</p></div>
+      <div class="card check" id="s10-check" data-label="check">
+        <p class="tag">Check</p>
+        <p class="q">One mole of aluminum atoms and one mole of copper atoms…</p>
+        <ol class="opts col1" data-lay="col"><li class="opt" id="s10-a" data-ok="1" data-fb="Same count; copper atoms are heavier, so the copper sample is heavier."><b>A</b><span>hold equal numbers of atoms but differ in mass</span></li><li class="opt" id="s10-b" data-ok="0" data-fb="Each element&#x27;s atoms have their own mass, so the moles differ in mass."><b>B</b><span>have the same mass</span></li><li class="opt" id="s10-c" data-ok="0" data-fb="A mole always holds 6.022 × 10²³ particles, whatever their size."><b>C</b><span>hold different numbers, as copper atoms are larger</span></li></ol>
+        <div class="af"><p class="ans" id="s10-ans" data-label="answer">A. Each holds 6.022&nbsp;×&nbsp;10<sup>23</sup> atoms. A copper atom has more mass.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Masses of one mole from the blueprint's misconception table (CIAAW): aluminum 26.982 g, copper 63.546 g. Atom sizes from covalent radii (Cordero 2008); ion sizes from Shannon 1976. The caption under the picture says that atom colors (CPK) show the element; ions keep Unit 4's red "+" and blue "−".</aside>
+  <script>Deck.frames('s10',[
+    {show:["s10-c0", "s10-cap"],stage:"s10-sim:al",focus:"s10-sim",t:0.25,note:"One mole of aluminum atoms on the left pan: 26.982 g. The beam tips toward the loaded pan."},
+    {show:"s10-c1",stage:"s10-sim:cu",t:0.25,note:"One mole of copper atoms: 63.546 g. The beam tips toward copper."},
+    {show:"s10-p1",hide:["s10-c0", "s10-c1"],t:0.25,note:"Prediction: which pan holds more atoms? Hands up for aluminum, copper, the same."},
+    {show:"s10-c2",hide:"s10-p1",stage:"s10-sim:compare",t:0.25,note:"Both hold 6.022 × 10²³ atoms. A copper atom has more mass. Misconception: \"a mole is a mass\"."},
+    {show:"s10-p2",t:0.25,note:"Prediction: \"one mole of oxygen\" could mean either. Which?"},
+    {show:"s10-c3",hide:["s10-c2", "s10-p2"],stage:"s10-sim:oxygen",t:0.25,note:"1 mol of O₂ molecules holds 2 mol of O atoms: twice the atoms of 1 mol of O atoms."},
+    {show:"s10-c4",stage:"s10-sim:four",t:0.25,note:"Atoms (a Cu atom), molecules (H₂O), formula units (one Na⁺ with one Cl⁻), ions. Read the caption: atom colors show the element, not the charge."},
+    {show:"s10-rule",hide:"s10-c3",t:1,note:"Students copy the rule card (reading §5.1.2: a mole must always name its particles)."},
+    {show:"s10-check",hide:["s10-c4", "s10-rule"],stage:"s10-sim:compare",t:0.75,note:"Hands up for A, B or C. The balance returns: one mole of Al, one mole of Cu."},
+    {show:"s10-ans",cls:{"s10-a": "right", "s10-check": "done"},t:0.25,note:"A is right. B (the same mass): each element's atoms have their own mass, so the moles differ in mass. C (different numbers, copper atoms larger): a mole always holds 6.022 × 10²³ particles, whatever their size."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept wide" id="s11" data-period="1" data-title="The size of a mole" data-sec="The mole" data-ref="Reading §5.1.2">
+  <h2>The size of a mole</h2>
+  <div class="body">
+    <div class="sim" id="s11-sim" data-sim="secondsLine" data-band="236" aria-label="A time line in powers of ten: one year, Earth, the universe, and the time to count one mole."></div>
+    <div class="ptrow tall blk" id="s11-row" data-label="time line"><div class="stack">
+      <p class="caprow" id="s11-p0">Count one particle each second. Never stop.</p>
+      <p class="caprow" id="s11-p1" data-label="one year">One year is about 3.156&nbsp;×&nbsp;10<sup>7</sup> seconds.</p>
+      <p class="caprow" id="s11-p2" data-label="Earth">Earth is about 4.5 billion years old.</p>
+      <p class="caprow" id="s11-p3" data-label="the universe">The universe is about 13.8 billion years old.</p>
+      <p class="caprow" id="s11-p4" data-label="predict">Predict: where does 6.022&nbsp;×&nbsp;10<sup>23</sup> seconds land?</p>
+      <p class="caprow" id="s11-p5" data-label="the mole">6.022&nbsp;×&nbsp;10<sup>23</sup> s is about 1.9&nbsp;×&nbsp;10<sup>16</sup> years.</p>
+      <p class="caprow" id="s11-p6" data-label="how many times">About 1.4 million times the age of the universe.</p>
+      <p class="caprow" id="s11-p7" data-label="a spoonful">Yet one mole of water is about 18&nbsp;g. Less than a large spoonful.</p>
+      <div class="rulerow reg" id="s11-rule" data-label="rule"><p>At one particle each second, a mole takes about 1.9&nbsp;×&nbsp;10<sup>16</sup> years.</p><p>That is 1.4 million times the age of the universe.</p><p>Yet a mole of water is only about 18&nbsp;g.</p></div>
+      <div class="checkrow" id="s11-check" data-label="check">
+        <p class="q" id="s11-q"><span class="tag">Check:</span> Earth is 4.5 billion years old. About how many Earth ages?</p>
+        <ol class="opts" data-lay="row"><li class="opt" id="s11-a" data-ok="1" data-fb="10¹⁶ ÷ 10⁹ = 10⁷, and 1.9 ÷ 4.5 ≈ 0.4: about 4 × 10⁶."><b>A</b><span>4 million times</span></li><li class="opt" id="s11-b" data-ok="0" data-fb="Divide the powers of ten carefully: 10¹⁶ ÷ 10⁹ = 10⁷."><b>B</b><span>4,000 times</span></li><li class="opt" id="s11-c" data-ok="0" data-fb="1.4 million is for the universe. Earth is younger, so more times."><b>C</b><span>1.4 million times</span></li></ol>
+        <div class="af"><p class="ans" id="s11-ans" data-label="answer">A. 1.9&nbsp;×&nbsp;10<sup>16</sup> ÷ 4.5&nbsp;×&nbsp;10<sup>9</sup> is about 4&nbsp;×&nbsp;10<sup>6</sup>.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div></div>
+  </div>
+  <aside class="notes">The reading's worked example: 6.022 × 10²³ s × 1 year / 3.156 × 10⁷ s = 1.908 × 10¹⁶ years; 1.908 × 10¹⁶ ÷ 1.38 × 10¹⁰ = 1.38 × 10⁶, about 1.4 million. Each mark on the line is 10 times the one before. "Avogadro's number is so large because atoms are so small."</aside>
+  <script>Deck.frames('s11',[
+    {show:["s11-row", "s11-p0"],stage:"s11-sim:line",focus:"s11-sim",t:0.25,note:"The counter ticks one particle each second beside the clock. Ask: how long to count a mole this way?"},
+    {show:"s11-p1",hide:"s11-p0",stage:"s11-sim:year",t:0.25,note:"One year is about 3.156 × 10⁷ seconds. Each mark of the line is ten times the one before."},
+    {show:"s11-p2",hide:"s11-p1",stage:"s11-sim:earth",t:0.25,note:"Earth: about 4.5 billion years (USGS 4.54 billion)."},
+    {show:"s11-p3",hide:"s11-p2",stage:"s11-sim:universe",t:0.25,note:"The universe: about 13.8 billion years (NASA JPL)."},
+    {show:"s11-p4",hide:"s11-p3",t:0.25,note:"Prediction: point at the line. Where does 6.022 × 10²³ seconds land?"},
+    {show:"s11-p5",hide:"s11-p4",stage:"s11-sim:mole",t:0.25,note:"Far to the right: 6.022 × 10²³ s is about 1.9 × 10¹⁶ years."},
+    {show:"s11-p6",hide:"s11-p5",stage:"s11-sim:times",t:0.25,note:"1.9 × 10¹⁶ ÷ 1.38 × 10¹⁰ is about 1.4 million times the age of the universe."},
+    {show:"s11-p7",hide:"s11-p6",stage:"s11-sim:spoon",t:0.25,note:"Yet one mole of water is about 18 g: less than a large spoonful."},
+    {show:"s11-rule",hide:"s11-p7",t:1,note:"Students copy the three lines of the rule (reading §5.1.2 Key idea)."},
+    {show:"s11-check",hide:"s11-rule",stage:"s11-sim:times",t:0.75,note:"Hands up for A, B or C. The line shows the universe bracket and, faint, the Earth bracket."},
+    {show:"s11-ans",cls:{"s11-a": "right", "s11-check": "done"},t:0.25,note:"A is right: 1.9 × 10¹⁶ ÷ 4.5 × 10⁹ is about 4 × 10⁶. B (4,000 times): divide the powers of ten carefully, 10¹⁶ ÷ 10⁹ = 10⁷. C (1.4 million times): that is for the universe; Earth is younger, so more times."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept wide" id="s12" data-period="1" data-title="Who found the number" data-sec="The mole" data-ref="Reading §5.1.2">
+  <h2>Who found the number</h2>
+  <div class="body">
+    <div class="sim" id="s12-sim" data-sim="moleHistory" data-band="214" aria-label="A time ruler from 1800 to 2020 with the people and dates behind the mole."></div>
+    <div class="ptrow blk" id="s12-row" data-label="history"><div class="stack">
+      <p class="caprow" id="s12-p0">1811: Avogadro's idea. Equal gas volumes hold equal numbers of particles. He never knew the number.</p>
+      <p class="caprow" id="s12-p1" data-label="1865">1865: Loschmidt made the first estimate of the size of molecules.</p>
+      <p class="caprow" id="s12-p2" data-label="1890s">1890s: Ostwald made the word Mol a unit.</p>
+      <p class="caprow" id="s12-p3" data-label="1909">1909: Jean Perrin measured it several ways and named it after Avogadro. Nobel Prize, 1926.</p>
+      <p class="caprow" id="s12-p4" data-label="1971">1971: the mole became an SI base unit. Old definition: the atoms in exactly 12&nbsp;g of carbon-12.</p>
+      <p class="caprow" id="s12-p5" data-label="predict">Predict: today, is the number measured, or fixed by definition?</p>
+      <p class="caprow" id="s12-p6" data-label="2018 and 2019">Voted November 16, 2018. Exact since May 20, 2019. No longer measured.</p>
+      <div class="card rule reg" id="s12-rule" data-label="rule"><p class="tag">Rule</p><p>Since May 20, 2019 the number is exact: 6.02214076&nbsp;×&nbsp;10<sup>23</sup>. It is no longer measured.</p></div>
+    </div></div>
+  </div>
+  <aside class="notes">The reading's section "How the number was found". The 1971 definition (the atoms in exactly 12 g of carbon-12) is "a definition that older books still print". The silicon spheres of the Avogadro project come next, on slide 13.</aside>
+  <script>Deck.frames('s12',[
+    {show:["s12-row", "s12-p0"],stage:"s12-sim:avogadro",focus:"s12-sim",t:0.25,note:"1811, Amedeo Avogadro: equal volumes of gases at the same temperature and pressure hold equal numbers of particles. He never knew how large that number was. Misconception: \"Avogadro measured the number\"."},
+    {show:"s12-p1",hide:"s12-p0",stage:"s12-sim:loschmidt",t:0.25,note:"1865, Josef Loschmidt: the first estimate of the size of molecules, and so of the number."},
+    {show:"s12-p2",hide:"s12-p1",stage:"s12-sim:ostwald",t:0.25,note:"1890s, Wilhelm Ostwald: the word Mol as a unit."},
+    {show:"s12-p3",hide:"s12-p2",stage:"s12-sim:perrin",t:0.25,note:"Around 1909, Jean Perrin measured the number by several independent methods and proposed naming it after Avogadro; Nobel Prize in Physics, 1926."},
+    {show:"s12-p4",hide:"s12-p3",stage:"s12-sim:si",t:0.25,note:"1971: the mole became an SI base unit, defined by 12 g of carbon-12."},
+    {show:"s12-p5",hide:"s12-p4",t:0.25,note:"Prediction: is the number still measured today? Hands up for \"measured\" and for \"fixed\"."},
+    {show:"s12-p6",hide:"s12-p5",stage:"s12-sim:exact",t:0.25,note:"The vote of November 16, 2018; in force May 20, 2019. The number is now exact and is no longer measured."},
+    {show:"s12-rule",hide:"s12-p6",t:1,note:"Students copy the rule card. No check on this slide."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept cw" id="s13" data-period="1" data-title="Counting the atoms in a silicon sphere" data-sec="The mole" data-ref="Reading §5.1.2">
+  <h2>Counting the atoms in a silicon sphere</h2>
+  <div class="body">
+    <div class="sim" id="s13-sim" data-sim="siliconSphere" aria-label="A silicon sphere; its crystal of identical cubes, turning; one cube with its edge measured."></div>
+    <div class="col acc">
+      <div class="card" id="s13-c0" data-label="the sphere"><p class="tag">The sphere</p><p>The Avogadro project: a nearly perfect sphere of silicon.</p></div>
+      <div class="card" id="s13-pred" data-label="predict"><p class="tag">Predict</p><p>How could anyone count the atoms in this ball?</p></div>
+      <div class="card" id="s13-c1" data-label="one crystal"><p class="tag">One crystal</p><p>The sphere is one crystal. Its atoms repeat in identical cubes.</p></div>
+      <div class="card" id="s13-cube" data-label="one cube"><p class="tag">One cube</p><p>X-rays measure one cube's edge: 543.102&nbsp;pm. Each cube holds 8 atoms.</p></div>
+      <div class="card" id="s13-c2" data-label="one atom"><p class="tag">One atom</p><p>The density gives the mass of one cube, so of one atom.</p></div>
+      <div class="card" id="s13-c3" data-label="the count"><p class="tag">The count</p><p>Mass of one mole of silicon ÷ mass of one atom = 6.022&nbsp;×&nbsp;10<sup>23</sup>.</p></div>
+      <div class="card rule reg" id="s13-rule" data-label="rule"><p class="tag">Rule</p><p>The atoms of a crystal repeat in identical cubes. Count one cube and measure its size. Then the whole sphere is counted.</p></div>
+      <div class="card check" id="s13-check" data-label="check">
+        <p class="tag">Check</p>
+        <p class="q">In the Avogadro project, a silicon sphere was used to…</p>
+        <ol class="opts col1" data-lay="col"><li class="opt" id="s13-a" data-ok="1" data-fb="Volume, density and atom spacing give the count."><b>A</b><span>count its atoms: mass, density, atom spacing</span></li><li class="opt" id="s13-b" data-ok="0" data-fb="The spheres counted atoms. Since 2019 the kilogram is defined by the Planck constant."><b>B</b><span>define the kilogram by its size</span></li><li class="opt" id="s13-c" data-ok="0" data-fb="The project counted atoms. It did not compare their sizes."><b>C</b><span>show that silicon atoms are larger than carbon atoms</span></li></ol>
+        <div class="af"><p class="ans" id="s13-ans" data-label="answer">A. These measurements gave the value fixed in 2019.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes"><b>Honors (notes only, never assessed).</b> The real spheres were enriched to more than 99.99% silicon-28: natural silicon is a mix of silicon-28, -29 and -30, and every uncertainty in those abundances becomes an uncertainty in the count; the other isotopes were measured with a mass spectrometer. <b>The model's arithmetic</b> with natural silicon: one cube has an edge of 543.102 pm, so a volume of (5.43102 × 10⁻⁸ cm)³ = 1.6019 × 10⁻²² cm³; × 2.329 g/cm³ = 3.7308 × 10⁻²² g per cube; ÷ 8 atoms = 4.6635 × 10⁻²³ g per atom; 28.085 g ÷ 4.6635 × 10⁻²³ g = 6.022 × 10²³ atoms per mole. The real spheres used their own measured values. "Molar mass" is Lesson 5.2's word; here say "the mass of one mole of silicon".</aside>
+  <script>Deck.frames('s13',[
+    {show:"s13-c0",stage:"s13-sim:sphere",focus:"s13-sim",t:0.25,note:"The international Avogadro project polished nearly perfect spheres of silicon. Ask: what could you measure about this ball?"},
+    {show:"s13-pred",stage:"s13-sim:sphere",t:0.25,note:"Prediction: how could anyone count its atoms? Collect ideas. Misconception: \"they weighed one atom\"."},
+    {show:"s13-c1",hide:["s13-c0", "s13-pred"],stage:"s13-sim:crystal",t:0.25,note:"The sphere is a single crystal: the atoms repeat in identical cubes. The model turns slowly."},
+    {show:"s13-cube",stage:"s13-sim:cube",t:0.25,note:"X-rays measure the edge of one cube: 543.102 pm. Each cube holds the equivalent of 8 atoms (8 corners × 1/8, 6 faces × 1/2, 4 inside)."},
+    {show:"s13-c2",hide:"s13-c1",stage:"s13-sim:atom",t:0.25,note:"The density gives the mass of one cube; divide by 8 for the mass of one atom."},
+    {show:"s13-c3",stage:"s13-sim:divide",t:0.25,note:"The mass of one mole of silicon ÷ the mass of one atom = the number of atoms in one mole: 6.022 × 10²³."},
+    {show:"s13-rule",hide:["s13-cube", "s13-c2"],t:1,note:"Students copy the rule card. The project counted atoms; it did not weigh one atom directly."},
+    {show:"s13-check",hide:["s13-c3", "s13-rule"],stage:"s13-sim:cube",t:0.75,note:"Hands up for A, B or C. The lit cube with its edge returns to the screen."},
+    {show:"s13-ans",cls:{"s13-a": "right", "s13-check": "done"},t:0.25,note:"A is right. B (define the kilogram by its size): the spheres counted atoms; since 2019 the kilogram is defined by the Planck constant. C (silicon atoms larger than carbon atoms): the project counted atoms; it did not compare their sizes."}
+  ]);</script>
+</section>
+
+<section class="slide t-summary s3" id="s14" data-period="1" data-title="One picture: three ways to count" data-sec="Summary" data-ref="Reading §5.1.1 and §5.1.2">
+  <h2>One picture: three ways to count</h2>
+  <div class="body">
+    <div class="g3">
+      <span></span>
+      <div class="colh slot"><div class="colin" data-b="s14-c1" data-label="nickels"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: a nickel"><use href="#ic-nickel"/></svg><p>nickels</p></div></div>
+      <div class="colh slot"><div class="colin" data-b="s14-c2" data-label="cents"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: two kinds of cents"><use href="#ic-cents"/></svg><p>cents</p></div></div>
+      <div class="colh slot"><div class="colin" data-b="s14-c3" data-label="atoms"><svg class="" viewBox="0 0 100 100" role="img" aria-label="Icon: a flask of particles"><use href="#ic-flask"/></svg><p>atoms</p></div></div>
+      <p class="rh">The problem</p>
+      <p class="cell slot"><span data-b="s14-r1" data-label="the problem">same mass, too many</span></p>
+      <p class="cell slot"><span data-b="s14-r1">two masses</span></p>
+      <p class="cell slot"><span data-b="s14-r1">too small, too many</span></p>
+      <p class="rh">The trick</p>
+      <p class="cell slot"><span data-b="s14-r2" data-label="the trick">divide by 5.000&nbsp;g</span></p>
+      <p class="cell slot"><span data-b="s14-r2">divide by the average</span></p>
+      <p class="cell slot"><span data-b="s14-r2">count in moles of 6.022&nbsp;×&nbsp;10<sup>23</sup></span></p>
+      <p class="rh">Name it</p>
+      <p class="cell slot"><span data-b="s14-r3" data-label="name it">nickels</span></p>
+      <p class="cell slot"><span data-b="s14-r3">cents</span></p>
+      <p class="cell slot"><span data-b="s14-r3">atoms, molecules, formula units or ions</span></p>
+    </div>
+    <div class="acc s3b">
+      <p class="line" id="s14-thread" data-label="the thread">Too many to count? Weigh them. Then think in moles.</p>
+      <div class="qrow" id="s14-w" data-label="write 90 s"><div><ol class="frames"><li>A bank counts nickels by weighing because <span class="gap"></span>.</li><li>Chemists count particles in moles, where one mole is <span class="gap"></span>.</li></ol><p class="bank"><b>Word bank:</b> <span>the same mass</span> <span>divide</span> <span>6.022&nbsp;×&nbsp;10<sup>23</sup></span> <span>particles</span> <span>named</span></p></div><div class="timer"></div></div>
+    </div>
+  </div>
+  <aside class="notes">One picture closes period 1. Students copy the three columns as one diagram. Period 1 ends here: collect three notebooks as a quick check before period 2.</aside>
+  <script>Deck.frames('s14',[
+    {t:0.25,note:"The empty table. Ask: what were the three things we counted today?"},
+    {show:"s14-c1",t:0.25,note:"Nickels: every nickel has the same mass."},
+    {show:"s14-c2",t:0.25,note:"Cents: two kinds, two masses."},
+    {show:"s14-c3",t:0.25,note:"Atoms: far too small and far too many."},
+    {show:"s14-r1",t:0.25,note:"The problem in each column."},
+    {show:"s14-r2",t:0.25,note:"The trick: divide by one mass, by the average mass, or count in moles of 6.022 × 10²³."},
+    {show:"s14-r3",t:0.25,note:"Name it: a mole always names its particles."},
+    {show:"s14-thread",t:0.25,note:"The thread line, said together: too many to count? Weigh them. Then think in moles."},
+    {show:"s14-w",hide:"s14-thread",timer:90,t:1.5,note:"Ninety seconds of writing with the frames and the word bank. End of period 1."}
+  ]);</script>
+</section>
+
+<section class="slide t-turn two" id="s15" data-period="2" data-title="Warm-up" data-sec="Warm-up, period 2" data-ref="Reading §5.1.1 and §5.1.2">
+  <h2>Warm-up</h2>
+  <div class="body">
+    <div class="qrow">
+      <div class="card"><p>Answer in your notebook.</p></div>
+      <div class="timer"></div>
+    </div>
+    <table class="tbl fill" id="s15-tbl">
+      <thead><tr><th>Question</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>A bag of nickels has a mass of 1,000.0&nbsp;g. How many nickels?</td><td class="slot"><span data-b="s15-a1" data-label="answer 1">200 (1,000.0&nbsp;g ÷ 5.000&nbsp;g)</span></td></tr>
+        <tr><td>How many particles are in one mole?</td><td class="slot"><span data-b="s15-a2" data-label="answer 2">6.022&nbsp;×&nbsp;10<sup>23</sup> (exactly 6.02214076&nbsp;×&nbsp;10<sup>23</sup>)</span></td></tr>
+        <tr><td>Name the four kinds of particles a mole can count.</td><td class="slot"><span data-b="s15-a3" data-label="answer 3">atoms, molecules, formula units, ions</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <aside class="notes">Period 2 starts here. The three questions retrieve 5.1.1 and 5.1.2. 1,000.0 g ÷ 5.000 g = 200 is arithmetic on the reading's data.</aside>
+  <script>Deck.frames('s15',[
+    {t:0.25,note:"Students read the questions while you take attendance."},
+    {timer:90,label:"timer 90 s",t:1.5,note:"Ninety seconds. Students answer in the notebook."},
+    {show:"s15-a1",t:0.25,note:"1,000.0 g ÷ 5.000 g = 200 nickels. Misconception: \"multiply\"."},
+    {show:"s15-a2",t:0.25,note:"6.022 × 10²³, exactly 6.02214076 × 10²³ since 2019."},
+    {show:"s15-a3",t:0.25,note:"Atoms, molecules, formula units, ions. A mole always names its particle."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept cw" id="s16" data-period="2" data-title="Moles to particles" data-sec="Moles and particles" data-ref="Reading §5.1.3">
+  <h2>Moles to particles</h2>
+  <div class="body">
+    <div class="sim" id="s16-sim" data-sim="moleMap" aria-label="A map with moles on the left, particles on the right and a bridge of 6.022 times ten to the 23 per mole."></div>
+    <div class="col acc">
+      <div class="card" id="s16-c0" data-label="the map"><p class="tag">The map</p><p>Moles on the left. Particles on the right. The bridge is 6.022&nbsp;×&nbsp;10<sup>23</sup> per mole.</p></div>
+      <div class="card" id="s16-pred" data-label="predict"><p class="tag">Predict</p><p>2.00&nbsp;mol of copper. More or fewer than 6.022&nbsp;×&nbsp;10<sup>23</sup> atoms?</p></div>
+      <div class="card" id="s16-c1" data-label="setup"><p class="tag">Setup</p><p>2.00&nbsp;mol × 6.022&nbsp;×&nbsp;10<sup>23</sup> atoms per mol.</p></div>
+      <div class="card" id="s16-c2" data-label="cancel"><p class="tag">Cancel</p><p>The unit mol cancels. Atoms remain.</p></div>
+      <div class="card" id="s16-c3" data-label="result"><p class="tag">Result</p><p>1.20&nbsp;×&nbsp;10<sup>24</sup> Cu atoms. More than one mole, so more than 6.022&nbsp;×&nbsp;10<sup>23</sup>.</p></div>
+      <div class="card rule reg" id="s16-rule" data-label="rule"><p class="tag">Rule</p><p>Particles = moles × 6.022&nbsp;×&nbsp;10<sup>23</sup>. The unit mol cancels. Always name the particle.</p></div>
+      <div class="card check" id="s16-check" data-label="check">
+        <p class="tag">Check</p>
+        <p class="q">To change moles into a number of particles, you…</p>
+        <ol class="opts col1" data-lay="col"><li class="opt" id="s16-a" data-ok="1" data-fb="mol × (particles / mol) = particles."><b>A</b><span>multiply by 6.022&nbsp;×&nbsp;10<sup>23</sup> particles per mole</span></li><li class="opt" id="s16-b" data-ok="0" data-fb="Dividing gives a tiny number, smaller than one particle. Check the units."><b>B</b><span>divide by 6.022&nbsp;×&nbsp;10<sup>23</sup> particles per mole</span></li><li class="opt" id="s16-c" data-ok="0" data-fb="That would give a mass. To count particles, use the Avogadro constant."><b>C</b><span>multiply by the mass of one particle</span></li></ol>
+        <div class="af"><p class="ans" id="s16-ans" data-label="answer">A. The unit mol cancels, and particles remain.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Reading §5.1.3: the Avogadro constant is a conversion factor; multiply by 6.022 × 10²³ particles/mol so that mol cancels. Copper and other metals are counted as atoms.</aside>
+  <script>Deck.frames('s16',[
+    {show:"s16-c0",stage:"s16-sim:map",focus:"s16-sim",t:0.25,note:"The map: moles (teal) on the left, particles (violet) on the right, the gray bridge 6.022 × 10²³ per mole."},
+    {show:"s16-pred",hide:"s16-c0",stage:"s16-sim:map",t:0.25,note:"Prediction: 2.00 mol of copper atoms. More or fewer than 6.022 × 10²³? Listen for \"fewer\" (dividing)."},
+    {show:"s16-c1",hide:"s16-pred",stage:"s16-sim:Cu/setup",t:0.25,note:"Write the factor with its units: 6.022 × 10²³ atoms over 1 mol."},
+    {show:"s16-c2",stage:"s16-sim:Cu/cancel",t:0.25,note:"mol cancels (struck in red); atoms remain (circled)."},
+    {show:"s16-c3",stage:"s16-sim:Cu/result",t:0.25,note:"1.20 × 10²⁴ Cu atoms. Check: more than one mole, so more than 6.022 × 10²³."},
+    {show:"s16-rule",hide:["s16-c1", "s16-c2"],t:1,note:"Students copy the rule card. Misconception: \"divide to get particles\"."},
+    {show:"s16-check",hide:["s16-c3", "s16-rule"],t:0.75,note:"Hands up for A, B or C. The copper example stays on the map."},
+    {show:"s16-ans",cls:{"s16-a": "right", "s16-check": "done"},t:0.25,note:"A is right. B (divide): dividing gives a tiny number, smaller than one particle; check the units. C (the mass of one particle): that would give a mass; to count particles, use the Avogadro constant."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept cw" id="s17" data-period="2" data-title="Particles to moles" data-sec="Moles and particles" data-ref="Reading §5.1.3">
+  <h2>Particles to moles</h2>
+  <div class="body">
+    <div class="sim" id="s17-sim" data-sim="moleMap" aria-label="The map again: from a number of iron atoms back to moles."></div>
+    <div class="col acc">
+      <div class="card" id="s17-c0" data-label="iron atoms"><p class="tag">Iron</p><p>9.03&nbsp;×&nbsp;10<sup>23</sup> iron atoms. How many moles?</p></div>
+      <div class="card" id="s17-pred" data-label="predict"><p class="tag">Predict</p><p>Multiply, or divide?</p></div>
+      <div class="card" id="s17-c1" data-label="cancel"><p class="tag">Cancel</p><p>× 1&nbsp;mol per 6.022&nbsp;×&nbsp;10<sup>23</sup> atoms. The atoms cancel.</p></div>
+      <div class="card" id="s17-c2" data-label="result"><p class="tag">Result</p><p>1.50&nbsp;mol of Fe atoms. 9.03 is 1.5 times 6.022.</p></div>
+      <div class="card" id="s17-c3" data-label="half a mole"><p class="tag">Half a mole</p><p>3.011&nbsp;×&nbsp;10<sup>23</sup> molecules is 0.5000&nbsp;mol. Moles can be fractions.</p></div>
+      <div class="card" id="s17-c4" data-label="small and huge"><p class="tag">Small and huge</p><p>A sample you can see is a small number of moles. But an enormous number of particles.</p></div>
+      <div class="card rule reg" id="s17-rule" data-label="rule"><p class="tag">Rule</p><p>Moles = particles ÷ 6.022&nbsp;×&nbsp;10<sup>23</sup>. A visible sample is a small number of moles.</p></div>
+      <div class="card check" id="s17-check" data-label="check">
+        <p class="tag">Check</p>
+        <p class="q">How many moles of carbon dioxide molecules are 3.011&nbsp;×&nbsp;10<sup>23</sup> molecules?</p>
+        <ol class="opts" data-lay="row"><li class="opt" id="s17-a" data-ok="1" data-fb="Half of 6.022 × 10²³ is half a mole."><b>A</b><span>0.5000&nbsp;mol</span></li><li class="opt" id="s17-b" data-ok="0" data-fb="That divides 6.022 × 10²³ by 3.011 × 10²³, the wrong way around."><b>B</b><span>2.000&nbsp;mol</span></li><li class="opt" id="s17-c" data-ok="0" data-fb="That multiplies by Avogadro&#x27;s number. Particles to moles means dividing."><b>C</b><span>1.813&nbsp;×&nbsp;10<sup>47</sup>&nbsp;mol</span></li></ol>
+        <div class="af"><p class="ans" id="s17-ans" data-label="answer">A. 3.011&nbsp;×&nbsp;10<sup>23</sup> ÷ 6.022&nbsp;×&nbsp;10<sup>23</sup> = 0.5000&nbsp;mol.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Reading §5.1.3: particles to moles divides, "the same as multiplying by 1 mol / 6.022 × 10²³ particles". Scientific notation: a number from 1 to less than 10 times a power of ten; Lesson 5.3 shows the calculator. 9.03 × 10²³ and 6.022 × 10²³ have equal powers of ten, so compare 9.03 with 6.022.</aside>
+  <script>Deck.frames('s17',[
+    {show:"s17-c0",stage:"s17-sim:Fe/setup",focus:"s17-sim",t:0.25,note:"9.03 × 10²³ iron atoms on the particle side. The arrow points to moles."},
+    {show:"s17-pred",stage:"s17-sim:Fe/setup",t:0.25,note:"Prediction: multiply or divide? Hands up. Listen for \"multiply\" (more moles?)."},
+    {show:"s17-c1",hide:["s17-c0", "s17-pred"],stage:"s17-sim:Fe/cancel",t:0.25,note:"The factor flips: 1 mol over 6.022 × 10²³ atoms; atoms cancel, mol remains."},
+    {show:"s17-c2",stage:"s17-sim:Fe/result",t:0.25,note:"1.50 mol of Fe atoms. Check: 9.03 is 1.5 times 6.022; equal powers of ten."},
+    {show:"s17-c3",hide:"s17-c1",stage:"s17-sim:half",t:0.25,note:"3.011 × 10²³ molecules is half of 6.022 × 10²³: 0.5000 mol. Misconception: \"a count below 6.022 × 10²³ cannot be moles\"."},
+    {show:"s17-c4",hide:"s17-c2",t:0.25,note:"A sample you can hold is a few moles at most, but an enormous number of particles."},
+    {show:"s17-rule",hide:"s17-c3",t:1,note:"Students copy the rule card (reading §5.1.3 Key idea)."},
+    {show:"s17-check",hide:"s17-c4",stage:"s17-sim:half",t:0.75,note:"Hands up for A, B or C. The half mole stays on the map."},
+    {show:"s17-ans",cls:{"s17-a": "right", "s17-check": "done"},t:0.25,note:"A is right: 3.011 × 10²³ ÷ 6.022 × 10²³ = 0.5000 mol. B (2.000 mol): that divides 6.022 × 10²³ by 3.011 × 10²³, the wrong way around. C (1.813 × 10⁴⁷ mol): that multiplies by Avogadro's number; particles to moles means dividing."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept cw" id="s18" data-period="2" data-title="Formula units" data-sec="Moles and particles" data-ref="Reading §5.1.3">
+  <h2>Formula units</h2>
+  <div class="body">
+    <div class="sim" id="s18-sim" data-sim="naclCrystal" aria-label="A crystal of sodium ions and chloride ions turning slowly; one sodium ion and one chloride ion lit."></div>
+    <div class="col acc">
+      <div class="card" id="s18-c0" data-label="a crystal of ions"><p class="tag">Sodium chloride</p><p>Sodium chloride is a crystal of ions. It has no molecules.</p></div>
+      <div class="card" id="s18-c1" data-label="one formula unit"><p class="tag">One formula unit</p><p>One formula unit: one Na<sup>+</sup> and one Cl<sup>−</sup>.</p></div>
+      <div class="card" id="s18-pred" data-label="predict"><p class="tag">Predict</p><p>4.50&nbsp;mol of NaCl makes 2.71&nbsp;×&nbsp;10<sup>24</sup> of what?</p></div>
+      <div class="card" id="s18-c2" data-label="count"><p class="tag">Count</p><p>4.50&nbsp;mol × 6.022&nbsp;×&nbsp;10<sup>23</sup> = 2.71&nbsp;×&nbsp;10<sup>24</sup> formula units.</p></div>
+      <div class="card" id="s18-c3" data-label="wrong particle"><p class="tag">Wrong particle</p><p>"1.51&nbsp;×&nbsp;10<sup>24</sup> molecules of NaCl": right number, wrong particle.</p></div>
+      <div class="card rule reg" id="s18-rule" data-label="rule"><p class="tag">Rule</p><p>Count metals in atoms. Count molecular compounds in molecules. Count ionic compounds in formula units.</p></div>
+      <div class="card check" id="s18-check" data-label="check">
+        <p class="tag">Check</p>
+        <p class="q">Which particles should be counted in 1&nbsp;mol of NaCl?</p>
+        <ol class="opts col1" data-lay="col"><li class="opt" id="s18-a" data-ok="1" data-fb="Count formula units, or count the ions."><b>A</b><span>formula units, each one Na<sup>+</sup> ion and one Cl<sup>−</sup> ion</span></li><li class="opt" id="s18-b" data-ok="0" data-fb="Sodium chloride is a crystal of ions with no separate molecules."><b>B</b><span>NaCl molecules</span></li><li class="opt" id="s18-c" data-ok="0" data-fb="In the crystal, sodium and chlorine are ions, not neutral atoms."><b>C</b><span>sodium atoms and chlorine atoms</span></li></ol>
+        <div class="af"><p class="ans" id="s18-ans" data-label="answer">A. An ionic compound has no molecules. Its formula gives the ratio of ions.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Unit 4's formula unit: the group of ions given by the formula of an ionic compound; it states a ratio and is not a molecule. The blueprint's misconception: "2.50 mol of sodium chloride contains 1.51 × 10²⁴ molecules" has the right number (2.50 × 6.022 × 10²³ = 1.51 × 10²⁴) and the wrong particle. Ion sizes from Shannon 1976 (Na⁺ 102 pm, Cl⁻ 181 pm) on the 564 pm cell.</aside>
+  <script>Deck.frames('s18',[
+    {show:"s18-c0",stage:"s18-sim:crystal",focus:"s18-sim",t:0.25,note:"The NaCl crystal of Unit 4: red + ions and blue − ions, turning slowly. No molecules anywhere."},
+    {show:"s18-c1",stage:"s18-sim:unit",t:0.25,note:"One Na⁺ and one neighboring Cl⁻ lit: one formula unit."},
+    {show:"s18-pred",hide:"s18-c0",stage:"s18-sim:unit",t:0.25,note:"Prediction: 2.71 × 10²⁴ of what? Listen for \"molecules\"."},
+    {show:"s18-c2",hide:["s18-c1", "s18-pred"],stage:"s18-sim:count",t:0.25,note:"4.50 mol × 6.022 × 10²³ = 2.71 × 10²⁴ formula units (the reading's \"On your own\")."},
+    {show:"s18-c3",stage:"s18-sim:wrong",t:0.25,note:"\"1.51 × 10²⁴ molecules of NaCl\": the number is right, the particle is wrong."},
+    {show:"s18-rule",hide:"s18-c2",t:1,note:"Students copy the rule card: metals in atoms, molecular compounds in molecules, ionic compounds in formula units."},
+    {show:"s18-check",hide:["s18-c3", "s18-rule"],stage:"s18-sim:unit",t:0.75,note:"Hands up for A, B or C. One formula unit is lit again."},
+    {show:"s18-ans",cls:{"s18-a": "right", "s18-check": "done"},t:0.25,note:"A is right. B (NaCl molecules): sodium chloride is a crystal of ions with no separate molecules. C (sodium atoms and chlorine atoms): in the crystal, sodium and chlorine are ions, not neutral atoms."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept cw" id="s19" data-period="2" data-title="Atoms in a molecule" data-sec="Atoms in a formula" data-ref="Reading §5.1.4">
+  <h2>Atoms in a molecule</h2>
+  <div class="body">
+    <div class="leftcol"><div class="sim" id="s19-sim" data-sim="atomCounter" aria-label="A water molecule and its formula with the subscript ringed; a table counts the moles of each atom."></div><p class="simcap blk" id="s19-cap" data-zoom="caption">Atom colors show the element, not the charge.</p></div>
+    <div class="col acc">
+      <div class="card" id="s19-c0" data-label="water"><p class="tag">Water</p><p>One water molecule: two H atoms, one O atom. The subscript says so.</p></div>
+      <div class="card" id="s19-pred" data-label="predict"><p class="tag">Predict</p><p>One mole of water molecules. How many moles of hydrogen atoms?</p></div>
+      <div class="card" id="s19-c1" data-label="a mole of water"><p class="tag">One mole of water</p><p>1&nbsp;mol of H<sub>2</sub>O holds 2&nbsp;mol of H atoms and 1&nbsp;mol of O atoms.</p></div>
+      <div class="card" id="s19-c2" data-label="carbon dioxide"><p class="tag">Carbon dioxide</p><p>2.00&nbsp;mol of CO<sub>2</sub> × 2 = 4.00&nbsp;mol of O atoms.</p></div>
+      <div class="card" id="s19-c3" data-label="count the atoms"><p class="tag">Count the atoms</p><p>4.00&nbsp;mol × 6.022&nbsp;×&nbsp;10<sup>23</sup> = 2.41&nbsp;×&nbsp;10<sup>24</sup> O atoms.</p></div>
+      <div class="card" id="s19-c4" data-label="sodium chloride"><p class="tag">Sodium chloride</p><p>1&nbsp;mol of NaCl holds 1&nbsp;mol of Na<sup>+</sup> ions and 1&nbsp;mol of Cl<sup>−</sup> ions.</p></div>
+      <div class="card rule reg" id="s19-rule" data-label="rule"><p class="tag">Rule</p><p>Moles of an element's atoms = moles of molecules × that element's subscript. Then multiply by 6.022&nbsp;×&nbsp;10<sup>23</sup> to count the atoms.</p></div>
+      <div class="card check" id="s19-check" data-label="check">
+        <p class="tag">Check</p>
+        <p class="q">How many moles of oxygen atoms are in 2.0&nbsp;mol of carbon dioxide, CO<sub>2</sub>?</p>
+        <ol class="opts" data-lay="row"><li class="opt" id="s19-a" data-ok="1" data-fb="Two O atoms in every molecule, so twice the moles."><b>A</b><span>4.0&nbsp;mol</span></li><li class="opt" id="s19-b" data-ok="0" data-fb="That counts CO₂ molecules. Each molecule holds two oxygen atoms."><b>B</b><span>2.0&nbsp;mol</span></li><li class="opt" id="s19-c" data-ok="0" data-fb="That divides by the subscript. The subscript multiplies."><b>C</b><span>1.0&nbsp;mol</span></li></ol>
+        <div class="af"><p class="ans" id="s19-ans" data-label="answer">A. Each CO<sub>2</sub> molecule has two oxygen atoms: 2.0&nbsp;mol × 2.</p><p class="fb" aria-live="polite"></p></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Reading §5.1.4: in H₂O the subscript 2 means two hydrogen atoms; no subscript after O means one. Molecules in ball and stick: CPK colors, the symbol on every sphere, covalent radii (Cordero 2008), NIST geometries (H₂O 104.5°, CO₂ 180°). The NaCl pair uses Shannon radii; the caption under the picture says that atom colors show the element. Also: 0.50 mol of methane, CH₄, holds 2.0 mol of H atoms.</aside>
+  <script>Deck.frames('s19',[
+    {show:["s19-c0", "s19-cap"],stage:"s19-sim:H2O/one",focus:"s19-sim",t:0.25,note:"One H₂O: the subscript 2 is ringed; no subscript after O means one."},
+    {show:"s19-pred",stage:"s19-sim:H2O/one",t:0.25,note:"Prediction: one mole of water molecules, how many moles of H atoms? Collect answers. Misconception: \"one mole of water holds one mole of hydrogen atoms\"."},
+    {show:"s19-c1",hide:["s19-c0", "s19-pred"],stage:"s19-sim:H2O/mol",t:0.25,note:"The subscript multiplies the moles: 1 mol × 2 = 2 mol of H atoms; 1 mol × 1 = 1 mol of O atoms."},
+    {show:"s19-c2",stage:"s19-sim:CO2/mol",t:0.25,note:"CO₂: 2.00 mol × 2 = 4.00 mol of O atoms (the reading's Watch example)."},
+    {show:"s19-c3",stage:"s19-sim:CO2/atoms",t:0.25,note:"Then count: 4.00 mol × 6.022 × 10²³ = 2.41 × 10²⁴ O atoms, twice the 1.20 × 10²⁴ CO₂ molecules."},
+    {show:"s19-c4",hide:["s19-c1", "s19-c2"],stage:"s19-sim:NaCl/mol",t:0.25,note:"NaCl: 1 mol holds 1 mol of Na⁺ ions and 1 mol of Cl⁻ ions. Read the caption."},
+    {show:"s19-rule",hide:"s19-c3",t:1,note:"Students copy the rule card (reading §5.1.4 Key idea)."},
+    {show:"s19-check",hide:"s19-c4",stage:"s19-sim:CO2/mol",t:0.75,note:"Hands up for A, B or C. The CO₂ molecule and its table return."},
+    {show:"s19-ans",cls:{"s19-a": "right", "s19-check": "done"},t:0.25,note:"A is right: two O atoms in every molecule, 2.0 mol × 2. B (2.0 mol): that counts CO₂ molecules; each holds two oxygen atoms. C (1.0 mol): that divides by the subscript; the subscript multiplies."}
+  ]);</script>
+</section>
+
+<section class="slide t-example" id="s20" data-period="2" data-title="Convert: I do, we do, you do" data-sec="Converting" data-ref="Reading §5.1.3 and §5.1.4">
+  <h2>Convert: I do, we do, you do</h2>
+  <div class="body">
+    <div class="stack">
+      <div class="sim" id="s20-sim" data-sim="moleMap" aria-label="The moles and particles map for carbon dioxide and water."></div>
+      <div class="sim blk" id="s20-ac" data-sim="atomCounter" aria-label="An ammonia molecule with its subscript 3 ringed."></div>
+    </div>
+    <div class="acc">
+      <div class="card stepscard" id="s20-steps" data-label="steps"><p class="tag">Steps</p><ol class="steps">
+        <li><span class="k">Given</span><span>the number and its unit</span></li>
+        <li><span class="k">Factor</span><span>6.022&nbsp;×&nbsp;10<sup>23</sup> per mole</span></li>
+        <li><span class="k">Setup</span><span>the unit to cancel goes below</span></li>
+        <li><span class="k">Result</span><span>name the particle</span></li>
+        <li><span class="k">Check</span><span>more than one mole, more particles</span></li></ol></div>
+      <div class="card" id="s20-i" data-label="I do"><p class="tag">I do: 0.250 mol of CO<sub>2</sub></p><p>1.51&nbsp;×&nbsp;10<sup>23</sup> molecules. A quarter of a mole is a quarter of 6.022&nbsp;×&nbsp;10<sup>23</sup>.</p></div>
+      <div class="card" id="s20-w" data-label="we do"><p class="tag">We do: 1.81 × 10<sup>24</sup> water molecules</p><p>3.01&nbsp;mol. 18.1&nbsp;×&nbsp;10<sup>23</sup> is about three times 6.022&nbsp;×&nbsp;10<sup>23</sup>.</p></div>
+      <div class="qrow" id="s20-yq" data-label="you do"><div class="card"><p class="tag">You do</p><p>Convert each one. Name the particle.</p></div><div class="timer"></div></div>
+      <table class="tbl compact" id="s20-yd" data-label="you do table"><tbody>
+        <tr><td>0.500&nbsp;mol of NH<sub>3</sub> → moles of H atoms</td><td class="slot"><span data-b="s20-a1" data-label="answer 1">1.50&nbsp;mol of H atoms</span></td></tr>
+        <tr><td>1.00&nbsp;mol of glucose, C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> → H atoms</td><td class="slot"><span data-b="s20-a2" data-label="answer 2">12.0&nbsp;mol × 6.022&nbsp;×&nbsp;10<sup>23</sup> = 7.23&nbsp;×&nbsp;10<sup>24</sup> H atoms</span></td></tr>
+        <tr><td>2.5&nbsp;×&nbsp;10<sup>22</sup> CO<sub>2</sub> molecules → moles</td><td class="slot"><span data-b="s20-a3" data-label="answer 3">0.042&nbsp;mol <span class="why">fewer than 6.022&nbsp;×&nbsp;10<sup>23</sup>, so less than one mole</span></span></td></tr>
+      </tbody></table>
+    </div>
+  </div>
+  <aside class="notes">You do: circulate during the timer. Look for "multiply" where dividing is needed (particles to moles), and for results without a named particle. Glucose: 1.00 mol × 12 = 12.0 mol of H atoms, then × 6.022 × 10²³ = 7.23 × 10²⁴ H atoms (the reading's "On your own").</aside>
+  <script>Deck.frames('s20',[
+    {show:"s20-steps",stage:"s20-sim:map",focus:"s20-steps",t:0.5,note:"The steps of every conversion (the reading's form): Given, Factor, Setup, Result, Check."},
+    {show:"s20-i",stage:"s20-sim:CO2m/setup",focus:"s20-sim",t:0.25,note:"I do: 0.250 mol of CO₂ to molecules. Think aloud: the given is in moles, so the factor puts mol below."},
+    {stage:"s20-sim:CO2m/cancel",label:"cancel",t:0.25,note:"mol cancels; molecules remain."},
+    {stage:"s20-sim:CO2m/result",label:"result",t:0.25,note:"1.51 × 10²³ molecules. A quarter of a mole is a quarter of 6.022 × 10²³."},
+    {show:"s20-w",stage:"s20-sim:H2Om/setup",t:0.25,note:"We do: 1.81 × 10²⁴ water molecules to moles. Students say the factor before the press: 1 mol over 6.022 × 10²³ molecules."},
+    {stage:"s20-sim:H2Om/cancel",label:"cancel",t:0.25,note:"Students say which unit cancels: molecules."},
+    {stage:"s20-sim:H2Om/result",label:"result",t:0.25,note:"3.01 mol. Check: 18.1 × 10²³ is about three times 6.022 × 10²³."},
+    {show:["s20-yq", "s20-yd"],hide:["s20-steps", "s20-i", "s20-w"],t:0.25,note:"You do: three conversions in the notebook. Read the three rows aloud."},
+    {timer:180,label:"timer 3 min",t:3,note:"Three minutes of silent work. Circulate."},
+    {show:["s20-ac", "s20-a1"],hide:"s20-sim",stage:"s20-ac:NH3/mol",t:0.25,note:"0.500 mol × 3 = 1.50 mol of H atoms: the subscript 3 multiplies."},
+    {show:"s20-a2",t:0.25,note:"12.0 mol of H atoms × 6.022 × 10²³ = 7.23 × 10²⁴ H atoms."},
+    {show:"s20-a3",t:0.25,note:"2.5 × 10²² ÷ 6.022 × 10²³ = 0.042 mol: fewer than 6.022 × 10²³ molecules, so less than one mole."}
+  ]);</script>
+</section>
+
+<section class="slide t-concept cw" id="s21" data-period="2" data-title="The mole in earlier lessons" data-sec="Per mole" data-ref="Reading §5.1.2">
+  <h2>The mole in earlier lessons</h2>
+  <div class="body">
+    <div class="sim" id="s21-sim" data-sim="moleMap" aria-label="One mole of sodium atoms and one sodium atom losing an electron: energy per mole and per atom."></div>
+    <div class="col acc">
+      <div class="card" id="s21-c0" data-label="per mole"><p class="tag">Lesson 3.2</p><p>Lesson 3.2: sodium's first ionization energy is 496&nbsp;kJ/mol.</p></div>
+      <div class="card" id="s21-pred" data-label="predict"><p class="tag">Predict</p><p>Per mole means for how many atoms?</p></div>
+      <div class="card" id="s21-c1" data-label="one atom"><p class="tag">One atom</p><p>496&nbsp;kJ ÷ 6.022&nbsp;×&nbsp;10<sup>23</sup> atoms = 8.24&nbsp;×&nbsp;10<sup>−19</sup>&nbsp;J for one atom.</p></div>
+      <div class="card" id="s21-c2" data-label="why per mole"><p class="tag">Why per mole</p><p>Tiny for one atom. Per mole, the numbers have a handy size.</p></div>
+      <div class="card rule reg" id="s21-rule" data-label="rule"><p class="tag">Rule</p><p>A value per mole describes 6.022&nbsp;×&nbsp;10<sup>23</sup> particles. Divide by that number to get one particle.</p></div>
+    </div>
+  </div>
+  <aside class="notes">The reading's Watch example: 496 kJ/mol × 1000 J/kJ × 1 mol / 6.022 × 10²³ atoms = 8.24 × 10⁻¹⁹ J per atom. Lesson 3.3 gave heat "per mole of metal" the same way.</aside>
+  <script>Deck.frames('s21',[
+    {show:"s21-c0",stage:"s21-sim:energy/mole",focus:"s21-sim",t:0.25,note:"Lesson 3.2: 496 kJ/mol removes the most loosely held electron from each atom in a mole of gaseous sodium atoms."},
+    {show:"s21-pred",stage:"s21-sim:energy/mole",t:0.25,note:"Prediction: per mole means for how many atoms? (6.022 × 10²³.)"},
+    {show:"s21-c1",hide:["s21-c0", "s21-pred"],stage:"s21-sim:energy/one",t:0.25,note:"Divide by 6.022 × 10²³: 8.24 × 10⁻¹⁹ J for one atom."},
+    {show:"s21-c2",stage:"s21-sim:energy/why",t:0.25,note:"For one atom the number is tiny, so chemists give such energies per mole."},
+    {show:"s21-rule",hide:"s21-c1",t:1,note:"Students copy the rule card (reading §5.1.2 Key idea). No check on this slide."}
+  ]);</script>
+</section>
+
+<section class="slide t-routine" id="s22" data-period="2" data-title="Checkpoint routine" data-sec="Checkpoint" data-ref="Objectives 5.1.2 to 5.1.4">
+  <h2>Checkpoint routine</h2>
+  <div class="body">
+    <div class="card prompt"><p>Each checkpoint uses the same five steps.</p></div>
+    <ol class="rail"><li id="s22-r1">Think</li><li id="s22-r2">Talk</li><li id="s22-r3">Write</li><li id="s22-r4">Self-check</li><li id="s22-r5">Compare</li></ol>
+    <ol class="steprows">
+        <li id="s22-s1"><b class="lbl">Think · 30 s</b><span>alone, no talking</span></li>
+        <li id="s22-s2"><b class="lbl">Talk · 60 s</b><span>tell your partner, then listen</span></li>
+        <li id="s22-s3"><b class="lbl">Write · 90 s</b><span>use the sentence frames</span></li>
+        <li id="s22-s4"><b class="lbl">Self-check</b><span>tick each success criterion</span></li>
+        <li id="s22-s5"><b class="lbl">Compare</b><span>read the sample and fix one line</span></li>
+    </ol>
+  </div>
+  <aside class="notes">Routine for slides 23 to 25: think 30 s, talk 60 s, write 90 s, self-check 30 s, compare 45 s.</aside>
+  <script>Deck.frames('s22',[
+    {t:0.5,note:"Explain that the routine repeats for each question."},
+    {cls:{"s22-r1": "now", "s22-s1": "now"},label:"think",t:0.1,note:"Think: silent, no pencils."},
+    {cls:{"s22-r1": "done", "s22-s1": "", "s22-r2": "now", "s22-s2": "now"},label:"talk",t:0.1,note:"Talk: partner A first, then partner B."},
+    {cls:{"s22-r1": "done", "s22-r2": "done", "s22-s1": "", "s22-s2": "", "s22-r3": "now", "s22-s3": "now"},label:"write",t:0.1,note:"Write: the sentence frames and word bank stay on screen."},
+    {cls:{"s22-r1": "done", "s22-r2": "done", "s22-r3": "done", "s22-s1": "", "s22-s2": "", "s22-s3": "", "s22-r4": "now", "s22-s4": "now"},label:"self-check",t:0.1,note:"Self-check: tick each criterion you met."},
+    {cls:{"s22-r1": "done", "s22-r2": "done", "s22-r3": "done", "s22-r4": "done", "s22-s1": "", "s22-s2": "", "s22-s3": "", "s22-s4": "", "s22-r5": "now", "s22-s5": "now"},label:"compare",t:0.1,note:"Compare: read the sample answer and fix one line."}
+  ]);</script>
+</section>
+
+<section class="slide t-routine" id="s23" data-period="2" data-title="Checkpoint 1" data-sec="Checkpoint" data-ref="Objective 5.1.2">
+  <h2>Checkpoint 1</h2>
+  <div class="body">
+    <div class="card prompt reg"><p>One mole of copper. One mole of aluminum. A student says they must have the same mass. Explain the error.</p></div>
+    <ol class="rail"><li id="s23-r1">Think</li><li id="s23-r2">Talk</li><li id="s23-r3">Write</li><li id="s23-r4">Self-check</li><li id="s23-r5">Compare</li></ol>
+    <div class="rt-main">
+      <div class="acc">
+        <div class="card phase" id="s23-read" data-label="read"><p class="big">Read the question. What does the student claim?</p></div>
+        <div class="card phase" id="s23-think" data-label="think 30 s"><p class="big">Think alone. Do not talk yet.</p></div>
+        <div class="card phase" id="s23-talk" data-label="talk 60 s"><p class="big">Tell your partner your answer. Then listen.</p></div>
+        <div class="card phase" id="s23-write" data-label="write 90 s"><p class="tag">Write</p><ol class="frames"><li>A mole is a count of <span class="gap"></span>, not a <span class="gap"></span>.</li><li>Both samples hold <span class="gap"></span> atoms, but a copper atom <span class="gap"></span>.</li></ol><p class="bank"><b>Word bank:</b> <span>6.022&nbsp;×&nbsp;10<sup>23</sup> particles</span> <span>a mass</span> <span>the same number of</span> <span>has more mass</span></p></div>
+        <div class="card phase" id="s23-check" data-label="self-check"><p class="tag">Self-check: did you write that…</p><ul class="crit"><li>a mole is a count?</li><li>the same number of atoms?</li><li>the masses differ?</li></ul></div>
+        <div class="card phase reg" id="s23-sample" data-label="sample answer"><p class="tag">Sample answer</p><p>A mole is a count of 6.022&nbsp;×&nbsp;10<sup>23</sup> particles, not a mass. Both samples hold the same number of atoms. A copper atom has more mass, so the copper sample does too.</p></div>
+      </div>
+      <div class="timer"></div>
+    </div>
+  </div>
+  <aside class="notes">Routine: think 30 s, talk 60 s, write 90 s, self-check 30 s, compare 45 s. The question stays on screen on every frame.</aside>
+  <script>Deck.frames('s23',[
+    {show:"s23-read",t:0.25,note:"Read the prompt aloud. Ask: what does the student think a mole is? (a mass)."},
+    {show:"s23-think",hide:"s23-read",cls:{"s23-r1": "now"},timer:30,t:0.5,note:"Silent thinking. No pencils yet."},
+    {show:"s23-talk",hide:"s23-think",cls:{"s23-r1": "done", "s23-r2": "now"},timer:60,t:1,note:"Partner A speaks first, then B. Listen for: \"a mole weighs one gram\" or \"6.022 × 10²³ grams\"."},
+    {show:"s23-write",hide:"s23-talk",cls:{"s23-r2": "done", "s23-r3": "now"},timer:90,t:1.5,note:"Students write in notebooks with the frames; the word bank stays up."},
+    {show:"s23-check",cls:{"s23-r3": "done", "s23-r4": "now"},t:0.5,note:"Students tick each criterion they met and fix one line."},
+    {show:"s23-sample",cls:{"s23-r4": "done", "s23-r5": "now"},t:0.75,note:"Compare with the sample. Reading §5.1.2: a mole is a count, like a dozen; one mole of copper (63.546 g) and one mole of aluminum (26.982 g) hold the same number of atoms."}
+  ]);</script>
+</section>
+
+<section class="slide t-routine" id="s24" data-period="2" data-title="Checkpoint 2" data-sec="Checkpoint" data-ref="Objective 5.1.3">
+  <h2>Checkpoint 2</h2>
+  <div class="body">
+    <div class="card prompt reg"><p>A student writes: 2.50&nbsp;mol of sodium chloride contains 1.51&nbsp;×&nbsp;10<sup>24</sup> molecules. What is right? What is wrong?</p></div>
+    <ol class="rail"><li id="s24-r1">Think</li><li id="s24-r2">Talk</li><li id="s24-r3">Write</li><li id="s24-r4">Self-check</li><li id="s24-r5">Compare</li></ol>
+    <div class="rt-main">
+      <div class="acc">
+        <div class="card phase" id="s24-read" data-label="read"><p class="big">Read the question. Check the number, then the particle.</p></div>
+        <div class="card phase" id="s24-think" data-label="think 30 s"><p class="big">Think alone. Do not talk yet.</p></div>
+        <div class="card phase" id="s24-talk" data-label="talk 60 s"><p class="big">Tell your partner your answer. Then listen.</p></div>
+        <div class="card phase" id="s24-write" data-label="write 90 s"><p class="tag">Write</p><ol class="frames"><li>The number is right because <span class="gap"></span>.</li><li>The particle is wrong because <span class="gap"></span>.</li></ol><p class="bank"><b>Word bank:</b> <span>2.50 × 6.022&nbsp;×&nbsp;10<sup>23</sup></span> <span>formula units</span> <span>no molecules</span> <span>Na<sup>+</sup> and Cl<sup>−</sup> ions</span></p></div>
+        <div class="card phase" id="s24-check" data-label="self-check"><p class="tag">Self-check: did you write that…</p><ul class="crit"><li>multiplied by 6.022&nbsp;×&nbsp;10<sup>23</sup>?</li><li>sodium chloride has no molecules?</li><li>formula units named?</li></ul></div>
+        <div class="card phase reg" id="s24-sample" data-label="sample answer"><p class="tag">Sample answer</p><p>The number is right: 2.50 × 6.022&nbsp;×&nbsp;10<sup>23</sup> = 1.51&nbsp;×&nbsp;10<sup>24</sup>. The particle is wrong. Sodium chloride has no molecules. Count formula units, each one Na<sup>+</sup> and one Cl<sup>−</sup>.</p></div>
+      </div>
+      <div class="timer"></div>
+    </div>
+  </div>
+  <aside class="notes">Routine: think 30 s, talk 60 s, write 90 s, self-check 30 s, compare 45 s. The question stays on screen on every frame.</aside>
+  <script>Deck.frames('s24',[
+    {show:"s24-read",t:0.25,note:"Read the prompt aloud. Two parts: the number, then the particle."},
+    {show:"s24-think",hide:"s24-read",cls:{"s24-r1": "now"},timer:30,t:0.5,note:"Silent thinking. No pencils yet."},
+    {show:"s24-talk",hide:"s24-think",cls:{"s24-r1": "done", "s24-r2": "now"},timer:60,t:1,note:"Partner A speaks first, then B. Listen for: \"divide to get particles\"."},
+    {show:"s24-write",hide:"s24-talk",cls:{"s24-r2": "done", "s24-r3": "now"},timer:90,t:1.5,note:"Students write in notebooks with the frames; the word bank stays up."},
+    {show:"s24-check",cls:{"s24-r3": "done", "s24-r4": "now"},t:0.5,note:"Students tick each criterion they met and fix one line."},
+    {show:"s24-sample",cls:{"s24-r4": "done", "s24-r5": "now"},t:0.75,note:"Compare with the sample. Reading §5.1.3: ionic compounds are counted in formula units, one Na⁺ ion and one Cl⁻ ion each."}
+  ]);</script>
+</section>
+
+<section class="slide t-routine" id="s25" data-period="2" data-title="Checkpoint 3" data-sec="Checkpoint" data-ref="Objective 5.1.4">
+  <h2>Checkpoint 3</h2>
+  <div class="body">
+    <div class="card prompt reg"><p>One mole of water, H<sub>2</sub>O, contains one mole of hydrogen atoms. True or false? Explain with the formula.</p></div>
+    <ol class="rail"><li id="s25-r1">Think</li><li id="s25-r2">Talk</li><li id="s25-r3">Write</li><li id="s25-r4">Self-check</li><li id="s25-r5">Compare</li></ol>
+    <div class="rt-main">
+      <div class="acc">
+        <div class="card phase" id="s25-read" data-label="read"><p class="big">Read the question. Look at the formula of water.</p></div>
+        <div class="card phase" id="s25-think" data-label="think 30 s"><p class="big">Think alone. Do not talk yet.</p></div>
+        <div class="card phase" id="s25-talk" data-label="talk 60 s"><p class="big">Tell your partner your answer. Then listen.</p></div>
+        <div class="card phase" id="s25-write" data-label="write 90 s"><p class="tag">Write</p><ol class="frames"><li>False, because the subscript 2 means <span class="gap"></span>.</li><li>One mole of H<sub>2</sub>O holds <span class="gap"></span> of H atoms and <span class="gap"></span> of O atoms.</li></ol><p class="bank"><b>Word bank:</b> <span>two H atoms in each molecule</span> <span>2&nbsp;mol</span> <span>1&nbsp;mol</span> <span>the subscript multiplies</span></p></div>
+        <div class="card phase" id="s25-check" data-label="self-check"><p class="tag">Self-check: did you write that…</p><ul class="crit"><li>the subscript is atoms per molecule?</li><li>2&nbsp;mol of H?</li><li>1&nbsp;mol of O?</li></ul></div>
+        <div class="card phase reg" id="s25-sample" data-label="sample answer"><p class="tag">Sample answer</p><p>False. The subscript 2 means two hydrogen atoms in each molecule. One mole of H<sub>2</sub>O holds 2&nbsp;mol of H atoms and 1&nbsp;mol of O atoms.</p></div>
+      </div>
+      <div class="timer"></div>
+    </div>
+  </div>
+  <aside class="notes">Routine: think 30 s, talk 60 s, write 90 s, self-check 30 s, compare 45 s. The question stays on screen on every frame.</aside>
+  <script>Deck.frames('s25',[
+    {show:"s25-read",t:0.25,note:"Read the prompt aloud. Ask: what does the small 2 in H₂O tell you?"},
+    {show:"s25-think",hide:"s25-read",cls:{"s25-r1": "now"},timer:30,t:0.5,note:"Silent thinking. No pencils yet."},
+    {show:"s25-talk",hide:"s25-think",cls:{"s25-r1": "done", "s25-r2": "now"},timer:60,t:1,note:"Partner A speaks first, then B. Listen for: \"the subscript divides\"."},
+    {show:"s25-write",hide:"s25-talk",cls:{"s25-r2": "done", "s25-r3": "now"},timer:90,t:1.5,note:"Students write in notebooks with the frames; the word bank stays up."},
+    {show:"s25-check",cls:{"s25-r3": "done", "s25-r4": "now"},t:0.5,note:"Students tick each criterion they met and fix one line."},
+    {show:"s25-sample",cls:{"s25-r4": "done", "s25-r5": "now"},t:0.75,note:"Compare with the sample. Reading §5.1.4: moles of an element's atoms = moles of molecules × the subscript."}
+  ]);</script>
+</section>
+
+<section class="slide t-routine t-exit" id="s26" data-period="2" data-title="Predictions and exit ticket" data-sec="Exit ticket" data-ref="Objectives 5.1.1 to 5.1.4">
+  <h2>Predictions and exit ticket</h2>
+  <div class="body">
+    <div class="stack">
+      <div class="phaseA" id="s26-A" data-label="answers">
+        <div class="stack">
+      <div class="card check done" id="s26-p1" data-label="answer 1" data-mode="none"><p class="tag">Question 1</p><p class="q">One mole of copper and one mole of aluminum have…</p><ol class="opts" data-lay="row"><li class="opt right"><b>B</b><span>the same number of atoms</span></li></ol><p class="reason"><span class="enrow"><span class="enl lbl">Mass of one mole</span><span class="chips"><span class="chip g">Al 26.982&nbsp;g</span><span class="chip g">Cu 63.546&nbsp;g</span></span></span>A mole is a count. The two samples hold the same number of atoms.</p></div>
+      <div class="card check done" id="s26-p2" data-label="answer 2" data-mode="none"><p class="tag">Question 2</p><p class="q">One mole of sodium chloride, NaCl, holds 6.022&nbsp;×&nbsp;10<sup>23</sup>…</p><ol class="opts" data-lay="row"><li class="opt right"><b>B</b><span>formula units</span></li></ol><p class="reason">Sodium chloride has no molecules. One formula unit is one Na<sup>+</sup> and one Cl<sup>−</sup>.</p></div>
+      <div class="card check done" id="s26-p3" data-label="answer 3" data-mode="none"><p class="tag">Question 3</p><p class="q">One mole of water, H<sub>2</sub>O, holds how many moles of hydrogen atoms?</p><ol class="opts" data-lay="row"><li class="opt right"><b>B</b><span>2&nbsp;mol</span></li></ol><p class="reason">The subscript 2 multiplies: two H atoms in every molecule.</p></div>
+        </div>
+        <p class="handsup">Hands up if you predicted this.</p>
+      </div>
+      <div class="phaseB" id="s26-B" data-label="exit ticket">
+        <div class="card prompt reg dq"><p>Particles are far too small and too many to count one by one. How can chemists count them?</p></div>
+        <ol class="rail"><li id="s26-r1">Claim</li><li id="s26-r2">Evidence</li><li id="s26-r3">Reasoning</li><li id="s26-r4">Self-check</li><li id="s26-r5">Sample</li></ol>
+        <div class="rt-main">
+          <div class="acc">
+            <div class="card phase" id="s26-fr" data-label="claim"><p class="tag">Write</p><ol class="frames">
+              <li id="s26-f1">Claim: Chemists count particles in moles, where one mole is <span class="gap"></span>.</li>
+              <li id="s26-f2" data-label="evidence">Evidence: A bank counts nickels by weighing because <span class="gap"></span>. To change moles into particles, <span class="gap"></span>.</li>
+              <li id="s26-f3" data-label="reasoning">Reasoning: For a compound, the formula tells <span class="gap"></span>, so <span class="gap"></span>.</li>
+            </ol>
+            <p class="bank" id="s26-bank"><b>Word bank:</b> <span>6.022&nbsp;×&nbsp;10<sup>23</sup> particles</span> <span>the same mass</span> <span>divide</span> <span>multiply by 6.022&nbsp;×&nbsp;10<sup>23</sup></span> <span>the subscript</span> <span>atoms of each element</span></p></div>
+            <div class="card" id="s26-check" data-label="self-check"><p class="tag">Self-check: did you write…</p><ul class="crit"><li>a claim that names the mole and its number?</li><li>the bank's method and the mole-to-particle step?</li><li>the subscript's role?</li></ul></div>
+            <div class="card reg" id="s26-sample" data-label="sample answer"><p class="tag">Sample answer</p><p>One mole is 6.022&nbsp;×&nbsp;10<sup>23</sup> named particles. A bank weighs nickels because each has the same mass. Moles × 6.022&nbsp;×&nbsp;10<sup>23</sup> gives particles. The formula's subscripts count the atoms.</p></div>
+          </div>
+          <div class="timer"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Predictions from slide 4 come back first; students check their letters. Then the CER exit ticket on the driving question, which stays on screen while the sample shows. Collect the exit tickets.</aside>
+  <script>Deck.frames('s26',[
+    {show:["s26-A", "s26-p1"],t:0.5,note:"Answer 1: the same number of atoms. Hands up if you predicted it. Compare with the counts from slide 4."},
+    {show:"s26-p2",hide:"s26-p1",t:0.25,note:"Answer 2: formula units. Ask a student who changed their mind to say why."},
+    {show:"s26-p3",hide:"s26-p2",t:0.25,note:"Answer 3: 2 mol. \"1 mol\" was the common wrong idea."},
+    {show:["s26-B", "s26-fr", "s26-f1"],hide:"s26-A",cls:{"s26-r1": "now"},t:0.5,note:"Exit ticket. Claim first: what is a mole?"},
+    {show:"s26-f2",cls:{"s26-r1": "done", "s26-r2": "now"},t:0.25,note:"Evidence: the bank's weighing and the step from moles to particles."},
+    {show:"s26-f3",cls:{"s26-r2": "done", "s26-r3": "now"},timer:180,label:"write 3 min",t:3,note:"Reasoning: the subscripts. Three minutes of writing."},
+    {show:"s26-check",cls:{"s26-r3": "done", "s26-r4": "now"},t:0.25,note:"Self-check with the three criteria."},
+    {show:"s26-sample",cls:{"s26-r4": "done", "s26-r5": "now"},t:0.5,note:"Compare with the sample. Collect the tickets."}
+  ]);</script>
+</section>
+
+<section class="slide t-routine" id="s27" data-period="2" data-title="Rate your learning" data-sec="Reflect" data-ref="All objectives">
+  <h2>Rate your learning</h2>
+  <div class="body">
+    <div class="scale lbl"><span>1 finger: not yet</span><span>2 fingers: almost</span><span>3 fingers: I can teach it</span></div>
+    <p class="tag">I can…</p>
+    <ol class="rate">
+        <li id="s27-t1"><span><b class="mono lbl">5.1.1</b> count objects by weighing, with one mass or an average.</span><span class="rev">Review: slides 6 and 7</span></li>
+        <li id="s27-t2"><span><b class="mono lbl">5.1.2</b> define the mole and use Avogadro's number.</span><span class="rev">Review: slides 8 to 13 and 21</span></li>
+        <li id="s27-t3"><span><b class="mono lbl">5.1.3</b> change moles to particles and back, naming the particle.</span><span class="rev">Review: slides 16 to 18</span></li>
+        <li id="s27-t4"><span><b class="mono lbl">5.1.4</b> use a formula to count the atoms in a sample.</span><span class="rev">Review: slides 19 and 20</span></li>
+    </ol>
+  </div>
+  <aside class="notes">Fingers 1 to 3 for each target. Students below 3 revisit the slides named on the right, then the missions: Count by weighing, Moles and particles, Jar puzzles.</aside>
+  <script>Deck.frames('s27',[
+    {t:0.5,note:"Explain the scale: 1 not yet, 2 almost, 3 I can teach it."},
+    {cls:{"s27-t1": "now"},label:"target 1",t:0.25,note:"Fingers for target 5.1.1. Note who shows 1 and point to the review slides."},
+    {cls:{"s27-t1": "", "s27-t2": "now"},label:"target 2",t:0.25,note:"Fingers for target 5.1.2. Note who shows 1 and point to the review slides."},
+    {cls:{"s27-t1": "", "s27-t2": "", "s27-t3": "now"},label:"target 3",t:0.25,note:"Fingers for target 5.1.3. Note who shows 1 and point to the review slides."},
+    {cls:{"s27-t1": "", "s27-t2": "", "s27-t3": "", "s27-t4": "now"},label:"target 4",t:0.25,note:"Fingers for target 5.1.4. Note who shows 1 and point to the review slides."}
+  ]);</script>
+</section>
+
+<section class="slide t-summary tnext" id="s28" data-period="2" data-title="Next" data-sec="Next" data-ref="Missions 5.1 and Lesson 5.2">
+  <h2>Next</h2>
+  <div class="body">
+    <div class="mrow">
+      <div class="mission card"><svg viewBox="0 0 100 100" role="img" aria-label="Icon: a scale with nickels"><use href="#ic-scale"/></svg><b>Count by weighing</b><span>4 cases</span></div>
+      <div class="mission card"><svg viewBox="0 0 100 100" role="img" aria-label="Icon: moles and particles, both ways"><use href="#ic-swap"/></svg><b>Moles and particles</b><span>5 cases</span></div>
+      <div class="mission card"><svg viewBox="0 0 100 100" role="img" aria-label="Icon: a jar of mixed coins"><use href="#ic-jar"/></svg><b>Jar puzzles</b><span>jars of mixed objects</span></div>
+    </div>
+    <div class="card"><p class="big">Lesson 5.2 finds the mass of one mole of any substance from the periodic table.</p></div>
+  </div>
+  <aside class="notes">Missions for Lesson 5.1: Count by weighing (4 cases), Moles and particles (5 cases), Jar puzzles. Lesson 5.2 finds the mass of one mole of any substance from the periodic table (molar mass).</aside>
+  <script>Deck.frames('s28',[
+    {t:0.5,note:"Point to the three missions. Preview Lesson 5.2: the mass of one mole of any substance, from the periodic table."}
+  ]);</script>
+</section>
+
+<footer id="foot"><span id="sec"></span><span id="cue"></span><span id="count"></span></footer>
+</main>
+<div id="notes" hidden></div>
+<div id="overview" hidden></div>
+<div id="blank" hidden></div>
+<div id="runsheet"></div>
+<script>Deck.start()</script>
+</body>
+</html>
