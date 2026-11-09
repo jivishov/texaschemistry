@@ -1,0 +1,2122 @@
+{
+  "theme": "light",
+  "frames": 78,
+  "fails": [],
+  "overlap": {
+    "intersections": 0,
+    "frames": 0,
+    "kinds": {},
+    "baselined": 0,
+    "baseline": null,
+    "dom": 525,
+    "labels": 1208,
+    "shapes": 2264,
+    "repeated": 0,
+    "covered": 134,
+    "hidden": [
+      "s48f0 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s49f0 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s50f0 canvas #x50-sim [atom]: label \"Si\" under circle",
+      "s50f0 canvas #x50-sim [atom]: label \"Si\" under circle",
+      "s50f0 canvas #x50-sim [atom]: label \"Si\" under circle",
+      "s50f0 canvas #x50-sim [atom]: label \"Si\" under circle",
+      "s50f0 canvas #x50-sim [atom]: label \"Si\" under circle",
+      "s50f0 canvas #x50-sim [atom]: label \"Si\" under circle",
+      "s50f0 canvas #x50-sim [atom]: label \"Si\" under circle",
+      "s50f0 canvas #x50-sim [atom]: label \"Si\" under circle",
+      "s50f0 canvas #x50-sim [atom]: label \"Si\" under circle",
+      "s50f0 canvas #x50-sim [atom]: label \"Si\" under circle",
+      "s50f0 canvas #x50-sim [atom]: label \"Si\" under circle",
+      "s51f0 canvas #x51-sim [divide]: label \"Si\" under circle",
+      "s51f0 canvas #x51-sim [divide]: label \"Si\" under circle",
+      "s51f0 canvas #x51-sim [divide]: label \"Si\" under circle",
+      "s51f0 canvas #x51-sim [divide]: label \"Si\" under circle",
+      "s51f0 canvas #x51-sim [divide]: label \"Si\" under circle",
+      "s51f0 canvas #x51-sim [divide]: label \"Si\" under circle",
+      "s51f0 canvas #x51-sim [divide]: label \"Si\" under circle",
+      "s51f0 canvas #x51-sim [divide]: label \"Si\" under circle",
+      "s51f0 canvas #x51-sim [divide]: label \"Si\" under circle",
+      "s51f0 canvas #x51-sim [divide]: label \"Si\" under circle",
+      "s51f0 canvas #x51-sim [divide]: label \"Si\" under circle",
+      "s69f0 canvas #x69-sim [crystal]: label \"−\" under circle",
+      "s69f0 canvas #x69-sim [crystal]: label \"+\" under circle",
+      "s69f0 canvas #x69-sim [crystal]: label \"−\" under circle",
+      "s70f0 canvas #x70-sim [unit]: label \"−\" under circle",
+      "s71f0 canvas #x71-sim [count]: label \"−\" under circle",
+      "s72f0 canvas #x72-sim [wrong]: label \"−\" under circle",
+      "s48f0@live1 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live1 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live1 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live1 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live1 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live1 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live1 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live1 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live1 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live1 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live1 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live1 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live1 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live1 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live1 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live1 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live1 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live1 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live1 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live1 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live1 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live1 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live1 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live1 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live2 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live2 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live2 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live2 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live2 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live2 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live2 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live2 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live2 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live2 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live2 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live2 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live2 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live2 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live2 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live2 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live2 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live2 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live2 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live2 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live2 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live2 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s48f0@live2 canvas #x48-sim [crystal]: label \"Si\" under circle",
+      "s49f0@live1 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live1 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live1 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live1 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live1 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live1 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live1 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live1 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live1 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live1 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live1 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live1 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live1 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live1 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live2 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live2 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live2 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live2 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live2 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live2 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live2 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live2 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live2 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live2 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live2 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live2 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live2 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s49f0@live2 canvas #x49-sim [cube]: label \"Si\" under circle",
+      "s69f0@live1 canvas #x69-sim [crystal]: label \"−\" under circle",
+      "s69f0@live1 canvas #x69-sim [crystal]: label \"−\" under circle",
+      "s69f0@live2 canvas #x69-sim [crystal]: label \"−\" under circle",
+      "s69f0@live2 canvas #x69-sim [crystal]: label \"+\" under circle",
+      "s69f0@live2 canvas #x69-sim [crystal]: label \"−\" under circle",
+      "s70f0@live1 canvas #x70-sim [unit]: label \"−\" under circle",
+      "s70f0@live2 canvas #x70-sim [unit]: label \"−\" under circle"
+    ],
+    "scenes": [
+      {
+        "frame": "s17f0",
+        "where": "canvas #x17-sim [isotopes]",
+        "n": 1,
+        "box": [
+          105,
+          387,
+          440,
+          618
+        ]
+      },
+      {
+        "frame": "s23f0",
+        "where": "canvas #x23-sim [one]",
+        "n": 1,
+        "box": [
+          214,
+          386,
+          538,
+          588
+        ]
+      },
+      {
+        "frame": "s29f0",
+        "where": "canvas #x29-sim [al]",
+        "n": 1,
+        "box": [
+          111,
+          295,
+          308,
+          472
+        ]
+      },
+      {
+        "frame": "s30f0",
+        "where": "canvas #x30-sim [cu]",
+        "n": 1,
+        "box": [
+          111,
+          249,
+          308,
+          426
+        ]
+      },
+      {
+        "frame": "s30f0",
+        "where": "canvas #x30-sim [cu]",
+        "n": 2,
+        "box": [
+          560,
+          279,
+          775,
+          472
+        ]
+      },
+      {
+        "frame": "s31f0",
+        "where": "canvas #x31-sim [compare]",
+        "n": 1,
+        "box": [
+          111,
+          249,
+          308,
+          426
+        ]
+      },
+      {
+        "frame": "s31f0",
+        "where": "canvas #x31-sim [compare]",
+        "n": 2,
+        "box": [
+          560,
+          279,
+          775,
+          472
+        ]
+      },
+      {
+        "frame": "s32f0",
+        "where": "canvas #x32-sim [oxygen]",
+        "n": 1,
+        "box": [
+          138,
+          292,
+          204,
+          358
+        ]
+      },
+      {
+        "frame": "s32f0",
+        "where": "canvas #x32-sim [oxygen]",
+        "n": 2,
+        "box": [
+          302,
+          292,
+          368,
+          358
+        ]
+      },
+      {
+        "frame": "s32f0",
+        "where": "canvas #x32-sim [oxygen]",
+        "n": 3,
+        "box": [
+          138,
+          416,
+          204,
+          482
+        ]
+      },
+      {
+        "frame": "s32f0",
+        "where": "canvas #x32-sim [oxygen]",
+        "n": 4,
+        "box": [
+          302,
+          416,
+          368,
+          482
+        ]
+      },
+      {
+        "frame": "s32f0",
+        "where": "canvas #x32-sim [oxygen]",
+        "n": 5,
+        "box": [
+          474,
+          258,
+          609,
+          392
+        ]
+      },
+      {
+        "frame": "s32f0",
+        "where": "canvas #x32-sim [oxygen]",
+        "n": 6,
+        "box": [
+          638,
+          258,
+          773,
+          392
+        ]
+      },
+      {
+        "frame": "s32f0",
+        "where": "canvas #x32-sim [oxygen]",
+        "n": 7,
+        "box": [
+          474,
+          382,
+          609,
+          516
+        ]
+      },
+      {
+        "frame": "s32f0",
+        "where": "canvas #x32-sim [oxygen]",
+        "n": 8,
+        "box": [
+          638,
+          382,
+          773,
+          516
+        ]
+      },
+      {
+        "frame": "s33f0",
+        "where": "canvas #x33-sim [four]",
+        "n": 1,
+        "box": [
+          204,
+          198,
+          305,
+          299
+        ]
+      },
+      {
+        "frame": "s33f0",
+        "where": "canvas #x33-sim [four]",
+        "n": 2,
+        "box": [
+          461,
+          133,
+          785,
+          335
+        ]
+      },
+      {
+        "frame": "s33f0",
+        "where": "canvas #x33-sim [four]",
+        "n": 3,
+        "box": [
+          148,
+          458,
+          360,
+          595
+        ]
+      },
+      {
+        "frame": "s33f0",
+        "where": "canvas #x33-sim [four]",
+        "n": 4,
+        "box": [
+          532,
+          458,
+          747,
+          595
+        ]
+      },
+      {
+        "frame": "s48f0",
+        "where": "canvas #x48-sim [crystal]",
+        "n": 1,
+        "box": [
+          180,
+          140,
+          692,
+          640
+        ]
+      },
+      {
+        "frame": "s49f0",
+        "where": "canvas #x49-sim [cube]",
+        "n": 1,
+        "box": [
+          180,
+          140,
+          692,
+          640
+        ]
+      },
+      {
+        "frame": "s50f0",
+        "where": "canvas #x50-sim [atom]",
+        "n": 1,
+        "box": [
+          180,
+          140,
+          692,
+          640
+        ]
+      },
+      {
+        "frame": "s51f0",
+        "where": "canvas #x51-sim [divide]",
+        "n": 1,
+        "box": [
+          180,
+          140,
+          692,
+          640
+        ]
+      },
+      {
+        "frame": "s66f0",
+        "where": "canvas #x66-sim [energy/mole]",
+        "n": 1,
+        "box": [
+          174,
+          460,
+          337,
+          612
+        ]
+      },
+      {
+        "frame": "s67f0",
+        "where": "canvas #x67-sim [energy/one]",
+        "n": 1,
+        "box": [
+          174,
+          460,
+          337,
+          612
+        ]
+      },
+      {
+        "frame": "s67f0",
+        "where": "canvas #x67-sim [energy/one]",
+        "n": 2,
+        "box": [
+          530,
+          514,
+          633,
+          616
+        ]
+      },
+      {
+        "frame": "s68f0",
+        "where": "canvas #x68-sim [energy/why]",
+        "n": 1,
+        "box": [
+          174,
+          460,
+          337,
+          612
+        ]
+      },
+      {
+        "frame": "s68f0",
+        "where": "canvas #x68-sim [energy/why]",
+        "n": 2,
+        "box": [
+          530,
+          514,
+          633,
+          616
+        ]
+      },
+      {
+        "frame": "s69f0",
+        "where": "canvas #x69-sim [crystal]",
+        "n": 1,
+        "box": [
+          219,
+          159,
+          654,
+          604
+        ]
+      },
+      {
+        "frame": "s70f0",
+        "where": "canvas #x70-sim [unit]",
+        "n": 1,
+        "box": [
+          219,
+          159,
+          654,
+          604
+        ]
+      },
+      {
+        "frame": "s71f0",
+        "where": "canvas #x71-sim [count]",
+        "n": 1,
+        "box": [
+          219,
+          159,
+          654,
+          604
+        ]
+      },
+      {
+        "frame": "s72f0",
+        "where": "canvas #x72-sim [wrong]",
+        "n": 1,
+        "box": [
+          219,
+          159,
+          654,
+          604
+        ]
+      },
+      {
+        "frame": "s73f0",
+        "where": "canvas #x73-sim [H2O/one]",
+        "n": 1,
+        "box": [
+          112,
+          156,
+          436,
+          358
+        ]
+      },
+      {
+        "frame": "s74f0",
+        "where": "canvas #x74-sim [H2O/mol]",
+        "n": 1,
+        "box": [
+          112,
+          156,
+          436,
+          358
+        ]
+      },
+      {
+        "frame": "s75f0",
+        "where": "canvas #x75-sim [CO2/mol]",
+        "n": 1,
+        "box": [
+          109,
+          230,
+          439,
+          320
+        ]
+      },
+      {
+        "frame": "s76f0",
+        "where": "canvas #x76-sim [CO2/atoms]",
+        "n": 1,
+        "box": [
+          109,
+          230,
+          439,
+          320
+        ]
+      },
+      {
+        "frame": "s77f0",
+        "where": "canvas #x77-sim [NaCl/mol]",
+        "n": 1,
+        "box": [
+          159,
+          201,
+          389,
+          349
+        ]
+      },
+      {
+        "frame": "s78f0",
+        "where": "canvas #x78-sim [NH3/mol]",
+        "n": 1,
+        "box": [
+          78,
+          180,
+          420,
+          396
+        ]
+      },
+      {
+        "frame": "s48f0@live1",
+        "where": "canvas #x48-sim [crystal]",
+        "n": 1,
+        "box": [
+          193,
+          143,
+          675,
+          634
+        ]
+      },
+      {
+        "frame": "s48f0@live2",
+        "where": "canvas #x48-sim [crystal]",
+        "n": 1,
+        "box": [
+          200,
+          145,
+          668,
+          632
+        ]
+      },
+      {
+        "frame": "s49f0@live1",
+        "where": "canvas #x49-sim [cube]",
+        "n": 1,
+        "box": [
+          193,
+          143,
+          675,
+          634
+        ]
+      },
+      {
+        "frame": "s49f0@live2",
+        "where": "canvas #x49-sim [cube]",
+        "n": 1,
+        "box": [
+          200,
+          145,
+          668,
+          632
+        ]
+      },
+      {
+        "frame": "s69f0@live1",
+        "where": "canvas #x69-sim [crystal]",
+        "n": 1,
+        "box": [
+          227,
+          162,
+          643,
+          600
+        ]
+      },
+      {
+        "frame": "s69f0@live2",
+        "where": "canvas #x69-sim [crystal]",
+        "n": 1,
+        "box": [
+          220,
+          160,
+          652,
+          603
+        ]
+      },
+      {
+        "frame": "s70f0@live1",
+        "where": "canvas #x70-sim [unit]",
+        "n": 1,
+        "box": [
+          227,
+          162,
+          643,
+          600
+        ]
+      },
+      {
+        "frame": "s70f0@live2",
+        "where": "canvas #x70-sim [unit]",
+        "n": 1,
+        "box": [
+          231,
+          164,
+          637,
+          598
+        ]
+      }
+    ],
+    "live": [
+      {
+        "s": 3,
+        "f": 0,
+        "ids": [
+          "x03-sim"
+        ]
+      },
+      {
+        "s": 26,
+        "f": 0,
+        "ids": [
+          "x26-sim"
+        ]
+      },
+      {
+        "s": 34,
+        "f": 0,
+        "ids": [
+          "x34-sim"
+        ]
+      },
+      {
+        "s": 48,
+        "f": 0,
+        "ids": [
+          "x48-sim"
+        ]
+      },
+      {
+        "s": 49,
+        "f": 0,
+        "ids": [
+          "x49-sim"
+        ]
+      },
+      {
+        "s": 69,
+        "f": 0,
+        "ids": [
+          "x69-sim"
+        ]
+      },
+      {
+        "s": 70,
+        "f": 0,
+        "ids": [
+          "x70-sim"
+        ]
+      }
+    ],
+    "moments": [
+      {
+        "frame": "s3f0@live1",
+        "dom": 6,
+        "labels": 2,
+        "shapes": 40,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "hits": 0
+      },
+      {
+        "frame": "s3f0@live2",
+        "dom": 6,
+        "labels": 2,
+        "shapes": 42,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "hits": 0
+      },
+      {
+        "frame": "s26f0@live1",
+        "dom": 7,
+        "labels": 5,
+        "shapes": 204,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "hits": 0
+      },
+      {
+        "frame": "s26f0@live2",
+        "dom": 7,
+        "labels": 6,
+        "shapes": 205,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "hits": 0
+      },
+      {
+        "frame": "s34f0@live1",
+        "dom": 5,
+        "labels": 9,
+        "shapes": 5,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "hits": 0
+      },
+      {
+        "frame": "s34f0@live2",
+        "dom": 5,
+        "labels": 9,
+        "shapes": 5,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "hits": 0
+      },
+      {
+        "frame": "s48f0@live1",
+        "dom": 7,
+        "labels": 95,
+        "shapes": 96,
+        "canvases": 1,
+        "covered": 24,
+        "scenes": 1,
+        "hits": 0
+      },
+      {
+        "frame": "s48f0@live2",
+        "dom": 7,
+        "labels": 94,
+        "shapes": 96,
+        "canvases": 1,
+        "covered": 23,
+        "scenes": 1,
+        "hits": 0
+      },
+      {
+        "frame": "s49f0@live1",
+        "dom": 7,
+        "labels": 97,
+        "shapes": 116,
+        "canvases": 1,
+        "covered": 14,
+        "scenes": 1,
+        "hits": 0
+      },
+      {
+        "frame": "s49f0@live2",
+        "dom": 7,
+        "labels": 96,
+        "shapes": 116,
+        "canvases": 1,
+        "covered": 14,
+        "scenes": 1,
+        "hits": 0
+      },
+      {
+        "frame": "s69f0@live1",
+        "dom": 7,
+        "labels": 28,
+        "shapes": 28,
+        "canvases": 1,
+        "covered": 2,
+        "scenes": 1,
+        "hits": 0
+      },
+      {
+        "frame": "s69f0@live2",
+        "dom": 7,
+        "labels": 28,
+        "shapes": 28,
+        "canvases": 1,
+        "covered": 3,
+        "scenes": 1,
+        "hits": 0
+      },
+      {
+        "frame": "s70f0@live1",
+        "dom": 7,
+        "labels": 28,
+        "shapes": 31,
+        "canvases": 1,
+        "covered": 1,
+        "scenes": 1,
+        "hits": 0
+      },
+      {
+        "frame": "s70f0@live2",
+        "dom": 7,
+        "labels": 28,
+        "shapes": 31,
+        "canvases": 1,
+        "covered": 1,
+        "scenes": 1,
+        "hits": 0
+      }
+    ],
+    "canvases": 78,
+    "unsettled": [],
+    "failing": [],
+    "shots": []
+  },
+  "rec": [
+    {
+      "s": 1,
+      "f": 0,
+      "empty": 0,
+      "opts": [],
+      "overlap": {
+        "dom": 6,
+        "labels": 0,
+        "shapes": 32,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 2,
+      "f": 0,
+      "empty": 0,
+      "opts": [],
+      "overlap": {
+        "dom": 6,
+        "labels": 2,
+        "shapes": 34,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 3,
+      "f": 0,
+      "empty": 0,
+      "opts": [],
+      "overlap": {
+        "dom": 6,
+        "labels": 3,
+        "shapes": 52,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [
+          "x03-sim"
+        ],
+        "hits": 0
+      }
+    },
+    {
+      "s": 4,
+      "f": 0,
+      "empty": 0,
+      "opts": [],
+      "overlap": {
+        "dom": 6,
+        "labels": 5,
+        "shapes": 37,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 5,
+      "f": 0,
+      "empty": 0,
+      "opts": [],
+      "overlap": {
+        "dom": 6,
+        "labels": 7,
+        "shapes": 38,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 6,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 2,
+        "shapes": 6,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 7,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 5,
+        "shapes": 7,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 8,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 5,
+        "shapes": 8,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 9,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 9,
+        "shapes": 8,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 10,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 13,
+        "shapes": 9,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 11,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 4,
+        "shapes": 7,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 12,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 5,
+        "shapes": 39,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 13,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 11,
+        "shapes": 41,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 14,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 8,
+        "shapes": 53,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 15,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 10,
+        "shapes": 54,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 16,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 9,
+        "shapes": 40,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 17,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 11,
+        "shapes": 8,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 1,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 18,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 2,
+        "shapes": 27,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 19,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 4,
+        "shapes": 30,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 20,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 7,
+        "shapes": 56,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 21,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 8,
+        "shapes": 30,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 22,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 10,
+        "shapes": 31,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 23,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 6,
+        "shapes": 5,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 1,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 24,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 3,
+        "shapes": 51,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 25,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 4,
+        "shapes": 403,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 26,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 10,
+        "shapes": 209,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [
+          "x26-sim"
+        ],
+        "hits": 0
+      }
+    },
+    {
+      "s": 27,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 11,
+        "shapes": 34,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 28,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 14,
+        "shapes": 37,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 29,
+      "f": 0,
+      "empty": 0.016,
+      "opts": [],
+      "overlap": {
+        "dom": 8,
+        "labels": 8,
+        "shapes": 13,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 1,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 30,
+      "f": 0,
+      "empty": 0.016,
+      "opts": [],
+      "overlap": {
+        "dom": 8,
+        "labels": 16,
+        "shapes": 20,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 2,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 31,
+      "f": 0,
+      "empty": 0.016,
+      "opts": [],
+      "overlap": {
+        "dom": 8,
+        "labels": 19,
+        "shapes": 22,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 2,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 32,
+      "f": 0,
+      "empty": 0.016,
+      "opts": [],
+      "overlap": {
+        "dom": 8,
+        "labels": 19,
+        "shapes": 17,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 8,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 33,
+      "f": 0,
+      "empty": 0.016,
+      "opts": [],
+      "overlap": {
+        "dom": 8,
+        "labels": 13,
+        "shapes": 13,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 4,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 34,
+      "f": 0,
+      "empty": 0.171,
+      "opts": [],
+      "overlap": {
+        "dom": 5,
+        "labels": 9,
+        "shapes": 5,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [
+          "x34-sim"
+        ],
+        "hits": 0
+      }
+    },
+    {
+      "s": 35,
+      "f": 0,
+      "empty": 0.171,
+      "opts": [],
+      "overlap": {
+        "dom": 5,
+        "labels": 9,
+        "shapes": 2,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 36,
+      "f": 0,
+      "empty": 0.171,
+      "opts": [],
+      "overlap": {
+        "dom": 5,
+        "labels": 11,
+        "shapes": 3,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 37,
+      "f": 0,
+      "empty": 0.171,
+      "opts": [],
+      "overlap": {
+        "dom": 5,
+        "labels": 13,
+        "shapes": 4,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 38,
+      "f": 0,
+      "empty": 0.171,
+      "opts": [],
+      "overlap": {
+        "dom": 5,
+        "labels": 15,
+        "shapes": 5,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 39,
+      "f": 0,
+      "empty": 0.171,
+      "opts": [],
+      "overlap": {
+        "dom": 5,
+        "labels": 16,
+        "shapes": 6,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 40,
+      "f": 0,
+      "empty": 0.171,
+      "opts": [],
+      "overlap": {
+        "dom": 5,
+        "labels": 18,
+        "shapes": 9,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 41,
+      "f": 0,
+      "empty": 0.171,
+      "opts": [],
+      "overlap": {
+        "dom": 5,
+        "labels": 10,
+        "shapes": 17,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 42,
+      "f": 0,
+      "empty": 0.171,
+      "opts": [],
+      "overlap": {
+        "dom": 5,
+        "labels": 10,
+        "shapes": 6,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 43,
+      "f": 0,
+      "empty": 0.171,
+      "opts": [],
+      "overlap": {
+        "dom": 5,
+        "labels": 11,
+        "shapes": 6,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 44,
+      "f": 0,
+      "empty": 0.171,
+      "opts": [],
+      "overlap": {
+        "dom": 5,
+        "labels": 14,
+        "shapes": 7,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 45,
+      "f": 0,
+      "empty": 0.171,
+      "opts": [],
+      "overlap": {
+        "dom": 5,
+        "labels": 16,
+        "shapes": 8,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 46,
+      "f": 0,
+      "empty": 0.171,
+      "opts": [],
+      "overlap": {
+        "dom": 5,
+        "labels": 17,
+        "shapes": 10,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 47,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 1,
+        "shapes": 2,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 48,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 95,
+        "shapes": 96,
+        "canvases": 1,
+        "covered": 13,
+        "scenes": 1,
+        "live": [
+          "x48-sim"
+        ],
+        "hits": 0
+      }
+    },
+    {
+      "s": 49,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 97,
+        "shapes": 116,
+        "canvases": 1,
+        "covered": 11,
+        "scenes": 1,
+        "live": [
+          "x49-sim"
+        ],
+        "hits": 0
+      }
+    },
+    {
+      "s": 50,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 98,
+        "shapes": 114,
+        "canvases": 1,
+        "covered": 11,
+        "scenes": 1,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 51,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 98,
+        "shapes": 115,
+        "canvases": 1,
+        "covered": 11,
+        "scenes": 1,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 52,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 3,
+        "shapes": 3,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 53,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 12,
+        "shapes": 4,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 54,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 12,
+        "shapes": 5,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 55,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 17,
+        "shapes": 7,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 56,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 12,
+        "shapes": 4,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 57,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 12,
+        "shapes": 5,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 58,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 17,
+        "shapes": 7,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 59,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 12,
+        "shapes": 8,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 60,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 12,
+        "shapes": 4,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 61,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 12,
+        "shapes": 5,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 62,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 17,
+        "shapes": 7,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 63,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 12,
+        "shapes": 4,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 64,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 12,
+        "shapes": 5,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 65,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 17,
+        "shapes": 7,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 0,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 66,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 8,
+        "shapes": 7,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 1,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 67,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 11,
+        "shapes": 10,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 2,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 68,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 13,
+        "shapes": 10,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 2,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 69,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 28,
+        "shapes": 28,
+        "canvases": 1,
+        "covered": 3,
+        "scenes": 1,
+        "live": [
+          "x69-sim"
+        ],
+        "hits": 0
+      }
+    },
+    {
+      "s": 70,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 28,
+        "shapes": 31,
+        "canvases": 1,
+        "covered": 1,
+        "scenes": 1,
+        "live": [
+          "x70-sim"
+        ],
+        "hits": 0
+      }
+    },
+    {
+      "s": 71,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 29,
+        "shapes": 31,
+        "canvases": 1,
+        "covered": 1,
+        "scenes": 1,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 72,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 31,
+        "shapes": 31,
+        "canvases": 1,
+        "covered": 1,
+        "scenes": 1,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 73,
+      "f": 0,
+      "empty": 0.016,
+      "opts": [],
+      "overlap": {
+        "dom": 8,
+        "labels": 11,
+        "shapes": 7,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 1,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 74,
+      "f": 0,
+      "empty": 0.016,
+      "opts": [],
+      "overlap": {
+        "dom": 8,
+        "labels": 11,
+        "shapes": 7,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 1,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 75,
+      "f": 0,
+      "empty": 0.016,
+      "opts": [],
+      "overlap": {
+        "dom": 8,
+        "labels": 9,
+        "shapes": 6,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 1,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 76,
+      "f": 0,
+      "empty": 0.016,
+      "opts": [],
+      "overlap": {
+        "dom": 8,
+        "labels": 11,
+        "shapes": 7,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 1,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 77,
+      "f": 0,
+      "empty": 0.016,
+      "opts": [],
+      "overlap": {
+        "dom": 8,
+        "labels": 8,
+        "shapes": 5,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 1,
+        "live": [],
+        "hits": 0
+      }
+    },
+    {
+      "s": 78,
+      "f": 0,
+      "empty": 0.014,
+      "opts": [],
+      "overlap": {
+        "dom": 7,
+        "labels": 10,
+        "shapes": 7,
+        "canvases": 1,
+        "covered": 0,
+        "scenes": 1,
+        "live": [],
+        "hits": 0
+      }
+    }
+  ]
+}

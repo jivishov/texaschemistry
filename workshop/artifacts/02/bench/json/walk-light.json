@@ -1,0 +1,1177 @@
+{
+  "theme": "light",
+  "presses": 78,
+  "fails": [],
+  "rec": [
+    {
+      "press": 0,
+      "s": 1,
+      "f": 0,
+      "empty": 0,
+      "cue": "Next ▶ slide 2: Bench: coinScale · guess",
+      "sims": {
+        "x01-sim": "jar"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "000-s1f0.png"
+    },
+    {
+      "press": 1,
+      "s": 2,
+      "f": 0,
+      "empty": 0,
+      "cue": "Next ▶ slide 3: Bench: coinScale · tally",
+      "sims": {
+        "x02-sim": "guess"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "001-s2f0.png"
+    },
+    {
+      "press": 2,
+      "s": 3,
+      "f": 0,
+      "empty": 0,
+      "cue": "Next ▶ slide 4: Bench: coinScale · scale",
+      "sims": {
+        "x03-sim": "tally"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "002-s3f0.png"
+    },
+    {
+      "press": 3,
+      "s": 4,
+      "f": 0,
+      "empty": 0,
+      "cue": "Next ▶ slide 5: Bench: coinScale · reveal",
+      "sims": {
+        "x04-sim": "scale"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "003-s4f0.png"
+    },
+    {
+      "press": 4,
+      "s": 5,
+      "f": 0,
+      "empty": 0,
+      "cue": "Next ▶ slide 6: Bench: coinScale · bag",
+      "sims": {
+        "x05-sim": "reveal"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "004-s5f0.png"
+    },
+    {
+      "press": 5,
+      "s": 6,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 7: Bench: coinScale · zero",
+      "sims": {
+        "x06-sim": "bag"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "005-s6f0.png"
+    },
+    {
+      "press": 6,
+      "s": 7,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 8: Bench: coinScale · read",
+      "sims": {
+        "x07-sim": "zero"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "006-s7f0.png"
+    },
+    {
+      "press": 7,
+      "s": 8,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 9: Bench: coinScale · divide",
+      "sims": {
+        "x08-sim": "read"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "007-s8f0.png"
+    },
+    {
+      "press": 8,
+      "s": 9,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 10: Bench: coinScale · count",
+      "sims": {
+        "x09-sim": "divide"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "008-s9f0.png"
+    },
+    {
+      "press": 9,
+      "s": 10,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 11: Bench: coinScale · roll",
+      "sims": {
+        "x10-sim": "count"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "009-s10f0.png"
+    },
+    {
+      "press": 10,
+      "s": 11,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 12: Bench: centJar · jar",
+      "sims": {
+        "x11-sim": "roll"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "010-s11f0.png"
+    },
+    {
+      "press": 11,
+      "s": 12,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 13: Bench: centJar · wrong",
+      "sims": {
+        "x12-sim": "jar"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "011-s12f0.png"
+    },
+    {
+      "press": 12,
+      "s": 13,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 14: Bench: centJar · sample",
+      "sims": {
+        "x13-sim": "wrong"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "012-s13f0.png"
+    },
+    {
+      "press": 13,
+      "s": 14,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 15: Bench: centJar · average",
+      "sims": {
+        "x14-sim": "sample"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "013-s14f0.png"
+    },
+    {
+      "press": 14,
+      "s": 15,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 16: Bench: centJar · count",
+      "sims": {
+        "x15-sim": "average"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "014-s15f0.png"
+    },
+    {
+      "press": 15,
+      "s": 16,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 17: Bench: centJar · isotopes",
+      "sims": {
+        "x16-sim": "count"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "015-s16f0.png"
+    },
+    {
+      "press": 16,
+      "s": 17,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 18: Bench: countingUnits · dozen",
+      "sims": {
+        "x17-sim": "isotopes"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "016-s17f0.png"
+    },
+    {
+      "press": 17,
+      "s": 18,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 19: Bench: countingUnits · ream",
+      "sims": {
+        "x18-sim": "dozen"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "017-s18f0.png"
+    },
+    {
+      "press": 18,
+      "s": 19,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 20: Bench: countingUnits · mole",
+      "sims": {
+        "x19-sim": "ream"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "018-s19f0.png"
+    },
+    {
+      "press": 19,
+      "s": 20,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 21: Bench: countingUnits · exact",
+      "sims": {
+        "x20-sim": "mole"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "019-s20f0.png"
+    },
+    {
+      "press": 20,
+      "s": 21,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 22: Bench: countingUnits · constant",
+      "sims": {
+        "x21-sim": "exact"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "020-s21f0.png"
+    },
+    {
+      "press": 21,
+      "s": 22,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 23: Bench: howMany · one",
+      "sims": {
+        "x22-sim": "constant"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "021-s22f0.png"
+    },
+    {
+      "press": 22,
+      "s": 23,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 24: Bench: howMany · dozen",
+      "sims": {
+        "x23-sim": "one"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "022-s23f0.png"
+    },
+    {
+      "press": 23,
+      "s": 24,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 25: Bench: howMany · thousand",
+      "sims": {
+        "x24-sim": "dozen"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "023-s24f0.png"
+    },
+    {
+      "press": 24,
+      "s": 25,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 26: Bench: howMany · zoom",
+      "sims": {
+        "x25-sim": "thousand"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "024-s25f0.png"
+    },
+    {
+      "press": 25,
+      "s": 26,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 27: Bench: howMany · mole",
+      "sims": {
+        "x26-sim": "zoom"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "025-s26f0.png"
+    },
+    {
+      "press": 26,
+      "s": 27,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 28: Bench: howMany · spoon",
+      "sims": {
+        "x27-sim": "mole"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "026-s27f0.png"
+    },
+    {
+      "press": 27,
+      "s": 28,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 29: Bench: moleKinds · al",
+      "sims": {
+        "x28-sim": "spoon"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "027-s28f0.png"
+    },
+    {
+      "press": 28,
+      "s": 29,
+      "f": 0,
+      "empty": 0.016,
+      "cue": "Next ▶ slide 30: Bench: moleKinds · cu",
+      "sims": {
+        "x29-sim": "al"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "028-s29f0.png"
+    },
+    {
+      "press": 29,
+      "s": 30,
+      "f": 0,
+      "empty": 0.016,
+      "cue": "Next ▶ slide 31: Bench: moleKinds · compare",
+      "sims": {
+        "x30-sim": "cu"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "029-s30f0.png"
+    },
+    {
+      "press": 30,
+      "s": 31,
+      "f": 0,
+      "empty": 0.016,
+      "cue": "Next ▶ slide 32: Bench: moleKinds · oxygen",
+      "sims": {
+        "x31-sim": "compare"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "030-s31f0.png"
+    },
+    {
+      "press": 31,
+      "s": 32,
+      "f": 0,
+      "empty": 0.016,
+      "cue": "Next ▶ slide 33: Bench: moleKinds · four",
+      "sims": {
+        "x32-sim": "oxygen"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "031-s32f0.png"
+    },
+    {
+      "press": 32,
+      "s": 33,
+      "f": 0,
+      "empty": 0.016,
+      "cue": "Next ▶ slide 34: Bench: secondsLine · line",
+      "sims": {
+        "x33-sim": "four"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "032-s33f0.png"
+    },
+    {
+      "press": 33,
+      "s": 34,
+      "f": 0,
+      "empty": 0.171,
+      "cue": "Next ▶ slide 35: Bench: secondsLine · year",
+      "sims": {
+        "x34-sim": "line"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "033-s34f0.png"
+    },
+    {
+      "press": 34,
+      "s": 35,
+      "f": 0,
+      "empty": 0.171,
+      "cue": "Next ▶ slide 36: Bench: secondsLine · earth",
+      "sims": {
+        "x35-sim": "year"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "034-s35f0.png"
+    },
+    {
+      "press": 35,
+      "s": 36,
+      "f": 0,
+      "empty": 0.171,
+      "cue": "Next ▶ slide 37: Bench: secondsLine · universe",
+      "sims": {
+        "x36-sim": "earth"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "035-s36f0.png"
+    },
+    {
+      "press": 36,
+      "s": 37,
+      "f": 0,
+      "empty": 0.171,
+      "cue": "Next ▶ slide 38: Bench: secondsLine · mole",
+      "sims": {
+        "x37-sim": "universe"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "036-s37f0.png"
+    },
+    {
+      "press": 37,
+      "s": 38,
+      "f": 0,
+      "empty": 0.171,
+      "cue": "Next ▶ slide 39: Bench: secondsLine · times",
+      "sims": {
+        "x38-sim": "mole"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "037-s38f0.png"
+    },
+    {
+      "press": 38,
+      "s": 39,
+      "f": 0,
+      "empty": 0.171,
+      "cue": "Next ▶ slide 40: Bench: secondsLine · spoon",
+      "sims": {
+        "x39-sim": "times"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "038-s39f0.png"
+    },
+    {
+      "press": 39,
+      "s": 40,
+      "f": 0,
+      "empty": 0.171,
+      "cue": "Next ▶ slide 41: Bench: moleHistory · avogadro",
+      "sims": {
+        "x40-sim": "spoon"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "039-s40f0.png"
+    },
+    {
+      "press": 40,
+      "s": 41,
+      "f": 0,
+      "empty": 0.171,
+      "cue": "Next ▶ slide 42: Bench: moleHistory · loschmidt",
+      "sims": {
+        "x41-sim": "avogadro"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "040-s41f0.png"
+    },
+    {
+      "press": 41,
+      "s": 42,
+      "f": 0,
+      "empty": 0.171,
+      "cue": "Next ▶ slide 43: Bench: moleHistory · ostwald",
+      "sims": {
+        "x42-sim": "loschmidt"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "041-s42f0.png"
+    },
+    {
+      "press": 42,
+      "s": 43,
+      "f": 0,
+      "empty": 0.171,
+      "cue": "Next ▶ slide 44: Bench: moleHistory · perrin",
+      "sims": {
+        "x43-sim": "ostwald"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "042-s43f0.png"
+    },
+    {
+      "press": 43,
+      "s": 44,
+      "f": 0,
+      "empty": 0.171,
+      "cue": "Next ▶ slide 45: Bench: moleHistory · si",
+      "sims": {
+        "x44-sim": "perrin"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "043-s44f0.png"
+    },
+    {
+      "press": 44,
+      "s": 45,
+      "f": 0,
+      "empty": 0.171,
+      "cue": "Next ▶ slide 46: Bench: moleHistory · exact",
+      "sims": {
+        "x45-sim": "si"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "044-s45f0.png"
+    },
+    {
+      "press": 45,
+      "s": 46,
+      "f": 0,
+      "empty": 0.171,
+      "cue": "Next ▶ slide 47: Bench: siliconSphere · sphere",
+      "sims": {
+        "x46-sim": "exact"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "045-s46f0.png"
+    },
+    {
+      "press": 46,
+      "s": 47,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 48: Bench: siliconSphere · crystal",
+      "sims": {
+        "x47-sim": "sphere"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "046-s47f0.png"
+    },
+    {
+      "press": 47,
+      "s": 48,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 49: Bench: siliconSphere · cube",
+      "sims": {
+        "x48-sim": "crystal"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "047-s48f0.png"
+    },
+    {
+      "press": 48,
+      "s": 49,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 50: Bench: siliconSphere · atom",
+      "sims": {
+        "x49-sim": "cube"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "048-s49f0.png"
+    },
+    {
+      "press": 49,
+      "s": 50,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 51: Bench: siliconSphere · divide",
+      "sims": {
+        "x50-sim": "atom"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "049-s50f0.png"
+    },
+    {
+      "press": 50,
+      "s": 51,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 52: Bench: moleMap · map",
+      "sims": {
+        "x51-sim": "divide"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "050-s51f0.png"
+    },
+    {
+      "press": 51,
+      "s": 52,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 53: Bench: moleMap · Cu/setup",
+      "sims": {
+        "x52-sim": "map"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "051-s52f0.png"
+    },
+    {
+      "press": 52,
+      "s": 53,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 54: Bench: moleMap · Cu/cancel",
+      "sims": {
+        "x53-sim": "Cu/setup"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "052-s53f0.png"
+    },
+    {
+      "press": 53,
+      "s": 54,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 55: Bench: moleMap · Cu/result",
+      "sims": {
+        "x54-sim": "Cu/cancel"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "053-s54f0.png"
+    },
+    {
+      "press": 54,
+      "s": 55,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 56: Bench: moleMap · Fe/setup",
+      "sims": {
+        "x55-sim": "Cu/result"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "054-s55f0.png"
+    },
+    {
+      "press": 55,
+      "s": 56,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 57: Bench: moleMap · Fe/cancel",
+      "sims": {
+        "x56-sim": "Fe/setup"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "055-s56f0.png"
+    },
+    {
+      "press": 56,
+      "s": 57,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 58: Bench: moleMap · Fe/result",
+      "sims": {
+        "x57-sim": "Fe/cancel"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "056-s57f0.png"
+    },
+    {
+      "press": 57,
+      "s": 58,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 59: Bench: moleMap · half",
+      "sims": {
+        "x58-sim": "Fe/result"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "057-s58f0.png"
+    },
+    {
+      "press": 58,
+      "s": 59,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 60: Bench: moleMap · CO2m/setup",
+      "sims": {
+        "x59-sim": "half"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "058-s59f0.png"
+    },
+    {
+      "press": 59,
+      "s": 60,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 61: Bench: moleMap · CO2m/cancel",
+      "sims": {
+        "x60-sim": "CO2m/setup"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "059-s60f0.png"
+    },
+    {
+      "press": 60,
+      "s": 61,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 62: Bench: moleMap · CO2m/result",
+      "sims": {
+        "x61-sim": "CO2m/cancel"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "060-s61f0.png"
+    },
+    {
+      "press": 61,
+      "s": 62,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 63: Bench: moleMap · H2Om/setup",
+      "sims": {
+        "x62-sim": "CO2m/result"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "061-s62f0.png"
+    },
+    {
+      "press": 62,
+      "s": 63,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 64: Bench: moleMap · H2Om/cancel",
+      "sims": {
+        "x63-sim": "H2Om/setup"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "062-s63f0.png"
+    },
+    {
+      "press": 63,
+      "s": 64,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 65: Bench: moleMap · H2Om/result",
+      "sims": {
+        "x64-sim": "H2Om/cancel"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "063-s64f0.png"
+    },
+    {
+      "press": 64,
+      "s": 65,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 66: Bench: moleMap · energy/mole",
+      "sims": {
+        "x65-sim": "H2Om/result"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "064-s65f0.png"
+    },
+    {
+      "press": 65,
+      "s": 66,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 67: Bench: moleMap · energy/one",
+      "sims": {
+        "x66-sim": "energy/mole"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "065-s66f0.png"
+    },
+    {
+      "press": 66,
+      "s": 67,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 68: Bench: moleMap · energy/why",
+      "sims": {
+        "x67-sim": "energy/one"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "066-s67f0.png"
+    },
+    {
+      "press": 67,
+      "s": 68,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 69: Bench: naclCrystal · crystal",
+      "sims": {
+        "x68-sim": "energy/why"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "067-s68f0.png"
+    },
+    {
+      "press": 68,
+      "s": 69,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 70: Bench: naclCrystal · unit",
+      "sims": {
+        "x69-sim": "crystal"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "068-s69f0.png"
+    },
+    {
+      "press": 69,
+      "s": 70,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 71: Bench: naclCrystal · count",
+      "sims": {
+        "x70-sim": "unit"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "069-s70f0.png"
+    },
+    {
+      "press": 70,
+      "s": 71,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 72: Bench: naclCrystal · wrong",
+      "sims": {
+        "x71-sim": "count"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "070-s71f0.png"
+    },
+    {
+      "press": 71,
+      "s": 72,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "Next ▶ slide 73: Bench: atomCounter · H2O/one",
+      "sims": {
+        "x72-sim": "wrong"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "071-s72f0.png"
+    },
+    {
+      "press": 72,
+      "s": 73,
+      "f": 0,
+      "empty": 0.016,
+      "cue": "Next ▶ slide 74: Bench: atomCounter · H2O/mol",
+      "sims": {
+        "x73-sim": "H2O/one"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "072-s73f0.png"
+    },
+    {
+      "press": 73,
+      "s": 74,
+      "f": 0,
+      "empty": 0.016,
+      "cue": "Next ▶ slide 75: Bench: atomCounter · CO2/mol",
+      "sims": {
+        "x74-sim": "H2O/mol"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "073-s74f0.png"
+    },
+    {
+      "press": 74,
+      "s": 75,
+      "f": 0,
+      "empty": 0.016,
+      "cue": "Next ▶ slide 76: Bench: atomCounter · CO2/atoms",
+      "sims": {
+        "x75-sim": "CO2/mol"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "074-s75f0.png"
+    },
+    {
+      "press": 75,
+      "s": 76,
+      "f": 0,
+      "empty": 0.016,
+      "cue": "Next ▶ slide 77: Bench: atomCounter · NaCl/mol",
+      "sims": {
+        "x76-sim": "CO2/atoms"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "075-s76f0.png"
+    },
+    {
+      "press": 76,
+      "s": 77,
+      "f": 0,
+      "empty": 0.016,
+      "cue": "Next ▶ slide 78: Bench: atomCounter · NH3/mol",
+      "sims": {
+        "x77-sim": "NaCl/mol"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "076-s77f0.png"
+    },
+    {
+      "press": 77,
+      "s": 78,
+      "f": 0,
+      "empty": 0.014,
+      "cue": "End of the deck",
+      "sims": {
+        "x78-sim": "NH3/mol"
+      },
+      "on": [],
+      "cls": [],
+      "overflow": [],
+      "errors": [],
+      "file": "077-s78f0.png"
+    }
+  ]
+}

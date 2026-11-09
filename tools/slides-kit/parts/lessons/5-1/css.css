@@ -42,7 +42,7 @@
 /* slide 14: the thread line and the write step take room only when shown */
 .s3 .acc.s3b{gap:12px}
 /* slide 20: the you-do table */
-#s20-yd td{font-size:36px;width:50%}
+.tbl.yd td{font-size:36px;width:50%}
 /* slide 26: the two-sentence driving question stays on screen while students write */
 .t-exit .dq p:not(.tag){font-size:40px}
 /* stacked options of a check inside an accumulating column: 40 px, so the card fits the column */

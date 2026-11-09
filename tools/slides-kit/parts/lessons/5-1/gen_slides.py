@@ -134,7 +134,7 @@ S.append(slide('s03','t-launch','A bag of nickels at the bank','Launch','Reading
 def pq(p, n, q, opts, lab, row=False):
     o = ''.join(f'<li class="opt"><b>{l}</b><span>{t}</span></li>' for l, t in zip('ABC', opts))
     return f'      <div class="card check" id="{p}" data-label="{lab}" data-mode="pick"><p class="tag">Question {n}</p><p class="q">{q}</p><ol class="opts{"" if row else " col1"}" data-lay="{"row" if row else "col"}">{o}</ol></div>'
-S.append(slide('s04','t-routine pn','Predict now','Predict','Reading §5.1 Before you read',f'''    <div class="card prompt"><p>Hands up: one finger for A, two for B, three for C. Write your letter.</p></div>
+S.append(slide('s04','t-routine pn','Predict now','Predict','Reading §5.1 Before you read',f'''    <div class="card prompt"><p>Hands up: one finger for A, two for B, three for C.</p></div>
     <div class="stack top">
 {pq('s04-q1',1,'One mole of copper and one mole of aluminum have…',['the same mass','the same number of atoms','the same mass and number'],'question 1')}
 {pq('s04-q2',2,'One mole of sodium chloride, NaCl, holds 6.022&nbsp;×&nbsp;10<sup>23</sup>…',['molecules','formula units','atoms'],'question 2',True)}
@@ -159,7 +159,7 @@ S.append(slide('s05','t-words','Targets and words','Targets','Reading §5.1 Voca
         <li><b>5.1.1</b>count objects by weighing, with one mass or an average.</li>
         <li><b>5.1.2</b>define the mole and use Avogadro's number.</li>
         <li><b>5.1.3</b>change moles to particles and back, naming the particle.</li>
-        <li><b>5.1.4</b>use a formula to count the atoms in a sample.</li></ul></div>
+        <li><b>5.1.4</b>use a formula to count atoms in a sample.</li></ul></div>
       <div class="words" id="s05-words" data-label="words">
 {wc}
       </div>
@@ -202,7 +202,7 @@ S.append(slide('s07','t-concept cw','Counting a mixed jar','Counting by weighing
       <div class="card word" id="s07-word" data-label="new word">{use('ic-avgmass','Icon: two atoms of different mass and their average','ic')}<p class="term">average atomic mass <span class="es">(masa atómica promedio)</span></p><p class="mean">the table's mass, an average over isotopes</p></div>
 {card('s07-c5','Isotopes','Most elements are a mix of isotopes. The table gives the average mass.','isotopes')}
 {card('s07-rule','Rule','A mix of objects is counted with the average mass of one object. Average atomic masses let chemists count atoms the same way.','rule','rule reg')}
-{check('s07','A jar holds both kinds of cents. Which mass do you divide by?',['the average mass of a sample from this jar','the average of 2.500&nbsp;g and 3.11&nbsp;g','2.500&nbsp;g, the mass of a newer cent'],ans='A. Weigh a sample from the jar. Divide its mass by its count.',right='A',
+{check('s07','A jar holds both kinds. Which mass do you divide by?',['this jar\'s own average','the average of 2.500&nbsp;g and 3.11&nbsp;g','2.500&nbsp;g, a newer cent'],col=True,ans='A. Divide a sample\'s mass by its count.',right='A',
   fb=['The jar\'s own average is the right divisor.','That works only if the jar holds equal numbers of each kind.','Dividing by the lighter cent counts too many coins.'])}
     </div>''',
  'Lesson 2.3 link: the average atomic mass on the periodic table is the average over an element\'s isotopes, just as 2.6769 g is the average cent of this jar. "About 407" (1,017.1 g ÷ 2.500 g) and "about 327" (1,017.1 g ÷ 3.11 g) are computed from the reading\'s data; the reading says "too many" and "too few". The two atom sizes in the isotope picture stand for two masses; real isotopes of one element have the same size.',
@@ -275,8 +275,8 @@ S.append(slide('s10','t-concept cw','Name the particle','The mole','Reading §5.
 {card('s10-p2','Predict','"One mole of oxygen." Oxygen atoms, or O<sub>2</sub> molecules?','predict')}
 {card('s10-c3','Oxygen','1&nbsp;mol of O<sub>2</sub> molecules holds twice the atoms of 1&nbsp;mol of O atoms.','oxygen')}
 {card('s10-c4','Four kinds','Name the particle every time: atoms, molecules, formula units or ions.','four kinds')}
-{card('s10-rule','Rule','A mole must always name its particle: atoms, molecules, formula units or ions.','rule','rule reg')}
-{check('s10','One mole of aluminum atoms and one mole of copper atoms…',['hold equal numbers of atoms but differ in mass','have the same mass','hold different numbers, as copper atoms are larger'],ans='A. Each holds '+NA+' atoms. A copper atom has more mass.',right='A',
+{card('s10-rule','Rule','Always name the particle. It can be atoms, molecules, formula units or ions.','rule','rule reg')}
+{check('s10','One mole of aluminum and one mole of copper…',['hold equal numbers of atoms, different masses','have the same mass','hold different numbers; copper atoms are larger'],ans='A. Same count; copper atoms have more mass.',right='A',
   fb=['Same count; copper atoms are heavier, so the copper sample is heavier.','Each element\'s atoms have their own mass, so the moles differ in mass.','A mole always holds 6.022 × 10²³ particles, whatever their size.'])}
     </div>''',
  'Masses of one mole from the blueprint\'s misconception table (CIAAW): aluminum 26.982 g, copper 63.546 g. Atom sizes from covalent radii (Cordero 2008); ion sizes from Shannon 1976. The caption under the picture says that atom colors (CPK) show the element; ions keep Unit 4\'s red "+" and blue "−".',
@@ -288,8 +288,8 @@ S.append(slide('s10','t-concept cw','Name the particle','The mole','Reading §5.
   dict(hide=['s10-c2','s10-p2'],show='s10-c3',stage='s10-sim:oxygen',note='1 mol of O₂ molecules holds 2 mol of O atoms: twice the atoms of 1 mol of O atoms.'),
   dict(show='s10-c4',stage='s10-sim:four',note='Atoms (a Cu atom), molecules (H₂O), formula units (one Na⁺ with one Cl⁻), ions. Read the caption: atom colors show the element, not the charge.'),
   dict(hide='s10-c3',show='s10-rule',note='Students copy the rule card (reading §5.1.2: a mole must always name its particles).'),
-  dict(hide=['s10-c4','s10-rule'],show='s10-check',stage='s10-sim:compare',note='Hands up for A, B or C. The balance returns: one mole of Al, one mole of Cu.'),
-  dict(show='s10-ans',cls={'s10-a':'right','s10-check':'done'},note='A is right. B (the same mass): each element\'s atoms have their own mass, so the moles differ in mass. C (different numbers, copper atoms larger): a mole always holds 6.022 × 10²³ particles, whatever their size.')]))
+  dict(hide=['s10-c4','s10-rule','s10-cap'],show='s10-check',stage='s10-sim:compare',note='Hands up for A, B or C. The balance returns: one mole of Al, one mole of Cu.'),
+  dict(show='s10-ans',cls={'s10-a':'right','s10-check':'done'},note='A is right. B (the same mass): each element\'s atoms have their own mass, so the moles differ in mass. C (different numbers; copper atoms are larger): a mole always holds 6.022 × 10²³ particles, whatever their size.')]))
 # ---------- 11 the size of a mole (wide; the check in the band)
 S.append(slide('s11','t-concept wide','The size of a mole','The mole','Reading §5.1.2',f'''    <div class="sim" id="s11-sim" data-sim="secondsLine" data-band="236" aria-label="A time line in powers of ten: one year, Earth, the universe, and the time to count one mole."></div>
     <div class="ptrow tall blk" id="s11-row" data-label="time line"><div class="stack">
@@ -351,7 +351,7 @@ S.append(slide('s13','t-concept cw','Counting the atoms in a silicon sphere','Th
 {card('s13-c2','One atom','The density gives the mass of one cube, so of one atom.','one atom')}
 {card('s13-c3','The count','Mass of one mole of silicon ÷ mass of one atom = '+NA+'.','the count')}
 {card('s13-rule','Rule','The atoms of a crystal repeat in identical cubes. Count one cube and measure its size. Then the whole sphere is counted.','rule','rule reg')}
-{check('s13','In the Avogadro project, a silicon sphere was used to…',['count its atoms: mass, density, atom spacing','define the kilogram by its size','show that silicon atoms are larger than carbon atoms'],ans='A. These measurements gave the value fixed in 2019.',right='A',
+{check('s13','In the Avogadro project, a silicon sphere was used to…',['count its atoms: mass, density, atom spacing','define the kilogram by its size','compare silicon and carbon atoms'],ans='A. They gave the value fixed in 2019.',right='A',
   fb=['Volume, density and atom spacing give the count.','The spheres counted atoms. Since 2019 the kilogram is defined by the Planck constant.','The project counted atoms. It did not compare their sizes.'])}
     </div>''',
  '<b>Honors (notes only, never assessed).</b> The real spheres were enriched to more than 99.99% silicon-28: natural silicon is a mix of silicon-28, -29 and -30, and every uncertainty in those abundances becomes an uncertainty in the count; the other isotopes were measured with a mass spectrometer. <b>The model\'s arithmetic</b> with natural silicon: one cube has an edge of 543.102 pm, so a volume of (5.43102 × 10⁻⁸ cm)³ = 1.6019 × 10⁻²² cm³; × 2.329 g/cm³ = 3.7308 × 10⁻²² g per cube; ÷ 8 atoms = 4.6635 × 10⁻²³ g per atom; 28.085 g ÷ 4.6635 × 10⁻²³ g = 6.022 × 10²³ atoms per mole. The real spheres used their own measured values. "Molar mass" is Lesson 5.2\'s word; here say "the mass of one mole of silicon".',
@@ -363,7 +363,7 @@ S.append(slide('s13','t-concept cw','Counting the atoms in a silicon sphere','Th
   dict(show='s13-c3',stage='s13-sim:divide',note='The mass of one mole of silicon ÷ the mass of one atom = the number of atoms in one mole: 6.022 × 10²³.'),
   dict(hide=['s13-cube','s13-c2'],show='s13-rule',note='Students copy the rule card. The project counted atoms; it did not weigh one atom directly.'),
   dict(hide=['s13-c3','s13-rule'],show='s13-check',stage='s13-sim:cube',note='Hands up for A, B or C. The lit cube with its edge returns to the screen.'),
-  dict(show='s13-ans',cls={'s13-a':'right','s13-check':'done'},note='A is right. B (define the kilogram by its size): the spheres counted atoms; since 2019 the kilogram is defined by the Planck constant. C (silicon atoms larger than carbon atoms): the project counted atoms; it did not compare their sizes.')]))
+  dict(show='s13-ans',cls={'s13-a':'right','s13-check':'done'},note='A is right. B (define the kilogram by its size): the spheres counted atoms; since 2019 the kilogram is defined by the Planck constant. C (compare silicon and carbon atoms): the project counted atoms; it did not compare their sizes.')]))
 # ---------- 14 one picture
 def colh(n, ic, name, label):
     return f'      <div class="colh slot"><div class="colin" data-b="s14-c{n}" data-label="{name}">{use(ic,label)}<p>{name}</p></div></div>'
@@ -372,7 +372,7 @@ rows = [('The problem',['same mass, too many','two masses','too small, too many'
         ('Name it',['nickels','cents','atoms, molecules, formula units or ions'],'s14-r3','name it')]
 rh = ''
 for name, cells, b, lab in rows:
-    rh += f'      <p class="rh">{name}</p>\n' + ''.join(f'      <p class="cell slot"><span data-b="{b}"{" data-label=%s" % js(lab) if i==0 else ""}>{c}</span></p>\n' for i, c in enumerate(cells))
+    rh += f'      <p class="rh">{name}</p>\n' + ''.join(f'      <p class="cell slot lbl"><span data-b="{b}"{" data-label=%s" % js(lab) if i==0 else ""}>{c}</span></p>\n' for i, c in enumerate(cells))
 S.append(slide('s14','t-summary s3','One picture: three ways to count','Summary','Reading §5.1.1 and §5.1.2',f'''    <div class="g3">
       <span></span>
 {colh(1,'ic-nickel','nickels','Icon: a nickel')}
@@ -401,9 +401,9 @@ S.append(slide('s15','t-turn two','Warm-up','Warm-up, period 2','Reading §5.1.1
     <table class="tbl fill" id="s15-tbl">
       <thead><tr><th>Question</th><th>Answer</th></tr></thead>
       <tbody>
-        <tr><td>A bag of nickels has a mass of 1,000.0&nbsp;g. How many nickels?</td><td class="slot"><span data-b="s15-a1" data-label="answer 1">200 (1,000.0&nbsp;g ÷ 5.000&nbsp;g)</span></td></tr>
-        <tr><td>How many particles are in one mole?</td><td class="slot"><span data-b="s15-a2" data-label="answer 2">6.022&nbsp;×&nbsp;10<sup>23</sup> (exactly 6.02214076&nbsp;×&nbsp;10<sup>23</sup>)</span></td></tr>
-        <tr><td>Name the four kinds of particles a mole can count.</td><td class="slot"><span data-b="s15-a3" data-label="answer 3">atoms, molecules, formula units, ions</span></td></tr>
+        <tr><td>A bag of nickels has a mass of 1,000.0&nbsp;g.<br>How many nickels?</td><td class="slot"><span data-b="s15-a1" data-label="answer 1">200<br>(1,000.0&nbsp;g ÷ 5.000&nbsp;g)</span></td></tr>
+        <tr><td>How many particles are in one mole?</td><td class="slot"><span data-b="s15-a2" data-label="answer 2">6.022&nbsp;×&nbsp;10<sup>23</sup><br>(exactly 6.02214076&nbsp;×&nbsp;10<sup>23</sup>)</span></td></tr>
+        <tr><td>Name the four kinds of particles<br>a mole can count.</td><td class="slot"><span data-b="s15-a3" data-label="answer 3">atoms, molecules,<br>formula units, ions</span></td></tr>
       </tbody>
     </table>''',
  'Period 2 starts here. The three questions retrieve 5.1.1 and 5.1.2. 1,000.0 g ÷ 5.000 g = 200 is arithmetic on the reading\'s data.',
@@ -437,7 +437,7 @@ S.append(slide('s16','t-concept cw','Moles to particles','Moles and particles','
 S.append(slide('s17','t-concept cw','Particles to moles','Moles and particles','Reading §5.1.3',f'''    <div class="sim" id="s17-sim" data-sim="moleMap" aria-label="The map again: from a number of iron atoms back to moles."></div>
     <div class="col acc">
 {card('s17-c0','Iron','9.03&nbsp;×&nbsp;10<sup>23</sup> iron atoms. How many moles?','iron atoms')}
-{card('s17-pred','Predict','Multiply, or divide?','predict')}
+      <div class="card" id="s17-pred" data-label="predict"><p class="tag">Predict</p><p>Multiply, or divide?</p>{chips('Across the bridge',[('× '+NA+' per mol','n'),('÷ '+NA+' per mol','mol')])}</div>
 {card('s17-c1','Cancel','× 1&nbsp;mol per '+NA+' atoms. The atoms cancel.','cancel')}
 {card('s17-c2','Result','1.50&nbsp;mol of Fe atoms. 9.03 is 1.5 times 6.022.','result')}
 {card('s17-c3','Half a mole','3.011&nbsp;×&nbsp;10<sup>23</sup> molecules is 0.5000&nbsp;mol. Moles can be fractions.','half a mole')}
@@ -464,8 +464,8 @@ S.append(slide('s18','t-concept cw','Formula units','Moles and particles','Readi
 {card('s18-pred','Predict','4.50&nbsp;mol of NaCl makes 2.71&nbsp;×&nbsp;10<sup>24</sup> of what?','predict')}
 {card('s18-c2','Count','4.50&nbsp;mol × '+NA+' = 2.71&nbsp;×&nbsp;10<sup>24</sup> formula units.','count')}
 {card('s18-c3','Wrong particle','"1.51&nbsp;×&nbsp;10<sup>24</sup> molecules of NaCl": right number, wrong particle.','wrong particle')}
-{card('s18-rule','Rule','Count metals in atoms. Count molecular compounds in molecules. Count ionic compounds in formula units.','rule','rule reg')}
-{check('s18','Which particles should be counted in 1&nbsp;mol of NaCl?',['formula units, each one Na<sup>+</sup> ion and one Cl<sup>−</sup> ion','NaCl molecules','sodium atoms and chlorine atoms'],ans='A. An ionic compound has no molecules. Its formula gives the ratio of ions.',right='A',
+{card('s18-rule','Rule','Count a metal in atoms. Count a molecular compound in molecules. Count an ionic compound in formula units.','rule','rule reg')}
+{check('s18','Which particles are counted in 1&nbsp;mol of NaCl?',['formula units: one Na<sup>+</sup> and one Cl<sup>−</sup> each','NaCl molecules','sodium atoms and chlorine atoms'],ans='A. NaCl has no molecules. Its formula gives the ratio of ions.',right='A',
   fb=['Count formula units, or count the ions.','Sodium chloride is a crystal of ions with no separate molecules.','In the crystal, sodium and chlorine are ions, not neutral atoms.'])}
     </div>''',
  'Unit 4\'s formula unit: the group of ions given by the formula of an ionic compound; it states a ratio and is not a molecule. The blueprint\'s misconception: "2.50 mol of sodium chloride contains 1.51 × 10²⁴ molecules" has the right number (2.50 × 6.022 × 10²³ = 1.51 × 10²⁴) and the wrong particle. Ion sizes from Shannon 1976 (Na⁺ 102 pm, Cl⁻ 181 pm) on the 564 pm cell.',
@@ -486,7 +486,7 @@ S.append(slide('s19','t-concept cw','Atoms in a molecule','Atoms in a formula','
 {card('s19-c2','Carbon dioxide','2.00&nbsp;mol of CO<sub>2</sub> × 2 = 4.00&nbsp;mol of O atoms.','carbon dioxide')}
 {card('s19-c3','Count the atoms','4.00&nbsp;mol × '+NA+' = 2.41&nbsp;×&nbsp;10<sup>24</sup> O atoms.','count the atoms')}
 {card('s19-c4','Sodium chloride','1&nbsp;mol of NaCl holds 1&nbsp;mol of Na<sup>+</sup> ions and 1&nbsp;mol of Cl<sup>−</sup> ions.','sodium chloride')}
-{card('s19-rule','Rule','Moles of an element\'s atoms = moles of molecules × that element\'s subscript. Then multiply by '+NA+' to count the atoms.','rule','rule reg')}
+{card('s19-rule','Rule','Moles of an element\'s atoms = moles of molecules × its subscript. Then multiply by '+NA+' to count the atoms.','rule','rule reg')}
 {check('s19','How many moles of oxygen atoms are in 2.0&nbsp;mol of carbon dioxide, CO<sub>2</sub>?',['4.0&nbsp;mol','2.0&nbsp;mol','1.0&nbsp;mol'],ans='A. Each CO<sub>2</sub> molecule has two oxygen atoms: 2.0&nbsp;mol × 2.',right='A',
   fb=['Two O atoms in every molecule, so twice the moles.','That counts CO₂ molecules. Each molecule holds two oxygen atoms.','That divides by the subscript. The subscript multiplies.'])}
     </div>''',
@@ -515,10 +515,10 @@ S.append(slide('s20','t-example','Convert: I do, we do, you do','Converting','Re
 {card('s20-i','I do: 0.250 mol of CO<sub>2</sub>','1.51&nbsp;×&nbsp;10<sup>23</sup> molecules. A quarter of a mole is a quarter of '+NA+'.','I do')}
 {card('s20-w','We do: 1.81 × 10<sup>24</sup> water molecules','3.01&nbsp;mol. 18.1&nbsp;×&nbsp;10<sup>23</sup> is about three times '+NA+'.','we do')}
       <div class="qrow" id="s20-yq" data-label="you do"><div class="card"><p class="tag">You do</p><p>Convert each one. Name the particle.</p></div><div class="timer"></div></div>
-      <table class="tbl compact" id="s20-yd" data-label="you do table"><tbody>
-        <tr><td>0.500&nbsp;mol of NH<sub>3</sub> → moles of H atoms</td><td class="slot"><span data-b="s20-a1" data-label="answer 1">1.50&nbsp;mol of H atoms</span></td></tr>
-        <tr><td>1.00&nbsp;mol of glucose, C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> → H atoms</td><td class="slot"><span data-b="s20-a2" data-label="answer 2">12.0&nbsp;mol × {NA} = 7.23&nbsp;×&nbsp;10<sup>24</sup> H atoms</span></td></tr>
-        <tr><td>2.5&nbsp;×&nbsp;10<sup>22</sup> CO<sub>2</sub> molecules → moles</td><td class="slot"><span data-b="s20-a3" data-label="answer 3">0.042&nbsp;mol <span class="why">fewer than {NA}, so less than one mole</span></span></td></tr>
+      <table class="tbl compact yd" id="s20-yd" data-label="you do table"><tbody>
+        <tr><td>0.500&nbsp;mol of NH<sub>3</sub><br>→ moles of H atoms</td><td class="slot"><span data-b="s20-a1" data-label="answer 1">1.50&nbsp;mol of H atoms</span></td></tr>
+        <tr><td>1.00&nbsp;mol of glucose,<br>C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> → H atoms</td><td class="slot"><span data-b="s20-a2" data-label="answer 2">12.0&nbsp;mol × {NA}<br>= 7.23&nbsp;×&nbsp;10<sup>24</sup> H atoms</span></td></tr>
+        <tr><td>2.5&nbsp;×&nbsp;10<sup>22</sup> CO<sub>2</sub><br>molecules → moles</td><td class="slot"><span data-b="s20-a3" data-label="answer 3">0.042&nbsp;mol <span class="why">fewer than {NA},<br>so less than one mole</span></span></td></tr>
       </tbody></table>
     </div>''',
  'You do: circulate during the timer. Look for "multiply" where dividing is needed (particles to moles), and for results without a named particle. Glucose: 1.00 mol × 12 = 12.0 mol of H atoms, then × 6.022 × 10²³ = 7.23 × 10²⁴ H atoms (the reading\'s "On your own").',
@@ -585,12 +585,12 @@ def checkpoint(sid, title, ref, prompt, read, fr_lines, bank, crit, sample, note
           dict(show=f'{p}-sample',cls={f'{p}-r4':'done',f'{p}-r5':'now'},note=notes[1])]
     return slide(sid,'t-routine',title,'Checkpoint',ref,body,'Routine: think 30 s, talk 60 s, write 90 s, self-check 30 s, compare 45 s. The question stays on screen on every frame.',fr)
 S.append(checkpoint('s23','Checkpoint 1','Objective 5.1.2',
-  'One mole of copper. One mole of aluminum. A student says they must have the same mass. Explain the error.',
+  'A student says a mole of copper and of aluminum have equal mass. Explain the error.',
   'Read the question. What does the student claim?',
   ['A mole is a count of <span class="gap"></span>, not a <span class="gap"></span>.','Both samples hold <span class="gap"></span> atoms, but a copper atom <span class="gap"></span>.'],
   ['6.022&nbsp;×&nbsp;10<sup>23</sup> particles','a mass','the same number of','has more mass'],
   ['a mole is a count?','the same number of atoms?','the masses differ?'],
-  'A mole is a count of 6.022&nbsp;×&nbsp;10<sup>23</sup> particles, not a mass. Both samples hold the same number of atoms. A copper atom has more mass, so the copper sample does too.',
+  'A mole is a count, not a mass. Same number of atoms; copper atoms are heavier.',
   ['Read the prompt aloud. Ask: what does the student think a mole is? (a mass).','Compare with the sample. Reading §5.1.2: a mole is a count, like a dozen; one mole of copper (63.546 g) and one mole of aluminum (26.982 g) hold the same number of atoms.'],
   '"a mole weighs one gram" or "6.022 × 10²³ grams".'))
 S.append(checkpoint('s24','Checkpoint 2','Objective 5.1.3',
@@ -599,16 +599,16 @@ S.append(checkpoint('s24','Checkpoint 2','Objective 5.1.3',
   ['The number is right because <span class="gap"></span>.','The particle is wrong because <span class="gap"></span>.'],
   ['2.50 × 6.022&nbsp;×&nbsp;10<sup>23</sup>','formula units','no molecules','Na<sup>+</sup> and Cl<sup>−</sup> ions'],
   ['multiplied by 6.022&nbsp;×&nbsp;10<sup>23</sup>?','sodium chloride has no molecules?','formula units named?'],
-  'The number is right: 2.50 × 6.022&nbsp;×&nbsp;10<sup>23</sup> = 1.51&nbsp;×&nbsp;10<sup>24</sup>. The particle is wrong. Sodium chloride has no molecules. Count formula units, each one Na<sup>+</sup> and one Cl<sup>−</sup>.',
+  'The number is right: 2.50 × 6.022&nbsp;×&nbsp;10<sup>23</sup> = 1.51&nbsp;×&nbsp;10<sup>24</sup>. The particle is wrong: NaCl has no molecules. Count formula units.',
   ['Read the prompt aloud. Two parts: the number, then the particle.','Compare with the sample. Reading §5.1.3: ionic compounds are counted in formula units, one Na⁺ ion and one Cl⁻ ion each.'],
   '"divide to get particles".'))
 S.append(checkpoint('s25','Checkpoint 3','Objective 5.1.4',
-  'One mole of water, H<sub>2</sub>O, contains one mole of hydrogen atoms. True or false? Explain with the formula.',
+  'One mole of H<sub>2</sub>O holds one mole of H atoms. True or false?',
   'Read the question. Look at the formula of water.',
   ['False, because the subscript 2 means <span class="gap"></span>.','One mole of H<sub>2</sub>O holds <span class="gap"></span> of H atoms and <span class="gap"></span> of O atoms.'],
   ['two H atoms in each molecule','2&nbsp;mol','1&nbsp;mol','the subscript multiplies'],
   ['the subscript is atoms per molecule?','2&nbsp;mol of H?','1&nbsp;mol of O?'],
-  'False. The subscript 2 means two hydrogen atoms in each molecule. One mole of H<sub>2</sub>O holds 2&nbsp;mol of H atoms and 1&nbsp;mol of O atoms.',
+  'False. The subscript 2 means two H atoms per molecule. One mole of H<sub>2</sub>O has 2&nbsp;mol of H, 1&nbsp;mol of O.',
   ['Read the prompt aloud. Ask: what does the small 2 in H₂O tell you?','Compare with the sample. Reading §5.1.4: moles of an element\'s atoms = moles of molecules × the subscript.'],
   '"the subscript divides".'))
 # ---------- 26 predictions and exit ticket
@@ -633,7 +633,7 @@ S.append(slide('s26','t-routine t-exit','Predictions and exit ticket','Exit tick
               <li id="s26-f2" data-label="evidence">Evidence: A bank counts nickels by weighing because <span class="gap"></span>. To change moles into particles, <span class="gap"></span>.</li>
               <li id="s26-f3" data-label="reasoning">Reasoning: For a compound, the formula tells <span class="gap"></span>, so <span class="gap"></span>.</li>
             </ol>
-            <p class="bank" id="s26-bank"><b>Word bank:</b> <span>6.022&nbsp;×&nbsp;10<sup>23</sup> particles</span> <span>the same mass</span> <span>divide</span> <span>multiply by 6.022&nbsp;×&nbsp;10<sup>23</sup></span> <span>the subscript</span> <span>atoms of each element</span></p></div>
+            <p class="bank" id="s26-bank"><b>Word bank:</b> <span>6.022&nbsp;×&nbsp;10<sup>23</sup> particles</span> <span>same mass</span> <span>divide</span> <span>multiply</span> <span>subscript</span> <span>each element</span></p></div>
             <div class="card" id="s26-check" data-label="self-check"><p class="tag">Self-check: did you write…</p><ul class="crit"><li>a claim that names the mole and its number?</li><li>the bank's method and the mole-to-particle step?</li><li>the subscript's role?</li></ul></div>
             <div class="card reg" id="s26-sample" data-label="sample answer"><p class="tag">Sample answer</p><p>One mole is 6.022&nbsp;×&nbsp;10<sup>23</sup> named particles. A bank weighs nickels because each has the same mass. Moles × 6.022&nbsp;×&nbsp;10<sup>23</sup> gives particles. The formula's subscripts count the atoms.</p></div>
           </div>
@@ -652,7 +652,7 @@ S.append(slide('s26','t-routine t-exit','Predictions and exit ticket','Exit tick
   dict(show='s26-sample',cls={'s26-r4':'done','s26-r5':'now'},note='Compare with the sample. Collect the tickets.')]))
 # ---------- 27 rate your learning
 T = [('5.1.1','count objects by weighing, with one mass or an average.','slides 6 and 7'),('5.1.2','define the mole and use Avogadro\'s number.','slides 8 to 13 and 21'),
-     ('5.1.3','change moles to particles and back, naming the particle.','slides 16 to 18'),('5.1.4','use a formula to count the atoms in a sample.','slides 19 and 20')]
+     ('5.1.3','change moles to particles and back, naming the particle.','slides 16 to 18'),('5.1.4','use a formula to count atoms in a sample.','slides 19 and 20')]
 rt = '\n'.join(f'        <li id="s27-t{k+1}"><span><b class="mono lbl">{a}</b> {b}</span><span class="rev">Review: {c}</span></li>' for k,(a,b,c) in enumerate(T))
 S.append(slide('s27','t-routine','Rate your learning','Reflect','All objectives',f'''    <div class="scale lbl"><span>1 finger: not yet</span><span>2 fingers: almost</span><span>3 fingers: I can teach it</span></div>
     <p class="tag">I can…</p>

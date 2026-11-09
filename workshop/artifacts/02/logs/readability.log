@@ -1,0 +1,52 @@
+  register (rule/prompt/sample) slide 1 card dq reg: grade 2.3 (outside 5 to 8): "Particles are far too small and too many to count one by one. How can chemists count them?"
+  register (rule/prompt/sample) slide 3 s03-dq: grade 2.3 (outside 5 to 8): "Particles are far too small and too many to count one by one. How can chemists count them?"
+  register (rule/prompt/sample) slide 6 s06-rule: grade 3.4 (outside 5 to 8): "If every object has the same mass, divide the total by one object's mass. The grams cancel. A pure number is left."
+  register (rule/prompt/sample) slide 7 s07-rule: grade 5.8: "A mix of objects is counted with the average mass of one object. Average atomic masses let chemists count atoms the same way."
+  register (rule/prompt/sample) slide 8 s08-rule: grade 4.9 (outside 5 to 8): "One mole contains exactly 6.02214076 × 10 23 particles. In calculations we round it to 6.022 × 10 23. A mole is a count, not a mass."
+  register (rule/prompt/sample) slide 9 s09-rule: grade 6.5: "A mole is 6.022 × 10 23 particles. Molecules are so small that a mole of water is only about 18 g."
+  register (rule/prompt/sample) slide 10 s10-rule: grade 7.8: "Always name the particle. It can be atoms, molecules, formula units or ions."
+  register (rule/prompt/sample) slide 11 s11-rule: grade 4.9 (outside 5 to 8): "At one particle each second, a mole takes about 1.9 × 10 16 years. That is 1.4 million times the age of the universe. Yet a mole of water is only about 18 g."
+  register (rule/prompt/sample) slide 12 s12-rule: grade 2.6 (outside 5 to 8): "Since May 20, 2019 the number is exact: 6.02214076 × 10 23. It is no longer measured."
+  register (rule/prompt/sample) slide 13 s13-rule: grade 3.4 (outside 5 to 8): "The atoms of a crystal repeat in identical cubes. Count one cube and measure its size. Then the whole sphere is counted."
+  register (rule/prompt/sample) slide 16 s16-rule: grade 7: "Particles = moles × 6.022 × 10 23. The unit mol cancels. Always name the particle."
+  register (rule/prompt/sample) slide 17 s17-rule: grade 6.9: "Moles = particles ÷ 6.022 × 10 23. A visible sample is a small number of moles."
+  register (rule/prompt/sample) slide 18 s18-rule: grade 7.7: "Count a metal in atoms. Count a molecular compound in molecules. Count an ionic compound in formula units."
+  register (rule/prompt/sample) slide 19 s19-rule: grade 7.9: "Moles of an element's atoms = moles of molecules × its subscript. Then multiply by 6.022 × 10 23 to count the atoms."
+  register (rule/prompt/sample) slide 21 s21-rule: grade 6.5: "A value per mole describes 6.022 × 10 23 particles. Divide by that number to get one particle."
+  register (rule/prompt/sample) slide 23 card prompt reg: grade 6: "A student says a mole of copper and of aluminum have equal mass. Explain the error."
+  register (rule/prompt/sample) slide 23 s23-sample: grade 3.8 (outside 5 to 8): "A mole is a count, not a mass. Same number of atoms; copper atoms are heavier."
+  register (rule/prompt/sample) slide 24 card prompt reg: grade 3.7 (outside 5 to 8): "A student writes: 2.50 mol of sodium chloride contains 1.51 × 10 24 molecules. What is right? What is wrong?"
+  register (rule/prompt/sample) slide 24 s24-sample: grade 5.2: "The number is right: 2.50 × 6.022 × 10 23 = 1.51 × 10 24. The particle is wrong: NaCl has no molecules. Count formula units."
+  register (rule/prompt/sample) slide 25 card prompt reg: grade 1.5 (outside 5 to 8): "One mole of H 2 O holds one mole of H atoms. True or false?"
+  register (rule/prompt/sample) slide 25 s25-sample: grade 2.3 (outside 5 to 8): "False. The subscript 2 means two H atoms per molecule. One mole of H 2 O has 2 mol of H, 1 mol of O."
+  register (rule/prompt/sample) slide 26 card prompt reg dq: grade 2.3 (outside 5 to 8): "Particles are far too small and too many to count one by one. How can chemists count them?"
+  register (rule/prompt/sample) slide 26 s26-sample: grade 4.5 (outside 5 to 8): "One mole is 6.022 × 10 23 named particles. A bank weighs nickels because each has the same mass. Moles × 6.022 × 10 23 gives particles. The formula's subscripts count the atoms."
+  slide 1 Counting particles with the mole: FK 0.4 (3.6 words/unit, 12 units, 43 words); prose only: FK 2.3, 9 words/sentence, 2 sentences; max 0 prose words visible (frame 0)
+  slide 2 The coin jar: FK 0.9 (5.5 words/unit, 12 units, 66 words); prose only: FK 1.4, 6.6 words/sentence, 9 sentences; max 12 prose words visible (frame 2)
+  slide 3 A bag of nickels at the bank: FK 2.6 (5.5 words/unit, 12 units, 66 words); prose only: FK 3.5, 7.1 words/sentence, 7 sentences; max 28 prose words visible (frame 2)
+  slide 4 Predict now: FK 2.8 (4.5 words/unit, 17 units, 76 words); prose only: FK 4.9, 12.5 words/sentence, 2 sentences; max 35 prose words visible (frame 0)
+  slide 5 Targets and words: FK 6.4 (4.2 words/unit, 31 units, 129 words); prose only: FK 6.4, 8.8 words/sentence, 4 sentences; max 35 prose words visible (frame 0)
+  slide 6 Counting by weighing: FK 1.4 (3.6 words/unit, 29 units, 104 words); prose only: FK 2.3, 6.9 words/sentence, 10 sentences; max 22 prose words visible (frame 5)
+  slide 7 Counting a mixed jar: FK 2.4 (4.6 words/unit, 33 units, 151 words); prose only: FK 1.8, 6.8 words/sentence, 14 sentences; max 33 prose words visible (frame 10)
+  slide 8 The mole: FK 3 (4.2 words/unit, 29 units, 123 words); prose only: FK 3.6, 6.3 words/sentence, 12 sentences; max 34 prose words visible (frame 8)
+  slide 9 How many is a mole?: FK 3 (3.9 words/unit, 29 units, 113 words); prose only: FK 4.2, 6.9 words/sentence, 9 sentences; max 27 prose words visible (frame 9)
+  slide 10 Name the particle: FK 5.2 (4.4 words/unit, 31 units, 136 words); prose only: FK 6.4, 6.8 words/sentence, 12 sentences; max 35 prose words visible (frame 9)
+  slide 11 The size of a mole: FK 2.7 (5 words/unit, 22 units, 110 words); prose only: FK 3.5, 6.5 words/sentence, 14 sentences; max 28 prose words visible (frame 8)
+  slide 12 Who found the number: FK 5.4 (5.6 words/unit, 17 units, 96 words); prose only: FK 6, 7.9 words/sentence, 10 sentences; max 16 prose words visible (frame 4)
+  slide 13 Counting the atoms in a silicon sphere: FK 3.4 (5.4 words/unit, 26 units, 141 words); prose only: FK 3.6, 7.4 words/sentence, 12 sentences; max 35 prose words visible (frame 8)
+  slide 14 One picture: three ways to count: FK 2.4 (3.5 words/unit, 22 units, 78 words); prose only: FK 3.5, 6 words/sentence, 4 sentences; max 13 prose words visible (frame 7)
+  slide 15 Warm-up: FK 4.5 (4 words/unit, 11 units, 44 words); prose only: FK 3.5, 7.5 words/sentence, 4 sentences; max 4 prose words visible (frame 0)
+  slide 16 Moles to particles: FK 4 (3.6 words/unit, 27 units, 98 words); prose only: FK 3, 4.8 words/sentence, 10 sentences; max 34 prose words visible (frame 7)
+  slide 17 Particles to moles: FK 3.9 (3 words/unit, 31 units, 94 words); prose only: FK 6.1, 7.2 words/sentence, 6 sentences; max 17 prose words visible (frame 5)
+  slide 18 Formula units: FK 4.9 (4.3 words/unit, 24 units, 104 words); prose only: FK 5, 6.3 words/sentence, 11 sentences; max 35 prose words visible (frame 7)
+  slide 19 Atoms in a molecule: FK 3.9 (5.1 words/unit, 26 units, 133 words); prose only: FK 5.1, 8.7 words/sentence, 12 sentences; max 33 prose words visible (frame 8)
+  slide 20 Convert: I do, we do, you do: FK 2.6 (3.7 words/unit, 27 units, 100 words); prose only: FK 2.4, 6.5 words/sentence, 2 sentences; max 22 prose words visible (frame 0)
+  slide 21 The mole in earlier lessons: FK 4.8 (4.5 words/unit, 13 units, 59 words); prose only: FK 5.4, 6.6 words/sentence, 7 sentences; max 14 prose words visible (frame 4)
+  slide 22 Checkpoint routine: FK 1.9 (3.8 words/unit, 12 units, 45 words); prose only: FK 0.6, 7 words/sentence, 1 sentences; max 30 prose words visible (frame 0)
+  slide 23 Checkpoint 1: FK 2.2 (4.3 words/unit, 25 units, 108 words); prose only: FK 3, 6.9 words/sentence, 10 sentences; max 32 prose words visible (frame 5)
+  slide 24 Checkpoint 2: FK 3.9 (3.6 words/unit, 27 units, 96 words); prose only: FK 4.9, 5.7 words/sentence, 9 sentences; max 30 prose words visible (frame 5)
+  slide 25 Checkpoint 3: FK 2.1 (4.4 words/unit, 26 units, 114 words); prose only: FK 3.3, 7.8 words/sentence, 9 sentences; max 35 prose words visible (frame 5)
+  slide 26 Predictions and exit ticket: FK 4.7 (5.6 words/unit, 38 units, 213 words); prose only: FK 5, 8.3 words/sentence, 18 sentences; max 35 prose words visible (frame 0)
+  slide 27 Rate your learning: FK 3.5 (4.8 words/unit, 13 units, 63 words); prose only: FK 6.4, 8.8 words/sentence, 4 sentences; max 35 prose words visible (frame 0)
+  slide 28 Next: FK 2.5 (3.6 words/unit, 8 units, 29 words); prose only: FK 6.7, 14 words/sentence, 1 sentences; max 28 prose words visible (frame 0)
+readability: PASS

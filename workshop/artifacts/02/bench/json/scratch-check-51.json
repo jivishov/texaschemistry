@@ -1,0 +1,1732 @@
+[
+  {
+    "n": "coinScale:jar: labels at 36 px or more (painter minFont Infinity)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale:jar: primary shapes at 60 px or more (smallest 62)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale:jar: live flag false (meta and instrumentation)",
+    "pass": true,
+    "i": "{\"meta\":false,\"inst\":false}"
+  },
+  {
+    "n": "coinScale:jar: zoom sub-units",
+    "pass": true,
+    "i": "1"
+  },
+  {
+    "n": "coinScale:guess: labels at 36 px or more (painter minFont 44)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale:guess: primary shapes at 60 px or more (smallest 62)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale:guess: live flag false (meta and instrumentation)",
+    "pass": true,
+    "i": "{\"meta\":false,\"inst\":false}"
+  },
+  {
+    "n": "coinScale:guess: zoom sub-units",
+    "pass": true,
+    "i": "1"
+  },
+  {
+    "n": "coinScale:tally: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale:tally: primary shapes at 60 px or more (smallest 62)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale:tally: live flag true (meta and instrumentation)",
+    "pass": true,
+    "i": "{\"meta\":true,\"inst\":true}"
+  },
+  {
+    "n": "coinScale:tally: zoom sub-units",
+    "pass": true,
+    "i": "2"
+  },
+  {
+    "n": "coinScale:scale: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale:scale: primary shapes at 60 px or more (smallest 62)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale:scale: live flag false (meta and instrumentation)",
+    "pass": true,
+    "i": "{\"meta\":false,\"inst\":false}"
+  },
+  {
+    "n": "coinScale:scale: zoom sub-units",
+    "pass": true,
+    "i": "2"
+  },
+  {
+    "n": "coinScale:reveal: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale:reveal: primary shapes at 60 px or more (smallest 62)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale:reveal: live flag false (meta and instrumentation)",
+    "pass": true,
+    "i": "{\"meta\":false,\"inst\":false}"
+  },
+  {
+    "n": "coinScale:reveal: zoom sub-units",
+    "pass": true,
+    "i": "3"
+  },
+  {
+    "n": "coinScale:bag: labels at 36 px or more (painter minFont 40)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale:bag: primary shapes at 60 px or more (smallest 224)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale:bag: live flag false (meta and instrumentation)",
+    "pass": true,
+    "i": "{\"meta\":false,\"inst\":false}"
+  },
+  {
+    "n": "coinScale:bag: zoom sub-units",
+    "pass": true,
+    "i": "1"
+  },
+  {
+    "n": "coinScale:zero: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale:zero: primary shapes at 60 px or more (smallest 78)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale:zero: live flag false (meta and instrumentation)",
+    "pass": true,
+    "i": "{\"meta\":false,\"inst\":false}"
+  },
+  {
+    "n": "coinScale:zero: zoom sub-units",
+    "pass": true,
+    "i": "2"
+  },
+  {
+    "n": "coinScale:read: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale:read: primary shapes at 60 px or more (smallest 224)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale:read: live flag false (meta and instrumentation)",
+    "pass": true,
+    "i": "{\"meta\":false,\"inst\":false}"
+  },
+  {
+    "n": "coinScale:read: zoom sub-units",
+    "pass": true,
+    "i": "2"
+  },
+  {
+    "n": "coinScale:divide: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale:divide: primary shapes at 60 px or more (smallest 224)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale:divide: live flag false (meta and instrumentation)",
+    "pass": true,
+    "i": "{\"meta\":false,\"inst\":false}"
+  },
+  {
+    "n": "coinScale:divide: zoom sub-units",
+    "pass": true,
+    "i": "3"
+  },
+  {
+    "n": "coinScale:count: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale:count: primary shapes at 60 px or more (smallest 224)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale:count: live flag false (meta and instrumentation)",
+    "pass": true,
+    "i": "{\"meta\":false,\"inst\":false}"
+  },
+  {
+    "n": "coinScale:count: zoom sub-units",
+    "pass": true,
+    "i": "4"
+  },
+  {
+    "n": "coinScale:roll: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale:roll: primary shapes at 60 px or more (smallest 74)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale:roll: live flag false (meta and instrumentation)",
+    "pass": true,
+    "i": "{\"meta\":false,\"inst\":false}"
+  },
+  {
+    "n": "coinScale:roll: zoom sub-units",
+    "pass": true,
+    "i": "2"
+  },
+  {
+    "n": "centJar:jar: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "centJar:jar: primary shapes at 60 px or more (smallest 60)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "centJar:jar: zoom sub-units",
+    "pass": true,
+    "i": "2"
+  },
+  {
+    "n": "centJar:wrong: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "centJar:wrong: primary shapes at 60 px or more (smallest 60)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "centJar:wrong: zoom sub-units",
+    "pass": true,
+    "i": "4"
+  },
+  {
+    "n": "centJar:sample: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "centJar:sample: primary shapes at 60 px or more (smallest 60)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "centJar:sample: zoom sub-units",
+    "pass": true,
+    "i": "4"
+  },
+  {
+    "n": "centJar:average: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "centJar:average: primary shapes at 60 px or more (smallest 60)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "centJar:average: zoom sub-units",
+    "pass": true,
+    "i": "4"
+  },
+  {
+    "n": "centJar:count: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "centJar:count: primary shapes at 60 px or more (smallest 60)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "centJar:count: zoom sub-units",
+    "pass": true,
+    "i": "3"
+  },
+  {
+    "n": "centJar:isotopes: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "centJar:isotopes: primary shapes at 60 px or more (smallest 80)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "centJar:isotopes: zoom sub-units",
+    "pass": true,
+    "i": "3"
+  },
+  {
+    "n": "countingUnits:dozen: labels at 36 px or more (painter minFont 48)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "countingUnits:dozen: primary shapes at 60 px or more (smallest 62)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "countingUnits:dozen: zoom sub-units",
+    "pass": true,
+    "i": "1"
+  },
+  {
+    "n": "countingUnits:ream: labels at 36 px or more (painter minFont 48)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "countingUnits:ream: primary shapes at 60 px or more (smallest 62)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "countingUnits:ream: zoom sub-units",
+    "pass": true,
+    "i": "2"
+  },
+  {
+    "n": "countingUnits:mole: labels at 36 px or more (painter minFont 44)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "countingUnits:mole: primary shapes at 60 px or more (smallest 62)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "countingUnits:mole: zoom sub-units",
+    "pass": true,
+    "i": "3"
+  },
+  {
+    "n": "countingUnits:exact: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "countingUnits:exact: primary shapes at 60 px or more (smallest 80)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "countingUnits:exact: zoom sub-units",
+    "pass": true,
+    "i": "2"
+  },
+  {
+    "n": "countingUnits:constant: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "countingUnits:constant: primary shapes at 60 px or more (smallest 80)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "countingUnits:constant: zoom sub-units",
+    "pass": true,
+    "i": "3"
+  },
+  {
+    "n": "howMany:one: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "howMany:one: primary shapes at 60 px or more (smallest 63.2)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "howMany:one: live flag false (meta and instrumentation)",
+    "pass": true,
+    "i": "{\"meta\":false,\"inst\":false}"
+  },
+  {
+    "n": "howMany:one: zoom sub-units",
+    "pass": true,
+    "i": "2"
+  },
+  {
+    "n": "howMany:dozen: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "howMany:dozen: primary shapes at 60 px or more (smallest 124)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "howMany:dozen: live flag false (meta and instrumentation)",
+    "pass": true,
+    "i": "{\"meta\":false,\"inst\":false}"
+  },
+  {
+    "n": "howMany:dozen: zoom sub-units",
+    "pass": true,
+    "i": "2"
+  },
+  {
+    "n": "howMany:thousand: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "howMany:thousand: primary shapes at 60 px or more (smallest 60)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "howMany:thousand: live flag false (meta and instrumentation)",
+    "pass": true,
+    "i": "{\"meta\":false,\"inst\":false}"
+  },
+  {
+    "n": "howMany:thousand: zoom sub-units",
+    "pass": true,
+    "i": "3"
+  },
+  {
+    "n": "howMany:zoom: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "howMany:zoom: primary shapes at 60 px or more (smallest 60)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "howMany:zoom: live flag true (meta and instrumentation)",
+    "pass": true,
+    "i": "{\"meta\":true,\"inst\":true}"
+  },
+  {
+    "n": "howMany:zoom: zoom sub-units",
+    "pass": true,
+    "i": "3"
+  },
+  {
+    "n": "howMany:mole: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "howMany:mole: primary shapes at 60 px or more (smallest 296)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "howMany:mole: live flag false (meta and instrumentation)",
+    "pass": true,
+    "i": "{\"meta\":false,\"inst\":false}"
+  },
+  {
+    "n": "howMany:mole: zoom sub-units",
+    "pass": true,
+    "i": "3"
+  },
+  {
+    "n": "howMany:spoon: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "howMany:spoon: primary shapes at 60 px or more (smallest 148)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "howMany:spoon: live flag false (meta and instrumentation)",
+    "pass": true,
+    "i": "{\"meta\":false,\"inst\":false}"
+  },
+  {
+    "n": "howMany:spoon: zoom sub-units",
+    "pass": true,
+    "i": "5"
+  },
+  {
+    "n": "moleKinds:al: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleKinds:al: primary shapes at 60 px or more (smallest 63.9)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleKinds:al: zoom sub-units",
+    "pass": true,
+    "i": "2"
+  },
+  {
+    "n": "moleKinds:cu: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleKinds:cu: primary shapes at 60 px or more (smallest 63.9)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleKinds:cu: zoom sub-units",
+    "pass": true,
+    "i": "3"
+  },
+  {
+    "n": "moleKinds:compare: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleKinds:compare: primary shapes at 60 px or more (smallest 63.9)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleKinds:compare: zoom sub-units",
+    "pass": true,
+    "i": "3"
+  },
+  {
+    "n": "moleKinds:oxygen: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleKinds:oxygen: primary shapes at 60 px or more (smallest 63.4)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleKinds:oxygen: zoom sub-units",
+    "pass": true,
+    "i": "2"
+  },
+  {
+    "n": "moleKinds:four: labels at 36 px or more (painter minFont 40)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleKinds:four: primary shapes at 60 px or more (smallest 63.2)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleKinds:four: zoom sub-units",
+    "pass": true,
+    "i": "4"
+  },
+  {
+    "n": "secondsLine:line: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "secondsLine:line: primary shapes at 60 px or more (smallest 156)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "secondsLine:line: live flag true (meta and instrumentation)",
+    "pass": true,
+    "i": "{\"meta\":true,\"inst\":true}"
+  },
+  {
+    "n": "secondsLine:line: zoom sub-units",
+    "pass": true,
+    "i": "2"
+  },
+  {
+    "n": "secondsLine:year: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "secondsLine:year: primary shapes at 60 px or more (none drawn on this stage: the line, its ticks and markers only)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "secondsLine:year: live flag false (meta and instrumentation)",
+    "pass": true,
+    "i": "{\"meta\":false,\"inst\":false}"
+  },
+  {
+    "n": "secondsLine:year: zoom sub-units",
+    "pass": true,
+    "i": "2"
+  },
+  {
+    "n": "secondsLine:earth: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "secondsLine:earth: primary shapes at 60 px or more (none drawn on this stage: the line, its ticks and markers only)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "secondsLine:earth: live flag false (meta and instrumentation)",
+    "pass": true,
+    "i": "{\"meta\":false,\"inst\":false}"
+  },
+  {
+    "n": "secondsLine:earth: zoom sub-units",
+    "pass": true,
+    "i": "3"
+  },
+  {
+    "n": "secondsLine:universe: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "secondsLine:universe: primary shapes at 60 px or more (none drawn on this stage: the line, its ticks and markers only)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "secondsLine:universe: live flag false (meta and instrumentation)",
+    "pass": true,
+    "i": "{\"meta\":false,\"inst\":false}"
+  },
+  {
+    "n": "secondsLine:universe: zoom sub-units",
+    "pass": true,
+    "i": "4"
+  },
+  {
+    "n": "secondsLine:mole: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "secondsLine:mole: primary shapes at 60 px or more (none drawn on this stage: the line, its ticks and markers only)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "secondsLine:mole: live flag false (meta and instrumentation)",
+    "pass": true,
+    "i": "{\"meta\":false,\"inst\":false}"
+  },
+  {
+    "n": "secondsLine:mole: zoom sub-units",
+    "pass": true,
+    "i": "5"
+  },
+  {
+    "n": "secondsLine:times: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "secondsLine:times: primary shapes at 60 px or more (none drawn on this stage: the line, its ticks and markers only)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "secondsLine:times: live flag false (meta and instrumentation)",
+    "pass": true,
+    "i": "{\"meta\":false,\"inst\":false}"
+  },
+  {
+    "n": "secondsLine:times: zoom sub-units",
+    "pass": true,
+    "i": "6"
+  },
+  {
+    "n": "secondsLine:spoon: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "secondsLine:spoon: primary shapes at 60 px or more (smallest 68)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "secondsLine:spoon: live flag false (meta and instrumentation)",
+    "pass": true,
+    "i": "{\"meta\":false,\"inst\":false}"
+  },
+  {
+    "n": "secondsLine:spoon: zoom sub-units",
+    "pass": true,
+    "i": "7"
+  },
+  {
+    "n": "moleHistory:avogadro: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleHistory:avogadro: primary shapes at 60 px or more (smallest 112)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleHistory:avogadro: zoom sub-units",
+    "pass": true,
+    "i": "2"
+  },
+  {
+    "n": "moleHistory:loschmidt: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleHistory:loschmidt: primary shapes at 60 px or more (smallest 92)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleHistory:loschmidt: zoom sub-units",
+    "pass": true,
+    "i": "2"
+  },
+  {
+    "n": "moleHistory:ostwald: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleHistory:ostwald: primary shapes at 60 px or more (smallest 148)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleHistory:ostwald: zoom sub-units",
+    "pass": true,
+    "i": "2"
+  },
+  {
+    "n": "moleHistory:perrin: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleHistory:perrin: primary shapes at 60 px or more (smallest 156)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleHistory:perrin: zoom sub-units",
+    "pass": true,
+    "i": "2"
+  },
+  {
+    "n": "moleHistory:si: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleHistory:si: primary shapes at 60 px or more (smallest 150)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleHistory:si: zoom sub-units",
+    "pass": true,
+    "i": "2"
+  },
+  {
+    "n": "moleHistory:exact: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleHistory:exact: primary shapes at 60 px or more (smallest 96)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleHistory:exact: zoom sub-units",
+    "pass": true,
+    "i": "2"
+  },
+  {
+    "n": "siliconSphere:sphere: labels at 36 px or more (painter minFont 44)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "siliconSphere:sphere: primary shapes at 60 px or more (smallest 460)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "siliconSphere:sphere: zoom sub-units",
+    "pass": true,
+    "i": "1"
+  },
+  {
+    "n": "siliconSphere:crystal: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "siliconSphere:crystal: primary shapes at 60 px or more (smallest 61.3)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "siliconSphere:crystal: zoom sub-units",
+    "pass": true,
+    "i": "1"
+  },
+  {
+    "n": "siliconSphere:cube: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "siliconSphere:cube: primary shapes at 60 px or more (smallest 61.3)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "siliconSphere:cube: zoom sub-units",
+    "pass": true,
+    "i": "3"
+  },
+  {
+    "n": "siliconSphere:atom: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "siliconSphere:atom: primary shapes at 60 px or more (smallest 61.3)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "siliconSphere:atom: zoom sub-units",
+    "pass": true,
+    "i": "2"
+  },
+  {
+    "n": "siliconSphere:divide: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "siliconSphere:divide: primary shapes at 60 px or more (smallest 61.3)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "siliconSphere:divide: zoom sub-units",
+    "pass": true,
+    "i": "2"
+  },
+  {
+    "n": "moleMap:map: labels at 36 px or more (painter minFont 40)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:map: primary shapes at 60 px or more (smallest 184)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:map: zoom sub-units",
+    "pass": true,
+    "i": "3"
+  },
+  {
+    "n": "moleMap:Cu/setup: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:Cu/setup: primary shapes at 60 px or more (smallest 184)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:Cu/setup: zoom sub-units",
+    "pass": true,
+    "i": "4"
+  },
+  {
+    "n": "moleMap:Cu/cancel: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:Cu/cancel: primary shapes at 60 px or more (smallest 184)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:Cu/cancel: zoom sub-units",
+    "pass": true,
+    "i": "4"
+  },
+  {
+    "n": "moleMap:Cu/result: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:Cu/result: primary shapes at 60 px or more (smallest 184)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:Cu/result: zoom sub-units",
+    "pass": true,
+    "i": "6"
+  },
+  {
+    "n": "moleMap:Fe/setup: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:Fe/setup: primary shapes at 60 px or more (smallest 184)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:Fe/setup: zoom sub-units",
+    "pass": true,
+    "i": "4"
+  },
+  {
+    "n": "moleMap:Fe/cancel: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:Fe/cancel: primary shapes at 60 px or more (smallest 184)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:Fe/cancel: zoom sub-units",
+    "pass": true,
+    "i": "4"
+  },
+  {
+    "n": "moleMap:Fe/result: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:Fe/result: primary shapes at 60 px or more (smallest 184)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:Fe/result: zoom sub-units",
+    "pass": true,
+    "i": "6"
+  },
+  {
+    "n": "moleMap:half: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:half: primary shapes at 60 px or more (smallest 184)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:half: zoom sub-units",
+    "pass": true,
+    "i": "4"
+  },
+  {
+    "n": "moleMap:CO2m/setup: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:CO2m/setup: primary shapes at 60 px or more (smallest 184)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:CO2m/setup: zoom sub-units",
+    "pass": true,
+    "i": "4"
+  },
+  {
+    "n": "moleMap:CO2m/cancel: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:CO2m/cancel: primary shapes at 60 px or more (smallest 184)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:CO2m/cancel: zoom sub-units",
+    "pass": true,
+    "i": "4"
+  },
+  {
+    "n": "moleMap:CO2m/result: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:CO2m/result: primary shapes at 60 px or more (smallest 184)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:CO2m/result: zoom sub-units",
+    "pass": true,
+    "i": "6"
+  },
+  {
+    "n": "moleMap:H2Om/setup: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:H2Om/setup: primary shapes at 60 px or more (smallest 184)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:H2Om/setup: zoom sub-units",
+    "pass": true,
+    "i": "4"
+  },
+  {
+    "n": "moleMap:H2Om/cancel: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:H2Om/cancel: primary shapes at 60 px or more (smallest 184)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:H2Om/cancel: zoom sub-units",
+    "pass": true,
+    "i": "4"
+  },
+  {
+    "n": "moleMap:H2Om/result: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:H2Om/result: primary shapes at 60 px or more (smallest 184)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:H2Om/result: zoom sub-units",
+    "pass": true,
+    "i": "6"
+  },
+  {
+    "n": "moleMap:energy/mole: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:energy/mole: primary shapes at 60 px or more (smallest 79.7)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:energy/mole: zoom sub-units",
+    "pass": true,
+    "i": "4"
+  },
+  {
+    "n": "moleMap:energy/one: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:energy/one: primary shapes at 60 px or more (smallest 79.7)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:energy/one: zoom sub-units",
+    "pass": true,
+    "i": "4"
+  },
+  {
+    "n": "moleMap:energy/why: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:energy/why: primary shapes at 60 px or more (smallest 79.7)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap:energy/why: zoom sub-units",
+    "pass": true,
+    "i": "5"
+  },
+  {
+    "n": "naclCrystal:crystal: labels at 36 px or more (painter minFont 40)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "naclCrystal:crystal: primary shapes at 60 px or more (smallest 72.8)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "naclCrystal:crystal: zoom sub-units",
+    "pass": true,
+    "i": "1"
+  },
+  {
+    "n": "naclCrystal:unit: labels at 36 px or more (painter minFont 40)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "naclCrystal:unit: primary shapes at 60 px or more (smallest 72.8)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "naclCrystal:unit: zoom sub-units",
+    "pass": true,
+    "i": "3"
+  },
+  {
+    "n": "naclCrystal:count: labels at 36 px or more (painter minFont 40)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "naclCrystal:count: primary shapes at 60 px or more (smallest 72.8)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "naclCrystal:count: zoom sub-units",
+    "pass": true,
+    "i": "3"
+  },
+  {
+    "n": "naclCrystal:wrong: labels at 36 px or more (painter minFont 40)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "naclCrystal:wrong: primary shapes at 60 px or more (smallest 72.8)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "naclCrystal:wrong: zoom sub-units",
+    "pass": true,
+    "i": "3"
+  },
+  {
+    "n": "atomCounter:H2O/one: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "atomCounter:H2O/one: primary shapes at 60 px or more (smallest 63.2)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "atomCounter:H2O/one: zoom sub-units",
+    "pass": true,
+    "i": "5"
+  },
+  {
+    "n": "atomCounter:H2O/mol: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "atomCounter:H2O/mol: primary shapes at 60 px or more (smallest 63.2)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "atomCounter:H2O/mol: zoom sub-units",
+    "pass": true,
+    "i": "5"
+  },
+  {
+    "n": "atomCounter:CO2/mol: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "atomCounter:CO2/mol: primary shapes at 60 px or more (smallest 83.2)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "atomCounter:CO2/mol: zoom sub-units",
+    "pass": true,
+    "i": "4"
+  },
+  {
+    "n": "atomCounter:CO2/atoms: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "atomCounter:CO2/atoms: primary shapes at 60 px or more (smallest 83.2)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "atomCounter:CO2/atoms: zoom sub-units",
+    "pass": true,
+    "i": "5"
+  },
+  {
+    "n": "atomCounter:NaCl/mol: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "atomCounter:NaCl/mol: primary shapes at 60 px or more (smallest 81.6)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "atomCounter:NaCl/mol: zoom sub-units",
+    "pass": true,
+    "i": "5"
+  },
+  {
+    "n": "atomCounter:NH3/mol: labels at 36 px or more (painter minFont 36)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "atomCounter:NH3/mol: primary shapes at 60 px or more (smallest 63.2)",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "atomCounter:NH3/mol: zoom sub-units",
+    "pass": true,
+    "i": "4"
+  },
+  {
+    "n": "coinScale jar: hook family, nickels",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale guess: the \"?\" badge and the prompt",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale tally: live, 8 coins counted one a second",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale scale: 2,000.0 g of coins, 5.000 g per nickel",
+    "pass": true,
+    "i": "[\"2,000.0 g\",\"5.000 g\"]"
+  },
+  {
+    "n": "coinScale reveal: 2,000.0 g ÷ 5.000 g = 400 nickels",
+    "pass": true,
+    "i": "{\"stage\":\"reveal\",\"family\":\"hook\",\"coin\":\"nickel\",\"massPerCoin\":5,\"total\":2000,\"count\":400,\"texts\":[\"2,000.0 g\",\"5.000 g\",\"400 nickels\"],\"guess\":false,\"tallyCoins\":0,\"live\":false,\"minShape\":62}"
+  },
+  {
+    "n": "coinScale bag: bank family, no reading yet, not zeroed",
+    "pass": true,
+    "i": "{\"stage\":\"bag\",\"family\":\"bank\",\"coin\":\"nickel\",\"massPerCoin\":5,\"reading\":null,\"total\":null,\"zeroed\":false,\"bridge\":null,\"struck\":[],\"count\":null,\"check\":null,\"roll\":null,\"live\":false,\"minShape\":224}"
+  },
+  {
+    "n": "coinScale zero: the empty bag, 0.0 g, zeroed",
+    "pass": true,
+    "i": "{\"stage\":\"zero\",\"family\":\"bank\",\"coin\":\"nickel\",\"massPerCoin\":5,\"reading\":\"0.0 g\",\"total\":0,\"zeroed\":true,\"bridge\":null,\"struck\":[],\"count\":null,\"check\":null,\"roll\":null,\"live\":false,\"minShape\":78}"
+  },
+  {
+    "n": "coinScale read: scale reading 1,250.0 g",
+    "pass": true,
+    "i": "{\"stage\":\"read\",\"family\":\"bank\",\"coin\":\"nickel\",\"massPerCoin\":5,\"reading\":\"1,250.0 g\",\"total\":1250,\"zeroed\":true,\"bridge\":null,\"struck\":[],\"count\":null,\"check\":null,\"roll\":null,\"live\":false,\"minShape\":224}"
+  },
+  {
+    "n": "coinScale divide: 1,250.0 g × 1 nickel / 5.000 g, the g struck twice",
+    "pass": true,
+    "i": "{\"stage\":\"divide\",\"family\":\"bank\",\"coin\":\"nickel\",\"massPerCoin\":5,\"reading\":\"1,250.0 g\",\"total\":1250,\"zeroed\":true,\"bridge\":\"1,250.0 g × 1 nickel / 5.000 g\",\"struck\":[\"g\",\"g\"],\"count\":null,\"check\":null,\"roll\":null,\"live\":false,\"minShape\":224}"
+  },
+  {
+    "n": "coinScale count: 250 nickels, check 250 × 5.000 g = 1,250.0 g",
+    "pass": true,
+    "i": "{\"stage\":\"count\",\"family\":\"bank\",\"coin\":\"nickel\",\"massPerCoin\":5,\"reading\":\"1,250.0 g\",\"total\":1250,\"zeroed\":true,\"bridge\":\"1,250.0 g × 1 nickel / 5.000 g\",\"struck\":[\"g\",\"g\"],\"count\":250,\"check\":\"250 × 5.000 g = 1,250.0 g\",\"roll\":null,\"live\":false,\"minShape\":224}"
+  },
+  {
+    "n": "coinScale roll: 200.0 g on the scale, the answer (40) not drawn",
+    "pass": true,
+    "i": "{\"stage\":\"roll\",\"family\":\"bank\",\"coin\":\"nickel\",\"massPerCoin\":5,\"reading\":\"200.0 g\",\"total\":200,\"zeroed\":true,\"bridge\":null,\"struck\":[],\"count\":null,\"check\":null,\"roll\":{\"mass\":200,\"answer\":40,\"answerDrawn\":false},\"live\":false,\"minShape\":74}"
+  },
+  {
+    "n": "centJar jar: before 1982 3.11 g, after 1982 2.500 g, the jar 1,017.1 g",
+    "pass": true,
+    "i": "{\"stage\":\"jar\",\"old\":3.11,\"new\":2.5,\"jar\":1017.1,\"wrong\":null,\"sample\":null,\"sampleN\":100,\"average\":null,\"count\":null,\"countText\":null,\"between\":true,\"isotopes\":null,\"minShape\":60}"
+  },
+  {
+    "n": "centJar wrong: ÷ 2.500 g about 407 too many; ÷ 3.11 g about 327 too few",
+    "pass": true,
+    "i": "[{\"divisor\":2.5,\"cents\":407,\"verdict\":\"too many\"},{\"divisor\":3.11,\"cents\":327,\"verdict\":\"too few\"}]"
+  },
+  {
+    "n": "centJar sample: 100 cents, 267.69 g",
+    "pass": true,
+    "i": "{\"stage\":\"sample\",\"old\":3.11,\"new\":2.5,\"jar\":1017.1,\"wrong\":null,\"sample\":267.69,\"sampleN\":100,\"average\":null,\"count\":null,\"countText\":null,\"between\":true,\"isotopes\":null,\"minShape\":60}"
+  },
+  {
+    "n": "centJar average: 267.69 g ÷ 100 = 2.6769 g",
+    "pass": true,
+    "i": "{\"stage\":\"average\",\"old\":3.11,\"new\":2.5,\"jar\":1017.1,\"wrong\":null,\"sample\":267.69,\"sampleN\":100,\"average\":2.6769,\"count\":null,\"countText\":null,\"between\":true,\"isotopes\":null,\"minShape\":60}"
+  },
+  {
+    "n": "centJar count: 1,017.1 g ÷ 2.6769 g = about 380 cents; 2.6769 between 2.500 and 3.11",
+    "pass": true,
+    "i": "{\"stage\":\"count\",\"old\":3.11,\"new\":2.5,\"jar\":1017.1,\"wrong\":null,\"sample\":null,\"sampleN\":100,\"average\":2.6769,\"count\":380,\"countText\":\"about 380 cents\",\"between\":true,\"isotopes\":null,\"minShape\":60}"
+  },
+  {
+    "n": "centJar isotopes: \"isotopes\", the table cell, no isotope masses",
+    "pass": true,
+    "i": "{\"label\":\"isotopes\",\"cell\":\"Cu\",\"mass\":\"63.546\",\"isotopeMassesShown\":false}"
+  },
+  {
+    "n": "countingUnits dozen: 12",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "countingUnits ream: 500",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "countingUnits mole: 6.022 × 10²³, symbol mol",
+    "pass": true,
+    "i": "{\"stage\":\"mole\",\"dozen\":12,\"ream\":500,\"mole\":\"6.022 × 10²³\",\"exact\":null,\"rounded\":null,\"since\":null,\"constant\":null,\"symbol\":\"mol\",\"minShape\":62}"
+  },
+  {
+    "n": "countingUnits exact: exactly 6.02214076 × 10²³, rounded 6.022 × 10²³, since May 20, 2019",
+    "pass": true,
+    "i": "{\"stage\":\"exact\",\"dozen\":null,\"ream\":null,\"mole\":\"6.022 × 10²³\",\"exact\":\"6.02214076 × 10²³\",\"rounded\":\"6.022 × 10²³\",\"since\":\"May 20, 2019\",\"constant\":null,\"symbol\":\"mol\",\"minShape\":80}"
+  },
+  {
+    "n": "countingUnits constant: N_A = 6.022 × 10²³ mol⁻¹",
+    "pass": true,
+    "i": "\"NA = 6.022 × 10²³ mol⁻¹\""
+  },
+  {
+    "n": "howMany thousand: 1,000 per step, the ladder starts at 10³",
+    "pass": true,
+    "i": "[\"10³\"]"
+  },
+  {
+    "n": "howMany zoom: live, seven steps of × 1,000 to 10²¹",
+    "pass": true,
+    "i": "{\"stage\":\"zoom\",\"perStep\":1000,\"steps\":7,\"top\":\"10²¹\",\"last\":602,\"mole\":\"6.022 × 10²³\",\"water\":null,\"ladder\":null,\"exps\":[3,6,9,12,15,18,21],\"check\":true,\"live\":true,\"minShape\":60}"
+  },
+  {
+    "n": "howMany mole: × 602 more, 6.022 × 10²³; 10²¹ × 602 = 6.02 × 10²³",
+    "pass": true,
+    "i": "{\"stage\":\"mole\",\"perStep\":1000,\"steps\":7,\"top\":\"10²¹\",\"last\":602,\"mole\":\"6.022 × 10²³\",\"water\":null,\"ladder\":[\"10³\",\"10⁶\",\"10⁹\",\"10¹²\",\"10¹⁵\",\"10¹⁸\",\"10²¹\",\"× 602\"],\"exps\":[3,6,9,12,15,18,21],\"check\":true,\"live\":false,\"minShape\":296}"
+  },
+  {
+    "n": "howMany spoon: one mole of water, about 18 g",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleKinds al: 1 mol of Al atoms, 26.982 g",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleKinds cu: 1 mol of Cu atoms, 63.546 g; the beam tips toward copper",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleKinds compare: both 6.022 × 10²³ atoms, different masses",
+    "pass": true,
+    "i": "{\"stage\":\"compare\",\"masses\":{\"Al\":26.982,\"Cu\":63.546},\"counts\":{\"Al\":\"6.022 × 10²³\",\"Cu\":\"6.022 × 10²³\"},\"equal\":true,\"heavier\":\"Cu\",\"o2Ratio\":null,\"names\":null,\"radii\":{\"Al\":121,\"Cu\":132,\"Na_ion\":102,\"Cl_ion\":181},\"minShape\":63.9}"
+  },
+  {
+    "n": "moleKinds oxygen: O₂ holds twice the atoms",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleKinds four: atoms, molecules, formula units, ions; Shannon radii 102 and 181 pm",
+    "pass": true,
+    "i": "{\"stage\":\"four\",\"masses\":{\"Al\":26.982,\"Cu\":63.546},\"counts\":null,\"equal\":false,\"heavier\":\"Al\",\"o2Ratio\":null,\"names\":[\"atoms\",\"molecules\",\"formula units\",\"ions\"],\"radii\":{\"Al\":121,\"Cu\":132,\"Na_ion\":102,\"Cl_ion\":181},\"minShape\":63.2}"
+  },
+  {
+    "n": "secondsLine line: live counter, marks in order on the log line",
+    "pass": true,
+    "i": "{\"stage\":\"line\",\"yearS\":31560000,\"earthYears\":4500000000,\"universeYears\":13800000000,\"moleYears\":19080000000000000,\"moleShown\":null,\"times\":1380000,\"timesShown\":null,\"earthTimes\":4.2,\"water\":null,\"order\":true,\"moleSeconds\":6.022e+23,\"yearsCheck\":true,\"timesCheck\":true,\"live\":true,\"minShape\":156}"
+  },
+  {
+    "n": "secondsLine year: 1 year = 3.156 × 10⁷ s",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "secondsLine earth: 4.5 billion years",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "secondsLine universe: 13.8 billion years",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "secondsLine mole: 6.022 × 10²³ s = 1.908 × 10¹⁶ years, shown \"about 1.9 × 10¹⁶ years\"",
+    "pass": true,
+    "i": "{\"stage\":\"mole\",\"yearS\":31560000,\"earthYears\":4500000000,\"universeYears\":13800000000,\"moleYears\":19080000000000000,\"moleShown\":\"about 1.9 × 10¹⁶ years\",\"times\":1380000,\"timesShown\":null,\"earthTimes\":4.2,\"water\":null,\"order\":true,\"moleSeconds\":6.022e+23,\"yearsCheck\":true,\"timesCheck\":true,\"live\":false,\"minShape\":null}"
+  },
+  {
+    "n": "secondsLine times: about 1.4 million times the age of the universe (1.38 × 10⁶); Earth: about 4 million",
+    "pass": true,
+    "i": "{\"stage\":\"times\",\"yearS\":31560000,\"earthYears\":4500000000,\"universeYears\":13800000000,\"moleYears\":19080000000000000,\"moleShown\":\"about 1.9 × 10¹⁶ years\",\"times\":1380000,\"timesShown\":\"about 1.4 million times\",\"earthTimes\":4.2,\"water\":null,\"order\":true,\"moleSeconds\":6.022e+23,\"yearsCheck\":true,\"timesCheck\":true,\"live\":false,\"minShape\":null}"
+  },
+  {
+    "n": "secondsLine spoon: 1 mol of water, about 18 g",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleHistory avogadro: 1 ticks, the last 1811 Avogadro",
+    "pass": true,
+    "i": "[{\"year\":\"1811\",\"name\":\"Avogadro\"}]"
+  },
+  {
+    "n": "moleHistory loschmidt: 2 ticks, the last 1865 Loschmidt",
+    "pass": true,
+    "i": "[{\"year\":\"1811\",\"name\":\"Avogadro\"},{\"year\":\"1865\",\"name\":\"Loschmidt\"}]"
+  },
+  {
+    "n": "moleHistory ostwald: 3 ticks, the last 1890s Ostwald",
+    "pass": true,
+    "i": "[{\"year\":\"1811\",\"name\":\"Avogadro\"},{\"year\":\"1865\",\"name\":\"Loschmidt\"},{\"year\":\"1890s\",\"name\":\"Ostwald\"}]"
+  },
+  {
+    "n": "moleHistory perrin: 4 ticks, the last 1909 Perrin",
+    "pass": true,
+    "i": "[{\"year\":\"1811\",\"name\":\"Avogadro\"},{\"year\":\"1865\",\"name\":\"Loschmidt\"},{\"year\":\"1890s\",\"name\":\"Ostwald\"},{\"year\":\"1909\",\"name\":\"Perrin\"}]"
+  },
+  {
+    "n": "moleHistory si: 5 ticks, the last 1971 SI",
+    "pass": true,
+    "i": "[{\"year\":\"1811\",\"name\":\"Avogadro\"},{\"year\":\"1865\",\"name\":\"Loschmidt\"},{\"year\":\"1890s\",\"name\":\"Ostwald\"},{\"year\":\"1909\",\"name\":\"Perrin\"},{\"year\":\"1971\",\"name\":\"SI\"}]"
+  },
+  {
+    "n": "moleHistory exact: 6 ticks, the last 2019 exact",
+    "pass": true,
+    "i": "[{\"year\":\"1811\",\"name\":\"Avogadro\"},{\"year\":\"1865\",\"name\":\"Loschmidt\"},{\"year\":\"1890s\",\"name\":\"Ostwald\"},{\"year\":\"1909\",\"name\":\"Perrin\"},{\"year\":\"1971\",\"name\":\"SI\"},{\"year\":\"2019\",\"name\":\"exact\"}]"
+  },
+  {
+    "n": "moleHistory perrin: measured, named after Avogadro, Nobel Prize 1926",
+    "pass": true,
+    "i": "[\"Measured the number.\",\"Named it after Avogadro.\",\"Nobel Prize, 1926.\"]"
+  },
+  {
+    "n": "moleHistory si: SI base unit, the old definition (12 g of carbon-12)",
+    "pass": true,
+    "i": "[\"The mole, an SI base unit.\",\"Defined by 12 g\",\"of carbon-12.\"]"
+  },
+  {
+    "n": "moleHistory exact: voted November 16, 2018; exact since May 20, 2019; 6.02214076 × 10²³",
+    "pass": true,
+    "i": "[\"Voted November 16, 2018.\",\"Exact since May 20, 2019:\",\"6.02214076 × 10²³\"]"
+  },
+  {
+    "n": "siliconSphere crystal: 2 × 2 × 2 cubes of diamond-cubic silicon (95 atoms), turning (live)",
+    "pass": true,
+    "i": "{\"stage\":\"crystal\",\"edge\":543.102,\"perCube\":8,\"atoms\":95,\"litAtoms\":18,\"bonds\":128,\"edges\":54,\"radius\":111,\"cornerFaceInside\":8,\"result\":null,\"live\":true,\"minShape\":61.3}"
+  },
+  {
+    "n": "siliconSphere cube: edge 543.102 pm, 8 atoms per cube (8 × 1/8 + 6 × 1/2 + 4), 18 atoms lit",
+    "pass": true,
+    "i": "{\"stage\":\"cube\",\"edge\":543.102,\"perCube\":8,\"atoms\":95,\"litAtoms\":18,\"bonds\":128,\"edges\":54,\"radius\":111,\"cornerFaceInside\":8,\"result\":null,\"live\":true,\"minShape\":61.3}"
+  },
+  {
+    "n": "siliconSphere divide: mass of one mole ÷ mass of one atom = 6.022 × 10²³",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "moleMap Cu/setup: given 2.00 mol",
+    "pass": true,
+    "i": "{\"stage\":\"Cu/setup\",\"key\":\"Cu\",\"dir\":\"moles to particles\",\"given\":\"2.00 mol\",\"factor\":\"6.022 × 10²³ atoms / 1 mol\",\"canceled\":null,\"remains\":null,\"result\":null,\"particle\":\"Cu atoms\",\"check\":null,\"numbers\":[2,1.2e+24],\"minShape\":184}"
+  },
+  {
+    "n": "moleMap Cu/cancel: the canceled unit struck, the remaining unit circled",
+    "pass": true,
+    "i": "{\"stage\":\"Cu/cancel\",\"key\":\"Cu\",\"dir\":\"moles to particles\",\"given\":\"2.00 mol\",\"factor\":\"6.022 × 10²³ atoms / 1 mol\",\"canceled\":\"mol\",\"remains\":\"atoms\",\"result\":null,\"particle\":\"Cu atoms\",\"check\":null,\"numbers\":[2,1.2e+24],\"minShape\":184}"
+  },
+  {
+    "n": "moleMap Cu/result: 1.20 × 10²⁴ Cu atoms, the particle named (Cu atoms)",
+    "pass": true,
+    "i": "{\"stage\":\"Cu/result\",\"key\":\"Cu\",\"dir\":\"moles to particles\",\"given\":\"2.00 mol\",\"factor\":\"6.022 × 10²³ atoms / 1 mol\",\"canceled\":\"mol\",\"remains\":\"atoms\",\"result\":\"1.20 × 10²⁴ Cu atoms\",\"particle\":\"Cu atoms\",\"check\":\"Check: 2.00 mol > 1 mol, so > 6.022 × 10²³\",\"numbers\":[2,1.2e+24],\"minShape\":184}"
+  },
+  {
+    "n": "moleMap Fe/setup: given 9.03 × 10²³ Fe atoms",
+    "pass": true,
+    "i": "{\"stage\":\"Fe/setup\",\"key\":\"Fe\",\"dir\":\"particles to moles\",\"given\":\"9.03 × 10²³ Fe atoms\",\"factor\":\"1 mol / 6.022 × 10²³ Fe atoms\",\"canceled\":null,\"remains\":null,\"result\":null,\"particle\":\"Fe atoms\",\"check\":null,\"numbers\":[1.5,9.03e+23],\"minShape\":184}"
+  },
+  {
+    "n": "moleMap Fe/cancel: the canceled unit struck, the remaining unit circled",
+    "pass": true,
+    "i": "{\"stage\":\"Fe/cancel\",\"key\":\"Fe\",\"dir\":\"particles to moles\",\"given\":\"9.03 × 10²³ Fe atoms\",\"factor\":\"1 mol / 6.022 × 10²³ Fe atoms\",\"canceled\":\"Fe atoms\",\"remains\":\"mol\",\"result\":null,\"particle\":\"Fe atoms\",\"check\":null,\"numbers\":[1.5,9.03e+23],\"minShape\":184}"
+  },
+  {
+    "n": "moleMap Fe/result: 1.50 mol, the particle named (Fe atoms)",
+    "pass": true,
+    "i": "{\"stage\":\"Fe/result\",\"key\":\"Fe\",\"dir\":\"particles to moles\",\"given\":\"9.03 × 10²³ Fe atoms\",\"factor\":\"1 mol / 6.022 × 10²³ Fe atoms\",\"canceled\":\"Fe atoms\",\"remains\":\"mol\",\"result\":\"1.50 mol\",\"particle\":\"Fe atoms\",\"check\":\"Check: 9.03 is 1.5 times 6.022\",\"numbers\":[1.5,9.03e+23],\"minShape\":184}"
+  },
+  {
+    "n": "moleMap CO2m/setup: given 0.250 mol",
+    "pass": true,
+    "i": "{\"stage\":\"CO2m/setup\",\"key\":\"CO2m\",\"dir\":\"moles to particles\",\"given\":\"0.250 mol\",\"factor\":\"6.022 × 10²³ molecules / 1 mol\",\"canceled\":null,\"remains\":null,\"result\":null,\"particle\":\"molecules\",\"check\":null,\"numbers\":[0.25,1.51e+23],\"minShape\":184}"
+  },
+  {
+    "n": "moleMap CO2m/cancel: the canceled unit struck, the remaining unit circled",
+    "pass": true,
+    "i": "{\"stage\":\"CO2m/cancel\",\"key\":\"CO2m\",\"dir\":\"moles to particles\",\"given\":\"0.250 mol\",\"factor\":\"6.022 × 10²³ molecules / 1 mol\",\"canceled\":\"mol\",\"remains\":\"molecules\",\"result\":null,\"particle\":\"molecules\",\"check\":null,\"numbers\":[0.25,1.51e+23],\"minShape\":184}"
+  },
+  {
+    "n": "moleMap CO2m/result: 1.51 × 10²³ molecules, the particle named (molecules)",
+    "pass": true,
+    "i": "{\"stage\":\"CO2m/result\",\"key\":\"CO2m\",\"dir\":\"moles to particles\",\"given\":\"0.250 mol\",\"factor\":\"6.022 × 10²³ molecules / 1 mol\",\"canceled\":\"mol\",\"remains\":\"molecules\",\"result\":\"1.51 × 10²³ molecules\",\"particle\":\"molecules\",\"check\":\"Check: a quarter of 6.022 × 10²³\",\"numbers\":[0.25,1.51e+23],\"minShape\":184}"
+  },
+  {
+    "n": "moleMap H2Om/setup: given 1.81 × 10²⁴ molecules",
+    "pass": true,
+    "i": "{\"stage\":\"H2Om/setup\",\"key\":\"H2Om\",\"dir\":\"particles to moles\",\"given\":\"1.81 × 10²⁴ molecules\",\"factor\":\"1 mol / 6.022 × 10²³ molecules\",\"canceled\":null,\"remains\":null,\"result\":null,\"particle\":\"molecules\",\"check\":null,\"numbers\":[3.01,1.81e+24],\"minShape\":184}"
+  },
+  {
+    "n": "moleMap H2Om/cancel: the canceled unit struck, the remaining unit circled",
+    "pass": true,
+    "i": "{\"stage\":\"H2Om/cancel\",\"key\":\"H2Om\",\"dir\":\"particles to moles\",\"given\":\"1.81 × 10²⁴ molecules\",\"factor\":\"1 mol / 6.022 × 10²³ molecules\",\"canceled\":\"molecules\",\"remains\":\"mol\",\"result\":null,\"particle\":\"molecules\",\"check\":null,\"numbers\":[3.01,1.81e+24],\"minShape\":184}"
+  },
+  {
+    "n": "moleMap H2Om/result: 3.01 mol, the particle named (molecules)",
+    "pass": true,
+    "i": "{\"stage\":\"H2Om/result\",\"key\":\"H2Om\",\"dir\":\"particles to moles\",\"given\":\"1.81 × 10²⁴ molecules\",\"factor\":\"1 mol / 6.022 × 10²³ molecules\",\"canceled\":\"molecules\",\"remains\":\"mol\",\"result\":\"3.01 mol\",\"particle\":\"molecules\",\"check\":\"Check: 18.1 is about 3 × 6.022\",\"numbers\":[3.01,1.81e+24],\"minShape\":184}"
+  },
+  {
+    "n": "moleMap map: moles and particles, the bridge 6.022 × 10²³ per mole",
+    "pass": true,
+    "i": "{\"stage\":\"map\",\"key\":\"map\",\"bridge\":\"6.022 × 10²³ per mole\",\"stations\":[\"moles\",\"particles\"],\"minShape\":184}"
+  },
+  {
+    "n": "moleMap half: 3.011 × 10²³ molecules = 0.5000 mol",
+    "pass": true,
+    "i": "{\"stage\":\"half\",\"key\":\"half\",\"particles\":3.011e+23,\"moles\":0.5,\"label\":\"Moles can be fractions\",\"minShape\":184}"
+  },
+  {
+    "n": "moleMap energy: 496 kJ/mol ÷ 6.022 × 10²³ = 8.24 × 10⁻¹⁹ J for one atom",
+    "pass": true,
+    "i": "{\"stage\":\"energy/one\",\"key\":\"energy\",\"perMole\":496,\"perMoleShown\":\"496 kJ\",\"perAtom\":\"8.24 × 10⁻¹⁹ J\",\"perAtomValue\":8.24e-19,\"why\":null,\"minShape\":79.7}"
+  },
+  {
+    "n": "moleMap energy/why: per mole, numbers of a handy size",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "naclCrystal crystal: 27 ions, Na⁺ 102 pm and Cl⁻ 181 pm, 564 pm cell, turning (live)",
+    "pass": true,
+    "i": "{\"stage\":\"crystal\",\"radii\":{\"Na\":102,\"Cl\":181},\"cell\":564,\"ions\":27,\"cations\":13,\"lit\":[],\"count\":null,\"particle\":\"formula units\",\"wrong\":null,\"wrongParticle\":null,\"numbers\":{\"count\":[4.5,2.71e+24],\"wrong\":[2.5,1.51e+24]},\"live\":true,\"minShape\":72.8}"
+  },
+  {
+    "n": "naclCrystal unit: the lit pair is one cation and one anion",
+    "pass": true,
+    "i": "[\"Cl⁻\",\"Na⁺\"]"
+  },
+  {
+    "n": "naclCrystal count: 4.50 mol × 6.022 × 10²³ = 2.71 × 10²⁴ formula units",
+    "pass": true,
+    "i": "{\"stage\":\"count\",\"radii\":{\"Na\":102,\"Cl\":181},\"cell\":564,\"ions\":27,\"cations\":13,\"lit\":[\"Cl⁻\",\"Na⁺\"],\"count\":\"2.71 × 10²⁴\",\"particle\":\"formula units\",\"wrong\":null,\"wrongParticle\":null,\"numbers\":{\"count\":[4.5,2.71e+24],\"wrong\":[2.5,1.51e+24]},\"live\":false,\"minShape\":72.8}"
+  },
+  {
+    "n": "naclCrystal wrong: 2.50 mol, 1.51 × 10²⁴, \"molecules\" struck for \"formula units\"",
+    "pass": true,
+    "i": "{\"stage\":\"wrong\",\"radii\":{\"Na\":102,\"Cl\":181},\"cell\":564,\"ions\":27,\"cations\":13,\"lit\":[\"Cl⁻\",\"Na⁺\"],\"count\":null,\"particle\":\"formula units\",\"wrong\":\"1.51 × 10²⁴\",\"wrongParticle\":\"molecules\",\"numbers\":{\"count\":[4.5,2.71e+24],\"wrong\":[2.5,1.51e+24]},\"live\":false,\"minShape\":72.8}"
+  },
+  {
+    "n": "atomCounter H2O/one: H₂O, 2 H atoms and 1 O atom",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "atomCounter H2O/mol: 1 mol H₂O → 2 mol H, 1 mol O",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "atomCounter CO2/mol: 2.00 mol CO₂ × 2 = 4.00 mol O",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "atomCounter CO2/atoms: 4.00 mol × 6.022 × 10²³ = 2.41 × 10²⁴ O atoms",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "atomCounter NaCl/mol: 1 mol NaCl → 1 mol Na⁺, 1 mol Cl⁻",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "atomCounter NH3/mol: 0.500 mol NH₃ × 3 = 1.50 mol H",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale:tally: one still frame under reduced motion",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "howMany:zoom: one still frame under reduced motion",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "secondsLine:line: one still frame under reduced motion",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "siliconSphere:crystal: one still frame under reduced motion",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "siliconSphere:cube: one still frame under reduced motion",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "naclCrystal:crystal: one still frame under reduced motion",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "naclCrystal:unit: one still frame under reduced motion",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "coinScale:tally: moves with motion on",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "howMany:zoom: moves with motion on",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "secondsLine:line: moves with motion on",
+    "pass": true,
+    "i": ""
+  },
+  {
+    "n": "every stage of section 4 has a scratch slide (78)",
+    "pass": true,
+    "i": "{\"slides\":78,\"seen\":78}"
+  },
+  {
+    "n": "no console errors",
+    "pass": true,
+    "i": "[]"
+  }
+]

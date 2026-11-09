@@ -1,0 +1,242 @@
+[
+  {
+    "name": "F5 does not reload",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "PageDown on last frame enters next slide at frame 0",
+    "pass": true,
+    "info": "s2f0"
+  },
+  {
+    "name": "PageUp at frame 0 enters previous slide at its last frame",
+    "pass": true,
+    "info": "s1f0"
+  },
+  {
+    "name": "held PageDown (repeat) advances once",
+    "pass": true,
+    "info": "f0 -> f1"
+  },
+  {
+    "name": "synthetic keydown with repeat:true is ignored",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "two presses within 180 ms advance once (debounce)",
+    "pass": true,
+    "info": "f1 -> f2"
+  },
+  {
+    "name": "focused <select>: PageDown still advances",
+    "pass": true,
+    "info": "f0 -> f1, select value 1"
+  },
+  {
+    "name": "focused <select>: ArrowDown still advances",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "a click on a control is followed by blur()",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "focused <textarea> keeps its keys",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "'.' zooms unit 1, the animation on a stage frame",
+    "pass": true,
+    "info": "zoom s13-sim x1.14, unit 1 of 3"
+  },
+  {
+    "name": "zoom fits the drawn content (bounds of the current stage), not the whole box",
+    "pass": true,
+    "info": "zoom x1.14 vs bounds fit x1.14"
+  },
+  {
+    "name": "zoomed canvas re-renders at the zoomed resolution",
+    "pass": true,
+    "info": "canvas width 899 -> 1020, ratio 1.135 vs zoom 1.135"
+  },
+  {
+    "name": "the cue while zoomed reads \"Zoom 1 of n · Blank ▶ next · Back ▶ exit\"",
+    "pass": true,
+    "info": "Zoom 1 of 3 · Blank ▶ next · Back ▶ exit"
+  },
+  {
+    "name": "while zoomed, two fast presses step the cycle twice and never blank",
+    "pass": true,
+    "info": "unit 3 of 3, blank false"
+  },
+  {
+    "name": "the last unit cue says Blank ▶ exit",
+    "pass": true,
+    "info": "Zoom 3 of 3 · Blank ▶ exit · Back ▶ exit"
+  },
+  {
+    "name": "the press after the last unit unzooms",
+    "pass": true,
+    "info": "Next ▶ one cube"
+  },
+  {
+    "name": "the cycle at this frame reaches the card it shows",
+    "pass": true,
+    "info": "s13-sim s13-sim s13-sim s13-sim s13-c1 s13-cube"
+  },
+  {
+    "name": "'.' steps to that card",
+    "pass": true,
+    "info": "s13-cube"
+  },
+  {
+    "name": "Back while zoomed exits the zoom at once and stays on the frame",
+    "pass": true,
+    "info": "zoom null f3"
+  },
+  {
+    "name": "Next restarts the cycle: a zoom on a card is cleared",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "zoom on the animation stays while the next frame drives it",
+    "pass": true,
+    "info": "zoom s13-sim f1"
+  },
+  {
+    "name": "zoom on the animation stays through a stage-only frame",
+    "pass": true,
+    "info": "zoom s13-sim f2"
+  },
+  {
+    "name": "'.' '.' within 400 ms blanks the screen (and undoes the first zoom)",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "any key clears the blank screen without advancing",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "'b' acts like '.'",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "setup: notes + blank",
+    "pass": true,
+    "info": "{\"n\":true,\"b\":true}"
+  },
+  {
+    "name": "Escape 1 closes the blank screen only",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "setup: notes + zoom",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "Escape 2 closes the zoom only",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "Escape 3 closes the notes",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "a click on the slide counter opens the slide list",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "the slide list shows every slide number and title",
+    "pass": true,
+    "info": "28 entries"
+  },
+  {
+    "name": "a click on a slide jumps to it",
+    "pass": true,
+    "info": "s5f0"
+  },
+  {
+    "name": "a click on the section label opens the slide list",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "timer runs on its frame",
+    "pass": true,
+    "info": "1:28, expected 1:27 to 1:29"
+  },
+  {
+    "name": "timer stops when leaving its frame",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "Back then Next restarts the timer",
+    "pass": true,
+    "info": "1:30"
+  },
+  {
+    "name": "a timed frame without a .timer slot is reported",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "End goes to the last frame of the last slide",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "Home goes to slide 1 frame 0",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "O opens the overview",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "overview: PageDown moves, Enter goes",
+    "pass": true,
+    "info": "s3"
+  },
+  {
+    "name": "Z toggles zoom",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "T switches to dark",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "T switches back to light",
+    "pass": true,
+    "info": ""
+  },
+  {
+    "name": "overflow detector catches an injected oversize block",
+    "pass": true,
+    "info": "3 findings"
+  },
+  {
+    "name": "no console errors",
+    "pass": true,
+    "info": ""
+  }
+]

@@ -1,0 +1,191 @@
+no intersections, 78 frames, 3997 boxes (525 DOM boxes, 1208 canvas labels, 2264 canvas shapes); 134 covered canvas labels, 46 spheres scenes (live moments included); live: 7 frames at two moments
+live frames (7; measured with motion on 1.4 s and 2.4 s after Deck.go):
+  - s3f0: #x03-sim; live1 0 intersections, live2 0 intersections
+  - s26f0: #x26-sim; live1 0 intersections, live2 0 intersections
+  - s34f0: #x34-sim; live1 0 intersections, live2 0 intersections
+  - s48f0: #x48-sim; live1 0 intersections, live2 0 intersections
+  - s49f0: #x49-sim; live1 0 intersections, live2 0 intersections
+  - s69f0: #x69-sim; live1 0 intersections, live2 0 intersections
+  - s70f0: #x70-sim; live1 0 intersections, live2 0 intersections
+covered canvas labels (134; fully under an opaque shape drawn later, so hidden; not tested, not a failure):
+  - s48f0 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0 canvas #x48-sim [crystal]: label "Si" under circle
+  - s49f0 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0 canvas #x49-sim [cube]: label "Si" under circle
+  - s50f0 canvas #x50-sim [atom]: label "Si" under circle
+  - s50f0 canvas #x50-sim [atom]: label "Si" under circle
+  - s50f0 canvas #x50-sim [atom]: label "Si" under circle
+  - s50f0 canvas #x50-sim [atom]: label "Si" under circle
+  - s50f0 canvas #x50-sim [atom]: label "Si" under circle
+  - s50f0 canvas #x50-sim [atom]: label "Si" under circle
+  - s50f0 canvas #x50-sim [atom]: label "Si" under circle
+  - s50f0 canvas #x50-sim [atom]: label "Si" under circle
+  - s50f0 canvas #x50-sim [atom]: label "Si" under circle
+  - s50f0 canvas #x50-sim [atom]: label "Si" under circle
+  - s50f0 canvas #x50-sim [atom]: label "Si" under circle
+  - s51f0 canvas #x51-sim [divide]: label "Si" under circle
+  - s51f0 canvas #x51-sim [divide]: label "Si" under circle
+  - s51f0 canvas #x51-sim [divide]: label "Si" under circle
+  - s51f0 canvas #x51-sim [divide]: label "Si" under circle
+  - s51f0 canvas #x51-sim [divide]: label "Si" under circle
+  - s51f0 canvas #x51-sim [divide]: label "Si" under circle
+  - s51f0 canvas #x51-sim [divide]: label "Si" under circle
+  - s51f0 canvas #x51-sim [divide]: label "Si" under circle
+  - s51f0 canvas #x51-sim [divide]: label "Si" under circle
+  - s51f0 canvas #x51-sim [divide]: label "Si" under circle
+  - s51f0 canvas #x51-sim [divide]: label "Si" under circle
+  - s69f0 canvas #x69-sim [crystal]: label "−" under circle
+  - s69f0 canvas #x69-sim [crystal]: label "+" under circle
+  - s69f0 canvas #x69-sim [crystal]: label "−" under circle
+  - s70f0 canvas #x70-sim [unit]: label "−" under circle
+  - s71f0 canvas #x71-sim [count]: label "−" under circle
+  - s72f0 canvas #x72-sim [wrong]: label "−" under circle
+  - s48f0@live1 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live1 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live1 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live1 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live1 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live1 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live1 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live1 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live1 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live1 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live1 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live1 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live1 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live1 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live1 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live1 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live1 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live1 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live1 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live1 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live1 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live1 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live1 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live1 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live2 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live2 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live2 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live2 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live2 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live2 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live2 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live2 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live2 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live2 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live2 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live2 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live2 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live2 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live2 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live2 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live2 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live2 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live2 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live2 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live2 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live2 canvas #x48-sim [crystal]: label "Si" under circle
+  - s48f0@live2 canvas #x48-sim [crystal]: label "Si" under circle
+  - s49f0@live1 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live1 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live1 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live1 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live1 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live1 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live1 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live1 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live1 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live1 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live1 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live1 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live1 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live1 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live2 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live2 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live2 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live2 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live2 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live2 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live2 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live2 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live2 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live2 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live2 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live2 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live2 canvas #x49-sim [cube]: label "Si" under circle
+  - s49f0@live2 canvas #x49-sim [cube]: label "Si" under circle
+  - s69f0@live1 canvas #x69-sim [crystal]: label "−" under circle
+  - s69f0@live1 canvas #x69-sim [crystal]: label "−" under circle
+  - s69f0@live2 canvas #x69-sim [crystal]: label "−" under circle
+  - s69f0@live2 canvas #x69-sim [crystal]: label "+" under circle
+  - s69f0@live2 canvas #x69-sim [crystal]: label "−" under circle
+  - s70f0@live1 canvas #x70-sim [unit]: label "−" under circle
+  - s70f0@live2 canvas #x70-sim [unit]: label "−" under circle
+spheres scenes (46; nothing inside one scene is tested against the same scene):
+  - s17f0 canvas #x17-sim [isotopes]: scene 1 [105, 387, 440, 618]
+  - s23f0 canvas #x23-sim [one]: scene 1 [214, 386, 538, 588]
+  - s29f0 canvas #x29-sim [al]: scene 1 [111, 295, 308, 472]
+  - s30f0 canvas #x30-sim [cu]: scene 1 [111, 249, 308, 426]
+  - s30f0 canvas #x30-sim [cu]: scene 2 [560, 279, 775, 472]
+  - s31f0 canvas #x31-sim [compare]: scene 1 [111, 249, 308, 426]
+  - s31f0 canvas #x31-sim [compare]: scene 2 [560, 279, 775, 472]
+  - s32f0 canvas #x32-sim [oxygen]: scene 1 [138, 292, 204, 358]
+  - s32f0 canvas #x32-sim [oxygen]: scene 2 [302, 292, 368, 358]
+  - s32f0 canvas #x32-sim [oxygen]: scene 3 [138, 416, 204, 482]
+  - s32f0 canvas #x32-sim [oxygen]: scene 4 [302, 416, 368, 482]
+  - s32f0 canvas #x32-sim [oxygen]: scene 5 [474, 258, 609, 392]
+  - s32f0 canvas #x32-sim [oxygen]: scene 6 [638, 258, 773, 392]
+  - s32f0 canvas #x32-sim [oxygen]: scene 7 [474, 382, 609, 516]
+  - s32f0 canvas #x32-sim [oxygen]: scene 8 [638, 382, 773, 516]
+  - s33f0 canvas #x33-sim [four]: scene 1 [204, 198, 305, 299]
+  - s33f0 canvas #x33-sim [four]: scene 2 [461, 133, 785, 335]
+  - s33f0 canvas #x33-sim [four]: scene 3 [148, 458, 360, 595]
+  - s33f0 canvas #x33-sim [four]: scene 4 [532, 458, 747, 595]
+  - s48f0 canvas #x48-sim [crystal]: scene 1 [180, 140, 692, 640]
+  - s49f0 canvas #x49-sim [cube]: scene 1 [180, 140, 692, 640]
+  - s50f0 canvas #x50-sim [atom]: scene 1 [180, 140, 692, 640]
+  - s51f0 canvas #x51-sim [divide]: scene 1 [180, 140, 692, 640]
+  - s66f0 canvas #x66-sim [energy/mole]: scene 1 [174, 460, 337, 612]
+  - s67f0 canvas #x67-sim [energy/one]: scene 1 [174, 460, 337, 612]
+  - s67f0 canvas #x67-sim [energy/one]: scene 2 [530, 514, 633, 616]
+  - s68f0 canvas #x68-sim [energy/why]: scene 1 [174, 460, 337, 612]
+  - s68f0 canvas #x68-sim [energy/why]: scene 2 [530, 514, 633, 616]
+  - s69f0 canvas #x69-sim [crystal]: scene 1 [219, 159, 654, 604]
+  - s70f0 canvas #x70-sim [unit]: scene 1 [219, 159, 654, 604]
+  - s71f0 canvas #x71-sim [count]: scene 1 [219, 159, 654, 604]
+  - s72f0 canvas #x72-sim [wrong]: scene 1 [219, 159, 654, 604]
+  - s73f0 canvas #x73-sim [H2O/one]: scene 1 [112, 156, 436, 358]
+  - s74f0 canvas #x74-sim [H2O/mol]: scene 1 [112, 156, 436, 358]
+  - s75f0 canvas #x75-sim [CO2/mol]: scene 1 [109, 230, 439, 320]
+  - s76f0 canvas #x76-sim [CO2/atoms]: scene 1 [109, 230, 439, 320]
+  - s77f0 canvas #x77-sim [NaCl/mol]: scene 1 [159, 201, 389, 349]
+  - s78f0 canvas #x78-sim [NH3/mol]: scene 1 [78, 180, 420, 396]
+  - s48f0@live1 canvas #x48-sim [crystal]: scene 1 [193, 143, 675, 634]
+  - s48f0@live2 canvas #x48-sim [crystal]: scene 1 [200, 145, 668, 632]
+  - s49f0@live1 canvas #x49-sim [cube]: scene 1 [193, 143, 675, 634]
+  - s49f0@live2 canvas #x49-sim [cube]: scene 1 [200, 145, 668, 632]
+  - s69f0@live1 canvas #x69-sim [crystal]: scene 1 [227, 162, 643, 600]
+  - s69f0@live2 canvas #x69-sim [crystal]: scene 1 [220, 160, 652, 603]
+  - s70f0@live1 canvas #x70-sim [unit]: scene 1 [227, 162, 643, 600]
+  - s70f0@live2 canvas #x70-sim [unit]: scene 1 [231, 164, 637, 598]

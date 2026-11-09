@@ -1,0 +1,272 @@
+[
+ {
+  "n": "5.1 blueprint deck line found",
+  "pass": true,
+  "i": "Deck: 22 slides. Checkpoints 16 to 19, predictions revisited 20, CER exit ticket 21, self-rating 22."
+ },
+ {
+  "n": "5.1 \"Deck: 22 slides\": deck has 28",
+  "pass": false,
+  "i": ""
+ },
+ {
+  "n": "5.1 \"Checkpoints 16 to 19\": the checkpoint routine slide, then three checkpoint slides (titles start with \"Checkpoint\")",
+  "pass": false,
+  "i": "16 Moles to particles, 17 Particles to moles, 18 Formula units, 19 Atoms in a molecule"
+ },
+ {
+  "n": "5.1 \"predictions revisited 20, CER exit ticket 21\": both are the slide \"Predictions and exit ticket\"",
+  "pass": false,
+  "i": "20 Convert: I do, we do, you do, 21 The mole in earlier lessons"
+ },
+ {
+  "n": "5.1 \"self-rating 22\": the slide \"Rate your learning\"",
+  "pass": false,
+  "i": "22 Checkpoint routine"
+ },
+ {
+  "n": "5.1 registry \"checks\": 11: slides with a check are 6, 7, 8, 9, 10, 11, 13, 16, 17, 18, 19",
+  "pass": true,
+  "i": ""
+ },
+ {
+  "n": "5.1 registry \"periods\" period 1 slides 1 to 14: last period-1 slide is 14, all of 1..14 are period 1",
+  "pass": true,
+  "i": ""
+ },
+ {
+  "n": "5.1 registry \"periods\" period 2 slides 15 to 28: first period-2 slide is 15, all of 15..28 are period 2",
+  "pass": true,
+  "i": ""
+ },
+ {
+  "n": "5.1 objectives table row 5.1.1 found",
+  "pass": true,
+  "i": "slides \"5, 6\""
+ },
+ {
+  "n": "5.1.1 → slide 5 (Targets and words): exists and carries 5.1.1",
+  "pass": false,
+  "i": "footer \"Reading §5.1 Vocabulary\", no check"
+ },
+ {
+  "n": "5.1.1 → slide 6 (Counting by weighing): exists and carries 5.1.1",
+  "pass": true,
+  "i": "footer \"Reading §5.1.1\""
+ },
+ {
+  "n": "5.1 objectives table row 5.1.2 found",
+  "pass": true,
+  "i": "slides \"7 to 11, 15\""
+ },
+ {
+  "n": "5.1.2 → slide 7 (Counting a mixed jar): exists and carries 5.1.2",
+  "pass": false,
+  "i": "footer \"Reading §5.1.1\", a check on the slide but its footer does not name 5.1.2"
+ },
+ {
+  "n": "5.1.2 → slide 8 (The mole): exists and carries 5.1.2",
+  "pass": true,
+  "i": "footer \"Reading §5.1.2\""
+ },
+ {
+  "n": "5.1.2 → slide 9 (How many is a mole?): exists and carries 5.1.2",
+  "pass": true,
+  "i": "footer \"Reading §5.1.2\""
+ },
+ {
+  "n": "5.1.2 → slide 10 (Name the particle): exists and carries 5.1.2",
+  "pass": true,
+  "i": "footer \"Reading §5.1.2\""
+ },
+ {
+  "n": "5.1.2 → slide 11 (The size of a mole): exists and carries 5.1.2",
+  "pass": true,
+  "i": "footer \"Reading §5.1.2\""
+ },
+ {
+  "n": "5.1.2 → slide 15 (Warm-up): exists and carries 5.1.2",
+  "pass": true,
+  "i": "footer \"Reading §5.1.1 and §5.1.2\""
+ },
+ {
+  "n": "5.1 objectives table row 5.1.3 found",
+  "pass": true,
+  "i": "slides \"12, 13\""
+ },
+ {
+  "n": "5.1.3 → slide 12 (Who found the number): exists and carries 5.1.3",
+  "pass": false,
+  "i": "footer \"Reading §5.1.2\", no check"
+ },
+ {
+  "n": "5.1.3 → slide 13 (Counting the atoms in a silicon sphere): exists and carries 5.1.3",
+  "pass": false,
+  "i": "footer \"Reading §5.1.2\", a check on the slide but its footer does not name 5.1.3"
+ },
+ {
+  "n": "5.1 objectives table row 5.1.4 found",
+  "pass": true,
+  "i": "slides \"14\""
+ },
+ {
+  "n": "5.1.4 → slide 14 (One picture: three ways to count): exists and carries 5.1.4",
+  "pass": false,
+  "i": "footer \"Reading §5.1.1 and §5.1.2\", no check"
+ },
+ {
+  "n": "5.1 matrix row C.8(A): one row carries \"Deck 5.1, slides …\" and its objectives cell names 5.1.1, 5.1.2",
+  "pass": true,
+  "i": "1 row; \"C.8(A) the mole\": \"§5.1.1, §5.1.2\", slides \"5 to 11, 15\""
+ },
+ {
+  "n": "5.1 C.8(A) → slide 5 (Targets and words): exists and carries one of 5.1.1, 5.1.2",
+  "pass": false,
+  "i": "footer \"Reading §5.1 Vocabulary\""
+ },
+ {
+  "n": "5.1 C.8(A) → slide 6 (Counting by weighing): exists and carries one of 5.1.1, 5.1.2",
+  "pass": true,
+  "i": "footer \"Reading §5.1.1\""
+ },
+ {
+  "n": "5.1 C.8(A) → slide 7 (Counting a mixed jar): exists and carries one of 5.1.1, 5.1.2",
+  "pass": true,
+  "i": "footer \"Reading §5.1.1\""
+ },
+ {
+  "n": "5.1 C.8(A) → slide 8 (The mole): exists and carries one of 5.1.1, 5.1.2",
+  "pass": true,
+  "i": "footer \"Reading §5.1.2\""
+ },
+ {
+  "n": "5.1 C.8(A) → slide 9 (How many is a mole?): exists and carries one of 5.1.1, 5.1.2",
+  "pass": true,
+  "i": "footer \"Reading §5.1.2\""
+ },
+ {
+  "n": "5.1 C.8(A) → slide 10 (Name the particle): exists and carries one of 5.1.1, 5.1.2",
+  "pass": true,
+  "i": "footer \"Reading §5.1.2\""
+ },
+ {
+  "n": "5.1 C.8(A) → slide 11 (The size of a mole): exists and carries one of 5.1.1, 5.1.2",
+  "pass": true,
+  "i": "footer \"Reading §5.1.2\""
+ },
+ {
+  "n": "5.1 C.8(A) → slide 15 (Warm-up): exists and carries one of 5.1.1, 5.1.2",
+  "pass": true,
+  "i": "footer \"Reading §5.1.1 and §5.1.2\""
+ },
+ {
+  "n": "5.1 C.8(A) \"slides 5 to 11, 15\" equal the union of the slides of 5.1.1, 5.1.2",
+  "pass": true,
+  "i": "row 5, 6, 7, 8, 9, 10, 11, 15; union 5, 6, 7, 8, 9, 10, 11, 15"
+ },
+ {
+  "n": "5.1 matrix row C.8(B): one row carries \"Deck 5.1, slides …\" and its objectives cell names 5.1.3, 5.1.4",
+  "pass": true,
+  "i": "1 row; \"C.8(B)\": \"§5.1.3, §5.1.4, §5.3.1 to §5.3.3\", slides \"12 to 14\""
+ },
+ {
+  "n": "5.1 C.8(B) → slide 12 (Who found the number): exists and carries one of 5.1.3, 5.1.4",
+  "pass": false,
+  "i": "footer \"Reading §5.1.2\""
+ },
+ {
+  "n": "5.1 C.8(B) → slide 13 (Counting the atoms in a silicon sphere): exists and carries one of 5.1.3, 5.1.4",
+  "pass": false,
+  "i": "footer \"Reading §5.1.2\""
+ },
+ {
+  "n": "5.1 C.8(B) → slide 14 (One picture: three ways to count): exists and carries one of 5.1.3, 5.1.4",
+  "pass": false,
+  "i": "footer \"Reading §5.1.1 and §5.1.2\""
+ },
+ {
+  "n": "5.1 C.8(B) \"slides 12 to 14\" equal the union of the slides of 5.1.3, 5.1.4",
+  "pass": true,
+  "i": "row 12, 13, 14; union 12, 13, 14"
+ },
+ {
+  "n": "5.1 rate slide 27: 5.1.1 \"Review: 6 and 7\" are slides that carry 5.1.1 and are in the matrix row (5, 6)",
+  "pass": false,
+  "i": "same set"
+ },
+ {
+  "n": "5.1 rate slide 27: 5.1.2 \"Review: 8 to 13 and 21\" are slides that carry 5.1.2 and are in the matrix row (7 to 11, 15)",
+  "pass": false,
+  "i": "same set"
+ },
+ {
+  "n": "5.1 rate slide 27: 5.1.3 \"Review: 16 to 18\" are slides that carry 5.1.3 and are in the matrix row (12, 13)",
+  "pass": false,
+  "i": "same set"
+ },
+ {
+  "n": "5.1 rate slide 27: 5.1.4 \"Review: 19 and 20\" are slides that carry 5.1.4 and are in the matrix row (14)",
+  "pass": false,
+  "i": "same set"
+ },
+ {
+  "n": "5.1 s02 mentions slide 3 (\"…emistry yet. The bank's bag comes next (slide 3\")",
+  "pass": true,
+  "i": "target: A bag of nickels at the bank"
+ },
+ {
+  "n": "5.1 s02 mentions slide 6 (\"…ide 3), and the bank's scale returns on slide 6\")",
+  "pass": true,
+  "i": "target: Counting by weighing"
+ },
+ {
+  "n": "5.1 s04 mentions slide 26 (\"…ater, one hydrogen. Keep the counts for slide 26\")",
+  "pass": true,
+  "i": "target: Predictions and exit ticket"
+ },
+ {
+  "n": "5.1 s05 mentions slide 27 (\"…5.1.1 to 5.1.4; they rate themselves on slide 27\")",
+  "pass": true,
+  "i": "target: Rate your learning"
+ },
+ {
+  "n": "5.1 s09 mentions slide 8 (\"…es 6.022 × 10²³: one mole, the flask of slide 8\")",
+  "pass": true,
+  "i": "target: The mole"
+ },
+ {
+  "n": "5.1 s12 mentions slide 13 (\"…s of the Avogadro project come next, on slide 13\")",
+  "pass": true,
+  "i": "target: Counting the atoms in a silicon sphere"
+ },
+ {
+  "n": "5.1 s22 mentions slide 23 (\"…Routine for slides 23 to 25\")",
+  "pass": true,
+  "i": "target: Checkpoint 1"
+ },
+ {
+  "n": "5.1 s22 mentions slide 24 (\"…Routine for slides 23 to 25\")",
+  "pass": true,
+  "i": "target: Checkpoint 2"
+ },
+ {
+  "n": "5.1 s22 mentions slide 25 (\"…Routine for slides 23 to 25\")",
+  "pass": true,
+  "i": "target: Checkpoint 3"
+ },
+ {
+  "n": "5.1 s26 mentions slide 4 (\"…dicted it. Compare with the counts from slide 4\")",
+  "pass": true,
+  "i": "target: Predict now"
+ },
+ {
+  "n": "5.1 every listed mention was found",
+  "pass": true,
+  "i": "10 mentions"
+ },
+ {
+  "n": "5.1 footer cues \"slide N: title\": 27 cues, each names the next slide by its number and title",
+  "pass": true,
+  "i": ""
+ }
+]
