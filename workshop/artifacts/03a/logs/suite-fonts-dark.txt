@@ -1,0 +1,4 @@
+== 5.1: unit5/slides-5-1.html
+   out /tmp/claude-0/-home-user-texaschemistry/fd062df9-fc63-5e0b-9c93-813ea3f31b1c/scratchpad/fix03a/fontsdark/5-1, theme dark, matrix off
+  PASS  fonts dark           56.6 s  fonts: PASS
+== 5.1: 1 of 1 pass, 0 fail, 56.6 s

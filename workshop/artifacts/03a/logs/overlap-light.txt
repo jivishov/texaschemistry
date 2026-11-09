@@ -1,0 +1,311 @@
+no intersections, 197 frames, 8671 boxes (2603 DOM boxes, 2173 canvas labels, 3895 canvas shapes); 210 covered canvas labels, 85 spheres scenes (live moments included); live: 12 frames at two moments
+live frames (12; measured with motion on 1.4 s and 2.4 s after Deck.go):
+  - s2f2: #s02-sim; live1 0 intersections, live2 0 intersections
+  - s9f4: #s09-sim; live1 0 intersections, live2 0 intersections
+  - s11f0: #s11-sim; live1 0 intersections, live2 0 intersections
+  - s13f2: #s13-sim; live1 0 intersections, live2 0 intersections
+  - s13f3: #s13-sim; live1 0 intersections, live2 0 intersections
+  - s13f7: #s13-sim; live1 0 intersections, live2 0 intersections
+  - s13f8: #s13-sim; live1 0 intersections, live2 0 intersections
+  - s18f0: #s18-sim; live1 0 intersections, live2 0 intersections
+  - s18f1: #s18-sim; live1 0 intersections, live2 0 intersections
+  - s18f2: #s18-sim; live1 0 intersections, live2 0 intersections
+  - s18f6: #s18-sim; live1 0 intersections, live2 0 intersections
+  - s18f7: #s18-sim; live1 0 intersections, live2 0 intersections
+covered canvas labels (210; fully under an opaque shape drawn later, so hidden; not tested, not a failure):
+  - s13f2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f3 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f4 canvas #s13-sim [atom]: label "Si" under circle
+  - s13f4 canvas #s13-sim [atom]: label "Si" under circle
+  - s13f4 canvas #s13-sim [atom]: label "Si" under circle
+  - s13f4 canvas #s13-sim [atom]: label "Si" under circle
+  - s13f4 canvas #s13-sim [atom]: label "Si" under circle
+  - s13f4 canvas #s13-sim [atom]: label "Si" under circle
+  - s13f4 canvas #s13-sim [atom]: label "Si" under circle
+  - s13f4 canvas #s13-sim [atom]: label "Si" under circle
+  - s13f4 canvas #s13-sim [atom]: label "Si" under circle
+  - s13f4 canvas #s13-sim [atom]: label "Si" under circle
+  - s13f4 canvas #s13-sim [atom]: label "Si" under circle
+  - s13f5 canvas #s13-sim [divide]: label "Si" under circle
+  - s13f5 canvas #s13-sim [divide]: label "Si" under circle
+  - s13f5 canvas #s13-sim [divide]: label "Si" under circle
+  - s13f5 canvas #s13-sim [divide]: label "Si" under circle
+  - s13f5 canvas #s13-sim [divide]: label "Si" under circle
+  - s13f5 canvas #s13-sim [divide]: label "Si" under circle
+  - s13f5 canvas #s13-sim [divide]: label "Si" under circle
+  - s13f5 canvas #s13-sim [divide]: label "Si" under circle
+  - s13f5 canvas #s13-sim [divide]: label "Si" under circle
+  - s13f5 canvas #s13-sim [divide]: label "Si" under circle
+  - s13f5 canvas #s13-sim [divide]: label "Si" under circle
+  - s13f6 canvas #s13-sim [divide]: label "Si" under circle
+  - s13f6 canvas #s13-sim [divide]: label "Si" under circle
+  - s13f6 canvas #s13-sim [divide]: label "Si" under circle
+  - s13f6 canvas #s13-sim [divide]: label "Si" under circle
+  - s13f6 canvas #s13-sim [divide]: label "Si" under circle
+  - s13f6 canvas #s13-sim [divide]: label "Si" under circle
+  - s13f6 canvas #s13-sim [divide]: label "Si" under circle
+  - s13f6 canvas #s13-sim [divide]: label "Si" under circle
+  - s13f6 canvas #s13-sim [divide]: label "Si" under circle
+  - s13f6 canvas #s13-sim [divide]: label "Si" under circle
+  - s13f6 canvas #s13-sim [divide]: label "Si" under circle
+  - s13f7 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f8 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f8 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f8 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f8 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f8 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f8 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f8 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f8 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f8 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f8 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f8 canvas #s13-sim [cube]: label "Si" under circle
+  - s18f0 canvas #s18-sim [crystal]: label "−" under circle
+  - s18f0 canvas #s18-sim [crystal]: label "+" under circle
+  - s18f0 canvas #s18-sim [crystal]: label "−" under circle
+  - s18f1 canvas #s18-sim [unit]: label "−" under circle
+  - s18f2 canvas #s18-sim [unit]: label "−" under circle
+  - s18f3 canvas #s18-sim [count]: label "−" under circle
+  - s18f4 canvas #s18-sim [wrong]: label "−" under circle
+  - s18f5 canvas #s18-sim [wrong]: label "−" under circle
+  - s18f6 canvas #s18-sim [unit]: label "−" under circle
+  - s18f7 canvas #s18-sim [unit]: label "−" under circle
+  - s13f2@live1 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live1 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live1 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live1 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live1 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live1 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live1 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live1 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live1 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live1 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live1 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live1 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live1 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live1 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live1 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live1 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live1 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live1 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live1 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live1 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live1 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live1 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live1 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live1 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f2@live2 canvas #s13-sim [crystal]: label "Si" under circle
+  - s13f3@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live2 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live2 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live2 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live2 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live2 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live2 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live2 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live2 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live2 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live2 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live2 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live2 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live2 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f3@live2 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7@live2 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7@live2 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7@live2 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f7@live2 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f8@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f8@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f8@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f8@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f8@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f8@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s13f8@live1 canvas #s13-sim [cube]: label "Si" under circle
+  - s18f0@live1 canvas #s18-sim [crystal]: label "+" under circle
+  - s18f0@live1 canvas #s18-sim [crystal]: label "+" under circle
+  - s18f0@live1 canvas #s18-sim [crystal]: label "+" under circle
+  - s18f0@live1 canvas #s18-sim [crystal]: label "+" under circle
+  - s18f0@live2 canvas #s18-sim [crystal]: label "+" under circle
+  - s18f0@live2 canvas #s18-sim [crystal]: label "+" under circle
+  - s18f0@live2 canvas #s18-sim [crystal]: label "+" under circle
+  - s18f0@live2 canvas #s18-sim [crystal]: label "+" under circle
+  - s18f1@live1 canvas #s18-sim [unit]: label "−" under circle
+  - s18f1@live2 canvas #s18-sim [unit]: label "−" under circle
+  - s18f2@live1 canvas #s18-sim [unit]: label "−" under circle
+  - s18f2@live2 canvas #s18-sim [unit]: label "−" under circle
+  - s18f6@live1 canvas #s18-sim [unit]: label "+" under circle
+  - s18f6@live1 canvas #s18-sim [unit]: label "+" under circle
+  - s18f6@live2 canvas #s18-sim [unit]: label "+" under circle
+  - s18f6@live2 canvas #s18-sim [unit]: label "−" under circle
+  - s18f6@live2 canvas #s18-sim [unit]: label "+" under circle
+  - s18f7@live1 canvas #s18-sim [unit]: label "+" under circle
+  - s18f7@live1 canvas #s18-sim [unit]: label "+" under circle
+  - s18f7@live2 canvas #s18-sim [unit]: label "+" under circle
+  - s18f7@live2 canvas #s18-sim [unit]: label "+" under circle
+spheres scenes (85; nothing inside one scene is tested against the same scene):
+  - s7f7 canvas #s07-sim [isotopes]: scene 1 [99, 393, 434, 612]
+  - s7f8 canvas #s07-sim [isotopes]: scene 1 [99, 393, 434, 612]
+  - s9f0 canvas #s09-sim [one]: scene 1 [214, 386, 538, 588]
+  - s10f0 canvas #s10-sim [al]: scene 1 [111, 295, 308, 472]
+  - s10f1 canvas #s10-sim [cu]: scene 1 [111, 249, 308, 426]
+  - s10f1 canvas #s10-sim [cu]: scene 2 [560, 279, 775, 472]
+  - s10f2 canvas #s10-sim [cu]: scene 1 [111, 249, 308, 426]
+  - s10f2 canvas #s10-sim [cu]: scene 2 [560, 279, 775, 472]
+  - s10f3 canvas #s10-sim [compare]: scene 1 [111, 249, 308, 426]
+  - s10f3 canvas #s10-sim [compare]: scene 2 [560, 279, 775, 472]
+  - s10f4 canvas #s10-sim [compare]: scene 1 [111, 249, 308, 426]
+  - s10f4 canvas #s10-sim [compare]: scene 2 [560, 279, 775, 472]
+  - s10f5 canvas #s10-sim [oxygen]: scene 1 [138, 292, 204, 358]
+  - s10f5 canvas #s10-sim [oxygen]: scene 2 [302, 292, 368, 358]
+  - s10f5 canvas #s10-sim [oxygen]: scene 3 [138, 416, 204, 482]
+  - s10f5 canvas #s10-sim [oxygen]: scene 4 [302, 416, 368, 482]
+  - s10f5 canvas #s10-sim [oxygen]: scene 5 [474, 258, 609, 392]
+  - s10f5 canvas #s10-sim [oxygen]: scene 6 [638, 258, 773, 392]
+  - s10f5 canvas #s10-sim [oxygen]: scene 7 [474, 382, 609, 516]
+  - s10f5 canvas #s10-sim [oxygen]: scene 8 [638, 382, 773, 516]
+  - s10f6 canvas #s10-sim [four]: scene 1 [204, 198, 305, 299]
+  - s10f6 canvas #s10-sim [four]: scene 2 [461, 133, 785, 335]
+  - s10f6 canvas #s10-sim [four]: scene 3 [148, 458, 360, 595]
+  - s10f6 canvas #s10-sim [four]: scene 4 [532, 458, 747, 595]
+  - s10f7 canvas #s10-sim [four]: scene 1 [204, 198, 305, 299]
+  - s10f7 canvas #s10-sim [four]: scene 2 [461, 133, 785, 335]
+  - s10f7 canvas #s10-sim [four]: scene 3 [148, 458, 360, 595]
+  - s10f7 canvas #s10-sim [four]: scene 4 [532, 458, 747, 595]
+  - s10f8 canvas #s10-sim [compare]: scene 1 [111, 249, 308, 426]
+  - s10f8 canvas #s10-sim [compare]: scene 2 [560, 279, 775, 472]
+  - s10f9 canvas #s10-sim [compare]: scene 1 [111, 249, 308, 426]
+  - s10f9 canvas #s10-sim [compare]: scene 2 [560, 279, 775, 472]
+  - s13f2 canvas #s13-sim [crystal]: scene 1 [180, 140, 692, 640]
+  - s13f3 canvas #s13-sim [cube]: scene 1 [180, 140, 692, 640]
+  - s13f4 canvas #s13-sim [atom]: scene 1 [180, 140, 692, 640]
+  - s13f5 canvas #s13-sim [divide]: scene 1 [180, 140, 692, 640]
+  - s13f6 canvas #s13-sim [divide]: scene 1 [180, 140, 692, 640]
+  - s13f7 canvas #s13-sim [cube]: scene 1 [180, 140, 692, 640]
+  - s13f8 canvas #s13-sim [cube]: scene 1 [180, 140, 692, 640]
+  - s18f0 canvas #s18-sim [crystal]: scene 1 [219, 159, 654, 604]
+  - s18f1 canvas #s18-sim [unit]: scene 1 [219, 159, 654, 604]
+  - s18f2 canvas #s18-sim [unit]: scene 1 [219, 159, 654, 604]
+  - s18f3 canvas #s18-sim [count]: scene 1 [219, 159, 654, 604]
+  - s18f4 canvas #s18-sim [wrong]: scene 1 [219, 159, 654, 604]
+  - s18f5 canvas #s18-sim [wrong]: scene 1 [219, 159, 654, 604]
+  - s18f6 canvas #s18-sim [unit]: scene 1 [219, 159, 654, 604]
+  - s18f7 canvas #s18-sim [unit]: scene 1 [219, 159, 654, 604]
+  - s19f0 canvas #s19-sim [H2O/one]: scene 1 [112, 156, 436, 358]
+  - s19f1 canvas #s19-sim [H2O/one]: scene 1 [112, 156, 436, 358]
+  - s19f2 canvas #s19-sim [H2O/mol]: scene 1 [112, 156, 436, 358]
+  - s19f3 canvas #s19-sim [CO2/mol]: scene 1 [109, 230, 439, 320]
+  - s19f4 canvas #s19-sim [CO2/atoms]: scene 1 [109, 230, 439, 320]
+  - s19f5 canvas #s19-sim [NaCl/mol]: scene 1 [159, 201, 389, 349]
+  - s19f6 canvas #s19-sim [NaCl/mol]: scene 1 [159, 201, 389, 349]
+  - s19f7 canvas #s19-sim [CO2/mol]: scene 1 [109, 230, 439, 320]
+  - s19f8 canvas #s19-sim [CO2/mol]: scene 1 [109, 230, 439, 320]
+  - s20f9 canvas #s20-ac [NH3/mol]: scene 1 [78, 180, 420, 396]
+  - s20f10 canvas #s20-ac [NH3/mol]: scene 1 [78, 180, 420, 396]
+  - s20f11 canvas #s20-ac [NH3/mol]: scene 1 [78, 180, 420, 396]
+  - s21f0 canvas #s21-sim [energy/mole]: scene 1 [174, 460, 337, 612]
+  - s21f1 canvas #s21-sim [energy/mole]: scene 1 [174, 460, 337, 612]
+  - s21f2 canvas #s21-sim [energy/one]: scene 1 [174, 460, 337, 612]
+  - s21f2 canvas #s21-sim [energy/one]: scene 2 [530, 514, 633, 616]
+  - s21f3 canvas #s21-sim [energy/why]: scene 1 [174, 460, 337, 612]
+  - s21f3 canvas #s21-sim [energy/why]: scene 2 [530, 514, 633, 616]
+  - s21f4 canvas #s21-sim [energy/why]: scene 1 [174, 460, 337, 612]
+  - s21f4 canvas #s21-sim [energy/why]: scene 2 [530, 514, 633, 616]
+  - s13f2@live1 canvas #s13-sim [crystal]: scene 1 [193, 143, 675, 634]
+  - s13f2@live2 canvas #s13-sim [crystal]: scene 1 [200, 145, 668, 632]
+  - s13f3@live1 canvas #s13-sim [cube]: scene 1 [193, 143, 675, 634]
+  - s13f3@live2 canvas #s13-sim [cube]: scene 1 [200, 145, 668, 632]
+  - s13f7@live1 canvas #s13-sim [cube]: scene 1 [193, 143, 676, 634]
+  - s13f7@live2 canvas #s13-sim [cube]: scene 1 [183, 141, 688, 638]
+  - s13f8@live1 canvas #s13-sim [cube]: scene 1 [179, 139, 698, 641]
+  - s13f8@live2 canvas #s13-sim [cube]: scene 1 [181, 139, 698, 641]
+  - s18f0@live1 canvas #s18-sim [crystal]: scene 1 [219, 158, 659, 605]
+  - s18f0@live2 canvas #s18-sim [crystal]: scene 1 [218, 158, 658, 605]
+  - s18f1@live1 canvas #s18-sim [unit]: scene 1 [227, 162, 643, 600]
+  - s18f1@live2 canvas #s18-sim [unit]: scene 1 [231, 164, 637, 598]
+  - s18f2@live1 canvas #s18-sim [unit]: scene 1 [227, 162, 643, 600]
+  - s18f2@live2 canvas #s18-sim [unit]: scene 1 [221, 160, 651, 603]
+  - s18f6@live1 canvas #s18-sim [unit]: scene 1 [218, 158, 659, 605]
+  - s18f6@live2 canvas #s18-sim [unit]: scene 1 [220, 158, 659, 605]
+  - s18f7@live1 canvas #s18-sim [unit]: scene 1 [220, 158, 659, 605]
+  - s18f7@live2 canvas #s18-sim [unit]: scene 1 [218, 158, 658, 605]

@@ -1,0 +1,29 @@
+  s01 P1 0.5 min  Counting particles with the mole
+  s02 P1 2.5 min  The coin jar
+  s03 P1 3 min  A bag of nickels at the bank  timers 60s
+  s04 P1 2 min  Predict now
+  s05 P1 2.5 min  Targets and words
+  s06 P1 4 min  Counting by weighing
+  s07 P1 4 min  Counting a mixed jar
+  s08 P1 3.5 min  The mole
+  s09 P1 4.25 min  How many is a mole?
+  s10 P1 3.75 min  Name the particle
+  s11 P1 4 min  The size of a mole
+  s12 P1 2.75 min  Who found the number
+  s13 P1 3.5 min  Counting the atoms in a silicon sphere
+  s14 P1 3.5 min  One picture: three ways to count  timers 90s
+  s15 P2 2.5 min  Warm-up  timers 90s
+  s16 P2 3.25 min  Moles to particles
+  s17 P2 3.5 min  Particles to moles
+  s18 P2 3.25 min  Formula units
+  s19 P2 3.5 min  Atoms in a molecule
+  s20 P2 6 min  Convert: I do, we do, you do  timers 180s
+  s21 P2 2 min  The mole in earlier lessons
+  s22 P2 1 min  Checkpoint routine
+  s23 P2 4.5 min  Checkpoint 1  timers 30s,60s,90s
+  s24 P2 4.5 min  Checkpoint 2  timers 30s,60s,90s
+  s25 P2 4.5 min  Checkpoint 3  timers 30s,60s,90s
+  s26 P2 5.5 min  Predictions and exit ticket  timers 180s
+  s27 P2 1.5 min  Rate your learning
+  s28 P2 0.5 min  Next
+timing: period 1 43.75 min, period 2 46 min, PASS

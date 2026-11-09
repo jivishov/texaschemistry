@@ -1,0 +1,26 @@
+== 5.1: unit5/slides-5-1.html
+   out /tmp/claude-0/-home-user-texaschemistry/fd062df9-fc63-5e0b-9c93-813ea3f31b1c/scratchpad/fix03a/final/5-1, theme both, matrix off
+  PASS  walk light          240.8 s  walk light: 197 states, max empty 26% (s14f8), PASS
+  PASS  walk dark           241.5 s  walk dark: 197 states, max empty 26% (s14f8), PASS
+  PASS  back light           96.9 s  back: 197 forward, 197 back, PASS
+  PASS  back dark            97.0 s  back: 197 forward, 197 back, PASS
+  PASS  fonts light          56.7 s  fonts: PASS
+  PASS  keys                 37.5 s  keys: PASS 48 checks
+  PASS  readability           3.1 s  readability: PASS
+  PASS  print                 2.1 s  print: PASS stage hidden=true, 28 slides, 197 frame lines, 11 PDF page(s)
+  PASS  render3d              2.4 s  render3d: PASS
+  PASS  extras                5.6 s  extras: PASS
+  PASS  chem                  2.1 s  chem51 (deck): PASS 94 checks
+  PASS  timing                1.3 s  timing: period 1 43.75 min, period 2 46 min, PASS
+  PASS  supgap                5.8 s  supgap: 107 symbol+charge pairs checked, PASS
+  PASS  zoom light          359.4 s  zoom light: 1072 zoomed states over 197 frames (re-flow 458, transform 614), prompt 35, r800 1, animation 133, part 459, card 203, frames 2, check 28, wcard 16, legend 1, rule 18, caption 17, caprow 15, p 3, table 1, column 21, line 1, bank 1, row 30, rail 29, li 50, handsup 3, scale 5; min fill 62%; Back tests 28; PASS
+  PASS  zoom dark           358.1 s  zoom dark: 1072 zoomed states over 197 frames (re-flow 458, transform 614), prompt 35, r800 1, animation 133, part 459, card 203, frames 2, check 28, wcard 16, legend 1, rule 18, caption 17, caprow 15, p 3, table 1, column 21, line 1, bank 1, row 30, rail 29, li 50, handsup 3, scale 5; min fill 62%; Back tests 28; PASS
+  PASS  click                34.0 s  click: 11 graded checks, 3 Predict-now questions, 55 assertions, PASS
+  PASS  layout light         57.5 s  layout light: 197 frames, 28 visible option lists (stacked 19, row 9), max empty 26% (s14f8), gate 33%, clipped or ellipsized text: 0, overlap: 0 intersections on 0 frames, no baseline (8671 boxes (2603 DOM boxes, 2173 canvas labels, 3895 canvas shapes), 210 covered canvas labels, 85 spheres scenes (live moments included), 16 of 16 canvas animations instrumented), live: 12 frames at two moments, PASS
+  PASS  layout dark          58.4 s  layout dark: 197 frames, 28 visible option lists (stacked 19, row 9), max empty 26% (s14f8), gate 33%, clipped or ellipsized text: 0, overlap: 0 intersections on 0 frames, no baseline (8671 boxes (2603 DOM boxes, 2173 canvas labels, 3895 canvas shapes), 210 covered canvas labels, 85 spheres scenes (live moments included), 16 of 16 canvas animations instrumented), live: 12 frames at two moments, PASS
+  PASS  xcheck                1.5 s  xcheck: 60 of 60 pass
+  PASS  contact light         5.3 s  contact sheets light: contact-light-1.png (94 shots, 3495 px tall), contact-light-2.png (102 shots, 3710 px tall), contact-light-3.png (1 shots, 1000 px tall)
+  PASS  contact dark          5.3 s  contact sheets dark: contact-dark-1.png (94 shots, 3495 px tall), contact-dark-2.png (102 shots, 3710 px tall), contact-dark-3.png (1 shots, 1000 px tall)
+  PASS  zoomsheet light       3.3 s  zoom sheet light: zoomsheet-light-1.png (102 shots, 3710 px tall), zoomsheet-light-2.png (7 shots, 1000 px tall)
+  PASS  zoomsheet dark        3.2 s  zoom sheet dark: zoomsheet-dark-1.png (102 shots, 3710 px tall), zoomsheet-dark-2.png (7 shots, 1000 px tall)
+== 5.1: 23 of 23 pass, 0 fail, 1678.8 s

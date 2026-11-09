@@ -1,0 +1,8 @@
+== 5.1 (scratch deck): /tmp/claude-0/-home-user-texaschemistry/fd062df9-fc63-5e0b-9c93-813ea3f31b1c/scratchpad/fix03a/scratch51.html
+   out /tmp/claude-0/-home-user-texaschemistry/fd062df9-fc63-5e0b-9c93-813ea3f31b1c/scratchpad/fix03a/bench/5-1, theme both, matrix off
+   scratch deck: EMPTY_MAX=1 for walk and layout (emptiness gate off); every other gate unchanged
+  PASS  walk light           98.3 s  walk light: 78 states, max empty 17% (s34f0), PASS
+  PASS  walk dark            98.4 s  walk dark: 78 states, max empty 17% (s34f0), PASS
+  PASS  layout light         30.6 s  layout light: 78 frames, 0 visible option lists (), max empty 17% (s34f0), gate 100%, clipped or ellipsized text: 0, overlap: 0 intersections on 0 frames, no baseline (3998 boxes (525 DOM boxes, 1209 canvas labels, 2264 canvas shapes), 134 covered canvas labels, 46 spheres scenes (live moments included), 78 of 78 canvas animations instrumented), live: 7 frames at two moments, PASS
+  PASS  layout dark          30.7 s  layout dark: 78 frames, 0 visible option lists (), max empty 17% (s34f0), gate 100%, clipped or ellipsized text: 0, overlap: 0 intersections on 0 frames, no baseline (3998 boxes (525 DOM boxes, 1209 canvas labels, 2264 canvas shapes), 134 covered canvas labels, 46 spheres scenes (live moments included), 78 of 78 canvas animations instrumented), live: 7 frames at two moments, PASS
+== 5.1: 4 of 4 pass, 0 fail, 258.1 s
