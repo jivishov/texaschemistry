@@ -1,0 +1,157 @@
+{
+ "deck": "unit4/slides-4-2.html",
+ "theme": "light",
+ "note": "Accepted intersections of a reference deck built before the no-overlap rule (review 01, F3 and F5): each entry is a frame and the A and B strings as the layout audit prints them. Written once from the refined runs of brief 01a (the union of several runs, since live moments move); reviewed by the orchestrator and the teacher, not by a tool. A new deck has no baseline.",
+ "entries": [
+  {
+   "frame": "s15f0",
+   "a": "canvas #s15-sim [NH4]: label \"+\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f0@live1",
+   "a": "canvas #s15-sim [NH4]: label \"+\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f0@live2",
+   "a": "canvas #s15-sim [NH4]: label \"+\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f1",
+   "a": "canvas #s15-sim [OH]: label \"−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f1@live1",
+   "a": "canvas #s15-sim [OH]: label \"−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f1@live2",
+   "a": "canvas #s15-sim [OH]: label \"−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f2",
+   "a": "canvas #s15-sim [NO3]: label \"−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f2@live1",
+   "a": "canvas #s15-sim [NO3]: label \"−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f2@live2",
+   "a": "canvas #s15-sim [NO3]: label \"−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f3",
+   "a": "canvas #s15-sim [CO3]: label \"2−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f3@live1",
+   "a": "canvas #s15-sim [CO3]: label \"2−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f3@live2",
+   "a": "canvas #s15-sim [CO3]: label \"2−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f4",
+   "a": "canvas #s15-sim [SO4]: label \"2−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f4@live1",
+   "a": "canvas #s15-sim [SO4]: label \"2−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f4@live2",
+   "a": "canvas #s15-sim [SO4]: label \"2−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f5",
+   "a": "canvas #s15-sim [PO4]: label \"3−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f5@live1",
+   "a": "canvas #s15-sim [PO4]: label \"3−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f5@live2",
+   "a": "canvas #s15-sim [PO4]: label \"3−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f6",
+   "a": "canvas #s15-sim [PO4]: label \"3−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f6@live1",
+   "a": "canvas #s15-sim [PO4]: label \"3−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f6@live2",
+   "a": "canvas #s15-sim [PO4]: label \"3−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f7",
+   "a": "canvas #s15-sim [PO4]: label \"3−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f7@live1",
+   "a": "canvas #s15-sim [PO4]: label \"3−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f7@live2",
+   "a": "canvas #s15-sim [PO4]: label \"3−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f8",
+   "a": "canvas #s15-sim [SO4]: label \"2−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f8@live1",
+   "a": "canvas #s15-sim [SO4]: label \"2−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f8@live2",
+   "a": "canvas #s15-sim [SO4]: label \"2−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f9",
+   "a": "canvas #s15-sim [SO4]: label \"2−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f9@live1",
+   "a": "canvas #s15-sim [SO4]: label \"2−\"",
+   "b": "circle"
+  },
+  {
+   "frame": "s15f9@live2",
+   "a": "canvas #s15-sim [SO4]: label \"2−\"",
+   "b": "circle"
+  }
+ ]
+}

@@ -1,0 +1,457 @@
+[
+  {
+    "n": "slide 2 coinScale tally: live, 8 coins counted one a second",
+    "pass": true,
+    "i": "{\"stage\":\"tally\",\"family\":\"hook\",\"coin\":\"nickel\",\"massPerCoin\":5,\"total\":null,\"count\":null,\"texts\":[],\"guess\":false,\"tallyCoins\":8,\"live\":true,\"minShape\":62,\"minFont\":36}"
+  },
+  {
+    "n": "slide 2 tally: labels at 36 px or more, shapes at 60 px or more",
+    "pass": true,
+    "i": "{\"font\":36,\"shape\":62}"
+  },
+  {
+    "n": "slide 2 coinScale scale: 2,000.0 g of coins, 5.000 g per nickel",
+    "pass": true,
+    "i": "{\"stage\":\"scale\",\"family\":\"hook\",\"coin\":\"nickel\",\"massPerCoin\":5,\"total\":2000,\"count\":null,\"texts\":[\"2,000.0 g\",\"5.000 g\"],\"guess\":false,\"tallyCoins\":0,\"live\":false,\"minShape\":62,\"minFont\":36}"
+  },
+  {
+    "n": "slide 2 coinScale reveal: 2,000.0 g ÷ 5.000 g = 400 nickels",
+    "pass": true,
+    "i": "{\"stage\":\"reveal\",\"family\":\"hook\",\"coin\":\"nickel\",\"massPerCoin\":5,\"total\":2000,\"count\":400,\"texts\":[\"2,000.0 g\",\"5.000 g\",\"400 nickels\"],\"guess\":false,\"tallyCoins\":0,\"live\":false,\"minShape\":62,\"minFont\":36}"
+  },
+  {
+    "n": "slide 2 reveal: labels at 36 px or more, shapes at 60 px or more",
+    "pass": true,
+    "i": "{\"font\":36,\"shape\":62}"
+  },
+  {
+    "n": "slide 6 coinScale zero: the empty bag, 0.0 g, zeroed",
+    "pass": true,
+    "i": "{\"stage\":\"zero\",\"family\":\"bank\",\"coin\":\"nickel\",\"massPerCoin\":5,\"reading\":\"0.0 g\",\"total\":0,\"zeroed\":true,\"bridge\":null,\"struck\":[],\"count\":null,\"check\":null,\"roll\":null,\"live\":false,\"minShape\":78,\"minFont\":36}"
+  },
+  {
+    "n": "slide 6 coinScale read: 1,250.0 g",
+    "pass": true,
+    "i": "{\"stage\":\"read\",\"family\":\"bank\",\"coin\":\"nickel\",\"massPerCoin\":5,\"reading\":\"1,250.0 g\",\"total\":1250,\"zeroed\":true,\"bridge\":null,\"struck\":[],\"count\":null,\"check\":null,\"roll\":null,\"live\":false,\"minShape\":224,\"minFont\":36}"
+  },
+  {
+    "n": "slide 6 coinScale divide: 1,250.0 g × 1 nickel / 5.000 g, the grams struck",
+    "pass": true,
+    "i": "{\"stage\":\"divide\",\"family\":\"bank\",\"coin\":\"nickel\",\"massPerCoin\":5,\"reading\":\"1,250.0 g\",\"total\":1250,\"zeroed\":true,\"bridge\":\"1,250.0 g × 1 nickel / 5.000 g\",\"struck\":[\"g\",\"g\"],\"count\":null,\"check\":null,\"roll\":null,\"live\":false,\"minShape\":224,\"minFont\":36}"
+  },
+  {
+    "n": "slide 6 coinScale count: 250 nickels; 250 × 5.000 g = 1,250.0 g",
+    "pass": true,
+    "i": "{\"stage\":\"count\",\"family\":\"bank\",\"coin\":\"nickel\",\"massPerCoin\":5,\"reading\":\"1,250.0 g\",\"total\":1250,\"zeroed\":true,\"bridge\":\"1,250.0 g × 1 nickel / 5.000 g\",\"struck\":[\"g\",\"g\"],\"count\":250,\"check\":\"250 × 5.000 g = 1,250.0 g\",\"roll\":null,\"live\":false,\"minShape\":224,\"minFont\":36}"
+  },
+  {
+    "n": "slide 6 count: labels at 36 px or more, shapes at 60 px or more",
+    "pass": true,
+    "i": "{\"font\":36,\"shape\":224}"
+  },
+  {
+    "n": "slide 6 coinScale roll (the check): 200.0 g, the answer 40 not drawn",
+    "pass": true,
+    "i": "{\"stage\":\"roll\",\"family\":\"bank\",\"coin\":\"nickel\",\"massPerCoin\":5,\"reading\":\"200.0 g\",\"total\":200,\"zeroed\":true,\"bridge\":null,\"struck\":[],\"count\":null,\"check\":null,\"roll\":{\"mass\":200,\"answer\":40,\"answerDrawn\":false},\"live\":false,\"minShape\":74,\"minFont\":36}"
+  },
+  {
+    "n": "slide 7 centJar: before 1982 3.11 g, after 1982 2.500 g, the jar 1,017.1 g",
+    "pass": true,
+    "i": "{\"stage\":\"jar\",\"old\":3.11,\"new\":2.5,\"jar\":1017.1,\"wrong\":null,\"sample\":null,\"sampleN\":100,\"average\":null,\"count\":null,\"countText\":null,\"between\":true,\"isotopes\":null,\"minShape\":60,\"minFont\":36}"
+  },
+  {
+    "n": "slide 7 centJar wrong: about 407 (too many), about 327 (too few)",
+    "pass": true,
+    "i": "[{\"divisor\":2.5,\"cents\":407,\"verdict\":\"too many\"},{\"divisor\":3.11,\"cents\":327,\"verdict\":\"too few\"}]"
+  },
+  {
+    "n": "slide 7 centJar: 267.69 g ÷ 100 = 2.6769 g",
+    "pass": true,
+    "i": "{\"stage\":\"average\",\"old\":3.11,\"new\":2.5,\"jar\":1017.1,\"wrong\":null,\"sample\":267.69,\"sampleN\":100,\"average\":2.6769,\"count\":null,\"countText\":null,\"between\":true,\"isotopes\":null,\"minShape\":60,\"minFont\":36}"
+  },
+  {
+    "n": "slide 7 centJar: 1,017.1 g ÷ 2.6769 g = about 380 cents, between the two masses",
+    "pass": true,
+    "i": "{\"stage\":\"count\",\"old\":3.11,\"new\":2.5,\"jar\":1017.1,\"wrong\":null,\"sample\":null,\"sampleN\":100,\"average\":2.6769,\"count\":380,\"countText\":\"about 380 cents\",\"between\":true,\"isotopes\":null,\"minShape\":60,\"minFont\":36}"
+  },
+  {
+    "n": "slide 7 count: labels at 36 px or more, shapes at 60 px or more",
+    "pass": true,
+    "i": "{\"font\":36,\"shape\":60}"
+  },
+  {
+    "n": "slide 7 centJar isotopes: the table's average mass, no isotope masses",
+    "pass": true,
+    "i": "{\"label\":\"isotopes\",\"cell\":\"Cu\",\"mass\":\"63.546\",\"isotopeMassesShown\":false}"
+  },
+  {
+    "n": "slide 8 countingUnits: a dozen is 12, a ream 500",
+    "pass": true,
+    "i": "{\"stage\":\"ream\",\"dozen\":12,\"ream\":500,\"mole\":null,\"exact\":null,\"rounded\":null,\"since\":null,\"constant\":null,\"symbol\":null,\"minShape\":62,\"minFont\":48}"
+  },
+  {
+    "n": "slide 8 countingUnits: exactly 6.02214076 × 10²³, rounded 6.022 × 10²³, since May 20, 2019",
+    "pass": true,
+    "i": "{\"stage\":\"exact\",\"dozen\":null,\"ream\":null,\"mole\":\"6.022 × 10²³\",\"exact\":\"6.02214076 × 10²³\",\"rounded\":\"6.022 × 10²³\",\"since\":\"May 20, 2019\",\"constant\":null,\"symbol\":\"mol\",\"minShape\":80,\"minFont\":36}"
+  },
+  {
+    "n": "slide 8 countingUnits: N_A = 6.022 × 10²³ mol⁻¹",
+    "pass": true,
+    "i": "\"NA = 6.022 × 10²³ mol⁻¹\""
+  },
+  {
+    "n": "slide 8 constant: labels at 36 px or more, shapes at 60 px or more",
+    "pass": true,
+    "i": "{\"font\":36,\"shape\":80}"
+  },
+  {
+    "n": "slide 9 howMany zoom: live, seven steps of × 1,000 to 10²¹",
+    "pass": true,
+    "i": "{\"stage\":\"zoom\",\"perStep\":1000,\"steps\":7,\"top\":\"10²¹\",\"last\":602,\"mole\":\"6.022 × 10²³\",\"water\":null,\"ladder\":null,\"exps\":[3,6,9,12,15,18,21],\"check\":true,\"live\":true,\"minShape\":60,\"minFont\":36}"
+  },
+  {
+    "n": "slide 9 howMany mole: × 602 more, 6.022 × 10²³",
+    "pass": true,
+    "i": "{\"stage\":\"mole\",\"perStep\":1000,\"steps\":7,\"top\":\"10²¹\",\"last\":602,\"mole\":\"6.022 × 10²³\",\"water\":null,\"ladder\":[\"10³\",\"10⁶\",\"10⁹\",\"10¹²\",\"10¹⁵\",\"10¹⁸\",\"10²¹\",\"× 602\"],\"exps\":[3,6,9,12,15,18,21],\"check\":true,\"live\":false,\"minShape\":296,\"minFont\":36}"
+  },
+  {
+    "n": "slide 9 howMany spoon: one mole of water about 18 g",
+    "pass": true,
+    "i": "{\"stage\":\"spoon\",\"perStep\":1000,\"steps\":7,\"top\":\"10²¹\",\"last\":602,\"mole\":\"6.022 × 10²³\",\"water\":18,\"ladder\":[\"10³\",\"10⁶\",\"10⁹\",\"10¹²\",\"10¹⁵\",\"10¹⁸\",\"10²¹\",\"× 602\"],\"exps\":[3,6,9,12,15,18,21],\"check\":true,\"live\":false,\"minShape\":148,\"minFont\":36}"
+  },
+  {
+    "n": "slide 9 spoon: labels at 36 px or more, shapes at 60 px or more",
+    "pass": true,
+    "i": "{\"font\":36,\"shape\":148}"
+  },
+  {
+    "n": "slide 10 moleKinds compare: 26.982 g and 63.546 g, the same 6.022 × 10²³ atoms",
+    "pass": true,
+    "i": "{\"stage\":\"compare\",\"masses\":{\"Al\":26.982,\"Cu\":63.546},\"counts\":{\"Al\":\"6.022 × 10²³\",\"Cu\":\"6.022 × 10²³\"},\"equal\":true,\"heavier\":\"Cu\",\"o2Ratio\":null,\"names\":null,\"radii\":{\"Al\":121,\"Cu\":132,\"Na_ion\":102,\"Cl_ion\":181},\"minShape\":63.9,\"minFont\":36}"
+  },
+  {
+    "n": "slide 10 moleKinds oxygen: O₂ holds twice the atoms",
+    "pass": true,
+    "i": "{\"stage\":\"oxygen\",\"masses\":{\"Al\":26.982,\"Cu\":63.546},\"counts\":null,\"equal\":false,\"heavier\":\"Al\",\"o2Ratio\":2,\"names\":null,\"radii\":{\"Al\":121,\"Cu\":132,\"Na_ion\":102,\"Cl_ion\":181},\"minShape\":63.4,\"minFont\":36}"
+  },
+  {
+    "n": "slide 10 moleKinds four: atoms, molecules, formula units, ions; Na⁺ 102 pm, Cl⁻ 181 pm",
+    "pass": true,
+    "i": "{\"stage\":\"four\",\"masses\":{\"Al\":26.982,\"Cu\":63.546},\"counts\":null,\"equal\":false,\"heavier\":\"Al\",\"o2Ratio\":null,\"names\":[\"atoms\",\"molecules\",\"formula units\",\"ions\"],\"radii\":{\"Al\":121,\"Cu\":132,\"Na_ion\":102,\"Cl_ion\":181},\"minShape\":63.2,\"minFont\":40}"
+  },
+  {
+    "n": "slide 10 four: labels at 36 px or more, shapes at 60 px or more",
+    "pass": true,
+    "i": "{\"font\":40,\"shape\":63.2}"
+  },
+  {
+    "n": "slide 11 secondsLine line: live",
+    "pass": true,
+    "i": "{\"stage\":\"line\",\"yearS\":31560000,\"earthYears\":4500000000,\"universeYears\":13800000000,\"moleYears\":19080000000000000,\"moleShown\":null,\"times\":1380000,\"timesShown\":null,\"earthTimes\":4.2,\"water\":null,\"order\":true,\"moleSeconds\":6.022e+23,\"yearsCheck\":true,\"timesCheck\":true,\"live\":true,\"minShape\":156,\"minFont\":36}"
+  },
+  {
+    "n": "slide 11 secondsLine: 6.022 × 10²³ s ÷ 3.156 × 10⁷ s = 1.908 × 10¹⁶ years",
+    "pass": true,
+    "i": "{\"stage\":\"mole\",\"yearS\":31560000,\"earthYears\":4500000000,\"universeYears\":13800000000,\"moleYears\":19080000000000000,\"moleShown\":\"about 1.9 × 10¹⁶ years\",\"times\":1380000,\"timesShown\":null,\"earthTimes\":4.2,\"water\":null,\"order\":true,\"moleSeconds\":6.022e+23,\"yearsCheck\":true,\"timesCheck\":true,\"live\":false,\"minShape\":null,\"minFont\":36}"
+  },
+  {
+    "n": "slide 11 secondsLine times: about 1.4 million times 13.8 billion years; Earth 4.5 billion: about 4 million",
+    "pass": true,
+    "i": "{\"stage\":\"times\",\"yearS\":31560000,\"earthYears\":4500000000,\"universeYears\":13800000000,\"moleYears\":19080000000000000,\"moleShown\":\"about 1.9 × 10¹⁶ years\",\"times\":1380000,\"timesShown\":\"about 1.4 million times\",\"earthTimes\":4.2,\"water\":null,\"order\":true,\"moleSeconds\":6.022e+23,\"yearsCheck\":true,\"timesCheck\":true,\"live\":false,\"minShape\":null,\"minFont\":36}"
+  },
+  {
+    "n": "slide 11 times: labels at 36 px or more, shapes at 60 px or more",
+    "pass": true,
+    "i": "{\"font\":36,\"shape\":null}"
+  },
+  {
+    "n": "slide 11 secondsLine spoon: about 18 g",
+    "pass": true,
+    "i": "{\"stage\":\"spoon\",\"yearS\":31560000,\"earthYears\":4500000000,\"universeYears\":13800000000,\"moleYears\":19080000000000000,\"moleShown\":\"about 1.9 × 10¹⁶ years\",\"times\":1380000,\"timesShown\":\"about 1.4 million times\",\"earthTimes\":4.2,\"water\":18,\"order\":true,\"moleSeconds\":6.022e+23,\"yearsCheck\":true,\"timesCheck\":true,\"live\":false,\"minShape\":68,\"minFont\":36}"
+  },
+  {
+    "n": "slide 12 moleHistory: 1811, 1865, 1890s, 1909, 1971, 2019; voted November 16, 2018; exact since May 20, 2019",
+    "pass": true,
+    "i": "{\"stage\":\"exact\",\"ticks\":[{\"year\":\"1811\",\"name\":\"Avogadro\"},{\"year\":\"1865\",\"name\":\"Loschmidt\"},{\"year\":\"1890s\",\"name\":\"Ostwald\"},{\"year\":\"1909\",\"name\":\"Perrin\"},{\"year\":\"1971\",\"name\":\"SI\"},{\"year\":\"2019\",\"name\":\"exact\"}],\"card\":\"2018 and 2019\",\"lines\":[\"Voted November 16, 2018.\",\"Exact since May 20, 2019:\",\"6.02214076 × 10²³\"],\"oldDefinition\":\"12 g of carbon-12\",\"vote\":\"November 16, 2018\",\"since\":\"May 20, 2019\",\"exact\":\"6.02214076 × 10²³\",\"minShape\":96,\"minFont\":36}"
+  },
+  {
+    "n": "slide 12 exact: labels at 36 px or more, shapes at 60 px or more",
+    "pass": true,
+    "i": "{\"font\":36,\"shape\":96}"
+  },
+  {
+    "n": "slide 12 moleHistory si: the old definition, 12 g of carbon-12",
+    "pass": true,
+    "i": "[\"The mole, an SI base unit.\",\"Defined by 12 g\",\"of carbon-12.\"]"
+  },
+  {
+    "n": "slide 13 siliconSphere crystal: 95 atoms in 2 × 2 × 2 diamond cubes, turning",
+    "pass": true,
+    "i": "{\"stage\":\"crystal\",\"edge\":543.102,\"perCube\":8,\"atoms\":95,\"litAtoms\":18,\"bonds\":128,\"edges\":54,\"radius\":111,\"cornerFaceInside\":8,\"result\":null,\"live\":true,\"minShape\":61.3,\"minFont\":36}"
+  },
+  {
+    "n": "slide 13 siliconSphere cube: edge 543.102 pm, 8 atoms per cube",
+    "pass": true,
+    "i": "{\"stage\":\"cube\",\"edge\":543.102,\"perCube\":8,\"atoms\":95,\"litAtoms\":18,\"bonds\":128,\"edges\":54,\"radius\":111,\"cornerFaceInside\":8,\"result\":null,\"live\":true,\"minShape\":61.3,\"minFont\":36}"
+  },
+  {
+    "n": "slide 13 cube: labels at 36 px or more, shapes at 60 px or more",
+    "pass": true,
+    "i": "{\"font\":36,\"shape\":61.3}"
+  },
+  {
+    "n": "slide 13 siliconSphere divide: 6.022 × 10²³",
+    "pass": true,
+    "i": "{\"stage\":\"divide\",\"edge\":543.102,\"perCube\":8,\"atoms\":95,\"litAtoms\":18,\"bonds\":128,\"edges\":54,\"radius\":111,\"cornerFaceInside\":8,\"result\":\"6.022 × 10²³\",\"live\":false,\"minShape\":61.3,\"minFont\":36}"
+  },
+  {
+    "n": "slide 16 moleMap Cu/cancel: one unit struck, the other circled",
+    "pass": true,
+    "i": "{\"stage\":\"Cu/cancel\",\"key\":\"Cu\",\"dir\":\"moles to particles\",\"given\":\"2.00 mol\",\"factor\":\"6.022 × 10²³ atoms / 1 mol\",\"canceled\":\"mol\",\"remains\":\"atoms\",\"result\":null,\"particle\":\"Cu atoms\",\"check\":null,\"numbers\":[2,1.2e+24],\"minShape\":184,\"minFont\":36}"
+  },
+  {
+    "n": "slide 16 moleMap Cu/result: 1.20 × 10²⁴ Cu atoms",
+    "pass": true,
+    "i": "{\"stage\":\"Cu/result\",\"key\":\"Cu\",\"dir\":\"moles to particles\",\"given\":\"2.00 mol\",\"factor\":\"6.022 × 10²³ atoms / 1 mol\",\"canceled\":\"mol\",\"remains\":\"atoms\",\"result\":\"1.20 × 10²⁴ Cu atoms\",\"particle\":\"Cu atoms\",\"check\":\"Check: 2.00 mol > 1 mol, so > 6.022 × 10²³\",\"numbers\":[2,1.2e+24],\"minShape\":184,\"minFont\":36}"
+  },
+  {
+    "n": "slide 16 Cu: labels at 36 px or more, shapes at 60 px or more",
+    "pass": true,
+    "i": "{\"font\":36,\"shape\":184}"
+  },
+  {
+    "n": "slide 17 moleMap Fe/cancel: one unit struck, the other circled",
+    "pass": true,
+    "i": "{\"stage\":\"Fe/cancel\",\"key\":\"Fe\",\"dir\":\"particles to moles\",\"given\":\"9.03 × 10²³ Fe atoms\",\"factor\":\"1 mol / 6.022 × 10²³ Fe atoms\",\"canceled\":\"Fe atoms\",\"remains\":\"mol\",\"result\":null,\"particle\":\"Fe atoms\",\"check\":null,\"numbers\":[1.5,9.03e+23],\"minShape\":184,\"minFont\":36}"
+  },
+  {
+    "n": "slide 17 moleMap Fe/result: 1.50 mol",
+    "pass": true,
+    "i": "{\"stage\":\"Fe/result\",\"key\":\"Fe\",\"dir\":\"particles to moles\",\"given\":\"9.03 × 10²³ Fe atoms\",\"factor\":\"1 mol / 6.022 × 10²³ Fe atoms\",\"canceled\":\"Fe atoms\",\"remains\":\"mol\",\"result\":\"1.50 mol\",\"particle\":\"Fe atoms\",\"check\":\"Check: 9.03 is 1.5 times 6.022\",\"numbers\":[1.5,9.03e+23],\"minShape\":184,\"minFont\":36}"
+  },
+  {
+    "n": "slide 17 Fe: labels at 36 px or more, shapes at 60 px or more",
+    "pass": true,
+    "i": "{\"font\":36,\"shape\":184}"
+  },
+  {
+    "n": "slide 20 moleMap CO2m/cancel: one unit struck, the other circled",
+    "pass": true,
+    "i": "{\"stage\":\"CO2m/cancel\",\"key\":\"CO2m\",\"dir\":\"moles to particles\",\"given\":\"0.250 mol\",\"factor\":\"6.022 × 10²³ molecules / 1 mol\",\"canceled\":\"mol\",\"remains\":\"molecules\",\"result\":null,\"particle\":\"molecules\",\"check\":null,\"numbers\":[0.25,1.51e+23],\"minShape\":184,\"minFont\":36}"
+  },
+  {
+    "n": "slide 20 moleMap CO2m/result: 1.51 × 10²³ molecules",
+    "pass": true,
+    "i": "{\"stage\":\"CO2m/result\",\"key\":\"CO2m\",\"dir\":\"moles to particles\",\"given\":\"0.250 mol\",\"factor\":\"6.022 × 10²³ molecules / 1 mol\",\"canceled\":\"mol\",\"remains\":\"molecules\",\"result\":\"1.51 × 10²³ molecules\",\"particle\":\"molecules\",\"check\":\"Check: a quarter of 6.022 × 10²³\",\"numbers\":[0.25,1.51e+23],\"minShape\":184,\"minFont\":36}"
+  },
+  {
+    "n": "slide 20 CO2m: labels at 36 px or more, shapes at 60 px or more",
+    "pass": true,
+    "i": "{\"font\":36,\"shape\":184}"
+  },
+  {
+    "n": "slide 20 moleMap H2Om/cancel: one unit struck, the other circled",
+    "pass": true,
+    "i": "{\"stage\":\"H2Om/cancel\",\"key\":\"H2Om\",\"dir\":\"particles to moles\",\"given\":\"1.81 × 10²⁴ molecules\",\"factor\":\"1 mol / 6.022 × 10²³ molecules\",\"canceled\":\"molecules\",\"remains\":\"mol\",\"result\":null,\"particle\":\"molecules\",\"check\":null,\"numbers\":[3.01,1.81e+24],\"minShape\":184,\"minFont\":36}"
+  },
+  {
+    "n": "slide 20 moleMap H2Om/result: 3.01 mol",
+    "pass": true,
+    "i": "{\"stage\":\"H2Om/result\",\"key\":\"H2Om\",\"dir\":\"particles to moles\",\"given\":\"1.81 × 10²⁴ molecules\",\"factor\":\"1 mol / 6.022 × 10²³ molecules\",\"canceled\":\"molecules\",\"remains\":\"mol\",\"result\":\"3.01 mol\",\"particle\":\"molecules\",\"check\":\"Check: 18.1 is about 3 × 6.022\",\"numbers\":[3.01,1.81e+24],\"minShape\":184,\"minFont\":36}"
+  },
+  {
+    "n": "slide 20 H2Om: labels at 36 px or more, shapes at 60 px or more",
+    "pass": true,
+    "i": "{\"font\":36,\"shape\":184}"
+  },
+  {
+    "n": "slide 16 moleMap map: the bridge 6.022 × 10²³ per mole",
+    "pass": true,
+    "i": "{\"stage\":\"map\",\"key\":\"map\",\"bridge\":\"6.022 × 10²³ per mole\",\"stations\":[\"moles\",\"particles\"],\"minShape\":184,\"minFont\":40}"
+  },
+  {
+    "n": "slide 17 moleMap half: 3.011 × 10²³ = 0.5000 mol",
+    "pass": true,
+    "i": "{\"stage\":\"half\",\"key\":\"half\",\"particles\":3.011e+23,\"moles\":0.5,\"label\":\"Moles can be fractions\",\"minShape\":184,\"minFont\":36}"
+  },
+  {
+    "n": "slide 21 moleMap energy: 496 kJ/mol ÷ 6.022 × 10²³ = 8.24 × 10⁻¹⁹ J per atom",
+    "pass": true,
+    "i": "{\"stage\":\"energy/one\",\"key\":\"energy\",\"perMole\":496,\"perMoleShown\":\"496 kJ\",\"perAtom\":\"8.24 × 10⁻¹⁹ J\",\"perAtomValue\":8.24e-19,\"why\":null,\"minShape\":79.7,\"minFont\":36}"
+  },
+  {
+    "n": "slide 21 energy: labels at 36 px or more, shapes at 60 px or more",
+    "pass": true,
+    "i": "{\"font\":36,\"shape\":79.7}"
+  },
+  {
+    "n": "slide 18 naclCrystal unit: one Na⁺ and one Cl⁻ lit; Shannon radii; 564 pm cell; turning",
+    "pass": true,
+    "i": "{\"stage\":\"unit\",\"radii\":{\"Na\":102,\"Cl\":181},\"cell\":564,\"ions\":27,\"cations\":13,\"lit\":[\"Cl⁻\",\"Na⁺\"],\"count\":null,\"particle\":\"formula units\",\"wrong\":null,\"wrongParticle\":null,\"numbers\":{\"count\":[4.5,2.71e+24],\"wrong\":[2.5,1.51e+24]},\"live\":true,\"minShape\":72.8,\"minFont\":40}"
+  },
+  {
+    "n": "slide 18 naclCrystal count: 4.50 mol × 6.022 × 10²³ = 2.71 × 10²⁴ formula units",
+    "pass": true,
+    "i": "{\"stage\":\"count\",\"radii\":{\"Na\":102,\"Cl\":181},\"cell\":564,\"ions\":27,\"cations\":13,\"lit\":[\"Cl⁻\",\"Na⁺\"],\"count\":\"2.71 × 10²⁴\",\"particle\":\"formula units\",\"wrong\":null,\"wrongParticle\":null,\"numbers\":{\"count\":[4.5,2.71e+24],\"wrong\":[2.5,1.51e+24]},\"live\":false,\"minShape\":72.8,\"minFont\":40}"
+  },
+  {
+    "n": "slide 18 naclCrystal wrong: 2.50 mol → 1.51 × 10²⁴, \"molecules\" is the wrong particle",
+    "pass": true,
+    "i": "{\"stage\":\"wrong\",\"radii\":{\"Na\":102,\"Cl\":181},\"cell\":564,\"ions\":27,\"cations\":13,\"lit\":[\"Cl⁻\",\"Na⁺\"],\"count\":null,\"particle\":\"formula units\",\"wrong\":\"1.51 × 10²⁴\",\"wrongParticle\":\"molecules\",\"numbers\":{\"count\":[4.5,2.71e+24],\"wrong\":[2.5,1.51e+24]},\"live\":false,\"minShape\":72.8,\"minFont\":40}"
+  },
+  {
+    "n": "slide 18 wrong: labels at 36 px or more, shapes at 60 px or more",
+    "pass": true,
+    "i": "{\"font\":40,\"shape\":72.8}"
+  },
+  {
+    "n": "slide 19 atomCounter H2O/mol: 1 mol H₂O → 2 mol H, 1 mol O",
+    "pass": true,
+    "i": "{\"stage\":\"H2O/mol\",\"formula\":\"H₂O\",\"subscripts\":{\"H\":2,\"O\":1},\"molIn\":1,\"molOut\":{\"H\":2,\"O\":1},\"atomsOut\":null,\"rows\":[\"H atoms: 1 mol × 2 = 2 mol\",\"O atoms: 1 mol × 1 = 1 mol\"],\"ions\":false,\"minShape\":63.2,\"minFont\":36}"
+  },
+  {
+    "n": "slide 19 atomCounter CO2/mol: 2.00 mol × 2 = 4.00 mol O",
+    "pass": true,
+    "i": "{\"stage\":\"CO2/mol\",\"formula\":\"CO₂\",\"subscripts\":{\"C\":1,\"O\":2},\"molIn\":2,\"molOut\":{\"O\":4},\"atomsOut\":null,\"rows\":[\"O atoms: 2.00 mol × 2 = 4.00 mol\"],\"ions\":false,\"minShape\":83.2,\"minFont\":36}"
+  },
+  {
+    "n": "slide 19 atomCounter CO2/atoms: 2.41 × 10²⁴ O atoms",
+    "pass": true,
+    "i": "{\"stage\":\"CO2/atoms\",\"formula\":\"CO₂\",\"subscripts\":{\"C\":1,\"O\":2},\"molIn\":2,\"molOut\":{\"O\":4},\"atomsOut\":\"2.41 × 10²⁴\",\"rows\":[\"O atoms: 4.00 mol × 6.022 × 10²³\",\"O atoms: 2.41 × 10²⁴ O atoms\"],\"ions\":false,\"minShape\":83.2,\"minFont\":36}"
+  },
+  {
+    "n": "slide 19 atomCounter NaCl/mol: 1 mol Na⁺ and 1 mol Cl⁻",
+    "pass": true,
+    "i": "{\"stage\":\"NaCl/mol\",\"formula\":\"NaCl\",\"subscripts\":{\"Na\":1,\"Cl\":1},\"molIn\":1,\"molOut\":{\"Na⁺\":1,\"Cl⁻\":1},\"atomsOut\":null,\"rows\":[\"Na⁺ ions: 1 mol\",\"Cl⁻ ions: 1 mol\"],\"ions\":true,\"minShape\":81.6,\"minFont\":36}"
+  },
+  {
+    "n": "slide 19 NaCl: labels at 36 px or more, shapes at 60 px or more",
+    "pass": true,
+    "i": "{\"font\":36,\"shape\":81.6}"
+  },
+  {
+    "n": "slide 20 atomCounter NH3/mol: 0.500 mol × 3 = 1.50 mol H",
+    "pass": true,
+    "i": "{\"stage\":\"NH3/mol\",\"formula\":\"NH₃\",\"subscripts\":{\"N\":1,\"H\":3},\"molIn\":0.5,\"molOut\":{\"H\":1.5},\"atomsOut\":null,\"rows\":[\"H atoms: 0.500 mol × 3 = 1.50 mol\"],\"ions\":false,\"minShape\":63.2,\"minFont\":36}"
+  },
+  {
+    "n": "slide 6: the check frame shows s06-sim at \"roll\"",
+    "pass": true,
+    "i": "\"roll\""
+  },
+  {
+    "n": "slide 7: the check frame shows s07-sim at \"sample\"",
+    "pass": true,
+    "i": "\"sample\""
+  },
+  {
+    "n": "slide 8: the check frame shows s08-sim at \"constant\"",
+    "pass": true,
+    "i": "\"constant\""
+  },
+  {
+    "n": "slide 9: the check frame shows s09-sim at \"spoon\"",
+    "pass": true,
+    "i": "\"spoon\""
+  },
+  {
+    "n": "slide 10: the check frame shows s10-sim at \"compare\"",
+    "pass": true,
+    "i": "\"compare\""
+  },
+  {
+    "n": "slide 11: the check frame shows s11-sim at \"times\"",
+    "pass": true,
+    "i": "\"times\""
+  },
+  {
+    "n": "slide 13: the check frame shows s13-sim at \"cube\"",
+    "pass": true,
+    "i": "\"cube\""
+  },
+  {
+    "n": "slide 16: the check frame shows s16-sim at \"Cu/result\"",
+    "pass": true,
+    "i": "\"Cu/result\""
+  },
+  {
+    "n": "slide 17: the check frame shows s17-sim at \"half\"",
+    "pass": true,
+    "i": "\"half\""
+  },
+  {
+    "n": "slide 18: the check frame shows s18-sim at \"unit\"",
+    "pass": true,
+    "i": "\"unit\""
+  },
+  {
+    "n": "slide 19: the check frame shows s19-sim at \"CO2/mol\"",
+    "pass": true,
+    "i": "\"CO2/mol\""
+  },
+  {
+    "n": "slide 15 warm-up answers: 200, 6.022 × 10²³, the four particles",
+    "pass": true,
+    "i": "[\"200(1,000.0 g ÷ 5.000 g)\",\"6.022 × 1023(exactly 6.02214076 × 1023)\",\"atoms, molecules,formula units, ions\"]"
+  },
+  {
+    "n": "slide 20 you-do answers: 1.50 mol of H atoms; 7.23 × 10²⁴ H atoms; 0.042 mol",
+    "pass": true,
+    "i": "[\"1.50 mol of H atoms\",\"12.0 mol × 6.022 × 1023= 7.23 × 1024 H atoms\",\"0.042 mol fewer than 6.022 × 1023,so less than one mole\"]"
+  },
+  {
+    "n": "slide 14 table: nickels, cents, atoms; 5.000 g; the average; moles of 6.022 × 10²³; the particles named",
+    "pass": true,
+    "i": "[\"same mass, too many\",\"two masses\",\"too small, too many\",\"divide by 5.000 g\",\"divide by the average\",\"count in moles of 6.022 × 1023\",\"nickels\",\"cents\",\"atoms, molecules, formula units or ions\"]"
+  },
+  {
+    "n": "slide 27 review lines: slides 6 and 7; 8 to 13 and 21; 16 to 18; 19 and 20",
+    "pass": true,
+    "i": "[\"Review: slides 6 and 7\",\"Review: slides 8 to 13 and 21\",\"Review: slides 16 to 18\",\"Review: slides 19 and 20\"]"
+  },
+  {
+    "n": "slide 26 the three predictions: the same number of atoms (B), formula units (B), 2 mol (B), with their reasons",
+    "pass": true,
+    "i": "[{\"right\":\"the same number of atoms\",\"letter\":\"B\",\"reason\":\"Mass of one moleAl 26.982 gCu 63.546 gA mole is a count. The two samples hold the same number of atoms.\"},{\"right\":\"formula units\",\"letter\":\"B\",\"reason\":\"Sodium chloride has no molecules. One formula unit is one Na+ and one Cl−.\"},{\"right\":\"2 mol\",\"letter\":\"B\",\"reason\":\"The subscript 2 multiplies: two H atoms in every molecule.\"}]"
+  },
+  {
+    "n": "slide 26 answers are the slide 4 options B",
+    "pass": true,
+    "i": "[[\"the same mass\",\"the same number of atoms\",\"the same mass and number\"],[\"molecules\",\"formula units\",\"atoms\"],[\"1 mol\",\"2 mol\",\"6.022 × 1023 mol\"]]"
+  },
+  {
+    "n": "slide 5 the eight Spanish cognates of the lesson sheet",
+    "pass": true,
+    "i": "[[\"mole\",\"mol\"],[\"Avogadro's number\",\"número de Avogadro\"],[\"Avogadro constant\",\"constante de Avogadro\"],[\"amount of substance\",\"cantidad de sustancia\"],[\"molecule\",\"molécula\"],[\"formula unit\",\"unidad fórmula\"],[\"chemical formula\",\"fórmula química\"],[\"subscript\",\"subíndice\"]]"
+  },
+  {
+    "n": "slide 5 the cognates match the reading's glossary (unit5/reading-5-1.html)",
+    "pass": true,
+    "i": "[\"mole: mol\",\"Avogadro's number: número de Avogadro\",\"Avogadro constant: constante de Avogadro\",\"amount of substance: cantidad de sustancia\",\"molecule: molécula\",\"formula unit: unidad fórmula\",\"chemical formula: fórmula química\",\"subscript: subíndice\"]"
+  },
+  {
+    "n": "slide 5 the Unit 5 legend: grams, moles, particles, cation, anion, atom",
+    "pass": true,
+    "i": "[\"ggrams (mass)\",\"molmoles (amount)\",\"#particles (number)\",\"+cation\",\"−anion\",\"Oatom (CPK color = element)\"]"
+  },
+  {
+    "n": "slides 10 and 19: \"Atom colors show the element, not the charge.\"",
+    "pass": true,
+    "i": "[\"Atom colors show the element, not the charge.\",\"Atom colors show the element, not the charge.\"]"
+  },
+  {
+    "n": "eleven checks on slides 6, 7, 8, 9, 10, 11, 13, 16, 17, 18, 19",
+    "pass": true,
+    "i": "[6,7,8,9,10,11,13,16,17,18,19]"
+  },
+  {
+    "n": "registry: 11 checks and periods [[1,14],[15,28]] match the deck",
+    "pass": true,
+    "i": "{\"checks\":11,\"periods\":\"1111111111111122222222222222\"}"
+  },
+  {
+    "n": "no console errors",
+    "pass": true,
+    "i": "[]"
+  }
+]

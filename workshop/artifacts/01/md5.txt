@@ -1,0 +1,29 @@
+# step 0 baseline (before any change), step 2 after adopting the kit, step 7 after the kit changes; <scratchpad> = this session's scratchpad
+## step 0
+2026-11-06T13:41:03Z
+ebd342f1ee0e11c47157141cf3b2a59b  unit4/slides-4-1.html
+c3fa219a806963f9a66c3baf643153f4  unit4/slides-4-2.html
+ed3bf8e23e1616d95014f0614c74e8d1  unit4/blueprint.html
+0b7dbba88781ca560acdd200ac320a1f  unit5/blueprint.html
+194646 unit4/slides-4-1.html
+203769 unit4/slides-4-2.html
+ 44978 unit4/blueprint.html
+ 57938 unit5/blueprint.html
+501331 total
+## step 2: python3 tools/slides-kit/build.py --all after adopting the kit
+2026-11-06T13:43:50Z
+4.1: unit4/slides-4-1.html  194646 bytes, 2077 lines, md5 ebd342f1ee0e11c47157141cf3b2a59b
+4.2: unit4/slides-4-2.html  203769 bytes, 2153 lines, md5 c3fa219a806963f9a66c3baf643153f4
+## step 7: python3 tools/slides-kit/build.py --all after the kit changes, then md5sum and wc -c
+2026-11-06T14:10:52Z
+4.1: unit4/slides-4-1.html  194646 bytes, 2077 lines, md5 ebd342f1ee0e11c47157141cf3b2a59b
+4.2: unit4/slides-4-2.html  203769 bytes, 2153 lines, md5 c3fa219a806963f9a66c3baf643153f4
+ebd342f1ee0e11c47157141cf3b2a59b  unit4/slides-4-1.html
+c3fa219a806963f9a66c3baf643153f4  unit4/slides-4-2.html
+ed3bf8e23e1616d95014f0614c74e8d1  unit4/blueprint.html
+0b7dbba88781ca560acdd200ac320a1f  unit5/blueprint.html
+194646 unit4/slides-4-1.html
+203769 unit4/slides-4-2.html
+ 44978 unit4/blueprint.html
+ 57938 unit5/blueprint.html
+501331 total

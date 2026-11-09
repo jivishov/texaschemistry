@@ -1,0 +1,15 @@
+== 5.1 (scratch deck): /tmp/claude-0/-home-user-texaschemistry/fd062df9-fc63-5e0b-9c93-813ea3f31b1c/scratchpad/scratch51.html
+   out /tmp/claude-0/-home-user-texaschemistry/fd062df9-fc63-5e0b-9c93-813ea3f31b1c/scratchpad/bench-out/5-1, theme both, matrix off
+   scratch deck: EMPTY_MAX=1 for walk and layout (emptiness gate off); every other gate unchanged
+  PASS  walk light           99.4 s  walk light: 78 states, max empty 17% (s34f0), PASS
+  PASS  walk dark            98.0 s  walk dark: 78 states, max empty 17% (s34f0), PASS
+  PASS  back light           39.8 s  back: 78 forward, 78 back, PASS
+  PASS  back dark            40.5 s  back: 78 forward, 78 back, PASS
+  PASS  fonts light          80.9 s  fonts: PASS
+  PASS  render3d              2.9 s  render3d: PASS
+  PASS  extras                5.6 s  extras: PASS
+  PASS  zoom light          192.4 s  zoom light: 338 zoomed states over 78 frames (re-flow 10, transform 328), animation 78, part 250, caption 10; min fill 82%; Back tests 78; PASS
+  PASS  zoom dark           191.7 s  zoom dark: 338 zoomed states over 78 frames (re-flow 10, transform 328), animation 78, part 250, caption 10; min fill 82%; Back tests 78; PASS
+  PASS  layout light         30.3 s  layout light: 78 frames, 0 visible option lists (), max empty 17% (s34f0), gate 100%, clipped or ellipsized text: 0, overlap: 0 intersections on 0 frames, no baseline (3997 boxes (525 DOM boxes, 1208 canvas labels, 2264 canvas shapes), 134 covered canvas labels, 46 spheres scenes (live moments included), 78 of 78 canvas animations instrumented), live: 7 frames at two moments, PASS
+  PASS  layout dark          30.4 s  layout dark: 78 frames, 0 visible option lists (), max empty 17% (s34f0), gate 100%, clipped or ellipsized text: 0, overlap: 0 intersections on 0 frames, no baseline (3997 boxes (525 DOM boxes, 1208 canvas labels, 2264 canvas shapes), 134 covered canvas labels, 46 spheres scenes (live moments included), 78 of 78 canvas animations instrumented), live: 7 frames at two moments, PASS
+== 5.1: 11 of 11 pass, 0 fail, 811.9 s

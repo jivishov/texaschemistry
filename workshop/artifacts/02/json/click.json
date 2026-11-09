@@ -1,0 +1,282 @@
+{
+  "checks": 11,
+  "picks": 3,
+  "res": [
+    {
+      "n": "s4f0 s04-q1 option A: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[0],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f0 s04-q1 option B: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[1],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f0 s04-q1 option C: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[2],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f1 s04-q2 option A: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[0],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f1 s04-q2 option B: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[1],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f1 s04-q2 option C: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[2],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f2 s04-q3 option A: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[0],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f2 s04-q3 option B: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[1],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s4f2 s04-q3 option C: highlighted only, no grading",
+      "pass": true,
+      "i": "{\"picked\":[2],\"graded\":0,\"fb\":0}"
+    },
+    {
+      "n": "s6f6 s06-check click A (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"Divide: 200.0 g ÷ 5.000 g = 40.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s6f6 s06-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"That multiplies the two masses. Divide by the mass of one nickel.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s6f6 s06-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"200 is the mass in grams, not the count. Divide by 5.000 g.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s6 s06-check Next: the answer shows, s06-a is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s06-a\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s7f9 s07-check click A (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"The jar's own average is the right divisor.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s7f9 s07-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"That works only if the jar holds equal numbers of each kind.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s7f9 s07-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Dividing by the lighter cent counts too many coins.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s7 s07-check Next: the answer shows, s07-a is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s07-a\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s8f7 s08-check click A (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"A mole counts particles, like a dozen counts eggs.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s8f7 s08-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"A mole is a count. One mole of different substances has different masses.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s8f7 s08-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"A mole is a count. One mole of different substances fills different volumes.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s8 s08-check Next: the answer shows, s08-a is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s08-a\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s9f8 s09-check click A (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"A mole of water is about 18 g, a spoonful.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s9f8 s09-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"A mole is a count, not one gram. One mole of water is about 18 g.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s9f8 s09-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"6.022 × 10²³ is the number of molecules, not the mass in grams.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s9 s09-check Next: the answer shows, s09-a is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s09-a\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s10f8 s10-check click A (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"Same count; copper atoms are heavier, so the copper sample is heavier.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s10f8 s10-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Each element's atoms have their own mass, so the moles differ in mass.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s10f8 s10-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"A mole always holds 6.022 × 10²³ particles, whatever their size.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s10 s10-check Next: the answer shows, s10-a is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s10-a\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s11f9 s11-check click A (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"10¹⁶ ÷ 10⁹ = 10⁷, and 1.9 ÷ 4.5 ≈ 0.4: about 4 × 10⁶.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s11f9 s11-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Divide the powers of ten carefully: 10¹⁶ ÷ 10⁹ = 10⁷.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s11f9 s11-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"1.4 million is for the universe. Earth is younger, so more times.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s11 s11-check Next: the answer shows, s11-a is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s11-a\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s13f7 s13-check click A (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"Volume, density and atom spacing give the count.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s13f7 s13-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"The spheres counted atoms. Since 2019 the kilogram is defined by the Planck constant.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s13f7 s13-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"The project counted atoms. It did not compare their sizes.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s13 s13-check Next: the answer shows, s13-a is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s13-a\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s16f6 s16-check click A (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"mol × (particles / mol) = particles.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s16f6 s16-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Dividing gives a tiny number, smaller than one particle. Check the units.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s16f6 s16-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"That would give a mass. To count particles, use the Avogadro constant.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s16 s16-check Next: the answer shows, s16-a is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s16-a\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s17f7 s17-check click A (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"Half of 6.022 × 10²³ is half a mole.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s17f7 s17-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"That divides 6.022 × 10²³ by 3.011 × 10²³, the wrong way around.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s17f7 s17-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"That multiplies by Avogadro's number. Particles to moles means dividing.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s17 s17-check Next: the answer shows, s17-a is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s17-a\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s18f6 s18-check click A (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"Count formula units, or count the ions.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s18f6 s18-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"Sodium chloride is a crystal of ions with no separate molecules.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s18f6 s18-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"In the crystal, sodium and chlorine are ions, not neutral atoms.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s18 s18-check Next: the answer shows, s18-a is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s18-a\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "s19f7 s19-check click A (right): green mark and reason, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"right\",\"others\":0,\"fb\":\"Two O atoms in every molecule, so twice the moles.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on ok\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s19f7 s19-check click B (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"That counts CO₂ molecules. Each molecule holds two oxygen atoms.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s19f7 s19-check click C (wrong): red mark and its feedback, visible at 36 px",
+      "pass": true,
+      "i": "{\"mark\":\"wrong\",\"others\":0,\"fb\":\"That divides by the subscript. The subscript multiplies.\",\"fbVis\":true,\"px\":36,\"color\":\"fb on bad\",\"onSlide\":true,\"ansHidden\":true}"
+    },
+    {
+      "n": "s19 s19-check Next: the answer shows, s19-a is marked right, no mouse marks left",
+      "pass": true,
+      "i": "{\"ans\":true,\"right\":[\"s19-a\"],\"marks\":0,\"fb\":0}"
+    },
+    {
+      "n": "every graded option has a feedback line and exactly one right option per check",
+      "pass": true,
+      "i": ""
+    },
+    {
+      "n": "no console errors",
+      "pass": true,
+      "i": "[]"
+    }
+  ],
+  "fails": []
+}

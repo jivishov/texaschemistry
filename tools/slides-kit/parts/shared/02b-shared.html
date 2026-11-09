@@ -1,0 +1,54 @@
+<script>
+/* ===== Shared chemistry data and drawing helpers for the Unit 4 decks (written once, copied into each deck). ===== */
+(function(){
+const D=window.Deck;
+const EN={H:2.20,Li:0.98,Na:0.93,K:0.82,Mg:1.31,Ca:1.00,Al:1.61,Fe:1.83,Cu:1.90,C:2.55,N:3.04,O:3.44,F:3.98,S:2.58,Cl:3.16,Br:2.96,I:2.66};
+const METALS=new Set('Li Be Na Mg Al K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Rb Sr Y Zr Nb Mo Tc Ru Rh Pd Ag Cd In Sn Cs Ba La Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu Hf Ta W Re Os Ir Pt Au Hg Tl Pb Bi Po Fr Ra Ac Th Pa U Np Pu Am Cm Bk Cf Es Fm Md No Lr Rf Db Sg Bh Hs Mt Ds Rg Cn Nh Fl Mc Lv'.split(' '));
+const NONMETALS=new Set('H He C N O F Ne P S Cl Ar Se Br Kr I Xe Rn'.split(' '));
+const METALLOIDS=new Set('B Si Ge As Sb Te At'.split(' '));
+const kind=s=>METALS.has(s)?'metal':NONMETALS.has(s)?'nonmetal':METALLOIDS.has(s)?'metalloid':'unknown';
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x)),lerp=(a,b,t)=>a+(b-a)*t,f2=v=>v.toFixed(2);
+const hash=i=>{const x=Math.sin(i*127.1+311.7)*43758.5453;return x-Math.floor(x)};
+const dEN=(a,b)=>Math.abs(EN[a]-EN[b]);
+const subtr=(a,b)=>{const hi=Math.max(EN[a],EN[b]),lo=Math.min(EN[a],EN[b]);return f2(hi)+' − '+f2(lo)+' = '+f2(hi-lo)};
+const bondName=(a,b)=>a+'–'+b;
+const rgba=(c,a)=>{const m=String(c).match(/[\d.]+/g);if(String(c)[0]==='#'){const n=parseInt(c.slice(1,7),16);return 'rgba('+(n>>16&255)+','+(n>>8&255)+','+(n&255)+','+a+')'}return 'rgba('+m[0]+','+m[1]+','+m[2]+','+a+')'};
+
+const PT=['H,,,,,,,,,,,,,,,,,He','Li,Be,,,,,,,,,,,B,C,N,O,F,Ne','Na,Mg,,,,,,,,,,,Al,Si,P,S,Cl,Ar','K,Ca,Sc,Ti,V,Cr,Mn,Fe,Co,Ni,Cu,Zn,Ga,Ge,As,Se,Br,Kr',
+  'Rb,Sr,Y,Zr,Nb,Mo,Tc,Ru,Rh,Pd,Ag,Cd,In,Sn,Sb,Te,I,Xe','Cs,Ba,*,Hf,Ta,W,Re,Os,Ir,Pt,Au,Hg,Tl,Pb,Bi,Po,At,Rn','Fr,Ra,*,Rf,Db,Sg,Bh,Hs,Mt,Ds,Rg,Cn,Nh,Fl,Mc,Lv,Ts,Og'];
+const PTF=['La,Ce,Pr,Nd,Pm,Sm,Eu,Gd,Tb,Dy,Ho,Er,Tm,Yb,Lu','Ac,Th,Pa,U,Np,Pu,Am,Cm,Bk,Cf,Es,Fm,Md,No,Lr'];
+const CELLS=[];PT.forEach((r,y)=>r.split(',').forEach((s,x)=>{if(s)CELLS.push({s,x,y})}));PTF.forEach((r,y)=>r.split(',').forEach((s,x)=>CELLS.push({s,x:x+2,y:y+7.6,f:1})));
+const STAIR=[[12,1],[12,2],[13,2],[13,3],[14,3],[14,4],[15,4],[15,5],[16,5],[16,6],[17,6],[17,7]];
+D.EN=EN;
+/* Ions used in Lesson 4.2. f: formula in chem markup (_ subscript, ^ superscript); q: charge; root: stem for -ide names. */
+const IONS={
+  Li:{f:'Li',q:1,name:'lithium'},Na:{f:'Na',q:1,name:'sodium'},K:{f:'K',q:1,name:'potassium'},Ag:{f:'Ag',q:1,name:'silver'},
+  Mg:{f:'Mg',q:2,name:'magnesium'},Ca:{f:'Ca',q:2,name:'calcium'},Ba:{f:'Ba',q:2,name:'barium'},Zn:{f:'Zn',q:2,name:'zinc'},
+  Al:{f:'Al',q:3,name:'aluminum'},Fe2:{f:'Fe',q:2,name:'iron(II)',el:'iron',num:'(II)'},Fe3:{f:'Fe',q:3,name:'iron(III)',el:'iron',num:'(III)'},
+  Cu1:{f:'Cu',q:1,name:'copper(I)',el:'copper',num:'(I)'},Cu2:{f:'Cu',q:2,name:'copper(II)',el:'copper',num:'(II)'},
+  F:{f:'F',q:-1,name:'fluoride',root:'fluor'},Cl:{f:'Cl',q:-1,name:'chloride',root:'chlor'},Br:{f:'Br',q:-1,name:'bromide',root:'brom'},I:{f:'I',q:-1,name:'iodide',root:'iod'},
+  O:{f:'O',q:-2,name:'oxide',root:'ox'},S:{f:'S',q:-2,name:'sulfide',root:'sulf'},N:{f:'N',q:-3,name:'nitride',root:'nitr'},
+  NH4:{f:'NH_4',q:1,name:'ammonium',poly:1},OH:{f:'OH',q:-1,name:'hydroxide',poly:1},NO3:{f:'NO_3',q:-1,name:'nitrate',poly:1},
+  CO3:{f:'CO_3',q:-2,name:'carbonate',poly:1},SO4:{f:'SO_4',q:-2,name:'sulfate',poly:1},PO4:{f:'PO_4',q:-3,name:'phosphate',poly:1}};
+const gcd=(a,b)=>b?gcd(b,a%b):a;
+const chg=q=>{const n=Math.abs(q),s=q>0?'+':'−';return n===1?'^'+s:'^{'+n+s+'}'};
+const ionF=k=>IONS[k].f+chg(IONS[k].q);
+const part=(I,n)=>n===1?I.f:(I.poly?'('+I.f+')_'+n:I.f+'_{'+n+'}');
+/* compound(cation, anion): lowest whole-number ratio, formula (chem markup), name, and the crisscross counts before reducing */
+function compound(c,a){const C=IONS[c],A=IONS[a],qc=C.q,qa=-A.q,g=gcd(qc,qa);
+  return {c,a,qc,qa,nc:qa/g,na:qc/g,ncX:qa,naX:qc,formula:part(C,qa/g)+part(A,qc/g),formulaX:part(C,qa)+part(A,qc),name:C.name+' '+A.name}}
+const SUB='₀₁₂₃₄₅₆₇₈₉',SUP={'0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹','+':'⁺','−':'⁻'};
+/* plain Unicode text of chem markup, for tests and aria labels: Al_2(SO_4)_3 -> Al₂(SO₄)₃ */
+const uni=s=>s.replace(/_(\{[^}]*\}|.)/g,(m,x)=>x.replace(/[{}]/g,'').replace(/\d/g,d=>SUB[d])).replace(/\^(\{[^}]*\}|.)/g,(m,x)=>x.replace(/[{}]/g,'').split('').map(c=>SUP[c]||c).join(''));
+/* the six polyatomic ions of Lesson 4.2 and the memory sentence "Nick the Camel ate Supper in Phoenix" */
+const POLY=[{k:'NH4'},{k:'OH'},{k:'NO3',word:'Nick'},{k:'CO3',word:'Camel'},{k:'SO4',word:'Supper'},{k:'PO4',word:'Phoenix'}];
+const MNEMONIC='Nick the Camel ate Supper in Phoenix';
+/* CPK atom colors (fixed in both themes) */
+const CPK={H:'#f4f4f4',C:'#50565c',N:'#3a5bf0',O:'#e3332a',S:'#f2c400',P:'#ff8a00'};
+/* periodic-table cell layout shared by ptMap and ionTable */
+function ptLayout(w,h,o){o=o||{};const rows=(o.top||0)+7+(o.fblock===false?0:2.6),side=o.side||0,res=o.reserve||0;
+  const c=Math.min((w-16-side)/18,(h-12-res)/rows),X0=(w-side-18*c)/2,Y0=(h-res-rows*c)/2+(o.top||0)*c;return {c,X0,Y0,at:(x,y)=>[X0+x*c,Y0+y*c]}}
+D.chem={EN,METALS,NONMETALS,METALLOIDS,kind,dEN,subtr,bondName,CELLS,STAIR,IONS,gcd,chg,ionF,compound,uni,POLY,MNEMONIC,CPK,ptLayout};
+D.util={clamp,lerp,f2,hash,rgba};
+})();
+</script>

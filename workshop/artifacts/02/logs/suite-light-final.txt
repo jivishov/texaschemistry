@@ -1,0 +1,20 @@
+== 5.1: unit5/slides-5-1.html
+   out /tmp/claude-0/-home-user-texaschemistry/fd062df9-fc63-5e0b-9c93-813ea3f31b1c/scratchpad/kit-out-51f/5-1, theme light, matrix off
+  PASS  walk light          241.6 s  walk light: 197 states, max empty 26% (s14f8), PASS
+  PASS  back light           96.6 s  back: 197 forward, 197 back, PASS
+  PASS  fonts light          56.4 s  fonts: PASS
+  PASS  keys                 37.2 s  keys: PASS 48 checks
+  PASS  readability           3.0 s  readability: PASS
+  PASS  print                 2.1 s  print: PASS stage hidden=true, 28 slides, 197 frame lines, 11 PDF page(s)
+  PASS  render3d              2.2 s  render3d: PASS
+  PASS  extras                5.3 s  extras: PASS
+  PASS  chem                  1.8 s  chem51 (deck): PASS 91 checks
+  PASS  timing                1.2 s  timing: period 1 43.75 min, period 2 46 min, PASS
+  PASS  supgap                4.9 s  supgap: 107 symbol+charge pairs checked, PASS
+  PASS  zoom light          360.2 s  zoom light: 1072 zoomed states over 197 frames (re-flow 458, transform 614), prompt 35, r800 1, animation 133, part 459, card 203, frames 2, check 28, wcard 16, legend 1, rule 18, caption 17, caprow 15, p 3, table 1, column 21, line 1, bank 1, row 30, rail 29, li 50, handsup 3, scale 5; min fill 62%; Back tests 28; PASS
+  PASS  click                34.1 s  click: 11 graded checks, 3 Predict-now questions, 55 assertions, PASS
+  PASS  layout light         57.5 s  layout light: 197 frames, 28 visible option lists (stacked 19, row 9), max empty 26% (s14f8), gate 33%, clipped or ellipsized text: 0, overlap: 0 intersections on 0 frames, no baseline (8671 boxes (2604 DOM boxes, 2172 canvas labels, 3895 canvas shapes), 210 covered canvas labels, 85 spheres scenes (live moments included), 16 of 16 canvas animations instrumented), live: 12 frames at two moments, PASS
+  FAIL  xcheck                1.6 s  xcheck: 37 of 54 pass, 17 FAIL
+  PASS  contact light         5.5 s  contact sheets light: contact-light-1.png (94 shots, 3495 px tall), contact-light-2.png (102 shots, 3710 px tall), contact-light-3.png (1 shots, 1000 px tall)
+  PASS  zoomsheet light       3.6 s  zoom sheet light: zoomsheet-light-1.png (102 shots, 3710 px tall), zoomsheet-light-2.png (7 shots, 1000 px tall)
+== 5.1: 16 of 17 pass, 1 fail, 914.9 s

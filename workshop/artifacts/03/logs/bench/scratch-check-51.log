@@ -1,0 +1,349 @@
+  PASS  coinScale:jar: labels at 36 px or more (painter minFont Infinity)
+  PASS  coinScale:jar: primary shapes at 60 px or more (smallest 62)
+  PASS  coinScale:jar: live flag false (meta and instrumentation)
+  PASS  coinScale:jar: zoom sub-units
+  PASS  coinScale:guess: labels at 36 px or more (painter minFont 44)
+  PASS  coinScale:guess: primary shapes at 60 px or more (smallest 62)
+  PASS  coinScale:guess: live flag false (meta and instrumentation)
+  PASS  coinScale:guess: zoom sub-units
+  PASS  coinScale:tally: labels at 36 px or more (painter minFont 36)
+  PASS  coinScale:tally: primary shapes at 60 px or more (smallest 62)
+  PASS  coinScale:tally: live flag true (meta and instrumentation)
+  PASS  coinScale:tally: zoom sub-units
+  PASS  coinScale:scale: labels at 36 px or more (painter minFont 36)
+  PASS  coinScale:scale: primary shapes at 60 px or more (smallest 62)
+  PASS  coinScale:scale: live flag false (meta and instrumentation)
+  PASS  coinScale:scale: zoom sub-units
+  PASS  coinScale:reveal: labels at 36 px or more (painter minFont 36)
+  PASS  coinScale:reveal: primary shapes at 60 px or more (smallest 62)
+  PASS  coinScale:reveal: live flag false (meta and instrumentation)
+  PASS  coinScale:reveal: zoom sub-units
+  PASS  coinScale:bag: labels at 36 px or more (painter minFont 40)
+  PASS  coinScale:bag: primary shapes at 60 px or more (smallest 224)
+  PASS  coinScale:bag: live flag false (meta and instrumentation)
+  PASS  coinScale:bag: zoom sub-units
+  PASS  coinScale:zero: labels at 36 px or more (painter minFont 36)
+  PASS  coinScale:zero: primary shapes at 60 px or more (smallest 78)
+  PASS  coinScale:zero: live flag false (meta and instrumentation)
+  PASS  coinScale:zero: zoom sub-units
+  PASS  coinScale:read: labels at 36 px or more (painter minFont 36)
+  PASS  coinScale:read: primary shapes at 60 px or more (smallest 224)
+  PASS  coinScale:read: live flag false (meta and instrumentation)
+  PASS  coinScale:read: zoom sub-units
+  PASS  coinScale:divide: labels at 36 px or more (painter minFont 36)
+  PASS  coinScale:divide: primary shapes at 60 px or more (smallest 224)
+  PASS  coinScale:divide: live flag false (meta and instrumentation)
+  PASS  coinScale:divide: zoom sub-units
+  PASS  coinScale:count: labels at 36 px or more (painter minFont 36)
+  PASS  coinScale:count: primary shapes at 60 px or more (smallest 224)
+  PASS  coinScale:count: live flag false (meta and instrumentation)
+  PASS  coinScale:count: zoom sub-units
+  PASS  coinScale:roll: labels at 36 px or more (painter minFont 36)
+  PASS  coinScale:roll: primary shapes at 60 px or more (smallest 74)
+  PASS  coinScale:roll: live flag false (meta and instrumentation)
+  PASS  coinScale:roll: zoom sub-units
+  PASS  centJar:jar: labels at 36 px or more (painter minFont 36)
+  PASS  centJar:jar: primary shapes at 60 px or more (smallest 60)
+  PASS  centJar:jar: zoom sub-units
+  PASS  centJar:wrong: labels at 36 px or more (painter minFont 36)
+  PASS  centJar:wrong: primary shapes at 60 px or more (smallest 60)
+  PASS  centJar:wrong: zoom sub-units
+  PASS  centJar:sample: labels at 36 px or more (painter minFont 36)
+  PASS  centJar:sample: primary shapes at 60 px or more (smallest 60)
+  PASS  centJar:sample: zoom sub-units
+  PASS  centJar:average: labels at 36 px or more (painter minFont 36)
+  PASS  centJar:average: primary shapes at 60 px or more (smallest 60)
+  PASS  centJar:average: zoom sub-units
+  PASS  centJar:count: labels at 36 px or more (painter minFont 36)
+  PASS  centJar:count: primary shapes at 60 px or more (smallest 60)
+  PASS  centJar:count: zoom sub-units
+  PASS  centJar:isotopes: labels at 36 px or more (painter minFont 36)
+  PASS  centJar:isotopes: primary shapes at 60 px or more (smallest 92)
+  PASS  centJar:isotopes: zoom sub-units
+  PASS  countingUnits:dozen: labels at 36 px or more (painter minFont 48)
+  PASS  countingUnits:dozen: primary shapes at 60 px or more (smallest 62)
+  PASS  countingUnits:dozen: zoom sub-units
+  PASS  countingUnits:ream: labels at 36 px or more (painter minFont 48)
+  PASS  countingUnits:ream: primary shapes at 60 px or more (smallest 62)
+  PASS  countingUnits:ream: zoom sub-units
+  PASS  countingUnits:mole: labels at 36 px or more (painter minFont 44)
+  PASS  countingUnits:mole: primary shapes at 60 px or more (smallest 62)
+  PASS  countingUnits:mole: zoom sub-units
+  PASS  countingUnits:exact: labels at 36 px or more (painter minFont 36)
+  PASS  countingUnits:exact: primary shapes at 60 px or more (smallest 80)
+  PASS  countingUnits:exact: zoom sub-units
+  PASS  countingUnits:constant: labels at 36 px or more (painter minFont 36)
+  PASS  countingUnits:constant: primary shapes at 60 px or more (smallest 80)
+  PASS  countingUnits:constant: zoom sub-units
+  PASS  howMany:one: labels at 36 px or more (painter minFont 36)
+  PASS  howMany:one: primary shapes at 60 px or more (smallest 63.2)
+  PASS  howMany:one: live flag false (meta and instrumentation)
+  PASS  howMany:one: zoom sub-units
+  PASS  howMany:dozen: labels at 36 px or more (painter minFont 36)
+  PASS  howMany:dozen: primary shapes at 60 px or more (smallest 124)
+  PASS  howMany:dozen: live flag false (meta and instrumentation)
+  PASS  howMany:dozen: zoom sub-units
+  PASS  howMany:thousand: labels at 36 px or more (painter minFont 36)
+  PASS  howMany:thousand: primary shapes at 60 px or more (smallest 60)
+  PASS  howMany:thousand: live flag false (meta and instrumentation)
+  PASS  howMany:thousand: zoom sub-units
+  PASS  howMany:zoom: labels at 36 px or more (painter minFont 36)
+  PASS  howMany:zoom: primary shapes at 60 px or more (smallest 60)
+  PASS  howMany:zoom: live flag true (meta and instrumentation)
+  PASS  howMany:zoom: zoom sub-units
+  PASS  howMany:mole: labels at 36 px or more (painter minFont 36)
+  PASS  howMany:mole: primary shapes at 60 px or more (smallest 296)
+  PASS  howMany:mole: live flag false (meta and instrumentation)
+  PASS  howMany:mole: zoom sub-units
+  PASS  howMany:spoon: labels at 36 px or more (painter minFont 36)
+  PASS  howMany:spoon: primary shapes at 60 px or more (smallest 148)
+  PASS  howMany:spoon: live flag false (meta and instrumentation)
+  PASS  howMany:spoon: zoom sub-units
+  PASS  moleKinds:al: labels at 36 px or more (painter minFont 36)
+  PASS  moleKinds:al: primary shapes at 60 px or more (smallest 63.9)
+  PASS  moleKinds:al: zoom sub-units
+  PASS  moleKinds:cu: labels at 36 px or more (painter minFont 36)
+  PASS  moleKinds:cu: primary shapes at 60 px or more (smallest 63.9)
+  PASS  moleKinds:cu: zoom sub-units
+  PASS  moleKinds:compare: labels at 36 px or more (painter minFont 36)
+  PASS  moleKinds:compare: primary shapes at 60 px or more (smallest 63.9)
+  PASS  moleKinds:compare: zoom sub-units
+  PASS  moleKinds:oxygen: labels at 36 px or more (painter minFont 36)
+  PASS  moleKinds:oxygen: primary shapes at 60 px or more (smallest 63.4)
+  PASS  moleKinds:oxygen: zoom sub-units
+  PASS  moleKinds:four: labels at 36 px or more (painter minFont 40)
+  PASS  moleKinds:four: primary shapes at 60 px or more (smallest 63.2)
+  PASS  moleKinds:four: zoom sub-units
+  PASS  secondsLine:line: labels at 36 px or more (painter minFont 36)
+  PASS  secondsLine:line: primary shapes at 60 px or more (smallest 156)
+  PASS  secondsLine:line: live flag true (meta and instrumentation)
+  PASS  secondsLine:line: zoom sub-units
+  PASS  secondsLine:year: labels at 36 px or more (painter minFont 36)
+  PASS  secondsLine:year: primary shapes at 60 px or more (none drawn on this stage: the line, its ticks and markers only)
+  PASS  secondsLine:year: live flag false (meta and instrumentation)
+  PASS  secondsLine:year: zoom sub-units
+  PASS  secondsLine:earth: labels at 36 px or more (painter minFont 36)
+  PASS  secondsLine:earth: primary shapes at 60 px or more (none drawn on this stage: the line, its ticks and markers only)
+  PASS  secondsLine:earth: live flag false (meta and instrumentation)
+  PASS  secondsLine:earth: zoom sub-units
+  PASS  secondsLine:universe: labels at 36 px or more (painter minFont 36)
+  PASS  secondsLine:universe: primary shapes at 60 px or more (none drawn on this stage: the line, its ticks and markers only)
+  PASS  secondsLine:universe: live flag false (meta and instrumentation)
+  PASS  secondsLine:universe: zoom sub-units
+  PASS  secondsLine:mole: labels at 36 px or more (painter minFont 36)
+  PASS  secondsLine:mole: primary shapes at 60 px or more (none drawn on this stage: the line, its ticks and markers only)
+  PASS  secondsLine:mole: live flag false (meta and instrumentation)
+  PASS  secondsLine:mole: zoom sub-units
+  PASS  secondsLine:times: labels at 36 px or more (painter minFont 36)
+  PASS  secondsLine:times: primary shapes at 60 px or more (none drawn on this stage: the line, its ticks and markers only)
+  PASS  secondsLine:times: live flag false (meta and instrumentation)
+  PASS  secondsLine:times: zoom sub-units
+  PASS  secondsLine:spoon: labels at 36 px or more (painter minFont 36)
+  PASS  secondsLine:spoon: primary shapes at 60 px or more (smallest 68)
+  PASS  secondsLine:spoon: live flag false (meta and instrumentation)
+  PASS  secondsLine:spoon: zoom sub-units
+  PASS  moleHistory:avogadro: labels at 36 px or more (painter minFont 36)
+  PASS  moleHistory:avogadro: primary shapes at 60 px or more (smallest 112)
+  PASS  moleHistory:avogadro: zoom sub-units
+  PASS  moleHistory:loschmidt: labels at 36 px or more (painter minFont 36)
+  PASS  moleHistory:loschmidt: primary shapes at 60 px or more (smallest 92)
+  PASS  moleHistory:loschmidt: zoom sub-units
+  PASS  moleHistory:ostwald: labels at 36 px or more (painter minFont 36)
+  PASS  moleHistory:ostwald: primary shapes at 60 px or more (smallest 148)
+  PASS  moleHistory:ostwald: zoom sub-units
+  PASS  moleHistory:perrin: labels at 36 px or more (painter minFont 36)
+  PASS  moleHistory:perrin: primary shapes at 60 px or more (smallest 156)
+  PASS  moleHistory:perrin: zoom sub-units
+  PASS  moleHistory:si: labels at 36 px or more (painter minFont 36)
+  PASS  moleHistory:si: primary shapes at 60 px or more (smallest 150)
+  PASS  moleHistory:si: zoom sub-units
+  PASS  moleHistory:exact: labels at 36 px or more (painter minFont 36)
+  PASS  moleHistory:exact: primary shapes at 60 px or more (smallest 96)
+  PASS  moleHistory:exact: zoom sub-units
+  PASS  siliconSphere:sphere: labels at 36 px or more (painter minFont 44)
+  PASS  siliconSphere:sphere: primary shapes at 60 px or more (smallest 460)
+  PASS  siliconSphere:sphere: zoom sub-units
+  PASS  siliconSphere:crystal: labels at 36 px or more (painter minFont 36)
+  PASS  siliconSphere:crystal: primary shapes at 60 px or more (smallest 61.3)
+  PASS  siliconSphere:crystal: zoom sub-units
+  PASS  siliconSphere:cube: labels at 36 px or more (painter minFont 36)
+  PASS  siliconSphere:cube: primary shapes at 60 px or more (smallest 61.3)
+  PASS  siliconSphere:cube: zoom sub-units
+  PASS  siliconSphere:atom: labels at 36 px or more (painter minFont 36)
+  PASS  siliconSphere:atom: primary shapes at 60 px or more (smallest 61.3)
+  PASS  siliconSphere:atom: zoom sub-units
+  PASS  siliconSphere:divide: labels at 36 px or more (painter minFont 36)
+  PASS  siliconSphere:divide: primary shapes at 60 px or more (smallest 61.3)
+  PASS  siliconSphere:divide: zoom sub-units
+  PASS  moleMap:map: labels at 36 px or more (painter minFont 40)
+  PASS  moleMap:map: primary shapes at 60 px or more (smallest 184)
+  PASS  moleMap:map: zoom sub-units
+  PASS  moleMap:Cu/setup: labels at 36 px or more (painter minFont 36)
+  PASS  moleMap:Cu/setup: primary shapes at 60 px or more (smallest 184)
+  PASS  moleMap:Cu/setup: zoom sub-units
+  PASS  moleMap:Cu/cancel: labels at 36 px or more (painter minFont 36)
+  PASS  moleMap:Cu/cancel: primary shapes at 60 px or more (smallest 184)
+  PASS  moleMap:Cu/cancel: zoom sub-units
+  PASS  moleMap:Cu/result: labels at 36 px or more (painter minFont 36)
+  PASS  moleMap:Cu/result: primary shapes at 60 px or more (smallest 184)
+  PASS  moleMap:Cu/result: zoom sub-units
+  PASS  moleMap:Fe/setup: labels at 36 px or more (painter minFont 36)
+  PASS  moleMap:Fe/setup: primary shapes at 60 px or more (smallest 184)
+  PASS  moleMap:Fe/setup: zoom sub-units
+  PASS  moleMap:Fe/cancel: labels at 36 px or more (painter minFont 36)
+  PASS  moleMap:Fe/cancel: primary shapes at 60 px or more (smallest 184)
+  PASS  moleMap:Fe/cancel: zoom sub-units
+  PASS  moleMap:Fe/result: labels at 36 px or more (painter minFont 36)
+  PASS  moleMap:Fe/result: primary shapes at 60 px or more (smallest 184)
+  PASS  moleMap:Fe/result: zoom sub-units
+  PASS  moleMap:half: labels at 36 px or more (painter minFont 36)
+  PASS  moleMap:half: primary shapes at 60 px or more (smallest 184)
+  PASS  moleMap:half: zoom sub-units
+  PASS  moleMap:CO2m/setup: labels at 36 px or more (painter minFont 36)
+  PASS  moleMap:CO2m/setup: primary shapes at 60 px or more (smallest 184)
+  PASS  moleMap:CO2m/setup: zoom sub-units
+  PASS  moleMap:CO2m/cancel: labels at 36 px or more (painter minFont 36)
+  PASS  moleMap:CO2m/cancel: primary shapes at 60 px or more (smallest 184)
+  PASS  moleMap:CO2m/cancel: zoom sub-units
+  PASS  moleMap:CO2m/result: labels at 36 px or more (painter minFont 36)
+  PASS  moleMap:CO2m/result: primary shapes at 60 px or more (smallest 184)
+  PASS  moleMap:CO2m/result: zoom sub-units
+  PASS  moleMap:H2Om/setup: labels at 36 px or more (painter minFont 36)
+  PASS  moleMap:H2Om/setup: primary shapes at 60 px or more (smallest 184)
+  PASS  moleMap:H2Om/setup: zoom sub-units
+  PASS  moleMap:H2Om/cancel: labels at 36 px or more (painter minFont 36)
+  PASS  moleMap:H2Om/cancel: primary shapes at 60 px or more (smallest 184)
+  PASS  moleMap:H2Om/cancel: zoom sub-units
+  PASS  moleMap:H2Om/result: labels at 36 px or more (painter minFont 36)
+  PASS  moleMap:H2Om/result: primary shapes at 60 px or more (smallest 184)
+  PASS  moleMap:H2Om/result: zoom sub-units
+  PASS  moleMap:energy/mole: labels at 36 px or more (painter minFont 36)
+  PASS  moleMap:energy/mole: primary shapes at 60 px or more (smallest 79.7)
+  PASS  moleMap:energy/mole: zoom sub-units
+  PASS  moleMap:energy/one: labels at 36 px or more (painter minFont 36)
+  PASS  moleMap:energy/one: primary shapes at 60 px or more (smallest 79.7)
+  PASS  moleMap:energy/one: zoom sub-units
+  PASS  moleMap:energy/why: labels at 36 px or more (painter minFont 36)
+  PASS  moleMap:energy/why: primary shapes at 60 px or more (smallest 79.7)
+  PASS  moleMap:energy/why: zoom sub-units
+  PASS  naclCrystal:crystal: labels at 36 px or more (painter minFont 40)
+  PASS  naclCrystal:crystal: primary shapes at 60 px or more (smallest 72.8)
+  PASS  naclCrystal:crystal: zoom sub-units
+  PASS  naclCrystal:unit: labels at 36 px or more (painter minFont 40)
+  PASS  naclCrystal:unit: primary shapes at 60 px or more (smallest 72.8)
+  PASS  naclCrystal:unit: zoom sub-units
+  PASS  naclCrystal:count: labels at 36 px or more (painter minFont 40)
+  PASS  naclCrystal:count: primary shapes at 60 px or more (smallest 72.8)
+  PASS  naclCrystal:count: zoom sub-units
+  PASS  naclCrystal:wrong: labels at 36 px or more (painter minFont 40)
+  PASS  naclCrystal:wrong: primary shapes at 60 px or more (smallest 72.8)
+  PASS  naclCrystal:wrong: zoom sub-units
+  PASS  atomCounter:H2O/one: labels at 36 px or more (painter minFont 36)
+  PASS  atomCounter:H2O/one: primary shapes at 60 px or more (smallest 63.2)
+  PASS  atomCounter:H2O/one: zoom sub-units
+  PASS  atomCounter:H2O/mol: labels at 36 px or more (painter minFont 36)
+  PASS  atomCounter:H2O/mol: primary shapes at 60 px or more (smallest 63.2)
+  PASS  atomCounter:H2O/mol: zoom sub-units
+  PASS  atomCounter:CO2/mol: labels at 36 px or more (painter minFont 36)
+  PASS  atomCounter:CO2/mol: primary shapes at 60 px or more (smallest 83.2)
+  PASS  atomCounter:CO2/mol: zoom sub-units
+  PASS  atomCounter:CO2/atoms: labels at 36 px or more (painter minFont 36)
+  PASS  atomCounter:CO2/atoms: primary shapes at 60 px or more (smallest 83.2)
+  PASS  atomCounter:CO2/atoms: zoom sub-units
+  PASS  atomCounter:NaCl/mol: labels at 36 px or more (painter minFont 36)
+  PASS  atomCounter:NaCl/mol: primary shapes at 60 px or more (smallest 81.6)
+  PASS  atomCounter:NaCl/mol: zoom sub-units
+  PASS  atomCounter:NH3/mol: labels at 36 px or more (painter minFont 36)
+  PASS  atomCounter:NH3/mol: primary shapes at 60 px or more (smallest 63.2)
+  PASS  atomCounter:NH3/mol: zoom sub-units
+  PASS  coinScale jar: hook family, nickels
+  PASS  coinScale guess: the "?" badge and the prompt
+  PASS  coinScale tally: live, 8 coins counted one a second
+  PASS  coinScale scale: 2,000.0 g of coins, 5.000 g per nickel
+  PASS  coinScale reveal: 2,000.0 g ÷ 5.000 g = 400 nickels
+  PASS  coinScale bag: bank family, no reading yet, not zeroed
+  PASS  coinScale zero: the empty bag, 0.0 g, zeroed
+  PASS  coinScale read: scale reading 1,250.0 g
+  PASS  coinScale divide: 1,250.0 g × 1 nickel / 5.000 g, the g struck twice
+  PASS  coinScale count: 250 nickels, check 250 × 5.000 g = 1,250.0 g
+  PASS  coinScale roll: 200.0 g on the scale, the answer (40) not drawn
+  PASS  centJar jar: before 1982 3.11 g, after 1982 2.500 g, the jar 1,017.1 g
+  PASS  centJar wrong: ÷ 2.500 g about 407 too many; ÷ 3.11 g about 327 too few
+  PASS  centJar sample: 100 cents, 267.69 g
+  PASS  centJar average: 267.69 g ÷ 100 = 2.6769 g
+  PASS  centJar count: 1,017.1 g ÷ 2.6769 g = about 380 cents; 2.6769 between 2.500 and 3.11
+  PASS  centJar isotopes: "isotopes", the table cell, no isotope masses; six Cu atoms at one size in two shades
+  PASS  centJar isotopes: the painted spheres (instrumented discs) all have one radius
+  PASS  countingUnits dozen: 12
+  PASS  countingUnits ream: 500
+  PASS  countingUnits mole: 6.022 × 10²³, symbol mol
+  PASS  countingUnits exact: exactly 6.02214076 × 10²³, rounded 6.022 × 10²³, since May 20, 2019
+  PASS  countingUnits constant: N_A = 6.022 × 10²³ mol⁻¹
+  PASS  howMany thousand: 1,000 per step, the ladder starts at 10³
+  PASS  howMany zoom: live, seven steps of × 1,000 to 10²¹
+  PASS  howMany mole: × 602 more, 6.022 × 10²³; 10²¹ × 602 = 6.02 × 10²³
+  PASS  howMany spoon: one mole of water, about 18 g
+  PASS  moleKinds al: 1 mol of Al atoms, 26.982 g
+  PASS  moleKinds cu: 1 mol of Cu atoms, 63.546 g; the beam tips toward copper
+  PASS  moleKinds compare: both 6.022 × 10²³ atoms, different masses
+  PASS  moleKinds oxygen: O₂ holds twice the atoms
+  PASS  moleKinds four: atoms, molecules, formula units, ions; Shannon radii 102 and 181 pm
+  PASS  secondsLine line: live counter, marks in order on the log line
+  PASS  secondsLine year: 1 year = 3.156 × 10⁷ s
+  PASS  secondsLine earth: 4.5 billion years
+  PASS  secondsLine universe: 13.8 billion years
+  PASS  secondsLine mole: 6.022 × 10²³ s = 1.908 × 10¹⁶ years, shown "about 1.9 × 10¹⁶ years"
+  PASS  secondsLine times: about 1.4 million times the age of the universe (1.38 × 10⁶); Earth: about 4 million
+  PASS  secondsLine spoon: 1 mol of water, about 18 g
+  PASS  moleHistory avogadro: 1 ticks, the last 1811 Avogadro
+  PASS  moleHistory loschmidt: 2 ticks, the last 1865 Loschmidt
+  PASS  moleHistory ostwald: 3 ticks, the last 1890s Ostwald
+  PASS  moleHistory perrin: 4 ticks, the last 1909 Perrin
+  PASS  moleHistory si: 5 ticks, the last 1971 SI
+  PASS  moleHistory exact: 6 ticks, the last 2019 exact
+  PASS  moleHistory avogadro: the condition in the card (one temperature and pressure), equal volumes, equal numbers; he never knew the number
+  PASS  moleHistory perrin: measured, named after Avogadro, Nobel Prize 1926
+  PASS  moleHistory si: SI base unit, the old definition (12 g of carbon-12)
+  PASS  moleHistory exact: voted November 16, 2018; exact since May 20, 2019; 6.02214076 × 10²³
+  PASS  siliconSphere crystal: 2 × 2 × 2 cubes of diamond-cubic silicon (95 atoms), turning (live)
+  PASS  siliconSphere cube: edge 543.102 pm, 8 atoms per cube (8 × 1/8 + 6 × 1/2 + 4), 18 atoms lit
+  PASS  siliconSphere divide: mass of one mole ÷ mass of one atom = 6.022 × 10²³
+  PASS  moleMap Cu/setup: given 2.00 mol
+  PASS  moleMap Cu/cancel: the canceled unit struck, the remaining unit circled
+  PASS  moleMap Cu/result: 1.20 × 10²⁴ Cu atoms, the particle named (Cu atoms)
+  PASS  moleMap Fe/setup: given 9.03 × 10²³ Fe atoms
+  PASS  moleMap Fe/cancel: the canceled unit struck, the remaining unit circled
+  PASS  moleMap Fe/result: 1.50 mol, the particle named (Fe atoms)
+  PASS  moleMap CO2m/setup: given 0.250 mol
+  PASS  moleMap CO2m/cancel: the canceled unit struck, the remaining unit circled
+  PASS  moleMap CO2m/result: 1.51 × 10²³ molecules, the particle named (molecules)
+  PASS  moleMap H2Om/setup: given 1.81 × 10²⁴ molecules
+  PASS  moleMap H2Om/cancel: the canceled unit struck, the remaining unit circled
+  PASS  moleMap H2Om/result: 3.01 mol, the particle named (molecules)
+  PASS  moleMap map: moles and particles, the bridge 6.022 × 10²³ per mole
+  PASS  moleMap half: 3.011 × 10²³ molecules = 0.5000 mol
+  PASS  moleMap energy: 496 kJ/mol ÷ 6.022 × 10²³ = 8.24 × 10⁻¹⁹ J for one atom
+  PASS  moleMap energy/why: per mole, numbers of a handy size
+  PASS  naclCrystal crystal: 27 ions, Na⁺ 102 pm and Cl⁻ 181 pm, 564 pm cell, turning (live)
+  PASS  naclCrystal unit: the lit pair is one cation and one anion
+  PASS  naclCrystal count: 4.50 mol × 6.022 × 10²³ = 2.71 × 10²⁴ formula units
+  PASS  naclCrystal wrong: 2.50 mol, 1.51 × 10²⁴, "molecules" struck for "formula units"
+  PASS  atomCounter H2O/one: H₂O, 2 H atoms and 1 O atom
+  PASS  atomCounter H2O/mol: 1 mol H₂O → 2 mol H, 1 mol O
+  PASS  atomCounter CO2/mol: 2.00 mol CO₂ × 2 = 4.00 mol O
+  PASS  atomCounter CO2/atoms: 4.00 mol × 6.022 × 10²³ = 2.41 × 10²⁴ O atoms
+  PASS  atomCounter NaCl/mol: 1 mol NaCl → 1 mol Na⁺, 1 mol Cl⁻
+  PASS  atomCounter NH3/mol: 0.500 mol NH₃ × 3 = 1.50 mol H
+  PASS  coinScale:tally: one still frame under reduced motion
+  PASS  howMany:zoom: one still frame under reduced motion
+  PASS  secondsLine:line: one still frame under reduced motion
+  PASS  siliconSphere:crystal: one still frame under reduced motion
+  PASS  siliconSphere:cube: one still frame under reduced motion
+  PASS  naclCrystal:crystal: one still frame under reduced motion
+  PASS  naclCrystal:unit: one still frame under reduced motion
+  PASS  coinScale:tally: moves with motion on
+  PASS  howMany:zoom: moves with motion on
+  PASS  secondsLine:line: moves with motion on
+  PASS  every stage of section 4 has a scratch slide (78)
+  PASS  no console errors
+scratch-check 5.1: PASS 348 assertions

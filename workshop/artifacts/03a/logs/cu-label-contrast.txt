@@ -1,0 +1,6 @@
+light light shade (175, 528) bg samples [(169, 126, 74), (132, 90, 37), (136, 93, 38), (115, 79, 33)] glyph (255, 255, 255) contrast 3.64 to 7.32
+light dark shade (463, 528) bg samples [(115, 90, 57), (79, 54, 22), (82, 56, 23), (70, 48, 19)] glyph (255, 255, 255) contrast 6.46 to 12.41
+light dark shade (319, 676) bg samples [(112, 87, 53), (80, 55, 22), (82, 56, 23), (69, 48, 19)] glyph (255, 255, 255) contrast 6.77 to 12.46
+dark light shade (175, 528) bg samples [(215, 174, 116), (179, 137, 80), (185, 142, 82), (156, 120, 70)] glyph (16, 32, 28) contrast 4.17 to 8.19
+dark dark shade (463, 528) bg samples [(143, 119, 83), (106, 82, 48), (110, 85, 49), (93, 72, 42)] glyph (255, 255, 255) contrast 4.26 to 8.66
+dark dark shade (319, 676) bg samples [(140, 116, 79), (107, 83, 48), (110, 85, 49), (93, 72, 42)] glyph (255, 255, 255) contrast 4.44 to 8.66

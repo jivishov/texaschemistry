@@ -1,0 +1,13 @@
+== 4.1: unit4/slides-4-1.html
+   out <scratchpad>/kit-out-01a-final/4-1, theme light, matrix off
+  PASS  layout light         57.7 s  layout light: 156 frames, 24 visible option lists (stacked 7, row 17), max empty 29% (s4f0), gate 33%, clipped or ellipsized text: 0, overlap: 158 intersections on 32 frames, 158 baselined (parts/lessons/4-1/overlap-baseline.json, 60 entries, 1 stale), 0 not in the baseline (6215 boxes (2633 DOM boxes, 1690 canvas labels, 1892 canvas shapes), 6 covered canvas labels, 13 spheres scenes (live moments included), 10 of 10 canvas animations instrumented), live: 14 frames at two moments, PASS
+  PASS  xcheck                1.7 s  xcheck: 42 of 42 pass
+== 4.1: 2 of 2 pass, 0 fail, 59.4 s
+== 4.2: unit4/slides-4-2.html
+   out <scratchpad>/kit-out-01a-final/4-2, theme light, matrix off
+  PASS  layout light         50.2 s  layout light: 173 frames, 24 visible option lists (stacked 15, row 9), max empty 32% (s10f1), gate 33%, clipped or ellipsized text: 0, overlap: 30 intersections on 30 frames, 30 baselined (parts/lessons/4-2/overlap-baseline.json, 30 entries, 0 stale), 0 not in the baseline (6763 boxes (2516 DOM boxes, 2278 canvas labels, 1969 canvas shapes), 5 covered canvas labels, 30 spheres scenes (live moments included), 14 of 14 canvas animations instrumented), live: 10 frames at two moments, PASS
+  PASS  xcheck                1.7 s  xcheck: 40 of 40 pass
+== 4.2: 2 of 2 pass, 0 fail, 51.9 s
+== all decks
+  4.1: 2 of 2 pass, 59.4 s
+  4.2: 2 of 2 pass, 51.9 s

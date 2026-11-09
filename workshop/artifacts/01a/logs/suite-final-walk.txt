@@ -1,0 +1,11 @@
+== 4.1: unit4/slides-4-1.html
+   out <scratchpad>/kit-out-01a-final/4-1, theme light, matrix off
+  PASS  walk light          191.7 s  walk light: 156 states, max empty 29% (s4f0), PASS
+== 4.1: 1 of 1 pass, 0 fail, 191.7 s
+== 4.2: unit4/slides-4-2.html
+   out <scratchpad>/kit-out-01a-final/4-2, theme light, matrix off
+  PASS  walk light          211.3 s  walk light: 173 states, max empty 32% (s10f1), PASS
+== 4.2: 1 of 1 pass, 0 fail, 211.3 s
+== all decks
+  4.1: 1 of 1 pass, 191.7 s
+  4.2: 1 of 1 pass, 211.3 s

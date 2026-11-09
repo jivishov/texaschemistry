@@ -1,0 +1,29 @@
+zoom matrix, deck 5.1 (md5 3c86da493034ed29c283551925ea3b30), suite.py 5 1 --theme both --matrix
+== light
+zoom light: 1072 zoomed states over 197 frames (re-flow 458, transform 614), prompt 35, r800 1, animation 133, part 459, card 203, frames 2, check 28, wcard 16, legend 1, rule 18, caption 17, caprow 15, p 3, table 1, column 21, line 1, bank 1, row 30, rail 29, li 50, handsup 3, scale 5; min fill 62%; Back tests 28; PASS
+  PASS  matrix 1024x768 at x1 (loaded at 1366x768): 375 zoomed states measured, 0 fails
+  PASS  matrix 1024x768 at x1.25 (loaded at 1366x768): 375 zoomed states measured, 0 fails
+  PASS  matrix 1024x768 at x1.5 (loaded at 1366x768): 375 zoomed states measured, 0 fails
+  PASS  matrix 1366x768 at x1 (loaded at 1536x864): 375 zoomed states measured, 0 fails
+  PASS  matrix 1366x768 at x1.25 (loaded at 1536x864): 375 zoomed states measured, 0 fails
+  PASS  matrix 1366x768 at x1.5 (loaded at 1536x864): 375 zoomed states measured, 0 fails
+  PASS  matrix 1536x864 at x1 (loaded at 1920x1080): 375 zoomed states measured, 0 fails
+  PASS  matrix 1536x864 at x1.25 (loaded at 1920x1080): 375 zoomed states measured, 0 fails
+  PASS  matrix 1536x864 at x1.5 (loaded at 1920x1080): 375 zoomed states measured, 0 fails
+  PASS  matrix 1920x1080 at x1 (loaded at 1024x768): 375 zoomed states measured, 0 fails
+  PASS  matrix 1920x1080 at x1.25 (loaded at 1024x768): 375 zoomed states measured, 0 fails
+  PASS  matrix 1920x1080 at x1.5 (loaded at 1024x768): 375 zoomed states measured, 0 fails
+== dark
+zoom dark: 1072 zoomed states over 197 frames (re-flow 458, transform 614), prompt 35, r800 1, animation 133, part 459, card 203, frames 2, check 28, wcard 16, legend 1, rule 18, caption 17, caprow 15, p 3, table 1, column 21, line 1, bank 1, row 30, rail 29, li 50, handsup 3, scale 5; min fill 62%; Back tests 28; PASS
+  PASS  matrix 1024x768 at x1 (loaded at 1366x768): 375 zoomed states measured, 0 fails
+  PASS  matrix 1024x768 at x1.25 (loaded at 1366x768): 375 zoomed states measured, 0 fails
+  PASS  matrix 1024x768 at x1.5 (loaded at 1366x768): 375 zoomed states measured, 0 fails
+  PASS  matrix 1366x768 at x1 (loaded at 1536x864): 375 zoomed states measured, 0 fails
+  PASS  matrix 1366x768 at x1.25 (loaded at 1536x864): 375 zoomed states measured, 0 fails
+  PASS  matrix 1366x768 at x1.5 (loaded at 1536x864): 375 zoomed states measured, 0 fails
+  PASS  matrix 1536x864 at x1 (loaded at 1920x1080): 375 zoomed states measured, 0 fails
+  PASS  matrix 1536x864 at x1.25 (loaded at 1920x1080): 375 zoomed states measured, 0 fails
+  PASS  matrix 1536x864 at x1.5 (loaded at 1920x1080): 375 zoomed states measured, 0 fails
+  PASS  matrix 1920x1080 at x1 (loaded at 1024x768): 375 zoomed states measured, 0 fails
+  PASS  matrix 1920x1080 at x1.25 (loaded at 1024x768): 375 zoomed states measured, 0 fails
+  PASS  matrix 1920x1080 at x1.5 (loaded at 1024x768): 375 zoomed states measured, 0 fails

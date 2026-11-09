@@ -1,0 +1,3 @@
+  light: depth order ok (pixel 102,132,204), min label 44px, sphere radii 75,79,60,72,81
+  dark: depth order ok (pixel 174,200,255), min label 44px, sphere radii 75,79,60,72,81
+render3d: PASS

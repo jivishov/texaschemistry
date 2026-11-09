@@ -1,0 +1,297 @@
+{
+  "rows": [
+    {
+      "id": "s01",
+      "title": "Counting particles with the mole",
+      "period": "1",
+      "mins": 0.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s02",
+      "title": "The coin jar",
+      "period": "1",
+      "mins": 2.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s03",
+      "title": "A bag of nickels at the bank",
+      "period": "1",
+      "mins": 3,
+      "timers": [
+        {
+          "timer": 60,
+          "t": 1
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s04",
+      "title": "Predict now",
+      "period": "1",
+      "mins": 2,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s05",
+      "title": "Targets and words",
+      "period": "1",
+      "mins": 2.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s06",
+      "title": "Counting by weighing",
+      "period": "1",
+      "mins": 4,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s07",
+      "title": "Counting a mixed jar",
+      "period": "1",
+      "mins": 4,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s08",
+      "title": "The mole",
+      "period": "1",
+      "mins": 3.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s09",
+      "title": "How many is a mole?",
+      "period": "1",
+      "mins": 4.25,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s10",
+      "title": "Name the particle",
+      "period": "1",
+      "mins": 3.75,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s11",
+      "title": "The size of a mole",
+      "period": "1",
+      "mins": 4,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s12",
+      "title": "Who found the number",
+      "period": "1",
+      "mins": 2.75,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s13",
+      "title": "Counting the atoms in a silicon sphere",
+      "period": "1",
+      "mins": 3.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s14",
+      "title": "One picture: three ways to count",
+      "period": "1",
+      "mins": 3.5,
+      "timers": [
+        {
+          "timer": 90,
+          "t": 1.5
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s15",
+      "title": "Warm-up",
+      "period": "2",
+      "mins": 2.5,
+      "timers": [
+        {
+          "timer": 90,
+          "t": 1.5
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s16",
+      "title": "Moles to particles",
+      "period": "2",
+      "mins": 3.25,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s17",
+      "title": "Particles to moles",
+      "period": "2",
+      "mins": 3.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s18",
+      "title": "Formula units",
+      "period": "2",
+      "mins": 3.25,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s19",
+      "title": "Atoms in a molecule",
+      "period": "2",
+      "mins": 3.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s20",
+      "title": "Convert: I do, we do, you do",
+      "period": "2",
+      "mins": 6,
+      "timers": [
+        {
+          "timer": 180,
+          "t": 3
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s21",
+      "title": "The mole in earlier lessons",
+      "period": "2",
+      "mins": 2,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s22",
+      "title": "Checkpoint routine",
+      "period": "2",
+      "mins": 1,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s23",
+      "title": "Checkpoint 1",
+      "period": "2",
+      "mins": 4.5,
+      "timers": [
+        {
+          "timer": 30,
+          "t": 0.5
+        },
+        {
+          "timer": 60,
+          "t": 1
+        },
+        {
+          "timer": 90,
+          "t": 1.5
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s24",
+      "title": "Checkpoint 2",
+      "period": "2",
+      "mins": 4.5,
+      "timers": [
+        {
+          "timer": 30,
+          "t": 0.5
+        },
+        {
+          "timer": 60,
+          "t": 1
+        },
+        {
+          "timer": 90,
+          "t": 1.5
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s25",
+      "title": "Checkpoint 3",
+      "period": "2",
+      "mins": 4.5,
+      "timers": [
+        {
+          "timer": 30,
+          "t": 0.5
+        },
+        {
+          "timer": 60,
+          "t": 1
+        },
+        {
+          "timer": 90,
+          "t": 1.5
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s26",
+      "title": "Predictions and exit ticket",
+      "period": "2",
+      "mins": 5.5,
+      "timers": [
+        {
+          "timer": 180,
+          "t": 3
+        }
+      ],
+      "noT": 0
+    },
+    {
+      "id": "s27",
+      "title": "Rate your learning",
+      "period": "2",
+      "mins": 1.5,
+      "timers": [],
+      "noT": 0
+    },
+    {
+      "id": "s28",
+      "title": "Next",
+      "period": "2",
+      "mins": 0.5,
+      "timers": [],
+      "noT": 0
+    }
+  ],
+  "per": {
+    "1": 43.75,
+    "2": 46
+  },
+  "fails": []
+}

@@ -1,0 +1,68 @@
+  register (rule/prompt/sample) slide 1 card dq reg: grade 2.3 (outside 5 to 8): "Particles are far too small and too many to count one by one. How can chemists count them?"
+  register (rule/prompt/sample) slide 3 s03-dq: grade 2.3 (outside 5 to 8): "Particles are far too small and too many to count one by one. How can chemists count them?"
+  register (rule/prompt/sample) slide 6 s06-rule: grade 3.4 (outside 5 to 8): "If every object has the same mass, divide the total by one object's mass. The grams cancel. A pure number is left."
+  register (rule/prompt/sample) slide 7 s07-rule: grade 5.8: "A mix of objects is counted with the average mass of one object. Average atomic masses let chemists count atoms the same way."
+  register (rule/prompt/sample) slide 8 s08-rule: grade 4.9 (outside 5 to 8): "One mole contains exactly 6.02214076 × 10 23 particles. In calculations we round it to 6.022 × 10 23. A mole is a count, not a mass."
+  register (rule/prompt/sample) slide 9 s09-rule: grade 6.5: "A mole is 6.022 × 10 23 particles. Molecules are so small that a mole of water is only about 18 g."
+  register (rule/prompt/sample) slide 10 s10-rule: grade 11.3 (outside 5 to 8): "A mole must always name its particle: atoms, molecules, formula units or ions."
+  register (rule/prompt/sample) slide 11 s11-rule: grade 4.9 (outside 5 to 8): "At one particle each second, a mole takes about 1.9 × 10 16 years. That is 1.4 million times the age of the universe. Yet a mole of water is only about 18 g."
+  register (rule/prompt/sample) slide 12 s12-rule: grade 2.6 (outside 5 to 8): "Since May 20, 2019 the number is exact: 6.02214076 × 10 23. It is no longer measured."
+  register (rule/prompt/sample) slide 13 s13-rule: grade 3.4 (outside 5 to 8): "The atoms of a crystal repeat in identical cubes. Count one cube and measure its size. Then the whole sphere is counted."
+  register (rule/prompt/sample) slide 16 s16-rule: grade 7: "Particles = moles × 6.022 × 10 23. The unit mol cancels. Always name the particle."
+  register (rule/prompt/sample) slide 17 s17-rule: grade 6.9: "Moles = particles ÷ 6.022 × 10 23. A visible sample is a small number of moles."
+  register (rule/prompt/sample) slide 18 s18-rule: grade 9.2 (outside 5 to 8): "Count metals in atoms. Count molecular compounds in molecules. Count ionic compounds in formula units."
+  register (rule/prompt/sample) slide 19 s19-rule: grade 8.9 (outside 5 to 8): "Moles of an element's atoms = moles of molecules × that element's subscript. Then multiply by 6.022 × 10 23 to count the atoms."
+  register (rule/prompt/sample) slide 21 s21-rule: grade 6.5: "A value per mole describes 6.022 × 10 23 particles. Divide by that number to get one particle."
+  register (rule/prompt/sample) slide 23 card prompt reg: grade 3.5 (outside 5 to 8): "One mole of copper. One mole of aluminum. A student says they must have the same mass. Explain the error."
+  register (rule/prompt/sample) slide 23 s23-sample: grade 4 (outside 5 to 8): "A mole is a count of 6.022 × 10 23 particles, not a mass. Both samples hold the same number of atoms. A copper atom has more mass, so the copper sample does too."
+  register (rule/prompt/sample) slide 24 card prompt reg: grade 3.7 (outside 5 to 8): "A student writes: 2.50 mol of sodium chloride contains 1.51 × 10 24 molecules. What is right? What is wrong?"
+  register (rule/prompt/sample) slide 24 s24-sample: grade 4.3 (outside 5 to 8): "The number is right: 2.50 × 6.022 × 10 23 = 1.51 × 10 24. The particle is wrong. Sodium chloride has no molecules. Count formula units, each one Na + and one Cl −."
+  register (rule/prompt/sample) slide 25 card prompt reg: grade 4.9 (outside 5 to 8): "One mole of water, H 2 O, contains one mole of hydrogen atoms. True or false? Explain with the formula."
+  register (rule/prompt/sample) slide 25 s25-sample: grade 4.2 (outside 5 to 8): "False. The subscript 2 means two hydrogen atoms in each molecule. One mole of H 2 O holds 2 mol of H atoms and 1 mol of O atoms."
+  register (rule/prompt/sample) slide 26 card prompt reg dq: grade 2.3 (outside 5 to 8): "Particles are far too small and too many to count one by one. How can chemists count them?"
+  register (rule/prompt/sample) slide 26 s26-sample: grade 4.5 (outside 5 to 8): "One mole is 6.022 × 10 23 named particles. A bank weighs nickels because each has the same mass. Moles × 6.022 × 10 23 gives particles. The formula's subscripts count the atoms."
+  slide 1 Counting particles with the mole: FK 0.4 (3.6 words/unit, 12 units, 43 words); prose only: FK 2.3, 9 words/sentence, 2 sentences; max 0 prose words visible (frame 0)
+  slide 2 The coin jar: FK 0.9 (5.5 words/unit, 12 units, 66 words); prose only: FK 1.4, 6.6 words/sentence, 9 sentences; max 12 prose words visible (frame 2)
+  slide 3 A bag of nickels at the bank: FK 2.6 (5.5 words/unit, 12 units, 66 words); prose only: FK 3.5, 7.1 words/sentence, 7 sentences; max 28 prose words visible (frame 2)
+  slide 4 Predict now: FK 2.7 (4.4 words/unit, 18 units, 79 words); prose only: FK 4.9, 12.5 words/sentence, 2 sentences; max 38 prose words visible (frame 0)
+  slide 5 Targets and words: FK 6.4 (4.2 words/unit, 31 units, 130 words); prose only: FK 6.3, 9 words/sentence, 4 sentences; max 36 prose words visible (frame 0)
+  slide 6 Counting by weighing: FK 1.4 (3.6 words/unit, 29 units, 104 words); prose only: FK 2.3, 6.9 words/sentence, 10 sentences; max 22 prose words visible (frame 5)
+  slide 7 Counting a mixed jar: FK 2.2 (4.9 words/unit, 34 units, 166 words); prose only: FK 1.6, 6.8 words/sentence, 15 sentences; max 48 prose words visible (frame 10)
+  slide 8 The mole: FK 3 (4.2 words/unit, 29 units, 123 words); prose only: FK 3.6, 6.3 words/sentence, 12 sentences; max 34 prose words visible (frame 8)
+  slide 9 How many is a mole?: FK 3 (3.9 words/unit, 29 units, 113 words); prose only: FK 4.2, 6.9 words/sentence, 9 sentences; max 27 prose words visible (frame 9)
+  slide 10 Name the particle: FK 5.2 (4.6 words/unit, 31 units, 143 words); prose only: FK 6.8, 7.4 words/sentence, 11 sentences; max 50 prose words visible (frame 9)
+  slide 11 The size of a mole: FK 2.7 (5 words/unit, 22 units, 110 words); prose only: FK 3.5, 6.5 words/sentence, 14 sentences; max 28 prose words visible (frame 8)
+  slide 12 Who found the number: FK 5.4 (5.6 words/unit, 17 units, 96 words); prose only: FK 6, 7.9 words/sentence, 10 sentences; max 16 prose words visible (frame 4)
+  slide 13 Counting the atoms in a silicon sphere: FK 3.7 (5.6 words/unit, 26 units, 146 words); prose only: FK 4, 7.5 words/sentence, 12 sentences; max 40 prose words visible (frame 8)
+  slide 14 One picture: three ways to count: FK 2.4 (3.5 words/unit, 22 units, 78 words); prose only: FK 3.5, 6 words/sentence, 4 sentences; max 42 prose words visible (frame 7)
+  slide 15 Warm-up: FK 4.5 (4 words/unit, 11 units, 44 words); prose only: FK 3.5, 7.5 words/sentence, 4 sentences; max 4 prose words visible (frame 0)
+  slide 16 Moles to particles: FK 4 (3.6 words/unit, 27 units, 98 words); prose only: FK 3, 4.8 words/sentence, 10 sentences; max 34 prose words visible (frame 7)
+  slide 17 Particles to moles: FK 4.3 (3.1 words/unit, 28 units, 87 words); prose only: FK 6.1, 7.2 words/sentence, 6 sentences; max 17 prose words visible (frame 5)
+  slide 18 Formula units: FK 5.1 (4.4 words/unit, 24 units, 106 words); prose only: FK 5.3, 6.3 words/sentence, 11 sentences; max 40 prose words visible (frame 7)
+  slide 19 Atoms in a molecule: FK 4 (5.2 words/unit, 26 units, 134 words); prose only: FK 5.4, 8.8 words/sentence, 12 sentences; max 33 prose words visible (frame 8)
+  slide 20 Convert: I do, we do, you do: FK 2.6 (3.7 words/unit, 27 units, 100 words); prose only: FK 2.4, 6.5 words/sentence, 2 sentences; max 22 prose words visible (frame 0)
+  slide 21 The mole in earlier lessons: FK 4.8 (4.5 words/unit, 13 units, 59 words); prose only: FK 5.4, 6.6 words/sentence, 7 sentences; max 14 prose words visible (frame 4)
+  slide 22 Checkpoint routine: FK 1.9 (3.8 words/unit, 12 units, 45 words); prose only: FK 0.6, 7 words/sentence, 1 sentences; max 30 prose words visible (frame 0)
+  slide 23 Checkpoint 1: FK 2 (4.5 words/unit, 28 units, 126 words); prose only: FK 2.6, 6.7 words/sentence, 13 sentences; max 50 prose words visible (frame 5)
+  slide 24 Checkpoint 2: FK 3.7 (3.7 words/unit, 28 units, 103 words); prose only: FK 4.8, 5.5 words/sentence, 11 sentences; max 37 prose words visible (frame 5)
+  slide 25 Checkpoint 3: FK 2.9 (4.6 words/unit, 27 units, 123 words); prose only: FK 4.5, 7.9 words/sentence, 10 sentences; max 44 prose words visible (frame 5)
+  slide 26 Predictions and exit ticket: FK 4.6 (5.7 words/unit, 38 units, 218 words); prose only: FK 5, 8.3 words/sentence, 18 sentences; max 35 prose words visible (frame 0)
+  slide 27 Rate your learning: FK 3.5 (4.9 words/unit, 13 units, 64 words); prose only: FK 6.3, 9 words/sentence, 4 sentences; max 36 prose words visible (frame 0)
+  slide 28 Next: FK 2.5 (3.6 words/unit, 8 units, 29 words); prose only: FK 6.7, 14 words/sentence, 1 sentences; max 28 prose words visible (frame 0)
+readability: FAIL
+  - slide 4: 38 words of prose visible at frame 0 (budget 35)
+  - slide 5: 36 words of prose visible at frame 0 (budget 35)
+  - slide 7: 48 words of prose visible at frame 10 (budget 35)
+  - slide 10: 50 words of prose visible at frame 9 (budget 35)
+  - slide 13: 40 words of prose visible at frame 8 (budget 35)
+  - slide 14: 42 words of prose visible at frame 7 (budget 35)
+  - slide 18: 40 words of prose visible at frame 7 (budget 35)
+  - slide 23: 50 words of prose visible at frame 5 (budget 35)
+  - slide 24: 37 words of prose visible at frame 5 (budget 35)
+  - slide 25: 44 words of prose visible at frame 5 (budget 35)
+  - slide 25: sentence over 14 words: "One mole of H 2 O holds 2 mol of H atoms and 1 mol of O atoms."
+  - slide 26: sentence over 14 words: "Word bank: 6.022 × 10 23 particles the same mass divide multiply by 6.022 × 10 23 the subscript atoms of each element"
+  - slide 27: 36 words of prose visible at frame 0 (budget 35)
+  - slide 10 s10-rule: register grade 11.3 > 8
+  - slide 18 s18-rule: register grade 9.2 > 8
+  - slide 19 s19-rule: register grade 8.9 > 8

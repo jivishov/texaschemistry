@@ -1,0 +1,43 @@
+  register (rule/prompt/sample) slide 1 card dq reg: grade 6.1: "How do the charges of ions decide the formula and the name of an ionic compound?"
+  register (rule/prompt/sample) slide 3 s03-dq: grade 6.1: "How do the charges of ions decide the formula and the name of an ionic compound?"
+  register (rule/prompt/sample) slide 6 s06-rule: grade 7.1: "Metal atoms lose 1, 2 or 3 valence electrons. Nonmetal atoms gain electrons to reach eight. A monatomic anion name ends in -ide."
+  register (rule/prompt/sample) slide 8 s08-rule: grade 6.9: "The total charge of an ionic compound is zero. The formula shows the smallest whole-number ratio of ions."
+  register (rule/prompt/sample) slide 10 s10-rule: grade 5.8: "Crisscross is a shortcut, not the final formula. Always reduce the ratio, then check the total charge."
+  register (rule/prompt/sample) slide 11 s11-rule: grade 5.4: "Name the cation first, then the anion root plus -ide. Common names omit prefixes because the ion charges determine the ratio."
+  register (rule/prompt/sample) slide 12 s12-c4: grade 6: "The copper ion's charge determines the formula. The Roman numeral records that charge in the name."
+  register (rule/prompt/sample) slide 16 s16-rule: grade 7: "Treat a polyatomic ion as one unit. Never change the subscripts inside a polyatomic ion."
+  register (rule/prompt/sample) slide 21 card prompt reg: grade 6: "Write the formula of aluminum oxide from Al 3+ and O 2−. Explain why the ratio is correct."
+  register (rule/prompt/sample) slide 21 s21-sample: grade 5.5: "The formula is Al 2 O 3. Two aluminum ions provide 6+, and three oxide ions provide 6−. The total charge equals zero."
+  register (rule/prompt/sample) slide 22 card prompt reg: grade 6.7: "Iron forms two different chlorides, FeCl 2 and FeCl 3. Name both compounds and explain how you determined each Roman numeral."
+  register (rule/prompt/sample) slide 22 s22-sample: grade 5.7: "FeCl 2 is iron(II) chloride. FeCl 3 is iron(III) chloride. Each chloride ion is 1−, so iron balances them."
+  register (rule/prompt/sample) slide 23 card prompt reg: grade 7.4: "Some antacids contain aluminum hydroxide. Write its formula. Explain why it needs parentheses but NaOH does not."
+  register (rule/prompt/sample) slide 23 s23-sample: grade 5.4: "The formula is Al(OH) 3. Aluminum needs three hydroxide ions, so they go in parentheses. NaOH has one."
+  register (rule/prompt/sample) slide 24 card prompt reg dq: grade 6.1: "How do the charges of ions decide the formula and the name of an ionic compound?"
+  register (rule/prompt/sample) slide 24 s24-sample: grade 5.5: "The total charge must be zero, so ion charges determine the ratio. Copper(I) gives Cu 2 O; copper(II) gives CuO."
+  slide 1 Ionic formulas and names: FK 0.6 (3.6 words/unit, 11 units, 40 words); prose only: FK 6.1, 16 words/sentence, 1 sentences; max 0 prose words visible (frame 0)
+  slide 2 Read the label: FK 4.4 (6.7 words/unit, 6 units, 40 words); prose only: FK 4.8, 7.4 words/sentence, 5 sentences; max 9 prose words visible (frame 0)
+  slide 3 Two copper oxides: FK 3.3 (5.2 words/unit, 9 units, 47 words); prose only: FK 6.3, 12.5 words/sentence, 2 sentences; max 19 prose words visible (frame 2)
+  slide 4 Predict now: FK 0.9 (3.3 words/unit, 18 units, 59 words); prose only: FK 1.9, 12 words/sentence, 1 sentences; max 30 prose words visible (frame 1)
+  slide 5 Targets and words: FK 4.5 (4.1 words/unit, 30 units, 122 words); prose only: FK 4.1, 6.8 words/sentence, 5 sentences; max 34 prose words visible (frame 0)
+  slide 6 Charges from the group: FK 3.7 (4 words/unit, 21 units, 83 words); prose only: FK 5, 4.9 words/sentence, 14 sentences; max 20 prose words visible (frame 7)
+  slide 7 The four to memorize: FK 1.7 (5.4 words/unit, 15 units, 81 words); prose only: FK 2.9, 7.9 words/sentence, 7 sentences; max 18 prose words visible (frame 1)
+  slide 8 Balancing the charges: FK 0.9 (4.5 words/unit, 24 units, 108 words); prose only: FK 2.6, 7.4 words/sentence, 10 sentences; max 18 prose words visible (frame 8)
+  slide 9 Writing the formula: FK 3.2 (3.4 words/unit, 13 units, 44 words); prose only: FK 2, 6 words/sentence, 4 sentences; max 22 prose words visible (frame 4)
+  slide 10 The crisscross shortcut: FK 1.3 (3.7 words/unit, 27 units, 101 words); prose only: FK 2.3, 6.1 words/sentence, 12 sentences; max 19 prose words visible (frame 7)
+  slide 11 Naming binary compounds: FK 2.4 (2.5 words/unit, 30 units, 75 words); prose only: FK 3.2, 8 words/sentence, 5 sentences; max 21 prose words visible (frame 3)
+  slide 12 The Stock system: FK 3.9 (4.4 words/unit, 21 units, 92 words); prose only: FK 5, 7.2 words/sentence, 9 sentences; max 16 prose words visible (frame 10)
+  slide 13 Formula in 3 steps, name in 2 parts: FK 4.2 (2.1 words/unit, 18 units, 38 words); prose only: FK null, null words/sentence, 0 sentences; max 13 prose words visible (frame 1)
+  slide 14 Warm-up: FK 2.1 (3.3 words/unit, 11 units, 36 words); prose only: FK 2.2, 5.3 words/sentence, 4 sentences; max 8 prose words visible (frame 0)
+  slide 15 Polyatomic ions: FK 3 (3.3 words/unit, 32 units, 104 words); prose only: FK 3.2, 6.2 words/sentence, 13 sentences; max 30 prose words visible (frame 9)
+  slide 16 Parentheses: FK 2.1 (3.9 words/unit, 18 units, 71 words); prose only: FK 3.8, 6.9 words/sentence, 8 sentences; max 16 prose words visible (frame 8)
+  slide 17 The two-way road: FK 1.8 (3.2 words/unit, 23 units, 73 words); prose only: FK 1.4, 5.4 words/sentence, 5 sentences; max 19 prose words visible (frame 8)
+  slide 18 You do: six compounds: FK 4.9 (2 words/unit, 24 units, 48 words); prose only: FK 1.5, 6 words/sentence, 2 sentences; max 12 prose words visible (frame 0)
+  slide 19 Spot the error: FK 3.7 (3.4 words/unit, 17 units, 57 words); prose only: FK 0.6, 4.5 words/sentence, 2 sentences; max 9 prose words visible (frame 0)
+  slide 20 Checkpoint routine: FK 1.9 (3.8 words/unit, 12 units, 45 words); prose only: FK 0.6, 7 words/sentence, 1 sentences; max 30 prose words visible (frame 0)
+  slide 21 Checkpoint 1: FK 2.6 (4 words/unit, 27 units, 107 words); prose only: FK 3.1, 6.4 words/sentence, 11 sentences; max 35 prose words visible (frame 5)
+  slide 22 Checkpoint 2: FK 3.1 (3.7 words/unit, 26 units, 95 words); prose only: FK 4.4, 5.8 words/sentence, 10 sentences; max 35 prose words visible (frame 5)
+  slide 23 Checkpoint 3: FK 3.8 (3.5 words/unit, 28 units, 99 words); prose only: FK 5.3, 5.7 words/sentence, 10 sentences; max 34 prose words visible (frame 5)
+  slide 24 Predictions and exit ticket: FK 3.8 (4.6 words/unit, 32 units, 147 words); prose only: FK 4, 7.7 words/sentence, 13 sentences; max 24 prose words visible (frame 1)
+  slide 25 Rate your learning: FK 2.5 (4.3 words/unit, 15 units, 64 words); prose only: FK 4.1, 6.8 words/sentence, 5 sentences; max 34 prose words visible (frame 0)
+  slide 26 Next: FK 3.7 (3.7 words/unit, 9 units, 33 words); prose only: FK 6, 6.5 words/sentence, 2 sentences; max 32 prose words visible (frame 0)
+readability: PASS

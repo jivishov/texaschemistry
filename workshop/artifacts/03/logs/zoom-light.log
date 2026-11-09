@@ -1,0 +1,31 @@
+zoom light: 1072 zoomed states over 197 frames (re-flow 458, transform 614), prompt 35, r800 1, animation 133, part 459, card 203, frames 2, check 28, wcard 16, legend 1, rule 18, caption 17, caprow 15, p 3, table 1, column 21, line 1, bank 1, row 30, rail 29, li 50, handsup 3, scale 5; min fill 62%; Back tests 28; PASS
+  PASS  every zoomed check shows its options
+  PASS  every prompt on a routine slide is a unit (routine slides with a prompt: 4, 22, 23, 24, 25, 26)
+  PASS  every animation host is a unit with fill 0.6 or more on every frame that shows it
+  PASS  every animation unit and sub-unit fills 0.6 or more
+  PASS  slide 5: each of the eight word cards is a unit
+  PASS  slide 5: the color legend is a unit
+  PASS  slide 14: each column of the summary table is a unit (the runtime zooms this table by column)
+  PASS  slide 15: each warm-up answer row is a unit (3)
+  PASS  slide 20: each you-do answer row is a unit (3)
+  PASS  slides 16, 17, 20, 21: each station and the bridge of moleMap are units
+  PASS  slides 16, 17, 20: the factor, the result and the check line of moleMap are units
+  PASS  slide 12: each history card is a unit on its frame
+  PASS  slide 9: the exponent ladder (from the thousand on) and the spoon are units
+  PASS  the cards with a chip row are units (slides 6, 7, 10, 26)
+  PASS  every rule card is a unit on its frame
+  PASS  every prompt of the routine slides is a unit (slides 4, 22 to 27)
+  PASS  the caption under the picture is a unit (slides 10 and 19)
+  PASS  every check card with its options (11)
+  PASS  matrix 1024x768 at x1 (loaded at 1366x768): 375 zoomed states measured, 0 fails
+  PASS  matrix 1024x768 at x1.25 (loaded at 1366x768): 375 zoomed states measured, 0 fails
+  PASS  matrix 1024x768 at x1.5 (loaded at 1366x768): 375 zoomed states measured, 0 fails
+  PASS  matrix 1366x768 at x1 (loaded at 1536x864): 375 zoomed states measured, 0 fails
+  PASS  matrix 1366x768 at x1.25 (loaded at 1536x864): 375 zoomed states measured, 0 fails
+  PASS  matrix 1366x768 at x1.5 (loaded at 1536x864): 375 zoomed states measured, 0 fails
+  PASS  matrix 1536x864 at x1 (loaded at 1920x1080): 375 zoomed states measured, 0 fails
+  PASS  matrix 1536x864 at x1.25 (loaded at 1920x1080): 375 zoomed states measured, 0 fails
+  PASS  matrix 1536x864 at x1.5 (loaded at 1920x1080): 375 zoomed states measured, 0 fails
+  PASS  matrix 1920x1080 at x1 (loaded at 1024x768): 375 zoomed states measured, 0 fails
+  PASS  matrix 1920x1080 at x1.25 (loaded at 1024x768): 375 zoomed states measured, 0 fails
+  PASS  matrix 1920x1080 at x1.5 (loaded at 1024x768): 375 zoomed states measured, 0 fails

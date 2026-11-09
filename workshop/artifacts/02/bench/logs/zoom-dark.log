@@ -1,0 +1,3 @@
+zoom dark: 338 zoomed states over 78 frames (re-flow 10, transform 328), animation 78, part 250, caption 10; min fill 82%; Back tests 78; PASS
+  PASS  every zoomed check shows its options
+  PASS  every prompt on a routine slide is a unit (routine slides with a prompt: none)

@@ -1,0 +1,201 @@
+{
+  "slides": [
+    {
+      "slide": 1,
+      "minTextPx": 34,
+      "minSubSupBasePx": null,
+      "minCanvasLabelPx": null,
+      "below": []
+    },
+    {
+      "slide": 2,
+      "minTextPx": 56,
+      "minSubSupBasePx": null,
+      "minCanvasLabelPx": 36,
+      "below": []
+    },
+    {
+      "slide": 3,
+      "minTextPx": 36,
+      "minSubSupBasePx": null,
+      "minCanvasLabelPx": null,
+      "below": []
+    },
+    {
+      "slide": 4,
+      "minTextPx": 34,
+      "minSubSupBasePx": 34,
+      "minCanvasLabelPx": null,
+      "below": []
+    },
+    {
+      "slide": 5,
+      "minTextPx": 34,
+      "minSubSupBasePx": 34,
+      "minCanvasLabelPx": null,
+      "below": []
+    },
+    {
+      "slide": 6,
+      "minTextPx": 34,
+      "minSubSupBasePx": null,
+      "minCanvasLabelPx": 36,
+      "below": []
+    },
+    {
+      "slide": 7,
+      "minTextPx": 34,
+      "minSubSupBasePx": null,
+      "minCanvasLabelPx": 36,
+      "below": []
+    },
+    {
+      "slide": 8,
+      "minTextPx": 34,
+      "minSubSupBasePx": 34,
+      "minCanvasLabelPx": 36,
+      "below": []
+    },
+    {
+      "slide": 9,
+      "minTextPx": 34,
+      "minSubSupBasePx": 34,
+      "minCanvasLabelPx": 36,
+      "below": []
+    },
+    {
+      "slide": 10,
+      "minTextPx": 34,
+      "minSubSupBasePx": 34.3,
+      "minCanvasLabelPx": 36,
+      "below": []
+    },
+    {
+      "slide": 11,
+      "minTextPx": 34,
+      "minSubSupBasePx": 34,
+      "minCanvasLabelPx": 36,
+      "below": []
+    },
+    {
+      "slide": 12,
+      "minTextPx": 34,
+      "minSubSupBasePx": 34.3,
+      "minCanvasLabelPx": 36,
+      "below": []
+    },
+    {
+      "slide": 13,
+      "minTextPx": 34,
+      "minSubSupBasePx": 34.3,
+      "minCanvasLabelPx": 36,
+      "below": []
+    },
+    {
+      "slide": 14,
+      "minTextPx": 34,
+      "minSubSupBasePx": 34,
+      "minCanvasLabelPx": null,
+      "below": []
+    },
+    {
+      "slide": 15,
+      "minTextPx": 34,
+      "minSubSupBasePx": 34.3,
+      "minCanvasLabelPx": null,
+      "below": []
+    },
+    {
+      "slide": 16,
+      "minTextPx": 34,
+      "minSubSupBasePx": 34,
+      "minCanvasLabelPx": 36,
+      "below": []
+    },
+    {
+      "slide": 17,
+      "minTextPx": 34,
+      "minSubSupBasePx": 34,
+      "minCanvasLabelPx": 36,
+      "below": []
+    },
+    {
+      "slide": 18,
+      "minTextPx": 34,
+      "minSubSupBasePx": 34,
+      "minCanvasLabelPx": 40,
+      "below": []
+    },
+    {
+      "slide": 19,
+      "minTextPx": 34,
+      "minSubSupBasePx": 34,
+      "minCanvasLabelPx": 36,
+      "below": []
+    },
+    {
+      "slide": 20,
+      "minTextPx": 34,
+      "minSubSupBasePx": 34,
+      "minCanvasLabelPx": 36,
+      "below": []
+    },
+    {
+      "slide": 21,
+      "minTextPx": 34,
+      "minSubSupBasePx": 34.3,
+      "minCanvasLabelPx": 36,
+      "below": []
+    },
+    {
+      "slide": 22,
+      "minTextPx": 36,
+      "minSubSupBasePx": null,
+      "minCanvasLabelPx": null,
+      "below": []
+    },
+    {
+      "slide": 23,
+      "minTextPx": 34,
+      "minSubSupBasePx": 34,
+      "minCanvasLabelPx": null,
+      "below": []
+    },
+    {
+      "slide": 24,
+      "minTextPx": 34,
+      "minSubSupBasePx": 34,
+      "minCanvasLabelPx": null,
+      "below": []
+    },
+    {
+      "slide": 25,
+      "minTextPx": 34,
+      "minSubSupBasePx": 34,
+      "minCanvasLabelPx": null,
+      "below": []
+    },
+    {
+      "slide": 26,
+      "minTextPx": 34,
+      "minSubSupBasePx": 34,
+      "minCanvasLabelPx": null,
+      "below": []
+    },
+    {
+      "slide": 27,
+      "minTextPx": 34,
+      "minSubSupBasePx": null,
+      "minCanvasLabelPx": null,
+      "below": []
+    },
+    {
+      "slide": 28,
+      "minTextPx": 40,
+      "minSubSupBasePx": null,
+      "minCanvasLabelPx": null,
+      "below": []
+    }
+  ],
+  "fails": []
+}
